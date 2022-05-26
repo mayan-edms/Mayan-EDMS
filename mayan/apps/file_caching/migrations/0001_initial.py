@@ -114,10 +114,10 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='cachepartitionfile',
-            unique_together=set([('partition', 'filename')]),
+            unique_together={('partition', 'filename')},
         ),
         migrations.AlterUniqueTogether(
             name='cachepartition',
-            unique_together=set([('cache', 'name')]),
+            unique_together={('cache', 'name')},
         ),
     ]

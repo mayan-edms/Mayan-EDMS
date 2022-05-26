@@ -24,9 +24,7 @@ class Command(management.BaseCommand):
             self.stdout.write(msg='----')
 
             maximum_name_length = max(
-                [
-                    len(template_class.name) for template_class in PlatformTemplate.all()
-                ]
+                len(template_class.name) for template_class in PlatformTemplate.all()
             )
 
             space_padding = maximum_name_length + 2

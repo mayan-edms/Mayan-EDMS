@@ -18,7 +18,7 @@ class IndexTemplateAdmin(admin.ModelAdmin):
 
     def get_document_types(self, instance):
         return ', '.join(
-            ['"{0}"'.format(document_type) for document_type in instance.document_types.all()]
+            ['"{}"'.format(document_type) for document_type in instance.document_types.all()]
         ) or _('None')
 
     get_document_types.short_description = _('Document types')

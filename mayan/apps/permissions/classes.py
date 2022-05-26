@@ -123,7 +123,7 @@ class Permission(AppsModuleLoaderMixin):
         return force_text(s=self.label)
 
     def get_pk(self):
-        return '%s.%s' % (self.namespace.name, self.name)
+        return '{}.{}'.format(self.namespace.name, self.name)
 
     @property
     def stored_permission(self):

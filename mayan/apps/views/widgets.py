@@ -80,14 +80,14 @@ class NamedMultiWidget(forms.widgets.Widget):
             widget = self.widgets[widget_name]
             if input_type is not None:
                 widget.input_type = input_type
-            full_widget_name = '%s_%s' % (name, widget_name)
+            full_widget_name = '{}_{}'.format(name, widget_name)
             try:
                 widget_value = value[widget_name]
             except IndexError:
                 widget_value = None
             if id_:
                 widget_attrs = final_attrs.copy()
-                widget_attrs['id'] = '%s_%s' % (id_, widget_name)
+                widget_attrs['id'] = '{}_{}'.format(id_, widget_name)
             else:
                 widget_attrs = final_attrs
             subwidgets.append(

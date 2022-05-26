@@ -55,7 +55,7 @@ class DocumentMetadataForm(forms.Form):
 
             field_metadata_type_label = self.metadata_type.label or self.metadata_type.name
 
-            self.fields['metadata_type_name'].initial = '%s%s' % (
+            self.fields['metadata_type_name'].initial = '{}{}'.format(
                 field_metadata_type_label, required_string
             )
 

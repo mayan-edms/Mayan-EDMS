@@ -36,9 +36,9 @@ class DocumentCreateWizardStep(AppsModuleLoaderMixin):
     @classmethod
     def get_all(cls):
         return sorted(
-            [
+            (
                 step for step in cls._registry.values() if step.name not in cls._deregistry
-            ], key=lambda x: x.number
+            ), key=lambda x: x.number
         )
 
     @classmethod

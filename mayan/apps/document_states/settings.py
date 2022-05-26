@@ -1,4 +1,3 @@
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.smart_settings.classes import SettingNamespace

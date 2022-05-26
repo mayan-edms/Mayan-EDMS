@@ -58,7 +58,7 @@ class DocumentFilePageContentManager(models.Manager):
             if settings.DEBUG:
                 result = []
                 type, value, tb = sys.exc_info()
-                result.append('%s: %s' % (type.__name__, value))
+                result.append('{}: {}'.format(type.__name__, value))
                 result.extend(traceback.format_tb(tb))
                 document_file.error_log.create(
                     result='\n'.join(result)

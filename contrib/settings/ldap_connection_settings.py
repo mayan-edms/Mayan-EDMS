@@ -11,7 +11,8 @@
 import ldap
 
 from django_auth_ldap.config import (
-    LDAPSearch, LDAPSearchUnion, NestedActiveDirectoryGroupType, GroupOfNamesType
+    LDAPSearch, LDAPSearchUnion, NestedActiveDirectoryGroupType,
+    GroupOfNamesType
 )
 
 from mayan.settings.production import *  # NOQA
@@ -56,7 +57,7 @@ AUTH_LDAP_SERVER_URI = LDAP_URL
 
 # Simple search
 AUTH_LDAP_USER_SEARCH = LDAPSearch(
-    '%s,%s' % (LDAP_ADDITIONAL_USER_DN, LDAP_BASE_DN),
+    '{},{}'.format(LDAP_ADDITIONAL_USER_DN, LDAP_BASE_DN),
     ldap.SCOPE_SUBTREE, '(uid=%(user)s)'
 )
 

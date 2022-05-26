@@ -10,7 +10,7 @@ class DocumentSearchTestCase(SearchTestMixin, GenericDocumentViewTestCase):
     auto_upload_test_document = False
 
     def _do_test_search(self, query):
-        terms = str(tuple((query.values()))[0]).strip()
+        terms = str(tuple(query.values())[0]).strip()
         self.assertTrue(terms is not None)
         self.assertTrue(terms != '')
 

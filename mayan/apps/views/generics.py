@@ -116,13 +116,10 @@ class MultiFormView(DjangoFormView):
         return kwargs
 
     def get_forms(self, form_classes):
-        return dict(
-            [
-                (
-                    key, self._create_form(form_name=key, klass=klass)
-                ) for key, klass in form_classes.items()
-            ]
-        )
+        return {
+            key: self._create_form(form_name=key, klass=klass)
+            for key, klass in form_classes.items()
+        }
 
     def get_initial(self, form_name):
         initial_method = 'get_initial__{}'.format(form_name)

@@ -115,11 +115,9 @@ class MessageProcessor:
         from mayan.apps.common.apps import MayanAppConfig
 
         return sorted(
-            [
-                name for name, app_config in apps.app_configs.items() if issubclass(
-                    type(app_config), MayanAppConfig
-                )
-            ]
+            name for name, app_config in apps.app_configs.items() if issubclass(
+                type(app_config), MayanAppConfig
+            )
         )
 
     @staticmethod

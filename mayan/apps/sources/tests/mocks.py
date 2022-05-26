@@ -277,7 +277,7 @@ class MockPOP3Mailbox:
 
         # Sum the line sizes in bytes plus 2 (CR+LF)
         result_size = sum(
-            [len(message_entry) + 2 for message_entry in message_list]
+            len(message_entry) + 2 for message_entry in message_list
         )
 
         return (

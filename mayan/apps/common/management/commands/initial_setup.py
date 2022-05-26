@@ -81,7 +81,7 @@ class Command(management.BaseCommand):
         else:
             self.stdout.write(
                 msg=self.style.NOTICE(
-                    'Existing media files at: {0}. Backup, remove this folder, '
+                    'Existing media files at: {}. Backup, remove this folder, '
                     'and try again. Or use the --force argument'.format(
                         settings.MEDIA_ROOT
                     )

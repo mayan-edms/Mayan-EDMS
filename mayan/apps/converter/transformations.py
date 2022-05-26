@@ -129,9 +129,7 @@ class BaseTransformation(metaclass=BaseTransformationType):
             return sorted(result, key=lambda x: x[0])
         else:
             return sorted(
-                [
-                    (name, klass.get_label()) for name, klass in transformation_list
-                ]
+                (name, klass.get_label()) for name, klass in transformation_list
             )
 
     @classmethod

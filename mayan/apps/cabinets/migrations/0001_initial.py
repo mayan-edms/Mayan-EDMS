@@ -79,6 +79,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='cabinet',
-            unique_together=set([('parent', 'label')]),
+            unique_together={('parent', 'label')},
         ),
     ]

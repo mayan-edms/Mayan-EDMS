@@ -169,7 +169,7 @@ class DescriptorLeakCheckTestCaseMixin:
 
     def _get_process_descriptors(self):
         process = psutil.Process()._proc
-        return os.listdir("%s/%s/fd" % (process._procfs_path, process.pid))
+        return os.listdir("{}/{}/fd".format(process._procfs_path, process.pid))
 
     def setUp(self):
         super().setUp()
@@ -619,7 +619,7 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
         self._test_models_extra.update(
             set(
                 apps.app_configs[self.app_config.label].models.values()
-            ) - model_list_previous - set((model,))
+            ) - model_list_previous - {model}
         )
 
         self._test_models.append(model)

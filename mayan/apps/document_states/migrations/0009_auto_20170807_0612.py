@@ -63,6 +63,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='workflowstateaction',
-            unique_together=set([('state', 'label')]),
+            unique_together={('state', 'label')},
         ),
     ]

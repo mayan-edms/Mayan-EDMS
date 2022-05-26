@@ -1,4 +1,3 @@
-
 class QuotaBaseException(Exception):
     """Base exception for the quota app"""
 

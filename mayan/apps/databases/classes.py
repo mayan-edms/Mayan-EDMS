@@ -133,9 +133,9 @@ class ModelAttribute:
     @classmethod
     def get_choices_for(cls, model):
         return sorted(
-            [
+            (
                 (entry.name, entry.get_display()) for entry in cls.get_for(model=model)
-            ], key=lambda x: x[1]
+            ), key=lambda x: x[1]
         )
 
     @classmethod

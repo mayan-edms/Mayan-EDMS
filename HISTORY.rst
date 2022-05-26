@@ -344,6 +344,12 @@
 - Add link to make staging folder file selection easier. Closes GitLab
   issue #341. Thanks to Leroy Förster (@gersilex) for the report and
   initial idea.
+- Modernize Python syntax:
+
+  - Pass generators instead of lists to ``sorted``.
+  - Update string formatting to use ``.format``.
+  - Remove creating of sets using the set factory and use instead the set
+    literal.
 
 4.2.5 (2022-05-21)
 ==================

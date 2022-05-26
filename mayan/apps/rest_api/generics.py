@@ -84,9 +84,9 @@ class ObjectActionAPIView(SerializerExtraContextAPIViewMixin, GenericAPIView):
 
     def object_action(self, serializer):
         raise ImproperlyConfigured(
-            '%(cls)s class needs to specify the `.perform_action()` method.' % {
-                'cls': self.__class__.__name__
-            }
+            '{cls} class needs to specify the `.perform_action()` method.'.format(
+                cls=self.__class__.__name__
+            )
         )
 
     def post(self, request, *args, **kwargs):

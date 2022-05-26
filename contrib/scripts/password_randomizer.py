@@ -27,4 +27,3 @@ with open(file='.env') as file_object:
                 print('{}"{}"'.format(
                     variable_name, secrets.token_urlsafe(PASSWORD_LENGTH))
                 )
-

@@ -103,7 +103,7 @@ class SmartLink(ExtraDataModelMixin, models.Model):
             template = Template(template_string=condition.expression)
 
             condition_query = Q(**{
-                '%s__%s' % (
+                '{}__{}'.format(
                     condition.foreign_document_data, condition.operator
                 ): template.render(context={'document': document})
             })
@@ -203,7 +203,7 @@ class SmartLinkCondition(ExtraDataModelMixin, models.Model):
         return super().delete(*args, **kwargs)
 
     def get_full_label(self):
-        return '%s foreign %s %s %s %s' % (
+        return '{} foreign {} {} {} {}'.format(
             self.get_inclusion_display(),
             self.foreign_document_data, _('not') if self.negated else '',
             self.get_operator_display(), self.expression

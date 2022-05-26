@@ -80,6 +80,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='accesscontrollist',
-            unique_together=set([('content_type', 'object_id', 'role')]),
+            unique_together={('content_type', 'object_id', 'role')},
         ),
     ]

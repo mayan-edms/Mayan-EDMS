@@ -95,12 +95,10 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
         # Typecast to sets to make sorting irrelevant in the comparison.
         self.assertEqual(
             set(IndexInstanceNode.objects.values_list('value', flat=True)),
-            set(
-                [
-                    '', str(self._test_documents[1].uuid), self._test_documents[1].label,
-                    str(self._test_documents[0].uuid), self._test_documents[0].label
-                ]
-            )
+            {
+                '', str(self._test_documents[1].uuid), self._test_documents[1].label,
+                str(self._test_documents[0].uuid), self._test_documents[0].label
+            }
         )
 
     def test_document_description_index(self):

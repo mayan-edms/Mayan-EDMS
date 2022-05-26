@@ -314,7 +314,7 @@ class DocumentMetadataViewTestCase(
 
         self.assertEqual(
             set(map(int, url.args['id_list'].split(','))),
-            set([self._test_documents[0].pk, self._test_documents[1].pk])
+            {self._test_documents[0].pk, self._test_documents[1].pk}
         )
 
         events = self._get_test_events()
@@ -631,7 +631,7 @@ class DocumentMetadataViewTestCase(
 
         self.assertEqual(
             set(map(int, url.args['id_list'].split(','))),
-            set([self._test_documents[0].pk, self._test_documents[1].pk])
+            {self._test_documents[0].pk, self._test_documents[1].pk}
         )
 
         events = self._get_test_events()

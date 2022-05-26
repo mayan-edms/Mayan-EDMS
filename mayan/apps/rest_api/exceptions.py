@@ -1,4 +1,3 @@
-
 class APIError(Exception):
     """
     Base exception for the API app.
