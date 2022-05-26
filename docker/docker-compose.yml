@@ -282,7 +282,6 @@ services:
 volumes:
   app:
   elasticsearch:
-  pgadmin:
   postgres:
   mountindex:
   rabbitmq:
