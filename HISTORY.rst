@@ -372,6 +372,7 @@
   supporting text filtering.
 - Move the transformations ``TransformationDrawRectangle`` and
   ``TransformationDrawRectanglePercent`` to the decorations layer.
+- Add retry backoff maximum delay to the search tasks.
 
 4.2.5 (2022-05-21)
 ==================

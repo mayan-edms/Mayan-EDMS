@@ -8,17 +8,20 @@ from mayan.celery import app
 from .classes import SearchBackend, SearchModel
 from .exceptions import DynamicSearchException, DynamicSearchRetry
 from .literals import (
-    TASK_DEINDEX_INSTANCE_MAX_RETRIES, TASK_INDEX_INSTANCE_MAX_RETRIES,
-    TASK_INDEX_INSTANCES_MAX_RETRIES,
-    TASK_INDEX_RELATED_INSTANCE_M2M_MAX_RETRIES
+    TASK_DEINDEX_INSTANCE_MAX_RETRIES,
+    TASK_DEINDEX_INSTANCE_RETRY_BACKOFF_MAX, TASK_INDEX_INSTANCE_MAX_RETRIES,
+    TASK_INDEX_INSTANCE_RETRY_BACKOFF_MAX, TASK_INDEX_INSTANCES_MAX_RETRIES,
+    TASK_INDEX_INSTANCES_RETRY_BACKOFF_MAX,
+    TASK_INDEX_RELATED_INSTANCE_M2M_MAX_RETRIES,
+    TASK_INDEX_RELATED_INSTANCE_M2M_RETRY_BACKOFF_MAX
 )
 
 logger = logging.getLogger(name=__name__)
 
-
 @app.task(
     bind=True, ignore_result=True,
-    max_retries=TASK_DEINDEX_INSTANCE_MAX_RETRIES, retry_backoff=True
+    max_retries=TASK_DEINDEX_INSTANCE_MAX_RETRIES, retry_backoff=True,
+    retry_backoff_max=TASK_DEINDEX_INSTANCE_RETRY_BACKOFF_MAX
 )
 def task_deindex_instance(self, app_label, model_name, object_id):
     logger.info('Executing')
@@ -36,7 +39,8 @@ def task_deindex_instance(self, app_label, model_name, object_id):
 
 @app.task(
     bind=True, ignore_result=True,
-    max_retries=TASK_INDEX_INSTANCE_MAX_RETRIES, retry_backoff=True
+    max_retries=TASK_INDEX_INSTANCE_MAX_RETRIES, retry_backoff=True,
+    retry_backoff_max=TASK_INDEX_INSTANCE_RETRY_BACKOFF_MAX
 )
 def task_index_instance(
     self, app_label, model_name, object_id, exclude_app_label=None,
@@ -86,7 +90,8 @@ def task_index_instance(
 
 @app.task(
     bind=True, ignore_result=True,
-    max_retries=TASK_INDEX_INSTANCES_MAX_RETRIES, retry_backoff=True
+    max_retries=TASK_INDEX_INSTANCES_MAX_RETRIES, retry_backoff=True,
+    retry_backoff_max=TASK_INDEX_INSTANCES_RETRY_BACKOFF_MAX
 )
 def task_index_instances(self, search_model_full_name, id_list):
     search_model = SearchModel.get(name=search_model_full_name)
@@ -112,7 +117,8 @@ def task_index_instances(self, search_model_full_name, id_list):
 @app.task(
     bind=True, ignore_result=True,
     max_retries=TASK_INDEX_RELATED_INSTANCE_M2M_MAX_RETRIES,
-    retry_backoff=True
+    retry_backoff=True,
+    retry_backoff_max=TASK_INDEX_RELATED_INSTANCE_M2M_RETRY_BACKOFF_MAX
 )
 def task_index_related_instance_m2m(
     self, action, instance_app_label, instance_model_name,
