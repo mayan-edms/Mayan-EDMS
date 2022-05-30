@@ -228,7 +228,11 @@ class StagingUploadForm(UploadBaseForm):
         except Exception as exception:
             logger.error('exception: %s', exception)
 
-    staging_folder_file_id = forms.ChoiceField(label=_('Staging file'))
+    staging_folder_file_id = forms.ChoiceField(
+        label=_('Staging file'), widget=forms.widgets.Select(
+            attrs={'class': 'select2'}
+        )
+    )
 
 
 class SourceBackendStagingFolder(

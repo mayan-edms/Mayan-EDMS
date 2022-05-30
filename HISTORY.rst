@@ -368,6 +368,8 @@
   updated to update on all available document events. Index updates now
   support more events like adding or removal from cabinets.
   Closes GitLab issue #631. Thanks to Tobias Huhn (@twhuhn) for the request.
+- Convert the staging folder file selection input to a Select2 widget
+  supporting text filtering.
 
 4.2.5 (2022-05-21)
 ==================
