@@ -725,11 +725,11 @@ BaseTransformation.register(
     layer=layer_saved_transformations, transformation=TransformationCrop
 )
 BaseTransformation.register(
-    layer=layer_saved_transformations,
+    layer=layer_decorations,
     transformation=TransformationDrawRectangle
 )
 BaseTransformation.register(
-    layer=layer_saved_transformations,
+    layer=layer_decorations,
     transformation=TransformationDrawRectanglePercent
 )
 BaseTransformation.register(
