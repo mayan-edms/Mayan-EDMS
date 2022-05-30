@@ -1,4 +1,5 @@
 from django.apps import apps
+from django.db.models.signals import post_save, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -19,6 +20,7 @@ from .events import (
     event_cabinet_edited, event_cabinet_document_added,
     event_cabinet_document_removed
 )
+from .handlers import handler_cabinet_pre_delete, handler_index_document
 from .html_widgets import DocumentCabinetWidget
 from .links import (
     link_cabinet_list, link_document_cabinet_list,
@@ -219,4 +221,17 @@ class CabinetsApp(MayanAppConfig):
                 'cabinets:document_cabinet_add',
                 'cabinets:document_cabinet_remove'
             )
+        )
+
+        # Index update
+
+        post_save.connect(
+            dispatch_uid='cabinets_handler_index_document',
+            receiver=handler_index_document,
+            sender=Cabinet
+        )
+        pre_delete.connect(
+            dispatch_uid='cabinets_handler_cabinet_pre_delete',
+            receiver=handler_cabinet_pre_delete,
+            sender=Cabinet
         )

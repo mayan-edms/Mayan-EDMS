@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
@@ -5,8 +6,10 @@ from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.models import DocumentType
+from mayan.apps.documents.models.document_models import Document
+from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.permissions import permission_document_type_edit
+from mayan.apps.events.classes import EventType, ModelEventType
 from mayan.apps.views.generics import (
     AddRemoveView, ConfirmView, FormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
@@ -14,18 +17,24 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..events import event_index_template_edited
-from ..forms import IndexTemplateFilteredForm, IndexTemplateNodeForm
+from ..forms import (
+    IndexTemplateEventTriggerRelationshipFormSet, IndexTemplateFilteredForm,
+    IndexTemplateNodeForm
+)
 from ..icons import (
     icon_document_type_index_templates, icon_index,
     icon_index_instances_rebuild, icon_index_instances_reset,
     icon_index_template_create, icon_index_template_delete,
     icon_index_template_document_types, icon_index_template_edit,
-    icon_index_template_list, icon_index_template_node_create,
-    icon_index_template_node_delete, icon_index_template_node_edit,
-    icon_index_template_node_tree_view
+    icon_index_template_event_triggers, icon_index_template_list,
+    icon_index_template_node_create, icon_index_template_node_delete,
+    icon_index_template_node_edit, icon_index_template_node_tree_view
 )
 from ..links import link_index_template_create
-from ..models.index_template_models import IndexTemplate, IndexTemplateNode
+from ..literals import RELATIONSHIP_NO, RELATIONSHIP_YES
+from ..models.index_template_models import (
+    IndexTemplate, IndexTemplateEventTrigger, IndexTemplateNode
+)
 from ..permissions import (
     permission_index_template_create, permission_index_template_delete,
     permission_index_template_edit, permission_index_template_rebuild,
@@ -183,6 +192,99 @@ class IndexTemplateEditView(SingleObjectEditView):
 
     def get_instance_extra_data(self):
         return {'_event_actor': self.request.user}
+
+
+class IndexTemplateEventTriggerListView(ExternalObjectViewMixin, FormView):
+    external_object_class = IndexTemplate
+    external_object_permission = permission_index_template_edit
+    external_object_pk_url_kwarg = 'index_template_id'
+    form_class = IndexTemplateEventTriggerRelationshipFormSet
+    view_icon = icon_index_template_event_triggers
+
+    def dispatch(self, *args, **kwargs):
+        EventType.refresh()
+        return super().dispatch(*args, **kwargs)
+
+    def form_valid(self, form):
+        try:
+            for instance in form:
+                if instance.cleaned_data['relationship'] == RELATIONSHIP_NO:
+                    try:
+                        index_template_event_trigger = self.external_object.event_triggers.get(
+                            stored_event_type_id=instance.cleaned_data['stored_event_type_id']
+                        )
+                    except self.external_object.event_triggers.model.DoesNotExist:
+                        """Ignore non existing entries."""
+                    else:
+                        index_template_event_trigger._event_actor = self.request.user
+                        index_template_event_trigger.delete()
+                elif instance.cleaned_data['relationship'] == RELATIONSHIP_YES:
+                    if not self.external_object.event_triggers.filter(
+                        stored_event_type_id=instance.cleaned_data['stored_event_type_id']
+                    ).exists():
+                        index_template_event_trigger = IndexTemplateEventTrigger(
+                            index_template=self.external_object,
+                            stored_event_type_id=instance.cleaned_data['stored_event_type_id']
+                        )
+                        index_template_event_trigger._event_actor = self.request.user
+                        index_template_event_trigger.save()
+        except Exception as exception:
+            messages.error(
+                message=_(
+                    'Error updating index template event trigger; %s'
+                ) % exception, request=self.request
+
+            )
+            if settings.DEBUG or settings.TESTING:
+                raise
+        else:
+            messages.success(
+                message=_(
+                    'Index template event triggers updated successfully.'
+                ), request=self.request
+            )
+
+        return super().form_valid(form=form)
+
+    def get_extra_context(self):
+        return {
+            'form_display_mode_table': True,
+            'subtitle': _(
+                'Triggers are document events that cause instances of this '
+                'index template to be updated.'
+            ),
+            'object': self.external_object,
+            'title': _(
+                'Index template event triggers for: %s'
+            ) % self.external_object
+        }
+
+    def get_initial(self):
+        initial = []
+
+        queryset = IndexTemplateEventTrigger.objects.filter(
+            index_template=self.external_object
+        )
+
+        for stored_event_type in self.get_stored_event_types():
+            if queryset.filter(stored_event_type=stored_event_type).exists():
+                relationship = RELATIONSHIP_YES
+            else:
+                relationship = RELATIONSHIP_NO
+
+            initial.append(
+                {
+                    'label': stored_event_type.label,
+                    'namespace': stored_event_type.namespace,
+                    'relationship': relationship,
+                    'stored_event_type_id': stored_event_type.id
+                }
+            )
+        return initial
+
+    def get_stored_event_types(self):
+        for event_type in ModelEventType.get_for_class(klass=Document):
+            yield event_type.get_stored_event_type()
 
 
 class IndexTemplateNodeListView(

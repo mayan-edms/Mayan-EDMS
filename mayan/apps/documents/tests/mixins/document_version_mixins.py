@@ -234,8 +234,28 @@ class DocumentVersionPageAPIViewTestMixin:
 
 
 class DocumentVersionTestMixin:
+    auto_create_test_document_version = False
+
+    def setUp(self):
+        super().setUp()
+        self._test_document_versions = []
+        if self.auto_create_test_document_version:
+            self._create_test_document_version()
+
     def _create_test_document_version(self):
         self._test_document_version = self._test_document.versions.create()
+        self._test_document_versions.append(self._test_document_version)
+
+        self._document_version_page_source_object = self._test_document
+        content_type = ContentType.objects.get_for_model(
+            model=self._document_version_page_source_object
+        )
+
+        self._test_document_version_page = DocumentVersionPage.objects.create(
+            content_type=content_type,
+            document_version=self._test_document_version,
+            object_id=self._document_version_page_source_object.pk
+        )
 
 
 class DocumentVersionViewTestMixin:

@@ -28,7 +28,7 @@ class DocumentFileContentForm(forms.Form):
             try:
                 page_content = page.content.content
             except DocumentFilePageContent.DoesNotExist:
-                pass
+                """Page does not have parsed content, skip."""
             else:
                 content.append(conditional_escape(force_text(s=page_content)))
                 content.append(

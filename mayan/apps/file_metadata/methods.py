@@ -23,7 +23,7 @@ def method_document_file_metadata_submit_single(self, _user=None):
 
     task_process_document_file.apply_async(
         kwargs={
-            'document_file_id': self.pk, 'user_id': user_id,
+            'document_file_id': self.pk, 'user_id': user_id
         }
     )
 

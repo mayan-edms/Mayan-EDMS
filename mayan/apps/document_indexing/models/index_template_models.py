@@ -11,8 +11,11 @@ from mptt.models import MPTTModel
 
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.documents.models import Document, DocumentType
-from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.classes import (
+    EventManagerMethodAfter, EventManagerSave, ModelEventType
+)
 from mayan.apps.events.decorators import method_event
+from mayan.apps.events.models import StoredEventType
 
 from ..events import (
     event_index_template_created, event_index_template_edited
@@ -58,6 +61,19 @@ class IndexTemplate(ExtraDataModelMixin, models.Model):
 
     def __str__(self):
         return self.label
+
+    def do_event_triggers_populate(self):
+        entries = []
+
+        for event_type in ModelEventType.get_for_class(klass=Document):
+            entries.append(
+                IndexTemplateEventTrigger(
+                    index_template=self,
+                    stored_event_type=event_type.get_stored_event_type()
+                )
+            )
+
+        IndexTemplateEventTrigger.objects.bulk_create(entries)
 
     def document_types_add(self, queryset, _event_actor=None):
         for document_type in queryset:
@@ -158,8 +174,50 @@ class IndexTemplate(ExtraDataModelMixin, models.Model):
         if is_new:
             # Automatically create the root index template node.
             IndexTemplateNode.objects.get_or_create(parent=None, index=self)
+            self.do_event_triggers_populate()
 
         self.index_template_root_node.initialize_index_instance_root_node()
+
+
+class IndexTemplateEventTrigger(ExtraDataModelMixin, models.Model):
+    index_template = models.ForeignKey(
+        on_delete=models.CASCADE, related_name='event_triggers',
+        to=IndexTemplate, verbose_name=_('Index template')
+    )
+    stored_event_type = models.ForeignKey(
+        on_delete=models.CASCADE, to=StoredEventType,
+        verbose_name=_('Event type')
+    )
+
+    class Meta:
+        unique_together = ('index_template', 'stored_event_type')
+        verbose_name = _('Index template event trigger')
+        verbose_name_plural = _('Index template event triggers')
+
+    def __str__(self):
+        return str(self.stored_event_type)
+
+    @method_event(
+        event_manager_class=EventManagerMethodAfter,
+        event=event_index_template_edited,
+        target='index_template'
+    )
+    def delete(self, *args, **kwargs):
+        return super().delete(*args, **kwargs)
+
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_index_template_edited,
+            'target': 'index_template'
+        },
+        edited={
+            'event': event_index_template_edited,
+            'target': 'index_template'
+        }
+    )
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)
 
 
 class IndexTemplateNode(MPTTModel):

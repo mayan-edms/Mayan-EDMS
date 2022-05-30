@@ -1,5 +1,5 @@
 from django.apps import apps
-from django.db.models.signals import m2m_changed, pre_delete
+from django.db.models.signals import post_save, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -225,12 +225,11 @@ class TagsApp(MayanAppConfig):
 
         # Index update
 
-        m2m_changed.connect(
+        post_save.connect(
             dispatch_uid='tags_handler_index_document',
             receiver=handler_index_document,
-            sender=Tag.documents.through
+            sender=Tag
         )
-
         pre_delete.connect(
             dispatch_uid='tags_handler_tag_pre_delete',
             receiver=handler_tag_pre_delete,

@@ -2,19 +2,9 @@ import logging
 
 from django.apps import apps
 
-from mayan.apps.document_indexing.tasks import task_index_instance_document_add
-
 from .settings import setting_auto_parsing
 
 logger = logging.getLogger(name=__name__)
-
-
-def handler_index_document(sender, **kwargs):
-    task_index_instance_document_add.apply_async(
-        kwargs={
-            'document_id': kwargs['instance'].document_id
-        }
-    )
 
 
 def handler_initialize_new_parsing_settings(sender, instance, **kwargs):

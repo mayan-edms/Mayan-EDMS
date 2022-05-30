@@ -67,9 +67,12 @@ class CommentAPIViewTestMixin:
 
 
 class DocumentCommentTestMixin:
-    def _create_test_comment(self):
+    def _create_test_comment(self, text=None, user=None):
+        text = text or TEST_COMMENT_TEXT
+        user = user or self._test_user
+
         self._test_document_comment = self._test_document.comments.create(
-            text=TEST_COMMENT_TEXT, user=self._test_user
+            text=text, user=user
         )
 
 

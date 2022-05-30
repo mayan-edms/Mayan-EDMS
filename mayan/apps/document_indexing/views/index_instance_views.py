@@ -20,11 +20,6 @@ from ..models import (
 )
 from ..permissions import permission_index_instance_view
 
-__all__ = (
-    'DocumentIndexInstanceNodeListView', 'IndexInstanceListView',
-    'IndexInstanceNodeView'
-)
-
 
 class IndexInstanceListView(SingleObjectListView):
     object_permission = permission_index_instance_view

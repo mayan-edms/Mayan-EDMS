@@ -33,7 +33,6 @@ from .permissions import (
     permission_document_version_ocr_content_view,
     permission_document_version_ocr, permission_document_type_ocr_setup
 )
-from .utils import get_instance_ocr_content
 
 
 class DocumentTypeOCRSettingsEditView(
@@ -165,7 +164,7 @@ class DocumentVersionOCRDownloadView(SingleObjectDownloadView):
     view_icon = icon_document_version_ocr_content_download
 
     def get_download_file_object(self):
-        return get_instance_ocr_content(instance=self.object)
+        return self.object.ocr_content()
 
     def get_download_filename(self):
         return '{}-OCR'.format(self.object)

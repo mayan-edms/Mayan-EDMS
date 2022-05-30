@@ -1,5 +1,8 @@
 from django.db.models import Q
 
+from mayan.apps.events.classes import EventType
+
+from ..literals import RELATIONSHIP_NO, RELATIONSHIP_YES
 from ..models.index_instance_models import IndexInstance
 from ..models.index_template_models import IndexTemplate, IndexTemplateNode
 
@@ -11,7 +14,7 @@ from .literals import (
 
 
 class DocumentIndexAPIViewTestMixin:
-    def _request_test_document_index_instance_instance_list_api_view(self):
+    def _request_test_document_index_instance_list_api_view(self):
         return self.get(
             viewname='rest_api:document-index-list', kwargs={
                 'document_id': self._test_document.pk
@@ -103,15 +106,13 @@ class IndexInstanceNodeAPIViewTestMixin:
 
 
 class IndexInstanceTestMixin:
-    auto_upload_test_document = False
-
     def setUp(self):
         super().setUp()
-        self._create_test_document_stub()
-
         self._test_index_instance = IndexInstance.objects.get(
             pk=self._test_index_template.pk
         )
+
+    def _populate_test_index_instance_node(self):
         self._test_index_instance_root_node = self._test_index_instance.index_instance_root_node
         self._test_index_instance_node = self._test_index_instance_root_node.get_children().first()
 
@@ -126,14 +127,7 @@ class IndexInstanceViewTestMixin:
 
 
 class IndexTemplateNodeViewTestMixin:
-    def _request_test_index_instance_node_view(self, index_instance_node):
-        return self.get(
-            viewname='indexing:index_instance_node_view', kwargs={
-                'index_instance_node_id': index_instance_node.pk
-            }
-        )
-
-    def _request_test_index_node_create_view(self):
+    def _request_test_index_template_node_create_view(self):
         return self.post(
             viewname='indexing:template_node_create', kwargs={
                 'index_template_node_id': self._test_index_template.index_template_root_node.pk
@@ -144,14 +138,14 @@ class IndexTemplateNodeViewTestMixin:
             }
         )
 
-    def _request_test_index_node_delete_view(self):
+    def _request_test_index_template_node_delete_view(self):
         return self.post(
             viewname='indexing:template_node_delete', kwargs={
                 'index_template_node_id': self._test_index_template_node.pk
             }
         )
 
-    def _request_test_index_node_edit_view(self):
+    def _request_test_index_template_node_edit_view(self):
         return self.post(
             viewname='indexing:template_node_edit', kwargs={
                 'index_template_node_id': self._test_index_template_node.pk
@@ -161,7 +155,7 @@ class IndexTemplateNodeViewTestMixin:
             }
         )
 
-    def _request_test_index_node_list_view(self):
+    def _request_test_index_template_node_list_view(self):
         return self.get(
             viewname='indexing:index_template_view', kwargs={
                 'index_template_id': self._test_index_template.pk
@@ -170,16 +164,22 @@ class IndexTemplateNodeViewTestMixin:
 
 
 class IndexTemplateTestMixin:
+    auto_add_test_index_template_to_test_document_type = True
     auto_create_test_index_template = True
     auto_create_test_index_template_node = True
-    auto_add_test_index_template_to_test_document_type = True
     _test_index_template_node_expression = None
 
     def setUp(self):
         super().setUp()
+
+        EventType.refresh()
+
         self._test_index_templates = []
         self._test_index_template_data = [
-            {'label': TEST_INDEX_TEMPLATE_LABEL, 'slug': TEST_INDEX_TEMPLATE_SLUG},
+            {
+                'label': TEST_INDEX_TEMPLATE_LABEL,
+                'slug': TEST_INDEX_TEMPLATE_SLUG
+            },
             {
                 'label': '{}_1'.format(TEST_INDEX_TEMPLATE_LABEL),
                 'slug': '{}_1'.format(TEST_INDEX_TEMPLATE_SLUG)
@@ -198,12 +198,14 @@ class IndexTemplateTestMixin:
     def _create_test_index_template(
         self, add_test_document_type=False, extra_data=None
     ):
-        data = self._test_index_template_data[len(self._test_index_templates)]
+        data = self._test_index_template_data[
+            len(self._test_index_templates)
+        ]
 
         if extra_data:
             data.update(extra_data)
 
-        # Create empty index
+        # Create empty index.
         self._test_index_template = IndexTemplate.objects.create(**data)
 
         self._test_index_templates.append(self._test_index_template)
@@ -211,7 +213,13 @@ class IndexTemplateTestMixin:
         self._test_index_template_root_node = self._test_index_template.index_template_root_node
 
         if add_test_document_type:
-            self._test_index_template.document_types.add(self._test_document_type)
+            self._test_index_template.document_types.add(
+                self._test_document_type
+            )
+
+        self._test_index_template.event_triggers.filter(
+            stored_event_type__name__startswith='acls'
+        ).delete()
 
     def _create_test_index_template_node(
         self, expression=None, link_documents=True, rebuild=False
@@ -312,6 +320,50 @@ class IndexTemplateDocumentTypeAPIViewTestMixin:
             }, data={
                 'document_type': self._test_document_type.pk
             }
+        )
+
+
+class IndexTemplateEventTriggerViewTestMixin:
+    def _request_test_index_template_event_trigger_get_view(self):
+        return self.get(
+            viewname='indexing:index_template_event_triggers',
+            kwargs={
+                'index_template_id': self._test_index_template.pk
+            }
+        )
+
+    def _request_test_index_template_event_trigger_add_view(
+        self, stored_event_type_id
+    ):
+        data = {
+            'form-INITIAL_FORMS': '0',
+            'form-TOTAL_FORMS': '1',
+            'form-0-relationship': RELATIONSHIP_YES,
+            'form-0-stored_event_type_id': stored_event_type_id
+        }
+
+        return self.post(
+            viewname='indexing:index_template_event_triggers',
+            kwargs={
+                'index_template_id': self._test_index_template.pk
+            }, data=data
+        )
+
+    def _request_test_index_template_event_trigger_remove_view(
+        self, stored_event_type_id
+    ):
+        data = {
+            'form-INITIAL_FORMS': '0',
+            'form-TOTAL_FORMS': '1',
+            'form-0-relationship': RELATIONSHIP_NO,
+            'form-0-stored_event_type_id': stored_event_type_id
+        }
+
+        return self.post(
+            viewname='indexing:index_template_event_triggers',
+            kwargs={
+                'index_template_id': self._test_index_template.pk
+            }, data=data
         )
 
 

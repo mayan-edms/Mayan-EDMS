@@ -1,5 +1,9 @@
 from mayan.apps.documents.tests.literals import TEST_FILE_HYBRID_PDF_CONTENT
 
+from ..events import (
+    event_parsing_document_file_content_deleted,
+    event_parsing_document_file_finished
+)
 from ..models import DocumentFilePageContent
 
 
@@ -13,14 +17,30 @@ class DocumentFileContentToolsViewsTestMixin:
 
 
 class DocumentFileContentTestMixin:
+    auto_create_test_document_file_parsed_content = False
+
     def setUp(self):
         super().setUp()
-        self._create_test_document_file_parsed_content()
+        if self.auto_create_test_document_file_parsed_content:
+            self._create_test_document_file_parsed_content()
 
     def _create_test_document_file_parsed_content(self):
         DocumentFilePageContent.objects.create(
             document_file_page=self._test_document_file_page,
             content=TEST_FILE_HYBRID_PDF_CONTENT
+        )
+        event_parsing_document_file_finished.commit(
+            action_object=self._test_document_file_page.document_file.document,
+            target=self._test_document_file_page.document_file
+        )
+
+    def _do_test_document_file_parsed_content_delete(self):
+        DocumentFilePageContent.objects.delete_content_for(
+            document_file=self._test_document_file
+        )
+        event_parsing_document_file_content_deleted.commit(
+            action_object=self._test_document_file.document,
+            target=self._test_document_file
         )
 
 

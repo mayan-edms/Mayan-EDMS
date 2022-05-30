@@ -50,12 +50,12 @@ def dict_get(dictionary, key):
 
 
 @register.simple_tag
-def method(obj, method, **kwargs):
+def method(obj, method, *args, **kwargs):
     """
     Call an object method. {% method object method **kwargs %}
     """
     try:
-        return getattr(obj, method)(**kwargs)
+        return getattr(obj, method)(*args, **kwargs)
     except Exception as exception:
         raise TemplateSyntaxError(
             'Error calling object method; {}'.format(exception)

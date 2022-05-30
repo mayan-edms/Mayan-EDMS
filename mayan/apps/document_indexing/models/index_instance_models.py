@@ -74,6 +74,8 @@ class IndexInstance(IndexTemplate):
         """
         logger.debug('Index; Indexing document: %s', document)
 
+        index_instance_node_id_list = []
+
         if Document.valid.filter(pk=document.pk) and self.enabled and self.document_types.filter(pk=document.document_type.pk).exists():
             try:
                 locking_backend = LockingBackend.get_backend()
@@ -94,17 +96,25 @@ class IndexInstance(IndexTemplate):
                     try:
                         self.initialize_index_instance_root_node_node()
 
-                        self.document_remove(acquire_lock=False, document=document)
-
                         index_instance_node_parent = self.index_instance_root_node
 
-                        self._document_add(document=document, index_instance_node_parent=index_instance_node_parent)
+                        index_instance_node_id_list = self._document_add(
+                            document=document,
+                            index_instance_node_parent=index_instance_node_parent
+                        )
+
+                        self.document_remove(
+                            acquire_lock=False, document=document,
+                            excluded_index_instance_node_id_list=index_instance_node_id_list
+                        )
                     finally:
                         lock_document.release()
                 finally:
                     lock_index_instance.release()
 
     def _document_add(self, document, index_instance_node_parent):
+        index_instance_node_id_list = []
+
         for index_template_node in index_instance_node_parent.index_template_node.get_children().filter(enabled=True):
             try:
                 template = Template(
@@ -132,13 +142,23 @@ class IndexInstance(IndexTemplate):
                         parent=index_instance_node_parent,
                         value=result
                     )
+                    index_instance_node_id_list.append(index_instance_node.pk)
 
                     if index_template_node.link_documents:
                         index_instance_node.documents.add(document)
 
-                    self._document_add(document=document, index_instance_node_parent=index_instance_node)
+                    index_instance_node_id_list.extend(
+                        self._document_add(
+                            document=document,
+                            index_instance_node_parent=index_instance_node
+                        )
+                    )
 
-    def document_remove(self, document, acquire_lock=True):
+        return index_instance_node_id_list
+
+    def document_remove(self, document, acquire_lock=True, excluded_index_instance_node_id_list=None):
+        excluded_index_instance_node_id_list = excluded_index_instance_node_id_list or ()
+
         if Document.valid.filter(pk=document.pk) and self.enabled and self.document_types.filter(pk=document.document_type.pk).exists():
             if acquire_lock:
                 try:
@@ -156,17 +176,30 @@ class IndexInstance(IndexTemplate):
                         raise
                     else:
                         try:
-                            return self._document_remove(document=document)
+                            return self._document_remove(
+                                document=document,
+                                excluded_index_instance_node_id_list=excluded_index_instance_node_id_list
+                            )
                         finally:
                             lock_document.release()
                     finally:
                         lock_index_instance.release()
             else:
-                return self._document_remove(document=document)
+                return self._document_remove(
+                    document=document,
+                    excluded_index_instance_node_id_list=excluded_index_instance_node_id_list
+                )
 
-    def _document_remove(self, document):
+    def _document_remove(self, document, excluded_index_instance_node_id_list=None):
+        excluded_index_instance_node_id_list = excluded_index_instance_node_id_list or ()
+
         with transaction.atomic():
-            document.index_instance_nodes.through._meta.model.objects.filter(document=document, indexinstancenode__index_template_node__index=self).delete()
+            document_index_instance_node_queryset = IndexInstanceNode.objects.filter(
+                documents=document, index_template_node__index=self
+            )
+            document_index_instance_node_queryset.exclude(
+                pk__in=excluded_index_instance_node_id_list
+            ).delete()
             self.delete_empty_nodes(acquire_lock=False)
 
     def get_absolute_url(self):

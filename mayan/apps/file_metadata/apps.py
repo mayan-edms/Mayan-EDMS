@@ -19,7 +19,6 @@ from .events import (
     event_file_metadata_document_file_submitted
 )
 from .handlers import (
-    handler_index_document_file,
     handler_initialize_new_document_type_file_metadata_settings,
     process_document_file_metadata
 )
@@ -40,7 +39,6 @@ from .permissions import (
     permission_document_type_file_metadata_setup,
     permission_file_metadata_submit, permission_file_metadata_view
 )
-from .signals import signal_post_document_file_file_metadata_processing
 
 
 class FileMetadataApp(MayanAppConfig):
@@ -195,11 +193,6 @@ class FileMetadataApp(MayanAppConfig):
             dispatch_uid='file_metadata_handler_initialize_new_document_type_file_metadata_settings',
             receiver=handler_initialize_new_document_type_file_metadata_settings,
             sender=DocumentType
-        )
-        signal_post_document_file_file_metadata_processing.connect(
-            dispatch_uid='file_metadata_handler_index_document',
-            receiver=handler_index_document_file,
-            sender=DocumentFile
         )
         signal_post_document_file_upload.connect(
             dispatch_uid='file_metadata_process_document_file_metadata',

@@ -35,11 +35,15 @@ TEST_SERVER_PASSWORD = 'testpassword'
 
 TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT = 'test workflow instance log entry comment'
 TEST_WORKFLOW_INSTANCE_LOG_ENTRY_EXTRA_DATA = '{"test": "test"}'
-TEST_WORKFLOW_TEMPLATE_LABEL = 'test workflow template label'
+
 TEST_WORKFLOW_TEMPLATE_INTERNAL_NAME = 'test_workflow_template_name'
+TEST_WORKFLOW_TEMPLATE_LABEL = 'test workflow template label'
 TEST_WORKFLOW_TEMPLATE_LABEL_EDITED = 'test workflow template label edited'
 TEST_WORKFLOW_TEMPLATE_INITIAL_STATE_LABEL = 'test initial state'
 TEST_WORKFLOW_TEMPLATE_INITIAL_STATE_COMPLETION = 33
+
+TEST_WORKFLOW_INDEX_TEMPLATE_EXPRESSION = '{% if  document.workflows.first %}{{ document.workflows.first.workflow.label }}-{{ document.workflows.first.get_current_state }}{% endif %}'
+TEST_WORKFLOW_TEMPLATE_TRANSITION_INDEX_TEMPLATE_EXPRESSION = '{% if  document.workflows.first %}{{ document.workflows.first.workflow.label }}-{{ document.workflows.first.get_current_state }}-{{ document.workflows.first.workflow.transitions.first }}{% endif %}'
 
 TEST_WORKFLOW_TEMPLATE_STATE_ACTION_LABEL = 'test template state action label'
 TEST_WORKFLOW_TEMPLATE_STATE_ACTION_LABEL_EDITED = 'test template state action label edited'
@@ -64,7 +68,3 @@ TEST_WORKFLOW_TEMPLATE_TRANSITION_FIELD_TYPE = FIELD_TYPE_CHOICE_CHAR
 
 TEST_WORKFLOW_TEMPLATE_TRANSITION_LABEL = 'test workflow template transition label'
 TEST_WORKFLOW_TEMPLATE_TRANSITION_LABEL_EDITED = 'test worfklow template transition label edited'
-
-TEST_INDEX_TEMPLATE_METADATA_EXPRESSION = '{{{{ document.workflow.{}_0.get_current_state }}}}'.format(
-    TEST_WORKFLOW_TEMPLATE_INTERNAL_NAME
-)

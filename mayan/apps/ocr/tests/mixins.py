@@ -1,3 +1,4 @@
+from ..events import event_ocr_document_version_finished
 from ..models import DocumentVersionPageOCRContent
 
 from .literals import (
@@ -108,6 +109,15 @@ class DocumentVersionOCRTestMixin:
         DocumentVersionPageOCRContent.objects.create(
             document_version_page=self._test_document_version_page,
             content=TEST_DOCUMENT_VERSION_OCR_CONTENT
+        )
+        event_ocr_document_version_finished.commit(
+            action_object=self._test_document,
+            target=self._test_document_version
+        )
+
+    def _do_test_document_version_ocr_content_delete(self):
+        DocumentVersionPageOCRContent.objects.delete_content_for(
+            document_version=self._test_document_version
         )
 
 

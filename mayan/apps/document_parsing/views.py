@@ -30,7 +30,6 @@ from .permissions import (
     permission_document_file_content_view, permission_document_type_parsing_setup,
     permission_document_file_parse
 )
-from .utils import get_document_file_content
 
 
 class DocumentFileContentDeleteView(MultipleObjectDeleteView):
@@ -71,7 +70,7 @@ class DocumentFileContentDownloadView(SingleObjectDownloadView):
     view_icon = icon_document_file_content_download
 
     def get_download_file_object(self):
-        return get_document_file_content(document_file=self.object)
+        return self.object.content()
 
     def get_download_filename(self):
         return '{}-content'.format(self.object)

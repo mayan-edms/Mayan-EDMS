@@ -64,7 +64,7 @@ class DocumentVersionPageOCRContent(models.Model):
     @method_event(
         event_manager_class=EventManagerSave,
         edited={
-            'action_object': 'document_version_page.document_version',
+            'action_object': 'document_version_page.document_version.document',
             'event': event_ocr_document_version_page_content_edited,
             'target': 'document_version_page'
         }

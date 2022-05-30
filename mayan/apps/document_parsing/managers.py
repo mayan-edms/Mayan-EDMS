@@ -11,7 +11,6 @@ from .events import (
     event_parsing_document_file_finished
 )
 from .parsers import Parser
-from .signals import signal_post_document_file_parsing
 
 logger = logging.getLogger(name=__name__)
 
@@ -39,11 +38,6 @@ class DocumentFilePageContentManager(models.Manager):
                 'Parsing complete for document file: %s', document_file
             )
             document_file.error_log.all().delete()
-
-            signal_post_document_file_parsing.send(
-                sender=document_file.__class__,
-                instance=document_file
-            )
 
             event_parsing_document_file_finished.commit(
                 action_object=document_file.document, actor=user,

@@ -1,5 +1,6 @@
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
+from ..events import event_workflow_instance_transitioned
 from ..literals import WIDGET_CLASS_TEXTAREA
 from ..permissions import (
     permission_workflow_instance_transition, permission_workflow_template_view
@@ -545,7 +546,16 @@ class WorkflowInstanceTransitionViewTestCase(
         )
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(
+            events[0].target, self._test_document.workflows.first()
+        )
+        self.assertEqual(
+            events[0].verb, event_workflow_instance_transitioned.id
+        )
 
     def test_workflow_instance_transition_execute_view_with_workflow_access(self):
         self.grant_access(
@@ -587,7 +597,16 @@ class WorkflowInstanceTransitionViewTestCase(
         )
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(
+            events[0].target, self._test_document.workflows.first()
+        )
+        self.assertEqual(
+            events[0].verb, event_workflow_instance_transitioned.id
+        )
 
     def test_trashed_document_workflow_instance_transition_execute_view_with_document_and_workflow_access(self):
         self.grant_access(
@@ -657,7 +676,16 @@ class WorkflowInstanceTransitionFieldViewTestCase(
         )
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(
+            events[0].target, self._test_document.workflows.first()
+        )
+        self.assertEqual(
+            events[0].verb, event_workflow_instance_transitioned.id
+        )
 
     def test_trashed_document_workflow_instance_transition_text_area_widget_execute_view_with_document_and_transition_access(self):
         self.grant_access(

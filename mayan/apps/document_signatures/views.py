@@ -16,8 +16,7 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import (
-    DocumentFileSignatureCreateForm,
-    DocumentFileSignatureDetailForm
+    DocumentFileSignatureCreateForm, DocumentFileSignatureDetailForm
 )
 from .icons import (
     icon_document_file_all_signature_refresh,
@@ -46,13 +45,16 @@ from .permissions import (
     permission_document_file_signature_view,
 )
 from .tasks import (
-    task_refresh_signature_information, task_verify_missing_embedded_signature
+    task_refresh_signature_information,
+    task_verify_missing_embedded_signature
 )
 
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentFileDetachedSignatureCreateView(ExternalObjectViewMixin, FormView):
+class DocumentFileDetachedSignatureCreateView(
+    ExternalObjectViewMixin, FormView
+):
     external_object_permission = permission_document_file_sign_detached
     external_object_pk_url_kwarg = 'document_file_id'
     external_object_queryset = DocumentFile.valid.all()
@@ -120,7 +122,9 @@ class DocumentFileDetachedSignatureCreateView(ExternalObjectViewMixin, FormView)
         )
 
 
-class DocumentFileEmbeddedSignatureCreateView(ExternalObjectViewMixin, FormView):
+class DocumentFileEmbeddedSignatureCreateView(
+    ExternalObjectViewMixin, FormView
+):
     external_object_permission = permission_document_file_sign_embedded
     external_object_pk_url_kwarg = 'document_file_id'
     external_object_queryset = DocumentFile.valid.all()
@@ -349,7 +353,8 @@ class DocumentFileSignatureListView(
 class AllDocumentSignatureRefreshView(ConfirmView):
     extra_context = {
         'message': _(
-            'On large databases this operation may take some time to execute.'
+            'On large databases this operation may take some time '
+            'to execute.'
         ), 'title': _('Refresh all signatures information?'),
     }
     view_icon = icon_document_file_all_signature_refresh
@@ -359,7 +364,7 @@ class AllDocumentSignatureRefreshView(ConfirmView):
         return reverse(viewname='common:tools_list')
 
     def view_action(self):
-        task_refresh_signature_information.delay()
+        task_refresh_signature_information.apply_async()
         messages.success(
             message=_('Signature information refresh queued successfully.'),
             request=self.request
@@ -369,7 +374,8 @@ class AllDocumentSignatureRefreshView(ConfirmView):
 class AllDocumentSignatureVerifyView(ConfirmView):
     extra_context = {
         'message': _(
-            'On large databases this operation may take some time to execute.'
+            'On large databases this operation may take some time to '
+            'execute.'
         ), 'title': _('Verify all document for signatures?'),
     }
     view_icon = icon_document_file_all_signature_verify
@@ -379,7 +385,7 @@ class AllDocumentSignatureVerifyView(ConfirmView):
         return reverse(viewname='common:tools_list')
 
     def view_action(self):
-        task_verify_missing_embedded_signature.delay()
+        task_verify_missing_embedded_signature.apply_async()
         messages.success(
             message=_('Signature verification queued successfully.'),
             request=self.request

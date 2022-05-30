@@ -22,10 +22,10 @@ from .views.index_template_views import (
     DocumentTypeIndexTemplateAddRemoveView, IndexTemplateAllRebuildView,
     IndexTemplateCreateView, IndexTemplateDeleteView,
     IndexTemplateDocumentTypeAddRemoveView, IndexTemplateEditView,
-    IndexTemplateListView, IndexTemplateNodeListView,
-    IndexTemplateNodeCreateView, IndexTemplateNodeDeleteView,
-    IndexTemplateNodeEditView, IndexTemplateRebuildView,
-    IndexTemplateResetView
+    IndexTemplateEventTriggerListView, IndexTemplateListView,
+    IndexTemplateNodeListView, IndexTemplateNodeCreateView,
+    IndexTemplateNodeDeleteView, IndexTemplateNodeEditView,
+    IndexTemplateRebuildView, IndexTemplateResetView
 )
 
 urlpatterns_templates = [
@@ -56,21 +56,29 @@ urlpatterns_templates = [
         name='index_template_edit', view=IndexTemplateEditView.as_view()
     ),
     url(
+        regex=r'^templates/(?P<index_template_id>\d+)/event_triggers/$',
+        name='index_template_event_triggers',
+        view=IndexTemplateEventTriggerListView.as_view()
+    ),
+    url(
         regex=r'^templates/(?P<index_template_id>\d+)/nodes/$',
         name='index_template_view',
         view=IndexTemplateNodeListView.as_view()
     ),
     url(
         regex=r'^templates/(?P<index_template_id>\d+)/rebuild/$',
-        name='index_template_rebuild', view=IndexTemplateRebuildView.as_view()
+        name='index_template_rebuild',
+        view=IndexTemplateRebuildView.as_view()
     ),
     url(
         regex=r'^templates/nodes/(?P<index_template_node_id>\d+)/children/create/$',
-        name='template_node_create', view=IndexTemplateNodeCreateView.as_view()
+        name='template_node_create',
+        view=IndexTemplateNodeCreateView.as_view()
     ),
     url(
         regex=r'^templates/nodes/(?P<index_template_node_id>\d+)/delete/$',
-        name='template_node_delete', view=IndexTemplateNodeDeleteView.as_view()
+        name='template_node_delete',
+        view=IndexTemplateNodeDeleteView.as_view()
     ),
     url(
         regex=r'^templates/nodes/(?P<index_template_node_id>\d+)/edit/$',
@@ -80,7 +88,8 @@ urlpatterns_templates = [
 
 urlpatterns_instances = [
     url(
-        regex=r'^instances/$', name='index_list', view=IndexInstanceListView.as_view()
+        regex=r'^instances/$', name='index_list',
+        view=IndexInstanceListView.as_view()
     ),
     url(
         regex=r'^instances/nodes/(?P<index_instance_node_id>\d+)/$',
@@ -88,7 +97,8 @@ urlpatterns_instances = [
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/instances/$',
-        name='document_index_list', view=DocumentIndexInstanceNodeListView.as_view()
+        name='document_index_list',
+        view=DocumentIndexInstanceNodeListView.as_view()
     )
 ]
 
@@ -123,11 +133,13 @@ api_urls_index_instances = [
     ),
     url(
         regex=r'^index_instances/(?P<index_instance_id>[0-9]+)/$',
-        name='indexinstance-detail', view=APIIndexInstanceDetailView.as_view()
+        name='indexinstance-detail',
+        view=APIIndexInstanceDetailView.as_view()
     ),
     url(
         regex=r'^index_instances/(?P<index_instance_id>[0-9]+)/nodes/$',
-        name='indexinstancenode-list', view=APIIndexInstanceNodeListView.as_view()
+        name='indexinstancenode-list',
+        view=APIIndexInstanceNodeListView.as_view()
     ),
     url(
         regex=r'^index_instances/(?P<index_instance_id>[0-9]+)/nodes/(?P<index_instance_node_id>[0-9]+)/$',
@@ -188,7 +200,8 @@ api_urls_index_templates = [
     ),
     url(
         regex=r'^index_templates/(?P<index_template_id>[0-9]+)/nodes/(?P<index_template_node_id>[0-9]+)/$',
-        name='indextemplatenode-detail', view=APIIndexTemplateNodeDetailView.as_view()
+        name='indextemplatenode-detail',
+        view=APIIndexTemplateNodeDetailView.as_view()
     ),
 ]
 

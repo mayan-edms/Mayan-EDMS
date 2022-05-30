@@ -1,5 +1,6 @@
 from django.db.utils import IntegrityError
 
+from mayan.apps.documents.models.trashed_document_models import TrashedDocument
 from mayan.apps.documents.tests.base import (
     GenericDocumentTestCase, GenericTransactionDocumentTestCase
 )
@@ -16,9 +17,7 @@ from ..models import (
 from .literals import (
     TEST_INDEX_TEMPLATE_DOCUMENT_DESCRIPTION_EXPRESSION,
     TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
-    TEST_INDEX_TEMPLATE_DOCUMENT_TYPE_EXPRESSION,
-    TEST_INDEX_TEMPLATE_METADATA_EXPRESSION, TEST_METADATA_TYPE_LABEL,
-    TEST_METADATA_TYPE_NAME
+    TEST_INDEX_TEMPLATE_DOCUMENT_TYPE_EXPRESSION
 )
 from .mixins import IndexTemplateTestMixin
 
@@ -29,6 +28,76 @@ class IndexTemplateTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
     def test_method_get_absolute_url(self):
         self._create_test_index_template()
         self.assertTrue(self._test_index_template.get_absolute_url())
+
+
+class IndexInstanceBasicTestCase(
+    IndexTemplateTestMixin, GenericDocumentTestCase
+):
+    _test_index_template_node_expression = TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION
+    auto_upload_test_document = False
+
+    def test_index_instance_on_document_creation(self):
+        self._create_test_document_stub()
+
+        self.assertTrue(
+            IndexInstanceNode.objects.filter(
+                documents=self._test_document,
+            ).exists()
+        )
+
+        test_document_id = self._test_document.pk
+        self._test_document.delete()
+
+        self.assertTrue(
+            IndexInstanceNode.objects.filter(
+                documents=test_document_id
+            ).exists()
+        )
+
+        TrashedDocument.objects.get(pk=self._test_document.pk).restore()
+        self._test_document.refresh_from_db()
+
+        self.assertTrue(
+            IndexInstanceNode.objects.filter(
+                documents=test_document_id
+            ).exists()
+        )
+
+        self._test_document.delete()
+        self._test_document.delete()
+
+        self.assertFalse(
+            IndexInstanceNode.objects.filter(
+                documents=test_document_id
+            ).exists()
+        )
+
+    def test_index_instance_node_id_persistence(self):
+        self._create_test_document_stub()
+
+        index_instance_node_id = IndexInstanceNode.objects.get(
+            documents=self._test_document
+        ).pk
+
+        IndexInstance.objects.document_add(document=self._test_document)
+
+        self.assertEqual(
+            IndexInstanceNode.objects.get(documents=self._test_document).pk,
+            index_instance_node_id
+        )
+
+    def test_index_instance_node_cleanup(self):
+        self._create_test_document_stub()
+
+        document_index_instance_node_count = IndexInstanceNode.objects.count()
+
+        self._test_document.label = TEST_DOCUMENT_LABEL_EDITED
+        self._test_document.save()
+
+        self.assertEqual(
+            IndexInstanceNode.objects.count(),
+            document_index_instance_node_count
+        )
 
 
 class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
@@ -96,8 +165,10 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
         self.assertEqual(
             set(IndexInstanceNode.objects.values_list('value', flat=True)),
             {
-                '', str(self._test_documents[1].uuid), self._test_documents[1].label,
-                str(self._test_documents[0].uuid), self._test_documents[0].label
+                '', str(self._test_documents[1].uuid),
+                self._test_documents[1].label,
+                str(self._test_documents[0].uuid),
+                self._test_documents[0].label
             }
         )
 
@@ -162,92 +233,6 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
         self.assertEqual(
             IndexInstanceNode.objects.last().value,
             self._test_document_types[1].label
-        )
-
-    def test_metadata_indexing(self):
-        metadata_type = MetadataType.objects.create(
-            name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
-        )
-        DocumentTypeMetadataType.objects.create(
-            document_type=self._test_document_type,
-            metadata_type=metadata_type
-        )
-
-        self._create_test_index_template_node(
-            expression=TEST_INDEX_TEMPLATE_METADATA_EXPRESSION
-        )
-
-        # Add document metadata value to trigger index node instance
-        # creation.
-        self._test_document.metadata.create(
-            metadata_type=metadata_type, value='0001'
-        )
-        self.assertEqual(
-            list(
-                IndexInstanceNode.objects.values_list('value', flat=True)
-            ), ['', '0001']
-        )
-
-        # Check that document is in instance node.
-        instance_node = IndexInstanceNode.objects.get(value='0001')
-        self.assertQuerysetEqual(
-            instance_node.documents.all(), [repr(self._test_document)]
-        )
-
-        # Change document metadata value to trigger index node instance
-        # update.
-        document_metadata = self._test_document.metadata.get(
-            metadata_type=metadata_type
-        )
-        document_metadata.value = '0002'
-        document_metadata.save()
-        self.assertEqual(
-            list(
-                IndexInstanceNode.objects.values_list('value', flat=True)
-            ), ['', '0002']
-        )
-
-        # Check that document is in new instance node.
-        instance_node = IndexInstanceNode.objects.get(value='0002')
-        self.assertQuerysetEqual(
-            instance_node.documents.all(), [repr(self._test_document)]
-        )
-
-        # Check node instance is destoyed when no metadata is available.
-        self._test_document.metadata.get(metadata_type=metadata_type).delete()
-        self.assertEqual(
-            list(
-                IndexInstanceNode.objects.values_list('value', flat=True)
-            ), ['']
-        )
-
-        # Add document metadata value again to trigger index node instance
-        # creation.
-        self._test_document.metadata.create(
-            metadata_type=metadata_type, value='0003'
-        )
-        self.assertEqual(
-            list(
-                IndexInstanceNode.objects.values_list('value', flat=True)
-            ), ['', '0003']
-        )
-
-        # Check node instance is destroyed when no documents are contained.
-        self._test_document.delete()
-
-        # Document is in trash, index structure should remain unchanged.
-        self.assertEqual(
-            list(
-                IndexInstanceNode.objects.values_list('value', flat=True)
-            ), ['', '0003']
-        )
-
-        # Document deleted, index structure should update.
-        self._test_document.delete()
-        self.assertEqual(
-            list(
-                IndexInstanceNode.objects.values_list('value', flat=True)
-            ), ['']
         )
 
     def test_method_get_absolute_url(self):

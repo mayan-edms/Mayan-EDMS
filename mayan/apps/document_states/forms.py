@@ -159,11 +159,10 @@ class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
         widget=forms.TextInput(attrs={'readonly': 'readonly'})
     )
     relationship = forms.ChoiceField(
-        label=_('Enabled'),
-        widget=forms.RadioSelect(), choices=(
+        choices=(
             ('no', _('No')),
             ('yes', _('Yes')),
-        )
+        ), label=_('Enabled'), widget=forms.RadioSelect()
     )
 
     def __init__(self, *args, **kwargs):
@@ -173,7 +172,7 @@ class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
         self.fields['label'].initial = self.initial['event_type'].label
 
         relationship = self.initial['transition'].trigger_events.filter(
-            event_type=self.initial['event_type'],
+            event_type=self.initial['event_type']
         )
 
         if relationship.exists():
@@ -183,7 +182,7 @@ class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
 
     def save(self):
         relationship = self.initial['transition'].trigger_events.filter(
-            event_type=self.initial['event_type'],
+            event_type=self.initial['event_type']
         )
 
         if self.cleaned_data['relationship'] == 'no':
@@ -191,7 +190,7 @@ class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
         elif self.cleaned_data['relationship'] == 'yes':
             if not relationship.exists():
                 self.initial['transition'].trigger_events.create(
-                    event_type=self.initial['event_type'],
+                    event_type=self.initial['event_type']
                 )
 
 

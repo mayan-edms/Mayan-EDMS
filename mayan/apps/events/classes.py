@@ -327,7 +327,7 @@ class EventType:
     @staticmethod
     def sort(event_type_list):
         return sorted(
-            event_type_list, key=lambda x: (x.namespace.label, x.label)
+            event_type_list, key=lambda event_type: (event_type.namespace.label, event_type.label)
         )
 
     @classmethod
@@ -482,7 +482,8 @@ class ModelEventType:
 
     @classmethod
     def get_for_class(cls, klass):
-        return cls._registry.get(klass, ())
+        result = cls._registry.get(klass, ())
+        return EventType.sort(event_type_list=result)
 
     @classmethod
     def get_for_instance(cls, instance):

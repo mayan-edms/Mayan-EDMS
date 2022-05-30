@@ -14,7 +14,9 @@ class WorkflowInstanceAPIViewTestMixin:
             }
         )
 
-    def _request_test_workflow_instance_log_entry_create_api_view(self, workflow_instance, extra_data=None):
+    def _request_test_workflow_instance_log_entry_create_api_view(
+        self, workflow_instance, extra_data=None
+    ):
         data = {
             'transition_id': self._test_workflow_template_transition.pk
         }

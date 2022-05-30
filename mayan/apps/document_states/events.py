@@ -6,6 +6,14 @@ namespace = EventTypeNamespace(
     label=_('Workflows'), name='document_states'
 )
 
+event_workflow_instance_created = namespace.add_event_type(
+    label=_('Workflow instance created'), name='workflow_instance_created'
+)
+event_workflow_instance_transitioned = namespace.add_event_type(
+    label=_('Workflow instance transitioned'),
+    name='workflow_instance_transitioned'
+)
+
 event_workflow_template_created = namespace.add_event_type(
     label=_('Workflow created'), name='workflow_created'
 )

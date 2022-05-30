@@ -1,6 +1,6 @@
-from django.apps import apps
-
 import logging
+
+from django.apps import apps
 
 from mayan.apps.document_indexing.tasks import task_index_instance_document_add
 
@@ -9,12 +9,12 @@ from .tasks import task_add_required_metadata_type, task_remove_metadata_type
 logger = logging.getLogger(name=__name__)
 
 
-def handler_index_document(sender, **kwargs):
-    task_index_instance_document_add.apply_async(
-        kwargs={
-            'document_id': kwargs['instance'].document.pk
-        }
-    )
+def handler_index_metadata_type_documents(sender, **kwargs):
+    if not kwargs.get('created', False):
+        for metadata in kwargs['instance'].documentmetadata_set.all():
+            task_index_instance_document_add.apply_async(
+                kwargs={'document_id': metadata.document.pk}
+            )
 
 
 def handler_post_document_type_change_metadata(sender, instance, **kwargs):
@@ -77,3 +77,11 @@ def handler_post_document_type_metadata_type_delete(sender, instance, **kwargs):
             'metadata_type_id': instance.metadata_type.pk
         }
     )
+
+
+def handler_pre_metadata_type_delete(sender, **kwargs):
+    for metadata in kwargs['instance'].documentmetadata_set.all():
+        # Remove each of the documents.
+        # Trigger the remove event for each document so they can be
+        # reindexed.
+        metadata.delete()

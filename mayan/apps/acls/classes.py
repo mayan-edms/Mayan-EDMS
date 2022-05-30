@@ -165,7 +165,8 @@ class ModelPermission:
             if not is_excluded_subclass:
                 ModelEventType.register(
                     event_types=(
-                        event_acl_created, event_acl_deleted, event_acl_edited
+                        event_acl_created, event_acl_deleted,
+                        event_acl_edited
                     ), model=model
                 )
 

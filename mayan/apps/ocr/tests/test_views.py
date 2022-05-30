@@ -11,7 +11,6 @@ from ..permissions import (
     permission_document_version_ocr_content_view,
     permission_document_version_ocr, permission_document_type_ocr_setup
 )
-from ..utils import get_instance_ocr_content
 
 from .literals import TEST_DOCUMENT_VERSION_OCR_CONTENT
 from .mixins import (
@@ -87,15 +86,15 @@ class DocumentTypeOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 2)
 
-        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self._test_document_version)
         self.assertEqual(
             events[0].verb, event_ocr_document_version_submitted.id
         )
 
-        self.assertEqual(events[1].actor, self._test_case_user)
         self.assertEqual(events[1].action_object, self._test_document)
+        self.assertEqual(events[1].actor, self._test_case_user)
         self.assertEqual(events[1].target, self._test_document_version)
         self.assertEqual(
             events[1].verb, event_ocr_document_version_finished.id
@@ -169,8 +168,8 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self._test_document_version)
         self.assertEqual(
             events[0].verb, event_ocr_document_version_content_deleted.id
@@ -239,8 +238,8 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self._test_document_version)
         self.assertEqual(
             events[0].verb, event_ocr_document_version_content_deleted.id
@@ -350,15 +349,15 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 2)
 
-        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self._test_document_version)
         self.assertEqual(
             events[0].verb, event_ocr_document_version_submitted.id
         )
 
-        self.assertEqual(events[1].actor, self._test_case_user)
         self.assertEqual(events[1].action_object, self._test_document)
+        self.assertEqual(events[1].actor, self._test_case_user)
         self.assertEqual(events[1].target, self._test_document_version)
         self.assertEqual(
             events[1].verb, event_ocr_document_version_finished.id
@@ -419,15 +418,15 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 2)
 
-        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self._test_document_version)
         self.assertEqual(
             events[0].verb, event_ocr_document_version_submitted.id
         )
 
-        self.assertEqual(events[1].actor, self._test_case_user)
         self.assertEqual(events[1].action_object, self._test_document)
+        self.assertEqual(events[1].actor, self._test_case_user)
         self.assertEqual(events[1].target, self._test_document_version)
         self.assertEqual(
             events[1].verb, event_ocr_document_version_finished.id
@@ -482,11 +481,9 @@ class DocumentVersionOCRViewsTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assert_download_response(
-            response=response, content=(
-                ''.join(
-                    get_instance_ocr_content(instance=self._test_document)
-                )
-            ),
+            response=response, content=''.join(
+                self._test_document.ocr_content()
+            )
         )
 
         events = self._get_test_events()
@@ -604,10 +601,8 @@ class DocumentVersionPageOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
+        self.assertEqual(events[0].action_object, self._test_document)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(
-            events[0].action_object, self._test_document_version
-        )
         self.assertEqual(events[0].target, self._test_document_version_page)
         self.assertEqual(
             events[0].verb, event_ocr_document_version_page_content_edited.id

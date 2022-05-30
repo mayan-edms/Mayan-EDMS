@@ -337,10 +337,18 @@ class MetadataTypeAPIViewTestMixin:
 
 
 class MetadataTypeTestMixin:
+    auto_add_test_metadata_type_to_test_document_type = True
+    auto_create_test_metadata_type = False
+
     def setUp(self):
         super().setUp()
         self._test_metadata_types = []
         self._test_document_type_metadata_type_relationships = []
+
+        if self.auto_create_test_metadata_type:
+            self._create_test_metadata_type(
+                add_test_document_type=self.auto_add_test_metadata_type_to_test_document_type
+            )
 
     def _get_test_metadata_type_queryset(self):
         return MetadataType.objects.filter(

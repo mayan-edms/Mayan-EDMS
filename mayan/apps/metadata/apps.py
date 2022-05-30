@@ -1,7 +1,7 @@
 import logging
 
 from django.apps import apps
-from django.db.models.signals import post_delete, post_save
+from django.db.models.signals import post_delete, post_save, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -33,9 +33,11 @@ from .events import (
     event_metadata_type_relationship_updated
 )
 from .handlers import (
-    handler_index_document, handler_post_document_type_metadata_type_add,
+    handler_index_metadata_type_documents,
+    handler_post_document_type_metadata_type_add,
     handler_post_document_type_metadata_type_delete,
-    handler_post_document_type_change_metadata
+    handler_post_document_type_change_metadata,
+    handler_pre_metadata_type_delete
 )
 from .html_widgets import DocumentMetadataWidget
 from .links import (
@@ -345,15 +347,15 @@ class MetadataApp(MayanAppConfig):
             sender=Document
         )
 
-        # Index updating
+        # Index updates
 
-        post_delete.connect(
-            dispatch_uid='metadata_handler_index_document_delete',
-            receiver=handler_index_document,
-            sender=DocumentMetadata
-        )
         post_save.connect(
-            dispatch_uid='metadata_handler_index_document_save',
-            receiver=handler_index_document,
-            sender=DocumentMetadata
+            dispatch_uid='metadata_handler_index_metadata_type_documents',
+            receiver=handler_index_metadata_type_documents,
+            sender=MetadataType
+        )
+        pre_delete.connect(
+            dispatch_uid='metadata_handler_pre_metadata_type_delete',
+            receiver=handler_pre_metadata_type_delete,
+            sender=MetadataType
         )

@@ -439,6 +439,7 @@ class IndexTemplateRebuildAPIViewTestCase(
     IndexInstanceTestMixin, IndexTemplateTestMixin,
     IndexTemplateActionAPIViewTestMixin, GenericDocumentAPIViewTestCase
 ):
+    auto_create_test_document_stub = True
     auto_upload_test_document = False
 
     def setUp(self):
@@ -488,6 +489,7 @@ class IndexTemplateResetAPIViewTestCase(
     IndexInstanceTestMixin, IndexTemplateTestMixin,
     IndexTemplateActionAPIViewTestMixin, GenericDocumentAPIViewTestCase
 ):
+    auto_create_test_document_stub = True
     auto_upload_test_document = False
 
     def setUp(self):
@@ -522,7 +524,6 @@ class IndexTemplateResetAPIViewTestCase(
         self._clear_events()
 
         response = self._request_test_index_template_reset_api_view()
-
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(

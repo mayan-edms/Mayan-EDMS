@@ -25,7 +25,7 @@ class WorkflowTemplateTransitionFieldModelTestCase(
         transition field. The retrieving the context should work even with an
         obsolete field reference.
         """
-        self._transition_test_workflow_instance(
+        self._do_transition_test_workflow_instance(
             extra_data={
                 self._test_workflow_template_transition_field.name: 'test'
             }

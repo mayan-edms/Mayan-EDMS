@@ -137,7 +137,9 @@ class DocumentWorkflowTemplatesLaunchView(MultipleObjectFormActionView):
         for workflow in workflow_queryset:
             task_launch_workflow_for.apply_async(
                 kwargs={
-                    'document_id': instance.pk, 'workflow_id': workflow.pk
+                    'document_id': instance.pk,
+                    'user_id': self.request.user.pk,
+                    'workflow_id': workflow.pk
                 }
             )
 
@@ -256,7 +258,8 @@ class WorkflowTemplateLaunchView(ExternalObjectViewMixin, ConfirmView):
     def view_action(self):
         task_launch_workflow.apply_async(
             kwargs={
-                'workflow_id': self.external_object.pk,
+                'user_id': self.request.user.pk,
+                'workflow_id': self.external_object.pk
             }
         )
         messages.success(
@@ -316,7 +319,9 @@ class ToolLaunchWorkflows(ConfirmView):
     view_permission = permission_workflow_tools
 
     def view_action(self):
-        task_launch_all_workflows.apply_async()
+        task_launch_all_workflows.apply_async(
+            kwargs={'user_id': self.request.user.pk}
+        )
         messages.success(
             message=_('Workflow launch queued successfully.'),
             request=self.request

@@ -295,7 +295,7 @@ class WorkflowTemplateTestMixin:
             user=self._test_case_user
         )
 
-    def _transition_test_workflow_instance(self, extra_data=None):
+    def _do_transition_test_workflow_instance(self, extra_data=None):
         self._test_document.workflows.first().do_transition(
             comment=TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT,
             extra_data=extra_data,

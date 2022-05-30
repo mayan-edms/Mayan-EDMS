@@ -3,7 +3,8 @@ from mayan.apps.documents.permissions import permission_document_type_edit
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..events import (
-    event_workflow_template_created, event_workflow_template_edited
+    event_workflow_instance_created, event_workflow_template_created,
+    event_workflow_template_edited
 )
 from ..models import Workflow
 from ..permissions import (
@@ -397,7 +398,14 @@ class DocumentWorkflowTemplateViewTestCase(
         )
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(
+            events[0].target, self._test_document.workflows.first()
+        )
+        self.assertEqual(events[0].verb, event_workflow_instance_created.id)
 
     def test_trashed_document_single_workflow_launch_view_with_full_access(self):
         self._create_test_document_stub()
@@ -991,11 +999,19 @@ class WorkflowTemplateDocumentViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self._test_document.workflows.count(), workflow_instance_count + 1
+            self._test_document.workflows.count(),
+            workflow_instance_count + 1
         )
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(
+            events[0].target, self._test_document.workflows.first()
+        )
+        self.assertEqual(events[0].verb, event_workflow_instance_created.id)
 
     def test_trashed_document_workflows_launch_view_with_permission(self):
         self.grant_access(
@@ -1060,11 +1076,19 @@ class WorkflowToolViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self._test_document.workflows.count(), workflow_instance_count + 1
+            self._test_document.workflows.count(),
+            workflow_instance_count + 1
         )
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(
+            events[0].target, self._test_document.workflows.first()
+        )
+        self.assertEqual(events[0].verb, event_workflow_instance_created.id)
 
     def test_trashed_document_tool_launch_workflows_view_with_permission(self):
         self.grant_permission(permission=permission_workflow_tools)

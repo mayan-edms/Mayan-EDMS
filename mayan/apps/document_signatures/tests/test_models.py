@@ -41,7 +41,9 @@ class DetachedSignaturesTestCase(
         )
 
         self.assertEqual(DetachedSignature.objects.count(), 1)
-        self.assertTrue(test_detached_signature.signature_file.file is not None)
+        self.assertTrue(
+            test_detached_signature.signature_file.file is not None
+        )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
@@ -92,7 +94,9 @@ class DetachedSignaturesTestCase(
         self.assertEqual(events[0].action_object, self._test_signature)
         self.assertEqual(events[0].actor, self._test_document_file)
         self.assertEqual(events[0].target, self._test_document_file)
-        self.assertEqual(events[0].verb, event_detached_signature_uploaded.id)
+        self.assertEqual(
+            events[0].verb, event_detached_signature_uploaded.id
+        )
 
     def test_detached_signature_upload_with_key(self):
         self._create_test_key_public()
@@ -121,7 +125,9 @@ class DetachedSignaturesTestCase(
         self.assertEqual(events[0].action_object, self._test_signature)
         self.assertEqual(events[0].actor, self._test_document_file)
         self.assertEqual(events[0].target, self._test_document_file)
-        self.assertEqual(events[0].verb, event_detached_signature_uploaded.id)
+        self.assertEqual(
+            events[0].verb, event_detached_signature_uploaded.id
+        )
 
     def test_detached_signature_upload_post_key_verify(self):
         self._test_document_path = TEST_FILE_PDF_PATH
@@ -154,7 +160,9 @@ class DetachedSignaturesTestCase(
         self.assertEqual(events[0].action_object, self._test_signature)
         self.assertEqual(events[0].actor, self._test_document_file)
         self.assertEqual(events[0].target, self._test_document_file)
-        self.assertEqual(events[0].verb, event_detached_signature_uploaded.id)
+        self.assertEqual(
+            events[0].verb, event_detached_signature_uploaded.id
+        )
 
         self.assertEqual(events[1].action_object, None)
         self.assertEqual(events[1].actor, self._test_key_public)
@@ -194,7 +202,9 @@ class DetachedSignaturesTestCase(
         self.assertEqual(events[0].action_object, self._test_signature)
         self.assertEqual(events[0].actor, self._test_document_file)
         self.assertEqual(events[0].target, self._test_document_file)
-        self.assertEqual(events[0].verb, event_detached_signature_uploaded.id)
+        self.assertEqual(
+            events[0].verb, event_detached_signature_uploaded.id
+        )
 
 
 class DocumentSignaturesTestCase(
@@ -299,7 +309,8 @@ class EmbeddedSignaturesTestCase(
         )
         self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(
-            signature.public_key_fingerprint, self._test_key_public.fingerprint
+            signature.public_key_fingerprint,
+            self._test_key_public.fingerprint
         )
         self.assertEqual(signature.signature_id, TEST_SIGNATURE_ID)
 
@@ -329,7 +340,7 @@ class EmbeddedSignaturesTestCase(
 
         DocumentFile._post_save_hooks = old_hooks
 
-        task_verify_missing_embedded_signature.delay()
+        task_verify_missing_embedded_signature.apply_async()
 
         self.assertEqual(
             EmbeddedSignature.objects.unsigned_document_files().count(),

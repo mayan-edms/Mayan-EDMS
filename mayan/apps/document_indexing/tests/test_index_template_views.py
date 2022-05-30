@@ -10,7 +10,9 @@ from ..permissions import (
     permission_index_template_edit, permission_index_template_rebuild
 )
 
-from .literals import TEST_INDEX_TEMPLATE_LABEL, TEST_INDEX_TEMPLATE_LABEL_EDITED
+from .literals import (
+    TEST_INDEX_TEMPLATE_LABEL, TEST_INDEX_TEMPLATE_LABEL_EDITED
+)
 from .mixins import (
     DocumentTypeAddRemoveIndexTemplateViewTestMixin,
     IndexTemplateNodeViewTestMixin, IndexTemplateTestMixin,
@@ -306,7 +308,9 @@ class IndexTemplateViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(IndexTemplate.objects.count(), 1)
-        self.assertEqual(self._test_index_template.label, TEST_INDEX_TEMPLATE_LABEL)
+        self.assertEqual(
+            self._test_index_template.label, TEST_INDEX_TEMPLATE_LABEL
+        )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
@@ -353,7 +357,9 @@ class IndexTemplateViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self._test_index_template.refresh_from_db()
-        self.assertEqual(self._test_index_template.label, TEST_INDEX_TEMPLATE_LABEL)
+        self.assertEqual(
+            self._test_index_template.label, TEST_INDEX_TEMPLATE_LABEL
+        )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -511,7 +517,9 @@ class IndexTemplateAddRemoveDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_document_type_add_view_no_permission(self):
-        self._test_index_template.document_types.remove(self._test_document_type)
+        self._test_index_template.document_types.remove(
+            self._test_document_type
+        )
 
         self._clear_events()
 
@@ -526,7 +534,9 @@ class IndexTemplateAddRemoveDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_document_type_add_view_with_document_type_access(self):
-        self._test_index_template.document_types.remove(self._test_document_type)
+        self._test_index_template.document_types.remove(
+            self._test_document_type
+        )
 
         self.grant_access(
             obj=self._test_document_type,
@@ -546,7 +556,9 @@ class IndexTemplateAddRemoveDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_document_type_add_view_with_index_template_access(self):
-        self._test_index_template.document_types.remove(self._test_document_type)
+        self._test_index_template.document_types.remove(
+            self._test_document_type
+        )
 
         self.grant_access(
             obj=self._test_index_template,
@@ -566,7 +578,9 @@ class IndexTemplateAddRemoveDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_document_type_add_view_with_full_access(self):
-        self._test_index_template.document_types.remove(self._test_document_type)
+        self._test_index_template.document_types.remove(
+            self._test_document_type
+        )
 
         self.grant_access(
             obj=self._test_document_type,
@@ -683,11 +697,12 @@ class IndexTemplateNodeViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_index_node_create_view()
+        response = self._request_test_index_template_node_create_view()
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(
-            self._test_index_template.index_template_nodes.count(), node_count
+            self._test_index_template.index_template_nodes.count(),
+            node_count
         )
 
         events = self._get_test_events()
@@ -703,11 +718,12 @@ class IndexTemplateNodeViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_index_node_create_view()
+        response = self._request_test_index_template_node_create_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self._test_index_template.index_template_nodes.count(), node_count + 1
+            self._test_index_template.index_template_nodes.count(),
+            node_count + 1
         )
 
         events = self._get_test_events()
@@ -720,11 +736,12 @@ class IndexTemplateNodeViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_index_node_delete_view()
+        response = self._request_test_index_template_node_delete_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self._test_index_template.index_template_nodes.count(), node_count
+            self._test_index_template.index_template_nodes.count(),
+            node_count
         )
 
         events = self._get_test_events()
@@ -741,11 +758,12 @@ class IndexTemplateNodeViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_index_node_delete_view()
+        response = self._request_test_index_template_node_delete_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self._test_index_template.index_template_nodes.count(), node_count - 1
+            self._test_index_template.index_template_nodes.count(),
+            node_count - 1
         )
 
         events = self._get_test_events()
@@ -758,7 +776,7 @@ class IndexTemplateNodeViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_index_node_edit_view()
+        response = self._request_test_index_template_node_edit_view()
         self.assertEqual(response.status_code, 404)
 
         self._test_index_template_node.refresh_from_db()
@@ -780,7 +798,7 @@ class IndexTemplateNodeViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_index_node_edit_view()
+        response = self._request_test_index_template_node_edit_view()
         self.assertEqual(response.status_code, 302)
 
         self._test_index_template_node.refresh_from_db()
@@ -796,7 +814,7 @@ class IndexTemplateNodeViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_index_node_list_view()
+        response = self._request_test_index_template_node_list_view()
         self.assertEqual(response.status_code, 404)
 
         events = self._get_test_events()
@@ -811,7 +829,7 @@ class IndexTemplateNodeViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_index_node_list_view()
+        response = self._request_test_index_template_node_list_view()
         self.assertEqual(response.status_code, 200)
 
         events = self._get_test_events()

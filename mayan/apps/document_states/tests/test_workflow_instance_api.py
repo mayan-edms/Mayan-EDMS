@@ -5,6 +5,9 @@ from rest_framework import status
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
+from ..events import (
+    event_workflow_instance_created, event_workflow_instance_transitioned
+)
 from ..permissions import (
     permission_workflow_instance_transition,
     permission_workflow_template_view, permission_workflow_tools
@@ -264,7 +267,16 @@ class WorkflowInstanceAPIViewTestCase(
         self.assertEqual(workflow_instance.log_entries.count(), 1)
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(
+            events[0].target, self._test_document.workflows.first()
+        )
+        self.assertEqual(
+            events[0].verb, event_workflow_instance_transitioned.id
+        )
 
     def test_trashed_document_workflow_instance_log_entries_create_api_view_with_document_and_transition_access(self):
         self.grant_access(
@@ -331,7 +343,16 @@ class WorkflowInstanceAPIViewTestCase(
         self.assertEqual(workflow_instance.log_entries.count(), 1)
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(
+            events[0].target, self._test_document.workflows.first()
+        )
+        self.assertEqual(
+            events[0].verb, event_workflow_instance_transitioned.id
+        )
 
     def test_trashed_document_workflow_instance_log_entries_create_api_view_with_document_and_workflow_access(self):
         self.grant_access(
@@ -387,7 +408,16 @@ class WorkflowInstanceAPIViewTestCase(
         )
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(
+            events[0].target, self._test_document.workflows.first()
+        )
+        self.assertEqual(
+            events[0].verb, event_workflow_instance_transitioned.id
+        )
 
     def test_workflow_instance_log_entries_list_api_view_no_permission(self):
         self._create_test_workflow_template_instance_log_entry()
@@ -612,7 +642,16 @@ class WorkflowInstanceLaunchAPIViewTestCase(
         )
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(
+            events[0].actor, self._test_document.workflows.first()
+        )
+        self.assertEqual(
+            events[0].target, self._test_document.workflows.first()
+        )
+        self.assertEqual(events[0].verb, event_workflow_instance_created.id)
 
 
 class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(

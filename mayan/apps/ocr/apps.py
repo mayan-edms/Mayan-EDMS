@@ -20,8 +20,7 @@ from .events import (
     event_ocr_document_version_finished, event_ocr_document_version_submitted
 )
 from .handlers import (
-    handler_index_document_version, handler_initialize_new_ocr_settings,
-    handler_ocr_document_version,
+    handler_initialize_new_ocr_settings, handler_ocr_document_version
 )
 from .links import (
     link_document_version_page_ocr_content_detail_view,
@@ -35,15 +34,14 @@ from .links import (
     link_document_type_ocr_settings, link_document_type_submit
 )
 from .methods import (
-    method_document_ocr_submit, method_document_version_ocr_submit
+    method_document_ocr_content, method_document_ocr_submit,
+    method_document_version_ocr_content, method_document_version_ocr_submit
 )
 from .permissions import (
     permission_document_type_ocr_setup, permission_document_version_ocr,
     permission_document_version_ocr_content_edit,
     permission_document_version_ocr_content_view
 )
-from .signals import signal_post_document_version_ocr
-from .utils import get_instance_ocr_content
 
 logger = logging.getLogger(name=__name__)
 
@@ -76,13 +74,13 @@ class OCRApp(MayanAppConfig):
         )
 
         Document.add_to_class(
-            name='ocr_content', value=get_instance_ocr_content
+            name='ocr_content', value=method_document_ocr_content
         )
         Document.add_to_class(
             name='submit_for_ocr', value=method_document_ocr_submit
         )
         DocumentVersion.add_to_class(
-            name='ocr_content', value=get_instance_ocr_content
+            name='ocr_content', value=method_document_version_ocr_content
         )
         DocumentVersion.add_to_class(
             name='submit_for_ocr', value=method_document_version_ocr_submit
@@ -91,6 +89,7 @@ class OCRApp(MayanAppConfig):
         ModelEventType.register(
             model=Document, event_types=(
                 event_ocr_document_version_content_deleted,
+                event_ocr_document_version_page_content_edited,
                 event_ocr_document_version_finished,
                 event_ocr_document_version_submitted
             )
@@ -204,11 +203,6 @@ class OCRApp(MayanAppConfig):
             dispatch_uid='ocr_handler_initialize_new_ocr_settings',
             receiver=handler_initialize_new_ocr_settings,
             sender=DocumentType
-        )
-        signal_post_document_version_ocr.connect(
-            dispatch_uid='ocr_handler_index_document_version',
-            receiver=handler_index_document_version,
-            sender=DocumentVersion
         )
         signal_post_document_version_remap.connect(
             dispatch_uid='ocr_handler_ocr_document_version',

@@ -50,6 +50,11 @@ class DocumentCheckoutAPIViewTestMixin:
 class DocumentCheckoutTestMixin:
     _test_document_check_out_seconds = 0.1
 
+    def _check_in_test_document(self):
+        DocumentCheckout.business_logic.check_in_document(
+            document=self._test_document
+        )
+
     def _check_out_test_document(self, document=None, user=None):
         if not document:
             document = self._test_document

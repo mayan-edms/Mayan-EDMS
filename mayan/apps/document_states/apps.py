@@ -1,5 +1,5 @@
 from django.apps import apps
-from django.db.models.signals import post_migrate, post_save
+from django.db.models.signals import post_migrate, post_save, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -22,13 +22,19 @@ from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .classes import DocumentStateHelper, WorkflowAction
-from .events import event_workflow_template_edited
+from .events import (
+    event_workflow_instance_created, event_workflow_instance_transitioned,
+    event_workflow_template_edited
+)
 from .handlers import (
     handler_create_workflow_image_cache,
-    handler_index_document_on_workflow_instance,
-    handler_index_document_on_workflow_instance_log_entry,
     handler_launch_workflow_on_create,
-    handler_launch_workflow_on_type_change, handler_trigger_transition
+    handler_launch_workflow_on_type_change, handler_trigger_transition,
+    handler_workflow_template_post_edit,
+    handler_workflow_template_state_post_edit,
+    handler_workflow_template_state_pre_delete,
+    handler_workflow_template_transition_post_edit,
+    handler_workflow_template_transition_pre_delete
 )
 from .html_widgets import WorkflowLogExtraDataWidget, widget_transition_events
 from .links import (
@@ -119,6 +125,7 @@ class DocumentStatesApp(MayanAppConfig):
         error_log = ErrorLog(app_config=self)
         error_log.register_model(model=WorkflowStateAction)
 
+        EventModelRegistry.register(model=WorkflowInstance)
         EventModelRegistry.register(
             exclude=(WorkflowRuntimeProxy,), model=Workflow,
         )
@@ -183,7 +190,19 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         ModelEventType.register(
+            event_types=(
+                event_workflow_instance_created,
+                event_workflow_instance_transitioned,
+            ), model=Document
+        )
+        ModelEventType.register(
             event_types=(event_workflow_template_edited,), model=Workflow
+        )
+        ModelEventType.register(
+            event_types=(
+                event_workflow_instance_created,
+                event_workflow_instance_transitioned,
+            ), model=WorkflowInstance
         )
 
         ModelProperty(
@@ -649,6 +668,10 @@ class DocumentStatesApp(MayanAppConfig):
 
         menu_tools.bind_links(links=(link_tool_launch_workflows,))
 
+        post_migrate.connect(
+            dispatch_uid='workflows_handler_create_workflow_image_cache',
+            receiver=handler_create_workflow_image_cache,
+        )
         post_save.connect(
             dispatch_uid='workflows_handler_launch_workflow_on_create',
             receiver=handler_launch_workflow_on_create,
@@ -660,24 +683,44 @@ class DocumentStatesApp(MayanAppConfig):
             sender=Document
         )
 
-        # Index updating
+        # Indexing, general
 
-        post_migrate.connect(
-            dispatch_uid='workflows_handler_create_workflow_image_cache',
-            receiver=handler_create_workflow_image_cache,
-        )
-        post_save.connect(
-            dispatch_uid='handler_index_document_on_workflow_instance_log_entry',
-            receiver=handler_index_document_on_workflow_instance_log_entry,
-            sender=WorkflowInstanceLogEntry
-        )
-        post_save.connect(
-            dispatch_uid='workflows_handler_index_document_on_workflow_instance',
-            receiver=handler_index_document_on_workflow_instance,
-            sender=WorkflowInstance
-        )
         post_save.connect(
             dispatch_uid='workflows_handler_trigger_transition',
             receiver=handler_trigger_transition,
             sender=Action
+        )
+
+        # Indexing, Workflow template
+
+        post_save.connect(
+            dispatch_uid='workflows_handler_workflow_template_post_edit',
+            receiver=handler_workflow_template_post_edit,
+            sender=Workflow
+        )
+
+        # Indexing, Workflow template state
+
+        post_save.connect(
+            dispatch_uid='workflows_handler_workflow_template_state_post_edit',
+            receiver=handler_workflow_template_state_post_edit,
+            sender=WorkflowState
+        )
+        pre_delete.connect(
+            dispatch_uid='workflows_handler_workflow_template_state_pre_delete',
+            receiver=handler_workflow_template_state_pre_delete,
+            sender=WorkflowState
+        )
+
+        # Indexing, Workflow template transition
+
+        post_save.connect(
+            dispatch_uid='workflows_handler_workflow_template_transition_post_edit',
+            receiver=handler_workflow_template_transition_post_edit,
+            sender=WorkflowTransition
+        )
+        pre_delete.connect(
+            dispatch_uid='workflows_handler_workflow_template_transition_pre_delete',
+            receiver=handler_workflow_template_transition_pre_delete,
+            sender=WorkflowTransition
         )

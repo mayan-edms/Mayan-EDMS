@@ -351,6 +351,24 @@
   - Remove creating of sets using the set factory and use instead the set
     literal.
 
+- New workflow events: ``workflow instance created`` committed when a new
+  workflow is launched for a document and
+  ``workflow instance transitioned`` committed when a workflow instance is
+  transitioned to a new state, either manually or automatically.
+- Track the user when a new workflow instance is created or transitioned.
+- Optimize the document indexing by reusing the index instance node if it
+  already exists.
+- Add support for document index event triggers. Historically document
+  indexes used hard coded signals to trigger an index update. The indexing
+  app was updated to now use events to trigger these updates. This has the
+  additional benefits of allowing runtime configuration of the index event
+  triggers, disabling the ones not relevant for an index to improve
+  performance. New document indexes default to update on all available
+  document events. Existing indexes will me automatically migrated and
+  updated to update on all available document events. Index updates now
+  support more events like adding or removal from cabinets.
+  Closes GitLab issue #631. Thanks to Tobias Huhn (@twhuhn) for the request.
+
 4.2.5 (2022-05-21)
 ==================
 - Remove unused authentication view.
