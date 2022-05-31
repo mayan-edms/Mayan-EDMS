@@ -101,6 +101,12 @@ class Notification(models.Model):
     def __str__(self):
         return force_text(s=self.action)
 
+    def get_event_type(self):
+        try:
+            return EventType.get(id=self.action.verb)
+        except KeyError:
+            return None
+
 
 class ObjectEventSubscription(models.Model):
     content_type = models.ForeignKey(
@@ -124,6 +130,7 @@ class ObjectEventSubscription(models.Model):
     objects = ObjectEventSubscriptionManager()
 
     class Meta:
+        ordering = ('pk',)
         verbose_name = _('Object event subscription')
         verbose_name_plural = _('Object event subscriptions')
 

@@ -373,6 +373,11 @@
 - Move the transformations ``TransformationDrawRectangle`` and
   ``TransformationDrawRectanglePercent`` to the decorations layer.
 - Add retry backoff maximum delay to the search tasks.
+- Add per user object event subscription view.
+- Add support for permission filtering to the notification views. This moves
+  the access filtering of notification from the class to the view. The
+  advantage of this change is that notifications are restricted when the
+  access control is modified, even if the notification already exists.
 
 4.2.5 (2022-05-21)
 ==================

@@ -15,7 +15,7 @@ from .icons import (
     icon_event_list_export, icon_notification_mark_read,
     icon_notification_mark_read_all,
     icon_object_event_type_user_subscription_list,
-    icon_notification_list
+    icon_notification_list, icon_user_object_subscriptions_list
 )
 from .permissions import (
     permission_events_clear, permission_events_export, permission_events_view
@@ -65,6 +65,13 @@ link_event_type_subscription_list = Link(
     text=_('Event subscriptions'),
     view='events:event_type_user_subscription_list'
 )
+link_user_object_subscription_list = Link(
+    condition=condition_is_current_user,
+    icon=icon_user_object_subscriptions_list,
+    text=_('Object event subscriptions'),
+    view='events:user_object_subscription_list'
+)
+
 link_notification_list = Link(
     badge_text=get_unread_notification_count,
     condition=condition_user_is_authenticated,
@@ -73,7 +80,8 @@ link_notification_list = Link(
 )
 link_notification_mark_read = Link(
     args='object.pk', icon=icon_notification_mark_read,
-    text=_('Mark as seen'), view='events:notification_mark_read'
+    permissions=(permission_events_view,), text=_('Mark as seen'),
+    view='events:notification_mark_read'
 )
 link_notification_mark_read_all = Link(
     icon=icon_notification_mark_read_all, text=_('Mark all as seen'),

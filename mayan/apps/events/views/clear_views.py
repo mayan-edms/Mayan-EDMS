@@ -16,10 +16,6 @@ from ..tasks import task_event_queryset_clear
 
 from .mixins import VerbEventViewMixin
 
-__all__ = (
-    'EventListClearView', 'ObjectEventClearView', 'VerbEventClearView'
-)
-
 
 class EventClearBaseView(ConfirmView):
     object_permission = permission_events_clear

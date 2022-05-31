@@ -51,3 +51,6 @@ icon_event_types_subscriptions_list = Icon(
 icon_object_event_type_user_subscription_list = Icon(
     driver_name='fontawesome', symbol='rss'
 )
+icon_user_object_subscriptions_list = Icon(
+    driver_name='fontawesome', symbol='rss'
+)

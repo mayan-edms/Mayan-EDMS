@@ -18,7 +18,8 @@ from .views.notification_views import (
     NotificationListView, NotificationMarkRead, NotificationMarkReadAll
 )
 from .views.subscription_views import (
-    EventTypeSubscriptionListView, ObjectEventTypeSubscriptionListView
+    EventTypeSubscriptionListView, ObjectEventTypeSubscriptionListView,
+    UserObjectSubscriptionList
 )
 
 
@@ -77,7 +78,7 @@ urlpatterns_notification = [
         regex=r'^user/notifications/all/mark_read/$',
         name='notification_mark_read_all',
         view=NotificationMarkReadAll.as_view()
-    ),
+    )
 ]
 
 urlpatterns_subscriptions = [
@@ -91,6 +92,11 @@ urlpatterns_subscriptions = [
         name='object_event_type_user_subscription_list',
         view=ObjectEventTypeSubscriptionListView.as_view()
     ),
+    url(
+        regex=r'^user/object/subscriptions/$',
+        name='user_object_subscription_list',
+        view=UserObjectSubscriptionList.as_view()
+    )
 ]
 
 urlpatterns = []

@@ -16,10 +16,6 @@ from ..tasks import task_event_queryset_export
 
 from .mixins import VerbEventViewMixin
 
-__all__ = (
-    'EventListExportView', 'ObjectEventExportView', 'VerbEventExportView'
-)
-
 
 class EventExportBaseView(ConfirmView):
     object_permission = permission_events_export
@@ -60,7 +56,7 @@ class EventListExportView(EventExportBaseView):
         context = super().get_extra_context()
         context.update(
             {
-                'title': _('Export events'),
+                'title': _('Export events')
             }
         )
         return context
@@ -81,7 +77,7 @@ class ObjectEventExportView(
         context.update(
             {
                 'object': self.external_object,
-                'title': _('Export events of: %s') % self.external_object,
+                'title': _('Export events of: %s') % self.external_object
             }
         )
         return context

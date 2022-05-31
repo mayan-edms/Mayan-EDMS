@@ -1,13 +1,11 @@
-from actstream.models import Action
+from actstream.models import Action, any_stream
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.permissions.tests.mixins import RoleTestMixin
-from mayan.apps.user_management.tests.mixins import GroupTestMixin
 
 from ..classes import (
     EventModelRegistry, EventTypeNamespace, EventType, ModelEventType
 )
-from ..models import Notification
+from ..models import Notification, ObjectEventSubscription
 from ..permissions import permission_events_view
 
 from .literals import (
@@ -55,6 +53,25 @@ class EventsExportViewTestMixin:
 class EventListAPIViewTestMixin:
     def _request_test_event_list_api_view(self):
         return self.get(viewname='rest_api:event-list')
+
+
+class EventObjectTestMixin:
+    def _create_test_object_with_event_type_and_permission(self):
+        self._create_test_object()
+
+        EventModelRegistry.register(model=self.TestModel)
+
+        ModelEventType.register(
+            event_types=(self._test_event_type,), model=self.TestModel
+        )
+
+        EventType.refresh()
+
+        ModelPermission.register(
+            model=self.TestModel, permissions=(
+                permission_events_view,
+            )
+        )
 
 
 class EventTestMixin:
@@ -119,12 +136,10 @@ class EventTypeTestMixin:
         )
 
         self._test_event_type_namespace = EventTypeNamespace(
-            label=test_namespace_label,
-            name=test_namespace_name
+            label=test_namespace_label, name=test_namespace_name
         )
         self._test_event_type = self._test_event_type_namespace.add_event_type(
-            label=test_event_label,
-            name=test_event_name
+            label=test_event_label, name=test_event_name
         )
         self._test_event_types.append(self._test_event_type)
 
@@ -146,35 +161,12 @@ class EventViewTestMixin:
         )
 
 
-class NotificationTestMixin(
-    EventTypeTestMixin, GroupTestMixin, RoleTestMixin
-):
-    def _create_local_test_object(self):
-        super()._create_test_object()
-
-        EventModelRegistry.register(model=self.TestModel)
-
-        ModelEventType.register(
-            event_types=(self._test_event_type,), model=self.TestModel
-        )
-
-        EventType.refresh()
-
-        ModelPermission.register(
-            model=self.TestModel, permissions=(
-                permission_events_view,
-            )
-        )
-
-    def _create_local_test_user(self):
-        self._create_test_user()
-        self._create_test_group(add_users=(self._test_user,))
-        self._create_test_role(add_groups=(self._test_group,))
-
+class NotificationTestMixin:
     def _create_test_notification(self):
-        self.test_notification = Notification.objects.create(
-            user=self._test_case_user, action=Action.objects.first(),
-            read=False
+        action = any_stream(obj=self._test_object).first()
+
+        self._test_notification = Notification.objects.create(
+            action=action, read=False, user=self._test_case_user
         )
 
 
@@ -188,7 +180,7 @@ class NotificationViewTestMixin:
     def _request_test_notification_mark_read(self):
         return self.post(
             viewname='events:notification_mark_read', kwargs={
-                'notification_id': self.test_notification.pk
+                'notification_id': self._test_notification.pk
             }
         )
 
@@ -201,6 +193,22 @@ class ObjectEventAPITestMixin:
         )
 
 
+class ObjectEventSubscriptionTestMixin:
+    def _create_test_object_event_subscription(self):
+        ObjectEventSubscription.objects.create(
+            content_object=self._test_object,
+            user=self._test_case_user,
+            stored_event_type=self._test_event_type.get_stored_event_type()
+        )
+
+
 class UserEventViewsTestMixin:
     def _request_test_user_event_type_subscription_list_view(self):
         return self.get(viewname='events:event_type_user_subscription_list')
+
+
+class UserObjectSubscriptionViewTestMixin:
+    def _request_user_object_subscription_list_view(self):
+        return self.get(
+            viewname='events:user_object_subscription_list'
+        )

@@ -1,13 +1,11 @@
 from django.contrib.contenttypes.models import ContentType
 
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..permissions import permission_events_view
 
 from .mixins import (
-    EventTestMixin, EventTypeTestMixin, EventViewTestMixin,
-    UserEventViewsTestMixin
+    EventTestMixin, EventTypeTestMixin, EventViewTestMixin
 )
 
 
@@ -157,9 +155,3 @@ class CurrentUserEventsViewTestCase(
             response=response, status_code=200,
             text=self._test_event_type.label
         )
-
-
-class UserEventViewsTestCase(UserEventViewsTestMixin, GenericViewTestCase):
-    def test_user_event_type_subscription_list_view(self):
-        response = self._request_test_user_event_type_subscription_list_view()
-        self.assertEqual(response.status_code, 200)

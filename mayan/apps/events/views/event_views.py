@@ -12,10 +12,6 @@ from ..permissions import permission_events_view
 
 from .mixins import VerbEventViewMixin
 
-__all__ = (
-    'EventListView', 'ObjectEventListView', 'VerbEventListView'
-)
-
 
 class EventListBaseView(SingleObjectListView):
     object_permission = permission_events_view

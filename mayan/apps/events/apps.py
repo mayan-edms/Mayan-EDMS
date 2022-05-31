@@ -17,7 +17,8 @@ from .links import (
     link_event_type_subscription_list, link_object_event_list_clear,
     link_object_event_list_export, link_event_list, link_event_list_clear,
     link_event_list_export, link_notification_mark_read,
-    link_notification_mark_read_all, link_notification_list
+    link_notification_mark_read_all, link_notification_list,
+    link_user_object_subscription_list
 )
 
 
@@ -34,6 +35,9 @@ class EventsApp(MayanAppConfig):
 
         Action = apps.get_model(app_label='actstream', model_name='Action')
         Notification = self.get_model(model_name='Notification')
+        ObjectEventSubscription = self.get_model(
+            model_name='ObjectEventSubscription'
+        )
         StoredEventType = self.get_model(model_name='StoredEventType')
 
         User = get_user_model()
@@ -51,6 +55,23 @@ class EventsApp(MayanAppConfig):
         )
         ModelPermission.register_inheritance(
             fk_field_cast=models.CharField, model=Action, related='target'
+        )
+
+        ModelPermission.register_inheritance(
+            fk_field_cast=models.CharField, model=Notification,
+            related='action__action_object'
+        )
+        ModelPermission.register_inheritance(
+            fk_field_cast=models.CharField, model=Notification,
+            related='action__actor'
+        )
+        ModelPermission.register_inheritance(
+            fk_field_cast=models.CharField, model=Notification,
+            related='action__target'
+        )
+
+        ModelPermission.register_inheritance(
+            model=ObjectEventSubscription, related='content_object'
         )
 
         # Add labels to Action model, they are not marked translatable in the
@@ -77,12 +98,16 @@ class EventsApp(MayanAppConfig):
             include_label=True, source=Action, widget=ObjectLinkWidget
         )
 
+        # Stored event type
+
         SourceColumn(
             source=StoredEventType, label=_('Namespace'), attribute='namespace'
         )
         SourceColumn(
             source=StoredEventType, label=_('Label'), attribute='label'
         )
+
+        # Notification
 
         SourceColumn(
             attribute='action__timestamp', is_identifier=True,
@@ -109,6 +134,18 @@ class EventsApp(MayanAppConfig):
         SourceColumn(
             attribute='read', include_label=True, is_sortable=True,
             label=_('Seen'), source=Notification, widget=TwoStateWidget
+        )
+
+        # Object event subscription
+
+        SourceColumn(
+            attribute='content_object', include_label=True,
+            label=_('Object'), source=ObjectEventSubscription,
+            widget=ObjectLinkWidget
+        )
+        SourceColumn(
+            attribute='stored_event_type', include_label=True,
+            label=_('Event type'), source=ObjectEventSubscription
         )
 
         # Clear
@@ -165,6 +202,7 @@ class EventsApp(MayanAppConfig):
         menu_list_facet.bind_links(
             links=(
                 link_event_type_subscription_list,
+                link_user_object_subscription_list,
             ), sources=(User,)
         )
 

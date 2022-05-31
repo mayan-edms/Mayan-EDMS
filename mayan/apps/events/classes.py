@@ -5,7 +5,6 @@ from furl import furl
 
 from django.apps import apps
 from django.contrib.auth import get_user_model
-from django.core.exceptions import PermissionDenied
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
@@ -358,9 +357,6 @@ class EventType:
         return '{}: {}'.format(self.namespace.label, self.label)
 
     def commit(self, actor=None, action_object=None, target=None):
-        AccessControlList = apps.get_model(
-            app_label='acls', model_name='AccessControlList'
-        )
         EventSubscription = apps.get_model(
             app_label='events', model_name='EventSubscription'
         )
@@ -418,41 +414,17 @@ class EventType:
             )
 
         for user in user_queryset:
-            if result.target:
-                try:
-                    AccessControlList.objects.check_access(
-                        obj=result.target,
-                        permissions=(permission_events_view,),
-                        user=user
-                    )
-                except PermissionDenied:
-                    """
-                    User is subscribed to the event but does
-                    not have permissions for the event's target.
-                    """
-                else:
-                    Notification.objects.create(action=result, user=user)
-                    # Don't check or add any other notification for the
-                    # same user-event-object.
-                    continue
-
             if result.action_object:
-                try:
-                    AccessControlList.objects.check_access(
-                        obj=result.action_object,
-                        permissions=(permission_events_view,),
-                        user=user
-                    )
-                except PermissionDenied:
-                    """
-                    User is subscribed to the event but does
-                    not have permissions for the event's action_object.
-                    """
-                else:
-                    Notification.objects.create(action=result, user=user)
-                    # Don't check or add any other notification for the
-                    # same user-event-object.
-                    continue
+                Notification.objects.create(action=result, user=user)
+                # Don't check or add any other notification for the
+                # same user-event-object.
+                continue
+
+            if result.target:
+                Notification.objects.create(action=result, user=user)
+                # Don't check or add any other notification for the
+                # same user-event-object.
+                continue
 
         return result
 
