@@ -29,7 +29,6 @@ class NotificationListView(NotificationViewMixin, SingleObjectListView):
                 'notifications.'
             ),
             'no_results_title': _('There are no notifications'),
-            'object': self.request.user,
             'title': _('Notifications')
         }
 
@@ -45,10 +44,15 @@ class NotificationMarkRead(NotificationViewMixin, ConfirmView):
             'title': _('Mark the selected notification as read?')
         }
 
-    def view_action(self, form=None):
-        self.get_source_queryset().filter(
+    def get_object(self):
+        return self.get_source_queryset().get(
             pk=self.kwargs['notification_id']
-        ).update(read=True)
+        )
+
+    def view_action(self, form=None):
+        obj = self.get_object()
+        obj.read = True
+        obj.save()
 
         messages.success(
             message=_('Notification marked as read.'), request=self.request
