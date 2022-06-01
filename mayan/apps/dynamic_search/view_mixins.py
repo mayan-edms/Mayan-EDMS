@@ -38,12 +38,13 @@ class SearchEnabledListViewMixin:
                     }
                 )
 
-                query_dict = self.request.GET.copy()
-                query_dict.update(self.request.POST)
+                query_dict = self.request.GET.dict().copy()
+                query_dict.update(self.request.POST.dict())
 
-                if (QUERY_PARAMETER_ANY_FIELD in query_dict) and query_dict[QUERY_PARAMETER_ANY_FIELD].strip():
+                search_term_any_field = query_dict.get(QUERY_PARAMETER_ANY_FIELD, '').strip()
+                if search_term_any_field:
                     context.update(
-                        {'filter_terms': query_dict[QUERY_PARAMETER_ANY_FIELD].strip()}
+                        {'filter_terms': search_term_any_field}
                     )
 
         return context
@@ -54,15 +55,16 @@ class SearchEnabledListViewMixin:
         if not self.search_disable_list_filtering:
             search_model = self.get_search_model(queryset=queryset)
             if search_model:
-                query_dict = self.request.GET.copy()
-                query_dict.update(self.request.POST)
+                query_dict = self.request.GET.dict().copy()
+                query_dict.update(self.request.POST.dict())
 
                 if query_dict.get('_match_all', 'off').lower() in ['on', 'true']:
                     global_and_search = True
                 else:
                     global_and_search = False
 
-                if query_dict.get(QUERY_PARAMETER_ANY_FIELD, '').strip():
+                search_term_any_field = query_dict.get(QUERY_PARAMETER_ANY_FIELD, '').strip()
+                if search_term_any_field:
                     try:
                         search_queryset = SearchBackend.get_instance().search(
                             global_and_search=global_and_search,

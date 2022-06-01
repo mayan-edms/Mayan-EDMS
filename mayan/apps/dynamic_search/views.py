@@ -57,8 +57,8 @@ class ResultsView(SearchModelViewMixin, SingleObjectListView):
         return context
 
     def get_source_queryset(self):
-        query_dict = self.request.GET.copy()
-        query_dict.update(self.request.POST)
+        query_dict = self.request.GET.dict().copy()
+        query_dict.update(self.request.POST.dict())
 
         if query_dict.get('_match_all', 'off').lower() in ['on', 'true']:
             global_and_search = True
@@ -85,10 +85,12 @@ class SearchAgainView(RedirectView):
     query_string = True
 
     def get_redirect_url(self, *args, **kwargs):
-        query_dict = self.request.GET.copy()
-        query_dict.update(self.request.POST)
+        query_dict = self.request.GET.dict().copy()
+        query_dict.update(self.request.POST.dict())
 
-        if (QUERY_PARAMETER_ANY_FIELD in query_dict) and query_dict[QUERY_PARAMETER_ANY_FIELD].strip():
+        search_term_any_field = query_dict.get(QUERY_PARAMETER_ANY_FIELD, '').strip()
+
+        if search_term_any_field:
             self.pattern_name = 'search:search'
         else:
             self.pattern_name = 'search:search_advanced'
@@ -146,13 +148,14 @@ class SearchView(SearchModelViewMixin, FormView):
         }
 
     def get_form(self):
-        query_dict = self.request.GET.copy()
-        query_dict.update(self.request.POST)
+        query_dict = self.request.GET.dict().copy()
+        query_dict.update(self.request.POST.dict())
 
-        if (QUERY_PARAMETER_ANY_FIELD in query_dict) and query_dict[QUERY_PARAMETER_ANY_FIELD].strip():
-            query_string = query_dict[QUERY_PARAMETER_ANY_FIELD]
+        search_term_any_field = query_dict.get(QUERY_PARAMETER_ANY_FIELD, '').strip()
+
+        if search_term_any_field:
             return SearchForm(
-                initial={QUERY_PARAMETER_ANY_FIELD: query_string}
+                initial={QUERY_PARAMETER_ANY_FIELD: search_term_any_field}
             )
         else:
             return SearchForm()
