@@ -78,5 +78,5 @@ link_document_type_parsing_submit = Link(
     ),
     icon=icon_document_type_parsing_submit,
     text=_('Parse documents per type'),
-    view='document_parsing:document_type_parsing_submit'
+    view='document_parsing:document_type_submit'
 )
