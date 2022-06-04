@@ -28,6 +28,25 @@ class QueryStringDecodeTestCase(SearchTestMixin, BaseTestCase):
             }
         )
 
+    def test_decode_default_scope_match_all(self):
+        query = {
+            'test_field': 'test_value',
+            'match_all': 'true'
+        }
+
+        self.assertEqual(
+            self.search_backend.decode_query(query=query), {
+                'operators': {}, 'result_scope': '0',
+                'scopes': {
+                    '0': {
+                        'match_all': True, 'query': {
+                            'test_field': 'test_value'
+                        }
+                    }
+                }
+            }
+        )
+
     def test_decode_default_scope_with_explicit_scope(self):
         query = {
             'test_field': 'test_value',

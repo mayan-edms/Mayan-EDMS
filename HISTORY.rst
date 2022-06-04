@@ -4,6 +4,10 @@
   and show a corresponding error template. This allows accessing the page
   to fix the transformation error. Closes GitLab issue #1101. Thanks to
   Munzir Taha (@munzirtaha) for the report.
+- Backport search fixes from 4.3:
+
+  - Normalize how the search "Match all" parameter is evaluated.
+  - Fix evaluation of "Match all" when using a single level scoped search.
 
 4.2.6 (2022-06-25)
 ==================
