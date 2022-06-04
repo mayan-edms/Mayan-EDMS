@@ -104,7 +104,7 @@ class MetadataTypeListView(SingleObjectListView):
                 context=RequestContext(request=self.request)
             ),
             'no_results_text': _(
-                'Metadata types are users defined properties that can be '
+                'Metadata types are user defined properties that can be '
                 'assigned values. Once created they must be associated to '
                 'document types, either as optional or required, for each. '
                 'Setting a metadata type as required for a document type '
