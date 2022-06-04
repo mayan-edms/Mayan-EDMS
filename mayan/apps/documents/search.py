@@ -29,7 +29,7 @@ search_model_document.add_proxy_model(
     app_label='documents', model_name='Document'
 )
 search_model_document.add_proxy_model(
-    app_label='documents', model_name='RecentlyAccessedDocument'
+    app_label='documents', model_name='RecentlyAccessedDocumentProxy'
 )
 search_model_document.add_proxy_model(
     app_label='documents', model_name='RecentlyCreatedDocument'
