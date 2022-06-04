@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -45,7 +46,8 @@ class NotificationMarkRead(NotificationViewMixin, ConfirmView):
         }
 
     def get_object(self):
-        return self.get_source_queryset().get(
+        return get_object_or_404(
+            klass=self.get_source_queryset(),
             pk=self.kwargs['notification_id']
         )
 
