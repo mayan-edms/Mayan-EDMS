@@ -8,6 +8,7 @@ from rest_framework.filters import BaseFilterBackend
 from .classes import SearchBackend, SearchModel
 from .exceptions import DynamicSearchException
 from .literals import QUERY_PARAMETER_ANY_FIELD
+from .utils import get_match_all_value
 
 logger = logging.getLogger(name=__name__)
 
@@ -28,13 +29,12 @@ class RESTAPISearchFilter(BaseFilterBackend):
         if not getattr(view, 'search_disable_list_filtering', False):
             search_model = self.get_search_model(queryset=queryset)
             if search_model:
-                query_dict = request.GET.copy()
-                query_dict.update(request.POST)
+                query_dict = request.GET.dict().copy()
+                query_dict.update(request.POST.dict())
 
-                if query_dict.get('_match_all', 'off').lower() in ['on', 'true']:
-                    global_and_search = True
-                else:
-                    global_and_search = False
+                global_and_search = get_match_all_value(
+                    value=query_dict.get('_match_all')
+                )
 
                 search_model_fields = list(
                     map(
@@ -47,7 +47,9 @@ class RESTAPISearchFilter(BaseFilterBackend):
 
                 valid_search_models_query_dict_keys = set(
                     query_dict.keys()
-                ).intersection(set(search_model_fields))
+                ).intersection(
+                    set(search_model_fields)
+                )
 
                 query_dict_cleaned = {
                     key: query_dict[key] for key in valid_search_models_query_dict_keys

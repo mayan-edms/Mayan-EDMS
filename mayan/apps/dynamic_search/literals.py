@@ -20,6 +20,7 @@ SEARCH_MODEL_NAME_KWARG = 'search_model_pk'
 
 SCOPE_MARKER = '__'
 SCOPE_MATCH_ALL = 'match_all'
+SCOPE_MATCH_ALL_VALUES = ('on', 'true')
 SCOPE_OPERATOR_MARKER = 'operator'
 SCOPE_RESULT_MAKER = 'result'
 

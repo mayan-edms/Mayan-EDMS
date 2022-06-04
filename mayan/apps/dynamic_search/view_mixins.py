@@ -6,6 +6,7 @@ from django.utils.encoding import force_text
 from .classes import SearchBackend, SearchModel
 from .exceptions import DynamicSearchException
 from .literals import QUERY_PARAMETER_ANY_FIELD, SEARCH_MODEL_NAME_KWARG
+from .utils import get_match_all_value
 
 
 class SearchEnabledListViewMixin:
@@ -58,10 +59,9 @@ class SearchEnabledListViewMixin:
                 query_dict = self.request.GET.dict().copy()
                 query_dict.update(self.request.POST.dict())
 
-                if query_dict.get('_match_all', 'off').lower() in ['on', 'true']:
-                    global_and_search = True
-                else:
-                    global_and_search = False
+                global_and_search = get_match_all_value(
+                    value=query_dict.get('_match_all')
+                )
 
                 search_term_any_field = query_dict.get(QUERY_PARAMETER_ANY_FIELD, '').strip()
                 if search_term_any_field:

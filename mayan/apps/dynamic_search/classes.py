@@ -23,13 +23,16 @@ from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 from .exceptions import DynamicSearchException
 from .literals import (
     DEFAULT_SCOPE_ID, DELIMITER, MESSAGE_FEATURE_NO_STATUS,
-    QUERY_PARAMETER_ANY_FIELD, SCOPE_MATCH_ALL, SCOPE_MARKER,
-    SCOPE_OPERATOR_CHOICES, SCOPE_OPERATOR_MARKER, SCOPE_RESULT_MAKER
+    QUERY_PARAMETER_ANY_FIELD, SCOPE_MATCH_ALL, SCOPE_MATCH_ALL_VALUES,
+    SCOPE_MARKER, SCOPE_OPERATOR_CHOICES, SCOPE_OPERATOR_MARKER,
+    SCOPE_RESULT_MAKER
 )
 from .settings import (
     setting_backend, setting_backend_arguments,
     setting_indexing_chunk_size, setting_results_limit
 )
+from .utils import get_match_all_value
+
 logger = logging.getLogger(name=__name__)
 
 
@@ -295,7 +298,7 @@ class SearchBackend:
                     if key.endswith(SCOPE_MATCH_ALL):
                         scope_id, key = key.split(DELIMITER, 1)
                         scopes.setdefault(scope_id, {})
-                        scope_match_all = value.lower() in ['on', 'true']
+                        scope_match_all = get_match_all_value(value=value)
                         scopes[scope_id]['match_all'] = scope_match_all
                     else:
                         # Must be a scoped query.
@@ -310,7 +313,12 @@ class SearchBackend:
                 scopes.setdefault(scope_id, {})
                 scopes[scope_id].setdefault('match_all', global_and_search)
                 scopes[scope_id].setdefault('query', {})
-                scopes[scope_id]['query'][key] = value
+
+                if key == SCOPE_MATCH_ALL:
+                    scope_match_all = get_match_all_value(value=value)
+                    scopes[scope_id]['match_all'] = scope_match_all
+                else:
+                    scopes[scope_id]['query'][key] = value
         else:
             # If query if empty, create an empty scope 0.
             scopes.setdefault(DEFAULT_SCOPE_ID, {})

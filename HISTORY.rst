@@ -378,6 +378,8 @@
   the access filtering of notification from the class to the view. The
   advantage of this change is that notifications are restricted when the
   access control is modified, even if the notification already exists.
+- Normalize how the search "Match all" parameter is evaluated.
+- Fix evaluation of "Match all" when using a single level scoped search.
 
 4.2.5 (2022-05-21)
 ==================
