@@ -252,6 +252,7 @@ class ConverterBase:
                 self.mime_type = MIMETypeBackend.get_backend_instance().get_mime_type(
                     file_object=self.file_object, mime_type_only=True
                 )[0]
+
         if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
             return self.soffice()
         else:

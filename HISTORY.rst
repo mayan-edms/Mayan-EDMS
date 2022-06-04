@@ -380,6 +380,7 @@
   access control is modified, even if the notification already exists.
 - Normalize how the search "Match all" parameter is evaluated.
 - Fix evaluation of "Match all" when using a single level scoped search.
+- Discard non supported images contained in MPO images files.
 
 4.2.5 (2022-05-21)
 ==================
