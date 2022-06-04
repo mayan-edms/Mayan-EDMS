@@ -69,7 +69,7 @@ class NotificationViewTestCase(
         notification_count = Notification.objects.get_unread().count()
 
         response = self._request_test_notification_mark_read()
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
             Notification.objects.get_unread().count(),
