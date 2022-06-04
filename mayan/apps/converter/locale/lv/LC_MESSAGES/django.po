@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Māris Teivāns <maris.teivans@gmail.com>, 2021
+# Māris Teivāns <maris.teivans@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2022\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,7 +38,7 @@ msgstr ""
 msgid "Exception determining page count using Pillow; %s"
 msgstr ""
 
-#: classes.py:157
+#: classes.py:158
 msgid "LibreOffice not installed or not found."
 msgstr ""
 
@@ -302,71 +302,71 @@ msgstr ""
 msgid "Assets cache"
 msgstr ""
 
-#: transformations.py:226
+#: transformations.py:234
 msgid "Paste an asset"
 msgstr ""
 
-#: transformations.py:277
+#: transformations.py:285
 msgid "Paste an asset (percents coordinates)"
 msgstr ""
 
-#: transformations.py:324
+#: transformations.py:332
 msgid "Paste an asset as watermark"
 msgstr ""
 
-#: transformations.py:384
+#: transformations.py:392
 msgid "Crop"
 msgstr ""
 
-#: transformations.py:462
+#: transformations.py:470
 msgid "Draw rectangle"
 msgstr ""
 
-#: transformations.py:564
+#: transformations.py:572
 msgid "Draw rectangle (percents coordinates)"
 msgstr ""
 
-#: transformations.py:661
+#: transformations.py:669
 msgid "Flip"
 msgstr ""
 
-#: transformations.py:672
+#: transformations.py:680
 msgid "Gaussian blur"
 msgstr ""
 
-#: transformations.py:684
+#: transformations.py:692
 msgid "Line art"
 msgstr ""
 
-#: transformations.py:698
+#: transformations.py:706
 msgid "Mirror"
 msgstr ""
 
-#: transformations.py:709
+#: transformations.py:717
 msgid "Resize"
 msgstr ""
 
-#: transformations.py:736
+#: transformations.py:744
 msgid "Rotate"
 msgstr ""
 
-#: transformations.py:766
+#: transformations.py:774
 msgid "Rotate 90 degrees"
 msgstr ""
 
-#: transformations.py:777
+#: transformations.py:785
 msgid "Rotate 180 degrees"
 msgstr ""
 
-#: transformations.py:788
+#: transformations.py:796
 msgid "Rotate 270 degrees"
 msgstr ""
 
-#: transformations.py:798
+#: transformations.py:806
 msgid "Unsharp masking"
 msgstr ""
 
-#: transformations.py:814
+#: transformations.py:822
 msgid "Zoom"
 msgstr ""
 

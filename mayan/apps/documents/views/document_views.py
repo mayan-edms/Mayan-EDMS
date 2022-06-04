@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, ungettext
 
-from mayan.apps.common.classes import ModelQueryFields
+from mayan.apps.databases.classes import ModelQueryFields
 from mayan.apps.views.generics import (
     MultipleObjectFormActionView, SingleObjectDetailView,
     SingleObjectEditView, SingleObjectListView
@@ -14,7 +14,11 @@ from mayan.apps.views.generics import (
 from ..events import event_document_viewed
 from ..forms.document_forms import DocumentForm, DocumentPropertiesForm
 from ..forms.document_type_forms import DocumentTypeFilteredSelectForm
-from ..icons import icon_document_list
+from ..icons import (
+    icon_document_list, icon_document_preview,
+    icon_document_properties_detail, icon_document_properties_edit,
+    icon_document_type_change
+)
 from ..models.document_models import Document
 from ..permissions import (
     permission_document_properties_edit, permission_document_view
@@ -31,6 +35,7 @@ logger = logging.getLogger(name=__name__)
 
 class DocumentListView(SingleObjectListView):
     object_permission = permission_document_view
+    view_icon = icon_document_list
 
     def get_context_data(self, **kwargs):
         try:
@@ -84,6 +89,7 @@ class DocumentTypeChangeView(MultipleObjectFormActionView):
     success_message_plural = _(
         'Document type change request performed on %(count)d documents'
     )
+    view_icon = icon_document_type_change
 
     def get_extra_context(self):
         queryset = self.object_list
@@ -132,6 +138,7 @@ class DocumentPreviewView(DocumentVersionPreviewView):
     object_permission = permission_document_view
     pk_url_kwarg = 'document_id'
     source_queryset = Document.valid.all()
+    view_icon = icon_document_preview
 
     def dispatch(self, request, *args, **kwargs):
         result = super(
@@ -157,6 +164,7 @@ class DocumentPropertiesEditView(SingleObjectEditView):
     object_permission = permission_document_properties_edit
     pk_url_kwarg = 'document_id'
     source_queryset = Document.valid.all()
+    view_icon = icon_document_properties_edit
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request, *args, **kwargs)
@@ -187,6 +195,7 @@ class DocumentPropertiesView(SingleObjectDetailView):
     object_permission = permission_document_view
     pk_url_kwarg = 'document_id'
     source_queryset = Document.valid.all()
+    view_icon = icon_document_properties_detail
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request, *args, **kwargs)

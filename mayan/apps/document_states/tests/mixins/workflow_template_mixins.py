@@ -23,7 +23,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestMixin:
         return self.get(
             viewname='document_states:document_type_workflow_templates',
             kwargs={
-                'document_type_id': self.test_document_type.pk
+                'document_type_id': self._test_document_type.pk
             }
         )
 
@@ -31,7 +31,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestMixin:
         return self.post(
             viewname='document_states:document_type_workflow_templates',
             kwargs={
-                'document_type_id': self.test_document_type.pk
+                'document_type_id': self._test_document_type.pk
             }, data={
                 'available-submit': 'true',
                 'available-selection': self._test_workflow_template.pk
@@ -42,7 +42,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestMixin:
         return self.post(
             viewname='document_states:document_type_workflow_templates',
             kwargs={
-                'document_type_id': self.test_document_type.pk
+                'document_type_id': self._test_document_type.pk
             }, data={
                 'added-submit': 'true',
                 'added-selection': self._test_workflow_template.pk
@@ -57,7 +57,7 @@ class WorkflowTaskTestCaseMixin:
     def _execute_task_launch_all_workflow_for(self):
         task_launch_all_workflow_for.apply_async(
             kwargs={
-                'document_id': self.test_document.pk
+                'document_id': self._test_document.pk
             }
         ).get()
 
@@ -71,7 +71,7 @@ class WorkflowTaskTestCaseMixin:
     def _execute_task_launch_workflow_for(self):
         task_launch_workflow_for.apply_async(
             kwargs={
-                'document_id': self.test_document.pk,
+                'document_id': self._test_document.pk,
                 'workflow_id': self._test_workflow_template.pk
             }
         ).get()
@@ -93,7 +93,7 @@ class WorkflowTemplateDocumentTypeViewTestMixin:
                 'workflow_template_id': self._test_workflow_template.pk
             }, data={
                 'available-submit': 'true',
-                'available-selection': self.test_document_type.pk
+                'available-selection': self._test_document_type.pk
             }
         )
 
@@ -104,7 +104,7 @@ class WorkflowTemplateDocumentTypeViewTestMixin:
                 'workflow_template_id': self._test_workflow_template.pk
             }, data={
                 'added-submit': 'true',
-                'added-selection': self.test_document_type.pk
+                'added-selection': self._test_document_type.pk
             }
         )
 
@@ -183,7 +183,7 @@ class WorkflowTemplateDocumentTypeAPIViewMixin:
             kwargs={
                 'workflow_template_id': self._test_workflow_template.pk,
             }, data={
-                'document_type_id': self.test_document_type.pk
+                'document_type_id': self._test_document_type.pk
             }
         )
 
@@ -200,7 +200,7 @@ class WorkflowTemplateDocumentTypeAPIViewMixin:
             kwargs={
                 'workflow_template_id': self._test_workflow_template.pk,
             }, data={
-                'document_type_id': self.test_document_type.pk
+                'document_type_id': self._test_document_type.pk
             }
         )
 
@@ -242,7 +242,7 @@ class WorkflowTemplateTestMixin:
 
         if add_test_document_type:
             self._test_workflow_template.document_types.add(
-                self.test_document_type
+                self._test_document_type
             )
 
     def _create_test_workflow_template_state(self):
@@ -289,14 +289,14 @@ class WorkflowTemplateTestMixin:
         )
 
     def _create_test_workflow_template_instance_log_entry(self):
-        self.test_document.workflows.first().log_entries.create(
+        self._test_document.workflows.first().log_entries.create(
             comment=TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT,
             transition=self._test_workflow_template_transition,
             user=self._test_case_user
         )
 
-    def _transition_test_workflow_instance(self, extra_data=None):
-        self.test_document.workflows.first().do_transition(
+    def _do_transition_test_workflow_instance(self, extra_data=None):
+        self._test_document.workflows.first().do_transition(
             comment=TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT,
             extra_data=extra_data,
             transition=self._test_workflow_template_transition

@@ -1,10 +1,2 @@
-from django.core import management
-
-from ...backends.base import LockingBackend
-
-
-class Command(management.BaseCommand):
-    help = 'Erase all locks (acquired and stale).'
-
-    def handle(self, *args, **options):
-        LockingBackend.get_backend().purge_locks()
+# DEPRECATION: Remove in version >= 4.4.
+from .lock_manager_purge_locks import *  # NOQA

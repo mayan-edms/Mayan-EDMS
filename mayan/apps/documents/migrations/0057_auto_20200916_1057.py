@@ -35,7 +35,7 @@ def code_drop_btree_index(apps, schema_editor):
                     )
 
 
-def reverse_code_drop_btree_index(apps, schema_editor):
+def code_drop_btree_index_reverse(apps, schema_editor):
     """
     Create the BTREE indexes that were not renamed along with their
     respective models.
@@ -101,17 +101,17 @@ class RunPythonAtomicDynamic(migrations.RunPython):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('documents', '0056_auto_20200916_0959'),
+        ('documents', '0056_auto_20200916_0959')
     ]
 
     operations = [
         migrations.RenameModel(
             old_name='DocumentVersion',
-            new_name='DocumentFile',
+            new_name='DocumentFile'
         ),
         RunPythonAtomicDynamic(
             code=code_drop_btree_index,
-            reverse_code=reverse_code_drop_btree_index
+            reverse_code=code_drop_btree_index_reverse
         ),
         migrations.AlterModelOptions(
             name='documentpageresult',
@@ -121,11 +121,11 @@ class Migration(migrations.Migration):
                 ),
                 'verbose_name': 'Document page',
                 'verbose_name_plural': 'Document pages'
-            },
+            }
         ),
         migrations.RenameField(
             model_name='documentpage',
             old_name='document_version',
-            new_name='document_file',
-        ),
+            new_name='document_file'
+        )
     ]

@@ -4,23 +4,23 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
-# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2021
-# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
-# Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2021
-# Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2021
-# Yves Dubois <ydubois@gmail.com>, 2021
-# Guillaume Trottier <gui.trottier@gmail.com>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2022
+# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2022
+# Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2022
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
+# Yves Dubois <ydubois@gmail.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2022
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +36,7 @@ msgstr "Django GPG"
 msgid "Key ID"
 msgstr "ID de la clé"
 
-#: apps.py:63 forms.py:32 models.py:59
+#: apps.py:63 forms.py:33 models.py:59
 msgid "Type"
 msgstr "Type"
 
@@ -88,11 +88,11 @@ msgstr "Empreinte"
 msgid "Algorithm"
 msgstr "Algorithme"
 
-#: forms.py:45
+#: forms.py:48
 msgid "Term"
 msgstr "Terme"
 
-#: forms.py:46
+#: forms.py:49
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Nom, e-mail, ID de clé ou empreinte à rechercher."
 
@@ -249,7 +249,7 @@ msgstr "Détails de la clé : %s"
 #: views.py:81
 #, python-format
 msgid "Import key ID: %s?"
-msgstr "Importer l'identifiant de clé : %s ?"
+msgstr "Importer l'identifiant de clé : %s?"
 
 #: views.py:82
 msgid "Import key"

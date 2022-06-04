@@ -2,7 +2,7 @@ from django.db import migrations, models
 import django.db.models.deletion
 
 
-def operation_create_parsing_setting_for_existing_document_types(apps, schema_editor):
+def code_create_parsing_setting_for_existing_document_types(apps, schema_editor):
     DocumentType = apps.get_model(
         app_label='documents', model_name='DocumentType'
     )
@@ -19,7 +19,7 @@ def operation_create_parsing_setting_for_existing_document_types(apps, schema_ed
             pass
 
 
-def operation_delete_parsing_setting_for_existing_document_types(apps, schema_editor):
+def code_delete_parsing_setting_for_existing_document_types(apps, schema_editor):
     DocumentType = apps.get_model(
         app_label='documents', model_name='DocumentType'
     )
@@ -39,7 +39,7 @@ def operation_delete_parsing_setting_for_existing_document_types(apps, schema_ed
 class Migration(migrations.Migration):
     dependencies = [
         ('documents', '0042_auto_20180403_0702'),
-        ('document_parsing', '0002_auto_20170827_1617'),
+        ('document_parsing', '0002_auto_20170827_1617')
     ]
 
     operations = [
@@ -69,11 +69,11 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'Document type settings',
-                'verbose_name_plural': 'Document types settings',
+                'verbose_name_plural': 'Document types settings'
             },
         ),
         migrations.RunPython(
-            code=operation_create_parsing_setting_for_existing_document_types,
-            reverse_code=operation_delete_parsing_setting_for_existing_document_types,
+            code=code_create_parsing_setting_for_existing_document_types,
+            reverse_code=code_delete_parsing_setting_for_existing_document_types
         )
     ]

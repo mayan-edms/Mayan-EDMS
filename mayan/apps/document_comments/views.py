@@ -10,7 +10,10 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import DocumentCommentDetailForm
-from .icons import icon_comments_for_document
+from .icons import (
+    icon_comment_add, icon_comment_delete, icon_comment_detail,
+    icon_comment_edit, icon_comments_for_document
+)
 from .links import link_comment_add
 from .models import Comment
 from .permissions import (
@@ -24,6 +27,7 @@ class DocumentCommentCreateView(ExternalObjectViewMixin, SingleObjectCreateView)
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid.all()
     fields = ('text',)
+    view_icon = icon_comment_add
 
     def get_extra_context(self):
         return {
@@ -50,6 +54,7 @@ class DocumentCommentCreateView(ExternalObjectViewMixin, SingleObjectCreateView)
 class DocumentCommentDeleteView(SingleObjectDeleteView):
     object_permission = permission_document_comment_delete
     pk_url_kwarg = 'comment_id'
+    view_icon = icon_comment_delete
 
     def get_extra_context(self):
         return {
@@ -81,6 +86,7 @@ class DocumentCommentDetailView(SingleObjectDetailView):
     form_class = DocumentCommentDetailForm
     pk_url_kwarg = 'comment_id'
     object_permission = permission_document_comment_view
+    view_icon = icon_comment_detail
 
     def get_extra_context(self):
         return {
@@ -100,6 +106,7 @@ class DocumentCommentEditView(SingleObjectEditView):
     fields = ('text',)
     pk_url_kwarg = 'comment_id'
     object_permission = permission_document_comment_edit
+    view_icon = icon_comment_edit
 
     def get_extra_context(self):
         return {
@@ -131,6 +138,7 @@ class DocumentCommentListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_document_comment_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid.all()
+    view_icon = icon_comments_for_document
 
     def get_extra_context(self):
         return {

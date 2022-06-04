@@ -15,7 +15,11 @@ from mayan.apps.events.decorators import method_event
 
 from .events import event_key_downloaded
 from .forms import KeyDetailForm, KeySearchForm
-from .icons import icon_key_setup, icon_private_keys, icon_public_keys
+from .icons import (
+    icon_key_delete, icon_key_detail, icon_key_download, icon_key_setup,
+    icon_key_upload, icon_keyserver_search, icon_private_key_list,
+    icon_public_key_list
+)
 from .links import link_key_query, link_key_upload
 from .literals import KEY_TYPE_PUBLIC
 from .models import Key
@@ -31,6 +35,7 @@ class KeyDeleteView(SingleObjectDeleteView):
     model = Key
     object_permission = permission_key_delete
     pk_url_kwarg = 'key_id'
+    view_icon = icon_key_delete
 
     def get_extra_context(self):
         return {'title': _('Delete key: %s') % self.object}
@@ -47,6 +52,7 @@ class KeyDetailView(SingleObjectDetailView):
     model = Key
     object_permission = permission_key_view
     pk_url_kwarg = 'key_id'
+    view_icon = icon_key_detail
 
     def get_extra_context(self):
         return {
@@ -58,6 +64,7 @@ class KeyDownloadView(SingleObjectDownloadView):
     model = Key
     object_permission = permission_key_download
     pk_url_kwarg = 'key_id'
+    view_icon = icon_key_download
 
     @method_event(
         actor='request.user',
@@ -74,6 +81,7 @@ class KeyDownloadView(SingleObjectDownloadView):
 
 class KeyReceive(ConfirmView):
     post_action_redirect = reverse_lazy(viewname='django_gpg:key_public_list')
+    view_icon = icon_key_upload
     view_permission = permission_key_receive
 
     def get_extra_context(self):
@@ -103,6 +111,7 @@ class KeyReceive(ConfirmView):
 
 
 class KeyQueryResultView(SingleObjectListView):
+    view_icon = icon_keyserver_search
     view_permission = permission_keyserver_query
 
     def get_extra_context(self):
@@ -132,6 +141,7 @@ class KeyQueryResultView(SingleObjectListView):
 
 class KeyQueryView(SimpleView):
     template_name = 'appearance/generic_form.html'
+    view_icon = icon_keyserver_search
     view_permission = permission_keyserver_query
 
     def get_extra_context(self):
@@ -154,6 +164,7 @@ class KeyUploadView(SingleObjectCreateView):
     fields = ('key_data',)
     model = Key
     post_action_redirect = reverse_lazy(viewname='django_gpg:key_public_list')
+    view_icon = icon_key_upload
     view_permission = permission_key_upload
 
     def get_extra_context(self):
@@ -170,11 +181,12 @@ class KeyUploadView(SingleObjectCreateView):
 class PrivateKeyListView(SingleObjectListView):
     object_permission = permission_key_view
     source_queryset = Key.objects.private_keys()
+    view_icon = icon_private_key_list
 
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'no_results_icon': icon_private_keys,
+            'no_results_icon': icon_private_key_list,
             'no_results_main_link': link_key_upload.resolve(
                 context=RequestContext(request=self.request)
             ),
@@ -193,11 +205,12 @@ class PrivateKeyListView(SingleObjectListView):
 class PublicKeyListView(SingleObjectListView):
     object_permission = permission_key_view
     source_queryset = Key.objects.public_keys()
+    view_icon = icon_public_key_list
 
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'no_results_icon': icon_public_keys,
+            'no_results_icon': icon_public_key_list,
             'no_results_main_link': link_key_upload.resolve(
                 context=RequestContext(request=self.request)
             ),

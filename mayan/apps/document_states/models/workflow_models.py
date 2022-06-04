@@ -168,13 +168,22 @@ class Workflow(ExtraDataModelMixin, models.Model):
             return None
     get_initial_state.short_description = _('Initial state')
 
-    def launch_for(self, document):
+    def launch_for(self, document, user=None):
         if document.document_type in self.document_types.all():
             try:
                 logger.info(
                     'Launching workflow %s for document %s', self, document
                 )
-                workflow_instance = self.instances.create(document=document)
+                WorkflowInstance = apps.get_model(
+                    app_label='document_states',
+                    model_name='WorkflowInstance'
+                )
+                workflow_instance = WorkflowInstance(
+                    document=document, workflow=self
+                )
+                workflow_instance._event_actor = user
+                workflow_instance.save()
+
                 initial_state = self.get_initial_state()
                 if initial_state:
                     for action in initial_state.entry_actions.filter(enabled=True):
@@ -310,13 +319,26 @@ class WorkflowRuntimeProxy(Workflow):
         verbose_name = _('Workflow runtime proxy')
         verbose_name_plural = _('Workflow runtime proxies')
 
+    def get_documents(self, permission=None, user=None):
+        """
+        Provide a queryset of the documents. The queryset is optionally
+        filtered by access.
+        """
+        queryset = Document.valid.filter(workflows__workflow=self)
+
+        if permission and user:
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=permission, queryset=queryset,
+                user=user
+            )
+
+        return queryset
+
     def get_document_count(self, user):
         """
         Return the numeric count of documents executing this workflow.
         The count is filtered by access.
         """
-        return AccessControlList.objects.restrict_queryset(
-            permission=permission_document_view,
-            queryset=Document.valid.filter(workflows__workflow=self),
-            user=user
+        return self.get_documents(
+            permission=permission_document_view, user=user
         ).count()

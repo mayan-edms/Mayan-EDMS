@@ -31,7 +31,7 @@ class MetadataTypeParsingTestCase(
         )
 
         document_metadata = DocumentMetadata(
-            document=self.test_document, metadata_type=self.test_metadata_type,
+            document=self._test_document, metadata_type=self._test_metadata_type,
             value=TEST_DATE_INVALID
         )
 
@@ -47,8 +47,8 @@ class MetadataTypeParsingTestCase(
 
         self.assertEqual(
             getattr(
-                self.test_document.metadata_value_of,
-                self.test_metadata_type.name
+                self._test_document.metadata_value_of,
+                self._test_metadata_type.name
             ), TEST_PARSER_DATE_VALID
         )
 
@@ -72,7 +72,7 @@ class MetadataTypeParsingTestCase(
         )
 
         document_metadata = DocumentMetadata(
-            document=self.test_document, metadata_type=self.test_metadata_type,
+            document=self._test_document, metadata_type=self._test_metadata_type,
             value=TEST_PARSER_REGULAR_EXPRESSION_PATTERN
         )
 

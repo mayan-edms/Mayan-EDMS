@@ -7,11 +7,16 @@ from mayan.apps.views.generics import FormView, SingleObjectListView
 
 from .classes import SettingNamespace, Setting
 from .forms import SettingForm
+from .icons import (
+    icon_setting_namespace_detail, icon_setting_namespace_list,
+    icon_setting_edit
+)
 from .permissions import permission_settings_edit, permission_settings_view
 
 
 class SettingEditView(FormView):
     form_class = SettingForm
+    view_icon = icon_setting_edit
     view_permission = permission_settings_edit
 
     def form_valid(self, form):
@@ -38,13 +43,14 @@ class SettingEditView(FormView):
 
     def get_post_action_redirect(self):
         return reverse(
-            viewname='settings:namespace_detail', kwargs={
+            viewname='settings:setting_namespace_detail', kwargs={
                 'namespace_name': self.get_object().namespace.name
             }
         )
 
 
 class SettingNamespaceDetailView(SingleObjectListView):
+    view_icon = icon_setting_namespace_detail
     view_permission = permission_settings_view
 
     def get_extra_context(self):
@@ -75,6 +81,7 @@ class SettingNamespaceListView(SingleObjectListView):
         'hide_link': True,
         'title': _('Setting namespaces'),
     }
+    view_icon = icon_setting_namespace_list
     view_permission = permission_settings_view
 
     def get_source_queryset(self):

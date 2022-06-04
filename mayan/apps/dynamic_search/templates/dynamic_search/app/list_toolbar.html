@@ -1,0 +1,54 @@
+{% load i18n %}
+
+{# appearance_app_template_nocache #}
+
+{% if not search_disable_list_filtering and search_model %}
+    <div class="pull-left">
+        <div class="btn-toolbar" role="toolbar">
+            <form action="" id="search-form-filter" method="get" role="search">
+                <div class="input-group">
+                    {# Reset the paging on every filter update #}
+                    {# Avoids invalid page errors when the current page nubmer is higher that the filter page count results #}
+                    <input class="form-control" id="search-filter-page" name="page" type="hidden" value="1">
+                    <input class="form-control" id="search-filter-input-terms" name="q" placeholder="{% trans 'List filter' %}" type="search" value="{{ filter_terms|default:'' }}">
+                    <span class="glyphicon glyphicon-remove-circle" id="search-filter-button-clear"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endif %}
+
+<script>
+    'use strict';
+
+    jQuery(document).ready(function() {
+        const $filterButtonClear = $('#search-filter-button-clear');
+        const $filterInputTerms = $('#search-filter-input-terms');
+        const $formFilter = $('#search-form-filter');
+
+        // Enable the event handlers only if the filter is present.
+        // Otherwise it means that the displayed objects does not support
+        // searching.
+        if ($filterInputTerms.length) {
+            function updateFilterButtonClear () {
+                const filterValue = $filterInputTerms.val().trim();
+                if (filterValue) {
+                    $filterButtonClear.show();
+                } else {
+                    $filterButtonClear.hide();
+                }
+            }
+
+            updateFilterButtonClear();
+
+            $filterInputTerms.keyup(function () {
+                updateFilterButtonClear();
+            });
+
+            $filterButtonClear.click(function(){
+                $filterInputTerms.val('');
+                $formFilter.submit();
+            });
+        }
+    });
+</script>

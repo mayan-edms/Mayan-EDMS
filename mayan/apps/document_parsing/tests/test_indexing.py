@@ -1,36 +1,45 @@
-from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
-from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
-from mayan.apps.document_indexing.models import (
-    IndexInstanceNode, IndexTemplate
-)
-from mayan.apps.document_indexing.tests.literals import TEST_INDEX_TEMPLATE_LABEL
-from mayan.apps.testing.tests.base import BaseTestCase
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
+from mayan.apps.document_indexing.models.index_instance_models import IndexInstanceNode
+from mayan.apps.document_indexing.tests.mixins import IndexTemplateTestMixin
 
-from .literals import TEST_PARSING_INDEX_NODE_TEMPLATE
+from .literals import TEST_DOCUMENT_FILE_CONTENT_INDEX_NODE_TEMPLATE
+from .mixins import DocumentFileContentTestMixin
 
 
-class DocumentFileParsingIndexingTestCase(DocumentTestMixin, BaseTestCase):
-    auto_upload_test_document = False
-    test_document_filename = TEST_HYBRID_DOCUMENT
+class DocumentFileContentIndexingTestCase(
+    DocumentFileContentTestMixin, IndexTemplateTestMixin,
+    GenericDocumentTestCase
+):
+    _test_index_template_node_expression = TEST_DOCUMENT_FILE_CONTENT_INDEX_NODE_TEMPLATE
+    auto_upload_test_document = True
 
-    def test_parsing_indexing(self):
-        self.test_index_template = IndexTemplate.objects.create(
-            label=TEST_INDEX_TEMPLATE_LABEL
+    def test_indexing_document_file_not_parsed(self):
+        self.assertFalse(
+            IndexInstanceNode.objects.filter(
+                documents=self._test_document
+            ).exists()
         )
 
-        self.test_index_template.document_types.add(self.test_document_type)
+    def test_indexing_document_file_parsed_delete(self):
+        self._create_test_document_file_parsed_content()
+        value = ' '.join(self._test_document.file_latest.content())
 
-        root = self.test_index_template.index_template_root_node
-        self.test_index_template.index_template_nodes.create(
-            parent=root, expression=TEST_PARSING_INDEX_NODE_TEMPLATE,
-            link_documents=True
+        self._do_test_document_file_parsed_content_delete()
+
+        self.assertFalse(
+            IndexInstanceNode.objects.filter(
+                documents=self._test_document,
+                value=value
+            ).exists()
         )
 
-        self._upload_test_document()
-        self.test_document_file.submit_for_parsing()
+    def test_indexing_document_file_parsed_finished(self):
+        self._create_test_document_file_parsed_content()
+        value = ' '.join(self._test_document.file_latest.content())
 
         self.assertTrue(
-            self.test_document in IndexInstanceNode.objects.get(
-                value='sample'
-            ).documents.all()
+            IndexInstanceNode.objects.filter(
+                documents=self._test_document,
+                value=value
+            ).exists()
         )

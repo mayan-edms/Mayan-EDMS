@@ -4,18 +4,18 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Sergey Glita <gsv70@mail.ru>, 2021
-# Panasoft, 2021
-# Ilya Pavlov <spirkaa@gmail.com>, 2021
-# lilo.panic, 2021
+# Sergey Glita <gsv70@mail.ru>, 2022
+# Panasoft, 2022
+# lilo.panic, 2022
+# Ilya Pavlov <spirkaa@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-12 03:39+0000\n"
-"Last-Translator: lilo.panic, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -47,23 +47,23 @@ msgstr "Сообщение изменено"
 msgid "Body"
 msgstr "Содержимое"
 
-#: links.py:37 views.py:33
+#: links.py:49 views.py:33
 msgid "Create message"
 msgstr "Создать объявление"
 
-#: links.py:40 links.py:46
+#: links.py:52 links.py:58
 msgid "Delete"
 msgstr "Удалить"
 
-#: links.py:54 links.py:65
+#: links.py:67 links.py:78
 msgid "Mark as read"
 msgstr "Отметить как прочитанное"
 
-#: links.py:60 links.py:69
+#: links.py:73 links.py:82
 msgid "Mark as unread"
 msgstr "Отметить как непрочитанное"
 
-#: links.py:73
+#: links.py:86
 msgid "Mark all as read"
 msgstr "Отметить все как прочитанные"
 
@@ -127,7 +127,7 @@ msgstr "Редактировать объявления"
 msgid "View messages"
 msgstr "Просмотр сообщений"
 
-#: serializers.py:22
+#: serializers.py:19
 msgid "Primary key of the recipient user of this message."
 msgstr ""
 

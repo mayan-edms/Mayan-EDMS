@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# Roberto Rosario, 2022
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2022
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,40 +22,40 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:31 events.py:11 links.py:61 links.py:66 links.py:84
-#: permissions.py:5 queues.py:7 views/event_views.py:30
+#: apps.py:30 events.py:11 links.py:54 links.py:72 permissions.py:5
+#: queues.py:7 views/event_views.py:30
 msgid "Events"
 msgstr "Събития"
 
-#: apps.py:59 apps.py:88
+#: apps.py:60 apps.py:89
 msgid "Date and time"
 msgstr "Дата и час"
 
-#: apps.py:63 apps.py:91
+#: apps.py:64 apps.py:92
 msgid "Actor"
 msgstr "Деец"
 
-#: apps.py:67 apps.py:96
+#: apps.py:68 apps.py:97
 msgid "Event"
 msgstr "Събитие"
 
-#: apps.py:71 apps.py:101
+#: apps.py:72 apps.py:102
 msgid "Target"
 msgstr "Цел"
 
-#: apps.py:75 apps.py:105
+#: apps.py:76 apps.py:106
 msgid "Action object"
 msgstr "Обект на действие"
 
-#: apps.py:80 forms.py:10 forms.py:67
+#: apps.py:81 forms.py:10 forms.py:67
 msgid "Namespace"
 msgstr "Именно пространство"
 
-#: apps.py:83 forms.py:14 forms.py:71
+#: apps.py:84 forms.py:14 forms.py:71
 msgid "Label"
 msgstr "Етикет"
 
-#: apps.py:110
+#: apps.py:111
 msgid "Seen"
 msgstr "Видяно"
 
@@ -75,11 +75,6 @@ msgid ""
 msgstr ""
 "Списъкът със събития е експортиран и е достъпен за изтегляне чрез връзката: "
 "%(download_url)s или от областта за изтегляния (%(download_list_url)s)."
-
-#: classes.py:343
-#, python-format
-msgid "Unknown or obsolete event type: %s"
-msgstr "Неизвестен или остарял тип събитие: %s"
 
 #: events.py:15
 msgid "Events cleared"
@@ -101,83 +96,84 @@ msgstr "Не"
 msgid "Subscribed"
 msgstr "Абониран"
 
-#: html_widgets.py:22
+#: html_widgets.py:23
 msgid "System"
 msgstr "Система"
 
-#: links.py:49
-msgid "My events"
-msgstr "Моите събития"
-
-#: links.py:53 links.py:73 links.py:87 views/clear_views.py:62
+#: links.py:61 links.py:75 views/clear_views.py:62
 msgid "Clear events"
 msgstr "Изчистете събитията"
 
-#: links.py:57 links.py:80 links.py:91 views/export_views.py:57
+#: links.py:68 links.py:79 views/export_views.py:57
 msgid "Export events"
 msgstr "Експортирай събития"
 
-#: links.py:96 models.py:63 views/subscription_views.py:56
+#: links.py:85 models.py:71 views/subscription_views.py:55
 msgid "Event subscriptions"
 msgstr "Абонаменти за събитие"
 
-#: links.py:101
+#: links.py:90
 msgid "Mark as seen"
 msgstr "Маркирайте като видяно"
 
-#: links.py:104
+#: links.py:93
 msgid "Mark all as seen"
 msgstr "Маркирайте всички като видяни"
 
-#: links.py:110
+#: links.py:100
 msgid "Subscriptions"
 msgstr "Абонаменти"
 
-#: models.py:22
+#: literals.py:12
+#, python-format
+msgid "Unknown or obsolete event type: %s"
+msgstr "Неизвестен или остарял тип събитие: %s"
+
+#: models.py:24
 msgid "Name"
 msgstr "Име"
 
-#: models.py:26
+#: models.py:28
 msgid "Stored event type"
 msgstr "Тип на съхранено събитие"
 
-#: models.py:27
+#: models.py:29
 msgid "Stored event types"
 msgstr "Съхранени типове събития"
 
-#: models.py:52 models.py:78 models.py:109
+#: models.py:60 models.py:86 models.py:117
 msgid "User"
 msgstr "Потребител"
 
-#: models.py:56 models.py:113
+#: models.py:64 models.py:121
 msgid "Event type"
 msgstr "Тип на събитието"
 
-#: models.py:62
+#: models.py:70
 msgid "Event subscription"
 msgstr "Абонамент за събития"
 
-#: models.py:82
+#: models.py:90
 msgid "Action"
 msgstr "Действие"
 
-#: models.py:84
+#: models.py:92
 msgid "Read"
 msgstr "Прочети"
 
-#: models.py:90
+#: models.py:98
 msgid "Notification"
 msgstr "Уведомление"
 
-#: models.py:91 views/notification_views.py:30
+#: models.py:99 views/notification_views.py:30
 msgid "Notifications"
 msgstr "Уведомления"
 
-#: models.py:119
+#: models.py:127
 msgid "Object event subscription"
 msgstr "Абонамент за обектно събитие"
 
-#: models.py:120
+#: models.py:128
 msgid "Object event subscriptions"
 msgstr "Абонаменти за обектни събития"
 
@@ -217,10 +213,10 @@ msgstr ""
 msgid "Clear events of: %s"
 msgstr "Изчистване на събитията от: %s"
 
-#: views/clear_views.py:119 views/event_views.py:70 views/export_views.py:105
+#: views/clear_views.py:104
 #, python-format
-msgid "Events of type: %s"
-msgstr "Събития от тип: %s"
+msgid "Clear events of type: %s"
+msgstr ""
 
 #: views/event_views.py:26
 msgid "Events track actions that have been performed on, to, or with objects."
@@ -239,9 +235,14 @@ msgstr "Няма събития за този обект"
 msgid "Events for: %s"
 msgstr "Събития за: %s"
 
-#: views/event_views.py:68
+#: views/event_views.py:60
 msgid "There are no events of this type"
 msgstr "Няма събития от този тип"
+
+#: views/event_views.py:62
+#, python-format
+msgid "Events of type: %s"
+msgstr "Събития от тип: %s"
 
 #: views/export_views.py:26
 msgid ""
@@ -261,6 +262,11 @@ msgstr ""
 #, python-format
 msgid "Export events of: %s"
 msgstr "Експортирайте събития на: %s"
+
+#: views/export_views.py:93
+#, python-format
+msgid "Export events of type: %s"
+msgstr ""
 
 #: views/notification_views.py:25
 msgid "Subscribe to global or object events to receive notifications."
@@ -287,25 +293,25 @@ msgstr "Да се маркират ли всички известия като �
 msgid "All notifications marked as read."
 msgstr "Всички известия са означени като прочетени."
 
-#: views/subscription_views.py:40
+#: views/subscription_views.py:39
 #, python-format
 msgid "Error updating event subscription; %s"
 msgstr "Грешка при актуализиране на абонамента за събития; %s"
 
-#: views/subscription_views.py:45
+#: views/subscription_views.py:44
 msgid "Event subscriptions updated successfully"
 msgstr "Абонаментите за събития са актуализирани успешно"
 
-#: views/subscription_views.py:114
+#: views/subscription_views.py:110
 #, python-format
 msgid "Error updating object event subscription; %s"
 msgstr "Грешка при актуализиране на абонамента за обектно събитие; %s"
 
-#: views/subscription_views.py:120
+#: views/subscription_views.py:116
 msgid "Object event subscriptions updated successfully"
 msgstr "Абонаментите за обектни събития са актуализирани успешно"
 
-#: views/subscription_views.py:131
+#: views/subscription_views.py:127
 #, python-format
 msgid "Event subscriptions for: %s"
 msgstr "Абонаменти за събития за: %s"

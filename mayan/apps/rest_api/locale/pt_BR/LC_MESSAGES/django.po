@@ -4,17 +4,18 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
-# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2021
+# Roberto Rosario, 2022
+# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
-"PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: Jadson Ribeiro <jadsonbr@outlook.com.br>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,19 +40,19 @@ msgstr "Documentação da API (Swagger)"
 msgid "API Documentation (ReDoc)"
 msgstr "Documentação da API (ReDoc)"
 
-#: relations.py:82
+#: relations.py:84
 msgid "This field is required."
-msgstr ""
+msgstr " Este campo é obrigatório."
 
-#: relations.py:83
+#: relations.py:85
 #, python-brace-format
 msgid "Invalid pk \"{pk_value}\" - object does not exist."
-msgstr ""
+msgstr "pk Inválido \"{pk_value}\" - objeto não existe"
 
-#: relations.py:84
+#: relations.py:86
 #, python-brace-format
 msgid "Incorrect type. Expected pk value, received {data_type}."
-msgstr ""
+msgstr "Tipo incorreto. Valor pk esperado recebido {data_type}."
 
 #: schemas.py:11
 #, python-format
@@ -64,8 +65,8 @@ msgstr "Desabilitar os links de API Rest no menu de ferramentas."
 
 #: settings.py:23
 msgid "The maximum page size that can be requested."
-msgstr ""
+msgstr "O tamanho máximo da página que pode ser pedido. "
 
 #: settings.py:29
 msgid "The default page size if none is specified."
-msgstr ""
+msgstr "O tamanho de página pré-definido se nenhum for especificado. "

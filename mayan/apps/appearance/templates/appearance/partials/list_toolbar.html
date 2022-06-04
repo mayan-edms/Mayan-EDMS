@@ -1,5 +1,6 @@
 {% load i18n %}
 
+{% load appearance_tags %}
 {% load navigation_tags %}
 {% load views_tags %}
 
@@ -21,73 +22,75 @@
             </div>
         </div>
 
-    {% if is_paginated %}
-        <div class="pull-left">
-            <div class="btn-toolbar" role="toolbar">
-                <div class="btn-group">
-                    {% if page_obj.has_previous %}
-                        <a class="btn btn-default btn-sm" href="?{{ page_obj.previous_page_number.querystring }}">&lsaquo;&lsaquo;</a>
-                    {% else %}
-                        <a class="btn btn-default btn-sm disabled" href="#">&lsaquo;&lsaquo;</a>
-                    {% endif %}
+        {% views_get_proper_elided_page_range paginator page_obj.number 2 as page_range %}
 
-                    {% for page in page_obj.pages %}
-
-                        {% if page %}
-
-                            {% ifequal page page_obj.number %}
-                                <a class="active btn btn-default btn-sm pagination-disabled" href="#">{{ page }}</a>
-                            {% else %}
-                                <a class="btn btn-default btn-sm" href="?{{ page.querystring }}">{{ page }}</a>
-                            {% endifequal %}
+        {% if page_obj %}
+            <div class="pull-left">
+                <div class="btn-toolbar" role="toolbar" style="margin-right: 10px;">
+                    <div class="btn-group">
+                        {% if page_obj.has_previous %}
+                            <a class="btn btn-default btn-sm" href="{% views_get_paging_query_string page_number=page_obj.previous_page_number %}">&lsaquo;&lsaquo;</a>
                         {% else %}
-                            <a class="btn btn-default btn-sm disabled" href="#">...</a>
+                            <a class="btn btn-default btn-sm disabled" href="#">&lsaquo;&lsaquo;</a>
                         {% endif %}
 
-                    {% endfor %}
-                    {% if page_obj.has_next %}
-                        <a class="btn btn-default btn-sm" href="?{{ page_obj.next_page_number.querystring }}">&rsaquo;&rsaquo;</a>
-                    {% else %}
-                        <a class="btn btn-default btn-sm disabled" href="#">&rsaquo;&rsaquo;</a>
-                    {% endif %}
+                        {% for page_number in page_range %}
+                            {% if page_number == paginator.ELLIPSIS %}
+                                <a class="btn btn-default btn-sm disabled" href="#">{{ paginator.ELLIPSIS }}</a>
+                            {% else %}
+                                {% if page_number == page_obj.number %}
+                                    <a class="active btn btn-default btn-sm pagination-disabled" href="#">{{ page_number }}</a>
+                                {% else %}
+                                    <a class="btn btn-default btn-sm" href="{% views_get_paging_query_string page_number=page_number %}">{{ page_number }}</a>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <a class="btn btn-default btn-sm" href="{% views_get_paging_query_string page_number=page_obj.next_page_number %}">&rsaquo;&rsaquo;</a>
+                        {% else %}
+                            <a class="btn btn-default btn-sm disabled" href="#">&rsaquo;&rsaquo;</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-    {% endif %}
+        {% endif %}
 
-    {% if links_multi_menus_results %}
-        <div id="multi-item-title-responsible-wrapper">
-            <p class="pull-right" id="multi-item-title" style="line-height: 16px; padding-top: 8px;">{% trans 'Select items to activate bulk actions. Use Shift + click to select many.' %}</p>
-        </div>
+        {% appearance_app_templates template_name='list_toolbar' %}
 
-        <div class="pull-right btn-group" id="multi-item-actions" style="display: none;">
-            <button aria-expanded="true" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" type="button">
-                {% trans 'Bulk actions' %}
-                <span class="caret"></span>
-                <span class="sr-only">{% trans 'Toggle Dropdown' %}</span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                {% for multi_item_menu_results in links_multi_menus_results %}
-                    {% for link_group in multi_item_menu_results.link_groups %}
-                        {% with link_group.links as object_navigation_links %}
-                        {% with 'true' as as_li %}
-                        {% with 'true' as hide_active_anchor %}
-                        {% with 'btn-sm btn-multi-item-action' as link_classes %}
-                            {% include 'navigation/generic_navigation.html' %}
-                        {% endwith %}
-                        {% endwith %}
-                        {% endwith %}
-                        {% endwith %}
+        {% if links_multi_menus_results %}
+            <div id="multi-item-title-responsible-wrapper">
+                <p class="pull-right" id="multi-item-title" style="line-height: 16px; padding-top: 8px;">{% trans 'Select items to activate bulk actions. Use Shift + click to select many.' %}</p>
+            </div>
 
+            <div class="pull-right btn-group" id="multi-item-actions" style="display: none;">
+                <button aria-expanded="true" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" type="button">
+                    {% trans 'Bulk actions' %}
+                    <span class="caret"></span>
+                    <span class="sr-only">{% trans 'Toggle Dropdown' %}</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    {% for multi_item_menu_results in links_multi_menus_results %}
+                        {% for link_group in multi_item_menu_results.link_groups %}
+                            {% with link_group.links as object_navigation_links %}
+                            {% with 'true' as as_li %}
+                            {% with 'true' as hide_active_anchor %}
+                            {% with 'btn-sm btn-multi-item-action' as link_classes %}
+                                {% include 'navigation/generic_navigation.html' %}
+                            {% endwith %}
+                            {% endwith %}
+                            {% endwith %}
+                            {% endwith %}
+
+                        {% endfor %}
+                        {% if not forloop.last and link_group %}
+                            <li class="divider"></li>
+                        {% endif %}
                     {% endfor %}
-                    {% if not forloop.last and link_group %}
-                        <li class="divider"></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
 
-    <div class="clearfix"></div>
+        <div class="clearfix"></div>
     </div>
 </nav>

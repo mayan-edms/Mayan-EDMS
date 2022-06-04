@@ -35,9 +35,23 @@ class PartialNavigation {
         // formBeforeSerializeCallbacks - Callbacks to execute before submitting an ajaxForm
         this.formBeforeSerializeCallbacks = parameters.formBeforeSerializeCallbacks || [];
 
+        this.redirectionCode = parameters.redirectionCode;
+
+        if (!this.redirectionCode) {
+            alert('Need to setup redirectionCode');
+        }
+
         if (!this.initialURL) {
             alert('Need to setup initialURL');
         }
+
+        // AJAX request throttling and pending request cancellation.
+        // Default is 10 requests in 5 seconds of less.
+        this.maximumAjaxRequests = parameters.maximumAjaxRequests || 10;
+        this.ajaxRequestTimeout = parameters.ajaxRequestTimeout || 5000;
+
+        this.currentAjaxRequest = null;
+        this.AjaxRequestTimeOutList = [];
     }
 
     initialize () {
@@ -78,14 +92,36 @@ class PartialNavigation {
         const app = this;
 
         url = this.filterLocation(url);
-        $.ajax({
+
+        this.AjaxRequestTimeOutList.push(
+            setTimeout(function() {
+                app.AjaxRequestTimeOutList.shift();
+            }, 5000)
+        );
+
+        // Request exceeded maximum, ignoring.
+        if (this.AjaxRequestTimeOutList.length >= 10) {
+            return;
+        }
+
+        // Another Ajax request is being processed. Cancel them previous
+        // one.
+        if (this.currentAjaxRequest) {
+            this.currentAjaxRequest.abort();
+            // Clear the content area to avoid an '0' status server error
+            // message.
+            $('#ajax-content').empty('');
+        }
+
+        this.currentAjaxRequest = $.ajax({
             async: true,
-            mimeType: 'text/html; charset=utf-8', // ! Need set mimeType only when run from local file
+            // Need to set mimeType only when run from local file.
+            mimeType: 'text/html; charset=utf-8',
             url: url,
             type: 'GET',
             success: function (data, textStatus, response){
-                if (response.status == 278) {
-                    // Handle redirects
+                if (response.status == app.redirectionCode) {
+                    // Handle redirects.
                     const newLocation = response.getResponseHeader('Location');
 
                     app.setLocation(newLocation);
@@ -98,6 +134,15 @@ class PartialNavigation {
                         $('#ajax-content').html(data).change();
                     }
                 }
+
+                // Enable requests again.
+                app.currentAjaxRequest = null;
+
+                // Reset throttling.
+                for (let item of app.AjaxRequestTimeOutList) {
+                    clearTimeout(item);
+                }
+                app.AjaxRequestTimeOutList = [];
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 app.processAjaxRequestError(jqXHR);
@@ -252,10 +297,11 @@ class PartialNavigation {
             },
             beforeSubmit: function(arr, $form, options) {
                 const uri = new URI(location);
-                let uriFragment = uri.fragment();
-                let url = $form.attr('action') || uriFragment;
-                let finalUrl = new URI(url);
-                let formQueryString = new URLSearchParams(
+                const uriFragment = uri.fragment();
+                const url = $form.attr('action') || uriFragment;
+                const formAction = new URI(url);
+                let finalUrl = new URI(formAction.path());
+                const formQueryString = new URLSearchParams(
                     decodeURIComponent($form.serialize())
                 );
 
@@ -273,8 +319,11 @@ class PartialNavigation {
                     // If the form has a target attribute we emulate it by
                     // opening a new window and passing the form serialized
                     // data as the query.
-                    let finalUrl = new URI($form.attr('action'));
-                    let formQueryString = new URLSearchParams(decodeURIComponent($form.serialize()));
+                    const formAction = new URI($form.attr('action'));
+                    let finalUrl = new URL(formAction.path());
+                    const formQueryString = new URLSearchParams(
+                        decodeURIComponent($form.serialize())
+                    );
 
                     // Merge the URL and the form values in a smart way instead
                     // of just blindly adding a '?' between them.
@@ -292,15 +341,10 @@ class PartialNavigation {
                 app.processAjaxRequestError(jqXHR);
             },
             mimeType: 'text/html; charset=utf-8', // ! Need set mimeType only when run from local file
-            success: function(data, textStatus, request){
-                if (request.status == 278) {
+            success: function(data, textStatus, request) {
+                if (request.status == app.redirectionCode) {
                     // Handle redirects after submitting the form
-                    let newLocation = request.getResponseHeader('Location');
-                    let uri = new URI(newLocation);
-                    let uriFragment = uri.fragment();
-                    let currentUri = new URI(window.location.hash);
-                    let currentUriFragment = currentUri.fragment();
-                    let url = uriFragment || currentUriFragment;
+                    const newLocation = request.getResponseHeader('Location');
 
                     app.setLocation(newLocation);
                 } else {
@@ -326,16 +370,16 @@ class PartialNavigation {
         // Load ajax content when the hash changes
         if (window.history && window.history.pushState) {
             $(window).on('popstate', function() {
-                let uri = new URI(location);
-                let uriFragment = uri.fragment();
+                const uri = new URI(location);
+                const uriFragment = uri.fragment();
                 app.setLocation(uriFragment, false);
             });
         }
 
         // Load any initial address in the URL of the browser
         if (window.location.hash) {
-            let uri = new URI(window.location.hash);
-            let uriFragment = uri.fragment();
+            const uri = new URI(window.location.hash);
+            const uriFragment = uri.fragment();
             this.setLocation(uriFragment);
         } else {
             this.setLocation('/');

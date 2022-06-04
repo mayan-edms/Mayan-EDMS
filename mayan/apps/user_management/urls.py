@@ -7,11 +7,11 @@ from .api_views import (
 )
 from .views.group_views import (
     GroupCreateView, GroupDeleteView, GroupDetailView, GroupEditView,
-    GroupListView, GroupUsersView
+    GroupListView, GroupUserAddRemoveView
 )
 from .views.user_views import (
     UserCreateView, UserDeleteView, UserDetailView,
-    UserEditView, UserGroupsView, UserListView, UserOptionsEditView
+    UserEditView, UserGroupAddRemoveView, UserListView, UserOptionsEditView
 )
 
 urlpatterns_groups = [
@@ -24,10 +24,10 @@ urlpatterns_groups = [
     ),
     url(
         regex=r'^groups/(?P<group_id>\d+)/delete/$',
-        name='group_delete_single', view=GroupDeleteView.as_view()
+        name='group_single_delete', view=GroupDeleteView.as_view()
     ),
     url(
-        regex=r'^groups/multiple/delete/$', name='group_delete_multiple',
+        regex=r'^groups/multiple/delete/$', name='group_multiple_delete',
         view=GroupDeleteView.as_view()
     ),
     url(
@@ -40,7 +40,7 @@ urlpatterns_groups = [
     ),
     url(
         regex=r'^groups/(?P<group_id>\d+)/users/$', name='group_members',
-        view=GroupUsersView.as_view()
+        view=GroupUserAddRemoveView.as_view()
     )
 ]
 
@@ -51,11 +51,11 @@ urlpatterns_users = [
         view=UserCreateView.as_view()
     ),
     url(
-        regex=r'^users/(?P<user_id>\d+)/delete/$', name='user_delete_single',
+        regex=r'^users/(?P<user_id>\d+)/delete/$', name='user_single_delete',
         view=UserDeleteView.as_view()
     ),
     url(
-        regex=r'^users/multiple/delete/$', name='user_delete_multiple',
+        regex=r'^users/multiple/delete/$', name='user_multiple_delete',
         view=UserDeleteView.as_view()
     ),
     url(
@@ -68,7 +68,7 @@ urlpatterns_users = [
     ),
     url(
         regex=r'^users/(?P<user_id>\d+)/groups/$', name='user_groups',
-        view=UserGroupsView.as_view()
+        view=UserGroupAddRemoveView.as_view()
     ),
     url(
         regex=r'^users/(?P<user_id>\d+)/options/$', name='user_options',

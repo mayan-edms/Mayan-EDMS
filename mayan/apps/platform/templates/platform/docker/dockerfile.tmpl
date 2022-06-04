@@ -28,14 +28,9 @@ RUN set -x \
 && DEBIAN_FRONTEND=noninteractive \
 apt-get update \
 && apt-get install --no-install-recommends --yes \
-    libreoffice-calc-nogui \
-    libreoffice-draw-nogui \
-    libreoffice-impress-nogui \
-    libreoffice-math-nogui \
-    libreoffice-writer-nogui \
-&& apt-get install --no-install-recommends --yes \
     ca-certificates \
     exiftool \
+    file \
     fonts-arphic-uming \
     fonts-arphic-ukai \
     fonts-unfonts-core \
@@ -46,6 +41,11 @@ apt-get update \
     gnupg1 \
     graphviz \
     libarchive-zip-perl \
+    libreoffice-calc-nogui \
+    libreoffice-draw-nogui \
+    libreoffice-impress-nogui \
+    libreoffice-math-nogui \
+    libreoffice-writer-nogui \
     libfile-mimeinfo-perl \
     libfuse2 \
     libldap-2.4-2 \
@@ -161,7 +161,7 @@ RUN set -a \
 && pip install --no-cache-dir dist/mayan_edms-*.whl \
 # Install the static content.
 && mayan-edms.py installdependencies \
-&& mayan-edms.py preparestatic --link --noinput
+&& mayan-edms.py appearance_prepare_static --link --noinput
 
 COPY --chown=mayan:mayan requirements/testing-base.txt "${PROJECT_INSTALL_DIR}"
 

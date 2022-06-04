@@ -11,7 +11,10 @@ from mayan.apps.documents.views.document_views import DocumentListView
 from mayan.apps.views.generics import ConfirmView
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
-from .icons import icon_duplicated_document_list
+from .icons import (
+    icon_document_duplicates_list, icon_duplicated_document_list,
+    icon_duplicated_document_scan
+)
 from .models import DuplicateBackendEntry
 from .tasks import task_duplicates_scan_all
 
@@ -22,6 +25,7 @@ class DocumentDuplicatesListView(ExternalObjectViewMixin, DocumentListView):
     external_object_permission = permission_document_view
     external_object_queryset = Document.valid.all()
     external_object_pk_url_kwarg = 'document_id'
+    view_icon = icon_document_duplicates_list
 
     def get_extra_context(self):
         context = super().get_extra_context()
@@ -50,6 +54,8 @@ class DocumentDuplicatesListView(ExternalObjectViewMixin, DocumentListView):
 
 
 class DuplicatedDocumentListView(DocumentListView):
+    view_icon = icon_duplicated_document_list
+
     def get_document_queryset(self):
         return DuplicateBackendEntry.objects.get_duplicated_documents(
             permission=permission_document_view, user=self.request.user
@@ -81,6 +87,7 @@ class ScanDuplicatedDocuments(ConfirmView):
         'title': _('Scan for duplicated documents?')
     }
     view_permission = permission_document_tools
+    view_icon = icon_duplicated_document_scan
 
     def view_action(self):
         task_duplicates_scan_all.apply_async()

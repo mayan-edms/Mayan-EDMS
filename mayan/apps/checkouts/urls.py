@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from .api_views import APICheckedoutDocumentListView, APICheckedoutDocumentView
+from .api_views import APICheckedoutDocumentListView, APICheckedoutDocumentView, APIDocumentCheckoutView
 from .views import (
     DocumentCheckInView, DocumentCheckOutDetailView, DocumentCheckOutListView,
     DocumentCheckOutView
@@ -43,5 +43,10 @@ api_urls = [
         regex=r'^checkouts/(?P<checkout_id>[0-9]+)/checkout_info/$',
         name='checkedout-document-view',
         view=APICheckedoutDocumentView.as_view()
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/checkout/$',
+        name='document-checkout-view',
+        view=APIDocumentCheckoutView.as_view()
     )
 ]

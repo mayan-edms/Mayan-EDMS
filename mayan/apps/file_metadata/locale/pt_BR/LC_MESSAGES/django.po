@@ -4,18 +4,20 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
-# Aline Freitas <aline@alinefreitas.com.br>, 2021
-# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
+# Emerson Soares <on.emersonsoares@gmail.com>, 2022
+# Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
+# Aline Freitas <aline@alinefreitas.com.br>, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,10 +64,11 @@ msgstr "Ferramenta EXIF"
 #: events.py:10
 msgid "Document file submitted for file metadata processing"
 msgstr ""
+"Ficheiro do documento submetido para processamento de armazenar metadata."
 
 #: events.py:14
 msgid "Document file file metadata processing finished"
-msgstr ""
+msgstr "Processamento do arquivo do ficheiro de documento metadata terminado."
 
 #: links.py:25
 msgid "Attributes"
@@ -95,6 +98,7 @@ msgstr "Retorne a entrada dos metadados do documento especificado."
 #: methods.py:71
 msgid "Return the specified document file file metadata entry."
 msgstr ""
+"Devolver a entrada do arquivo do ficheiro de documento metadata especifico. "
 
 #: models.py:18
 msgid "Driver path"
@@ -131,15 +135,15 @@ msgstr "Configurações de tipos de documentos"
 
 #: models.py:74
 msgid "Document file"
-msgstr ""
+msgstr "Ficheiro do documento"
 
 #: models.py:80 models.py:95
 msgid "Document file driver entry"
-msgstr ""
+msgstr "Entrada de driver do ficheiro do documento"
 
 #: models.py:81
 msgid "Document file driver entries"
-msgstr ""
+msgstr "Entradas de drive do ficheiro do documento"
 
 #: models.py:88
 msgid "Attribute count"
@@ -183,7 +187,7 @@ msgstr "Ver metadados do arquivo"
 
 #: queues.py:11
 msgid "Process document file"
-msgstr ""
+msgstr "Processar ficheiro do documento"
 
 #: settings.py:18
 msgid ""
@@ -233,32 +237,43 @@ msgstr ""
 
 #: views.py:86
 msgid "No file metadata available for this driver."
-msgstr ""
+msgstr "Não existem ficheiros metadata para este driver."
 
 #: views.py:90
 #, python-format
 msgid ""
 "File metadata attributes for: %(document_file)s with driver: %(driver)s"
 msgstr ""
+"Arquivar atributos metadata para: %(document_file)scom driver: %(driver)s"
 
-#: views.py:119
+#: views.py:112
+#, python-format
+msgid "%(count)d document file submitted to the file metadata queue."
+msgstr ""
+
+#: views.py:115
+#, python-format
+msgid "%(count)d documents files submitted to the file metadata queue."
+msgstr ""
+
+#: views.py:123
 msgid "Submit the selected document file to the file metadata queue?"
 msgid_plural "Submit the selected documents files to the file metadata queue?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:147
+#: views.py:151
 #, python-format
 msgid "Edit file metadata settings for document type: %s"
 msgstr "Editar as configurações de metadados para o tipo de documento: %s"
 
-#: views.py:158
+#: views.py:162
 msgid "Submit all documents of a type for file metadata processing."
 msgstr ""
 "Enviar todos os documentos de um tipo para processamento de metadados de "
 "arquivo."
 
-#: views.py:184
+#: views.py:188
 #, python-format
 msgid "%(count)d documents added to the file metadata processing queue."
 msgstr ""

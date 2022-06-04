@@ -16,7 +16,10 @@ from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..classes import SourceBackend
 from ..forms import SourceBackendSelectionForm, SourceBackendDynamicForm
-from ..icons import icon_source_list
+from ..icons import (
+    icon_source_action, icon_source_backend_selection, icon_source_create,
+    icon_source_delete, icon_source_edit, icon_source_list, icon_source_test
+)
 from ..links import link_source_backend_selection
 from ..models import Source
 from ..permissions import (
@@ -37,6 +40,7 @@ class SourceBackendSelectionView(FormView):
         'title': _('New source backend selection'),
     }
     form_class = SourceBackendSelectionForm
+    view_icon = icon_source_backend_selection
     view_permission = permission_sources_create
 
     def form_valid(self, form):
@@ -54,6 +58,7 @@ class SourceActionView(MultipleObjectConfirmActionView):
     model = Source
     object_permission = permission_document_create
     pk_url_kwarg = 'source_id'
+    view_icon = icon_source_action
 
     def get_all_kwargs(self):
         kwargs = self.kwargs.copy()
@@ -77,6 +82,7 @@ class SourceActionView(MultipleObjectConfirmActionView):
 class SourceCreateView(SingleObjectDynamicFormCreateView):
     form_class = SourceBackendDynamicForm
     post_action_redirect = reverse_lazy(viewname='sources:source_list')
+    view_icon = icon_source_create
     view_permission = permission_sources_create
 
     def get_backend(self):
@@ -111,6 +117,7 @@ class SourceDeleteView(SingleObjectDeleteView):
     post_action_redirect = reverse_lazy(
         viewname='sources:source_list'
     )
+    view_icon = icon_source_delete
 
     def get_extra_context(self):
         return {
@@ -127,6 +134,7 @@ class SourceEditView(SingleObjectDynamicFormEditView):
     post_action_redirect = reverse_lazy(
         viewname='sources:source_list'
     )
+    view_icon = icon_source_edit
 
     def get_extra_context(self):
         return {
@@ -145,6 +153,7 @@ class SourceEditView(SingleObjectDynamicFormEditView):
 class SourceListView(SingleObjectListView):
     model = Source
     object_permission = permission_sources_view
+    view_icon = icon_source_list
 
     def get_extra_context(self):
         return {
@@ -173,6 +182,7 @@ class SourceTestView(ExternalObjectViewMixin, ConfirmView):
     external_object_permission = permission_sources_edit
     external_object_pk_url_kwarg = 'source_id'
     external_object_class = Source
+    view_icon = icon_source_test
 
     def get_extra_context(self):
         return {

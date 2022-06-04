@@ -12,7 +12,10 @@ from mayan.apps.views.generics import (
 
 from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
 from .forms import DocumentCheckOutForm, DocumentCheckOutDetailForm
-from .icons import icon_check_out_info
+from .icons import (
+    icon_check_in_document, icon_check_out_document, icon_check_out_info,
+    icon_check_out_list
+)
 from .models import DocumentCheckout
 from .permissions import (
     permission_document_check_in, permission_document_check_in_override,
@@ -37,6 +40,7 @@ class DocumentCheckInView(MultipleObjectConfirmActionView):
     title_single = _('Check in document "%(object)s".')
     title_singular = _('Check in %(count)d document.')
     title_plural = _('Check in %(count)d documents.')
+    view_icon = icon_check_in_document
 
     def get_extra_context(self):
         context = {}
@@ -106,6 +110,7 @@ class DocumentCheckOutView(MultipleObjectFormActionView):
     title_single = _('Checkout document "%(object)s".')
     title_singular = _('Checkout %(count)d document.')
     title_plural = _('Checkout %(count)d documents.')
+    view_icon = icon_check_out_document
 
     def get_extra_context(self):
         context = {}
@@ -146,6 +151,7 @@ class DocumentCheckOutDetailView(SingleObjectDetailView):
     object_permission = permission_document_check_out_detail_view
     pk_url_kwarg = 'document_id'
     source_queryset = Document.valid.all()
+    view_icon = icon_check_out_info
 
     def get_extra_context(self):
         return {
@@ -157,12 +163,11 @@ class DocumentCheckOutDetailView(SingleObjectDetailView):
 
 
 class DocumentCheckOutListView(DocumentListView):
+    object_permission = permission_document_check_out_detail_view
+    view_icon = icon_check_out_list
+
     def get_document_queryset(self):
-        queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_document_check_out_detail_view,
-            queryset=DocumentCheckout.objects.checked_out_documents(),
-            user=self.request.user
-        )
+        queryset = DocumentCheckout.objects.checked_out_documents()
         return Document.valid.filter(pk__in=queryset.values('pk'))
 
     def get_extra_context(self):

@@ -17,7 +17,7 @@
             <h3 id="content-title" title='{{ result.title_full }}'>
 {% endif %}
 
-                {{ result.title }}
+                {% if view_icon %}{{ view_icon.render }} &nbsp;{% endif %}<span id="appearance-title-text">{{ result.title }}</span>
 
 {% if not non_html_title and result.title %}
             </h3>

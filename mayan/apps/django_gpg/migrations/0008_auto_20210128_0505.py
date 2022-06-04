@@ -7,7 +7,7 @@ from django.utils.timezone import make_aware
 from ..classes import GPGBackend
 
 
-def operation_save_keys(apps, schema_editor):
+def code_save_keys(apps, schema_editor):
     # Refill the creation and expiration fields with a date and time value.
     Key = apps.get_model(
         app_label='django_gpg', model_name='Key'
@@ -31,7 +31,7 @@ def operation_save_keys(apps, schema_editor):
         key.save()
 
 
-def operation_save_keys_reverse(apps, schema_editor):
+def code_save_keys_reverse(apps, schema_editor):
     # Remove the time component of the creation and expiration fields.
     Key = apps.get_model(
         app_label='django_gpg', model_name='Key'
@@ -67,12 +67,12 @@ class Migration(migrations.Migration):
     2021-01-28 Django version 2.2.16. Mayan EDMS version 4.0.
     """
     dependencies = [
-        ('django_gpg', '0007_auto_20210128_0504'),
+        ('django_gpg', '0007_auto_20210128_0504')
     ]
 
     operations = [
         migrations.RunPython(
-            code=operation_save_keys,
-            reverse_code=operation_save_keys_reverse
-        ),
+            code=code_save_keys,
+            reverse_code=code_save_keys_reverse
+        )
     ]

@@ -4,17 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
-# jmcainzos <jmcainzos@vodafone.es>, 2021
-# Lory977 <helga.carrero@gmail.com>, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Lory977 <helga.carrero@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -72,7 +70,7 @@ msgstr "Aplicación"
 
 #: classes.py:215 classes.py:840
 msgid "Environments"
-msgstr ""
+msgstr "Ambientes"
 
 #: classes.py:308
 msgid "Need to specify at least one: app_label or module."
@@ -246,17 +244,32 @@ msgstr "Documentación"
 
 #: environments.py:37
 msgid ""
+"Environment used to specify direct documentation depedencies to workaround "
+"unpinned or immutable depedency bugs in third party libraries. End users can"
+" ignore missing dependencies under this environment."
+msgstr ""
+"Entorno utilizado para especificar dependencias de documentación directa "
+"para solucionar errores de dependencia no fijados o inmutables en librerias "
+"de terceros. Los usuarios finales pueden ignorar las dependencias que faltan"
+" en este entorno."
+
+#: environments.py:41
+msgid "Documentation (override)"
+msgstr "Documentación (reemplazo)"
+
+#: environments.py:45
+msgid ""
 "Normal environment for end users. A missing dependency under this "
 "environment will result in issues and errors during normal use."
 msgstr ""
 "Ambiente normal para usuarios finales. Una dependencia que falta en este "
 "entorno dará lugar a problemas y errores durante el uso normal."
 
-#: environments.py:39
+#: environments.py:47
 msgid "Production"
 msgstr "Producción"
 
-#: environments.py:43
+#: environments.py:51
 msgid ""
 "Environment used running the test suit to verify the functionality of the "
 "code. Dependencies in this environment are not needed for normal production "
@@ -266,7 +279,7 @@ msgstr ""
 "funcionalidad del código. Las dependencias en este entorno no son necesarias"
 " para el uso normal de producción."
 
-#: environments.py:46
+#: environments.py:54
 msgid "Testing"
 msgstr "Pruebas"
 

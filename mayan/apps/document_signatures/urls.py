@@ -50,7 +50,7 @@ urlpatterns = [
     ),
     url(
         regex=r'^signatures/(?P<signature_id>\d+)/details/$',
-        name='document_file_signature_details',
+        name='document_file_signature_detail',
         view=DocumentFileSignatureDetailView.as_view()
     ),
     url(
@@ -100,5 +100,5 @@ api_urls = [
         regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/signatures/embedded/(?P<embedded_signature_id>[0-9]+)/$',
         name='embeddedsignature-detail',
         view=APIDocumentFileEmbeddedSignatureDetailView.as_view()
-    ),
+    )
 ]

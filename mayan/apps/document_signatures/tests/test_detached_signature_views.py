@@ -2,7 +2,7 @@ from mayan.apps.django_gpg.permissions import permission_key_sign
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import (
-    TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
+    TEST_FILE_PDF_PATH, TEST_FILE_SMALL_PATH
 )
 
 from ..events import (
@@ -30,11 +30,11 @@ class DetachedSignaturesViewTestCase(
     auto_upload_test_document = False
 
     def test_detached_signature_create_view_with_no_permission(self):
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
         self._create_test_key_private()
 
-        signature_count = self.test_document.file_latest.signatures.count()
+        signature_count = self._test_document.file_latest.signatures.count()
 
         self._clear_events()
 
@@ -42,7 +42,7 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_document.file_latest.signatures.count(),
+            self._test_document.file_latest.signatures.count(),
             signature_count
         )
 
@@ -50,14 +50,14 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_detached_signature_create_view_with_document_access(self):
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
         self._create_test_key_private()
 
-        signature_count = self.test_document.file_latest.signatures.count()
+        signature_count = self._test_document.file_latest.signatures.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_sign_detached
         )
 
@@ -67,7 +67,7 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            self.test_document.file_latest.signatures.count(),
+            self._test_document.file_latest.signatures.count(),
             signature_count
         )
 
@@ -75,14 +75,14 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_detached_signature_create_view_with_key_access(self):
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
         self._create_test_key_private()
 
-        signature_count = self.test_document.file_latest.signatures.count()
+        signature_count = self._test_document.file_latest.signatures.count()
 
         self.grant_access(
-            obj=self.test_key_private,
+            obj=self._test_key_private,
             permission=permission_key_sign
         )
 
@@ -92,7 +92,7 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_document.file_latest.signatures.count(),
+            self._test_document.file_latest.signatures.count(),
             signature_count
         )
 
@@ -100,18 +100,18 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_detached_signature_create_view_with_full_access(self):
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
         self._create_test_key_private()
 
-        signature_count = self.test_document.file_latest.signatures.count()
+        signature_count = self._test_document.file_latest.signatures.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_sign_detached
         )
         self.grant_access(
-            obj=self.test_key_private,
+            obj=self._test_key_private,
             permission=permission_key_sign
         )
 
@@ -121,7 +121,7 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_document.file_latest.signatures.count(),
+            self._test_document.file_latest.signatures.count(),
             signature_count + 1
         )
 
@@ -130,29 +130,29 @@ class DetachedSignaturesViewTestCase(
 
         self.assertEqual(
             events[0].action_object,
-            self.test_document_file.signatures.first().detachedsignature
+            self._test_document_file.signatures.first().detachedsignature
         )
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(events[0].target, self._test_document_file)
         self.assertEqual(events[0].verb, event_detached_signature_created.id)
 
     def test_trashed_document_detached_signature_create_view_with_full_access(self):
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
         self._create_test_key_private()
 
-        signature_count = self.test_document.file_latest.signatures.count()
+        signature_count = self._test_document.file_latest.signatures.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_sign_detached
         )
         self.grant_access(
-            obj=self.test_key_private,
+            obj=self._test_key_private,
             permission=permission_key_sign
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -160,7 +160,7 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_document.file_latest.signatures.count(),
+            self._test_document.file_latest.signatures.count(),
             signature_count
         )
 
@@ -168,7 +168,7 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_detached_signature_delete_view_no_permission(self):
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
 
         self._upload_test_detached_signature()
@@ -176,7 +176,7 @@ class DetachedSignaturesViewTestCase(
         signature_count = DetachedSignature.objects.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_signature_view
         )
 
@@ -190,7 +190,7 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_detached_signature_delete_view_with_access(self):
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
 
         self._upload_test_detached_signature()
@@ -198,11 +198,11 @@ class DetachedSignaturesViewTestCase(
         signature_count = DetachedSignature.objects.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_signature_delete
         )
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_signature_view
         )
 
@@ -218,12 +218,12 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self.test_document_file)
-        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(events[0].actor, self._test_document_file)
+        self.assertEqual(events[0].target, self._test_document_file)
         self.assertEqual(events[0].verb, event_detached_signature_deleted.id)
 
     def test_trashed_document_signature_delete_view_with_access(self):
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
 
         self._upload_test_detached_signature()
@@ -231,15 +231,15 @@ class DetachedSignaturesViewTestCase(
         signature_count = DetachedSignature.objects.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_signature_delete
         )
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_signature_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -253,7 +253,7 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_signature_download_view_no_permission(self):
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
 
         self._upload_test_detached_signature()
@@ -267,13 +267,13 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_signature_download_view_with_access(self):
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
 
         self._upload_test_detached_signature()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_signature_download
         )
 
@@ -283,7 +283,7 @@ class DetachedSignaturesViewTestCase(
 
         response = self._request_test_document_file_signature_detached_download_view()
 
-        with self.test_signature.signature_file as file_object:
+        with self._test_signature.signature_file as file_object:
             self.assert_download_response(
                 response=response, content=file_object.read(),
             )
@@ -292,17 +292,17 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_signature_download_view_with_access(self):
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
 
         self._upload_test_detached_signature()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_signature_download
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -313,7 +313,7 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_signature_upload_view_no_permission(self):
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_PDF_PATH
 
         signature_count = DetachedSignature.objects.count()
 
@@ -330,11 +330,11 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_signature_upload_view_with_access(self):
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_PDF_PATH
         self._upload_test_document()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_signature_upload
         )
 
@@ -354,22 +354,22 @@ class DetachedSignaturesViewTestCase(
 
         self.assertEqual(
             events[0].action_object,
-            self.test_document.file_latest.signatures.first().detachedsignature
+            self._test_document.file_latest.signatures.first().detachedsignature
         )
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(events[0].target, self._test_document_file)
         self.assertEqual(events[0].verb, event_detached_signature_uploaded.id)
 
     def test_trashed_document_signature_upload_view_with_access(self):
-        self.test_document_path = TEST_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_PDF_PATH
         self._upload_test_document()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_signature_upload
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         signature_count = DetachedSignature.objects.count()
 

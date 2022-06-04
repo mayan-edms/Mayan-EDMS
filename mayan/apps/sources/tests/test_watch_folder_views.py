@@ -38,7 +38,7 @@ class WatchFolderSourceViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_source)
+        self.assertEqual(events[0].target, self._test_source)
         self.assertEqual(events[0].verb, event_source_created.id)
 
     def test_watch_folder_source_test_view_no_permission(self):
@@ -60,7 +60,7 @@ class WatchFolderSourceViewTestCase(
         self._copy_test_watch_folder_document()
 
         self.grant_access(
-            obj=self.test_source, permission=permission_sources_edit
+            obj=self._test_source, permission=permission_sources_edit
         )
 
         document_count = Document.objects.count()
@@ -80,7 +80,7 @@ class WatchFolderSourceViewTestCase(
         test_document_version = test_document.version_active
         test_document_version_page = test_document_version.pages.first()
 
-        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].action_object, self._test_document_type)
         self.assertEqual(events[0].actor, test_document)
         self.assertEqual(events[0].target, test_document)
         self.assertEqual(events[0].verb, event_document_created.id)

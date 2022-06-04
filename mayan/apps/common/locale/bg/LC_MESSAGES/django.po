@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# Roberto Rosario, 2022
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2022
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:137 permissions.py:5 settings.py:15
+#: apps.py:132 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "Общи"
 
@@ -42,63 +42,63 @@ msgstr "Свързани с модела полета"
 msgid "Model reverse fields"
 msgstr "Обратни полета на модела"
 
-#: dependencies.py:168
+#: dependencies.py:169
 msgid "Used to allow offline translation of the code text strings."
 msgstr "Използва се за разрешаване на офлайн превод на текстови низове в код."
 
-#: dependencies.py:177
+#: dependencies.py:178
 msgid "Provides style checking."
 msgstr "Осигурява проверка на стила."
 
-#: dependencies.py:182
+#: dependencies.py:183
 msgid "Command line environment with autocompletion."
 msgstr "Команден ред с автоматично довършване."
 
-#: dependencies.py:187
+#: dependencies.py:188
 msgid "Checks proper formatting of the README file."
 msgstr "Проверява правилното форматиране на файла README."
 
-#: links.py:29
+#: links.py:30
 msgid "About this"
 msgstr "Относно това"
 
-#: links.py:32
+#: links.py:33
 msgid "Get the book"
 msgstr "Вземете книгата"
 
-#: links.py:37
+#: links.py:38
 msgid "Documentation"
 msgstr "Документация"
 
-#: links.py:40
+#: links.py:41
 msgid "Forum"
 msgstr "Форум"
 
-#: links.py:44 views.py:48
+#: links.py:45 views.py:48
 msgid "License"
 msgstr "Лиценз"
 
-#: links.py:49
+#: links.py:50
 msgid "Copy"
 msgstr "Копие"
 
-#: links.py:52
+#: links.py:54
 msgid "Setup"
 msgstr "Настройка"
 
-#: links.py:55
+#: links.py:57
 msgid "Source code"
 msgstr "Изходен код"
 
-#: links.py:59
+#: links.py:61
 msgid "Online store"
 msgstr "Онлайн магазин"
 
-#: links.py:63
+#: links.py:65
 msgid "Get support"
 msgstr "Поддръжка"
 
-#: links.py:67 queues.py:6 views.py:122
+#: links.py:69 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "Инструменти"
 
@@ -107,23 +107,15 @@ msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Тази функция е оттеглена и ще бъде премахната в бъдеща версия."
 
-#: literals.py:23
-msgid ""
-"Your database backend is set to use SQLite. SQLite should only be used for "
-"development and testing, not for production."
-msgstr ""
-"Вашата база данни е настроена да използва SQLite. SQLite трябва да се "
-"използва само за разработка и тестване, а не за производство."
-
-#: literals.py:32
+#: literals.py:28
 msgid "Days"
 msgstr "Дни"
 
-#: literals.py:33
+#: literals.py:29
 msgid "Hours"
 msgstr "Часове"
 
-#: literals.py:34
+#: literals.py:30
 msgid "Minutes"
 msgstr "Минути"
 
@@ -209,6 +201,12 @@ msgid ""
 " containing an application. These apps will be installed before the default "
 "apps. Example: ['app_1', 'app_2']"
 msgstr ""
+"Списък с низове, обозначаващи всички приложения, които са инсталирани извън "
+"тези, които обикновено се инсталират от Mayan EDMS. Всеки низ трябва да е "
+"пунктиран път на Python към: клас за конфигурация на приложение (за "
+"предпочитане) или пакет, съдържащ приложение. Тези приложения ще бъдат "
+"инсталирани преди приложенията по подразбиране. Пример: [&#39;app_1&#39;, "
+"&#39;app_2&#39;]"
 
 #: settings.py:69
 msgid ""
@@ -230,11 +228,7 @@ msgstr "Задава името на проекта."
 msgid "URL of the project's homepage."
 msgstr "URL на началната страница на проекта."
 
-#: templates/common/app/viewport.html:9
-msgid "Warning"
-msgstr "Предупреждение"
-
-#: templates/common/app/viewport.html:23
+#: templates/common/app/viewport.html:15
 msgid "Click here to fix this."
 msgstr "Кликнете тук, за да поправите това."
 

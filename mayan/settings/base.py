@@ -56,13 +56,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # 3rd party.
     'actstream',
-    'colorful',
     'corsheaders',
     'django_celery_beat',
     'formtools',
     'mathfilters',
     'mptt',
-    'pure_pagination',
     'rest_framework',
     'rest_framework.authtoken',
     'solo',
@@ -126,6 +124,7 @@ INSTALLED_APPS = (
     'mayan.apps.mirroring',
     'mayan.apps.ocr',
     'mayan.apps.redactions',
+    'mayan.apps.signature_captures',
     'mayan.apps.sources',
     'mayan.apps.tags',
     'mayan.apps.web_links',
@@ -148,7 +147,7 @@ MIDDLEWARE = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'stronghold.middleware.LoginRequiredMiddleware',
-    'mayan.apps.common.middleware.ajax_redirect.AjaxRedirect'
+    'mayan.apps.views.middleware.ajax_redirect.AjaxRedirect'
 )
 
 ROOT_URLCONF = 'mayan.urls'
@@ -320,10 +319,6 @@ SWAGGER_SETTINGS = {
     'DEFAULT_MODEL_DEPTH': 1,
     'DOC_EXPANSION': 'None'
 }
-
-# ----- AJAX REDIRECT -----
-
-AJAX_REDIRECT_CODE = 278
 
 # ------ End -----
 

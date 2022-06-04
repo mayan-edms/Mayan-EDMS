@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgstr "Fecha y hora"
 
 #: apps.py:116 models.py:56
 msgid "Key ID"
-msgstr "Identificador de llave"
+msgstr "Identificación de llave"
 
 #: apps.py:120 forms.py:72
 msgid "None"
@@ -38,7 +38,7 @@ msgstr "Ninguno"
 
 #: apps.py:121 forms.py:60 models.py:61
 msgid "Signature ID"
-msgstr "ID de firma"
+msgstr "Identificación de firma"
 
 #: apps.py:126
 msgid "Type"
@@ -50,11 +50,11 @@ msgstr "Firma separada creada"
 
 #: events.py:13
 msgid "Detached signature deleted"
-msgstr "Firma separada creada"
+msgstr "Firma separada eliminada"
 
 #: events.py:16
 msgid "Detached signature uploaded"
-msgstr "Se cargó la firma separada"
+msgstr "Firma separada cargada"
 
 #: events.py:20
 msgid "Embedded signature created"
@@ -64,7 +64,7 @@ msgstr "Firma integrada creada"
 msgid "Key"
 msgstr "Llave"
 
-#: forms.py:22 serializers.py:66 workflow_actions.py:30
+#: forms.py:22 serializers.py:67 workflow_actions.py:30
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document file."
@@ -74,7 +74,7 @@ msgstr ""
 
 #: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
-msgstr "Contraseña"
+msgstr "Frase de contraseña"
 
 #: forms.py:33
 msgid "Private key that will be used to sign this document file."
@@ -82,15 +82,15 @@ msgstr "Llave privada que se utilizará para firmar este archivo de documento."
 
 #: forms.py:44
 msgid "Signature is embedded?"
-msgstr "¿Firma integrada?"
+msgstr "¿La firma es integrada?"
 
 #: forms.py:46
 msgid "Signature date"
-msgstr "Fecha de la firma"
+msgstr "Fecha de firma"
 
 #: forms.py:49
 msgid "Signature key ID"
-msgstr "ID de llave de firma"
+msgstr "Identificación de llave de firma"
 
 #: forms.py:51
 msgid "Signature key present?"
@@ -98,7 +98,7 @@ msgstr "¿Llave de la firma esta presente?"
 
 #: forms.py:62
 msgid "Key fingerprint"
-msgstr "Huella de la llave"
+msgstr "Huella digital de la llave"
 
 #: forms.py:66
 msgid "Key creation date"
@@ -106,7 +106,7 @@ msgstr "Fecha de creación de la llave"
 
 #: forms.py:71
 msgid "Key expiration date"
-msgstr "Fecha de expiración de la llave"
+msgstr "Fecha de caducidad de la llave"
 
 #: forms.py:76
 msgid "Key length"
@@ -118,7 +118,7 @@ msgstr "Algoritmo de la llave"
 
 #: forms.py:84
 msgid "Key user ID"
-msgstr "ID de usuario de la llave"
+msgstr "Identificación de usuario de la llave"
 
 #: forms.py:88
 msgid "Key type"
@@ -130,11 +130,11 @@ msgstr "Actualizar todas las firmas"
 
 #: links.py:48
 msgid "Verify all documents"
-msgstr "Verificar todos los documents"
+msgstr "Verificar todos los documentos"
 
 #: links.py:58
 msgid "Sign detached"
-msgstr "Firma aparte"
+msgstr "Firmar por separado"
 
 #: links.py:65
 msgid "Delete"
@@ -146,11 +146,11 @@ msgstr "Descargar"
 
 #: links.py:79
 msgid "Upload signature"
-msgstr "Subir firma"
+msgstr "Cargar firma"
 
 #: links.py:89
 msgid "Sign embedded"
-msgstr "Firma integrada"
+msgstr "Firmar de forma integrada"
 
 #: links.py:99
 msgid "Details"
@@ -160,13 +160,17 @@ msgstr "Detalles"
 msgid "Signatures"
 msgstr "Firmas"
 
+#: managers.py:95
+msgid "signed"
+msgstr "firmado"
+
 #: models.py:46
 msgid "Document file"
 msgstr "Archivo de documento"
 
 #: models.py:51
 msgid "Date and time signed"
-msgstr "Fecha y hora firmada"
+msgstr "Fecha y hora firmado"
 
 #: models.py:55
 msgid "ID of the key that will be used to sign the document."
@@ -174,7 +178,7 @@ msgstr "Identificación de la llave que se utilizará para firmar el documento."
 
 #: models.py:65
 msgid "Public key fingerprint"
-msgstr "Huella de llave publica"
+msgstr "Huella digital de llave publica"
 
 #: models.py:72
 msgid "Document file signature"
@@ -190,7 +194,7 @@ msgstr "Aparte"
 
 #: models.py:94
 msgid "Embedded"
-msgstr "Integrado"
+msgstr "Integrada"
 
 #: models.py:159
 msgid "Signature file previously generated."
@@ -222,7 +226,7 @@ msgstr "Firmas integradas de archivos de documentos"
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
-msgstr "Firmar documentos con firma aparte"
+msgstr "Firmar documentos con firma separada"
 
 #: permissions.py:14
 msgid "Sign documents with embedded signatures"
@@ -230,23 +234,23 @@ msgstr "Firmar documentos con firma integrada"
 
 #: permissions.py:18
 msgid "Delete detached signatures"
-msgstr "Borrar firmas aparte"
+msgstr "Borrar firmas separadas"
 
 #: permissions.py:22
 msgid "Download detached document signatures"
-msgstr "Descargar firma aparte de documentos"
+msgstr "Descargar firma separada de documentos"
 
 #: permissions.py:26
 msgid "Upload detached document signatures"
-msgstr "Subir firmas aparte de documentos"
+msgstr "Cargar firmas separadas de documentos"
 
 #: permissions.py:30
 msgid "Verify document signatures"
 msgstr "Verificar firmas de documentos"
 
 #: permissions.py:34
-msgid "View details of document signatures"
-msgstr "Ver detalles de firma de documentos"
+msgid "View document signatures"
+msgstr "Ver firmas de documentos"
 
 #: queues.py:13
 msgid "Verify key signatures"
@@ -262,15 +266,17 @@ msgstr "Verificar archivo de documento"
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
-msgstr "Verificar la firma integrada que falta"
+msgstr "Verificar la firma integrada faltante"
 
 #: queues.py:30
 msgid "Refresh existing signature information"
 msgstr "Actualizar la información de la firma existente"
 
 #: serializers.py:60
-msgid "Primary key of the tag to add to the document."
-msgstr "Llave principal de la etiqueta para agregar al documento."
+msgid "Primary key of the secret key used to sign the document file."
+msgstr ""
+"Identificación de la llave secreta utilizada para firmar el archivo del "
+"documento."
 
 #: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."

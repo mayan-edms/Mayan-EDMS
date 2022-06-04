@@ -1,0 +1,114 @@
+version: '3.9'
+
+x-mayan-container:
+  &mayan-container
+  environment:
+    MAYAN_CELERY_BROKER_URL: amqp://${MAYAN_RABBITMQ_USER:-mayan}:${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}@rabbitmq:5672/${MAYAN_RABBITMQ_VHOST:-mayan}
+    MAYAN_CELERY_RESULT_BACKEND: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/1
+    MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'${MAYAN_DATABASE_NAME:-mayan}','PASSWORD':'${MAYAN_DATABASE_PASSWORD:-mayandbpass}','USER':'${MAYAN_DATABASE_USER:-mayan}','HOST':'${MAYAN_DATABASE_HOST:-postgresql}'}}"
+    MAYAN_LOCK_MANAGER_BACKEND: mayan.apps.lock_manager.backends.redis_lock.RedisLock
+    MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: "{'redis_url':'redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/2'}"
+  image: ${MAYAN_DOCKER_IMAGE_NAME:-mayanedms/mayanedms}:${MAYAN_DOCKER_IMAGE_TAG:-s4.2}
+  networks:
+    - mayan
+  restart: unless-stopped
+  volumes:
+    - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
+    # Optional volumes to access external data like staging or watch folders
+    # - /opt/staging_folder:/staging_folder
+    # - /opt/watch_folder:/watch_folder
+
+networks:
+  mayan:
+    driver: bridge
+    # Change to true when using Traefik for increased security.
+    internal: false
+  traefik: {}
+
+services:
+  app:
+    <<: *mayan-container
+    # Disable ports if using Traefik.
+    ports:
+      - "80:8000"
+
+  postgresql:
+    command:
+      - "postgres"
+      - "-c"
+      - "checkpoint_completion_target=0.6"
+      - "-c"
+      - "default_statistics_target=200"
+      - "-c"
+      - "maintenance_work_mem=128MB"
+      - "-c"
+      - "max_connections=150"
+      - "-c"
+      - "shared_buffers=256MB"
+      - "-c"
+      - "work_mem=8MB"
+    environment:
+      POSTGRES_DB: ${MAYAN_DATABASE_NAME:-mayan}
+      POSTGRES_PASSWORD: ${MAYAN_DATABASE_PASSWORD:-mayandbpass}
+      POSTGRES_USER: ${MAYAN_DATABASE_USER:-mayan}
+    image: postgres:${MAYAN_DOCKER_POSTGRES_TAG:-12.9-alpine}
+    networks:
+      - mayan
+    # Enable to allow external access to the database.
+    # ports:
+    #  - "5432:5432"
+    restart: unless-stopped
+    volumes:
+      - ${MAYAN_POSTGRES_VOLUME:-postgres}:/var/lib/postgresql/data
+
+  redis:
+    command:
+      - redis-server
+      - --appendonly
+      - "no"
+      - --databases
+      - "3"
+      - --maxmemory
+      - "100mb"
+      - --maxclients
+      - "500"
+      - --maxmemory-policy
+      - "allkeys-lru"
+      - --save
+      - ""
+      - --tcp-backlog
+      - "256"
+      - --requirepass
+      - "${MAYAN_REDIS_PASSWORD:-mayanredispassword}"
+    image: redis:${MAYAN_DOCKER_REDIS_TAG:-6.2-alpine}
+    networks:
+      - mayan
+    restart: unless-stopped
+    volumes:
+      - ${MAYAN_REDIS_VOLUME:-redis}:/data
+
+  rabbitmq:
+    image: rabbitmq:${MAYAN_DOCKER_RABBITMQ_TAG:-3.9-management-alpine}
+    environment:
+      RABBITMQ_DEFAULT_USER: ${MAYAN_RABBITMQ_USER:-mayan}
+      RABBITMQ_DEFAULT_PASS: ${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}
+      RABBITMQ_DEFAULT_VHOST: ${MAYAN_RABBITMQ_VHOST:-mayan}
+    labels:
+      - "traefik.enable=${MAYAN_TRAEFIK_RABBITMQ_ENABLE:-false}"
+      - "traefik.http.routers.mayan_frontend_https.tls=true"
+      - "traefik.http.routers.mayan_frontend.rule=Host(`${MAYAN_TRAEFIK_EXTERNAL_DOMAIN}`)"
+      - "traefik.http.routers.mayan_frontend.entrypoints=:15672"
+    networks:
+      - mayan
+    # Enable to allow access to the administration interface.
+    # ports:
+    #   - "15672:15672"
+    restart: unless-stopped
+    volumes:
+      - ${MAYAN_RABBITMQ_VOLUME:-rabbitmq}:/var/lib/rabbitmq
+
+volumes:
+  app:
+  postgres:
+  rabbitmq:
+  redis:

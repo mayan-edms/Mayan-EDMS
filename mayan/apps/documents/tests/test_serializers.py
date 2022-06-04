@@ -9,9 +9,9 @@ from mayan.apps.documents.serializers.document_serializers import (
 class SerializerTestMixin:
     def setUp(self):
         super().setUp()
-        self.test_request = HttpRequest()
-        self.test_request.META['SERVER_NAME'] = '127.0.0.1'
-        self.test_request.META['SERVER_PORT'] = '80'
+        self._test_request = HttpRequest()
+        self._test_request.META['SERVER_NAME'] = '127.0.0.1'
+        self._test_request.META['SERVER_PORT'] = '80'
 
 
 class DocumentFileSerializerTestCase(
@@ -19,16 +19,16 @@ class DocumentFileSerializerTestCase(
 ):
     def test_document_url(self):
         serializer = DocumentFileSerializer(
-            context={'request': self.test_request},
-            instance=self.test_document_file
+            context={'request': self._test_request},
+            instance=self._test_document_file
         )
 
         self.assertFalse(
-            self.test_document.pk == self.test_document_file.pk,
+            self._test_document.pk == self._test_document_file.pk,
             msg='Rerun test to ensure document and document file do not have the same ID.'
         )
         self.assertTrue(
-            str(self.test_document.pk) in serializer.data['document_url']
+            str(self._test_document.pk) in serializer.data['document_url']
         )
 
 
@@ -37,14 +37,14 @@ class DocumentVersionSerializerTestCase(
 ):
     def test_document_url(self):
         serializer = DocumentVersionSerializer(
-            context={'request': self.test_request},
-            instance=self.test_document_version
+            context={'request': self._test_request},
+            instance=self._test_document_version
         )
 
         self.assertFalse(
-            self.test_document.pk == self.test_document_version.pk,
+            self._test_document.pk == self._test_document_version.pk,
             msg='Rerun test to ensure document and document version do not have the same ID.'
         )
         self.assertTrue(
-            str(self.test_document.pk) in serializer.data['document_url']
+            str(self._test_document.pk) in serializer.data['document_url']
         )

@@ -43,7 +43,7 @@ class AssetViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_asset)
+        self.assertEqual(events[0].target, self._test_asset)
         self.assertEqual(events[0].verb, event_asset_created.id)
 
     def test_asset_delete_view_no_permission(self):
@@ -65,7 +65,7 @@ class AssetViewTestCase(
         self._create_test_asset()
 
         self.grant_access(
-            obj=self.test_asset, permission=permission_asset_delete
+            obj=self._test_asset, permission=permission_asset_delete
         )
 
         asset_count = Asset.objects.count()
@@ -87,7 +87,7 @@ class AssetViewTestCase(
 
         response = self._request_test_asset_detail_view()
         self.assertNotContains(
-            response=response, text=self.test_asset.label, status_code=404
+            response=response, text=self._test_asset.label, status_code=404
         )
 
         events = self._get_test_events()
@@ -97,14 +97,14 @@ class AssetViewTestCase(
         self._create_test_asset()
 
         self.grant_access(
-            obj=self.test_asset, permission=permission_asset_view
+            obj=self._test_asset, permission=permission_asset_view
         )
 
         self._clear_events()
 
         response = self._request_test_asset_detail_view()
         self.assertContains(
-            response=response, text=self.test_asset.label, status_code=200
+            response=response, text=self._test_asset.label, status_code=200
         )
 
         events = self._get_test_events()
@@ -113,15 +113,15 @@ class AssetViewTestCase(
     def test_asset_edit_view_no_permission(self):
         self._create_test_asset()
 
-        asset_label = self.test_asset.label
+        asset_label = self._test_asset.label
 
         self._clear_events()
 
         response = self._request_test_asset_edit_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_asset.refresh_from_db()
-        self.assertEqual(self.test_asset.label, asset_label)
+        self._test_asset.refresh_from_db()
+        self.assertEqual(self._test_asset.label, asset_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -130,25 +130,25 @@ class AssetViewTestCase(
         self._create_test_asset()
 
         self.grant_access(
-            obj=self.test_asset, permission=permission_asset_edit
+            obj=self._test_asset, permission=permission_asset_edit
         )
 
-        asset_label = self.test_asset.label
+        asset_label = self._test_asset.label
 
         self._clear_events()
 
         response = self._request_test_asset_edit_view()
         self.assertEqual(response.status_code, 302)
 
-        self.test_asset.refresh_from_db()
-        self.assertNotEqual(self.test_asset.label, asset_label)
+        self._test_asset.refresh_from_db()
+        self.assertNotEqual(self._test_asset.label, asset_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_asset)
+        self.assertEqual(events[0].target, self._test_asset)
         self.assertEqual(events[0].verb, event_asset_edited.id)
 
     def test_asset_list_view_with_no_permission(self):
@@ -158,7 +158,7 @@ class AssetViewTestCase(
 
         response = self._request_test_asset_list_view()
         self.assertNotContains(
-            response=response, text=self.test_asset.label, status_code=200
+            response=response, text=self._test_asset.label, status_code=200
         )
 
         events = self._get_test_events()
@@ -167,13 +167,15 @@ class AssetViewTestCase(
     def test_asset_list_view_with_access(self):
         self._create_test_asset()
 
-        self.grant_access(obj=self.test_asset, permission=permission_asset_view)
+        self.grant_access(
+            obj=self._test_asset, permission=permission_asset_view
+        )
 
         self._clear_events()
 
         response = self._request_test_asset_list_view()
         self.assertContains(
-            response=response, text=self.test_asset.label, status_code=200
+            response=response, text=self._test_asset.label, status_code=200
         )
 
         events = self._get_test_events()

@@ -30,8 +30,8 @@ class DocumentMetadataActionTestCase(
         super().setUp()
         self._create_test_document_stub()
         self._create_test_metadata_type()
-        self.test_document_type.metadata.create(
-            metadata_type=self.test_metadata_type
+        self._test_document_type.metadata.create(
+            metadata_type=self._test_metadata_type
         )
 
     def test_document_metadata_add_action(self):
@@ -39,15 +39,15 @@ class DocumentMetadataActionTestCase(
             form_data={'metadata_types': MetadataType.objects.all()}
         )
 
-        metadata_count = self.test_document.metadata.count()
-        action.execute(context={'document': self.test_document})
+        metadata_count = self._test_document.metadata.count()
+        action.execute(context={'document': self._test_document})
 
         self.assertEqual(
-            self.test_document.metadata.count(), metadata_count + 1
+            self._test_document.metadata.count(), metadata_count + 1
         )
         self.assertTrue(
-            self.test_document.metadata.filter(
-                metadata_type=self.test_metadata_type
+            self._test_document.metadata.filter(
+                metadata_type=self._test_metadata_type
             ).exists()
         )
 
@@ -56,16 +56,16 @@ class DocumentMetadataActionTestCase(
 
         action = DocumentMetadataEditAction(
             form_data={
-                'metadata_type': self.test_metadata_type.pk,
+                'metadata_type': self._test_metadata_type.pk,
                 'value': TEST_METADATA_VALUE
             }
         )
 
-        metadata_value = self.test_document.metadata.first().value
-        action.execute(context={'document': self.test_document})
+        metadata_value = self._test_document.metadata.first().value
+        action.execute(context={'document': self._test_document})
 
         self.assertNotEqual(
-            metadata_value, self.test_document.metadata.first().value
+            metadata_value, self._test_document.metadata.first().value
         )
 
     def test_document_metadata_remove_action(self):
@@ -75,15 +75,15 @@ class DocumentMetadataActionTestCase(
             form_data={'metadata_types': MetadataType.objects.all()}
         )
 
-        metadata_count = self.test_document.metadata.count()
-        action.execute(context={'document': self.test_document})
+        metadata_count = self._test_document.metadata.count()
+        action.execute(context={'document': self._test_document})
 
         self.assertEqual(
-            self.test_document.metadata.count(), metadata_count - 1
+            self._test_document.metadata.count(), metadata_count - 1
         )
         self.assertFalse(
-            self.test_document.metadata.filter(
-                metadata_type=self.test_metadata_type
+            self._test_document.metadata.filter(
+                metadata_type=self._test_metadata_type
             ).exists()
         )
 
@@ -101,11 +101,11 @@ class DocumentMetadataActionViewTestCase(
         self._create_test_workflow_template()
         self._create_test_workflow_template_state()
         self._create_test_metadata_type()
-        self.test_document_type.metadata.create(
-            metadata_type=self.test_metadata_type
+        self._test_document_type.metadata.create(
+            metadata_type=self._test_metadata_type
         )
         self._test_workflow_template.document_types.add(
-            self.test_document_type
+            self._test_document_type
         )
 
     def test_document_metadata_add_action_create_view(self):
@@ -114,13 +114,13 @@ class DocumentMetadataActionViewTestCase(
             permission=permission_workflow_template_edit
         )
         self.grant_access(
-            obj=self.test_metadata_type,
+            obj=self._test_metadata_type,
             permission=permission_document_metadata_add
         )
 
         response = self._request_test_workflow_template_state_action_create_post_view(
             class_path=DOCUMENT_METADATA_ADD_ACTION_CLASS_PATH, extra_data={
-                'metadata_types': self.test_metadata_type.pk
+                'metadata_types': self._test_metadata_type.pk
             }
         )
         self.assertEqual(response.status_code, 302)
@@ -133,13 +133,13 @@ class DocumentMetadataActionViewTestCase(
             permission=permission_workflow_template_edit
         )
         self.grant_access(
-            obj=self.test_metadata_type,
+            obj=self._test_metadata_type,
             permission=permission_document_metadata_edit
         )
 
         response = self._request_test_workflow_template_state_action_create_post_view(
             class_path=DOCUMENT_METADATA_EDIT_ACTION_CLASS_PATH, extra_data={
-                'metadata_type': self.test_metadata_type.pk,
+                'metadata_type': self._test_metadata_type.pk,
                 'value': TEST_METADATA_VALUE
             }
         )
@@ -153,13 +153,13 @@ class DocumentMetadataActionViewTestCase(
             permission=permission_workflow_template_edit
         )
         self.grant_access(
-            obj=self.test_metadata_type,
+            obj=self._test_metadata_type,
             permission=permission_document_metadata_remove
         )
 
         response = self._request_test_workflow_template_state_action_create_post_view(
             class_path=DOCUMENT_METADATA_REMOVE_ACTION_CLASS_PATH, extra_data={
-                'metadata_types': self.test_metadata_type.pk
+                'metadata_types': self._test_metadata_type.pk
             }
         )
         self.assertEqual(response.status_code, 302)

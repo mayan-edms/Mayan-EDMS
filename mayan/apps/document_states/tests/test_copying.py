@@ -20,4 +20,4 @@ class WorkflowTemplateCopyTestCase(
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
         self._create_test_workflow_template_state_action()
-        self.test_object = self._test_workflow_template
+        self._test_object = self._test_workflow_template

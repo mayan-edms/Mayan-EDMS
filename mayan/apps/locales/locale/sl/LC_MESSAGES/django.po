@@ -3,12 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-12 03:39+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,42 +20,52 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: apps.py:27
+#: apps.py:28 events.py:5
 msgid "Locales"
 msgstr ""
 
-#: links.py:13
-msgid "Locale profile"
+#: events.py:8
+msgid "User locale profile edited"
 msgstr ""
 
 #: links.py:18
+msgid "Locale profile"
+msgstr ""
+
+#: links.py:25
 msgid "Edit locale profile"
 msgstr ""
 
-#: models.py:18
+#: models.py:21
 msgid "User"
 msgstr ""
 
-#: models.py:22
+#: models.py:25
 msgid "Timezone"
 msgstr ""
 
-#: models.py:25
+#: models.py:28
 msgid "Language"
 msgstr ""
 
-#: models.py:31
+#: models.py:34
 msgid "User locale profile"
 msgstr ""
 
-#: models.py:32
+#: models.py:35
 msgid "User locale profiles"
 msgstr ""
 
-#: views.py:24
-msgid "Current user locale profile details"
+#: models.py:39
+msgid "None"
+msgstr "Nobenega"
+
+#: views.py:36
+#, python-format
+msgid "Locale profile for user: %s"
 msgstr ""
 
-#: views.py:30
-msgid "Edit current user locale profile details"
+#: views.py:82
+#, python-format
+msgid "Edit locale profile for user: %s"
 msgstr ""

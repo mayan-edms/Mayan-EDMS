@@ -13,8 +13,8 @@ from .classes import KeyStub
 from .events import event_key_downloaded
 from .links import (
     link_key_delete, link_key_detail, link_key_download, link_key_query,
-    link_key_receive, link_key_setup, link_key_upload, link_private_keys,
-    link_public_keys
+    link_key_receive, link_key_setup, link_key_upload, link_private_key_list,
+    link_public_key_list
 )
 from .permissions import (
     permission_key_delete, permission_key_download, permission_key_sign,
@@ -88,7 +88,7 @@ class DjangoGPGApp(MayanAppConfig):
             sources=(Key,)
         )
         menu_related.bind_links(
-            links=(link_private_keys, link_public_keys),
+            links=(link_private_key_list, link_public_key_list),
             sources=(
                 'django_gpg:key_public_list', 'django_gpg:key_private_list',
                 'django_gpg:key_query', 'django_gpg:key_query_results',

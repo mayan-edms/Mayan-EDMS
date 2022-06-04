@@ -4,16 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# bo feng <87289884@qq.com>, 2021
-# Roberto Rosario, 2021
+# Ford Guo <agile.guo@gmail.com>, 2022
+# Roberto Rosario, 2022
+# bo feng <87289884@qq.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-12 03:39+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: bo feng <87289884@qq.com>, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,23 +46,23 @@ msgstr "消息已编辑"
 msgid "Body"
 msgstr "正文"
 
-#: links.py:37 views.py:33
+#: links.py:49 views.py:33
 msgid "Create message"
 msgstr "创建消息"
 
-#: links.py:40 links.py:46
+#: links.py:52 links.py:58
 msgid "Delete"
 msgstr "删除"
 
-#: links.py:54 links.py:65
+#: links.py:67 links.py:78
 msgid "Mark as read"
 msgstr "标记为读"
 
-#: links.py:60 links.py:69
+#: links.py:73 links.py:82
 msgid "Mark as unread"
 msgstr ""
 
-#: links.py:73
+#: links.py:86
 msgid "Mark all as read"
 msgstr "全部标记为读"
 
@@ -125,7 +126,7 @@ msgstr "编辑消息"
 msgid "View messages"
 msgstr "查看消息"
 
-#: serializers.py:22
+#: serializers.py:19
 msgid "Primary key of the recipient user of this message."
 msgstr ""
 

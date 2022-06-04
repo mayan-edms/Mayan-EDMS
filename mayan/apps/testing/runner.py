@@ -45,7 +45,7 @@ class MayanTestRunner(DiscoverRunner):
         # To include then pass --tag=exclude to the test runner invocation
         if not self.no_exclude:
             if EXCLUDE_TEST_TAG not in self.tags:
-                self.exclude_tags |= set((EXCLUDE_TEST_TAG,))
+                self.exclude_tags |= {EXCLUDE_TEST_TAG}
 
     def build_suite(self, *args, **kwargs):
         # Apps that report they have tests

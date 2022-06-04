@@ -144,14 +144,14 @@ class ContentTypeCheckTestCaseMixin:
 
 class ContentTypeTestCaseMixin:
     def _inject_test_object_content_type(self):
-        self.test_object_content_type = ContentType.objects.get_for_model(
-            model=self.test_object
+        self._test_object_content_type = ContentType.objects.get_for_model(
+            model=self._test_object
         )
 
-        self.test_object_view_kwargs = {
-            'app_label': self.test_object_content_type.app_label,
-            'model_name': self.test_object_content_type.model,
-            'object_id': self.test_object.pk
+        self._test_object_view_kwargs = {
+            'app_label': self._test_object_content_type.app_label,
+            'model_name': self._test_object_content_type.model,
+            'object_id': self._test_object.pk
         }
 
 
@@ -169,7 +169,7 @@ class DescriptorLeakCheckTestCaseMixin:
 
     def _get_process_descriptors(self):
         process = psutil.Process()._proc
-        return os.listdir("%s/%s/fd" % (process._procfs_path, process.pid))
+        return os.listdir("{}/{}/fd".format(process._procfs_path, process.pid))
 
     def setUp(self):
         super().setUp()
@@ -538,7 +538,7 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
     def setUp(self):
         self._test_models = []
         self._test_models_extra = set()
-        self.test_objects = []
+        self._test_objects = []
         self._test_migrations = []
 
         super().setUp()
@@ -553,7 +553,7 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
 
                 ModelPermission.register(
                     model=self.TestModel, permissions=(
-                        self.test_permission,
+                        self._test_permission,
                     )
                 )
 
@@ -619,7 +619,7 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
         self._test_models_extra.update(
             set(
                 apps.app_configs[self.app_config.label].models.values()
-            ) - model_list_previous - set((model,))
+            ) - model_list_previous - {model}
         )
 
         self._test_models.append(model)
@@ -635,10 +635,10 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
         if not getattr(self, 'TestModel', None):
             self.TestModel = self._create_test_model()
 
-        self.test_object = self.TestModel.objects.create(**instance_kwargs)
+        self._test_object = self.TestModel.objects.create(**instance_kwargs)
         self._inject_test_object_content_type()
 
-        self.test_objects.append(self.test_object)
+        self._test_objects.append(self._test_object)
 
     def _get_test_model_meta(self):
         self._test_db_table = '{}_{}'.format(

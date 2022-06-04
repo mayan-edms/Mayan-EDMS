@@ -1,0 +1,16 @@
+#search-filter-button-clear {
+    bottom: 0;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 14px;
+    height: 14px;
+    margin: auto;
+    position: absolute;
+    right: 8px;
+    top: 0;
+    z-index: 3;
+}
+
+#search-filter-input-terms {
+    height: 36px;
+}

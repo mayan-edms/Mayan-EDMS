@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Māris Teivāns <maris.teivans@gmail.com>, 2021
+# Māris Teivāns <maris.teivans@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2022\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,13 +20,17 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:19
+#: apps.py:25
 msgid "Dynamic search"
 msgstr ""
 
-#: classes.py:330
+#: classes.py:562
 #, python-format
 msgid "Unknown search model `%s`."
+msgstr ""
+
+#: classes.py:619
+msgid "ID"
 msgstr ""
 
 #: forms.py:9
@@ -43,12 +47,12 @@ msgstr ""
 msgid "Search terms"
 msgstr ""
 
-#: links.py:13 permissions.py:5 queues.py:8 settings.py:11
-#: templates/dynamic_search/search_box.html:45 views.py:126 views.py:139
+#: links.py:13 permissions.py:5 queues.py:7 settings.py:11
+#: templates/dynamic_search/search_box.html:45 views.py:122 views.py:135
 msgid "Search"
 msgstr "Meklēt"
 
-#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:156
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:154
 msgid "Advanced search"
 msgstr ""
 
@@ -56,7 +60,7 @@ msgstr ""
 msgid "Search again"
 msgstr ""
 
-#: links.py:25 views.py:99
+#: links.py:25 views.py:100
 msgid "Reindex search backend"
 msgstr ""
 
@@ -64,16 +68,29 @@ msgstr ""
 msgid "Execute search tools"
 msgstr ""
 
-#: queues.py:13
+#: queues.py:10
+msgid "Search slow"
+msgstr ""
+
+#: queues.py:15
 msgid "Remove a model instance from the search engine."
 msgstr ""
 
-#: queues.py:18
+#: queues.py:20
 msgid "Index a model instance to the search engine."
 msgstr ""
 
-#: queues.py:24
+#: queues.py:25
 msgid "Index all instances of a search model to the search engine."
+msgstr ""
+
+#: queues.py:31
+msgid ""
+"Index all related instances of a search model after a many to many event."
+msgstr ""
+
+#: queues.py:39
+msgid "Reset the search backend indices and index all instances again."
 msgstr ""
 
 #: settings.py:16
@@ -85,11 +102,15 @@ msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr ""
 
-#: settings.py:33
+#: settings.py:34
+msgid "Amount of objects to process when performing bulk indexing."
+msgstr ""
+
+#: settings.py:40
 msgid "Sets the default state of the \"Match all\" checkbox."
 msgstr ""
 
-#: settings.py:37
+#: settings.py:44
 msgid "Maximum number search results to fetch and display."
 msgstr ""
 
@@ -97,34 +118,34 @@ msgstr ""
 msgid "Advanced"
 msgstr "Papildus"
 
-#: views.py:40
+#: views.py:41
 msgid "Try again using different terms. "
 msgstr ""
 
-#: views.py:42
+#: views.py:43
 msgid "No search results"
 msgstr ""
 
-#: views.py:44
+#: views.py:45
 #, python-format
 msgid "Search results for: %s"
 msgstr ""
 
-#: views.py:95
+#: views.py:96
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
 msgstr ""
 
-#: views.py:101
+#: views.py:102
 msgid "This tool erases and populates the search backend's internal index."
 msgstr ""
 
-#: views.py:119
+#: views.py:115
 msgid "Search backend reindexing queued."
 msgstr ""
 
-#: views.py:141
+#: views.py:137
 #, python-format
 msgid "Search for: %s"
 msgstr ""

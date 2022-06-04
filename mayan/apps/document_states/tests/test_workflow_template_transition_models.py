@@ -5,8 +5,7 @@ from .mixins.workflow_template_transition_mixins import WorkflowTransitionFieldT
 
 
 class WorkflowTemplateTransitionFieldModelTestCase(
-    WorkflowTemplateTestMixin,
-    WorkflowTransitionFieldTestMixin,
+    WorkflowTemplateTestMixin, WorkflowTransitionFieldTestMixin,
     GenericDocumentTestCase
 ):
     auto_upload_test_document = False
@@ -26,11 +25,11 @@ class WorkflowTemplateTransitionFieldModelTestCase(
         transition field. The retrieving the context should work even with an
         obsolete field reference.
         """
-        self._transition_test_workflow_instance(
+        self._do_transition_test_workflow_instance(
             extra_data={
                 self._test_workflow_template_transition_field.name: 'test'
             }
         )
-        self.test_document.workflows.first().log_entries.first().get_extra_data()
+        self._test_document.workflows.first().log_entries.first().get_extra_data()
         self._test_workflow_template_transition_field.delete()
-        self.test_document.workflows.first().log_entries.first().get_extra_data()
+        self._test_document.workflows.first().log_entries.first().get_extra_data()

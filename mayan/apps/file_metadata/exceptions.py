@@ -1,4 +1,3 @@
-
 class FileMetadataError(Exception):
     """Base file metadata driver exception."""
 

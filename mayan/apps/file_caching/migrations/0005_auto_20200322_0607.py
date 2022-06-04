@@ -19,7 +19,7 @@ class DummyStorage(Storage):
         """
 
 
-def operation_purge_and_delete_caches(apps, schema_editor):
+def code_purge_and_delete_caches(apps, schema_editor):
     Cache = apps.get_model(
         app_label='file_caching', model_name='Cache'
     )
@@ -91,7 +91,7 @@ def operation_purge_and_delete_caches(apps, schema_editor):
         )
 
 
-def operation_update_storage_paths(apps, schema_editor):
+def code_update_storage_paths(apps, schema_editor):
     Cache = apps.get_model(
         app_label='file_caching', model_name='Cache'
     )
@@ -103,7 +103,7 @@ def operation_update_storage_paths(apps, schema_editor):
         cache.save()
 
 
-def operation_update_storage_paths_reverse(apps, schema_editor):
+def code_update_storage_paths_reverse(apps, schema_editor):
     storage_path_update_map_inverted = {
         value: key for key, value in STORAGE_PATH_UPDATE_MAP.items()
     }
@@ -121,15 +121,15 @@ def operation_update_storage_paths_reverse(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('file_caching', '0004_auto_20200309_0922'),
+        ('file_caching', '0004_auto_20200309_0922')
     ]
     operations = [
         migrations.RunPython(
-            code=operation_update_storage_paths,
-            reverse_code=operation_update_storage_paths_reverse
+            code=code_update_storage_paths,
+            reverse_code=code_update_storage_paths_reverse
         ),
         migrations.RunPython(
-            code=operation_purge_and_delete_caches,
+            code=code_purge_and_delete_caches,
             reverse_code=migrations.RunPython.noop
-        ),
+        )
     ]

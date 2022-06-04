@@ -2,19 +2,21 @@ class WorkflowInstanceAPIViewTestMixin:
     def _request_test_workflow_instance_detail_api_view(self):
         return self.get(
             viewname='rest_api:workflow-instance-detail', kwargs={
-                'document_id': self.test_document.pk,
-                'workflow_instance_id': self.test_document.workflows.first().pk
+                'document_id': self._test_document.pk,
+                'workflow_instance_id': self._test_document.workflows.first().pk
             }
         )
 
     def _request_test_workflow_instance_list_api_view(self):
         return self.get(
             viewname='rest_api:workflow-instance-list', kwargs={
-                'document_id': self.test_document.pk
+                'document_id': self._test_document.pk
             }
         )
 
-    def _request_test_workflow_instance_log_entry_create_api_view(self, workflow_instance, extra_data=None):
+    def _request_test_workflow_instance_log_entry_create_api_view(
+        self, workflow_instance, extra_data=None
+    ):
         data = {
             'transition_id': self._test_workflow_template_transition.pk
         }
@@ -24,7 +26,7 @@ class WorkflowInstanceAPIViewTestMixin:
 
         return self.post(
             viewname='rest_api:workflow-instance-log-entry-list', kwargs={
-                'document_id': self.test_document.pk,
+                'document_id': self._test_document.pk,
                 'workflow_instance_id': workflow_instance.pk
             }, data=data
         )
@@ -32,8 +34,8 @@ class WorkflowInstanceAPIViewTestMixin:
     def _request_test_workflow_instance_log_entry_list_api_view(self):
         return self.get(
             viewname='rest_api:workflow-instance-log-entry-list', kwargs={
-                'document_id': self.test_document.pk,
-                'workflow_instance_id': self.test_document.workflows.first().pk
+                'document_id': self._test_document.pk,
+                'workflow_instance_id': self._test_document.workflows.first().pk
             }
         )
 
@@ -43,7 +45,7 @@ class DocumentWorkflowTemplateViewTestMixin:
         return self.post(
             viewname='document_states:document_single_workflow_templates_launch',
             kwargs={
-                'document_id': self.test_document.pk
+                'document_id': self._test_document.pk
             }, data={
                 'workflows': self._test_workflow_template.pk
             }
@@ -55,7 +57,7 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestMixin:
         return self.get(
             viewname='rest_api:workflow-instance-log-entry-transition-list',
             kwargs={
-                'document_id': self.test_document.pk,
+                'document_id': self._test_document.pk,
                 'workflow_instance_id': self._test_workflow_instance.pk
             }
         )
@@ -65,7 +67,7 @@ class WorkflowInstanceViewTestMixin:
     def _request_test_document_workflow_instance_list_view(self):
         return self.get(
             viewname='document_states:workflow_instance_list', kwargs={
-                'document_id': self.test_document.pk
+                'document_id': self._test_document.pk
             }
         )
 

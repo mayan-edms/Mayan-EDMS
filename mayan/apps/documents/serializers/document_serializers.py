@@ -1,7 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.rest_api import serializers
-from mayan.apps.rest_api.serializer_mixins import CreateOnlyFieldSerializerMixin
 from mayan.apps.storage.models import SharedUploadedFile
 
 from ..models.document_models import Document
@@ -14,9 +13,14 @@ from .document_type_serializers import DocumentTypeSerializer
 from .document_version_serializers import DocumentVersionSerializer
 
 
-class DocumentSerializer(
-    CreateOnlyFieldSerializerMixin, serializers.HyperlinkedModelSerializer
-):
+class DocumentFileActionSerializer(serializers.Serializer):
+    id = serializers.CharField(
+        label=_('ID'), read_only=True, source='backend_id'
+    )
+    label = serializers.CharField(label=_('Label'), read_only=True)
+
+
+class DocumentSerializer(serializers.HyperlinkedModelSerializer):
     document_type = DocumentTypeSerializer(read_only=True)
     document_type_id = serializers.IntegerField(
         help_text=_('Document type ID for the new document.'), write_only=True

@@ -1,22 +1,26 @@
 from django.conf.urls import url
 
 from .views import (
-    NamespaceDetailView, NamespaceListView, StatisticDetailView,
-    StatisticQueueView
+    StatisticDetailView, StatisticQueueView, StatisticNamespaceDetailView,
+    StatisticNamespaceListView
 )
 
 urlpatterns = [
-    url(regex=r'^namespace/$', view=NamespaceListView.as_view(), name='namespace_list'),
+    url(
+        regex=r'^namespace/$', view=StatisticNamespaceListView.as_view(),
+        name='statistic_namespace_list'
+    ),
     url(
         regex=r'^namespaces/(?P<slug>[\w-]+)/$',
-        view=NamespaceDetailView.as_view(), name='namespace_details'
+        view=StatisticNamespaceDetailView.as_view(),
+        name='statistic_namespace_detail'
     ),
     url(
-        regex=r'^statistics/(?P<slug>[\w-]+)/view/$', view=StatisticDetailView.as_view(),
-        name='statistic_detail'
+        regex=r'^statistics/(?P<slug>[\w-]+)/view/$',
+        view=StatisticDetailView.as_view(), name='statistic_detail'
     ),
     url(
-        regex=r'^statistics/(?P<slug>[\w-]+)/queue/$', view=StatisticQueueView.as_view(),
-        name='statistic_queue'
-    ),
+        regex=r'^statistics/(?P<slug>[\w-]+)/queue/$',
+        view=StatisticQueueView.as_view(), name='statistic_queue'
+    )
 ]

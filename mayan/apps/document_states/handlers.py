@@ -19,22 +19,6 @@ def handler_create_workflow_image_cache(sender, **kwargs):
     )
 
 
-def handler_index_document_on_workflow_instance_log_entry(sender, **kwargs):
-    task_index_instance_document_add.apply_async(
-        kwargs={
-            'document_id': kwargs['instance'].workflow_instance.document.pk
-        }
-    )
-
-
-def handler_index_document_on_workflow_instance(sender, **kwargs):
-    task_index_instance_document_add.apply_async(
-        kwargs={
-            'document_id': kwargs['instance'].document.pk
-        }
-    )
-
-
 def handler_launch_workflow_on_create(sender, instance, created, **kwargs):
     if created:
         task_launch_all_workflow_for.apply_async(
@@ -97,3 +81,58 @@ def handler_trigger_transition(sender, **kwargs):
                 comment=_('Event trigger: %s') % event_type_label,
                 transition=valid_transitions[0]
             )
+
+
+# Indexing, workflow template
+
+
+def handler_workflow_template_post_edit(sender, **kwargs):
+    if not kwargs.get('created', False):
+        for workflow_instance in kwargs['instance'].instances.all():
+            task_index_instance_document_add.apply_async(
+                kwargs={'document_id': workflow_instance.document.pk}
+            )
+
+
+# Indexing, workflow state
+
+
+def handler_workflow_template_state_post_edit(sender, **kwargs):
+    if not kwargs.get('created', False):
+        for workflow_instance in kwargs['instance'].workflow.instances.all():
+            task_index_instance_document_add.apply_async(
+                kwargs={'document_id': workflow_instance.document.pk}
+            )
+
+
+def handler_workflow_template_state_pre_delete(sender, **kwargs):
+    for workflow_instance in kwargs['instance'].workflow.instances.all():
+        # Remove each of the documents.
+        # Trigger the remove event for each document so they can be
+        # reindexed.
+        workflow_instance.delete()
+        task_index_instance_document_add.apply_async(
+            kwargs={'document_id': workflow_instance.document.pk}
+        )
+
+
+# Indexing, workflow template
+
+
+def handler_workflow_template_transition_post_edit(sender, **kwargs):
+    if not kwargs.get('created', False):
+        for workflow_instance in kwargs['instance'].workflow.instances.all():
+            task_index_instance_document_add.apply_async(
+                kwargs={'document_id': workflow_instance.document.pk}
+            )
+
+
+def handler_workflow_template_transition_pre_delete(sender, **kwargs):
+    for workflow_instance in kwargs['instance'].workflow.instances.all():
+        # Remove each of the documents.
+        # Trigger the remove event for each document so they can be
+        # reindexed.
+        workflow_instance.delete()
+        task_index_instance_document_add.apply_async(
+            kwargs={'document_id': workflow_instance.document.pk}
+        )

@@ -34,7 +34,7 @@ class DocumentTagViewTestCase(
 
         response = self._request_test_document_tag_list_view()
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_tag), status_code=404
+            response=response, text=force_text(s=self._test_tag), status_code=404
         )
 
         events = self._get_test_events()
@@ -44,14 +44,14 @@ class DocumentTagViewTestCase(
         self._create_test_tag(add_test_document=True)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_view
+            obj=self._test_document, permission=permission_tag_view
         )
 
         self._clear_events()
 
         response = self._request_test_document_tag_list_view()
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_tag), status_code=200
+            response=response, text=force_text(s=self._test_tag), status_code=200
         )
 
         events = self._get_test_events()
@@ -60,13 +60,13 @@ class DocumentTagViewTestCase(
     def test_document_tags_list_with_tag_access(self):
         self._create_test_tag(add_test_document=True)
 
-        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_view)
 
         self._clear_events()
 
         response = self._request_test_document_tag_list_view()
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_tag), status_code=404
+            response=response, text=force_text(s=self._test_tag), status_code=404
         )
 
         events = self._get_test_events()
@@ -76,17 +76,17 @@ class DocumentTagViewTestCase(
         self._create_test_tag(add_test_document=True)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_view
+            obj=self._test_document, permission=permission_tag_view
         )
         self.grant_access(
-            obj=self.test_tag, permission=permission_tag_view
+            obj=self._test_tag, permission=permission_tag_view
         )
 
         self._clear_events()
 
         response = self._request_test_document_tag_list_view()
         self.assertContains(
-            response=response, text=force_text(s=self.test_tag),
+            response=response, text=force_text(s=self._test_tag),
             status_code=200
         )
 
@@ -97,13 +97,13 @@ class DocumentTagViewTestCase(
         self._create_test_tag(add_test_document=True)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_view
+            obj=self._test_document, permission=permission_tag_view
         )
         self.grant_access(
-            obj=self.test_tag, permission=permission_tag_view
+            obj=self._test_tag, permission=permission_tag_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -119,23 +119,28 @@ class DocumentTagViewTestCase(
         self._create_test_tag(add_test_document=True)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_view
+            obj=self._test_document, permission=permission_tag_view
         )
         self.grant_access(
-            obj=self.test_tag, permission=permission_tag_view
+            obj=self._test_tag, permission=permission_tag_edit
         )
         self.grant_access(
-            obj=self.test_tag, permission=permission_tag_edit
+            obj=self._test_tag, permission=permission_tag_view
         )
 
         self._clear_events()
 
         response = self._request_test_document_tag_list_view()
 
-        link_context = response.context[-1]
-        link_context['object'] = self.test_tag
+        # Get the first context item that correspond to an an item in the
+        # response nexted context list.
+        for context in response.context:
+            if 'object' in context:
+                break
 
-        result = link_tag_edit.resolve(context=link_context)
+        context['object'] = self._test_tag
+
+        result = link_tag_edit.resolve(context=context)
 
         self.assertNotContains(
             response=response, text=result.url,
@@ -153,7 +158,7 @@ class DocumentTagViewTestCase(
         response = self._request_test_document_tag_attach_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+        self.assertTrue(self._test_tag not in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -161,14 +166,14 @@ class DocumentTagViewTestCase(
     def test_document_tag_attach_view_with_tag_access(self):
         self._create_test_tag()
 
-        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_attach)
 
         self._clear_events()
 
         response = self._request_test_document_tag_attach_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+        self.assertTrue(self._test_tag not in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -177,7 +182,7 @@ class DocumentTagViewTestCase(
         self._create_test_tag()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_attach
+            obj=self._test_document, permission=permission_tag_attach
         )
 
         self._clear_events()
@@ -185,7 +190,7 @@ class DocumentTagViewTestCase(
         response = self._request_test_document_tag_attach_view()
         self.assertEqual(response.status_code, 200)
 
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+        self.assertTrue(self._test_tag not in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -194,41 +199,41 @@ class DocumentTagViewTestCase(
         self._create_test_tag()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_attach
+            obj=self._test_document, permission=permission_tag_attach
         )
-        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_attach)
 
         self._clear_events()
 
         response = self._request_test_document_tag_attach_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
+        self.assertTrue(self._test_tag in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_tag)
+        self.assertEqual(events[0].action_object, self._test_tag)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].target, self._test_document)
         self.assertEqual(events[0].verb, event_tag_attached.id)
 
     def test_trashed_document_tag_attach_view_with_full_access(self):
         self._create_test_tag()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_attach
+            obj=self._test_document, permission=permission_tag_attach
         )
-        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_attach)
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         response = self._request_test_document_tag_attach_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+        self.assertTrue(self._test_tag not in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -241,7 +246,7 @@ class DocumentTagViewTestCase(
         response = self._request_test_document_multiple_tag_multiple_attach_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+        self.assertTrue(self._test_tag not in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -249,14 +254,14 @@ class DocumentTagViewTestCase(
     def test_document_multiple_tag_attach_view_with_tag_access(self):
         self._create_test_tag()
 
-        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_attach)
 
         self._clear_events()
 
         response = self._request_test_document_multiple_tag_multiple_attach_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+        self.assertTrue(self._test_tag not in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -265,7 +270,7 @@ class DocumentTagViewTestCase(
         self._create_test_tag()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_attach
+            obj=self._test_document, permission=permission_tag_attach
         )
 
         self._clear_events()
@@ -273,7 +278,7 @@ class DocumentTagViewTestCase(
         response = self._request_test_document_multiple_tag_multiple_attach_view()
         self.assertEqual(response.status_code, 200)
 
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+        self.assertTrue(self._test_tag not in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -282,81 +287,81 @@ class DocumentTagViewTestCase(
         self._create_test_tag()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_attach
+            obj=self._test_document, permission=permission_tag_attach
         )
-        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_attach)
 
         self._clear_events()
 
         response = self._request_test_document_multiple_tag_multiple_attach_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
+        self.assertTrue(self._test_tag in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_tag)
+        self.assertEqual(events[0].action_object, self._test_tag)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].target, self._test_document)
         self.assertEqual(events[0].verb, event_tag_attached.id)
 
     def test_trashed_document_multiple_tag_attach_view_with_full_access(self):
         self._create_test_tag()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_attach
+            obj=self._test_document, permission=permission_tag_attach
         )
-        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_attach)
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         response = self._request_test_document_multiple_tag_multiple_attach_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+        self.assertTrue(self._test_tag not in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_tag_multiple_remove_view_no_permission(self):
         self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
+        self._test_document.tags.add(self._test_tag)
 
         self._clear_events()
 
         response = self._request_test_document_tag_multiple_remove_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
+        self.assertTrue(self._test_tag in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_tag_multiple_remove_view_with_tag_access(self):
         self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
+        self._test_document.tags.add(self._test_tag)
 
-        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_remove)
 
         self._clear_events()
 
         response = self._request_test_document_tag_multiple_remove_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
+        self.assertTrue(self._test_tag in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_tag_multiple_remove_view_with_document_access(self):
         self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
+        self._test_document.tags.add(self._test_tag)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_remove
+            obj=self._test_document, permission=permission_tag_remove
         )
 
         self._clear_events()
@@ -364,92 +369,92 @@ class DocumentTagViewTestCase(
         response = self._request_test_document_tag_multiple_remove_view()
         self.assertEqual(response.status_code, 200)
 
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
+        self.assertTrue(self._test_tag in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_tag_multiple_remove_view_with_full_access(self):
         self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
+        self._test_document.tags.add(self._test_tag)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_remove
+            obj=self._test_document, permission=permission_tag_remove
         )
-        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_remove)
 
         self._clear_events()
 
         response = self._request_test_document_tag_multiple_remove_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+        self.assertTrue(self._test_tag not in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_tag)
+        self.assertEqual(events[0].action_object, self._test_tag)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].target, self._test_document)
         self.assertEqual(events[0].verb, event_tag_removed.id)
 
     def test_trashed_document_tag_multiple_remove_view_with_full_access(self):
         self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
+        self._test_document.tags.add(self._test_tag)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_remove
+            obj=self._test_document, permission=permission_tag_remove
         )
-        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_remove)
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         response = self._request_test_document_tag_multiple_remove_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
+        self.assertTrue(self._test_tag in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_multiple_tag_multiple_remove_view_no_permission(self):
         self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
+        self._test_document.tags.add(self._test_tag)
 
         self._clear_events()
 
         response = self._request_test_document_multiple_tag_remove_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
+        self.assertTrue(self._test_tag in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_multiple_tag_remove_view_with_tag_access(self):
         self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
+        self._test_document.tags.add(self._test_tag)
 
-        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_remove)
 
         self._clear_events()
 
         response = self._request_test_document_multiple_tag_remove_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
+        self.assertTrue(self._test_tag in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_multiple_tag_remove_view_with_document_access(self):
         self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
+        self._test_document.tags.add(self._test_tag)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_remove
+            obj=self._test_document, permission=permission_tag_remove
         )
 
         self._clear_events()
@@ -457,52 +462,52 @@ class DocumentTagViewTestCase(
         response = self._request_test_document_multiple_tag_remove_view()
         self.assertEqual(response.status_code, 200)
 
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
+        self.assertTrue(self._test_tag in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_multiple_tag_remove_view_with_full_access(self):
         self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
+        self._test_document.tags.add(self._test_tag)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_remove
+            obj=self._test_document, permission=permission_tag_remove
         )
-        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_remove)
 
         self._clear_events()
 
         response = self._request_test_document_multiple_tag_remove_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+        self.assertTrue(self._test_tag not in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_tag)
+        self.assertEqual(events[0].action_object, self._test_tag)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].target, self._test_document)
         self.assertEqual(events[0].verb, event_tag_removed.id)
 
     def test_trashed_document_multiple_tag_remove_view_with_full_access(self):
         self._create_test_tag()
-        self.test_document.tags.add(self.test_tag)
+        self._test_document.tags.add(self._test_tag)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_tag_remove
+            obj=self._test_document, permission=permission_tag_remove
         )
-        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_remove)
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         response = self._request_test_document_multiple_tag_remove_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertTrue(self.test_tag in self.test_document.tags.all())
+        self.assertTrue(self._test_tag in self._test_document.tags.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -521,17 +526,17 @@ class DocumentTagViewTestCase(
     def test_tag_document_list_with_tag_access(self):
         self._create_test_tag(add_test_document=True)
 
-        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_view)
 
         self._clear_events()
 
         response = self._request_test_tag_document_list_view()
         self.assertContains(
-            response=response, text=force_text(s=self.test_tag),
+            response=response, text=force_text(s=self._test_tag),
             status_code=200
         )
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_document),
+            response=response, text=force_text(s=self._test_document),
             status_code=200
         )
 
@@ -542,18 +547,18 @@ class DocumentTagViewTestCase(
         self._create_test_tag(add_test_document=True)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         self._clear_events()
 
         response = self._request_test_tag_document_list_view()
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_tag),
+            response=response, text=force_text(s=self._test_tag),
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_document),
+            response=response, text=force_text(s=self._test_document),
             status_code=404
         )
 
@@ -564,19 +569,19 @@ class DocumentTagViewTestCase(
         self._create_test_tag(add_test_document=True)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
-        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_view)
 
         self._clear_events()
 
         response = self._request_test_tag_document_list_view()
         self.assertContains(
-            response=response, text=force_text(s=self.test_tag),
+            response=response, text=force_text(s=self._test_tag),
             status_code=200
         )
         self.assertContains(
-            response=response, text=force_text(s=self.test_document),
+            response=response, text=force_text(s=self._test_document),
             status_code=200
         )
 
@@ -587,21 +592,21 @@ class DocumentTagViewTestCase(
         self._create_test_tag(add_test_document=True)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
-        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_view)
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         response = self._request_test_tag_document_list_view()
         self.assertContains(
-            response=response, text=force_text(s=self.test_tag),
+            response=response, text=force_text(s=self._test_tag),
             status_code=200
         )
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_document),
+            response=response, text=force_text(s=self._test_document),
             status_code=200
         )
 
@@ -640,7 +645,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_tag)
+        self.assertEqual(events[0].target, self._test_tag)
         self.assertEqual(events[0].verb, event_tag_created.id)
 
     def test_tag_delete_view_no_permission(self):
@@ -661,7 +666,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
     def test_tag_delete_view_with_access(self):
         self._create_test_tag()
 
-        self.grant_access(obj=self.test_tag, permission=permission_tag_delete)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_delete)
 
         tag_count = Tag.objects.count()
 
@@ -682,7 +687,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
 
         self._clear_events()
 
-        response = self._request_test_tag_delete_multiple_view()
+        response = self._request_test_tag_multiple_delete_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(Tag.objects.count(), tag_count)
@@ -693,13 +698,13 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
     def test_tag_multiple_delete_view_with_access(self):
         self._create_test_tag()
 
-        self.grant_access(obj=self.test_tag, permission=permission_tag_delete)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_delete)
 
         tag_count = Tag.objects.count()
 
         self._clear_events()
 
-        response = self._request_test_tag_delete_multiple_view()
+        response = self._request_test_tag_multiple_delete_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(Tag.objects.count(), tag_count - 1)
@@ -710,15 +715,15 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
     def test_tag_edit_view_no_permission(self):
         self._create_test_tag()
 
-        tag_label = self.test_tag.label
+        tag_label = self._test_tag.label
 
         self._clear_events()
 
         response = self._request_test_tag_edit_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_tag.refresh_from_db()
-        self.assertEqual(self.test_tag.label, tag_label)
+        self._test_tag.refresh_from_db()
+        self.assertEqual(self._test_tag.label, tag_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -726,24 +731,24 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
     def test_tag_edit_view_with_access(self):
         self._create_test_tag()
 
-        self.grant_access(obj=self.test_tag, permission=permission_tag_edit)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_edit)
 
-        tag_label = self.test_tag.label
+        tag_label = self._test_tag.label
 
         self._clear_events()
 
         response = self._request_test_tag_edit_view()
         self.assertEqual(response.status_code, 302)
 
-        self.test_tag.refresh_from_db()
-        self.assertNotEqual(self.test_tag.label, tag_label)
+        self._test_tag.refresh_from_db()
+        self.assertNotEqual(self._test_tag.label, tag_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_tag)
+        self.assertEqual(events[0].target, self._test_tag)
         self.assertEqual(events[0].verb, event_tag_edited.id)
 
     def test_tag_list_view_with_no_permission(self):
@@ -753,7 +758,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
 
         response = self._request_test_tag_list_view()
         self.assertNotContains(
-            response=response, text=self.test_tag.label, status_code=200
+            response=response, text=self._test_tag.label, status_code=200
         )
 
         events = self._get_test_events()
@@ -762,13 +767,13 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
     def test_tag_list_view_with_access(self):
         self._create_test_tag()
 
-        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_view)
 
         self._clear_events()
 
         response = self._request_test_tag_list_view()
         self.assertContains(
-            response=response, text=self.test_tag.label, status_code=200
+            response=response, text=self._test_tag.label, status_code=200
         )
 
         events = self._get_test_events()

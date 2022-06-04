@@ -1,4 +1,517 @@
-4.2 (2022-02-XX)
+4.3 (2022-XX-XX)
+================
+- Partials navigation updates:
+
+  - Streamline JavaScript partials navigation code.
+  - Make the AJAX response redirect code configurable. New setting
+    ``APPEARANCE_AJAX_REDIRECTION_CODE`` added.
+  - Remove repeated AJAX redirection middleware.
+
+- Add white outline to favicon.
+- Add support for optional ``get_mayan_object_permissions`` and
+  ``get_mayan_view_permissions`` methods to allow API views to customize
+  how required permissions are calculated.
+- Added support for form fieldsets.
+- Added fieldsets to the following forms:
+
+    - document file properties
+    - document type deletion policies
+    - metadata type
+    - user
+
+- Remove usage of flat ``values_list`` queryset in metadata managers module.
+- Prefix all test objects with an underscore to avoid clashes with test
+  methods.
+- ``PartialNavigation.js`` improvements.
+
+  - Clean URL query on form submit and use form data as the URL query.
+  - Remove dead code.
+  - Use constants where appropriate.
+
+- Search updates:
+
+  - Add filtering support to list views. All list view that show instances of
+    models with a corresponding defined search model, will show a text box
+    for filtering the list. The syntax is the same as the standard simple
+    search.
+  - Empty list views now show the toolbar for cases where the list is empty
+    due to a filtering term.
+  - Define the ``q`` URL query key as an internal literal named
+    ``QUERY_PARAMETER_ANY_FIELD``.
+
+- Support AJAX request cancelation. This avoid the user interface from
+  appearing to unresponsive when the backend is overloaded.
+- Support AJAX request throttling. Prevents users from requesting too many
+  consecutive page loads. Defaults to a maximum of 10 requests in 5 seconds
+  of less. This applies only to the user interface. The AJAX throttling
+  resets the moment the last pending AJAX request is completed.
+- ``BaseBackend`` class improvements.
+
+  - Selectable identifier via the ``_backend_identifier`` property. Defaults
+    to ``backend_class_path`` for compatibility.
+  - Update ``.get_all`` to return a list and not a dictionary.
+  - Add property ``backend_id`` that returns the value of the class
+    ``_backend_identifier`` property.
+
+- Convert document file actions from hardcoded logic to an extensible class
+  using the ``BaseBackend`` class. Available classes will be loaded from the
+  ``document_file_actions`` module. The id of the class defaults to the
+  existing literal values for compatility.
+- Add API endpoint called ``document_file_actions`` to list the available
+  actions and their properties. API endpoint URL: /api/v4/document_file_actions/
+- Add document version modification backend. Convert the document version
+  page reset and append functions into document version modication backends.
+  Update document version views and API endpoints to use document version
+  modification backends.
+  Adds new API endpoints:
+    - /api/v4/documents/{ ID }/versions/{ ID }/modify/
+    - /api/v4/document_version_modification_backends/
+- Add workflow action to send user messages.
+- Update ``WorkflowAction`` to user ``common.classes.BaseBackend``.
+- Pagination refactor:
+
+  - Remove ``django-pure-pagination`` package.
+  - Use Django's 3.2 new ``get_proper_elided_page_range`` for paging.
+  - Remove duplicate URL query string manipulation.
+  - Remove duplicated pagination template.
+  - Make pagination argument conigurable. Added the setting
+    ``VIEWS_PAGING_ARGUMENT``. Defaults to ``page`` for compatibility.
+
+- Update the default pagination size from 40 items to 30.
+- Support hyphenated text when using the ElasticSearch backend.
+- Add support for supplying files to source backend via the API. Add the
+  ``accept_files`` property to ``SourceBackendAction`` which dynamically add
+  a ``file`` serializer field for the corresponding action.
+- Add an ``upload`` action to the web form source. This allows using web form
+  sources to upload documents from the API.
+- Support REST API list filtering. Filtering is done using similar logic
+  to that of the user interface list filtering. However, the API list
+  filtering also support filtering by any field and not just using the
+  special "any field" ``q`` query key.
+- Merge fixes from version 4.2.2.
+- Move the ``purgeperiodictasks`` command from the common app to the
+  task_manager app.
+- Drop support for Python 3.6.
+- Dependencies update:
+
+  - ElasticSearch from 7.16.0 to 7.17.0.
+  - Debian from 11.2-slim to 11.3-slim.
+  - PostgreSQL from 12.9-alpine to 12.10-alpine.
+  - RabbitMQ from 3.9-alpine to 3.10-alpine.
+  - amqp from 5.0.9 to 5.1.0.
+  - pip from 21.3.1 to 22.0.4.
+  - psycopg2 from 2.9.2 to 2.9.3.
+  - redis from 4.0.2 to 4.2.0.
+  - FontAwesome from 5.6.3 to 5.15.4.
+  - urijs from 1.19.7 to 1.19.10.
+  - bleach from 4.0.0 to 4.1.0.
+  - django-solo from 1.1.5 to 2.0.0.
+  - jstree from 3.3.11 to 3.3.12.
+  - PyYAML from 5.4.1 to 6.0.
+  - django-model-utils from 4.1.1 to 4.2.0.
+  - django-mptt from 0.12.0 to 0.13.4.
+  - pycountry from 20.7.3 to 22.3.5.
+  - requests from 2.26.0 to 2.27.0.
+  - devpi-server from 6.2.0 to 6.5.0.
+  - django-debug-toolbar from 3.2.2 to 3.2.4.
+  - django-extensions from 3.1.3 to 3.1.5.
+  - django-rosetta from 0.9.7 to 0.9.8.
+  - django-silk from 4.1.0 to 4.3.0.
+  - flake8 from 3.9.2 to 4.0.1.
+  - ipython from 7.26.0 to 7.32.0.
+  - transifex-client from 0.14.3 to 0.14.4.
+  - twine from 3.4.2 to 3.8.0.
+  - wheel from 0.37.0 to 0.37.1.
+  - Pillow from 8.3.1 to 8.4.0.
+  - node-semver from 0.8.0 to 0.8.1.
+  - packaging from 21.0 to 21.3.
+  - python_gnupg from 0.4.7 to 0.4.8.
+  - elasticsearch from 7.16.0 to 7.17.1.
+  - django-activity-stream from 0.10.0 to 1.4.0.
+  - chart.js from 2.7.3 to 2.8.0.
+  - python-magic from 0.4.24 to 0.4.26.
+  - gevent from 21.8.0 to 21.12.0.
+  - sentry-sdk from 1.4.1 to 1.5.8.
+  - whitenoise from 5.3.0 to 6.0.0.
+  - cropperjs from 1.5.2 to 1.5.12.
+  - django-cors-headers from 3.8.0 to 3.10.0.
+  - djangorestframework from 3.12.4 to 3.13.1.
+  - jsonschema from 3.2.0 to 4.4.0.
+  - swagger-spec-validator from 2.7.3 to 2.7.4.
+  - dropzone from 5.9.2 to 5.9.3.
+  - pycryptodome from 3.10.1 to 3.10.4.
+  - celery from 5.1.2 to 5.2.3.
+  - django-formtools from 2.2 to 2.3.
+  - django-widget-tweaks from 1.4.9 to 1.4.12.
+  - furl from 2.1.2 to 2.1.3.
+
+- Silence warning about unordered object pagination for:
+
+  - Announcements
+  - Document index instance nodes
+  - Workflow transition triggers
+  - File caches
+  - Quotas
+
+- Convert API search model names to lowercase to revert backward incompatible
+  change in version 4.2. Search model names via the API can now be specified
+  in either lowercase (version 4.2) or hybrid case (version <4.2).
+- ``mkdtemp`` now accepts a ``dir`` argument like the upstream version.
+  However the ``dir`` value is appended to the system wide value of
+  ``STORAGE_TEMPORARY_DIRECTORY``.
+- Staging folder updates:
+
+  - Support inclusion regular expression.
+  - Support exclusion regular expression.
+  - Support subfolders.
+  - Update scan code to user ``pathlib.Path``.
+  - Support pagination.
+
+- Add support for workflow escalation. This feature allows moving a workflow
+  forward after the workflow has remained in a certain state after a
+  pre-determined amount of time. Multiple escalations are supported for
+  each state. Conditions using the templating language are supported.
+- Move model based classes to the databases app. Move the classes:
+
+  - ``ModelQueryFields``
+  - ``ModelAttribute``
+  - ``ModelProperty``
+  - ``ModelField``
+  - ``ModelFieldRelated``
+  - ``ModelReverseField``
+  - ``QuerysetParametersSerializer``
+
+- Convert the OCR app to the new error log system. The permission
+  "View error log" is now required to view the document version OCR error
+  log.
+- Convert the document parsing app to the new error log system. The
+  permission "View error log" is now required to view the document file
+  parsing error log.
+- Remove the Python package ``mock``. This package is now available as
+  unittest.mock in Python 3.3 onwards.
+- Unify and remove repeated workflow API views code using parent resolution
+  mixins.
+- Support adding help text to search model fields. By default the help text
+  from the model fields will be used.
+- Increase the document type label size from 96 characters to 196.
+- Update the document type label field help text.
+- Search updates:
+
+  - Rename search model instances from '..._search' to 'search_model_...'.
+  - Add support for removing search fields from third party apps. The method
+    is called ``.remove_search_field(search_field=)`` and requires the
+    search field instance obtained from the method ``.get_search_fields()``.
+  - Remove the ``search_fields`` list and use the ``search_fields_dict``
+    instead for both purposes. The conical method to obtain the search
+    field or a search model is now using the method ``.get_search_fields()``.
+
+- Update the ElasticSearch backend default settings to match those of the
+  official Python client.
+- Don't introspect document file MIME type at download. Instead pass the
+  stored values.
+- Support empty ranges for ``parse_range``.
+- Add ``group_iterator`` to group iterators in to lists of tuples.
+- Refactor bulk object search indexing:
+
+  - Rename ``mayan.apps.dynamic_search.tasks.task_index_search_model`` to
+    ``mayan.apps.dynamic_search.tasks.task_index_instances``.
+  - Index only objects that exists instead of using blind ranges.
+  - Update ``search_index_objects`` management command to trigger multiple
+    ``task_index_instances`` tasks instead of just one.
+
+- Add date manipulation template tags. The new tags are ``date_parse`` to
+  convert a string into a datetime object and ``timedelta`` to apply time
+  transformations to a datetime object.
+- Add a ``size`` field to the document file model. Since this value is not
+  expected to change, it is now a persistent model field and not calculated
+  on demand by querying the storage layer. This change also improves document
+  mirroring performance by removing one disk access per document and using
+  the database stored size value which is immutable.
+- Support searching messages. Make the ``subject``, ``body``, ``date_time``
+  fields searchable.
+- Error logging updates:
+
+  - Add error log entry delete permission.
+  - Add support deleting individual error log entries or the complete error
+    log of an object.
+  - Add the error log entry delete event.
+  - Support subscribing to the error log entry delete event of an object.
+  - Add API views. Support added to view the error log of objects.
+
+- Migrations code style cleanup.
+
+  - Rename code migrations functions prefix from ``operation_`` to ``code_``.
+  - Add keyword arguments.
+  - PEP8 code style cleanups.
+
+- Add support for cabinet mirroring.
+- Remove ``django-colorful``. Use HTML5 color field instead.
+- Add support to randomize the tag color.
+- Document parsing updates. Closes GitLab issue #957. Thanks to
+  LeVon Smoker (@lsmoker) for the report and initial suggestions.
+
+  - Pass the original document file to parsers instead of attempting to
+    pre-processing the document file to PDF.
+  - Add parsing support for office document files and text files.
+
+- Rename test file literals for uniformity.
+- Rename management commands to include the app name where they are defined.
+  Add a stub command for backwards compatibility.
+
+  - ``checkdependencies`` replaced by ``dependencies_check``.
+  - ``checkversion`` replaced by ``dependencies_check_version``.
+  - ``createautoadmin`` replaced by ``autoadmin_create``.
+  - ``generaterequirements`` replaced by ``dependencies_generate_requirements``.
+  - ``initialsetup`` replaced by ``initial_setup``.
+  - ``installdependencies`` replaced by ``dependencies_install``.
+  - ``mountindex`` replaced by ``mirroring_mount_index``.
+  - ``performupgrade`` replaced by ``perform_upgrade``.
+  - ``platformtemplate`` replaced by ``platform_template``.
+  - ``preparestatic`` replaced by ``appearance_prepare_static``.
+  - ``purgelocks`` replaced by ``lock_manager_purge_locks``.
+  - ``purgepermissions`` replaced by ``permissions_purge``.
+  - ``purgeperiodictasks`` replaced by ``task_manager_purge_periodic_tasks``.
+  - ``purgestatistics`` replaced by ``statistics_purge``.
+  - ``revertsettings`` replaced by ``settings_revert``.
+  - ``savesettings`` replaced by ``settings_save``.
+  - ``showsettings`` replaced by ``settings_show``.
+  - ``showversion`` replaced by ``dependencies_show_version``.
+
+- Split the document indexing models module. Module is split into index
+  template and instance models.
+- Show item count even if the list is empty. This change prevents the list
+  toolbar from "jumping" visually when there are no results.
+- Simplify how the view title is copied to the window title. Escaping is now
+  performed by jQuery.
+- Add icons to all views. Every view now has a corresponding icon to be
+  displayed with the title.
+- Normalize icon, link and view names. Follow the pattern
+  object_sub_object_action.
+- Add warning message when user attempting to delete their own accounts.
+- Add support for Whoosh bulk indexing using the ``BufferedWriter`` class.
+  When reindexing the search indexes, for every lock obtained, a group of
+  object will be written as a single operation. The number of objects
+  written concurrently is controlled by the settings
+  ``SEARCH_INDEXING_CHUNK_SIZE``.
+- Split converter app views into separate modules.
+- Add support for transformation argument forms.
+- Improve transformation argument column display.
+- Fix argument handling for the transformation
+  ``TransformationDrawRectangle``.
+- Check and reject negative percent values for the zoom transformation.
+- Fix asset transformations hash calculation.
+- Use a lower layer that the redaction layer to allow seeing the entire
+  document when editing redactions. This is more natural as it gives the
+  impression the redaction is actually being edited by being moved instead
+  of showing two redactions (old in the image plus the interactive one).
+- Add transparency support to the ``TransformationDrawRectanglePercent``
+  transformation.
+- Unify the ``TransformationDrawRectangle`` and
+  ``TransformationDrawRectanglePercent`` transformations.
+- Move transformation mixins to their own module.
+- Allow classes using ``APIImageViewMixin`` to specify the stream MIME type
+  via ``get_stream_mime_type``.
+- Fix repeated model manager definition in the ``DocumentFilePage`` model.
+- Support easier test document stub creation via the new
+  ``auto_create_test_document_stub``. It is mutually exclusive with
+  ``auto_create_test_document_stub`` and requires settings
+  ``auto_upload_test_document`` to False.
+- Add first name and last name fields to the test case user.
+- Generalize image transformations into reusable mixins:
+  ``ImagePasteCoordinatesAbsoluteTransformationMixin``,
+  ``ImagePasteCoordinatesPercentTransformationMixin``,
+  ``ImageWatermarkPercentTransformationMixin``.
+- Add support for signature capture. The signature capture app allows
+  capture of handwritten signatures. The original point data as well as
+  an SVG version of the signature is store. The point data represents the
+  raw signature primitives that allows reloading them into the signature
+  pad library. The SVG version allows for rendering as an image for preview.
+  A transformation is added to allow pasting a signature as a page image.
+- Remove trailing new lines from the MIME type and encoding returned by the
+  ``MIMETypeBackendFileCommand``.
+- Make ``MIMETypeBackendFileCommand`` the default MIME backend.
+- Fix sorting and grouping of permissions in the workflow action to grant
+  or revoke document access.
+- Remove ``SearchModel`` unused class method and improve result sorting.
+- Navigation updates:
+
+  - Add support for extra HTML attributes.
+  - Improve HTML data by allowing the entries to be resolved against the
+    context.
+  - Support empty URL values. When empty, the link is rendered without a
+    href attribute.
+
+- Add link to make staging folder file selection easier. Closes GitLab
+  issue #341. Thanks to Leroy Förster (@gersilex) for the report and
+  initial idea.
+- Modernize Python syntax:
+
+  - Pass generators instead of lists to ``sorted``.
+  - Update string formatting to use ``.format``.
+  - Remove creating of sets using the set factory and use instead the set
+    literal.
+
+- New workflow events: ``workflow instance created`` committed when a new
+  workflow is launched for a document and
+  ``workflow instance transitioned`` committed when a workflow instance is
+  transitioned to a new state, either manually or automatically.
+- Track the user when a new workflow instance is created or transitioned.
+- Optimize the document indexing by reusing the index instance node if it
+  already exists.
+- Add support for document index event triggers. Historically document
+  indexes used hard coded signals to trigger an index update. The indexing
+  app was updated to now use events to trigger these updates. This has the
+  additional benefits of allowing runtime configuration of the index event
+  triggers, disabling the ones not relevant for an index to improve
+  performance. New document indexes default to update on all available
+  document events. Existing indexes will me automatically migrated and
+  updated to update on all available document events. Index updates now
+  support more events like adding or removal from cabinets.
+  Closes GitLab issue #631. Thanks to Tobias Huhn (@twhuhn) for the request.
+- Convert the staging folder file selection input to a Select2 widget
+  supporting text filtering.
+- Move the transformations ``TransformationDrawRectangle`` and
+  ``TransformationDrawRectanglePercent`` to the decorations layer.
+- Add retry backoff maximum delay to the search tasks.
+- Add per user object event subscription view.
+- Add support for permission filtering to the notification views. This moves
+  the access filtering of notification from the class to the view. The
+  advantage of this change is that notifications are restricted when the
+  access control is modified, even if the notification already exists.
+- Normalize how the search "Match all" parameter is evaluated.
+- Fix evaluation of "Match all" when using a single level scoped search.
+- Discard non supported images contained in MPO images files.
+
+4.2.5 (2022-05-21)
+==================
+- Remove unused authentication view.
+- Task manager app updates:
+
+  - Add backend Celery queue deduplication to the ``CeleryQueue``.
+  - Enable app tests.
+  - Add and improve tests.
+  - Add support for runtime removal of queues.
+
+- Remove unused event link.
+- Make document version OCR submit view messages translatable.
+- Make file caching purge view messages translatable.
+- Make document file metadata submit view messages translatable.
+- Fix asset transformations hash calculation.
+- Fix asset image API view docstring.
+- Fix repeated model manager definition in ``DocumentFilePage``
+  models.
+- Transformation improvements:
+
+  - Fix wrong parameter in the ``ImageDraw.Draw`` usage of the
+    ``TransformationDrawRectangle`` transformation.
+  - Add sanity check to reject negative zoom values for the
+    ``TransformationZoom`` transformation.
+
+- Add warning message when users attempting to delete their own accounts.
+- Convert the signal handler that triggers search indexing on many to many
+  fields changes into a background task. Solves user interface blocking
+  when changing the document type to index template association on large
+  installations.
+- Update Django from version 3.2.12 to 3.2.13.
+- Retry search indexing task when the object is not found. There are
+  situations where the broker will route the message to the workers faster
+  than the database can commit the data.
+- Fix favorite document links reacting to favorite documents beyond the
+  active user. Closes GitLab issue #1104. Thanks to
+  Biel Frontera (@bielfrontera) for the report and initial implementation.
+
+4.2.4 (2022-04-29)
+==================
+- Fix the documentation paths to the OTP backends. Closes GitLab
+  issue #1099. Thanks to Matthias Löblich (@startmat) for the
+  report.
+- Fix Docker pull counter.
+- Remove repeated Whoosh backend line of code from merge.
+- Add portainer installation files and documentation.
+- Remove hardcoded search model variable name from ``search_box.html``
+  template.
+- Fix the search model API URL reference. Closes GitLab issue #1098. Thanks
+  to Bastian (@Basti-Fantasti) for the report.
+- Use the ``SEARCH_MODEL_NAME_KWARG`` instead of hard coding the search model
+  API URL reference.
+- Filter trashed documents from the tag document count column.
+- Filter trashed documents from the cabinet document retrieval method. This
+  brings code parity with tags which work in a very similar way.
+- Improve Python 3.10 compatibility. Add a compatibility module to
+  encapsulate import of the ``Iterable`` class. Improves GitLab issue #1083.
+  Thanks to Bw (@bwakkie) for the report and code samples.
+- Type cast LUT values when masking an asset for pasting via Pillow's
+  ``point()``.
+- Document metadata edit form validation updates:
+
+  - Remove ``disabled`` attribute from the metadata type label field to
+    avoid having its value removed when there is a validation error.
+  - Remove the ``required`` flag from the value field when there is a
+    required metadata for a document. The previous behavior cause the tabular
+    form to display "(required)" in column title confusing users and causing
+    them to think that all metadata type fields were required.
+  - Raise validation error for specific required metadata entries and no for
+    the entire form. This help users better understand which metadata field
+    needs to be corrected.
+  - Improve the required metadata validation logic to take into account
+    existing values and empty forms when data was entered into the field
+    but the update checkbox was left unchecked.
+
+- Bulk object search indexing updates:
+
+  - Retry failed bulk indexing tasks.
+  - Add max retry value to ``task_index_search_models``.
+  - Improve tasks error logging.
+
+- Update the Debian Docker image from version 11.2-slim to 11.3-slim.
+- Downgrade the Python Docker image from version 3.11-slim to 3.10-slim.
+- Pin Jinja2 version to workaround Sphinx bug. Sphinx Jinja2 dependency is
+  not pinned or immutable, and causes the installation of an incompatible
+  version breaking builds.
+
+4.2.3 (2022-04-01)
+==================
+- Add restart policy to the Traefik container definition.
+- Remove duplicated ``Document.get_label`` method.
+- Fix an issue where a staging folder would not tag uploaded
+  documents.
+
+4.2.2 (2022-03-21)
+==================
+- Ensure the object copy permission is required for the object copy link.
+- Migrate old workflow ``EmailAction`` instances instead of sub-classing
+  for backwards compatibility. Improves commit
+  ``b522dac80f7f6cfb8c5db8a74d6d2d22bc8b281a`` and avoids a double entry in
+  the workflow state action selection downdown list.
+- Ensure new document and file links access works like their respective
+  views. The links will be active when the access is granted for the source
+  as well as the document/document type.
+- Filter unread message count badge by message read permission.
+- Update document metadata model field label from "Metadata type value"
+  to "Metadata value".
+- Fix document file signature serializer label.
+
+4.2.1 (2022-02-16)
+==================
+- Merge improvements from version 4.1.6.
+
+  - Append the text "signed" to the label of a signed document file instead
+    of using the temporary filename used during signing.
+  - Ensure the signed document file is used when the file downloaded is
+    requested and when calculating the signed document file checksum.
+    Solves issue in forum post 6149. Thanks to forum user @qra for the report
+    and debug information.
+  - Update IMAP source ``store commands`` to be optional.
+  - Update email sources ``SSL`` checkbox to be optional.
+  - Undo POP3 source context manager changes from commit
+    c19040491e20c9a783ae6191613bc8c5f7acb038. It seems Python's email libraries
+    do not have feature parity. ``imaplib`` was updated to support context
+    managers but ``poplib`` was not.
+
+- Update requirements to specify Python version 3.6 to 3.9.
+- Update Django version 3.2.11 to 3.2.12.
+
+4.2 (2022-02-12)
 ================
 - Update Django to version 3.2.11.
 - Update django-widget-tweaks from version 1.4.8 to 1.4.9.
@@ -145,9 +658,9 @@
 
 - Add Time based One Time Password (TOTP) support. To enable set the
   setting ``AUTHENTICATION_BACKEND`` to
-  ``mayan.apps.authentication.authentication_backends.AuthenticationBackendModelUsernamePasswordTOTP``
+  ``mayan.apps.authentication_otp.authentication_backends.AuthenticationBackendModelUsernamePasswordTOTP``
   for username and TOTP login. For email and TOTP logins use
-  ``mayan.apps.authentication.authentication_backends.AuthenticationBackendModelEmailPasswordTOTP``.
+  ``mayan.apps.authentication_otp.authentication_backends.AuthenticationBackendModelEmailPasswordTOTP``.
   New management commands to support OTP:
 
     - ``authentication_otp_disable``: disables OTP for a user
@@ -223,6 +736,133 @@
   inspected.
 - Remove menu proxy inclusions. Model proxies are now included by default.
 - Add menu proxy exclusions.
+- Update the subject and body fields of the document email workflow action
+  to be optional.
+- Redirect to current user to user detail view after password change.
+- Support two different ``psycopg2`` versions for upgrade testing.
+
+4.1.9 (2022-04-24)
+==================
+- Remove hardcoded search model variable name from ``search_box.html``
+  template.
+
+4.1.8 (2022-04-23)
+==================
+- Fix the search model API URL reference. Closes GitLab issue #1098. Thanks
+  to Bastian (@Basti-Fantasti) for the report.
+- Use the ``SEARCH_MODEL_NAME_KWARG`` instead of hard coding the search model
+  API URL reference.
+- Merged changes from version 4.0.22:
+
+  - Remove usage of flat values list in document checkout manager.
+  - Remove usage of flat ``values_list`` queryset in metadata managers module.
+  - Cleanup markup of the confirmation form.
+  - Remove redundant modal close button.
+  - Fix search proxies method decorator.
+  - Reorganize converter office MIME type list.
+  - Improve metadata validation error message.
+  - Don't display API URL links to indexing instance and template parents that
+    are also root nodes as these are not accessible.
+  - Remove repeated partition file close call.
+  - Update Django version 2.2.24 to 2.2.28.
+
+- Reduce the Sentry client default ``traces_sample_rate`` from 0.25 to 0.05.
+- Add keyword argument to ``self.stderr`` and ``self.stdout`` usage.
+- In ``FilteredRelatedFieldMixin``, split retrieval of the queryset to
+  avoid the exception handler from capturing an ``AttributeError`` that it
+  shouldn't.
+- Updated the ``subject`` and ``body`` fields of the document email
+  workflow action to be optional.
+- Migrate old workflow ``EmailAction`` instances instead of sub-classing
+  for backwards compatibility. Improves commit
+  ``b522dac80f7f6cfb8c5db8a74d6d2d22bc8b281a`` and avoids a double entry in
+  the workflow state action selection dropbox.
+- Partials navigation updates:
+
+  - Streamline JavaScript partials navigation code.
+  - Make the AJAX response redirect code configurable. New setting
+    ``APPEARANCE_AJAX_REDIRECTION_CODE`` added.
+  - Remove repeated AJAX redirection middleware.
+
+- Add keyword arguments to zip file calls.
+- ``PartialNavigation.js`` improvements.
+
+  - Clean URL query on form submit and use form data as the URL query.
+  - Remove dead code.
+  - Use constants where appropriate.
+
+- Backport new document link condition logic. Ensure new document and file
+  links access works like their respective views. The links will be active
+  when the access is granted for the source as well as the document/document
+  type. Closes GitLab issue #1102. Thanks to Julian Marié (@Angelfs) for the
+  report and debug information.
+- Improve logic of the new document file link
+
+  - Access the view user in a more reliable way.
+  - Test the new file permission of the document and not
+    of the document type.
+  - If no document is present in the view exit fast.
+  - Update tests.
+
+4.1.7 (2022-04-01)
+==================
+- Backport fixes from version 4.2.3
+
+  - Add restart policy to the Traefik container definition.
+  - Remove duplicated ``Document.get_label`` method.
+  - Fix an issue where a staging folder would not tag uploaded
+    documents.
+  - Fix document file signature serializer label.
+  - Update document metadata model field label from "Metadata type value"
+    to "Metadata value".
+  - Filter unread message count badge by message read permission.
+  - Update signature view permission label from
+    "View details of document signatures" to "View document signature".
+  - Ensure the object copy permission is required for the object copy link.
+  - Fix ``GUNICORN_REQUESTS_JITTER`` documentation setting name reference.
+
+4.1.6 (2022-02-15)
+==================
+- Append the text "signed" to the label of a signed document file instead
+  of using the temporary filename used during signing.
+- Ensure the signed document file is used when the file downloaded is
+  requested and when calculating the signed document file checksum.
+  Solves issue in forum post 6149. Thanks to forum user @qra for the report
+  and debug information.
+- Update IMAP source ``store commands`` to be optional.
+- Update email sources ``SSL`` checkbox to be optional.
+- Undo POP3 source context manager changes from commit
+  c19040491e20c9a783ae6191613bc8c5f7acb038. It seems Python's email libraries
+  do not have feature parity. ``imaplib`` was updated to support context
+  managers but ``poplib`` was not.
+- Update requirements to specify Python version 3.5 to 3.9.
+- Update Django version 2.2.24 to 2.2.27.
+
+4.1.5 (2022-02-03)
+==================
+- Fix CAA document links. Closes GitLab issue #1068. Thanks to
+  Matthias Löblich (@startmat) for the report.
+- Remove superfluous apostrophe character in sort heading markup.
+- Fix email sources processing a single message but performing cleanup on
+  multiple messages. The intended behavior is restore which processed one
+  message and cleans up the processed message only.
+- Fix reference to ``shared_uploaded_files`` before the variable being
+  available.
+- Use context managers for the IMAP and POP3 sources to remove the
+  possibility of orphaned descriptors.
+- Create error log entries for objects that existed before the last error
+  log changes. Fix GitLab issue #1069. Thanks to Will Wright (@fireatwill)
+  for the report.
+- Expose the workflow template ``auto_launch`` field via the REST API.
+  Thanks to forum user @qra for the request.
+- Add ``EmailAction`` subclass for backwards compatibility with existing
+  workflow state actions.
+- Expose the checkout datetime, expiration datetime and user fields via the
+  REST API. Thanks to forum user @qra for the request.
+- Print configuration path value when failing to access error is raised.
+- Fix references to the ``SourceBackendSANEScanner`` source backend class.
+- Reorganize the testing setting modules.
+- Remove unused MySQL testing setting module.
 
 4.1.4 (2021-12-01)
 ==================
@@ -805,6 +1445,33 @@
 - Add document template state action API endpoints. Closes GitLab issue #1043
   Thanks to Ludovic Anterieur (@lanterieur) for the request.
 - Pin jsonschema to version 3.2.0 to avoid errors with
+
+4.0.22 (2022-04-22)
+===================
+- Filter unread message count badge by message read permission.
+- Remove usage of flat values list in document checkout manager.
+- Remove usage of flat ``values_list`` queryset in metadata managers module.
+- Ensure the object copy permission is required for the object copy link.
+- Update signature view permission label from
+  "View details of document signature" to "View document signatures".
+- Update document metadata model field label from "Metadata type value"
+  to "Metadata value".
+- Fix document file signature serializer label.
+- Add restart policy to the Traefik container definition.
+- Remove duplicated ``Document.get_label`` method.
+- Add Docker Compose file port comment to remove when using Traefik.
+- Print the path when failing to access the configuration file.
+- Expose the workflow template ``auto_launch`` field via the REST API.
+  Thanks to forum user @qra for the request.
+- Cleanup markup of the confirmation form.
+- Remove redundant modal close button.
+- Fix search proxies method decorator.
+- Reorganize converter office MIME type list.
+- Improve metadata validation error message.
+- Don't display API URL links to indexing instance and template parents that
+  are also root nodes as these are not accessible.
+- Remove repeated partition file close call.
+- Update Django version 2.2.24 to 2.2.28.
 
 4.0.21 (2021-11-29)
 ===================

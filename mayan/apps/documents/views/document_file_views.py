@@ -24,7 +24,13 @@ from ..forms.document_file_forms import (
     DocumentFileForm, DocumentFilePreviewForm, DocumentFilePropertiesForm
 )
 from ..forms.misc_forms import PageNumberForm
-from ..icons import icon_document_file_list
+from ..icons import (
+    icon_document_file_delete, icon_document_file_download_quick,
+    icon_document_file_edit, icon_document_file_list,
+    icon_document_file_preview, icon_document_file_properties_detail,
+    icon_document_file_print, icon_document_file_transformation_list_clear,
+    icon_document_file_transformation_list_clone
+)
 from ..models.document_models import Document
 from ..models.document_file_models import DocumentFile
 from ..permissions import (
@@ -34,7 +40,7 @@ from ..permissions import (
 )
 from ..settings import setting_preview_height, setting_preview_width
 
-from .misc_views import PrintFormView, DocumentPrintView
+from .misc_views import PrintFormView, DocumentPrintBaseView
 
 __all__ = (
     'DocumentFileDeleteView', 'DocumentFileDownloadView',
@@ -62,6 +68,7 @@ class DocumentFileDeleteView(MultipleObjectDeleteView):
     title_single = _('Delete document file: %(object)s.')
     title_singular = _('Delete the %(count)d selected document file.')
     title_plural = _('Delete the %(count)d selected document files.')
+    view_icon = icon_document_file_delete
 
     def get_extra_context(self):
         context = {
@@ -97,6 +104,7 @@ class DocumentFileDownloadView(SingleObjectDownloadView):
     object_permission = permission_document_file_download
     pk_url_kwarg = 'document_file_id'
     source_queryset = DocumentFile.valid.all()
+    view_icon = icon_document_file_download_quick
 
     def get_download_file_object(self):
         instance = self.get_object()
@@ -107,12 +115,16 @@ class DocumentFileDownloadView(SingleObjectDownloadView):
     def get_download_filename(self):
         return self.object.filename
 
+    def get_download_mime_type_and_encoding(self, file_object):
+        return self.object.mimetype, self.object.encoding
+
 
 class DocumentFileEditView(SingleObjectEditView):
     form_class = DocumentFileForm
     object_permission = permission_document_file_edit
     pk_url_kwarg = 'document_file_id'
     source_queryset = DocumentFile.valid.all()
+    view_icon = icon_document_file_edit
 
     def get_extra_context(self):
         return {
@@ -136,6 +148,7 @@ class DocumentFileListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid.all()
+    view_icon = icon_document_file_list
 
     def get_document(self):
         document = self.external_object
@@ -174,6 +187,7 @@ class DocumentFilePreviewView(SingleObjectDetailView):
     object_permission = permission_document_file_view
     pk_url_kwarg = 'document_file_id'
     source_queryset = DocumentFile.valid.all()
+    view_icon = icon_document_file_preview
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request, *args, **kwargs)
@@ -213,6 +227,7 @@ class DocumentFilePrintFormView(PrintFormView):
     external_object_queryset = DocumentFile.valid.all()
     print_view_name = 'documents:document_file_print_view'
     print_view_kwarg = 'document_file_id'
+    view_icon = icon_document_file_print
 
     def _add_recent_document(self):
         self.external_object.document.add_as_recent_document_for_user(
@@ -220,10 +235,11 @@ class DocumentFilePrintFormView(PrintFormView):
         )
 
 
-class DocumentFilePrintView(DocumentPrintView):
+class DocumentFilePrintView(DocumentPrintBaseView):
     external_object_permission = permission_document_file_print
     external_object_pk_url_kwarg = 'document_file_id'
     external_object_queryset = DocumentFile.valid.all()
+    view_icon = icon_document_file_print
 
     def _add_recent_document(self):
         self.external_object.document.add_as_recent_document_for_user(
@@ -236,6 +252,7 @@ class DocumentFilePropertiesView(SingleObjectDetailView):
     object_permission = permission_document_file_view
     pk_url_kwarg = 'document_file_id'
     source_queryset = DocumentFile.valid.all()
+    view_icon = icon_document_file_properties_detail
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request, *args, **kwargs)
@@ -262,6 +279,7 @@ class DocumentFileTransformationsClearView(MultipleObjectConfirmActionView):
     success_message_plural = _(
         'Transformation clear request processed for %(count)d document files.'
     )
+    view_icon = icon_document_file_transformation_list_clear
 
     def get_extra_context(self):
         result = {
@@ -307,6 +325,7 @@ class DocumentFileTransformationsCloneView(ExternalObjectViewMixin, FormView):
     external_object_pk_url_kwarg = 'document_file_id'
     external_object_queryset = DocumentFile.valid.all()
     form_class = PageNumberForm
+    view_icon = icon_document_file_transformation_list_clone
 
     def dispatch(self, request, *args, **kwargs):
         results = super().dispatch(request=request, *args, **kwargs)

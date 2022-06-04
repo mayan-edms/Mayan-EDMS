@@ -1,33 +1,40 @@
 from django.apps import apps
-from django.db.models.signals import post_migrate, post_save
+from django.db.models.signals import post_migrate, post_save, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import (
-    ModelCopy, ModelField, ModelProperty, ModelReverseField
-)
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
     menu_list_facet, menu_main, menu_multi_item, menu_object, menu_related,
     menu_secondary, menu_setup, menu_tools
+)
+from mayan.apps.databases.classes import (
+    ModelField, ModelProperty, ModelReverseField
 )
 from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.documents.signals import signal_post_document_type_change
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.logging.classes import ErrorLog
-from mayan.apps.logging.permissions import permission_error_log_view
+from mayan.apps.logging.permissions import permission_error_log_entry_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .classes import DocumentStateHelper, WorkflowAction
-from .events import event_workflow_template_edited
+from .events import (
+    event_workflow_instance_created, event_workflow_instance_transitioned,
+    event_workflow_template_edited
+)
 from .handlers import (
     handler_create_workflow_image_cache,
-    handler_index_document_on_workflow_instance,
-    handler_index_document_on_workflow_instance_log_entry,
     handler_launch_workflow_on_create,
-    handler_launch_workflow_on_type_change, handler_trigger_transition
+    handler_launch_workflow_on_type_change, handler_trigger_transition,
+    handler_workflow_template_post_edit,
+    handler_workflow_template_state_post_edit,
+    handler_workflow_template_state_pre_delete,
+    handler_workflow_template_transition_post_edit,
+    handler_workflow_template_transition_pre_delete
 )
 from .html_widgets import WorkflowLogExtraDataWidget, widget_transition_events
 from .links import (
@@ -50,6 +57,10 @@ from .links import (
     link_workflow_template_state_action_selection,
     link_workflow_template_state_create, link_workflow_template_state_delete,
     link_workflow_template_state_edit,
+    link_workflow_template_state_escalation_create,
+    link_workflow_template_state_escalation_delete,
+    link_workflow_template_state_escalation_edit,
+    link_workflow_template_state_escalation_list,
     link_workflow_template_transition_create,
     link_workflow_template_transition_delete,
     link_workflow_template_transition_edit,
@@ -94,6 +105,7 @@ class DocumentStatesApp(MayanAppConfig):
         WorkflowRuntimeProxy = self.get_model('WorkflowRuntimeProxy')
         WorkflowState = self.get_model('WorkflowState')
         WorkflowStateAction = self.get_model('WorkflowStateAction')
+        WorkflowStateEscalation = self.get_model('WorkflowStateEscalation')
         WorkflowStateRuntimeProxy = self.get_model('WorkflowStateRuntimeProxy')
         WorkflowTransition = self.get_model('WorkflowTransition')
         WorkflowTransitionField = self.get_model('WorkflowTransitionField')
@@ -107,12 +119,13 @@ class DocumentStatesApp(MayanAppConfig):
 
         DynamicSerializerField.add_serializer(
             klass=Workflow,
-            serializer_class='mayan.apps.document_states.serializers.WorkflowTemplateSerializer'
+            serializer_class='mayan.apps.document_states.serializers.workflow_template_serializers.WorkflowTemplateSerializer'
         )
 
         error_log = ErrorLog(app_config=self)
         error_log.register_model(model=WorkflowStateAction)
 
+        EventModelRegistry.register(model=WorkflowInstance)
         EventModelRegistry.register(
             exclude=(WorkflowRuntimeProxy,), model=Workflow,
         )
@@ -120,6 +133,7 @@ class DocumentStatesApp(MayanAppConfig):
             exclude=(WorkflowStateRuntimeProxy,), model=WorkflowState
         )
         EventModelRegistry.register(model=WorkflowStateAction)
+        EventModelRegistry.register(model=WorkflowStateEscalation)
         EventModelRegistry.register(model=WorkflowTransition)
         EventModelRegistry.register(model=WorkflowTransitionField)
         EventModelRegistry.register(model=WorkflowTransitionTriggerEvent)
@@ -176,7 +190,19 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         ModelEventType.register(
+            event_types=(
+                event_workflow_instance_created,
+                event_workflow_instance_transitioned,
+            ), model=Document
+        )
+        ModelEventType.register(
             event_types=(event_workflow_template_edited,), model=Workflow
+        )
+        ModelEventType.register(
+            event_types=(
+                event_workflow_instance_created,
+                event_workflow_instance_transitioned,
+            ), model=WorkflowInstance
         )
 
         ModelProperty(
@@ -204,7 +230,7 @@ class DocumentStatesApp(MayanAppConfig):
         )
         ModelPermission.register(
             model=Workflow, permissions=(
-                permission_error_log_view, permission_workflow_template_delete,
+                permission_error_log_entry_view, permission_workflow_template_delete,
                 permission_workflow_template_edit, permission_workflow_tools,
                 permission_workflow_instance_transition,
                 permission_workflow_template_view
@@ -227,6 +253,9 @@ class DocumentStatesApp(MayanAppConfig):
         )
         ModelPermission.register_inheritance(
             model=WorkflowStateAction, related='state__workflow',
+        )
+        ModelPermission.register_inheritance(
+            model=WorkflowStateEscalation, related='state__workflow',
         )
         ModelPermission.register_inheritance(
             model=WorkflowTransition, related='workflow',
@@ -375,6 +404,31 @@ class DocumentStatesApp(MayanAppConfig):
             source=WorkflowStateAction, widget=TwoStateWidget
         )
 
+        # Workflow Template State Escalation
+
+        SourceColumn(
+            attribute='priority', is_identifier=True, is_sortable=True,
+            source=WorkflowStateEscalation
+        )
+        SourceColumn(
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=WorkflowStateEscalation, widget=TwoStateWidget
+        )
+        SourceColumn(
+            attribute='unit', include_label=True,
+            source=WorkflowStateEscalation
+        )
+        SourceColumn(
+            attribute='amount', include_label=True,
+            source=WorkflowStateEscalation
+        )
+        SourceColumn(
+            attribute='has_condition', include_label=True,
+            source=WorkflowStateEscalation, widget=TwoStateWidget
+        )
+
+        # Workflow transition
+
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
             source=WorkflowTransition,
@@ -522,6 +576,12 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_template_state_action_delete,
             ), sources=(WorkflowStateAction,)
         )
+        menu_object.bind_links(
+            links=(
+                link_workflow_template_state_escalation_edit,
+                link_workflow_template_state_escalation_delete,
+            ), sources=(WorkflowStateEscalation,)
+        )
 
         menu_list_facet.bind_links(
             links=(
@@ -533,6 +593,7 @@ class DocumentStatesApp(MayanAppConfig):
             exclude=(WorkflowStateRuntimeProxy,),
             links=(
                 link_workflow_template_state_action_list,
+                link_workflow_template_state_escalation_list
             ), sources=(WorkflowState,)
         )
         menu_list_facet.bind_links(
@@ -577,8 +638,10 @@ class DocumentStatesApp(MayanAppConfig):
             )
         )
         menu_secondary.bind_links(
-            links=(link_workflow_template_state_action_selection,),
-            sources=(
+            links=(
+                link_workflow_template_state_action_selection,
+                link_workflow_template_state_escalation_create
+            ), sources=(
                 WorkflowState,
             )
         )
@@ -605,6 +668,10 @@ class DocumentStatesApp(MayanAppConfig):
 
         menu_tools.bind_links(links=(link_tool_launch_workflows,))
 
+        post_migrate.connect(
+            dispatch_uid='workflows_handler_create_workflow_image_cache',
+            receiver=handler_create_workflow_image_cache,
+        )
         post_save.connect(
             dispatch_uid='workflows_handler_launch_workflow_on_create',
             receiver=handler_launch_workflow_on_create,
@@ -616,24 +683,44 @@ class DocumentStatesApp(MayanAppConfig):
             sender=Document
         )
 
-        # Index updating
+        # Indexing, general
 
-        post_migrate.connect(
-            dispatch_uid='workflows_handler_create_workflow_image_cache',
-            receiver=handler_create_workflow_image_cache,
-        )
-        post_save.connect(
-            dispatch_uid='handler_index_document_on_workflow_instance_log_entry',
-            receiver=handler_index_document_on_workflow_instance_log_entry,
-            sender=WorkflowInstanceLogEntry
-        )
-        post_save.connect(
-            dispatch_uid='workflows_handler_index_document_on_workflow_instance',
-            receiver=handler_index_document_on_workflow_instance,
-            sender=WorkflowInstance
-        )
         post_save.connect(
             dispatch_uid='workflows_handler_trigger_transition',
             receiver=handler_trigger_transition,
             sender=Action
+        )
+
+        # Indexing, Workflow template
+
+        post_save.connect(
+            dispatch_uid='workflows_handler_workflow_template_post_edit',
+            receiver=handler_workflow_template_post_edit,
+            sender=Workflow
+        )
+
+        # Indexing, Workflow template state
+
+        post_save.connect(
+            dispatch_uid='workflows_handler_workflow_template_state_post_edit',
+            receiver=handler_workflow_template_state_post_edit,
+            sender=WorkflowState
+        )
+        pre_delete.connect(
+            dispatch_uid='workflows_handler_workflow_template_state_pre_delete',
+            receiver=handler_workflow_template_state_pre_delete,
+            sender=WorkflowState
+        )
+
+        # Indexing, Workflow template transition
+
+        post_save.connect(
+            dispatch_uid='workflows_handler_workflow_template_transition_post_edit',
+            receiver=handler_workflow_template_transition_post_edit,
+            sender=WorkflowTransition
+        )
+        pre_delete.connect(
+            dispatch_uid='workflows_handler_workflow_template_transition_pre_delete',
+            receiver=handler_workflow_template_transition_pre_delete,
+            sender=WorkflowTransition
         )

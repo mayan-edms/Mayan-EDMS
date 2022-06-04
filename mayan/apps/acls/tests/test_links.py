@@ -15,10 +15,10 @@ class ACLsLinksTestCase(ACLTestMixin, GenericViewTestCase):
 
     def test_object_acl_create_link(self):
         self.grant_access(
-            obj=self.test_object, permission=permission_acl_edit
+            obj=self._test_object, permission=permission_acl_edit
         )
 
-        self.add_test_view(test_object=self.test_object)
+        self.add_test_view(test_object=self._test_object)
         context = self.get_test_view()
         resolved_link = link_acl_create.resolve(context=context)
 
@@ -27,7 +27,7 @@ class ACLsLinksTestCase(ACLTestMixin, GenericViewTestCase):
         self.assertEqual(
             resolved_link.url, reverse(
                 viewname=link_acl_create.view,
-                kwargs=self.test_object_view_kwargs
+                kwargs=self._test_object_view_kwargs
             )
         )
 
@@ -35,10 +35,10 @@ class ACLsLinksTestCase(ACLTestMixin, GenericViewTestCase):
         self._create_test_acl()
 
         self.grant_access(
-            obj=self.test_object, permission=permission_acl_edit
+            obj=self._test_object, permission=permission_acl_edit
         )
 
-        self.add_test_view(test_object=self.test_acl)
+        self.add_test_view(test_object=self._test_acl)
         context = self.get_test_view()
         resolved_link = link_acl_delete.resolve(context=context)
 
@@ -47,7 +47,7 @@ class ACLsLinksTestCase(ACLTestMixin, GenericViewTestCase):
         self.assertEqual(
             resolved_link.url, reverse(
                 viewname=link_acl_delete.view, kwargs={
-                    'acl_id': self.test_acl.pk
+                    'acl_id': self._test_acl.pk
                 }
             )
         )
@@ -56,10 +56,10 @@ class ACLsLinksTestCase(ACLTestMixin, GenericViewTestCase):
         self._create_test_acl()
 
         self.grant_access(
-            obj=self.test_object, permission=permission_acl_edit
+            obj=self._test_object, permission=permission_acl_edit
         )
 
-        self.add_test_view(test_object=self.test_acl)
+        self.add_test_view(test_object=self._test_acl)
         context = self.get_test_view()
         resolved_link = link_acl_permissions.resolve(context=context)
 
@@ -68,17 +68,17 @@ class ACLsLinksTestCase(ACLTestMixin, GenericViewTestCase):
         self.assertEqual(
             resolved_link.url, reverse(
                 viewname=link_acl_permissions.view, kwargs={
-                    'acl_id': self.test_acl.pk
+                    'acl_id': self._test_acl.pk
                 }
             )
         )
 
     def test_object_acl_list_link(self):
         self.grant_access(
-            obj=self.test_object, permission=permission_acl_view
+            obj=self._test_object, permission=permission_acl_view
         )
 
-        self.add_test_view(test_object=self.test_object)
+        self.add_test_view(test_object=self._test_object)
         context = self.get_test_view()
         resolved_link = link_acl_list.resolve(context=context)
         self.assertNotEqual(resolved_link, None)
@@ -86,6 +86,6 @@ class ACLsLinksTestCase(ACLTestMixin, GenericViewTestCase):
         self.assertEqual(
             resolved_link.url, reverse(
                 viewname=link_acl_list.view,
-                kwargs=self.test_object_view_kwargs
+                kwargs=self._test_object_view_kwargs
             )
         )

@@ -4,18 +4,18 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Badea Gabriel <gcbadea@gmail.com>, 2021
-# Harald Ersch, 2021
-# Stefaniu Criste <gupi@hangar.ro>, 2021
+# Badea Gabriel <gcbadea@gmail.com>, 2022
+# Stefaniu Criste <gupi@hangar.ro>, 2022
+# Roberto Rosario, 2022
+# Harald Ersch, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:26+0000\n"
-"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,11 +23,11 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:40
+#: apps.py:41
 msgid "Linking"
 msgstr "Legare"
 
-#: apps.py:100 models.py:29
+#: apps.py:106 models.py:29
 msgid "Label"
 msgstr "Conținut etichetă"
 
@@ -229,7 +229,7 @@ msgstr "Etichetă completă"
 
 #: permissions.py:8
 msgid "View resolved smart links"
-msgstr ""
+msgstr "Vedeți linkurile inteligente rezolvate"
 
 #: permissions.py:11
 msgid "Create new smart links"
@@ -247,23 +247,25 @@ msgstr "Editați legături inteligente"
 msgid "View existing smart links"
 msgstr "Vedeți legăturile inteligente existente"
 
-#: serializers.py:49
+#: serializers.py:50
 msgid "Primary key of the document type to add to the smart link."
 msgstr ""
+"Cheia primară a tipului de document de adăugat la legătura inteligentă."
 
-#: serializers.py:58
+#: serializers.py:59
 msgid "Primary key of the document type to remove from the smart link."
 msgstr ""
+"Cheia primară a tipului de document de eliminat din legătura inteligentă."
 
 #: views.py:65
 #, python-format
 msgid "Resolved smart link query error: %s"
-msgstr ""
+msgstr "Eroare de interogare a linkului inteligent rezolvată: %s"
 
 #: views.py:92
 #, python-format
 msgid "Resolved smart link dynamic label error: %s"
-msgstr ""
+msgstr "Eroare de etichetă dinamică a linkului inteligent rezolvată: %s"
 
 #: views.py:97
 #, python-format
@@ -271,6 +273,8 @@ msgid ""
 "Documents in resolved smart link \"%(resolved_smart_link)s\" for "
 "\"%(document)s\""
 msgstr ""
+"Documente în linkul inteligent rezolvat „%(resolved_smart_link)s” pentru "
+"„%(document)s”"
 
 #: views.py:138
 msgid ""
@@ -297,12 +301,12 @@ msgstr ""
 
 #: views.py:171
 msgid "There are no resolved smart links for this document"
-msgstr ""
+msgstr "Nu există legături inteligente rezolvate pentru acest document"
 
 #: views.py:175
 #, python-format
 msgid "Resolved smart links for document: %s"
-msgstr ""
+msgstr "Legături inteligente rezolvate pentru document: %s"
 
 #: views.py:191
 msgid "Available smart links"

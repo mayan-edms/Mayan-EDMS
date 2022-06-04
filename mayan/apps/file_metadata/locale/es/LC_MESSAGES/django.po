@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -249,30 +249,39 @@ msgstr ""
 "Atributos de metadatos de archivo para: %(document_file)s con controlador: "
 "%(driver)s"
 
-#: views.py:119
+#: views.py:112
+#, python-format
+msgid "%(count)d document file submitted to the file metadata queue."
+msgstr ""
+"%(count)d archivo de documento enviado a la cola de metadatos del archivo."
+
+#: views.py:115
+#, python-format
+msgid "%(count)d documents files submitted to the file metadata queue."
+msgstr ""
+"%(count)d archivos de documentos enviados a la cola de metadatos de "
+"archivos."
+
+#: views.py:123
 msgid "Submit the selected document file to the file metadata queue?"
 msgid_plural "Submit the selected documents files to the file metadata queue?"
 msgstr[0] ""
-"¿Enviar el archivo del documento seleccionado a la cola de metadatos del "
-"archivo?"
 msgstr[1] ""
-"¿Enviar los archivos de documentos seleccionados a la cola de metadatos de "
-"archivos?"
 
-#: views.py:147
+#: views.py:151
 #, python-format
 msgid "Edit file metadata settings for document type: %s"
 msgstr ""
 "Editar la configuración de metadatos del archivo para el tipo de documento: "
 "%s"
 
-#: views.py:158
+#: views.py:162
 msgid "Submit all documents of a type for file metadata processing."
 msgstr ""
 "Enviar todos los documentos de un tipo para el procesamiento de metadatos de"
 " archivos."
 
-#: views.py:184
+#: views.py:188
 #, python-format
 msgid "%(count)d documents added to the file metadata processing queue."
 msgstr ""

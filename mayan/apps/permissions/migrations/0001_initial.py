@@ -108,7 +108,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='storedpermission',
-            unique_together=set([('namespace', 'name')]),
+            unique_together={('namespace', 'name')},
         ),
         migrations.AddField(
             model_name='permissionholder',

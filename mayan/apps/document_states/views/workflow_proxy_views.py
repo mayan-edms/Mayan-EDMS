@@ -1,12 +1,16 @@
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.models import Document
 from mayan.apps.documents.views.document_views import DocumentListView
 from mayan.apps.views.generics import SingleObjectListView
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
-from ..icons import icon_workflow_template_list
+from ..icons import (
+    icon_workflow_runtime_proxy_document_list,
+    icon_workflow_runtime_proxy_list,
+    icon_workflow_runtime_proxy_state_document_list,
+    icon_workflow_runtime_proxy_state_list, icon_workflow_template_list
+)
 from ..links import link_workflow_template_create, link_workflow_template_state_create
 from ..models import WorkflowRuntimeProxy, WorkflowStateRuntimeProxy
 from ..permissions import permission_workflow_template_view
@@ -18,11 +22,10 @@ class WorkflowRuntimeProxyDocumentListView(
     external_object_class = WorkflowRuntimeProxy
     external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_runtime_proxy_id'
+    view_icon = icon_workflow_runtime_proxy_document_list
 
     def get_document_queryset(self):
-        return Document.valid.filter(
-            workflows__workflow=self.external_object
-        )
+        return self.external_object.get_documents()
 
     def get_extra_context(self):
         context = super().get_extra_context()
@@ -47,6 +50,7 @@ class WorkflowRuntimeProxyDocumentListView(
 class WorkflowRuntimeProxyListView(SingleObjectListView):
     model = WorkflowRuntimeProxy
     object_permission = permission_workflow_template_view
+    view_icon = icon_workflow_runtime_proxy_list
 
     def get_extra_context(self):
         return {
@@ -71,6 +75,7 @@ class WorkflowRuntimeProxyStateDocumentListView(
     external_object_class = WorkflowStateRuntimeProxy
     external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_runtime_proxy_state_id'
+    view_icon = icon_workflow_runtime_proxy_state_document_list
 
     def get_document_queryset(self):
         return self.external_object.get_documents()
@@ -103,6 +108,7 @@ class WorkflowRuntimeProxyStateListView(
     external_object_class = WorkflowRuntimeProxy
     external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_runtime_proxy_id'
+    view_icon = icon_workflow_runtime_proxy_state_list
 
     def get_extra_context(self):
         return {

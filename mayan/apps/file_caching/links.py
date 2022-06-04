@@ -19,7 +19,7 @@ def condition_valid_storage(context, resolved_object):
         return storage
 
 
-link_caches_list = Link(
+link_cache_list = Link(
     icon=icon_file_caching, permissions=(permission_cache_view,),
     text=_('File caches'), view='file_caching:cache_list'
 )

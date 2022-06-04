@@ -1,6 +1,6 @@
 from rest_framework import status
 
-from mayan.apps.documents.tests.base import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..events import event_smart_link_edited
@@ -38,7 +38,7 @@ class SmartLinkConditionAPIViewTestCase(
 
     def test_smart_link_condition_create_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_smart_link, permission=permission_smart_link_edit
+            obj=self._test_smart_link, permission=permission_smart_link_edit
         )
 
         self._clear_events()
@@ -61,10 +61,10 @@ class SmartLinkConditionAPIViewTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(
-            events[0].action_object, self.test_smart_link_condition
+            events[0].action_object, self._test_smart_link_condition
         )
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_smart_link)
+        self.assertEqual(events[0].target, self._test_smart_link)
         self.assertEqual(events[0].verb, event_smart_link_edited.id)
 
     def test_smart_link_condition_delete_api_view_no_permission(self):
@@ -84,7 +84,7 @@ class SmartLinkConditionAPIViewTestCase(
         self._create_test_smart_link_condition()
 
         self.grant_access(
-            obj=self.test_smart_link, permission=permission_smart_link_edit
+            obj=self._test_smart_link, permission=permission_smart_link_edit
         )
 
         self._clear_events()
@@ -99,7 +99,7 @@ class SmartLinkConditionAPIViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_smart_link)
+        self.assertEqual(events[0].target, self._test_smart_link)
         self.assertEqual(events[0].verb, event_smart_link_edited.id)
 
     def test_smart_link_condition_detail_api_view_no_permission(self):
@@ -117,7 +117,7 @@ class SmartLinkConditionAPIViewTestCase(
         self._create_test_smart_link_condition()
 
         self.grant_access(
-            obj=self.test_smart_link, permission=permission_smart_link_view
+            obj=self._test_smart_link, permission=permission_smart_link_view
         )
 
         self._clear_events()
@@ -139,9 +139,9 @@ class SmartLinkConditionAPIViewTestCase(
         response = self._request_smart_link_condition_edit_via_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_smart_link_condition.refresh_from_db()
+        self._test_smart_link_condition.refresh_from_db()
         self.assertEqual(
-            self.test_smart_link_condition.expression,
+            self._test_smart_link_condition.expression,
             TEST_SMART_LINK_CONDITION_EXPRESSION
         )
 
@@ -152,7 +152,7 @@ class SmartLinkConditionAPIViewTestCase(
         self._create_test_smart_link_condition()
 
         self.grant_access(
-            obj=self.test_smart_link, permission=permission_smart_link_edit
+            obj=self._test_smart_link, permission=permission_smart_link_edit
         )
 
         self._clear_events()
@@ -160,9 +160,9 @@ class SmartLinkConditionAPIViewTestCase(
         response = self._request_smart_link_condition_edit_via_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_smart_link_condition.refresh_from_db()
+        self._test_smart_link_condition.refresh_from_db()
         self.assertEqual(
-            self.test_smart_link_condition.expression,
+            self._test_smart_link_condition.expression,
             TEST_SMART_LINK_CONDITION_EXPRESSION_EDITED
         )
 
@@ -170,10 +170,10 @@ class SmartLinkConditionAPIViewTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(
-            events[0].action_object, self.test_smart_link_condition
+            events[0].action_object, self._test_smart_link_condition
         )
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_smart_link)
+        self.assertEqual(events[0].target, self._test_smart_link)
         self.assertEqual(events[0].verb, event_smart_link_edited.id)
 
     def test_smart_link_condition_edit_via_put_api_view_no_permission(self):
@@ -184,9 +184,9 @@ class SmartLinkConditionAPIViewTestCase(
         response = self._request_smart_link_condition_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_smart_link_condition.refresh_from_db()
+        self._test_smart_link_condition.refresh_from_db()
         self.assertEqual(
-            self.test_smart_link_condition.expression,
+            self._test_smart_link_condition.expression,
             TEST_SMART_LINK_CONDITION_EXPRESSION
         )
 
@@ -197,7 +197,7 @@ class SmartLinkConditionAPIViewTestCase(
         self._create_test_smart_link_condition()
 
         self.grant_access(
-            obj=self.test_smart_link, permission=permission_smart_link_edit
+            obj=self._test_smart_link, permission=permission_smart_link_edit
         )
 
         self._clear_events()
@@ -205,9 +205,9 @@ class SmartLinkConditionAPIViewTestCase(
         response = self._request_smart_link_condition_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_smart_link_condition.refresh_from_db()
+        self._test_smart_link_condition.refresh_from_db()
         self.assertEqual(
-            self.test_smart_link_condition.expression,
+            self._test_smart_link_condition.expression,
             TEST_SMART_LINK_CONDITION_EXPRESSION_EDITED
         )
 
@@ -215,10 +215,10 @@ class SmartLinkConditionAPIViewTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(
-            events[0].action_object, self.test_smart_link_condition
+            events[0].action_object, self._test_smart_link_condition
         )
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_smart_link)
+        self.assertEqual(events[0].target, self._test_smart_link)
         self.assertEqual(events[0].verb, event_smart_link_edited.id)
 
     def test_smart_link_condition_list_api_view_no_permission(self):
@@ -236,7 +236,7 @@ class SmartLinkConditionAPIViewTestCase(
         self._create_test_smart_link_condition()
 
         self.grant_access(
-            obj=self.test_smart_link, permission=permission_smart_link_view
+            obj=self._test_smart_link, permission=permission_smart_link_view
         )
 
         self._clear_events()
@@ -245,7 +245,7 @@ class SmartLinkConditionAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['id'],
-            self.test_smart_link_condition.pk
+            self._test_smart_link_condition.pk
         )
 
         events = self._get_test_events()

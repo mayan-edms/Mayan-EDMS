@@ -4,6 +4,15 @@ from django import forms
 from django.utils.safestring import mark_safe
 
 
+class ColorWidget(forms.TextInput):
+    template_name = 'views/widget_color_picker.html'
+
+    def __init__(self, attrs=None):
+        attrs = attrs or {}
+        attrs['type'] = 'color'
+        super().__init__(attrs=attrs)
+
+
 class DisableableSelectWidget(forms.widgets.SelectMultiple):
     def create_option(self, *args, **kwargs):
         result = super().create_option(*args, **kwargs)
@@ -71,14 +80,14 @@ class NamedMultiWidget(forms.widgets.Widget):
             widget = self.widgets[widget_name]
             if input_type is not None:
                 widget.input_type = input_type
-            full_widget_name = '%s_%s' % (name, widget_name)
+            full_widget_name = '{}_{}'.format(name, widget_name)
             try:
                 widget_value = value[widget_name]
             except IndexError:
                 widget_value = None
             if id_:
                 widget_attrs = final_attrs.copy()
-                widget_attrs['id'] = '%s_%s' % (id_, widget_name)
+                widget_attrs['id'] = '{}_{}'.format(id_, widget_name)
             else:
                 widget_attrs = final_attrs
             subwidgets.append(
@@ -117,7 +126,7 @@ class NamedMultiWidget(forms.widgets.Widget):
 class PlainWidget(forms.widgets.Widget):
     """
     Class to define a form widget that effectively nulls the htmls of a
-    widget and reduces the output to only it's value
+    widget and reduces the output to only it's value.
     """
     def render(self, name, value, attrs=None, renderer=None):
         return mark_safe(s='%s' % value)
@@ -126,13 +135,6 @@ class PlainWidget(forms.widgets.Widget):
 class TextAreaDiv(forms.widgets.Widget):
     """
     Class to define a form widget that simulates the behavior of a
-    Textarea widget but using a div tag instead
+    Textarea widget but using a div tag instead.
     """
     template_name = 'appearance/forms/widgets/textareadiv.html'
-
-    def __init__(self, attrs=None):
-        # The 'rows' and 'cols' attributes are required for HTML correctness.
-        default_attrs = {'class': 'text_area_div'}
-        if attrs:
-            default_attrs.update(attrs)
-        super().__init__(default_attrs)

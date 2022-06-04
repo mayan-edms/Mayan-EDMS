@@ -6,12 +6,15 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_tools
+from mayan.apps.common.signals import signal_perform_upgrade
+
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 from mayan.celery import app as celery_app
 
 from .classes import CeleryQueue, Task
-from .links import link_task_manager
+from .handlers import handler_perform_upgrade
+from .links import link_queue_list
 from .literals import TEST_CELERY_RESULT_KEY, TEST_CELERY_RESULT_VALUE
 
 logger = logging.getLogger(name=__name__)
@@ -20,6 +23,7 @@ logger = logging.getLogger(name=__name__)
 class TaskManagerApp(MayanAppConfig):
     app_namespace = 'task_manager'
     app_url = 'task_manager'
+    has_tests = True
     name = 'mayan.apps.task_manager'
     verbose_name = _('Task manager')
 
@@ -122,4 +126,9 @@ class TaskManagerApp(MayanAppConfig):
             include_label=True, label=_('Worker process ID'), source=Task
         )
 
-        menu_tools.bind_links(links=(link_task_manager,))
+        menu_tools.bind_links(links=(link_queue_list,))
+
+        signal_perform_upgrade.connect(
+            dispatch_uid='task_manager_handler_perform_upgrade',
+            receiver=handler_perform_upgrade
+        )

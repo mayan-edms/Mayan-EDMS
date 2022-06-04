@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Stefaniu Criste <gupi@hangar.ro>, 2021
-# Harald Ersch, 2021
+# Stefaniu Criste <gupi@hangar.ro>, 2022
+# Harald Ersch, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: Harald Ersch, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,6 +36,14 @@ msgstr "Corespondență electonică"
 #: events.py:8
 msgid "Email sent"
 msgstr "Email trimis"
+
+#: events.py:11
+msgid "Mailing profile created"
+msgstr "Profil de corespondență a fost creat"
+
+#: events.py:14
+msgid "Mailing profile edited"
+msgstr "Profilul de corespondență a fost editat"
 
 #: forms.py:58 forms.py:93
 msgid ""
@@ -61,7 +69,7 @@ msgstr "Corp"
 msgid "The email profile that will be used to send this email."
 msgstr "Profilul de e-mail care va fi folosit pentru a trimite acest e-mail."
 
-#: forms.py:69 models.py:57 views/mailing_profile_views.py:120
+#: forms.py:69 models.py:61 views/mailing_profile_views.py:126
 #: workflow_actions.py:19
 msgid "Mailing profile"
 msgstr "Profilul de corespondență"
@@ -76,27 +84,27 @@ msgstr "Backend"
 
 #: links.py:33 links.py:36
 msgid "Email document link"
-msgstr ""
+msgstr "Trimiteți prin e-mail linkul documentului"
 
 #: links.py:46 links.py:51
 msgid "Email document file"
-msgstr ""
+msgstr "Trimiteți prin e-mail fișierul document"
 
 #: links.py:57 links.py:62
 msgid "Email document file link"
-msgstr ""
+msgstr "Trimiteți prin e-mail un link pentru fișierul documentului"
 
 #: links.py:72 links.py:77
 msgid "Email document version"
-msgstr ""
+msgstr "Trimiteți versiunea documentului prin e-mail"
 
 #: links.py:83
 msgid "Email document version link"
-msgstr ""
+msgstr "Trimiteți prin e-mail linkul versiunii documentului"
 
 #: links.py:88
 msgid "Email link version"
-msgstr ""
+msgstr "Trimiteți versiunea linkului prin e-mail"
 
 #: links.py:97
 msgid "Create mailing profile"
@@ -114,11 +122,11 @@ msgstr "Editați"
 msgid "Mailing profiles list"
 msgstr "Listă de profiluri de corespondență"
 
-#: links.py:117 models.py:58
+#: links.py:117 models.py:62
 msgid "Mailing profiles"
 msgstr "Profiluri de corespondență"
 
-#: links.py:122 views/mailing_profile_views.py:144
+#: links.py:122 views/mailing_profile_views.py:152
 msgid "Test"
 msgstr "Test"
 
@@ -130,10 +138,14 @@ msgid ""
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr ""
+"La acest e-mail este atașat {{ object_name }}: {{ object }} \n"
+"\n"
+"-------- \n"
+"Acest e-mail a fost trimis de la %(project_title)s (%(project_website)s)"
 
 #: literals.py:11
 msgid "{{ object_name }}: {{ object }}"
-msgstr ""
+msgstr "{{ object_name }}: {{ obiect }}"
 
 #: literals.py:13
 #, python-format
@@ -143,10 +155,14 @@ msgid ""
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr ""
+"Pentru a accesa acest {{ object_name }} faceți clic pe următorul link: {{ link }}\n"
+"\n"
+"--------\n"
+" Acest e-mail a fost trimis de la %(project_title)s (%(project_website)s)"
 
 #: literals.py:17
 msgid "Link for {{ object_name }}: {{ object }}"
-msgstr ""
+msgstr "Link pentru {{ object_name }}: {{ object }}"
 
 #: mailers.py:19 mailers.py:108
 msgid "From"
@@ -247,15 +263,15 @@ msgstr "Calea fișierului"
 msgid "Django file based backend"
 msgstr "Backend Django pe bază de fișiere"
 
-#: models.py:34
+#: models.py:38
 msgid "A short text describing the mailing profile."
 msgstr "Un text scurt care descrie profilul de e-mail."
 
-#: models.py:35
+#: models.py:39
 msgid "Label"
 msgstr "Conținut etichetă"
 
-#: models.py:39
+#: models.py:43
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
@@ -263,27 +279,27 @@ msgstr ""
 "Dacă este implicit, acest profil de poștă electronică va fi pre-selectat pe "
 "formularul de trimitere a documentelor."
 
-#: models.py:41
+#: models.py:45
 msgid "Default"
 msgstr "Implicit"
 
-#: models.py:43
+#: models.py:47
 msgid "Enabled"
 msgstr "Activat"
 
-#: models.py:46
+#: models.py:50
 msgid "The dotted Python path to the backend class."
 msgstr "Calea Python punctată la clasa backend."
 
-#: models.py:47
+#: models.py:51
 msgid "Backend path"
 msgstr "Calea de backend"
 
-#: models.py:50
+#: models.py:54
 msgid "Backend data"
 msgstr "Date backend"
 
-#: models.py:221
+#: models.py:237
 msgid "Test email from Mayan EDMS"
 msgstr "E-mail de încercare de la Mayan EDMS"
 
@@ -313,23 +329,23 @@ msgstr "Trimiteți link-ul documentului prin e-mail"
 
 #: permissions.py:34
 msgid "Send document file via email"
-msgstr ""
+msgstr "Trimiteți fișierul documentului prin e-mail"
 
 #: permissions.py:38
 msgid "Send document file link via email"
-msgstr ""
+msgstr "Trimiteți linkul fișierului document prin e-mail"
 
 #: permissions.py:45
 msgid "Send document version via email"
-msgstr ""
+msgstr "Trimiteți versiunea documentului prin e-mail"
 
 #: permissions.py:49
 msgid "Send document version link via email"
-msgstr ""
+msgstr "Trimiteți linkul versiunii documentului prin e-mail"
 
 #: queues.py:11
 msgid "Send object"
-msgstr ""
+msgstr "Trimite obiect"
 
 #: settings.py:15
 msgid "Template for the document email form subject line."
@@ -361,42 +377,54 @@ msgstr "Fișier document"
 #: views/document_file_views.py:17
 #, python-format
 msgid "%(count)d document file queued for email delivery"
-msgstr ""
+msgstr " Fișierul document %(count)d pus în coadă pentru livrarea prin e-mail"
 
 #: views/document_file_views.py:19
 #, python-format
 msgid "%(count)d document files queued for email delivery"
 msgstr ""
+"%(count)d fișiere de documente puse în coadă pentru livrarea prin e-mail"
 
 #: views/document_file_views.py:31
 #, python-format
 msgid "%(count)d document file link queued for email delivery"
 msgstr ""
+"Link-ul %(count)d pentru fișierul documentului pus în coadă pentru livrarea "
+"prin e-mail"
 
 #: views/document_file_views.py:34
 #, python-format
 msgid "%(count)d document file links queued for email delivery"
 msgstr ""
+"%(count)d link-uri la fișierele documentelor puse în coadă pentru livrarea "
+"prin e-mail"
 
 #: views/document_version_views.py:18
 #, python-format
 msgid "%(count)d document version queued for email delivery"
 msgstr ""
+"Versiunea documentului %(count)d  pusă în coadă pentru livrarea prin e-mail"
 
 #: views/document_version_views.py:21
 #, python-format
 msgid "%(count)d document versions queued for email delivery"
 msgstr ""
+"%(count)d versiuni ale documentului aflate în coadă pentru livrarea prin "
+"e-mail"
 
 #: views/document_version_views.py:33
 #, python-format
 msgid "%(count)d document version link queued for email delivery"
 msgstr ""
+"Linkul versiunii documentului %(count)d  pus în coadă pentru livrarea prin "
+"e-mail"
 
 #: views/document_version_views.py:36
 #, python-format
 msgid "%(count)d document version links queued for email delivery"
 msgstr ""
+"%(count)d link-uri ale versiunii documentului puse în coadă pentru livrarea "
+"prin e-mail"
 
 #: views/document_views.py:14
 #, python-format
@@ -420,17 +448,17 @@ msgstr "Selecție nouă de profil backend de poștă electronică"
 msgid "Create a \"%s\" mailing profile"
 msgstr "Creați un profil de poștă electronică \"%s\""
 
-#: views/mailing_profile_views.py:82
+#: views/mailing_profile_views.py:85
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Ștergeți profilul de poștă electronică: %s"
 
-#: views/mailing_profile_views.py:94
+#: views/mailing_profile_views.py:97
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Editați profilul de poștă electronică: %s"
 
-#: views/mailing_profile_views.py:115
+#: views/mailing_profile_views.py:121
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
@@ -438,15 +466,15 @@ msgstr ""
 "Profilurile de corespondență sunt configurații de e-mail. Ele permit "
 "trimiterea documentelor ca atașamente sau ca legături prin e-mail."
 
-#: views/mailing_profile_views.py:119
+#: views/mailing_profile_views.py:125
 msgid "No mailing profiles available"
 msgstr "Nu sunt disponibile profiluri de poștă electronică"
 
-#: views/mailing_profile_views.py:136
+#: views/mailing_profile_views.py:144
 msgid "Test email sent."
 msgstr "E-mail de testare trimis."
 
-#: views/mailing_profile_views.py:145
+#: views/mailing_profile_views.py:153
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Testare profil de poștă electronică: %s"
@@ -471,7 +499,7 @@ msgstr ""
 
 #: workflow_actions.py:38
 msgid "CC"
-msgstr ""
+msgstr "CC"
 
 #: workflow_actions.py:41 workflow_actions.py:53
 msgid ""
@@ -479,14 +507,17 @@ msgid ""
 "addresses separated by comma or semicolon. A template can be used to "
 "reference properties of the document."
 msgstr ""
+"Adresa folosită în antetul „Bcc” la trimiterea e-mailului. Pot fi mai multe "
+"adrese separate prin virgulă sau punct și virgulă. Un șablon poate fi "
+"utilizat pentru a face referire la proprietățile documentului."
 
 #: workflow_actions.py:50
 msgid "BCC"
-msgstr ""
+msgstr "BCC"
 
 #: workflow_actions.py:62
 msgid "Reply to"
-msgstr ""
+msgstr "Raspunde la"
 
 #: workflow_actions.py:65
 msgid ""
@@ -494,6 +525,9 @@ msgid ""
 "multiple addresses separated by comma or semicolon. A template can be used "
 "to reference properties of the document."
 msgstr ""
+"Adresa folosită în antetul „Răspuns la” atunci când trimiteți e-mailul. Pot "
+"fi mai multe adrese separate prin virgulă sau punct și virgulă. Un șablon "
+"poate fi utilizat pentru a face referire la proprietățile documentului."
 
 #: workflow_actions.py:77
 msgid "Subject of the email. Can be a string or a template."
@@ -505,19 +539,19 @@ msgstr "Corpul e-mailului de trimis. Poate fi un șir sau un șablon."
 
 #: workflow_actions.py:93 workflow_actions.py:170
 msgid "Attachment"
-msgstr ""
+msgstr "Atașament"
 
 #: workflow_actions.py:96
 msgid "Attach an object to the email."
-msgstr ""
+msgstr "Atașați un obiect la e-mail."
 
 #: workflow_actions.py:105
 msgid "Send object via email"
-msgstr ""
+msgstr "Trimiteți obiectul prin e-mail"
 
 #: workflow_actions.py:173
 msgid "Attach the exported document version to the email."
-msgstr ""
+msgstr "Atașați versiunea documentului exportat la e-mail."
 
 #: workflow_actions.py:182
 msgid "Send document via email"

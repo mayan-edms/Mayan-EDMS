@@ -9,7 +9,7 @@ from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.classes import ModelQueryFields
+from mayan.apps.databases.classes import ModelQueryFields
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.converter.classes import ConverterBase
@@ -114,6 +114,11 @@ class DocumentFile(
             'checksum.'
         ), max_length=64, null=True, verbose_name=_('Checksum')
     )
+    size = models.PositiveIntegerField(
+        blank=True, db_index=True, editable=False, help_text=(
+            'The size of the file in bytes.'
+        ), null=True, verbose_name=_('Size')
+    )
 
     class Meta:
         ordering = ('timestamp',)
@@ -193,7 +198,7 @@ class DocumentFile(
 
         if self.exists():
             hash_object = DocumentFile.hash_function()
-            with self.open() as file_object:
+            with self.open(raw=True) as file_object:
                 while (True):
                     data = file_object.read(block_size)
                     if not data:
@@ -286,7 +291,7 @@ class DocumentFile(
     def get_download_file_object(self):
         # Thin wrapper to make sure the normal views and API views trigger
         # then download event in the same way.
-        return self.open()
+        return self.open(raw=True)
 
     def get_intermediate_file(self):
         cache_filename = 'intermediate_file'
@@ -332,6 +337,10 @@ class DocumentFile(
         return self.filename
     get_label.short_description = _('Label')
 
+    @property
+    def is_in_trash(self):
+        return self.document.is_in_trash
+
     def mimetype_update(self, save=True):
         """
         Read a document verions's file and determine the mimetype by using
@@ -354,10 +363,6 @@ class DocumentFile(
     def natural_key(self):
         return (self.checksum, self.document.natural_key())
     natural_key.dependencies = ['documents.Document']
-
-    @property
-    def is_in_trash(self):
-        return self.document.is_in_trash
 
     def open(self, raw=False):
         """
@@ -461,6 +466,7 @@ class DocumentFile(
                 with transaction.atomic():
                     self.checksum_update(save=False)
                     self.mimetype_update(save=False)
+                    self.size_update(save=False)
                     self._event_actor = user
                     self.save()
                     self.page_count_update(save=False)
@@ -505,14 +511,18 @@ class DocumentFile(
         with self.open() as input_file_object:
             shutil.copyfileobj(fsrc=input_file_object, fdst=file_object)
 
-    @property
-    def size(self):
+    def size_update(self, save=True):
+        """
+        Get a document version's file size from the storage layer and store
+        it into the model.
+        """
         if self.exists():
             name = self.file.name
             self.file.close()
-            return self.file.storage.size(name=name)
-        else:
-            return None
+            self.size = self.file.storage.size(name=name)
+
+            if save:
+                self.save(update_fields=('size',))
 
     @property
     def uuid(self):

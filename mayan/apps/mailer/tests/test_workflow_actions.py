@@ -43,7 +43,7 @@ class DocumentEmailActionTestCase(
                 'body': TEST_EMAIL_BODY
             }
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
@@ -61,7 +61,7 @@ class DocumentEmailActionTestCase(
                 'body': TEST_EMAIL_BODY
             }
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
@@ -80,7 +80,7 @@ class DocumentEmailActionTestCase(
                 'body': TEST_EMAIL_BODY
             }
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
@@ -107,7 +107,7 @@ class DocumentEmailActionTestCase(
         self._test_workflow_template_state.initial = True
         self._test_workflow_template_state.save()
         self._test_workflow_template.document_types.add(
-            self.test_document_type
+            self._test_document_type
         )
 
         self._create_test_document_stub()
@@ -123,11 +123,11 @@ class DocumentEmailActionTemplateTestCase(
 ):
     def test_email_action_recipient_template(self):
         self._create_test_metadata_type()
-        self.test_document_type.metadata.create(
-            metadata_type=self.test_metadata_type
+        self._test_document_type.metadata.create(
+            metadata_type=self._test_metadata_type
         )
-        self.test_document.metadata.create(
-            metadata_type=self.test_metadata_type, value=TEST_EMAIL_ADDRESS
+        self._test_document.metadata.create(
+            metadata_type=self._test_metadata_type, value=TEST_EMAIL_ADDRESS
         )
 
         self._create_test_user_mailer()
@@ -136,26 +136,26 @@ class DocumentEmailActionTemplateTestCase(
             form_data={
                 'mailing_profile': self._test_user_mailer.pk,
                 'recipient': '{{{{ document.metadata_value_of.{} }}}}'.format(
-                    self.test_metadata_type.name
+                    self._test_metadata_type.name
                 ),
                 'subject': TEST_EMAIL_SUBJECT,
                 'body': ''
             }
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(
-            mail.outbox[0].to, [self.test_document.metadata.first().value]
+            mail.outbox[0].to, [self._test_document.metadata.first().value]
         )
 
     def test_email_action_subject_template(self):
         self._create_test_metadata_type()
-        self.test_document_type.metadata.create(
-            metadata_type=self.test_metadata_type
+        self._test_document_type.metadata.create(
+            metadata_type=self._test_metadata_type
         )
-        self.test_document.metadata.create(
-            metadata_type=self.test_metadata_type, value=TEST_EMAIL_SUBJECT
+        self._test_document.metadata.create(
+            metadata_type=self._test_metadata_type, value=TEST_EMAIL_SUBJECT
         )
 
         self._create_test_user_mailer()
@@ -165,26 +165,26 @@ class DocumentEmailActionTemplateTestCase(
                 'mailing_profile': self._test_user_mailer.pk,
                 'recipient': TEST_EMAIL_ADDRESS,
                 'subject': '{{{{ document.metadata_value_of.{} }}}}'.format(
-                    self.test_metadata_type.name
+                    self._test_metadata_type.name
                 ),
                 'body': ''
             }
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
         self.assertEqual(
-            mail.outbox[0].subject, self.test_document.metadata.first().value
+            mail.outbox[0].subject, self._test_document.metadata.first().value
         )
 
     def test_email_action_body_template(self):
         self._create_test_metadata_type()
-        self.test_document_type.metadata.create(
-            metadata_type=self.test_metadata_type
+        self._test_document_type.metadata.create(
+            metadata_type=self._test_metadata_type
         )
-        self.test_document.metadata.create(
-            metadata_type=self.test_metadata_type, value=TEST_EMAIL_BODY
+        self._test_document.metadata.create(
+            metadata_type=self._test_metadata_type, value=TEST_EMAIL_BODY
         )
 
         self._create_test_user_mailer()
@@ -195,11 +195,11 @@ class DocumentEmailActionTemplateTestCase(
                 'recipient': TEST_EMAIL_ADDRESS,
                 'subject': TEST_EMAIL_SUBJECT,
                 'body': '{{{{ document.metadata_value_of.{} }}}}'.format(
-                    self.test_metadata_type.name
+                    self._test_metadata_type.name
                 ),
             }
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
@@ -207,11 +207,11 @@ class DocumentEmailActionTemplateTestCase(
 
     def test_email_action_attachment(self):
         self._create_test_metadata_type()
-        self.test_document_type.metadata.create(
-            metadata_type=self.test_metadata_type
+        self._test_document_type.metadata.create(
+            metadata_type=self._test_metadata_type
         )
-        self.test_document.metadata.create(
-            metadata_type=self.test_metadata_type, value=TEST_EMAIL_SUBJECT
+        self._test_document.metadata.create(
+            metadata_type=self._test_metadata_type, value=TEST_EMAIL_SUBJECT
         )
 
         self._create_test_user_mailer()
@@ -221,18 +221,18 @@ class DocumentEmailActionTemplateTestCase(
                 'mailing_profile': self._test_user_mailer.pk,
                 'recipient': TEST_EMAIL_ADDRESS,
                 'subject': '{{{{ document.metadata_value_of.{} }}}}'.format(
-                    self.test_metadata_type.name
+                    self._test_metadata_type.name
                 ),
                 'body': '',
                 'attachment': True
             }
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
         self.assertEqual(
-            mail.outbox[0].subject, self.test_document.metadata.first().value
+            mail.outbox[0].subject, self._test_document.metadata.first().value
         )
         self.assertEqual(len(mail.outbox[0].attachments), 1)
 

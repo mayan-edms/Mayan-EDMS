@@ -4,11 +4,11 @@ from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_file_new
 )
-from mayan.apps.documents.tests.base import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.sources.tests.mixins.base_mixins import (
     DocumentFileUploadViewTestMixin, DocumentUploadWizardViewTestMixin
 )
-from mayan.apps.sources.tests.mixins.web_form_source_mixins import WebFormSourceTestMixin
+from mayan.apps.sources.tests.mixins.web_form_source_mixins import WebFormSourceBackendTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..classes import QuotaBackend
@@ -18,7 +18,7 @@ from ..quota_backends import DocumentCountQuota, DocumentSizeQuota
 
 class QuotaHooksTestCase(
     DocumentFileUploadViewTestMixin, DocumentTestMixin,
-    DocumentUploadWizardViewTestMixin, WebFormSourceTestMixin,
+    DocumentUploadWizardViewTestMixin, WebFormSourceBackendTestMixin,
     GenericViewTestCase
 ):
     auto_upload_test_document = False
@@ -42,9 +42,9 @@ class QuotaHooksTestCase(
         super().tearDown()
 
     def test_document_quantity_quota_and_source_upload_wizard_view_with_access(self):
-        self.test_quota_backend = DocumentCountQuota
+        self._test_quota_backend = DocumentCountQuota
 
-        self.test_quota = DocumentCountQuota.create(
+        self._test_quota = DocumentCountQuota.create(
             documents_limit=1,
             document_type_all=True,
             document_type_ids=(),
@@ -53,17 +53,17 @@ class QuotaHooksTestCase(
             user_ids=(),
         )
 
-        self.test_quota_backend.signal.disconnect(
+        self._test_quota_backend.signal.disconnect(
             dispatch_uid='quotas_handler_process_signal',
-            sender=self.test_quota_backend.sender
+            sender=self._test_quota_backend.sender
         )
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_create
         )
         self.grant_access(
-            obj=self.test_source,
+            obj=self._test_source,
             permission=permission_document_create
         )
 
@@ -75,9 +75,9 @@ class QuotaHooksTestCase(
         self.assertEqual(Document.objects.count(), document_count)
 
     def test_document_size_quota_and_source_upload_wizard_view_with_access(self):
-        self.test_quota_backend = DocumentSizeQuota
+        self._test_quota_backend = DocumentSizeQuota
 
-        self.test_quota = DocumentSizeQuota.create(
+        self._test_quota = DocumentSizeQuota.create(
             document_size_limit=0.01,
             document_type_all=True,
             document_type_ids=(),
@@ -86,17 +86,17 @@ class QuotaHooksTestCase(
             user_ids=(),
         )
 
-        self.test_quota_backend.signal.disconnect(
+        self._test_quota_backend.signal.disconnect(
             dispatch_uid='quotas_handler_process_signal',
-            sender=self.test_quota_backend.sender
+            sender=self._test_quota_backend.sender
         )
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_create
         )
         self.grant_access(
-            obj=self.test_source,
+            obj=self._test_source,
             permission=permission_document_create
         )
 
@@ -108,9 +108,9 @@ class QuotaHooksTestCase(
         self.assertEqual(Document.objects.count(), document_count)
 
     def test_document_size_quota_and_document_file_upload_with_access(self):
-        self.test_quota_backend = DocumentSizeQuota
+        self._test_quota_backend = DocumentSizeQuota
 
-        self.test_quota = DocumentSizeQuota.create(
+        self._test_quota = DocumentSizeQuota.create(
             document_size_limit=0.01,
             document_type_all=True,
             document_type_ids=(),
@@ -119,25 +119,25 @@ class QuotaHooksTestCase(
             user_ids=(),
         )
 
-        self.test_quota_backend.signal.disconnect(
+        self._test_quota_backend.signal.disconnect(
             dispatch_uid='quotas_handler_process_signal',
-            sender=self.test_quota_backend.sender
+            sender=self._test_quota_backend.sender
         )
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_new
         )
         self.grant_access(
-            obj=self.test_source,
+            obj=self._test_source,
             permission=permission_document_file_new
         )
-        file_count = self.test_document.files.count()
+        file_count = self._test_document.files.count()
 
         with self.assertRaises(expected_exception=QuotaExceeded):
             self._request_document_file_upload_view()
 
-        self.test_document.refresh_from_db()
+        self._test_document.refresh_from_db()
         self.assertEqual(
-            self.test_document.files.count(), file_count
+            self._test_document.files.count(), file_count
         )

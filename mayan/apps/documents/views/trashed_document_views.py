@@ -10,7 +10,11 @@ from mayan.apps.views.generics import (
     ConfirmView, MultipleObjectConfirmActionView
 )
 
-from ..icons import icon_document_list_deleted
+from ..icons import (
+    icon_document_trash_send, icon_trash_can_empty,
+    icon_trashed_document_delete, icon_trashed_document_list,
+    icon_trashed_document_restore
+)
 from ..models.document_models import Document
 from ..models.trashed_document_models import TrashedDocument
 from ..permissions import (
@@ -45,6 +49,7 @@ class DocumentTrashView(MultipleObjectConfirmActionView):
     title_single = _('Move the document "%(object)s" to trash?')
     title_singular = _('Move the selected document to the trash?')
     title_plural = _('Move the %(count)d selected documents to trash?')
+    view_icon = icon_document_trash_send
 
     def get_extra_context(self):
         context = {}
@@ -75,6 +80,7 @@ class EmptyTrashCanView(ConfirmView):
     extra_context = {
         'title': _('Empty trash?')
     }
+    view_icon = icon_trash_can_empty
     view_permission = permission_trash_empty
 
     def view_action(self):
@@ -106,6 +112,7 @@ class TrashedDocumentDeleteView(MultipleObjectConfirmActionView):
     title_single = _('Delete the trashed document "%(object)s"?')
     title_singular = _('Delete the selected trashed document?')
     title_plural = _('Delete the %(count)d selected trashed documents?')
+    view_icon = icon_trashed_document_delete
 
     def get_extra_context(self):
         context = {}
@@ -126,6 +133,7 @@ class TrashedDocumentDeleteView(MultipleObjectConfirmActionView):
 
 class TrashedDocumentListView(DocumentListView):
     object_permission = None
+    view_icon = icon_trashed_document_list
 
     def get_document_queryset(self):
         return AccessControlList.objects.restrict_queryset(
@@ -139,7 +147,7 @@ class TrashedDocumentListView(DocumentListView):
         context.update(
             {
                 'hide_link': True,
-                'no_results_icon': icon_document_list_deleted,
+                'no_results_icon': icon_trashed_document_list,
                 'no_results_text': _(
                     'To avoid loss of data, documents are not deleted '
                     'instantly. First, they are placed in the trash can. '
@@ -170,6 +178,7 @@ class TrashedDocumentRestoreView(MultipleObjectConfirmActionView):
     title_single = _('Restore the trashed document: %(object)s')
     title_singular = _('Restore the selected trashed document?')
     title_plural = _('Restore the %(count)d selected trashed documents?')
+    view_icon = icon_trashed_document_restore
 
     def get_extra_context(self):
         context = {}

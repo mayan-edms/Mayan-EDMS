@@ -5,6 +5,7 @@ from rest_framework.generics import get_object_or_404
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.rest_api import generics
 
+from ..classes import DocumentFileAction
 from ..models.document_models import Document
 from ..models.document_type_models import DocumentType
 from ..permissions import (
@@ -12,8 +13,8 @@ from ..permissions import (
     permission_document_trash, permission_document_view
 )
 from ..serializers.document_serializers import (
-    DocumentSerializer, DocumentChangeTypeSerializer,
-    DocumentUploadSerializer
+    DocumentFileActionSerializer, DocumentSerializer,
+    DocumentChangeTypeSerializer, DocumentUploadSerializer
 )
 
 logger = logging.getLogger(name=__name__)
@@ -40,6 +41,23 @@ class APIDocumentDetailView(generics.RetrieveUpdateDestroyAPIView):
     def get_instance_extra_data(self):
         return {
             '_event_actor': self.request.user
+        }
+
+
+class APIDocumentFileActionListView(generics.ListAPIView):
+    """
+    get: Returns a list of the available document file actions.
+    """
+    serializer_class = DocumentFileActionSerializer
+
+    def get_queryset(self):
+        return DocumentFileAction.get_all()
+
+    def get_serializer_context(self):
+        return {
+            'format': self.format_kwarg,
+            'request': self.request,
+            'view': self
         }
 
 

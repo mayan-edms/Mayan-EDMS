@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Jiri Fait <fait@orkasolutions.cz>, 2021
-# Michal Švábík <snadno@lehce.cz>, 2021
+# Jiri Fait <fait@orkasolutions.cz>, 2022
+# Michal Švábík <snadno@lehce.cz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -243,17 +243,28 @@ msgstr "Dokumentace"
 
 #: environments.py:37
 msgid ""
+"Environment used to specify direct documentation depedencies to workaround "
+"unpinned or immutable depedency bugs in third party libraries. End users can"
+" ignore missing dependencies under this environment."
+msgstr ""
+
+#: environments.py:41
+msgid "Documentation (override)"
+msgstr ""
+
+#: environments.py:45
+msgid ""
 "Normal environment for end users. A missing dependency under this "
 "environment will result in issues and errors during normal use."
 msgstr ""
 "Normální prostředí pro koncové uživatele. Chybějící závislost v tomto "
 "prostředí bude mít za následek problémy a chyby při běžném používání."
 
-#: environments.py:39
+#: environments.py:47
 msgid "Production"
 msgstr "Produkce"
 
-#: environments.py:43
+#: environments.py:51
 msgid ""
 "Environment used running the test suit to verify the functionality of the "
 "code. Dependencies in this environment are not needed for normal production "
@@ -263,7 +274,7 @@ msgstr ""
 "kódu. Závislosti v tomto prostředí nejsou nutné pro normální využití v "
 "produkčním prostředí."
 
-#: environments.py:46
+#: environments.py:54
 msgid "Testing"
 msgstr "Testování"
 

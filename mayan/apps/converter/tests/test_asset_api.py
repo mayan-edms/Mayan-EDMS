@@ -45,7 +45,7 @@ class AssetAPIViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_asset)
+        self.assertEqual(events[0].target, self._test_asset)
         self.assertEqual(events[0].verb, event_asset_created.id)
 
     def test_asset_delete_api_view_no_permission(self):
@@ -66,7 +66,7 @@ class AssetAPIViewTestCase(
     def test_asset_delete_api_view_with_access(self):
         self._create_test_asset()
 
-        self.grant_access(obj=self.test_asset, permission=permission_asset_delete)
+        self.grant_access(obj=self._test_asset, permission=permission_asset_delete)
 
         asset_count = Asset.objects.count()
 
@@ -94,7 +94,7 @@ class AssetAPIViewTestCase(
     def test_asset_detail_api_view_with_access(self):
         self._create_test_asset()
         self.grant_access(
-            obj=self.test_asset, permission=permission_asset_view
+            obj=self._test_asset, permission=permission_asset_view
         )
 
         self._clear_events()
@@ -102,7 +102,7 @@ class AssetAPIViewTestCase(
         response = self._request_test_asset_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(response.data['label'], self.test_asset.label)
+        self.assertEqual(response.data['label'], self._test_asset.label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -110,15 +110,15 @@ class AssetAPIViewTestCase(
     def test_asset_edit_api_view_via_patch_no_permission(self):
         self._create_test_asset()
 
-        asset_label = self.test_asset.label
+        asset_label = self._test_asset.label
 
         self._clear_events()
 
         response = self._request_test_asset_edit_via_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_asset.refresh_from_db()
-        self.assertEqual(self.test_asset.label, asset_label)
+        self._test_asset.refresh_from_db()
+        self.assertEqual(self._test_asset.label, asset_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -126,38 +126,38 @@ class AssetAPIViewTestCase(
     def test_asset_edit_api_view_via_patch_with_access(self):
         self._create_test_asset()
 
-        self.grant_access(obj=self.test_asset, permission=permission_asset_edit)
+        self.grant_access(obj=self._test_asset, permission=permission_asset_edit)
 
-        asset_label = self.test_asset.label
+        asset_label = self._test_asset.label
 
         self._clear_events()
 
         response = self._request_test_asset_edit_via_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_asset.refresh_from_db()
-        self.assertNotEqual(self.test_asset.label, asset_label)
+        self._test_asset.refresh_from_db()
+        self.assertNotEqual(self._test_asset.label, asset_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_asset)
+        self.assertEqual(events[0].target, self._test_asset)
         self.assertEqual(events[0].verb, event_asset_edited.id)
 
     def test_asset_edit_api_view_via_put_no_permission(self):
         self._create_test_asset()
 
-        asset_label = self.test_asset.label
+        asset_label = self._test_asset.label
 
         self._clear_events()
 
         response = self._request_test_asset_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_asset.refresh_from_db()
-        self.assertEqual(self.test_asset.label, asset_label)
+        self._test_asset.refresh_from_db()
+        self.assertEqual(self._test_asset.label, asset_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -165,24 +165,24 @@ class AssetAPIViewTestCase(
     def test_asset_edit_api_view_via_put_with_access(self):
         self._create_test_asset()
 
-        self.grant_access(obj=self.test_asset, permission=permission_asset_edit)
+        self.grant_access(obj=self._test_asset, permission=permission_asset_edit)
 
-        asset_label = self.test_asset.label
+        asset_label = self._test_asset.label
 
         self._clear_events()
 
         response = self._request_test_asset_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_asset.refresh_from_db()
-        self.assertNotEqual(self.test_asset.label, asset_label)
+        self._test_asset.refresh_from_db()
+        self.assertNotEqual(self._test_asset.label, asset_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_asset)
+        self.assertEqual(events[0].target, self._test_asset)
         self.assertEqual(events[0].verb, event_asset_edited.id)
 
     def test_asset_list_api_view_no_permission(self):
@@ -200,7 +200,7 @@ class AssetAPIViewTestCase(
     def test_asset_list_api_view_with_access(self):
         self._create_test_asset()
         self.grant_access(
-            obj=self.test_asset, permission=permission_asset_view
+            obj=self._test_asset, permission=permission_asset_view
         )
 
         self._clear_events()
@@ -209,7 +209,7 @@ class AssetAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['label'],
-            self.test_asset.label
+            self._test_asset.label
         )
 
         events = self._get_test_events()

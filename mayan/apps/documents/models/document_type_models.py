@@ -37,8 +37,8 @@ class DocumentType(ExtraDataModelMixin, models.Model):
     properties can be attached.
     """
     label = models.CharField(
-        help_text=_('The name of the document type.'), max_length=96,
-        unique=True, verbose_name=_('Label')
+        help_text=_('A short text identifying the document type.'),
+        max_length=196, unique=True, verbose_name=_('Label')
     )
     trash_time_period = models.PositiveIntegerField(
         blank=True, help_text=_(

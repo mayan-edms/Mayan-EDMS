@@ -19,6 +19,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='transformation',
-            unique_together=set([('content_type', 'object_id', 'order')]),
+            unique_together={('content_type', 'object_id', 'order')},
         ),
     ]

@@ -45,6 +45,11 @@ class MIMETypeBackendFileCommand(MIMETypeBackend):
             if mime_type_only:
                 file_mime_encoding = 'binary'
             else:
-                file_mime_encoding = output[1]
+                # Remove the ' charset=' string from the output.
+                file_mime_encoding = output[1].split(' charset=')[1]
+
+            # Remove trailing newline.
+            file_mime_type = file_mime_type.split('\n')[0]
+            file_mime_encoding = file_mime_encoding.split('\n')[0]
 
             return (file_mime_type, file_mime_encoding)

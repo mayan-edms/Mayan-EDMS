@@ -113,7 +113,9 @@ class Python(ConverterBase):
                         if force_text(s=exception) == 'only algorithm code 1 and 2 are supported':
                             # PDF uses an unsupported encryption
                             # Try poppler-util's pdfinfo
-                            page_count = self.get_pdfinfo_page_count(file_object)
+                            page_count = self.get_pdfinfo_page_count(
+                                file_object=file_object
+                            )
                             return page_count
                         else:
                             error_message = _(
@@ -154,20 +156,38 @@ class Python(ConverterBase):
             # Get total page count by attempting to seek to an increasing
             # page count number until an EOFError or struct.error exception
             # are raised.
-            try:
-                while True:
+            while True:
+                try:
                     image.seek(image.tell() + 1)
-                    page_count += 1
-            except EOFError:
-                """End of sequence"""
-            except struct.error:
-                """
-                struct.error was raise for a TIFF file converted to JPEG
-                GitLab issue #767 "Upload Error: unpack_from requires a
-                buffer of at least 2 bytes"
-                """
-                logger.debug('image page count detection raised struct.error')
+                except EOFError:
+                    """End of sequence"""
+                    break
+                except struct.error:
+                    """
+                    struct.error was raise for a TIFF file converted to JPEG
+                    GitLab issue #767 "Upload Error: unpack_from requires a
+                    buffer of at least 2 bytes"
+                    """
+                    logger.debug(
+                        'image page count detection raised struct.error'
+                    )
+                    break
+                else:
+                    try:
+                        # Even if the image reports multiple frames,
+                        # test it to make sure it is valid and supported
+                        # before counting it as a valid page.
+                        image.getim()
+                    except OSError as exception:
+                        logger.error(
+                            'Multi image element not supported; %s',
+                            exception
+                        )
+                        break
+                    else:
+                        page_count += 1
 
+            self.file_object.seek(0)
             return page_count
 
     def get_pdfinfo_page_count(self, file_object):

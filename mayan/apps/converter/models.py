@@ -16,6 +16,7 @@ from django.utils.functional import cached_property
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
+from mayan.apps.common.serialization import yaml_load
 from mayan.apps.common.validators import (
     YAMLValidator, validate_internal_name
 )
@@ -262,6 +263,16 @@ class LayerTransformation(models.Model):
             return str(BaseTransformation.get(name=self.name))
         except KeyError:
             return ugettext('Unknown transformation class')
+
+    def get_arguments_column(self):
+        arguments = yaml_load(stream=self.arguments or '{}')
+        result = []
+        for key, value in arguments.items():
+            result.append('{}: {}'.format(key, value))
+
+        return ', '.join(result)
+
+    get_arguments_column.short_description = _('Arguments')
 
     def get_transformation_class(self):
         return BaseTransformation.get(name=self.name)

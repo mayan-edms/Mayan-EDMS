@@ -31,7 +31,7 @@ def appearance_app_templates(context, template_name):
                     '{}/app/{}.html'.format(app.label, template_name)
                 )
                 app_template_output = app_template.render(
-                    request=context.get('request')
+                    context=context.flatten(), request=context.get('request')
                 )
 
                 if COMMENT_APP_TEMPLATE_CACHE_DISABLE not in app_template.template.source:

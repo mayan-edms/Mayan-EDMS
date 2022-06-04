@@ -106,7 +106,7 @@ class QuotaViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_quota)
+        self.assertEqual(events[0].target, self._test_quota)
         self.assertEqual(events[0].verb, event_quota_created.id)
 
     def test_quota_delete_view_no_permission(self):
@@ -128,7 +128,7 @@ class QuotaViewTestCase(
         self._create_test_quota()
 
         self.grant_access(
-            obj=self.test_quota, permission=permission_quota_delete
+            obj=self._test_quota, permission=permission_quota_delete
         )
 
         quota_count = Quota.objects.count()
@@ -146,16 +146,16 @@ class QuotaViewTestCase(
     def test_quota_edit_view_no_permission(self):
         self._create_test_quota()
 
-        quota_test_limit = self.test_quota.loads()['test_limit']
+        quota_test_limit = self._test_quota.loads()['test_limit']
 
         self._clear_events()
 
         response = self._request_test_quota_edit_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_quota.refresh_from_db()
+        self._test_quota.refresh_from_db()
         self.assertEqual(
-            self.test_quota.loads()['test_limit'], quota_test_limit
+            self._test_quota.loads()['test_limit'], quota_test_limit
         )
 
         events = self._get_test_events()
@@ -164,10 +164,10 @@ class QuotaViewTestCase(
     def test_quota_edit_view_with_access(self):
         self._create_test_quota()
 
-        quota_test_limit = self.test_quota.loads()['test_limit']
+        quota_test_limit = self._test_quota.loads()['test_limit']
 
         self.grant_access(
-            obj=self.test_quota, permission=permission_quota_edit
+            obj=self._test_quota, permission=permission_quota_edit
         )
 
         self._clear_events()
@@ -175,9 +175,9 @@ class QuotaViewTestCase(
         response = self._request_test_quota_edit_view()
         self.assertEqual(response.status_code, 302)
 
-        self.test_quota.refresh_from_db()
+        self._test_quota.refresh_from_db()
         self.assertNotEqual(
-            self.test_quota.loads()['test_limit'], quota_test_limit
+            self._test_quota.loads()['test_limit'], quota_test_limit
         )
 
         events = self._get_test_events()
@@ -185,7 +185,7 @@ class QuotaViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_quota)
+        self.assertEqual(events[0].target, self._test_quota)
         self.assertEqual(events[0].verb, event_quota_edited.id)
 
     def test_quota_list_view_with_no_permission(self):
@@ -195,7 +195,7 @@ class QuotaViewTestCase(
 
         response = self._request_test_quota_list_view()
         self.assertNotContains(
-            response=response, text=self.test_quota.backend_label(),
+            response=response, text=self._test_quota.backend_label(),
             status_code=200
         )
 
@@ -206,14 +206,14 @@ class QuotaViewTestCase(
         self._create_test_quota()
 
         self.grant_access(
-            obj=self.test_quota, permission=permission_quota_view
+            obj=self._test_quota, permission=permission_quota_view
         )
 
         self._clear_events()
 
         response = self._request_test_quota_list_view()
         self.assertContains(
-            response=response, text=self.test_quota.backend_label(),
+            response=response, text=self._test_quota.backend_label(),
             status_code=200
         )
 

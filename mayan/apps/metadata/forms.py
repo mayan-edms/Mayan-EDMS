@@ -5,19 +5,20 @@ from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.templating.fields import TemplateField
-from mayan.apps.views.forms import RelationshipForm
+from mayan.apps.views.forms import ModelForm, RelationshipForm
 
 from .classes import MetadataLookup, MetadataParser, MetadataValidator
 from .models import MetadataType
 
 
 class DocumentMetadataForm(forms.Form):
-    metadata_type_id = forms.CharField(label=_('ID'), widget=forms.HiddenInput)
+    metadata_type_id = forms.CharField(
+        label=_('ID'), widget=forms.HiddenInput
+    )
     metadata_type_name = forms.CharField(
         label=_('Name'), required=False,
         widget=forms.TextInput(
             attrs={
-                'disabled': 'disabled',
                 'readonly': 'readonly'
             }
         )
@@ -37,7 +38,7 @@ class DocumentMetadataForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Set form fields initial values
+        # Set form fields initial values.
         if 'initial' in kwargs:
             self.metadata_type = kwargs['initial']['metadata_type']
             self.document_type = kwargs['initial']['document_type']
@@ -48,18 +49,16 @@ class DocumentMetadataForm(forms.Form):
             )
 
             if required:
-                self.fields['value'].required = True
                 required_string = ' (%s)' % _('Required')
             else:
-                self.fields['value'].required = False
                 self.fields['update'].initial = False
 
-            self.fields['metadata_type_name'].initial = '%s%s' % (
-                (
-                    self.metadata_type.label if self.metadata_type.label else self.metadata_type.name
-                ),
-                required_string
+            field_metadata_type_label = self.metadata_type.label or self.metadata_type.name
+
+            self.fields['metadata_type_name'].initial = '{}{}'.format(
+                field_metadata_type_label, required_string
             )
+
             self.fields['metadata_type_id'].initial = self.metadata_type.pk
 
             if self.metadata_type.lookup:
@@ -101,23 +100,27 @@ class DocumentMetadataForm(forms.Form):
         metadata_type = getattr(self, 'metadata_type', None)
 
         if metadata_type:
-            required = self.metadata_type.get_required_for(
+            required = metadata_type.get_required_for(
                 document_type=self.document_type
             )
 
-            # Enforce required only if the metadata has no previous value.
-            if required and not self.cleaned_data.get('value') and not self.cleaned_data.get('update'):
-                raise ValidationError(
-                    _(
-                        '"%s" is required for this document type.'
-                    ) % self.metadata_type.label
-                )
+            # Enforce required only if the metadata has no previous value or
+            # if a value was added but the "update" checkmark is not enabled.
+            if required and not self.initial.get('value_existing'):
+                if not self.cleaned_data.get('update') or not self.cleaned_data.get('value'):
+                    raise ValidationError(
+                        {
+                            'value': _(
+                                '"%s" is required for this document type.'
+                            ) % metadata_type.label
+                        }
+                    )
 
-        if self.cleaned_data.get('update') and hasattr(self, 'metadata_type'):
-            self.cleaned_data['value'] = self.metadata_type.validate_value(
-                document_type=self.document_type,
-                value=self.cleaned_data.get('value')
-            )
+            if self.cleaned_data.get('update'):
+                self.cleaned_data['value'] = metadata_type.validate_value(
+                    document_type=self.document_type,
+                    value=self.cleaned_data.get('value')
+                )
 
         return self.cleaned_data
 
@@ -169,7 +172,27 @@ DocumentMetadataRemoveFormSet = formset_factory(
 )
 
 
-class MetadataTypeForm(forms.ModelForm):
+class MetadataTypeForm(ModelForm):
+    fieldsets = (
+        (
+            _('Basic'), {
+                'fields': ('name', 'label'),
+            }
+        ), (
+            _('Values'), {
+                'fields': ('default', 'lookup'),
+            }
+        ), (
+            _('Validation'), {
+                'fields': ('validation', 'validation_arguments'),
+            }
+        ), (
+            _('Parsing'), {
+                'fields': ('parser', 'parser_arguments'),
+            }
+        ),
+    )
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['default'] = TemplateField(

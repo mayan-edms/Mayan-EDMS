@@ -15,8 +15,13 @@ from mayan.apps.views.generics import (
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
-from .icons import icon_file_metadata
-from .links import link_document_file_metadata_submit_single
+from .icons import (
+    icon_document_file_metadata_single_submit,
+    icon_document_type_file_metadata_settings,
+    icon_document_type_file_metadata_submit, icon_file_metadata,
+    icon_file_metadata_driver_list, icon_file_metadata_driver_attribute_list
+)
+from .links import link_document_file_metadata_single_submit
 from .models import DocumentFileDriverEntry
 from .permissions import (
     permission_document_type_file_metadata_setup,
@@ -24,16 +29,19 @@ from .permissions import (
 )
 
 
-class DocumentFileDriverListView(ExternalObjectViewMixin, SingleObjectListView):
+class DocumentFileDriverListView(
+    ExternalObjectViewMixin, SingleObjectListView
+):
     external_object_permission = permission_file_metadata_view
     external_object_pk_url_kwarg = 'document_file_id'
     external_object_queryset = DocumentFile.valid.all()
+    view_icon = icon_file_metadata_driver_list
 
     def get_extra_context(self):
         return {
             'hide_object': True,
             'no_results_icon': icon_file_metadata,
-            'no_results_main_link': link_document_file_metadata_submit_single.resolve(
+            'no_results_main_link': link_document_file_metadata_single_submit.resolve(
                 context=RequestContext(
                     dict_={
                         'resolved_object': self.external_object
@@ -60,17 +68,18 @@ class DocumentFileDriverListView(ExternalObjectViewMixin, SingleObjectListView):
         return self.external_object.file_metadata_drivers.all()
 
 
-class DocumentFileDriverEntryFileMetadataListView(
+class DocumentFileDriverAttributeListView(
     ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_permission = permission_file_metadata_view
     external_object_pk_url_kwarg = 'document_file_driver_id'
+    view_icon = icon_file_metadata_driver_attribute_list
 
     def get_extra_context(self):
         return {
             'hide_object': True,
             'no_results_icon': icon_file_metadata,
-            'no_results_main_link': link_document_file_metadata_submit_single.resolve(
+            'no_results_main_link': link_document_file_metadata_single_submit.resolve(
                 context=RequestContext(
                     dict_={
                         'resolved_object': self.external_object.document_file
@@ -108,8 +117,13 @@ class DocumentFileSubmitView(MultipleObjectConfirmActionView):
     object_permission = permission_file_metadata_submit
     pk_url_kwarg = 'document_file_id'
     source_queryset = DocumentFile.valid.all()
-    success_message_singular = '%(count)d document file submitted to the file metadata queue.'
-    success_message_plural = '%(count)d documents files submitted to the file metadata queue.'
+    success_message_singular = _(
+        '%(count)d document file submitted to the file metadata queue.'
+    )
+    success_message_plural = _(
+        '%(count)d documents files submitted to the file metadata queue.'
+    )
+    view_icon = icon_document_file_metadata_single_submit
 
     def get_extra_context(self):
         queryset = self.object_list
@@ -131,14 +145,17 @@ class DocumentFileSubmitView(MultipleObjectConfirmActionView):
         instance.submit_for_file_metadata_processing(_user=self.request.user)
 
 
-class DocumentTypeSettingsEditView(
+class DocumentTypeFileMetadataSettingsEditView(
     ExternalObjectViewMixin, SingleObjectEditView
 ):
     external_object_class = DocumentType
     external_object_permission = permission_document_type_file_metadata_setup
     external_object_pk_url_kwarg = 'document_type_id'
     fields = ('auto_process',)
-    post_action_redirect = reverse_lazy(viewname='documents:document_type_list')
+    post_action_redirect = reverse_lazy(
+        viewname='documents:document_type_list'
+    )
+    view_icon = icon_document_type_file_metadata_settings
 
     def get_extra_context(self):
         return {
@@ -152,7 +169,7 @@ class DocumentTypeSettingsEditView(
         return self.external_object.file_metadata_settings
 
 
-class DocumentTypeSubmitView(FormView):
+class DocumentTypeFileMetadataSubmitView(FormView):
     extra_context = {
         'title': _(
             'Submit all documents of a type for file metadata processing.'
@@ -160,6 +177,7 @@ class DocumentTypeSubmitView(FormView):
     }
     form_class = DocumentTypeFilteredSelectForm
     post_action_redirect = reverse_lazy(viewname='common:tools_list')
+    view_icon = icon_document_type_file_metadata_submit
 
     def get_form_extra_kwargs(self):
         return {

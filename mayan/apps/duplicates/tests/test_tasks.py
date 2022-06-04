@@ -24,16 +24,16 @@ class DuplicatedDocumentTaskTestCase(
         self.assertEqual(
             list(
                 DuplicateBackendEntry.objects.get_duplicates_of(
-                    document=self.test_documents[0]
+                    document=self._test_documents[0]
                 )
-            ), [self.test_documents[1]]
+            ), [self._test_documents[1]]
         )
         self.assertEqual(
             list(
                 DuplicateBackendEntry.objects.get_duplicates_of(
-                    document=self.test_documents[1]
+                    document=self._test_documents[1]
                 )
-            ), [self.test_documents[0]]
+            ), [self._test_documents[0]]
         )
 
         events = self._get_test_events()
@@ -47,16 +47,16 @@ class DuplicatedDocumentTaskTestCase(
         self.assertEqual(
             list(
                 DuplicateBackendEntry.objects.get_duplicates_of(
-                    document=self.test_documents[0]
+                    document=self._test_documents[0]
                 )
-            ), [self.test_documents[1]]
+            ), [self._test_documents[1]]
         )
         self.assertEqual(
             list(
                 DuplicateBackendEntry.objects.get_duplicates_of(
-                    document=self.test_documents[1]
+                    document=self._test_documents[1]
                 )
-            ), [self.test_documents[0]]
+            ), [self._test_documents[0]]
         )
 
         events = self._get_test_events()

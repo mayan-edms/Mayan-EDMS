@@ -70,7 +70,7 @@ class FieldQuery:
                     term_string = term.string
 
                 q_object = Q(
-                    **{'%s__%s' % (search_field.field, 'icontains'): term_string}
+                    **{'{}__{}'.format(search_field.field, 'icontains'): term_string}
                 )
                 if term.negated:
                     q_object = ~q_object
@@ -98,7 +98,7 @@ class SearchQuery:
         self.django_query = None
         self.text = []
 
-        for search_field in search_model.search_fields:
+        for search_field in search_model.get_search_fields():
             search_term_collection = SearchTermCollection(
                 text=query.get(search_field.field, '').strip()
             )

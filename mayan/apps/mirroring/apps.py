@@ -15,7 +15,9 @@ class MirroringApp(MayanAppConfig):
     def ready(self):
         super().ready()
 
-        Document = apps.get_model(app_label='documents', model_name='Document')
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
         IndexInstanceNode = apps.get_model(
             app_label='document_indexing', model_name='IndexInstanceNode'
         )

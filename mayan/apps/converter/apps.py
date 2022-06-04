@@ -83,7 +83,7 @@ class ConverterApp(MayanAppConfig):
             source=LayerTransformation
         )
         SourceColumn(
-            attribute='arguments', include_label=True,
+            attribute='get_arguments_column', include_label=True,
             source=LayerTransformation
         )
 

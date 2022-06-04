@@ -11,14 +11,24 @@ from .api_views.workflow_template_api_views import (
     APIWorkflowTemplateDetailView, APIWorkflowTemplateDocumentTypeAddView,
     APIWorkflowTemplateDocumentTypeListView,
     APIWorkflowTemplateDocumentTypeRemoveView, APIWorkflowTemplateImageView,
-    APIWorkflowTemplateListView, APIWorkflowTemplateStateActionDetailView,
+    APIWorkflowTemplateListView
+)
+from .api_views.workflow_template_state_api_views import (
+    APIWorkflowTemplateStateActionDetailView,
     APIWorkflowTemplateStateActionListView, APIWorkflowTemplateStateListView,
-    APIWorkflowTemplateStateView, APIWorkflowTemplateTransitionListView,
+    APIWorkflowTemplateStateView
+)
+from .api_views.workflow_template_transition_api_views import (
+    APIWorkflowTemplateTransitionListView,
     APIWorkflowTemplateTransitionView,
     APIWorkflowTemplateTransitionFieldDetailView,
     APIWorkflowTemplateTransitionFieldListView,
     APIWorkflowTemplateTransitionTriggerDetailView,
     APIWorkflowTemplateTransitionTriggerListView
+)
+from .api_views.workflow_template_state_escalation_api_views import (
+    APIWorkflowTemplateStateEscalationListView,
+    APIWorkflowTemplateStateEscalationDetailView
 )
 from .views.workflow_instance_views import (
     WorkflowInstanceDetailView, WorkflowInstanceListView,
@@ -31,11 +41,11 @@ from .views.workflow_proxy_views import (
     WorkflowRuntimeProxyStateListView
 )
 from .views.workflow_template_views import (
-    DocumentTypeWorkflowTemplatesView, DocumentWorkflowTemplatesLaunchView,
+    DocumentTypeWorkflowTemplateAddRemoveView, DocumentWorkflowTemplatesLaunchView,
     ToolLaunchWorkflows, WorkflowTemplateCreateView,
     WorkflowTemplateDeleteView, WorkflowTemplateEditView,
     WorkflowTemplateLaunchView, WorkflowTemplateListView,
-    WorkflowTemplatePreviewView, WorkflowTemplateDocumentTypesView
+    WorkflowTemplatePreviewView, WorkflowTemplateDocumentTypeAddRemoveView
 )
 from .views.workflow_template_state_views import (
     WorkflowTemplateStateActionCreateView,
@@ -44,6 +54,12 @@ from .views.workflow_template_state_views import (
     WorkflowTemplateStateActionSelectionView, WorkflowTemplateStateCreateView,
     WorkflowTemplateStateDeleteView, WorkflowTemplateStateEditView,
     WorkflowTemplateStateListView
+)
+from .views.workflow_template_state_escalation_views import (
+    WorkflowTemplateStateEscalationCreateView,
+    WorkflowTemplateStateEscalationDeleteView,
+    WorkflowTemplateStateEscalationEditView,
+    WorkflowTemplateStateEscalationListView
 )
 from .views.workflow_template_transition_views import (
     WorkflowTemplateTransitionCreateView, WorkflowTemplateTransitionDeleteView,
@@ -80,7 +96,7 @@ urlpatterns_workflow_instances = [
 
 urlpatterns_workflow_runtime_proxies = [
     url(
-        regex=r'workflow_runtime_proxies/$',
+        regex=r'^workflow_runtime_proxies/$',
         name='workflow_runtime_proxy_list',
         view=WorkflowRuntimeProxyListView.as_view()
     ),
@@ -152,11 +168,34 @@ urlpatterns_workflow_state_actions = [
     )
 ]
 
+urlpatterns_workflow_state_escalations = [
+    url(
+        regex=r'^workflow_templates/states/(?P<workflow_template_state_id>\d+)/escalations/$',
+        name='workflow_template_state_escalation_list',
+        view=WorkflowTemplateStateEscalationListView.as_view()
+    ),
+    url(
+        regex=r'^workflow_templates/states/(?P<workflow_template_state_id>\d+)/escalations/create/$',
+        name='workflow_template_state_escalation_create',
+        view=WorkflowTemplateStateEscalationCreateView.as_view()
+    ),
+    url(
+        regex=r'^workflow_templates/states/escalations/(?P<workflow_template_state_escalation_id>\d+)/delete/$',
+        name='workflow_template_state_escalation_delete',
+        view=WorkflowTemplateStateEscalationDeleteView.as_view()
+    ),
+    url(
+        regex=r'^workflow_templates/states/escalations/(?P<workflow_template_state_escalation_id>\d+)/edit/$',
+        name='workflow_template_state_escalation_edit',
+        view=WorkflowTemplateStateEscalationEditView.as_view()
+    )
+]
+
 urlpatterns_workflow_templates = [
     url(
         regex=r'^document_types/(?P<document_type_id>\d+)/workflow_templates/$',
         name='document_type_workflow_templates',
-        view=DocumentTypeWorkflowTemplatesView.as_view()
+        view=DocumentTypeWorkflowTemplateAddRemoveView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/workflow_templates/launch/$',
@@ -190,7 +229,7 @@ urlpatterns_workflow_templates = [
     url(
         regex=r'^workflow_templates/(?P<workflow_template_id>\d+)/document_types/$',
         name='workflow_template_document_types',
-        view=WorkflowTemplateDocumentTypesView.as_view()
+        view=WorkflowTemplateDocumentTypeAddRemoveView.as_view()
     ),
     url(
         regex=r'^workflow_templates/(?P<workflow_template_id>\d+)/edit/$',
@@ -208,6 +247,7 @@ urlpatterns_workflow_templates = [
         view=WorkflowTemplatePreviewView.as_view()
     )
 ]
+
 urlpatterns_workflow_transitions = [
     url(
         regex=r'^workflow_templates/(?P<workflow_template_id>\d+)/transitions/$',
@@ -272,6 +312,7 @@ urlpatterns.extend(urlpatterns_workflow_instances)
 urlpatterns.extend(urlpatterns_workflow_runtime_proxies)
 urlpatterns.extend(urlpatterns_workflow_states)
 urlpatterns.extend(urlpatterns_workflow_state_actions)
+urlpatterns.extend(urlpatterns_workflow_state_escalations)
 urlpatterns.extend(urlpatterns_workflow_templates)
 urlpatterns.extend(urlpatterns_workflow_transitions)
 urlpatterns.extend(urlpatterns_workflow_transition_fields)
@@ -324,6 +365,16 @@ api_urls = [
         regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/states/(?P<workflow_template_state_id>[0-9]+)/actions/(?P<workflow_template_state_action_id>[0-9]+)/$',
         name='workflow-template-state-action-detail',
         view=APIWorkflowTemplateStateActionDetailView.as_view()
+    ),
+    url(
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/states/(?P<workflow_template_state_id>[0-9]+)/escalations/$',
+        name='workflow-template-state-escalation-list',
+        view=APIWorkflowTemplateStateEscalationListView.as_view()
+    ),
+    url(
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/states/(?P<workflow_template_state_id>[0-9]+)/escalations/(?P<workflow_template_state_escalation_id>[0-9]+)/$',
+        name='workflow-template-state-escalation-detail',
+        view=APIWorkflowTemplateStateEscalationDetailView.as_view()
     ),
     url(
         regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/transitions/$',

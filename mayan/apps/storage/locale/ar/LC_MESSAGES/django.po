@@ -4,18 +4,18 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Mohammed ALDOUB <voulnet@gmail.com>, 2021
-# Yaman Sanobar <yman.snober@gmail.com>, 2021
-# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# Yaman Sanobar <yman.snober@gmail.com>, 2022
+# Mohammed ALDOUB <voulnet@gmail.com>, 2022
+# Marwan Rahhal <Marwanr@sssit.net>, 2022
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
-"PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:23 settings.py:12
+#: apps.py:23 settings.py:14
 msgid "Storage"
 msgstr "المساحة التخزينية"
 
@@ -133,21 +133,29 @@ msgstr "حذف التحميلات "
 msgid "Delete stale download files"
 msgstr ""
 
-#: settings.py:17
+#: settings.py:19
+msgid "Time in seconds, after which download files will be deleted."
+msgstr ""
+
+#: settings.py:25
 msgid ""
 "A storage backend that all workers can use to generate and hold files for "
 "download."
 msgstr ""
 
-#: settings.py:28
+#: settings.py:36
 msgid "A storage backend that all workers can use to share files."
 msgstr "مساحة تخزينية مشتركة"
 
-#: settings.py:38
+#: settings.py:46
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr "مساحة تخزينية مؤقتة"
+
+#: settings.py:53
+msgid "Time in seconds, after which temporary uploaded files will be deleted."
+msgstr ""
 
 #: storages.py:15
 msgid ""

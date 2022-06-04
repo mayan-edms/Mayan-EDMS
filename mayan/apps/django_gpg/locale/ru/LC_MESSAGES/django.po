@@ -4,19 +4,19 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Sergey Glita <gsv70@mail.ru>, 2021
-# lilo.panic, 2021
-# Panasoft, 2021
-# Ilya Pavlov <spirkaa@gmail.com>, 2021
+# Sergey Glita <gsv70@mail.ru>, 2022
+# Roberto Rosario, 2022
+# Ilya Pavlov <spirkaa@gmail.com>, 2022
+# lilo.panic, 2022
+# Panasoft, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Panasoft, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,7 +32,7 @@ msgstr "Django GPG"
 msgid "Key ID"
 msgstr "ID ключа"
 
-#: apps.py:63 forms.py:32 models.py:59
+#: apps.py:63 forms.py:33 models.py:59
 msgid "Type"
 msgstr "Тип"
 
@@ -84,11 +84,11 @@ msgstr "Отпечаток"
 msgid "Algorithm"
 msgstr "Алгоритм"
 
-#: forms.py:45
+#: forms.py:48
 msgid "Term"
 msgstr "Условие"
 
-#: forms.py:46
+#: forms.py:49
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr ""
 "Имя, фамилия, адрес электронной почты, идентификатор или отпечаток ключа."

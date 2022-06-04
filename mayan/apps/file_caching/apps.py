@@ -13,7 +13,7 @@ from .events import (
     event_cache_edited, event_cache_partition_purged, event_cache_purged
 )
 from .links import (
-    link_caches_list, link_cache_multiple_purge, link_cache_purge
+    link_cache_list, link_cache_multiple_purge, link_cache_purge
 )
 from .permissions import permission_cache_purge, permission_cache_view
 
@@ -70,9 +70,9 @@ class FileCachingConfig(MayanAppConfig):
             sources=(Cache,)
         )
         menu_secondary.bind_links(
-            links=(link_caches_list,), sources=(
+            links=(link_cache_list,), sources=(
                 Cache,
             )
         )
 
-        menu_tools.bind_links(links=(link_caches_list,))
+        menu_tools.bind_links(links=(link_cache_list,))

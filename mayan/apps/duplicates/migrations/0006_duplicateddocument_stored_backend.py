@@ -25,7 +25,7 @@ class AddFieldDynamicDefault(migrations.AddField):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('duplicates', '0005_auto_20201130_0747'),
+        ('duplicates', '0005_auto_20201130_0747')
     ]
 
     operations = [
@@ -38,6 +38,6 @@ class Migration(migrations.Migration):
                 to='duplicates.StoredDuplicateBackend',
                 verbose_name='Stored duplicate backend'
             ),
-            preserve_default=False,
-        ),
+            preserve_default=False
+        )
     ]

@@ -77,29 +77,29 @@ class Cabinet(ExtraDataModelMixin, MPTTModel):
             }
         )
 
+    def get_documents(self, permission=None, user=None):
+        """
+        Provide a queryset of the documents in a cabinet. The queryset is
+        filtered by access.
+        """
+        queryset = Document.valid.filter(pk__in=self.documents.all())
+
+        if permission and user:
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=permission, queryset=queryset,
+                user=user
+            )
+
+        return queryset
+
     def get_document_count(self, user):
         """
         Return numeric count of the total documents in a cabinet. The count
         is filtered by access.
         """
-        return self.get_documents_queryset(
+        return self.get_documents(
             permission=permission_document_view, user=user
         ).count()
-
-    def get_documents_queryset(self, permission=None, user=None):
-        """
-        Provide a queryset of the documents in a cabinet. The queryset is
-        filtered by access.
-        """
-        queryset = self.documents.all()
-
-        if permission and user:
-            queryset = AccessControlList.objects.restrict_queryset(
-                permission=permission_document_view, queryset=queryset,
-                user=user
-            )
-
-        return Document.valid.filter(pk__in=queryset.values('pk'))
 
     def get_full_path(self):
         """

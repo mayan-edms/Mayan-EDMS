@@ -33,7 +33,7 @@ class DownloadFileModelTestCase(DownloadFileTestMixin, BaseTestCase):
         )
         EventModelRegistry.register(model=self.TestModel)
 
-        self._create_test_download_file(content_object=self.test_object)
+        self._create_test_download_file(content_object=self._test_object)
 
         self.assertTrue(self.test_download_file.get_absolute_url())
 

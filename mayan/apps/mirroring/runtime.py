@@ -1,3 +1,3 @@
-from .caches import IndexFilesystemCache
+from .caches import MirrorFilesystemCache
 
-cache = IndexFilesystemCache()
+cache = MirrorFilesystemCache()

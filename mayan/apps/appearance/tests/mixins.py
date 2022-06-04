@@ -5,13 +5,13 @@ from .literals import TEST_THEME_LABEL, TEST_THEME_LABEL_EDITED
 
 class ThemeTestMixin:
     def _create_test_theme(self):
-        self.test_theme = Theme.objects.create(
+        self._test_theme = Theme.objects.create(
             label=TEST_THEME_LABEL
         )
 
     def _edit_test_theme(self):
-        self.test_theme.label = TEST_THEME_LABEL_EDITED
-        self.test_theme.save()
+        self._test_theme.label = TEST_THEME_LABEL_EDITED
+        self._test_theme.save()
 
 
 class ThemeViewTestMixin:
@@ -24,21 +24,21 @@ class ThemeViewTestMixin:
             }
         )
 
-        self.test_theme = Theme.objects.exclude(pk__in=pk_list).first()
+        self._test_theme = Theme.objects.exclude(pk__in=pk_list).first()
 
         return response
 
     def _request_test_theme_delete_view(self):
         return self.post(
             viewname='appearance:theme_delete', kwargs={
-                'theme_id': self.test_theme.pk
+                'theme_id': self._test_theme.pk
             }
         )
 
     def _request_test_theme_edit_view(self):
         return self.post(
             viewname='appearance:theme_edit', kwargs={
-                'theme_id': self.test_theme.pk
+                'theme_id': self._test_theme.pk
             }, data={
                 'label': TEST_THEME_LABEL_EDITED,
             }
@@ -61,16 +61,16 @@ class UserThemeSettingsViewTestMixin:
 
     def _request_test_superuser_theme_settings_detail_view(self):
         return self._request_test_user_theme_settings_detail_view(
-            user=self.test_superuser
+            user=self._test_superuser
         )
 
     def _request_test_superuser_theme_settings_edit_view(self):
         return self._request_test_user_theme_settings_edit_view(
-            user=self.test_superuser
+            user=self._test_superuser
         )
 
     def _request_test_user_theme_settings_detail_view(self, user=None):
-        user = user or self.test_user
+        user = user or self._test_user
 
         return self.get(
             viewname='appearance:user_theme_settings_detail', kwargs={
@@ -79,12 +79,12 @@ class UserThemeSettingsViewTestMixin:
         )
 
     def _request_test_user_theme_settings_edit_view(self, user=None):
-        user = user or self.test_user
+        user = user or self._test_user
 
         return self.post(
             viewname='appearance:user_theme_settings_edit', kwargs={
                 'user_id': user.pk
             }, data={
-                'theme': self.test_theme.pk
+                'theme': self._test_theme.pk
             }
         )

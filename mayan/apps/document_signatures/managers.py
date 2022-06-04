@@ -2,6 +2,7 @@ import logging
 
 from django.core.files import File
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.django_gpg.exceptions import DecryptionError
 from mayan.apps.django_gpg.models import Key
@@ -12,7 +13,6 @@ from .events import (
     event_detached_signature_created,
     event_embedded_signature_created
 )
-
 
 logger = logging.getLogger(name=__name__)
 
@@ -89,7 +89,10 @@ class EmbeddedSignatureManager(models.Manager):
                 # signed document file.
                 temporary_file_object.seek(0)
                 document_file.document.file_new(
-                    file_object=temporary_file_object, _user=user
+                    file_object=temporary_file_object,
+                    filename='{}_{}'.format(
+                        str(document_file), _('signed')
+                    ), _user=user
                 )
                 instance = self.get(signature_id=result.signature_id)
                 event_embedded_signature_created.commit(

@@ -1,25 +1,2 @@
-import errno
-from shutil import copyfile
-
-from django.conf import settings
-from django.core import management
-
-
-class Command(management.BaseCommand):
-    help = 'Rollback the configuration file to the last valid version.'
-
-    def handle(self, *args, **options):
-        try:
-            copyfile(
-                src=settings.CONFIGURATION_LAST_GOOD_FILEPATH,
-                dst=settings.CONFIGURATION_FILEPATH
-            )
-        except IOError as exception:
-            if exception.errno == errno.ENOENT:
-                self.stdout.write(
-                    msg=self.style.NOTICE(
-                        'There is no last valid version to restore.'
-                    )
-                )
-            else:
-                raise
+# DEPRECATION: Remove in version >= 4.4.
+from .settings_revert import *  # NOQA

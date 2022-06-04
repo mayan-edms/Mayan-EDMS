@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Dezső József <dejo60@gmail.com>, 2021
-# molnars <szabolcs.molnar@gmail.com>, 2021
+# Dezső József <dejo60@gmail.com>, 2022
+# molnars <szabolcs.molnar@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-12 03:38+0000\n"
-"Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:11+0000\n"
+"Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2022\n"
 "Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,12 +21,12 @@ msgstr ""
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:35 events.py:5 links.py:40 models.py:42 permissions.py:6
+#: apps.py:36 events.py:5 links.py:40 models.py:42 permissions.py:6
 #: templates/announcements/announcements.html:8 views.py:119
 msgid "Announcements"
 msgstr ""
 
-#: apps.py:72 apps.py:76
+#: apps.py:78 apps.py:82
 msgid "None"
 msgstr "Semmi"
 

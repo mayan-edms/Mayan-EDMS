@@ -4,8 +4,8 @@ import unittest
 from django.test import override_settings, tag
 
 from mayan.apps.documents.models import Document
-from mayan.apps.documents.tests.base import DocumentTestMixin
-from mayan.apps.documents.tests.literals import TEST_PDF_DOCUMENT_FILENAME
+from mayan.apps.documents.tests.literals import TEST_FILE_PDF_FILENAME
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.literals import EXCLUDE_TEST_TAG
 from mayan.apps.testing.tests.base import BaseTestCase
 
@@ -16,7 +16,7 @@ from .literals import MAXIMUM_HEAP_MEMORY
 @tag('memory', EXCLUDE_TEST_TAG)
 class MIMETypeTestCase(DocumentTestMixin, BaseTestCase):
     auto_upload_test_document = False
-    test_document_filename = TEST_PDF_DOCUMENT_FILENAME
+    test_document_filename = TEST_FILE_PDF_FILENAME
 
     def setUp(self):
         super().setUp()

@@ -32,10 +32,11 @@ JavaScriptDependency(
 )
 JavaScriptDependency(
     label=_('FontAwesome'), module=__name__,
-    name='@fortawesome/fontawesome-free', version_string='=5.6.3'
+    name='@fortawesome/fontawesome-free', version_string='=5.15.4'
 )
 JavaScriptDependency(
-    label=_('jQuery'), module=__name__, name='jquery', version_string='=3.6.0'
+    label=_('jQuery'), module=__name__, name='jquery',
+    version_string='=3.6.0'
 )
 JavaScriptDependency(
     label=_('JQuery Form'), module=__name__, name='jquery-form',
@@ -46,20 +47,22 @@ JavaScriptDependency(
     version_string='=1.9.7'
 )
 JavaScriptDependency(
-    label=_('JQuery Match Height'), module=__name__, name='jquery-match-height',
-    version_string='=0.7.2'
+    label=_('JQuery Match Height'), module=__name__,
+    name='jquery-match-height', version_string='=0.7.2'
 )
 JavaScriptDependency(
     label=_('Select 2'), module=__name__, name='select2',
     version_string='=4.0.13'
 )
 JavaScriptDependency(
-    label=_('Toastr'), module=__name__, name='toastr', version_string='=2.1.4'
+    label=_('Toastr'), module=__name__, name='toastr',
+    version_string='=2.1.4'
 )
 JavaScriptDependency(
-    label=_('URI.js'), module=__name__, name='urijs', version_string='=1.19.7'
+    label=_('URI.js'), module=__name__, name='urijs',
+    version_string='=1.19.10'
 )
 
 PythonDependency(
-    module=__name__, name='bleach', version_string='==4.0.0'
+    module=__name__, name='bleach', version_string='==4.1.0'
 )

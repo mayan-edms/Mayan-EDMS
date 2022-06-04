@@ -22,11 +22,6 @@ PythonDependency(
     environment=environment_testing, module=__name__,
     name='django-test-migrations', version_string='==1.1.0'
 )
-# Mock is set to production so that it is available in the Docker image
-# and allows running the test suit in production.
-PythonDependency(
-    module=__name__, name='mock', version_string='==4.0.3'
-)
 PythonDependency(
     environment=environment_testing, module=__name__, name='selenium',
     version_string='==3.141.0'

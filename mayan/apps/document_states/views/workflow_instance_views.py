@@ -12,7 +12,11 @@ from mayan.apps.views.generics import FormView, SingleObjectListView
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..forms import WorkflowInstanceTransitionSelectForm
-from ..icons import icon_workflow_instance_detail, icon_workflow_template_list
+from ..icons import (
+    icon_workflow_instance_detail, icon_workflow_instance_list,
+    icon_workflow_instance_transition,
+    icon_workflow_instance_transition_select, icon_workflow_template_list
+)
 from ..links import link_workflow_instance_transition
 from ..literals import FIELD_TYPE_MAPPING, WIDGET_CLASS_MAPPING
 from ..models import WorkflowInstance
@@ -26,6 +30,7 @@ class WorkflowInstanceListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid.all()
     object_permission = permission_workflow_template_view
+    view_icon = icon_workflow_instance_list
 
     def get_extra_context(self):
         return {
@@ -52,6 +57,7 @@ class WorkflowInstanceDetailView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_instance_id'
     object_permission = permission_workflow_template_view
+    view_icon = icon_workflow_instance_detail
 
     def get_extra_context(self):
         return {
@@ -98,6 +104,7 @@ class WorkflowInstanceTransitionExecuteView(ExternalObjectViewMixin, FormView):
     external_object_queryset = WorkflowInstance.valid.all()
     form_class = DynamicForm
     template_name = 'appearance/generic_form.html'
+    view_icon = icon_workflow_instance_transition
 
     def form_valid(self, form):
         form_data = form.cleaned_data
@@ -175,7 +182,6 @@ class WorkflowInstanceTransitionExecuteView(ExternalObjectViewMixin, FormView):
         queryset = super().get_external_object_queryset_filtered()
 
         # Filter further down by document access.
-
         document_queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_workflow_instance_transition,
             queryset=Document.valid.all(),
@@ -197,6 +203,7 @@ class WorkflowInstanceTransitionSelectView(ExternalObjectViewMixin, FormView):
     external_object_queryset = WorkflowInstance.valid.all()
     form_class = WorkflowInstanceTransitionSelectForm
     template_name = 'appearance/generic_form.html'
+    view_icon = icon_workflow_instance_transition_select
 
     def form_valid(self, form):
         return HttpResponseRedirect(
@@ -227,7 +234,6 @@ class WorkflowInstanceTransitionSelectView(ExternalObjectViewMixin, FormView):
         queryset = super().get_external_object_queryset_filtered()
 
         # Filter further down by document access.
-
         document_queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_workflow_instance_transition,
             queryset=Document.valid.all(),

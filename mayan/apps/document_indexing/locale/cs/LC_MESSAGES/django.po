@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Jiri Fait <fait@orkasolutions.cz>, 2021
-# trendspotter <jirka.p@volny.cz>, 2021
-# Michal Švábík <snadno@lehce.cz>, 2021
+# Jiri Fait <fait@orkasolutions.cz>, 2022
+# trendspotter <jirka.p@volny.cz>, 2022
+# Michal Švábík <snadno@lehce.cz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,35 +30,35 @@ msgstr "Žádný"
 msgid "Document types"
 msgstr "Typy dokumentů"
 
-#: apps.py:50 events.py:6
+#: apps.py:51 events.py:6
 msgid "Document indexing"
 msgstr "Indexování dokumentů"
 
-#: apps.py:128 apps.py:157 apps.py:196 apps.py:229
+#: apps.py:134 apps.py:163 apps.py:202 apps.py:235
 msgid "Level"
 msgstr "Úroveň"
 
-#: apps.py:136 apps.py:166
+#: apps.py:142 apps.py:172
 msgid "Depth"
 msgstr "Hloubka"
 
-#: apps.py:140
+#: apps.py:146
 msgid "Total nodes"
 msgstr "Celkem uzlů"
 
-#: apps.py:147
+#: apps.py:153
 msgid "Total documents"
 msgstr "Celkem dokumentů"
 
-#: apps.py:149 apps.py:187
+#: apps.py:155 apps.py:193
 msgid "Number of unique documents this item contains."
 msgstr "Počet unikátních dokumentů, které tato položka obsahuje."
 
-#: apps.py:174
+#: apps.py:180
 msgid "Nodes"
 msgstr "Uzly"
 
-#: apps.py:185 models.py:438
+#: apps.py:191 models.py:438
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -331,7 +331,7 @@ msgstr "UUID dokumentu"
 msgid "Document checksum"
 msgstr "Kontrolní součet dokumentů"
 
-#: serializers.py:200
+#: serializers.py:205
 msgid ""
 "URL of the API endpoint showing the list document types associated with this"
 " index template."
@@ -339,23 +339,23 @@ msgstr ""
 "Adresa URL koncového bodu API zobrazující seznam typů dokumentů přidružených"
 " k této šabloně rejstříku."
 
-#: serializers.py:207
+#: serializers.py:212
 msgid "URL of the API endpoint to add document types to this index template."
 msgstr ""
 "URL koncového bodu API pro přidání typů dokumentů do této šablony rejstříku."
 
-#: serializers.py:214
+#: serializers.py:219
 msgid ""
 "URL of the API endpoint to remove document types from this index template."
 msgstr ""
 "Adresa URL koncového bodu API k odebrání typů dokumentů z této šablony "
 "indexu."
 
-#: serializers.py:271
+#: serializers.py:276
 msgid "Primary key of the document type to add to the index template."
 msgstr "Primární klíč typu dokumentu, který se má přidat do šablony indexu."
 
-#: serializers.py:280
+#: serializers.py:285
 msgid "Primary key of the document type to remove from the index template."
 msgstr "Primární klíč typu dokumentu, který chcete odebrat ze šablony indexu."
 
@@ -500,19 +500,19 @@ msgstr "Šablona indexu ve frontě na opětovné sestavení."
 #, python-format
 msgid "%(count)d index template queued for rebuild."
 msgid_plural "%(count)d index templates queued for rebuild."
-msgstr[0] "Šablona indexu %(count)d ve frontě k opětovnému sestavení."
-msgstr[1] "Šablony indexu %(count)d ve frontě na opětovné sestavení."
-msgstr[2] "Šablony indexu %(count)d ve frontě na opětovné sestavení."
-msgstr[3] "Šablony rejstříku %(count)d ve frontě na opětovné sestavení."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views/index_template_views.py:359
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] "%(count)d reset indexu."
-msgstr[1] "indexy %(count)d resetovány."
-msgstr[2] "indexy %(count)d resetovány."
-msgstr[3] "%(count)d rejstříků resetováno."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views/index_template_views.py:372
 msgid "Index templates for which their instances will be deleted."

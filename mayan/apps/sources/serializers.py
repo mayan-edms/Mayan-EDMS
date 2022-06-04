@@ -31,6 +31,7 @@ class SourceSerializer(serializers.HyperlinkedModelSerializer):
             result.append(
                 {
                     'name': action.name,
+                    'accept_files': action.accept_files,
                     'arguments': action.arguments,
                     'url': reverse(
                         viewname='rest_api:source-action', kwargs={
@@ -51,3 +52,12 @@ class SourceBackendActionSerializer(serializers.Serializer):
             'Optional arguments for the action. Must be JSON formatted.'
         ), label=_('Arguments'), required=False
     )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        if self.context['action'].accept_files:
+            self.fields['file'] = serializers.FileField(
+                help_text=_('Binary content for the new file.'),
+                use_url=False, write_only=True
+            )

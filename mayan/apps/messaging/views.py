@@ -12,7 +12,11 @@ from mayan.apps.views.generics import (
 )
 
 from .forms import MessageCreateForm, MessageDetailForm
-from .icons import icon_message_list
+from .icons import (
+    icon_message_create, icon_message_delete, icon_message_detail,
+    icon_message_list, icon_message_mark_read, icon_message_mark_unread,
+    icon_message_mark_read_all
+)
 from .links import link_message_create
 from .models import Message
 from .permissions import (
@@ -26,6 +30,7 @@ logger = logging.getLogger(name=__name__)
 class MessageCreateView(SingleObjectCreateView):
     form_class = MessageCreateForm
     model = Message
+    view_icon = icon_message_create
     view_permission = permission_message_create
 
     def get_extra_context(self):
@@ -51,6 +56,7 @@ class MessageDeleteView(MultipleObjectConfirmActionView):
     title_single = _('Delete message: %(object)s.')
     title_singular = _('Delete the %(count)d selected message.')
     title_plural = _('Delete the %(count)d selected messages.')
+    view_icon = icon_message_delete
 
     def get_extra_context(self):
         context = {
@@ -77,6 +83,7 @@ class MessageDetailView(SingleObjectDetailView):
     form_class = MessageDetailForm
     object_permission = permission_message_view
     pk_url_kwarg = 'message_id'
+    view_icon = icon_message_detail
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request=request, *args, **kwargs)
@@ -103,6 +110,7 @@ class MessageDetailView(SingleObjectDetailView):
 
 class MessageListView(SingleObjectListView):
     object_permission = permission_message_view
+    view_icon = icon_message_list
 
     def get_extra_context(self):
         return {
@@ -142,6 +150,7 @@ class MessageMarkReadView(MultipleObjectConfirmActionView):
     title_single = _('Mark the message "%(object)s" as read.')
     title_singular = _('Mark the %(count)d selected message as read.')
     title_plural = _('Mark the %(count)d selected messages as read.')
+    view_icon = icon_message_mark_read
 
     def get_extra_context(self):
         context = {}
@@ -165,6 +174,7 @@ class MessageMarkReadView(MultipleObjectConfirmActionView):
 
 class MessageMarkReadAllView(ConfirmView):
     post_action_redirect = reverse_lazy(viewname='messaging:message_list')
+    view_icon = icon_message_mark_read_all
 
     def get_extra_context(self):
         return {
@@ -209,6 +219,7 @@ class MessageMarkUnReadView(MultipleObjectConfirmActionView):
     title_single = _('Mark the message "%(object)s" as unread.')
     title_singular = _('Mark the %(count)d selected message as unread.')
     title_plural = _('Mark the %(count)d selected messages as unread.')
+    view_icon = icon_message_mark_unread
 
     def get_extra_context(self):
         context = {}

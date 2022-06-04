@@ -31,6 +31,6 @@ permission_document_file_signature_verify = namespace.add_permission(
     name='document_version_signature_verify'
 )
 permission_document_file_signature_view = namespace.add_permission(
-    label=_('View details of document signatures'),
+    label=_('View document signatures'),
     name='document_version_signature_view'
 )

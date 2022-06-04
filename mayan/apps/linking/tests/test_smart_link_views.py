@@ -28,17 +28,17 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
         self._create_test_smart_link()
 
     def test_document_type_smart_link_add_remove_get_view_no_permission(self):
-        self.test_document_type.smart_links.add(self.test_smart_link)
+        self._test_document_type.smart_links.add(self._test_smart_link)
 
         self._clear_events()
 
         response = self._request_test_document_type_smart_link_add_remove_get_view()
         self.assertNotContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=str(self.test_smart_link),
+            response=response, text=str(self._test_smart_link),
             status_code=404
         )
 
@@ -46,10 +46,10 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_type_smart_link_add_remove_get_view_with_document_type_access(self):
-        self.test_document_type.smart_links.add(self.test_smart_link)
+        self._test_document_type.smart_links.add(self._test_smart_link)
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
 
@@ -57,11 +57,11 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
 
         response = self._request_test_document_type_smart_link_add_remove_get_view()
         self.assertContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=200
         )
         self.assertNotContains(
-            response=response, text=str(self.test_smart_link),
+            response=response, text=str(self._test_smart_link),
             status_code=200
         )
 
@@ -69,10 +69,10 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_type_smart_link_add_remove_get_view_with_smart_link_access(self):
-        self.test_document_type.smart_links.add(self.test_smart_link)
+        self._test_document_type.smart_links.add(self._test_smart_link)
 
         self.grant_access(
-            obj=self.test_smart_link,
+            obj=self._test_smart_link,
             permission=permission_smart_link_edit
         )
 
@@ -80,11 +80,11 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
 
         response = self._request_test_document_type_smart_link_add_remove_get_view()
         self.assertNotContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=str(self.test_smart_link),
+            response=response, text=str(self._test_smart_link),
             status_code=404
         )
 
@@ -92,14 +92,14 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_type_smart_link_add_remove_get_view_with_full_access(self):
-        self.test_document_type.smart_links.add(self.test_smart_link)
+        self._test_document_type.smart_links.add(self._test_smart_link)
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_smart_link,
+            obj=self._test_smart_link,
             permission=permission_smart_link_edit
         )
 
@@ -107,11 +107,11 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
 
         response = self._request_test_document_type_smart_link_add_remove_get_view()
         self.assertContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=200
         )
         self.assertContains(
-            response=response, text=str(self.test_smart_link),
+            response=response, text=str(self._test_smart_link),
             status_code=200
         )
 
@@ -125,7 +125,7 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            self.test_smart_link not in self.test_document_type.smart_links.all()
+            self._test_smart_link not in self._test_document_type.smart_links.all()
         )
 
         events = self._get_test_events()
@@ -133,7 +133,7 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
 
     def test_document_type_smart_link_add_view_with_document_type_access(self):
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
 
@@ -143,7 +143,7 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertTrue(
-            self.test_smart_link not in self.test_document_type.smart_links.all()
+            self._test_smart_link not in self._test_document_type.smart_links.all()
         )
 
         events = self._get_test_events()
@@ -151,7 +151,7 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
 
     def test_document_type_smart_link_add_view_with_smart_link_access(self):
         self.grant_access(
-            obj=self.test_smart_link,
+            obj=self._test_smart_link,
             permission=permission_smart_link_edit
         )
 
@@ -161,7 +161,7 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            self.test_smart_link not in self.test_document_type.smart_links.all()
+            self._test_smart_link not in self._test_document_type.smart_links.all()
         )
 
         events = self._get_test_events()
@@ -169,11 +169,11 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
 
     def test_document_type_smart_link_add_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_smart_link,
+            obj=self._test_smart_link,
             permission=permission_smart_link_edit
         )
 
@@ -183,19 +183,19 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(
-            self.test_smart_link in self.test_document_type.smart_links.all()
+            self._test_smart_link in self._test_document_type.smart_links.all()
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].action_object, self._test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_smart_link)
+        self.assertEqual(events[0].target, self._test_smart_link)
         self.assertEqual(events[0].verb, event_smart_link_edited.id)
 
     def test_document_type_smart_link_remove_view_no_permission(self):
-        self.test_document_type.smart_links.add(self.test_smart_link)
+        self._test_document_type.smart_links.add(self._test_smart_link)
 
         self._clear_events()
 
@@ -203,17 +203,17 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            self.test_smart_link in self.test_document_type.smart_links.all()
+            self._test_smart_link in self._test_document_type.smart_links.all()
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_type_smart_link_remove_view_with_document_type_access(self):
-        self.test_document_type.smart_links.add(self.test_smart_link)
+        self._test_document_type.smart_links.add(self._test_smart_link)
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
 
@@ -223,17 +223,17 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertTrue(
-            self.test_smart_link in self.test_document_type.smart_links.all()
+            self._test_smart_link in self._test_document_type.smart_links.all()
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_type_smart_link_remove_view_with_smart_link_access(self):
-        self.test_document_type.smart_links.add(self.test_smart_link)
+        self._test_document_type.smart_links.add(self._test_smart_link)
 
         self.grant_access(
-            obj=self.test_smart_link,
+            obj=self._test_smart_link,
             permission=permission_smart_link_edit
         )
 
@@ -243,21 +243,21 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            self.test_smart_link in self.test_document_type.smart_links.all()
+            self._test_smart_link in self._test_document_type.smart_links.all()
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_type_smart_link_remove_view_with_full_access(self):
-        self.test_document_type.smart_links.add(self.test_smart_link)
+        self._test_document_type.smart_links.add(self._test_smart_link)
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_smart_link,
+            obj=self._test_smart_link,
             permission=permission_smart_link_edit
         )
 
@@ -267,15 +267,15 @@ class DocumentTypeAddRemoveSmartLinkViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(
-            self.test_smart_link not in self.test_document_type.smart_links.all()
+            self._test_smart_link not in self._test_document_type.smart_links.all()
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].action_object, self._test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_smart_link)
+        self.assertEqual(events[0].target, self._test_smart_link)
         self.assertEqual(events[0].verb, event_smart_link_edited.id)
 
 
@@ -311,7 +311,7 @@ class SmartLinkViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_smart_link)
+        self.assertEqual(events[0].target, self._test_smart_link)
         self.assertEqual(events[0].verb, event_smart_link_created.id)
 
     def test_smart_link_delete_view_no_permission(self):
@@ -330,7 +330,7 @@ class SmartLinkViewTestCase(
     def test_smart_link_delete_view_with_access(self):
         self._create_test_smart_link()
         self.grant_access(
-            obj=self.test_smart_link, permission=permission_smart_link_delete
+            obj=self._test_smart_link, permission=permission_smart_link_delete
         )
 
         self._clear_events()
@@ -351,8 +351,8 @@ class SmartLinkViewTestCase(
         response = self._request_test_smart_link_edit_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_smart_link.refresh_from_db()
-        self.assertEqual(self.test_smart_link.label, TEST_SMART_LINK_LABEL)
+        self._test_smart_link.refresh_from_db()
+        self.assertEqual(self._test_smart_link.label, TEST_SMART_LINK_LABEL)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -361,7 +361,7 @@ class SmartLinkViewTestCase(
         self._create_test_smart_link()
 
         self.grant_access(
-            obj=self.test_smart_link, permission=permission_smart_link_edit
+            obj=self._test_smart_link, permission=permission_smart_link_edit
         )
 
         self._clear_events()
@@ -369,9 +369,9 @@ class SmartLinkViewTestCase(
         response = self._request_test_smart_link_edit_view()
         self.assertEqual(response.status_code, 302)
 
-        self.test_smart_link.refresh_from_db()
+        self._test_smart_link.refresh_from_db()
         self.assertEqual(
-            self.test_smart_link.label, TEST_SMART_LINK_LABEL_EDITED
+            self._test_smart_link.label, TEST_SMART_LINK_LABEL_EDITED
         )
 
         events = self._get_test_events()
@@ -379,7 +379,7 @@ class SmartLinkViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_smart_link)
+        self.assertEqual(events[0].target, self._test_smart_link)
         self.assertEqual(events[0].verb, event_smart_link_edited.id)
 
     def test_smart_link_list_view_no_permission(self):
@@ -389,7 +389,7 @@ class SmartLinkViewTestCase(
 
         response = self._request_test_smart_link_list_view()
         self.assertNotContains(
-            response=response, text=str(self.test_smart_link), status_code=200
+            response=response, text=str(self._test_smart_link), status_code=200
         )
 
         events = self._get_test_events()
@@ -399,14 +399,14 @@ class SmartLinkViewTestCase(
         self._create_test_smart_link()
 
         self.grant_access(
-            obj=self.test_smart_link, permission=permission_smart_link_view
+            obj=self._test_smart_link, permission=permission_smart_link_view
         )
 
         self._clear_events()
 
         response = self._request_test_smart_link_list_view()
         self.assertContains(
-            response=response, text=str(self.test_smart_link), status_code=200
+            response=response, text=str(self._test_smart_link), status_code=200
         )
 
         events = self._get_test_events()
@@ -424,24 +424,24 @@ class SmartLinkDocumentTypeViewTestCase(
         self._create_test_smart_link()
 
     def test_smart_link_document_type_add_remove_get_view_no_permission(self):
-        self.test_smart_link.document_types.add(self.test_document_type)
+        self._test_smart_link.document_types.add(self._test_document_type)
 
-        test_smart_link_document_type_count = self.test_smart_link.document_types.count()
+        test_smart_link_document_type_count = self._test_smart_link.document_types.count()
 
         self._clear_events()
 
         response = self._request_test_smart_link_document_type_add_remove_get_view()
         self.assertNotContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=str(self.test_smart_link),
+            response=response, text=str(self._test_smart_link),
             status_code=404
         )
 
         self.assertEqual(
-            self.test_smart_link.document_types.count(),
+            self._test_smart_link.document_types.count(),
             test_smart_link_document_type_count
         )
 
@@ -449,12 +449,12 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_smart_link_document_type_add_remove_get_view_with_document_type_access(self):
-        self.test_smart_link.document_types.add(self.test_document_type)
+        self._test_smart_link.document_types.add(self._test_document_type)
 
-        test_smart_link_document_type_count = self.test_smart_link.document_types.count()
+        test_smart_link_document_type_count = self._test_smart_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
 
@@ -462,16 +462,16 @@ class SmartLinkDocumentTypeViewTestCase(
 
         response = self._request_test_smart_link_document_type_add_remove_get_view()
         self.assertNotContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=str(self.test_smart_link),
+            response=response, text=str(self._test_smart_link),
             status_code=404
         )
 
         self.assertEqual(
-            self.test_smart_link.document_types.count(),
+            self._test_smart_link.document_types.count(),
             test_smart_link_document_type_count
         )
 
@@ -479,12 +479,12 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_smart_link_document_type_add_remove_get_view_with_smart_link_access(self):
-        self.test_smart_link.document_types.add(self.test_document_type)
+        self._test_smart_link.document_types.add(self._test_document_type)
 
-        test_smart_link_document_type_count = self.test_smart_link.document_types.count()
+        test_smart_link_document_type_count = self._test_smart_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_smart_link,
+            obj=self._test_smart_link,
             permission=permission_smart_link_edit
         )
 
@@ -492,16 +492,16 @@ class SmartLinkDocumentTypeViewTestCase(
 
         response = self._request_test_smart_link_document_type_add_remove_get_view()
         self.assertNotContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=200
         )
         self.assertContains(
-            response=response, text=str(self.test_smart_link),
+            response=response, text=str(self._test_smart_link),
             status_code=200
         )
 
         self.assertEqual(
-            self.test_smart_link.document_types.count(),
+            self._test_smart_link.document_types.count(),
             test_smart_link_document_type_count
         )
 
@@ -509,16 +509,16 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_smart_link_document_type_add_remove_get_view_with_full_access(self):
-        self.test_smart_link.document_types.add(self.test_document_type)
+        self._test_smart_link.document_types.add(self._test_document_type)
 
-        test_smart_link_document_type_count = self.test_smart_link.document_types.count()
+        test_smart_link_document_type_count = self._test_smart_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_smart_link,
+            obj=self._test_smart_link,
             permission=permission_smart_link_edit
         )
 
@@ -526,16 +526,16 @@ class SmartLinkDocumentTypeViewTestCase(
 
         response = self._request_test_smart_link_document_type_add_remove_get_view()
         self.assertContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=200
         )
         self.assertContains(
-            response=response, text=str(self.test_smart_link),
+            response=response, text=str(self._test_smart_link),
             status_code=200
         )
 
         self.assertEqual(
-            self.test_smart_link.document_types.count(),
+            self._test_smart_link.document_types.count(),
             test_smart_link_document_type_count
         )
 
@@ -543,10 +543,10 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_smart_link_document_type_add_view_no_permission(self):
-        test_smart_link_document_type_count = self.test_smart_link.document_types.count()
+        test_smart_link_document_type_count = self._test_smart_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_type_edit
+            obj=self._test_document_type, permission=permission_document_type_edit
         )
 
         self._clear_events()
@@ -555,7 +555,7 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_smart_link.document_types.count(),
+            self._test_smart_link.document_types.count(),
             test_smart_link_document_type_count
         )
 
@@ -563,10 +563,10 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_smart_link_document_type_add_view_with_document_type_access(self):
-        test_smart_link_document_type_count = self.test_smart_link.document_types.count()
+        test_smart_link_document_type_count = self._test_smart_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_type_edit
+            obj=self._test_document_type, permission=permission_document_type_edit
         )
 
         self._clear_events()
@@ -575,7 +575,7 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_smart_link.document_types.count(),
+            self._test_smart_link.document_types.count(),
             test_smart_link_document_type_count
         )
 
@@ -583,10 +583,10 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_smart_link_document_type_add_view_with_smart_link_access(self):
-        test_smart_link_document_type_count = self.test_smart_link.document_types.count()
+        test_smart_link_document_type_count = self._test_smart_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_smart_link, permission=permission_smart_link_edit
+            obj=self._test_smart_link, permission=permission_smart_link_edit
         )
 
         self._clear_events()
@@ -595,7 +595,7 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            self.test_smart_link.document_types.count(),
+            self._test_smart_link.document_types.count(),
             test_smart_link_document_type_count
         )
 
@@ -603,14 +603,14 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_smart_link_document_type_add_view_with_full_access(self):
-        test_smart_link_document_type_count = self.test_smart_link.document_types.count()
+        test_smart_link_document_type_count = self._test_smart_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_smart_link, permission=permission_smart_link_edit
+            obj=self._test_smart_link, permission=permission_smart_link_edit
         )
 
         self._clear_events()
@@ -619,25 +619,25 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_smart_link.document_types.count(),
+            self._test_smart_link.document_types.count(),
             test_smart_link_document_type_count + 1
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].action_object, self._test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_smart_link)
+        self.assertEqual(events[0].target, self._test_smart_link)
         self.assertEqual(events[0].verb, event_smart_link_edited.id)
 
     def test_smart_link_document_type_remove_view_no_permission(self):
-        self.test_smart_link.document_types.add(self.test_document_type)
+        self._test_smart_link.document_types.add(self._test_document_type)
 
-        test_smart_link_document_type_count = self.test_smart_link.document_types.count()
+        test_smart_link_document_type_count = self._test_smart_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_type_edit
+            obj=self._test_document_type, permission=permission_document_type_edit
         )
 
         self._clear_events()
@@ -646,7 +646,7 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_smart_link.document_types.count(),
+            self._test_smart_link.document_types.count(),
             test_smart_link_document_type_count
         )
 
@@ -654,12 +654,12 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_smart_link_document_type_remove_view_with_document_type_access(self):
-        self.test_smart_link.document_types.add(self.test_document_type)
+        self._test_smart_link.document_types.add(self._test_document_type)
 
-        test_smart_link_document_type_count = self.test_smart_link.document_types.count()
+        test_smart_link_document_type_count = self._test_smart_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_type_edit
+            obj=self._test_document_type, permission=permission_document_type_edit
         )
 
         self._clear_events()
@@ -668,7 +668,7 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_smart_link.document_types.count(),
+            self._test_smart_link.document_types.count(),
             test_smart_link_document_type_count
         )
 
@@ -676,12 +676,12 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_smart_link_document_type_remove_view_with_smart_link_access(self):
-        self.test_smart_link.document_types.add(self.test_document_type)
+        self._test_smart_link.document_types.add(self._test_document_type)
 
-        test_smart_link_document_type_count = self.test_smart_link.document_types.count()
+        test_smart_link_document_type_count = self._test_smart_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_smart_link, permission=permission_smart_link_edit
+            obj=self._test_smart_link, permission=permission_smart_link_edit
         )
 
         self._clear_events()
@@ -690,7 +690,7 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            self.test_smart_link.document_types.count(),
+            self._test_smart_link.document_types.count(),
             test_smart_link_document_type_count
         )
 
@@ -698,16 +698,16 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_smart_link_document_type_remove_view_with_full_access(self):
-        self.test_smart_link.document_types.add(self.test_document_type)
+        self._test_smart_link.document_types.add(self._test_document_type)
 
-        test_smart_link_document_type_count = self.test_smart_link.document_types.count()
+        test_smart_link_document_type_count = self._test_smart_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_smart_link, permission=permission_smart_link_edit
+            obj=self._test_smart_link, permission=permission_smart_link_edit
         )
 
         self._clear_events()
@@ -716,14 +716,14 @@ class SmartLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_smart_link.document_types.count(),
+            self._test_smart_link.document_types.count(),
             test_smart_link_document_type_count - 1
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].action_object, self._test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_smart_link)
+        self.assertEqual(events[0].target, self._test_smart_link)
         self.assertEqual(events[0].verb, event_smart_link_edited.id)

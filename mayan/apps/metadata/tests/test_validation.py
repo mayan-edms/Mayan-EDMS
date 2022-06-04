@@ -32,11 +32,11 @@ class MetadataTypeValidationTestCase(
         """
         self._create_test_metadata_type(add_test_document_type=True)
 
-        self.test_metadata_type.validation = TEST_VALIDATOR_PATH_DATE
-        self.test_metadata_type.save()
+        self._test_metadata_type.validation = TEST_VALIDATOR_PATH_DATE
+        self._test_metadata_type.save()
 
         document_metadata = DocumentMetadata(
-            document=self.test_document, metadata_type=self.test_metadata_type,
+            document=self._test_document, metadata_type=self._test_metadata_type,
             value=TEST_PARSER_DATE_VALID
         )
 
@@ -54,7 +54,7 @@ class MetadataTypeValidationTestCase(
         )
 
         document_metadata = DocumentMetadata(
-            document=self.test_document, metadata_type=self.test_metadata_type,
+            document=self._test_document, metadata_type=self._test_metadata_type,
             value=TEST_DATE_INVALID
         )
 
@@ -70,8 +70,8 @@ class MetadataTypeValidationTestCase(
 
         self.assertEqual(
             getattr(
-                self.test_document.metadata_value_of,
-                self.test_metadata_type.name
+                self._test_document.metadata_value_of,
+                self._test_metadata_type.name
             ), TEST_VALID_DATE
         )
 
@@ -88,10 +88,10 @@ class MetadataTypeValidationTestCase(
         )
 
         with self.assertRaises(expected_exception=ValidationError):
-            self.test_metadata_type.validate_value(
+            self._test_metadata_type.validate_value(
                 document_type=None, value=TEST_VALIDATOR_VALUE_INVALID
             )
 
-        self.test_metadata_type.validate_value(
+        self._test_metadata_type.validate_value(
             document_type=None, value=TEST_VALIDATOR_VALUE_VALID
         )

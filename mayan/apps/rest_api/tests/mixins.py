@@ -54,9 +54,9 @@ class DynamicFieldSerializerAPIViewTestCaseMixin:
             }, model_name='TestModelChild'
         )
 
-        self.test_object_parent = self.TestModelParent.objects.create()
-        self.test_object_child = self.TestModelChild.objects.create(
-            parent=self.test_object_parent
+        self._test_object_parent = self.TestModelParent.objects.create()
+        self._test_object_child = self.TestModelChild.objects.create(
+            parent=self._test_object_parent
         )
 
         TestModelParent = self.TestModelParent
@@ -89,7 +89,7 @@ class DynamicFieldSerializerAPIViewTestCaseMixin:
     def _request_test_api_view(self, query):
         return self.get(
             viewname='rest_api:{}'.format(self._test_view_name), kwargs={
-                'test_object_id': self.test_object_child.pk,
+                'test_object_id': self._test_object_child.pk,
             }, query=query
         )
 

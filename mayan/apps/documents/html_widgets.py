@@ -30,6 +30,6 @@ class ThumbnailWidget(SourceColumnWidget):
 
 
 def document_link(document):
-    return mark_safe('<a href="%s">%s</a>' % (
+    return mark_safe('<a href="{}">{}</a>'.format(
         document.get_absolute_url(), document)
     )

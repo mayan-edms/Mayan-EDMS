@@ -5,6 +5,8 @@ TEST_CASE_SUPERUSER_PASSWORD = 'test case superuser password'
 TEST_CASE_SUPERUSER_USERNAME = 'test_case_superuser'
 
 TEST_CASE_USER_EMAIL = 'test_case_user@example.com'
+TEST_CASE_USER_FIRST_NAME = 'test case user first name'
+TEST_CASE_USER_LAST_NAME = 'test case user last name'
 TEST_CASE_USER_PASSWORD = 'test case user password'
 TEST_CASE_USER_USERNAME = 'test_case_user'
 

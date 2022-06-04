@@ -9,14 +9,14 @@ class MetadataTypeManager(models.Manager):
     def get_for_document(self, document):
         return self.filter(
             pk__in=document.metadata.values_list(
-                'metadata_type', flat=True
+                'metadata_type'
             )
         )
 
     def get_for_document_type(self, document_type):
         return self.filter(
             pk__in=document_type.metadata.values_list(
-                'metadata_type', flat=True
+                'metadata_type'
             )
         )
 
@@ -54,5 +54,5 @@ class DocumentTypeMetadataTypeManager(models.Manager):
         return DocumentType.objects.filter(
             pk__in=self.filter(
                 document_type=document_type
-            ).values_list('metadata_type__pk', flat=True)
+            ).values_list('metadata_type__pk')
         )

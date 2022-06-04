@@ -14,10 +14,11 @@ from mayan.apps.views.html_widgets import ObjectLinkWidget, TwoStateWidget
 from .classes import EventTypeNamespace
 from .html_widgets import widget_event_actor_link, widget_event_type_link
 from .links import (
-    link_event_types_subscriptions_list, link_events_for_object_clear,
-    link_events_for_object_export, link_events_list, link_events_list_clear,
-    link_events_list_export, link_notification_mark_read,
-    link_notification_mark_read_all, link_user_notifications_list
+    link_event_type_subscription_list, link_object_event_list_clear,
+    link_object_event_list_export, link_event_list, link_event_list_clear,
+    link_event_list_export, link_notification_mark_read,
+    link_notification_mark_read_all, link_notification_list,
+    link_user_object_subscription_list
 )
 
 
@@ -34,6 +35,9 @@ class EventsApp(MayanAppConfig):
 
         Action = apps.get_model(app_label='actstream', model_name='Action')
         Notification = self.get_model(model_name='Notification')
+        ObjectEventSubscription = self.get_model(
+            model_name='ObjectEventSubscription'
+        )
         StoredEventType = self.get_model(model_name='StoredEventType')
 
         User = get_user_model()
@@ -51,6 +55,23 @@ class EventsApp(MayanAppConfig):
         )
         ModelPermission.register_inheritance(
             fk_field_cast=models.CharField, model=Action, related='target'
+        )
+
+        ModelPermission.register_inheritance(
+            fk_field_cast=models.CharField, model=Notification,
+            related='action__action_object'
+        )
+        ModelPermission.register_inheritance(
+            fk_field_cast=models.CharField, model=Notification,
+            related='action__actor'
+        )
+        ModelPermission.register_inheritance(
+            fk_field_cast=models.CharField, model=Notification,
+            related='action__target'
+        )
+
+        ModelPermission.register_inheritance(
+            model=ObjectEventSubscription, related='content_object'
         )
 
         # Add labels to Action model, they are not marked translatable in the
@@ -77,12 +98,16 @@ class EventsApp(MayanAppConfig):
             include_label=True, source=Action, widget=ObjectLinkWidget
         )
 
+        # Stored event type
+
         SourceColumn(
             source=StoredEventType, label=_('Namespace'), attribute='namespace'
         )
         SourceColumn(
             source=StoredEventType, label=_('Label'), attribute='label'
         )
+
+        # Notification
 
         SourceColumn(
             attribute='action__timestamp', is_identifier=True,
@@ -111,37 +136,49 @@ class EventsApp(MayanAppConfig):
             label=_('Seen'), source=Notification, widget=TwoStateWidget
         )
 
+        # Object event subscription
+
+        SourceColumn(
+            attribute='content_object', include_label=True,
+            label=_('Object'), source=ObjectEventSubscription,
+            widget=ObjectLinkWidget
+        )
+        SourceColumn(
+            attribute='stored_event_type', include_label=True,
+            label=_('Event type'), source=ObjectEventSubscription
+        )
+
         # Clear
 
         menu_secondary.bind_links(
-            links=(link_events_list_clear,),
+            links=(link_event_list_clear,),
             sources=(
-                'events:events_list',
-                'events:events_list_clear',
+                'events:event_list',
+                'events:event_list_clear',
             )
         )
         menu_secondary.bind_links(
-            links=(link_events_for_object_clear,),
+            links=(link_object_event_list_clear,),
             sources=(
-                'events:events_for_object',
-                'events:events_for_object_clear'
+                'events:object_event_list',
+                'events:object_event_list_clear'
             )
         )
 
         # Export
 
         menu_secondary.bind_links(
-            links=(link_events_list_export,),
+            links=(link_event_list_export,),
             sources=(
-                'events:events_list',
-                'events:events_list_export',
+                'events:event_list',
+                'events:event_list_export',
             )
         )
         menu_secondary.bind_links(
-            links=(link_events_for_object_export,),
+            links=(link_object_event_list_export,),
             sources=(
-                'events:events_for_object',
-                'events:events_for_object_export'
+                'events:object_event_list',
+                'events:object_event_list_export'
             )
         )
 
@@ -164,13 +201,14 @@ class EventsApp(MayanAppConfig):
 
         menu_list_facet.bind_links(
             links=(
-                link_event_types_subscriptions_list,
+                link_event_type_subscription_list,
+                link_user_object_subscription_list,
             ), sources=(User,)
         )
 
         # Other
 
         menu_topbar.bind_links(
-            links=(link_user_notifications_list,), position=30
+            links=(link_notification_list,), position=30
         )
-        menu_tools.bind_links(links=(link_events_list,))
+        menu_tools.bind_links(links=(link_event_list,))

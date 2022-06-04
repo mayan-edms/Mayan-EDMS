@@ -4,14 +4,14 @@ from mayan.apps.navigation.classes import Link
 
 from .icons import (
     icon_document_file_attachment_send_single,
-    icon_document_file_send_link_single,
+    icon_document_file_link_send_single,
     icon_document_file_attachment_send_multiple,
-    icon_document_file_send_link_multiple,
-    icon_document_send_link_single, icon_document_send_link_multiple,
-    icon_document_version_send_attachment_single,
-    icon_document_version_send_link_single,
-    icon_document_version_send_link_multiple,
-    icon_document_version_send_attachment_multiple, icon_user_mailer_create,
+    icon_document_file_link_send_multiple,
+    icon_document_link_send_single, icon_document_link_send_multiple,
+    icon_document_version_attachment_send_single,
+    icon_document_version_link_send_single,
+    icon_document_version_link_send_multiple,
+    icon_document_version_attachment_send_multiple, icon_user_mailer_create,
     icon_user_mailer_delete, icon_user_mailer_edit, icon_user_mailer_list,
     icon_user_mailer_setup, icon_user_mailer_test
 )
@@ -28,12 +28,12 @@ from .permissions import (
 # Document
 
 link_send_document_link_single = Link(
-    args='resolved_object.pk', icon=icon_document_send_link_single,
+    args='resolved_object.pk', icon=icon_document_link_send_single,
     permissions=(permission_send_document_link,),
     text=_('Email document link'), view='mailer:send_document_link_single'
 )
 link_send_document_link_multiple = Link(
-    icon=icon_document_send_link_multiple, text=_('Email document link'),
+    icon=icon_document_link_send_multiple, text=_('Email document link'),
     view='mailer:send_document_link_multiple'
 )
 
@@ -52,13 +52,13 @@ link_send_document_file_attachment_multiple = Link(
     view='mailer:send_document_file_attachment_multiple'
 )
 link_send_document_file_link_single = Link(
-    args='resolved_object.pk', icon=icon_document_file_send_link_single,
+    args='resolved_object.pk', icon=icon_document_file_link_send_single,
     permissions=(permission_send_document_file_link,),
     text=_('Email document file link'),
     view='mailer:send_document_file_link_single'
 )
 link_send_document_file_link_multiple = Link(
-    icon=icon_document_file_send_link_multiple,
+    icon=icon_document_file_link_send_multiple,
     text=_('Email document file link'),
     view='mailer:send_document_file_link_multiple'
 )
@@ -67,24 +67,24 @@ link_send_document_file_link_multiple = Link(
 
 link_send_document_version_attachment_single = Link(
     args='resolved_object.pk',
-    icon=icon_document_version_send_attachment_single,
+    icon=icon_document_version_attachment_send_single,
     permissions=(permission_send_document_version_attachment,),
     text=_('Email document version'),
     view='mailer:send_document_version_attachment_single'
 )
 link_send_document_version_attachment_multiple = Link(
-    icon=icon_document_version_send_attachment_multiple,
+    icon=icon_document_version_attachment_send_multiple,
     text=_('Email document version'),
     view='mailer:send_document_version_attachment_multiple'
 )
 link_send_document_version_link_single = Link(
-    args='resolved_object.pk', icon=icon_document_version_send_link_single,
+    args='resolved_object.pk', icon=icon_document_version_link_send_single,
     permissions=(permission_send_document_version_link,),
     text=_('Email document version link'),
     view='mailer:send_document_version_link_single'
 )
 link_send_document_version_link_multiple = Link(
-    icon=icon_document_version_send_link_multiple,
+    icon=icon_document_version_link_send_multiple,
     text=_('Email link version'),
     view='mailer:send_document_version_link_multiple'
 )

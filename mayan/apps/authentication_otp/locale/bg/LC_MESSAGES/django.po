@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2022
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2022
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:23 events.py:6
+msgid "Authentication OTP"
+msgstr "OTP за удостоверяване"
+
+#: events.py:10
+msgid "OTP disabled"
+msgstr "OTP е деактивиран"
+
+#: events.py:13
+msgid "OTP enabled"
+msgstr "OTP е активиран"
+
+#: forms.py:20
+msgid "Token is either invalid or expired."
+msgstr "Маркерът е или невалиден, или изтекъл."
+
+#: forms.py:25
+msgid "TOTP token"
+msgstr "TOTP маркер"
+
+#: forms.py:84
+msgid "OTP enabled?"
+msgstr "Активиран ли е OTP?"
+
+#: forms.py:85
+msgid "Yes"
+msgstr "Да"
+
+#: forms.py:85
+msgid "No"
+msgstr "Не"
+
+#: forms.py:102
+msgid ""
+"Scan the QR code or enter the secret in your authentication device. Do not "
+"share this secret, treat it like a password."
+msgstr ""
+"Сканирайте QR кода или въведете тайния код във вашето устройство за "
+"удостоверяване. Не споделяйте този таен код, третирайте го като парола."
+
+#: forms.py:104 forms.py:109
+msgid "Secret"
+msgstr "Тайни"
+
+#: forms.py:115
+msgid ""
+"Enter the corresponding token to validate that the secret was saved correct."
+msgstr ""
+"Въведете съответния маркер, за да потвърдите, че тайният код е запазен "
+"правилно."
+
+#: forms.py:118
+msgid "Token"
+msgstr "Маркер"
+
+#: forms.py:152
+msgid "Token is incorrect for the specified secret."
+msgstr "Маркерът е неправилен за посоченият таен код."
+
+#: links.py:29
+msgid "OTP details"
+msgstr "Подробности за OTP"
+
+#: links.py:33
+msgid "Disable OTP"
+msgstr "Деактивирайте OTP"
+
+#: links.py:37
+msgid "Enable OTP"
+msgstr "Активирайте OTP"
+
+#: models.py:17
+msgid "User"
+msgstr "Потребител"
+
+#: models.py:21
+msgid "16 character, base32 encoded random string."
+msgstr "16 знаков произволен низ, кодиран с base32."
+
+#: models.py:26
+msgid "User OTP data"
+msgstr "Потребителски OTP данни"
+
+#: models.py:27
+msgid "Users OTP data"
+msgstr "OTP данни на потребителите"
+
+#: views.py:28
+#, python-format
+msgid "One time pad details for user: %s"
+msgstr "Подробности за временната клавиатура за потребителя: %s"
+
+#: views.py:45
+#, python-format
+msgid "Disable one time pad for user: %s"
+msgstr "Деактивирайте временната клавиатура за потребител: %s"
+
+#: views.py:56
+msgid "OTP disable successfully."
+msgstr "OTP деактивиране успешно."
+
+#: views.py:78
+msgid "OTP is already enabled."
+msgstr "OTP вече е активиран."
+
+#: views.py:94
+msgid "OTP enabled successfully."
+msgstr "OTP е активиран успешно."
+
+#: views.py:103
+#, python-format
+msgid "Enable one time pad for user: %s"
+msgstr "Активиране на временната клавиатура за потребител: %s"
+
+#: views.py:115
+msgid "OTP secret validation error."
+msgstr "Грешка при валидиране на тайния код на OTP."

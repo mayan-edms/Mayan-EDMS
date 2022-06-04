@@ -108,7 +108,7 @@ class PasswordResetViewTestMixin:
 class UserImpersonationViewTestMixin:
     def _impersonate_test_user(self):
         session = self.client.session
-        session[USER_IMPERSONATE_VARIABLE_ID] = self.test_user.pk
+        session[USER_IMPERSONATE_VARIABLE_ID] = self._test_user.pk
         session.save()
 
     def _request_test_user_impersonate_end_view(self):
@@ -120,14 +120,14 @@ class UserImpersonationViewTestMixin:
         return self.post(
             follow=True, viewname='authentication:user_impersonate_form_start',
             data={
-                'user_to_impersonate': self.test_user.pk
+                'user_to_impersonate': self._test_user.pk
             }
         )
 
     def _request_test_user_impersonate_start_view(self):
         return self.post(
             follow=True, viewname='authentication:user_impersonate_start', kwargs={
-                'user_id': self.test_user.pk
+                'user_id': self._test_user.pk
             }
         )
 
@@ -136,7 +136,7 @@ class UserPasswordViewTestMixin:
     def _request_test_user_password_set_view(self, password):
         return self.post(
             viewname='authentication:user_set_password', kwargs={
-                'user_id': self.test_user.pk
+                'user_id': self._test_user.pk
             }, data={
                 'new_password1': password, 'new_password2': password
             }
@@ -145,7 +145,7 @@ class UserPasswordViewTestMixin:
     def _request_test_user_password_set_multiple_view(self, password):
         return self.post(
             viewname='authentication:user_multiple_set_password', data={
-                'id_list': self.test_user.pk,
+                'id_list': self._test_user.pk,
                 'new_password1': password,
                 'new_password2': password
             }

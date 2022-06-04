@@ -21,7 +21,7 @@ class EmailSourceBackendTestMixin(SourceTestMixin):
 
     def _create_test_email_source_backend(self, extra_data=None):
         backend_data = {
-            'document_type_id': self.test_document_type.pk,
+            'document_type_id': self._test_document_type.pk,
             'host': '',
             'interval': DEFAULT_PERIOD_INTERVAL,
             'metadata_attachment_name': DEFAULT_EMAIL_METADATA_ATTACHMENT_NAME,
@@ -47,7 +47,7 @@ class IMAPEmailSourceTestMixin(SourceTestMixin):
 
     def _create_test_imap_email_source(self, extra_data=None):
         backend_data = {
-            'document_type_id': self.test_document_type.pk,
+            'document_type_id': self._test_document_type.pk,
             'execute_expunge': True,
             'host': '',
             'interval': DEFAULT_PERIOD_INTERVAL,
@@ -78,7 +78,7 @@ class POP3EmailSourceTestMixin(SourceTestMixin):
 
     def _create_test_pop3_email_source(self, extra_data=None):
         backend_data = {
-            'document_type_id': self.test_document_type.pk,
+            'document_type_id': self._test_document_type.pk,
             'host': '',
             'interval': DEFAULT_PERIOD_INTERVAL,
             'metadata_attachment_name': DEFAULT_EMAIL_METADATA_ATTACHMENT_NAME,
@@ -103,7 +103,7 @@ class POP3EmailSourceTestMixin(SourceTestMixin):
 class EmailSourceBackendViewTestMixin(SourceViewTestMixin):
     def _request_test_email_source_create_view(self, extra_data=None):
         data = {
-            'document_type_id': self.test_document_type.pk,
+            'document_type_id': self._test_document_type.pk,
             'host': '127.0.0.1',
             'interval': DEFAULT_PERIOD_INTERVAL,
             'metadata_attachment_name': DEFAULT_EMAIL_METADATA_ATTACHMENT_NAME,

@@ -4,7 +4,7 @@ from django.conf import settings
 from django.db import migrations, reset_queries
 
 
-def operation_document_version_page_create(apps, schema_editor):
+def code_document_version_page_create(apps, schema_editor):
     ContentType = apps.get_model(
         app_label='contenttypes', model_name='ContentType'
     )
@@ -133,23 +133,25 @@ def operation_document_version_page_create(apps, schema_editor):
         )
 
 
-def operation_document_version_page_create_reverse(apps, schema_editor):
+def code_document_version_page_create_reverse(apps, schema_editor):
     DocumentVersion = apps.get_model(
         app_label='documents', model_name='DocumentVersion'
     )
 
-    DocumentVersion.objects.using(schema_editor.connection.alias).all().delete()
+    DocumentVersion.objects.using(
+        alias=schema_editor.connection.alias
+    ).all().delete()
 
 
 class Migration(migrations.Migration):
     dependencies = [
         ('contenttypes', '0002_remove_content_type_name'),
-        ('documents', '0062_auto_20200920_0614'),
+        ('documents', '0062_auto_20200920_0614')
     ]
 
     operations = [
         migrations.RunPython(
-            code=operation_document_version_page_create,
-            reverse_code=operation_document_version_page_create_reverse
-        ),
+            code=code_document_version_page_create,
+            reverse_code=code_document_version_page_create_reverse
+        )
     ]

@@ -8,9 +8,9 @@ from .icons import (
     icon_index, icon_index_instances_rebuild, icon_index_instances_reset,
     icon_index_template_create, icon_index_template_delete,
     icon_index_template_document_types, icon_index_template_edit,
-    icon_index_template_list, icon_index_template_node_tree_view,
-    icon_index_template_node_create, icon_index_template_node_delete,
-    icon_index_template_node_edit
+    icon_index_template_event_triggers, icon_index_template_list,
+    icon_index_template_node_tree_view, icon_index_template_node_create,
+    icon_index_template_node_delete, icon_index_template_node_edit
 )
 from .permissions import (
     permission_index_template_create, permission_index_template_edit,
@@ -24,6 +24,8 @@ def condition_is_not_root_node(context, resolved_object):
     return not resolved_object.is_root_node()
 
 
+# Document type
+
 link_document_index_instance_list = Link(
     args='resolved_object.pk', icon=icon_document_index_instance_list,
     permissions=(permission_index_instance_view,),
@@ -35,6 +37,8 @@ link_document_type_index_templates = Link(
     permissions=(permission_index_template_create,),
     text=_('Index templates'), view='indexing:document_type_index_templates'
 )
+
+# Index instance
 
 link_index_instance_menu = Link(
     condition=factory_condition_queryset_access(
@@ -67,18 +71,8 @@ link_index_instances_reset = Link(
     view='indexing:index_instances_reset'
 )
 
-link_index_template_setup = Link(
-    condition=factory_condition_queryset_access(
-        app_label='document_indexing', model_name='IndexTemplate',
-        object_permission=permission_index_template_view,
-        view_permission=permission_index_template_create,
-    ), icon=icon_index, text=_('Indexes'),
-    view='indexing:index_template_list'
-)
-link_index_template_list = Link(
-    icon=icon_index_template_list, text=_('Indexes'),
-    view='indexing:index_template_list'
-)
+# Index template
+
 link_index_template_create = Link(
     icon=icon_index_template_create,
     permissions=(permission_index_template_create,),
@@ -99,6 +93,25 @@ link_index_template_edit = Link(
     permissions=(permission_index_template_edit,), text=_('Edit'),
     view='indexing:index_template_edit'
 )
+link_index_template_event_triggers = Link(
+    args='resolved_object.pk', icon=icon_index_template_event_triggers,
+    permissions=(permission_index_template_edit,), text=_('Triggers'),
+    view='indexing:index_template_event_triggers'
+)
+link_index_template_list = Link(
+    icon=icon_index_template_list, text=_('Indexes'),
+    view='indexing:index_template_list'
+)
+link_index_template_setup = Link(
+    condition=factory_condition_queryset_access(
+        app_label='document_indexing', model_name='IndexTemplate',
+        object_permission=permission_index_template_view,
+        view_permission=permission_index_template_create,
+    ), icon=icon_index, text=_('Indexes'),
+    view='indexing:index_template_list'
+)
+
+# Index template node
 
 link_index_template_node_tree_view = Link(
     args='resolved_object.pk', icon=icon_index_template_node_tree_view,

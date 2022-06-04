@@ -16,10 +16,7 @@ class FavoriteDocumentAPIViewTestCase(
     DocumentTestMixin, BaseAPITestCase
 ):
     auto_upload_test_document = False
-
-    def setUp(self):
-        super().setUp()
-        self._create_test_document_stub()
+    auto_create_test_document_stub = True
 
     def test_favorite_document_create_api_view_no_permission(self):
         favorite_document_count = FavoriteDocument.valid.count()
@@ -40,7 +37,7 @@ class FavoriteDocumentAPIViewTestCase(
         favorite_document_count = FavoriteDocument.valid.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_view
         )
 
@@ -53,7 +50,7 @@ class FavoriteDocumentAPIViewTestCase(
             FavoriteDocument.valid.count(), favorite_document_count + 1
         )
         self.assertEqual(
-            self.test_favorite_document.document.pk, self.test_document.pk
+            self._test_favorite_document.document.pk, self._test_document.pk
         )
 
         events = self._get_test_events()
@@ -63,11 +60,11 @@ class FavoriteDocumentAPIViewTestCase(
         favorite_document_count = FavoriteDocument.valid.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -104,7 +101,7 @@ class FavoriteDocumentAPIViewTestCase(
         favorite_document_count = FavoriteDocument.valid.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_view
         )
 
@@ -126,11 +123,11 @@ class FavoriteDocumentAPIViewTestCase(
         favorite_document_count = FavoriteDocument.valid.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -159,7 +156,7 @@ class FavoriteDocumentAPIViewTestCase(
         self._test_document_favorite_add()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_view
         )
 
@@ -169,7 +166,7 @@ class FavoriteDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['document']['label'],
-            self.test_document.label
+            self._test_document.label
         )
 
         events = self._get_test_events()
@@ -179,11 +176,11 @@ class FavoriteDocumentAPIViewTestCase(
         self._test_document_favorite_add()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -213,7 +210,7 @@ class FavoriteDocumentAPIViewTestCase(
         favorite_document_count = FavoriteDocument.valid.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_view
         )
 
@@ -224,7 +221,7 @@ class FavoriteDocumentAPIViewTestCase(
         self.assertEqual(response.data['count'], favorite_document_count)
         self.assertEqual(
             response.data['results'][0]['document']['label'],
-            self.test_document.label
+            self._test_document.label
         )
 
         events = self._get_test_events()
@@ -236,11 +233,11 @@ class FavoriteDocumentAPIViewTestCase(
         favorite_document_count = FavoriteDocument.valid.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 

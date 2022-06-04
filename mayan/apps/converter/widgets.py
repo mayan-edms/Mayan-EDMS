@@ -5,15 +5,6 @@ from django import forms
 from django.utils.encoding import force_text
 
 
-class AssetImageWidget(forms.widgets.Widget):
-    template_name = 'converter/forms/widgets/asset_image.html'
-
-    def format_value(self, value):
-        if value == '' or value is None:
-            return None
-        return value
-
-
 class Base64ImageWidget(forms.widgets.Widget):
     template_name = 'converter/forms/widgets/base64_image.html'
 
@@ -29,3 +20,12 @@ class Base64ImageWidget(forms.widgets.Widget):
                 )
 
                 return url
+
+
+class ImageWidget(forms.widgets.Widget):
+    template_name = 'converter/forms/widgets/widget_image.html'
+
+    def format_value(self, value):
+        if value == '' or value is None:
+            return None
+        return value

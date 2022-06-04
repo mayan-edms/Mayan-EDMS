@@ -1,11 +1,10 @@
-TEST_INDEX_TEMPLATE_LABEL = 'test label'
-TEST_INDEX_TEMPLATE_LABEL_EDITED = 'test edited label'
-TEST_INDEX_TEMPLATE_SLUG = 'test_slug'
-TEST_INDEX_TEMPLATE_NODE_EXPRESSION = '{{ document.pk }}'
-TEST_INDEX_TEMPLATE_NODE_EXPRESSION_EDITED = '{{ document.description }}'
-TEST_METADATA_TYPE_LABEL = 'test metadata label'
-TEST_METADATA_TYPE_NAME = 'test_metadata_name'
-TEST_INDEX_TEMPLATE_METADATA_EXPRESSION = '{{ document.metadata_value_of.%s }}' % TEST_METADATA_TYPE_NAME
 TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION = '{{ document.label }}'
 TEST_INDEX_TEMPLATE_DOCUMENT_DESCRIPTION_EXPRESSION = '{{ document.description }}'
 TEST_INDEX_TEMPLATE_DOCUMENT_TYPE_EXPRESSION = '{{ document.document_type.label }}'
+
+TEST_INDEX_TEMPLATE_LABEL = 'test label'
+TEST_INDEX_TEMPLATE_LABEL_EDITED = 'test edited label'
+TEST_INDEX_TEMPLATE_SLUG = 'test_slug'
+
+TEST_INDEX_TEMPLATE_NODE_EXPRESSION = '{{ document.pk }}'
+TEST_INDEX_TEMPLATE_NODE_EXPRESSION_EDITED = '{{ document.description }}'

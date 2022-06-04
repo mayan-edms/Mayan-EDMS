@@ -5,8 +5,8 @@ from mayan.apps.navigation.utils import factory_condition_queryset_access
 
 from .icons import (
     icon_document_tag_multiple_attach, icon_document_tag_multiple_remove,
-    icon_document_tag_list, icon_tag_create, icon_tag_delete_single,
-    icon_tag_delete_multiple, icon_tag_document_list, icon_tag_edit,
+    icon_document_tag_list, icon_tag_create, icon_tag_single_delete,
+    icon_tag_multiple_delete, icon_tag_document_list, icon_tag_edit,
     icon_tag_list
 )
 from .permissions import (
@@ -43,14 +43,14 @@ link_tag_create = Link(
     icon=icon_tag_create, permissions=(permission_tag_create,),
     text=_('Create new tag'), view='tags:tag_create'
 )
-link_tag_delete_single = Link(
-    args='object.id', icon=icon_tag_delete_single,
+link_tag_single_delete = Link(
+    args='object.id', icon=icon_tag_single_delete,
     permissions=(permission_tag_delete,), tags='dangerous',
-    text=_('Delete'), view='tags:tag_delete_single'
+    text=_('Delete'), view='tags:tag_single_delete'
 )
-link_tag_delete_multiple = Link(
-    icon=icon_tag_delete_multiple, text=_('Delete'),
-    view='tags:tag_delete_multiple'
+link_tag_multiple_delete = Link(
+    icon=icon_tag_multiple_delete, text=_('Delete'),
+    view='tags:tag_multiple_delete'
 )
 link_tag_edit = Link(
     args='object.id', icon=icon_tag_edit,

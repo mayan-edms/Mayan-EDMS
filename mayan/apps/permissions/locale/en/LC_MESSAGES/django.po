@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2019-12-13 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:43 events.py:6 models.py:37 models.py:157 permissions.py:5
+#: apps.py:44 events.py:6 models.py:37 models.py:157 permissions.py:5
 msgid "Permissions"
 msgstr ""
 
-#: apps.py:100 models.py:75
+#: apps.py:106 models.py:75
 msgid "Group count"
 msgstr ""
 
@@ -114,19 +114,19 @@ msgstr ""
 msgid "Group name"
 msgstr ""
 
-#: serializers.py:31
+#: serializers.py:30
 msgid "Primary key of the group to add to the role."
 msgstr ""
 
-#: serializers.py:39
+#: serializers.py:38
 msgid "Primary key of the group to remove from the role."
 msgstr ""
 
-#: serializers.py:47
+#: serializers.py:46
 msgid "Primary key of the permission to add to the role."
 msgstr ""
 
-#: serializers.py:54
+#: serializers.py:53
 msgid "Primary key of the permission to remove from the role."
 msgstr ""
 

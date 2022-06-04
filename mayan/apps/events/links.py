@@ -10,12 +10,12 @@ from mayan.apps.navigation.utils import get_content_type_kwargs_factory
 
 from .icons import (
     icon_event_types_subscriptions_list,
-    icon_events_for_object, icon_events_for_object_clear,
-    icon_events_for_object_export, icon_events_list, icon_events_list_clear,
-    icon_events_list_export, icon_notification_mark_read,
+    icon_object_event_list, icon_object_event_list_clear,
+    icon_object_event_list_export, icon_event_list, icon_event_list_clear,
+    icon_event_list_export, icon_notification_mark_read,
     icon_notification_mark_read_all,
-    icon_object_event_types_user_subscriptions_list,
-    icon_user_notifications_list
+    icon_object_event_type_user_subscription_list,
+    icon_notification_list, icon_user_object_subscriptions_list
 )
 from .permissions import (
     permission_events_clear, permission_events_export, permission_events_view
@@ -48,64 +48,69 @@ def get_unread_notification_count(context):
         ).filter(read=False).count()
 
 
-link_events_details = Link(
-    text=_('Events'), view='events:events_list'
+link_event_list = Link(
+    icon=icon_event_list, text=_('Events'), view='events:event_list'
 )
-link_events_for_object = Link(
-    icon=icon_events_for_object,
-    kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
-    permissions=(permission_events_view,), text=_('Events'),
-    view='events:events_for_object'
+link_event_list_clear = Link(
+    icon=icon_event_list_clear, text=_('Clear events'),
+    view='events:event_list_clear'
 )
-link_events_for_object_clear = Link(
-    condition=condition_can_be_cleared,
-    icon=icon_events_for_object_clear,
-    kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
-    permissions=(permission_events_view,), text=_('Clear events'),
-    view='events:events_for_object_clear'
+link_event_list_export = Link(
+    icon=icon_event_list_export, text=_('Export events'),
+    view='events:event_list_export'
 )
-link_events_for_object_export = Link(
-    condition=condition_can_be_exported,
-    icon=icon_events_for_object_export,
-    kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
-    permissions=(permission_events_view,), text=_('Export events'),
-    view='events:events_for_object_export'
-)
-link_events_list = Link(
-    icon=icon_events_list, text=_('Events'), view='events:events_list'
-)
-link_events_list_clear = Link(
-    icon=icon_events_list_clear, text=_('Clear events'),
-    view='events:events_list_clear'
-)
-link_events_list_export = Link(
-    icon=icon_events_list_export, text=_('Export events'),
-    view='events:events_list_export'
-)
-link_event_types_subscriptions_list = Link(
+link_event_type_subscription_list = Link(
     condition=condition_is_current_user,
     icon=icon_event_types_subscriptions_list,
     text=_('Event subscriptions'),
-    view='events:event_types_user_subscriptions_list'
+    view='events:event_type_user_subscription_list'
+)
+link_user_object_subscription_list = Link(
+    condition=condition_is_current_user,
+    icon=icon_user_object_subscriptions_list,
+    text=_('Object event subscriptions'),
+    view='events:user_object_subscription_list'
+)
+
+link_notification_list = Link(
+    badge_text=get_unread_notification_count,
+    condition=condition_user_is_authenticated,
+    icon=icon_notification_list, text='',
+    view='events:user_notifications_list'
 )
 link_notification_mark_read = Link(
     args='object.pk', icon=icon_notification_mark_read,
-    text=_('Mark as seen'), view='events:notification_mark_read'
+    permissions=(permission_events_view,), text=_('Mark as seen'),
+    view='events:notification_mark_read'
 )
 link_notification_mark_read_all = Link(
     icon=icon_notification_mark_read_all, text=_('Mark all as seen'),
     view='events:notification_mark_read_all'
 )
-link_object_event_types_user_subscriptions_list = Link(
+link_object_event_list = Link(
+    icon=icon_object_event_list,
+    kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
+    permissions=(permission_events_view,), text=_('Events'),
+    view='events:object_event_list'
+)
+link_object_event_list_clear = Link(
+    condition=condition_can_be_cleared,
+    icon=icon_object_event_list_clear,
+    kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
+    permissions=(permission_events_view,), text=_('Clear events'),
+    view='events:object_event_list_clear'
+)
+link_object_event_list_export = Link(
+    condition=condition_can_be_exported,
+    icon=icon_object_event_list_export,
+    kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
+    permissions=(permission_events_view,), text=_('Export events'),
+    view='events:object_event_list_export'
+)
+link_object_event_type_user_subscription_list = Link(
     condition=condition_not_is_current_user,
-    icon=icon_object_event_types_user_subscriptions_list,
+    icon=icon_object_event_type_user_subscription_list,
     kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
     permissions=(permission_events_view,), text=_('Subscriptions'),
-    view='events:object_event_types_user_subscriptions_list'
-)
-link_user_notifications_list = Link(
-    badge_text=get_unread_notification_count,
-    condition=condition_user_is_authenticated,
-    icon=icon_user_notifications_list, text='',
-    view='events:user_notifications_list'
+    view='events:object_event_type_user_subscription_list'
 )

@@ -17,7 +17,7 @@ icon_document_metadata_remove = Icon(
     driver_name='fontawesome-dual', primary_symbol='database',
     secondary_symbol='minus'
 )
-icon_document_metadata_view = Icon(
+icon_document_metadata_list = Icon(
     driver_name='fontawesome', symbol='database'
 )
 icon_document_multiple_metadata_add = Icon(
@@ -45,10 +45,10 @@ icon_metadata_type_create = Icon(
     driver_name='fontawesome-dual', primary_symbol='database',
     secondary_symbol='plus'
 )
-icon_metadata_type_delete_single = Icon(
+icon_metadata_type_single_delete = Icon(
     driver_name='fontawesome', symbol='times'
 )
-icon_metadata_type_delete_multiple = Icon(
+icon_metadata_type_multiple_delete = Icon(
     driver_name='fontawesome', symbol='times'
 )
 icon_metadata_type_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')

@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand
 from mayan.apps.common.utils import parse_range
 
 from ...classes import SearchModel
-from ...tasks import task_index_search_model
+from ...tasks import task_index_instances
 
 
 class Command(BaseCommand):
@@ -39,12 +39,13 @@ class Command(BaseCommand):
             )
             exit(1)
 
-        task_index_search_model.apply_async(
-            kwargs={
-                'range_string': id_range_string,
-                'search_model_full_name': search_model.get_full_name()
-            }
-        )
+        for id_list in search_model.get_id_groups(range_string=id_range_string):
+            task_index_instances.apply_async(
+                kwargs={
+                    'id_list': id_list,
+                    'search_model_full_name': search_model.get_full_name()
+                }
+            )
 
         self.stdout.write(
             msg='\nInstances queued for indexing: {}'.format(

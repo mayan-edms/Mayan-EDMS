@@ -2,7 +2,7 @@ import warnings
 
 from mayan.apps.testing.tests.base import BaseTestCase
 
-from ..caches import IndexFilesystemCache
+from ..caches import MirrorFilesystemCache
 
 from .literals import (
     TEST_CACHE_KEY_BAD_CHARACTERS, TEST_DOCUMENT_PK, TEST_KEY_UNICODE,
@@ -18,23 +18,23 @@ class MockNode:
     pk = TEST_NODE_PK
 
 
-class IndexFilesystemCacheTestCase(BaseTestCase):
+class MirrorFilesystemCacheTestCase(BaseTestCase):
     def setUp(self):
         super().setUp()
-        self.cache = IndexFilesystemCache()
-        self.test_document = MockDocument()
+        self.cache = MirrorFilesystemCache()
+        self._test_document = MockDocument()
         self.node = MockNode()
 
     def test_set_path_document(self):
-        self.cache.set_path(path=TEST_PATH, document=self.test_document)
+        self.cache.set_path(path=TEST_PATH, document=self._test_document)
         self.assertEqual(
             {'document_pk': TEST_DOCUMENT_PK},
             self.cache.get_path(path=TEST_PATH)
         )
 
     def test_set_path_document_clear_document(self):
-        self.cache.set_path(path=TEST_PATH, document=self.test_document)
-        self.cache.clear_document(document=self.test_document)
+        self.cache.set_path(path=TEST_PATH, document=self._test_document)
+        self.cache.clear_document(document=self._test_document)
 
         self.assertEqual(None, self.cache.get_path(path=TEST_PATH))
 

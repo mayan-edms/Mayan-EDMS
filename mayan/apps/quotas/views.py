@@ -10,7 +10,10 @@ from mayan.apps.views.generics import (
 
 from .classes import QuotaBackend
 from .forms import QuotaBackendSelectionForm, QuotaDynamicForm
-from .icons import icon_quota_setup
+from .icons import (
+    icon_quota_backend_selection, icon_quota_create, icon_quota_delete,
+    icon_quota_edit, icon_quota_list, icon_quota_setup
+)
 from .links import link_quota_create
 from .models import Quota
 from .permissions import (
@@ -24,6 +27,7 @@ class QuotaBackendSelectionView(FormView):
         'title': _('New quota backend selection'),
     }
     form_class = QuotaBackendSelectionForm
+    view_icon = icon_quota_backend_selection
     view_permission = permission_quota_create
 
     def form_valid(self, form):
@@ -38,6 +42,7 @@ class QuotaBackendSelectionView(FormView):
 class QuotaCreateView(SingleObjectDynamicFormCreateView):
     form_class = QuotaDynamicForm
     post_action_redirect = reverse_lazy(viewname='quotas:quota_list')
+    view_icon = icon_quota_create
     view_permission = permission_quota_create
 
     def get_backend(self):
@@ -80,6 +85,7 @@ class QuotaDeleteView(SingleObjectDeleteView):
     object_permission = permission_quota_delete
     pk_url_kwarg = 'quota_id'
     post_action_redirect = reverse_lazy(viewname='quotas:quota_list')
+    view_icon = icon_quota_delete
 
     def get_extra_context(self):
         return {
@@ -92,6 +98,7 @@ class QuotaEditView(SingleObjectDynamicFormEditView):
     model = Quota
     object_permission = permission_quota_edit
     pk_url_kwarg = 'quota_id'
+    view_icon = icon_quota_edit
 
     def form_valid(self, form):
         return super().form_valid(form)
@@ -121,6 +128,7 @@ class QuotaEditView(SingleObjectDynamicFormEditView):
 class QuotaListView(SingleObjectListView):
     model = Quota
     object_permission = permission_quota_view
+    view_icon = icon_quota_list
 
     def get_extra_context(self):
         return {

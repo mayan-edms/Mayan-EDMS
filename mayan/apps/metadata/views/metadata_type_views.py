@@ -14,7 +14,11 @@ from mayan.apps.views.generics import (
 from ..forms import (
     DocumentTypeMetadataTypeRelationshipFormSet, MetadataTypeForm
 )
-from ..icons import icon_metadata
+from ..icons import (
+    icon_document_type_metadata_type_list, icon_metadata_type_create,
+    icon_metadata_type_single_delete, icon_metadata_type_document_type_list,
+    icon_metadata_type_edit, icon_metadata_type_list, icon_metadata
+)
 from ..links import link_metadata_type_create
 from ..models import MetadataType
 from ..permissions import (
@@ -30,6 +34,7 @@ class MetadataTypeCreateView(SingleObjectCreateView):
     post_action_redirect = reverse_lazy(
         viewname='metadata:metadata_type_list'
     )
+    view_icon = icon_metadata_type_create
     view_permission = permission_metadata_type_create
 
     def get_instance_extra_data(self):
@@ -60,6 +65,7 @@ class MetadataTypeDeleteView(MultipleObjectDeleteView):
     title_single = _('Delete metadata type: %(object)s.')
     title_singular = _('Delete the %(count)d selected metadata type.')
     title_plural = _('Delete the %(count)d selected metadata types.')
+    view_icon = icon_metadata_type_single_delete
 
 
 class MetadataTypeEditView(SingleObjectEditView):
@@ -70,6 +76,7 @@ class MetadataTypeEditView(SingleObjectEditView):
     post_action_redirect = reverse_lazy(
         viewname='metadata:metadata_type_list'
     )
+    view_icon = icon_metadata_type_edit
 
     def get_extra_context(self):
         return {
@@ -86,6 +93,7 @@ class MetadataTypeEditView(SingleObjectEditView):
 class MetadataTypeListView(SingleObjectListView):
     model = MetadataType
     object_permission = permission_metadata_type_view
+    view_icon = icon_metadata_type_list
 
     def get_extra_context(self):
         return {
@@ -96,7 +104,7 @@ class MetadataTypeListView(SingleObjectListView):
                 context=RequestContext(request=self.request)
             ),
             'no_results_text': _(
-                'Metadata types are users defined properties that can be '
+                'Metadata types are user defined properties that can be '
                 'assigned values. Once created they must be associated to '
                 'document types, either as optional or required, for each. '
                 'Setting a metadata type as required for a document type '
@@ -117,6 +125,7 @@ class DocumentTypeMetadataTypeRelationshipView(RelationshipView):
     relationship_related_query_field = 'metadata_type'
     sub_model = MetadataType
     sub_model_permission = permission_metadata_type_edit
+    view_icon = icon_document_type_metadata_type_list
 
     def get_extra_context(self):
         return {
@@ -172,6 +181,7 @@ class MetadataTypesDocumentTypeRelationshipView(
     relationship_related_query_field = 'document_type'
     sub_model = DocumentType
     sub_model_permission = permission_document_type_edit
+    view_icon = icon_metadata_type_document_type_list
 
     def get_extra_context(self):
         return {

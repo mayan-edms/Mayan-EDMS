@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,26 +20,26 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:64 apps.py:194 apps.py:200 apps.py:204 apps.py:209 apps.py:213
-#: events.py:5 links.py:52 permissions.py:5 queues.py:7 settings.py:9
+#: apps.py:67 apps.py:205 apps.py:211 apps.py:215 apps.py:220 apps.py:224
+#: events.py:5 links.py:52 permissions.py:5 queues.py:7
 msgid "Metadata"
 msgstr "Metadata"
 
-#: apps.py:126
+#: apps.py:137
 msgid "Return the value of a specific document metadata."
 msgstr ""
 
-#: apps.py:127
+#: apps.py:138
 msgid "Metadata value of"
 msgstr ""
 
-#: apps.py:132
+#: apps.py:143
 msgid "Metadata type name"
 msgstr "Naziv metapodataka"
 
-#: apps.py:136
-msgid "Metadata type value"
-msgstr "Vrednost metapodataka"
+#: apps.py:147 search.py:17
+msgid "Metadata value"
+msgstr "Metadata vrijednost"
 
 #: events.py:8
 msgid "Document metadata added"
@@ -65,62 +65,62 @@ msgstr ""
 msgid "Metadata type relationship updated"
 msgstr ""
 
-#: forms.py:15
+#: forms.py:16
 msgid "ID"
 msgstr "ID"
 
-#: forms.py:17 models.py:52
+#: forms.py:19 models.py:39
 msgid "Name"
 msgstr "Ime"
 
-#: forms.py:26 models.py:189 workflow_actions.py:93
+#: forms.py:27 models.py:204 workflow_actions.py:93
 msgid "Value"
 msgstr "Vrijednost"
 
-#: forms.py:31
+#: forms.py:32
 msgid "Update"
 msgstr "Update"
 
-#: forms.py:52 forms.py:199 models.py:277
+#: forms.py:52 forms.py:211 models.py:292
 msgid "Required"
 msgstr "Obavezno"
 
-#: forms.py:81
+#: forms.py:80
 #, python-format
 msgid "Lookup value error: %s"
 msgstr "Greška pri traženju vrijednosti: %s"
 
-#: forms.py:94
+#: forms.py:93
 #, python-format
 msgid "Default value error: %s"
 msgstr "Default vrijednost greške: %s"
 
-#: forms.py:112 models.py:151
+#: forms.py:114 models.py:151
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "Za ovaj tip dokumenta potreban je \"%s\"."
 
-#: forms.py:130
+#: forms.py:133
 msgid "Metadata types to be added to the selected documents."
 msgstr "Tipovi metapodataka koji se dodaju odabranim dokumentima."
 
-#: forms.py:131 models.py:87 models.py:275 search.py:14 workflow_actions.py:86
+#: forms.py:134 models.py:87 models.py:290 search.py:14 workflow_actions.py:86
 msgid "Metadata type"
 msgstr "Metadata tip"
 
-#: forms.py:156
+#: forms.py:159
 msgid "Remove"
 msgstr "Ukloni"
 
-#: forms.py:182
+#: forms.py:185
 msgid " Available template context variables: "
 msgstr " Dostupne varijable konteksta predložaka:"
 
-#: forms.py:197
+#: forms.py:209
 msgid "None"
 msgstr "Nijedno"
 
-#: forms.py:198
+#: forms.py:210
 msgid "Optional"
 msgstr "Neobavezno"
 
@@ -157,6 +157,42 @@ msgstr "Obriši"
 msgid "Edit"
 msgstr "Urediti"
 
+#: metadata_parsers.py:11
+msgid "Date and time parser"
+msgstr ""
+
+#: metadata_parsers.py:18
+msgid "Date parser"
+msgstr ""
+
+#: metadata_parsers.py:26
+msgid "Regular expression parser"
+msgstr ""
+
+#: metadata_parsers.py:36
+msgid "Time parser"
+msgstr ""
+
+#: metadata_validators.py:12
+msgid "Date and time validator"
+msgstr ""
+
+#: metadata_validators.py:19
+msgid "Date validator"
+msgstr ""
+
+#: metadata_validators.py:27
+msgid "Regular expression validator"
+msgstr ""
+
+#: metadata_validators.py:35
+msgid "The input string does not match the pattern."
+msgstr ""
+
+#: metadata_validators.py:40
+msgid "Time validator"
+msgstr ""
+
 #: methods.py:20
 msgid "Return the metadata of the document."
 msgstr ""
@@ -165,37 +201,37 @@ msgstr ""
 msgid "Selected documents must be of the same type."
 msgstr "Izabrani dokumenti moraju biti istog tipa."
 
-#: models.py:49
+#: models.py:36
 msgid ""
 "Name used by other apps to reference this metadata type. Do not use python "
 "reserved words, or spaces."
 msgstr ""
 
-#: models.py:55
+#: models.py:42
 msgid "Short description of this metadata type."
 msgstr ""
 
-#: models.py:56
+#: models.py:43
 msgid "Label"
 msgstr "Labela"
 
-#: models.py:60
+#: models.py:47
 msgid "Enter a template to render."
 msgstr ""
 
-#: models.py:61
+#: models.py:48
 msgid "Default"
 msgstr "default"
 
-#: models.py:65
+#: models.py:52
 msgid "Enter a template to render. Must result in a comma delimited string."
 msgstr ""
 
-#: models.py:67
+#: models.py:54
 msgid "Lookup"
 msgstr "Pogledaj gore"
 
-#: models.py:72
+#: models.py:58
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
@@ -203,11 +239,19 @@ msgstr ""
 "Validator će odbiti unos podataka ako uneta vrednost ne odgovara očekivanom "
 "formatu."
 
-#: models.py:74
+#: models.py:60
 msgid "Validator"
 msgstr "Validator"
 
-#: models.py:78
+#: models.py:64
+msgid "Enter the arguments for the validator in YAML format."
+msgstr ""
+
+#: models.py:66
+msgid "Validator arguments"
+msgstr ""
+
+#: models.py:71
 msgid ""
 "The parser will reformat the value entered to conform to the expected "
 "format."
@@ -215,47 +259,60 @@ msgstr ""
 "Analizator će reformatirati vrijednost koja se unese u skladu sa očekivanim "
 "formatom."
 
-#: models.py:80
+#: models.py:73
 msgid "Parser"
 msgstr "Parser"
+
+#: models.py:77
+msgid "Enter the arguments for the parser in YAML format."
+msgstr ""
+
+#: models.py:79
+msgid "Parser arguments"
+msgstr ""
 
 #: models.py:159
 msgid "Value is not one of the provided options."
 msgstr "Vrednost nije jedna od predloženih opcija."
 
-#: models.py:180
+#: models.py:173
+#, python-format
+msgid "Metadata type validation error; %(exception)s"
+msgstr ""
+
+#: models.py:195
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:183
+#: models.py:198
 msgid "Type"
 msgstr "Tip"
 
-#: models.py:187
+#: models.py:202
 msgid "The actual value stored in the metadata type field for the document."
 msgstr ""
 
-#: models.py:195 models.py:196
+#: models.py:210 models.py:211
 msgid "Document metadata"
 msgstr "Metapodaci dokumenta"
 
-#: models.py:223
+#: models.py:238
 msgid "Metadata type is required for this document type."
 msgstr "Tip metapodataka je potreban za ovaj tip dokumenta."
 
-#: models.py:258
+#: models.py:273
 msgid "Metadata type is not valid for this document type."
 msgstr "Tip metapodataka nije važeći za ovaj tip dokumenta."
 
-#: models.py:271
+#: models.py:286
 msgid "Document type"
 msgstr "Tip dokumenta"
 
-#: models.py:284
+#: models.py:299
 msgid "Document type metadata type options"
 msgstr "Opcije tipa metapodataka tipa dokumenta"
 
-#: models.py:285
+#: models.py:300
 msgid "Document type metadata types options"
 msgstr "Opcije tipova metapodataka tipa dokumenta"
 
@@ -303,10 +360,6 @@ msgstr "Uklonite tip metapodataka"
 msgid "Add required metadata type"
 msgstr "Dodajte traženi tip metapodataka"
 
-#: search.py:17
-msgid "Metadata value"
-msgstr "Metadata vrijednost"
-
 #: search.py:24 search.py:35 search.py:46 search.py:57
 msgid "Document metadata type"
 msgstr ""
@@ -315,15 +368,15 @@ msgstr ""
 msgid "Document metadata value"
 msgstr ""
 
-#: serializers.py:48
+#: serializers.py:47
 msgid "Primary key of the metadata type to be added."
 msgstr "Primarni ključ tipa metapodataka koji treba dodati."
 
-#: serializers.py:49
+#: serializers.py:48
 msgid "Metadata type ID"
 msgstr ""
 
-#: serializers.py:94
+#: serializers.py:93
 msgid "Primary key of the metadata type to be added to the document."
 msgstr "Primarni ključ vrste metapodataka koji će se dodati dokumentu."
 
@@ -349,7 +402,7 @@ msgstr[2] ""
 msgid "Add metadata types to document: %s"
 msgstr "Dodajte metatatske tipove za dokument: %s"
 
-#: views/document_views.py:142
+#: views/document_views.py:141
 #, python-format
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
@@ -358,7 +411,7 @@ msgstr ""
 "Greška pri dodavanju metapodataka tipa \"%(metadata_type)s\" u dokument: "
 "%(document)s; %(exception)s"
 
-#: views/document_views.py:157
+#: views/document_views.py:156
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s successfully added to document "
@@ -366,94 +419,94 @@ msgid ""
 msgstr ""
 "Metadata tip: %(metadata_type)s uspješno dodan u dokument %(document)s."
 
-#: views/document_views.py:167
+#: views/document_views.py:166
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
 msgstr "Metadata tip: %(metadata_type)s već postoji u dokumentu %(document)s."
 
-#: views/document_views.py:184
+#: views/document_views.py:183
 #, python-format
 msgid "Metadata edit request performed on %(count)d document"
 msgstr "Zahtev za uređivanje metapodataka izvršen na dokumentu %(count)d"
 
-#: views/document_views.py:187
+#: views/document_views.py:186
 #, python-format
 msgid "Metadata edit request performed on %(count)d documents"
 msgstr "Zahtev za uređivanje metapodataka izvršen na dokumentima %(count)d"
 
-#: views/document_views.py:218
+#: views/document_views.py:217
 msgid ""
 "Add metadata types available for this document's type and assign them "
 "corresponding values."
 msgstr ""
 
-#: views/document_views.py:221
+#: views/document_views.py:220
 msgid "There is no metadata to edit"
 msgstr ""
 
-#: views/document_views.py:223
+#: views/document_views.py:222
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views/document_views.py:234
+#: views/document_views.py:233
 #, python-format
 msgid "Edit metadata for document: %s"
 msgstr "Izmjeni metadata za dokument: %s"
 
-#: views/document_views.py:319
+#: views/document_views.py:321
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
 msgstr ""
 "Greška u editovanju metapodataka za dokument: %(document)s; %(exception)s."
 
-#: views/document_views.py:332
+#: views/document_views.py:334
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr "Metadata za dokument %s uspješno izmjenjen."
 
-#: views/document_views.py:357
+#: views/document_views.py:359
 msgid ""
 "Add metadata types this document's type to be able to add them to individual"
 " documents. Once added to individual document, you can then edit their "
 "values."
 msgstr ""
 
-#: views/document_views.py:362
+#: views/document_views.py:364
 msgid "This document doesn't have any metadata"
 msgstr ""
 
-#: views/document_views.py:363
+#: views/document_views.py:365
 #, python-format
 msgid "Metadata for document: %s"
 msgstr "Metapodaci za dokument: %s"
 
-#: views/document_views.py:378
+#: views/document_views.py:380
 #, python-format
 msgid "Metadata remove request performed on %(count)d document"
 msgstr "Metapodaci ukloniti zahtev izvršen na dokumentu %(count)d"
 
-#: views/document_views.py:381
+#: views/document_views.py:383
 #, python-format
 msgid "Metadata remove request performed on %(count)d documents"
 msgstr "Metadata uklanja zahtev izveden na dokumentima %(count)d"
 
-#: views/document_views.py:390
+#: views/document_views.py:392
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views/document_views.py:401
+#: views/document_views.py:403
 #, python-format
 msgid "Remove metadata types from the document: %s"
 msgstr "Udaljite tipove metapodataka iz dokumenta: %s"
 
-#: views/document_views.py:467
+#: views/document_views.py:469
 #, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
@@ -462,7 +515,7 @@ msgstr ""
 "Uspješno uklonite metapodatke tipa \"%(metadata_type)s\" iz dokumenta: "
 "%(document)s."
 
-#: views/document_views.py:476
+#: views/document_views.py:478
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "

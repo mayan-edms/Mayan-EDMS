@@ -7,12 +7,15 @@ from mayan.apps.rest_api import generics
 from .api_view_mixins import SearchModelAPIViewMixin
 from .classes import SearchBackend, SearchModel
 from .serializers import SearchModelSerializer
+from .utils import get_match_all_value
 
 
 class APISearchView(SearchModelAPIViewMixin, generics.ListAPIView):
     """
     get: Perform a search operation
     """
+    search_disable_list_filtering = True
+
     def get_queryset(self):
         search_model = self.get_search_model()
 
@@ -25,8 +28,8 @@ class APISearchView(SearchModelAPIViewMixin, generics.ListAPIView):
                 'GET': (search_model.permission,)
             }
 
-        query_dict = self.request.GET.copy()
-        query_dict.update(self.request.POST)
+        query_dict = self.request.GET.dict().copy()
+        query_dict.update(self.request.POST.dict())
 
         try:
             queryset = SearchBackend.get_instance().search(
@@ -49,6 +52,8 @@ class APIAdvancedSearchView(SearchModelAPIViewMixin, generics.ListAPIView):
     """
     get: Perform an advanced search operation
     """
+    search_disable_list_filtering = True
+
     def get_queryset(self):
         self.search_model = self.get_search_model()
 
@@ -61,13 +66,12 @@ class APIAdvancedSearchView(SearchModelAPIViewMixin, generics.ListAPIView):
                 'GET': (self.search_model.permission,)
             }
 
-        query_dict = self.request.GET.copy()
-        query_dict.update(self.request.POST)
+        query_dict = self.request.GET.dict().copy()
+        query_dict.update(self.request.POST.dict())
 
-        if query_dict.get('_match_all', 'off') == 'on':
-            global_and_search = True
-        else:
-            global_and_search = False
+        global_and_search = get_match_all_value(
+            value=query_dict.get('_match_all')
+        )
 
         try:
             queryset = SearchBackend.get_instance().search(

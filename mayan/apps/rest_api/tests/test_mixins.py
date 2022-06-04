@@ -24,7 +24,7 @@ class ExternalObjectAPIViewMixinTestCase(
             external_object_queryset = self.TestModel.objects.all()
             external_object_pk_url_kwarg = 'test_object_id'
             mayan_external_object_permissions = {
-                'GET': (self.test_permission,)
+                'GET': (self._test_permission,)
             }
             serializer_class = TestModelSerializer
 
@@ -40,13 +40,13 @@ class ExternalObjectAPIViewMixinTestCase(
                     self._test_case_user_token
                 )
             }, viewname='rest_api:{}'.format(self._test_view_name), kwargs={
-                'test_object_id': self.test_object.pk,
+                'test_object_id': self._test_object.pk,
             },
         )
 
     def test_mixin_using_token_authentication_with_access(self):
         self.grant_access(
-            obj=self.test_object, permission=self.test_permission
+            obj=self._test_object, permission=self._test_permission
         )
 
         response = self._request_test_api_view()
@@ -81,7 +81,7 @@ class ChildExternalObjectAPIViewMixinTestCase(
     def _request_test_api_view(self):
         return self.get(
             viewname='rest_api:{}'.format(self._test_view_name), kwargs={
-                'test_object_id': self.test_object.pk + 1,
+                'test_object_id': self._test_object.pk + 1,
             }, query={'format': 'api'}
         )
 

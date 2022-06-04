@@ -2,12 +2,11 @@ from django.db import models
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.events.classes import EventManagerSave
-from mayan.apps.events.decorators import method_event
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.documents.models.document_type_models import DocumentType
-from mayan.apps.documents.models.document_version_models import DocumentVersion
 from mayan.apps.documents.models.document_version_page_models import DocumentVersionPage
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
 
 from .events import event_ocr_document_version_page_content_edited
 from .managers import (
@@ -39,29 +38,6 @@ class DocumentTypeOCRSettings(ExtraDataModelMixin, models.Model):
     natural_key.dependencies = ['documents.DocumentType']
 
 
-class DocumentVersionOCRError(models.Model):
-    """
-    This models keeps track of the errors captured during the OCR of a
-    document version page images.
-    """
-    document_version = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='ocr_errors',
-        to=DocumentVersion, verbose_name=_('Document version')
-    )
-    datetime_submitted = models.DateTimeField(
-        auto_now_add=True, db_index=True, verbose_name=_('Date time submitted')
-    )
-    result = models.TextField(blank=True, null=True, verbose_name=_('Result'))
-
-    class Meta:
-        ordering = ('datetime_submitted',)
-        verbose_name = _('Document version OCR error')
-        verbose_name_plural = _('Document version OCR errors')
-
-    def __str__(self):
-        return force_text(s=self.document_version)
-
-
 class DocumentVersionPageOCRContent(models.Model):
     """
     This model stores the OCR results for a document version page.
@@ -88,7 +64,7 @@ class DocumentVersionPageOCRContent(models.Model):
     @method_event(
         event_manager_class=EventManagerSave,
         edited={
-            'action_object': 'document_version_page.document_version',
+            'action_object': 'document_version_page.document_version.document',
             'event': event_ocr_document_version_page_content_edited,
             'target': 'document_version_page'
         }

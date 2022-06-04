@@ -9,10 +9,11 @@ from ..icons import (
     icon_document_version_active, icon_document_version_create,
     icon_document_version_delete, icon_document_version_edit,
     icon_document_version_export, icon_document_version_list,
-    icon_document_version_print, icon_document_version_return_document,
-    icon_document_version_return_list, icon_document_version_preview,
-    icon_document_version_transformations_clear,
-    icon_document_version_transformations_clone
+    icon_document_version_modification, icon_document_version_print,
+    icon_document_version_return_document, icon_document_version_return_list,
+    icon_document_version_preview,
+    icon_document_version_transformation_list_clear,
+    icon_document_version_transformation_list_clone
 )
 from ..permissions import (
     permission_document_version_create, permission_document_version_delete,
@@ -34,15 +35,15 @@ link_document_version_create = Link(
     text=_('Create document version'),
     view='documents:document_version_create'
 )
-link_document_version_delete_single = Link(
+link_document_version_single_delete = Link(
     args='resolved_object.pk',
     icon=icon_document_version_delete,
     permissions=(permission_document_version_delete,), tags='dangerous',
-    text=_('Delete'), view='documents:document_version_delete_single'
+    text=_('Delete'), view='documents:document_version_single_delete'
 )
-link_document_version_delete_multiple = Link(
+link_document_version_multiple_delete = Link(
     icon=icon_document_version_delete, tags='dangerous',
-    text=_('Delete'), view='documents:document_version_delete_multiple'
+    text=_('Delete'), view='documents:document_version_multiple_delete'
 )
 link_document_version_edit = Link(
     args='resolved_object.pk', icon=icon_document_version_edit,
@@ -58,6 +59,11 @@ link_document_version_list = Link(
     args='resolved_object.pk', icon=icon_document_version_list,
     permissions=(permission_document_version_view,), text=_('Versions'),
     view='documents:document_version_list'
+)
+link_document_version_modification = Link(
+    args='resolved_object.pk', icon=icon_document_version_modification,
+    permissions=(permission_document_version_edit,), text=_('Modify'),
+    view='documents:document_version_modify'
 )
 link_document_version_preview = Link(
     args='resolved_object.pk', icon=icon_document_version_preview,
@@ -83,20 +89,20 @@ link_document_version_return_list = Link(
 )
 link_document_version_transformations_clear = Link(
     args='resolved_object.id',
-    icon=icon_document_version_transformations_clear,
+    icon=icon_document_version_transformation_list_clear,
     permissions=(permission_transformation_delete,),
     text=_('Clear transformations'),
     view='documents:document_version_transformations_clear'
 )
 link_document_version_multiple_transformations_clear = Link(
-    icon=icon_document_version_transformations_clear,
+    icon=icon_document_version_transformation_list_clear,
     permissions=(permission_transformation_delete,),
     text=_('Clear transformations'),
     view='documents:document_version_multiple_transformations_clear'
 )
 link_document_version_transformations_clone = Link(
     args='resolved_object.id',
-    icon=icon_document_version_transformations_clone,
+    icon=icon_document_version_transformation_list_clone,
     permissions=(permission_transformation_edit,),
     text=_('Clone transformations'),
     view='documents:document_version_transformations_clone'

@@ -1,7 +1,7 @@
 from django.db import migrations
 
 
-def operation_move_content_from_documents_to_ocr_app(apps, schema_editor):
+def code_move_content_from_documents_to_ocr_app(apps, schema_editor):
     DocumentPage = apps.get_model(
         app_label='documents', model_name='DocumentPage'
     )
@@ -18,13 +18,13 @@ def operation_move_content_from_documents_to_ocr_app(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('ocr', '0002_documentpagecontent'),
+        ('ocr', '0002_documentpagecontent')
     ]
     operations = [
         migrations.RunPython(
-            code=operation_move_content_from_documents_to_ocr_app
-        ),
+            code=code_move_content_from_documents_to_ocr_app
+        )
     ]
     run_before = [
-        ('documents', '0006_remove_documentpage_content_old'),
+        ('documents', '0006_remove_documentpage_content_old')
     ]

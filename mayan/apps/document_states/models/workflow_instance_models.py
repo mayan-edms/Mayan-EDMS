@@ -1,3 +1,4 @@
+import datetime
 import json
 import logging
 
@@ -5,11 +6,18 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
+from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.documents.models import Document
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
 
+from ..events import (
+    event_workflow_instance_created, event_workflow_instance_transitioned
+)
 from ..managers import ValidWorkflowInstanceManager
 from ..permissions import permission_workflow_instance_transition
 
@@ -22,10 +30,15 @@ __all__ = ('WorkflowInstance', 'WorkflowInstanceLogEntry')
 logger = logging.getLogger(name=__name__)
 
 
-class WorkflowInstance(models.Model):
+class WorkflowInstance(ExtraDataModelMixin, models.Model):
     workflow = models.ForeignKey(
         on_delete=models.CASCADE, related_name='instances', to=Workflow,
         verbose_name=_('Workflow')
+    )
+    datetime = models.DateTimeField(
+        auto_now_add=True, db_index=True, help_text=_(
+            'Workflow instance creation date time.'
+        ), verbose_name=_('Datetime')
     )
     document = models.ForeignKey(
         on_delete=models.CASCADE, related_name='workflows', to=Document,
@@ -47,6 +60,25 @@ class WorkflowInstance(models.Model):
     def __str__(self):
         return str(self.workflow)
 
+    def check_escalation(self):
+        current_state = self.get_current_state()
+
+        for escalation in current_state.escalations.filter(enabled=True):
+            timedelta = datetime.timedelta(
+                **{
+                    escalation.unit: escalation.amount
+                }
+            )
+
+            if now() > self.get_last_log_entry_datetime() + timedelta:
+                condition_context = {'workflow_instance': self}
+
+                if escalation.evaluate_condition(context=condition_context):
+                    self.do_transition(
+                        transition=escalation.transition,
+                        comment=escalation.get_comment()
+                    )
+
     def do_transition(
         self, transition, comment=None, extra_data=None, user=None
     ):
@@ -57,11 +89,15 @@ class WorkflowInstance(models.Model):
                     context.update(extra_data)
                     self.dumps(context=context)
 
-                return self.log_entries.create(
+                workflow_instance_log_entry = WorkflowInstanceLogEntry(
                     comment=comment or '',
                     extra_data=json.dumps(obj=extra_data or {}),
-                    transition=transition, user=user
+                    transition=transition, user=user,
+                    workflow_instance=self
                 )
+                workflow_instance_log_entry._event_actor = user
+                workflow_instance_log_entry.save()
+                return workflow_instance_log_entry
         except AttributeError:
             # No initial state has been set for this workflow.
             if settings.DEBUG:
@@ -108,6 +144,13 @@ class WorkflowInstance(models.Model):
 
     def get_last_log_entry(self):
         return self.log_entries.order_by('datetime').last()
+
+    def get_last_log_entry_datetime(self):
+        last_log_entry = self.get_last_log_entry()
+        if last_log_entry:
+            return last_log_entry.datetime
+        else:
+            return self.datetime
 
     def get_last_transition(self):
         """
@@ -156,6 +199,17 @@ class WorkflowInstance(models.Model):
         Deserialize the context data.
         """
         return json.loads(s=self.context or '{}')
+
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'action_object': 'document',
+            'event': event_workflow_instance_created,
+            'target': 'self'
+        }
+    )
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
 
 class WorkflowInstanceLogEntry(models.Model):
@@ -217,6 +271,14 @@ class WorkflowInstanceLogEntry(models.Model):
         """
         return json.loads(s=self.extra_data or '{}')
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'action_object': 'workflow_instance.document',
+            'event': event_workflow_instance_transitioned,
+            'target': 'workflow_instance'
+        }
+    )
     def save(self, *args, **kwargs):
         result = super().save(*args, **kwargs)
         context = self.workflow_instance.get_context()

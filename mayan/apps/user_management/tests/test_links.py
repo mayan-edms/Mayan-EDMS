@@ -24,7 +24,7 @@ class GroupLinkTestCase(
         self._create_test_group()
 
         self.grant_access(
-            obj=self.test_group, permission=permission_group_view
+            obj=self._test_group, permission=permission_group_view
         )
         resolved_link = self._resolve_group_setup_link()
         self.assertNotEqual(resolved_link, None)
@@ -44,7 +44,7 @@ class UserLinkTestCase(UserLinkTestMixin, GenericViewTestCase):
         self._create_test_user()
 
         self.grant_access(
-            obj=self.test_user, permission=permission_user_view
+            obj=self._test_user, permission=permission_user_view
         )
         resolved_link = self._resolve_user_setup_link()
         self.assertNotEqual(resolved_link, None)

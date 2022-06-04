@@ -8,12 +8,12 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _, ungettext
 from django.views.generic import RedirectView
 
-from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.settings import setting_home_view
 from mayan.apps.converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 from mayan.apps.converter.transformations import (
     TransformationResize, TransformationRotate, TransformationZoom
 )
+from mayan.apps.databases.classes import ModelQueryFields
 from mayan.apps.views.generics import (
     MultipleObjectConfirmActionView, SimpleView, SingleObjectListView
 )
@@ -21,7 +21,10 @@ from mayan.apps.views.mixins import ExternalObjectViewMixin
 from mayan.apps.views.utils import resolve
 
 from ..forms.document_file_page_forms import DocumentFilePageForm
-from ..icons import icon_document_file_page_list
+from ..icons import (
+    icon_document_file_page_count_update, icon_document_file_page_list,
+    icon_document_file_page_detail
+)
 from ..links.document_file_page_links import link_document_file_page_count_update
 from ..models.document_file_models import DocumentFile
 from ..models.document_file_page_models import DocumentFilePage
@@ -57,6 +60,7 @@ class DocumentFilePageCountUpdateView(MultipleObjectConfirmActionView):
     success_message_plural = _(
         '%(count)d document files queued for page count recalculation.'
     )
+    view_icon = icon_document_file_page_count_update
 
     def get_extra_context(self):
         queryset = self.object_list
@@ -94,6 +98,7 @@ class DocumentFilePageListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_file_id'
     external_object_queryset = DocumentFile.valid.all()
+    view_icon = icon_document_file_page_list
 
     def get_extra_context(self):
         return {
@@ -213,6 +218,7 @@ class DocumentFilePageView(ExternalObjectViewMixin, SimpleView):
     external_object_pk_url_kwarg = 'document_file_page_id'
     external_object_queryset = DocumentFilePage.valid.all()
     template_name = 'appearance/generic_form.html'
+    view_icon = icon_document_file_page_detail
 
     def get_extra_context(self):
         zoom = int(self.request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))

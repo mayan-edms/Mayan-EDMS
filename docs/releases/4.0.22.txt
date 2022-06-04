@@ -1,0 +1,149 @@
+Version 4.0.22
+==============
+
+Released: April 22, 2022
+
+Status: End of life
+
+Changes
+--------
+
+This release consists mostly of fixes and minor improvements backported from
+version 4.1, 4.2, and 4.3dev.
+
+
+Appearance
+^^^^^^^^^^
+
+The markup of the confirmation form was cleanup removing redundant close
+button and sorting the element attributes.
+
+A redundant modal close button was also removed.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+Django was updated from version 2.2.24 to 2.2.28.
+
+
+Docker
+^^^^^^
+
+A restart policy was added to the Traefik container definition.
+
+Guidance comments were added to the Docker Compose file service ports
+regarding Traefik usage.
+
+
+Documents
+^^^^^^^^^
+
+Removed a duplicated ``Document.get_label`` method.
+
+Fixed an incorrect document file signature serializer label.
+
+
+Document indexing
+^^^^^^^^^^^^^^^^^
+
+Avoid displaying API URL links to indexing instance and template parents that
+are also root nodes as these are not accessible.
+
+
+Document signatures
+^^^^^^^^^^^^^^^^^^^
+
+The signed document file is now used when the file download is
+requested and when calculating the signed document file checksum.
+
+The signature view permission label was updated from
+"View details of document signature" to "View document signatures".
+
+The text "signed" is now appended to the label of a signed document file
+instead of using the temporary filename used during signing.
+
+
+File caching
+^^^^^^^^^^^^
+
+Removed repeated partition file close call methods.
+
+
+Messaging
+^^^^^^^^^
+
+Unread message count badge now filter the number of messages by read
+permission.
+
+
+Metadata
+^^^^^^^^
+
+Updated document metadata model field label from "Metadata type value"
+to "Metadata value".
+
+Improved metadata validation error message and added more verbosity.
+
+
+Settings
+^^^^^^^^
+
+When failing to access the configuration file, the path is printed for
+additional debug help.
+
+
+Workflows
+^^^^^^^^^
+
+Exposed the workflow template ``auto_launch`` field via the REST API.
+
+
+Other
+^^^^^
+
+- Remove usage of flat values list in document checkout manager.
+- Remove usage of flat ``values_list`` queryset in metadata managers module.
+- Ensure the object copy permission is required for the object copy link.
+- Fix search proxies method decorator.
+- Reorganize converter office MIME type list.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

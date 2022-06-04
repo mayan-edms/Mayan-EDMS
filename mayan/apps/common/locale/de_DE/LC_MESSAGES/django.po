@@ -4,24 +4,23 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Mathias Behrle <mathiasb@m9s.biz>, 2021
-# Jesaja Everling <jeverling@gmail.com>, 2021
-# Felix <felix.com@gmx.com>, 2021
-# Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2021
-# Robin Schubert <robin.schubert@gmx.de>, 2021
-# Marvin Haschker <marvin@haschker.me>, 2021
-# Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
-# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
-# Berny <berny@bernhard-marx.de>, 2021
+# Robin Schubert <robin.schubert@gmx.de>, 2022
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2022
+# Marvin Haschker <marvin@haschker.me>, 2022
+# Roberto Rosario, 2022
+# Berny <berny@bernhard-marx.de>, 2022
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2022
+# Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2022
+# Jesaja Everling <jeverling@gmail.com>, 2022
+# Mathias Behrle <mathiasb@m9s.biz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Berny <berny@bernhard-marx.de>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +28,7 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:137 permissions.py:5 settings.py:15
+#: apps.py:132 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "Allgemein"
 
@@ -49,63 +48,63 @@ msgstr "Verknüpfte Felder des Modells"
 msgid "Model reverse fields"
 msgstr ""
 
-#: dependencies.py:168
+#: dependencies.py:169
 msgid "Used to allow offline translation of the code text strings."
 msgstr "Ermöglicht die Offline Übersetzung von Zeichenketten im Code."
 
-#: dependencies.py:177
+#: dependencies.py:178
 msgid "Provides style checking."
 msgstr "Ermöglicht Stilüberprüfung."
 
-#: dependencies.py:182
+#: dependencies.py:183
 msgid "Command line environment with autocompletion."
 msgstr "Kommandozeilenumgebung mit Autovervollständigung."
 
-#: dependencies.py:187
+#: dependencies.py:188
 msgid "Checks proper formatting of the README file."
 msgstr "Überprüft die korrekte Formatierung der README-Datei."
 
-#: links.py:29
+#: links.py:30
 msgid "About this"
 msgstr "Über Mayan"
 
-#: links.py:32
+#: links.py:33
 msgid "Get the book"
 msgstr "Holen Sie sich das Buch"
 
-#: links.py:37
+#: links.py:38
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: links.py:40
+#: links.py:41
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:44 views.py:48
+#: links.py:45 views.py:48
 msgid "License"
 msgstr "Lizenz"
 
-#: links.py:49
+#: links.py:50
 msgid "Copy"
 msgstr "Kopieren"
 
-#: links.py:52
+#: links.py:54
 msgid "Setup"
 msgstr "Einrichtung"
 
-#: links.py:55
+#: links.py:57
 msgid "Source code"
 msgstr "Quelltext"
 
-#: links.py:59
+#: links.py:61
 msgid "Online store"
 msgstr "Online-Shop"
 
-#: links.py:63
+#: links.py:65
 msgid "Get support"
 msgstr "Support erhalten"
 
-#: links.py:67 queues.py:6 views.py:122
+#: links.py:69 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "Werkzeuge"
 
@@ -115,24 +114,15 @@ msgid ""
 msgstr ""
 "Diese Funktion ist veraltet und wird in einer zukünftigen Version entfernt."
 
-#: literals.py:23
-msgid ""
-"Your database backend is set to use SQLite. SQLite should only be used for "
-"development and testing, not for production."
-msgstr ""
-"Sie benutzen SQLite als Datenbank-Backend. SQLite sollte nur für "
-"Entwicklungs- und Testzwecke verwendet werden, jedoch nicht in "
-"Produktivumgebungen."
-
-#: literals.py:32
+#: literals.py:28
 msgid "Days"
 msgstr "Tage"
 
-#: literals.py:33
+#: literals.py:29
 msgid "Hours"
 msgstr "Stunden"
 
-#: literals.py:34
+#: literals.py:30
 msgid "Minutes"
 msgstr "Minuten"
 
@@ -226,11 +216,7 @@ msgstr ""
 msgid "URL of the project's homepage."
 msgstr ""
 
-#: templates/common/app/viewport.html:9
-msgid "Warning"
-msgstr "Warnung"
-
-#: templates/common/app/viewport.html:23
+#: templates/common/app/viewport.html:15
 msgid "Click here to fix this."
 msgstr "Klicken Sie hier, um dies zu beheben."
 

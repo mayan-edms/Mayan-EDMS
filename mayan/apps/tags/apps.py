@@ -1,5 +1,5 @@
 from django.apps import apps
-from django.db.models.signals import m2m_changed, pre_delete
+from django.db.models.signals import post_save, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -7,12 +7,11 @@ from mayan.apps.acls.permissions import (
     permission_acl_edit, permission_acl_view
 )
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import (
-    ModelCopy, ModelFieldRelated, ModelQueryFields
-)
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
     menu_list_facet, menu_main, menu_multi_item, menu_object, menu_secondary
 )
+from mayan.apps.databases.classes import ModelFieldRelated, ModelQueryFields
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.rest_api.fields import DynamicSerializerField
@@ -26,7 +25,7 @@ from .links import (
     link_document_tag_list, link_document_multiple_tag_multiple_attach,
     link_document_multiple_tag_multiple_remove,
     link_document_tag_multiple_remove, link_document_tag_multiple_attach,
-    link_tag_create, link_tag_delete_single, link_tag_delete_multiple,
+    link_tag_create, link_tag_single_delete, link_tag_multiple_delete,
     link_tag_edit, link_tag_list, link_tag_document_list
 )
 from .menus import menu_tags
@@ -202,13 +201,13 @@ class TagsApp(MayanAppConfig):
 
         menu_multi_item.bind_links(
             exclude=(DocumentTag,),
-            links=(link_tag_delete_multiple,), sources=(Tag,)
+            links=(link_tag_multiple_delete,), sources=(Tag,)
         )
 
         menu_object.bind_links(
             exclude=(DocumentTag,),
             links=(
-                link_tag_edit, link_tag_delete_single
+                link_tag_edit, link_tag_single_delete
             ),
             sources=(Tag,)
         )
@@ -226,12 +225,11 @@ class TagsApp(MayanAppConfig):
 
         # Index update
 
-        m2m_changed.connect(
+        post_save.connect(
             dispatch_uid='tags_handler_index_document',
             receiver=handler_index_document,
-            sender=Tag.documents.through
+            sender=Tag
         )
-
         pre_delete.connect(
             dispatch_uid='tags_handler_tag_pre_delete',
             receiver=handler_tag_pre_delete,

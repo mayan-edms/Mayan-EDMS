@@ -1,12 +1,13 @@
-from collections import Iterable
 from distutils import util
 from functools import reduce
+import itertools
 import logging
 import types
 
 from django.core.exceptions import FieldDoesNotExist
 from django.db.models.constants import LOOKUP_SEP
 
+from .compatibility import Iterable
 from .exceptions import ResolverError, ResolverPipelineError
 
 logger = logging.getLogger(name=__name__)
@@ -249,6 +250,19 @@ def get_related_field(model, related_field_name):
     return related_field
 
 
+def group_iterator(iterable, group_size=None):
+    group_size = group_size or 1
+
+    if group_size > 1:
+        while True:
+            chunk = tuple(itertools.islice(iterable, group_size))
+            if not chunk:
+                break
+            yield chunk
+    else:
+        yield from iterable
+
+
 def parse_range(range_string):
     for part in range_string.split(','):
         part = part.strip()
@@ -265,7 +279,12 @@ def parse_range(range_string):
 
             yield from range(start, stop + step, step)
         else:
-            yield int(part)
+            try:
+                value = int(part)
+            except ValueError:
+                return
+            else:
+                yield value
 
 
 def resolve_attribute(attribute, obj, kwargs=None):

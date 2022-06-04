@@ -4,16 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# yan songwei <yansw@vip.163.com>, 2021
+# yan songwei <yansw@vip.163.com>, 2022
+# Roberto Rosario, 2022
+# Ford Guo <agile.guo@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:12+0000\n"
-"Last-Translator: yan songwei <yansw@vip.163.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:11+0000\n"
+"Last-Translator: Ford Guo <agile.guo@gmail.com>, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -106,11 +107,11 @@ msgstr "编辑访问控制列表"
 msgid "View ACLs"
 msgstr "查看访问控制列表"
 
-#: serializers.py:120
+#: serializers.py:116
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
 
-#: serializers.py:127
+#: serializers.py:123
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
 

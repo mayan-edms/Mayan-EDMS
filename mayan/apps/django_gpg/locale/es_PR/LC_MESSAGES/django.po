@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +28,7 @@ msgstr "Django GPG"
 msgid "Key ID"
 msgstr "Identificador de llave"
 
-#: apps.py:63 forms.py:32 models.py:59
+#: apps.py:63 forms.py:33 models.py:59
 msgid "Type"
 msgstr "Tipo"
 
@@ -80,11 +80,11 @@ msgstr "Huella"
 msgid "Algorithm"
 msgstr "Algoritmo"
 
-#: forms.py:45
+#: forms.py:48
 msgid "Term"
 msgstr "Término"
 
-#: forms.py:46
+#: forms.py:49
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr ""
 "Nombre, dirección de correo electrónico, identificador de llave o huella "
@@ -96,7 +96,7 @@ msgstr "Eliminar"
 
 #: links.py:22
 msgid "Details"
-msgstr "Detalles"
+msgstr "Ver detalles"
 
 #: links.py:27
 msgid "Download"

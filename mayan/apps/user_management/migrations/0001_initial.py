@@ -3,7 +3,7 @@ from django.db import migrations, models
 import django.db.models.deletion
 
 
-def operation_add_user_options_to_existing_users(apps, schema_editor):
+def code_add_user_options_to_existing_users(apps, schema_editor):
     User = apps.get_model(settings.AUTH_USER_MODEL)
     UserOptions = apps.get_model(
         app_label='user_management', model_name='UserOptions'
@@ -15,7 +15,7 @@ def operation_add_user_options_to_existing_users(apps, schema_editor):
         ).create(user=user)
 
 
-def operation_remove_user_options_from_existing_users(apps, schema_editor):
+def code_remove_user_options_from_existing_users(apps, schema_editor):
     User = apps.get_model(settings.AUTH_USER_MODEL)
     UserOptions = apps.get_model(
         app_label='user_management', model_name='UserOptions'
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL)
     ]
 
     operations = [
@@ -65,7 +65,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.RunPython(
-            code=operation_add_user_options_to_existing_users,
-            reverse_code=operation_remove_user_options_from_existing_users
-        ),
+            code=code_add_user_options_to_existing_users,
+            reverse_code=code_remove_user_options_from_existing_users
+        )
     ]

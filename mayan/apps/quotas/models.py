@@ -33,6 +33,7 @@ class Quota(ExtraDataModelMixin, models.Model):
     )
 
     class Meta:
+        ordering = ('id',)
         verbose_name = _('Quota')
         verbose_name_plural = _('Quotas')
 

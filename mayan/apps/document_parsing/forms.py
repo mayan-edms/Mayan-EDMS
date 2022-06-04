@@ -28,7 +28,7 @@ class DocumentFileContentForm(forms.Form):
             try:
                 page_content = page.content.content
             except DocumentFilePageContent.DoesNotExist:
-                pass
+                """Page does not have parsed content, skip."""
             else:
                 content.append(conditional_escape(force_text(s=page_content)))
                 content.append(
@@ -45,7 +45,7 @@ class DocumentFileContentForm(forms.Form):
         label=_('Contents'),
         widget=TextAreaDiv(
             attrs={
-                'class': 'text_area_div full-height',
+                'class': 'full-height',
                 'data-height-difference': 360
             }
         )
@@ -57,7 +57,7 @@ class DocumentFilePageContentForm(forms.Form):
         label=_('Contents'),
         widget=TextAreaDiv(
             attrs={
-                'class': 'text_area_div full-height',
+                'class': 'full-height',
                 'data-height-difference': 360
             }
         )

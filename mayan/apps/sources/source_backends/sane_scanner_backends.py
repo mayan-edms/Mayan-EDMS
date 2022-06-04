@@ -11,6 +11,7 @@ from mayan.apps.storage.models import SharedUploadedFile
 from mayan.apps.storage.utils import NamedTemporaryFile, touch
 
 from ..classes import SourceBackend
+from ..literals import DEFAULT_BINARY_SCANIMAGE_PATH
 from ..settings import setting_backend_arguments
 
 from .mixins import SourceBackendInteractiveMixin, SourceBaseMixin
@@ -58,9 +59,10 @@ class SourceBackendSANEScanner(
 
     def get_shared_uploaded_files(self):
         command_scanimage = sh.Command(
-            path=setting_backend_arguments.value[
-                'mayan.apps.sources.source_backends.SourceBackendSaneScanner'
-            ]['scanimage_path']
+            path=setting_backend_arguments.value.get(
+                'mayan.apps.sources.source_backends.SourceBackendSANEScanner',
+                {}
+            ).get('scanimage_path', DEFAULT_BINARY_SCANIMAGE_PATH)
         )
 
         with NamedTemporaryFile() as file_object:

@@ -15,7 +15,7 @@ logger = logging.getLogger(name=__name__)
     bind=True, ignore_result=True, max_retries=None, retry_backoff=True,
     retry_backoff_max=60
 )
-def task_index_instance_document_add(self, document_id):
+def task_index_instance_document_add(self, document_id, index_instance_id=None):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )
@@ -31,7 +31,11 @@ def task_index_instance_document_add(self, document_id):
         """
     else:
         try:
-            IndexInstance.objects.document_add(document=document)
+            if index_instance_id:
+                index_instance = IndexInstance.objects.get(pk=index_instance_id)
+                index_instance.document_add(document=document)
+            else:
+                IndexInstance.objects.document_add(document=document)
         except OperationalError as exception:
             logger.warning(
                 'Operational error while trying to index document: '

@@ -47,7 +47,7 @@ class ObjectCopyViewTestCase(ObjectCopyViewTestMixin, GenericViewTestCase):
         )
 
     def test_object_copy_view_with_access(self):
-        self.grant_access(obj=self.test_object, permission=permission_object_copy)
+        self.grant_access(obj=self._test_object, permission=permission_object_copy)
 
         test_object_count = self.TestModel.objects.count()
         response = self._request_object_copy_view()

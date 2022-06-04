@@ -14,7 +14,13 @@ from ..forms.document_type_forms import (
     DocumentTypeFilenameGeneratorForm, DocumentTypeFilenameForm_create
 )
 from ..icons import (
-    icon_document_type_filename, icon_document_type_setup
+    icon_document_type_create, icon_document_type_delete,
+    icon_document_type_document_list, icon_document_type_edit,
+    icon_document_type_filename, icon_document_type_filename_create,
+    icon_document_type_filename_delete, icon_document_type_filename_edit,
+    icon_document_type_filename_generator, icon_document_type_filename_list,
+    icon_document_type_list, icon_document_type_policies,
+    icon_document_type_setup
 )
 from ..links.document_type_links import (
     link_document_type_create, link_document_type_filename_create
@@ -41,6 +47,7 @@ class DocumentTypeDocumentListView(ExternalObjectViewMixin, DocumentListView):
     external_object_class = DocumentType
     external_object_permission = permission_document_type_view
     external_object_pk_url_kwarg = 'document_type_id'
+    view_icon = icon_document_type_document_list
 
     def get_document_queryset(self):
         return self.external_object.documents.all()
@@ -59,6 +66,7 @@ class DocumentTypeDocumentListView(ExternalObjectViewMixin, DocumentListView):
 class DocumentTypeListView(SingleObjectListView):
     model = DocumentType
     object_permission = permission_document_type_view
+    view_icon = icon_document_type_list
 
     def get_extra_context(self):
         return {
@@ -86,6 +94,7 @@ class DocumentTypeCreateView(SingleObjectCreateView):
     post_action_redirect = reverse_lazy(
         viewname='documents:document_type_list'
     )
+    view_icon = icon_document_type_create
     view_permission = permission_document_type_create
 
     def get_extra_context(self):
@@ -106,6 +115,7 @@ class DocumentTypeDeleteView(SingleObjectDeleteView):
     post_action_redirect = reverse_lazy(
         viewname='documents:document_type_list'
     )
+    view_icon = icon_document_type_delete
 
     def get_extra_context(self):
         return {
@@ -123,6 +133,7 @@ class DocumentTypeEditView(SingleObjectEditView):
     post_action_redirect = reverse_lazy(
         viewname='documents:document_type_list'
     )
+    view_icon = icon_document_type_edit
 
     def get_extra_context(self):
         return {
@@ -141,10 +152,22 @@ class DocumentTypeDeletionPoliciesEditView(SingleObjectEditView):
         'trash_time_unit', 'trash_time_period', 'delete_time_unit',
         'delete_time_period'
     )
+    fieldsets = (
+        (
+            _('Trash'), {
+                'fields': ('trash_time_unit', 'trash_time_period'),
+            }
+        ), (
+            _('Delete'), {
+                'fields': ('delete_time_unit', 'delete_time_period')
+            },
+        )
+    )
     model = DocumentType
     object_permission = permission_document_type_edit
     pk_url_kwarg = 'document_type_id'
     post_action_redirect = reverse_lazy(viewname='documents:document_type_list')
+    view_icon = icon_document_type_policies
 
     def get_extra_context(self):
         return {
@@ -167,6 +190,7 @@ class DocumentTypeFilenameCreateView(
     external_object_permission = permission_document_type_edit
     external_object_pk_url_kwarg = 'document_type_id'
     form_class = DocumentTypeFilenameForm_create
+    view_icon = icon_document_type_filename_create
 
     def get_extra_context(self):
         return {
@@ -185,6 +209,7 @@ class DocumentTypeFilenameDeleteView(SingleObjectDeleteView):
     model = DocumentTypeFilename
     object_permission = permission_document_type_edit
     pk_url_kwarg = 'document_type_filename_id'
+    view_icon = icon_document_type_filename_delete
 
     def get_extra_context(self):
         return {
@@ -213,6 +238,7 @@ class DocumentTypeFilenameEditView(SingleObjectEditView):
     model = DocumentTypeFilename
     object_permission = permission_document_type_edit
     pk_url_kwarg = 'document_type_filename_id'
+    view_icon = icon_document_type_filename_edit
 
     def get_extra_context(self):
         return {
@@ -242,6 +268,7 @@ class DocumentTypeFilenameListView(
     external_object_class = DocumentType
     external_object_permission = permission_document_type_view
     external_object_pk_url_kwarg = 'document_type_id'
+    view_icon = icon_document_type_filename_list
 
     def get_extra_context(self):
         return {
@@ -275,7 +302,7 @@ class DocumentTypeFilenameListView(
         return self.external_object.filenames.all()
 
 
-class DocumentTypeFileGeneratorEditView(SingleObjectEditView):
+class DocumentTypeFilenameGeneratorEditView(SingleObjectEditView):
     form_class = DocumentTypeFilenameGeneratorForm
     model = DocumentType
     object_permission = permission_document_type_edit
@@ -283,6 +310,7 @@ class DocumentTypeFileGeneratorEditView(SingleObjectEditView):
     post_action_redirect = reverse_lazy(
         viewname='documents:document_type_list'
     )
+    view_icon = icon_document_type_filename_generator
 
     def get_extra_context(self):
         return {

@@ -32,28 +32,28 @@ class AssetAPIViewTestMixin:
             )
 
         try:
-            self.test_asset = Asset.objects.get(~Q(pk__in=pk_list))
+            self._test_asset = Asset.objects.get(~Q(pk__in=pk_list))
         except Asset.DoesNotExist:
-            self.test_asset = None
+            self._test_asset = None
 
         return response
 
     def _request_test_asset_delete_api_view(self):
         return self.delete(
             viewname='rest_api:asset-detail',
-            kwargs={'asset_id': self.test_asset.pk}
+            kwargs={'asset_id': self._test_asset.pk}
         )
 
     def _request_test_asset_detail_api_view(self):
         return self.get(
             viewname='rest_api:asset-detail',
-            kwargs={'asset_id': self.test_asset.pk}
+            kwargs={'asset_id': self._test_asset.pk}
         )
 
     def _request_test_asset_edit_via_patch_api_view(self):
         return self.patch(
             viewname='rest_api:asset-detail', kwargs={
-                'asset_id': self.test_asset.pk
+                'asset_id': self._test_asset.pk
             }, data={'label': TEST_ASSET_LABEL_EDITED}
         )
 
@@ -61,7 +61,7 @@ class AssetAPIViewTestMixin:
         with open(file=TEST_ASSET_PATH, mode='rb') as file_object:
             return self.put(
                 viewname='rest_api:asset-detail', kwargs={
-                    'asset_id': self.test_asset.pk
+                    'asset_id': self._test_asset.pk
                 }, data={
                     'label': TEST_ASSET_LABEL_EDITED,
                     'internal_name': TEST_ASSET_INTERNAL_NAME,
@@ -80,7 +80,7 @@ class AssetTaskTestMixin:
         task_content_object_image_generate.apply_async(
             kwargs={
                 'content_type_id': content_type.pk,
-                'object_id': self.test_asset.pk
+                'object_id': self._test_asset.pk
             }
         ).get()
 
@@ -88,7 +88,7 @@ class AssetTaskTestMixin:
 class AssetTestMixin:
     def _create_test_asset(self):
         with open(file=TEST_ASSET_PATH, mode='rb') as file_object:
-            self.test_asset = Asset.objects.create(
+            self._test_asset = Asset.objects.create(
                 label=TEST_ASSET_LABEL,
                 internal_name=TEST_ASSET_INTERNAL_NAME,
                 file=File(file=file_object)
@@ -108,7 +108,7 @@ class AssetViewTestMixin:
                 }
             )
 
-        self.test_asset = Asset.objects.exclude(
+        self._test_asset = Asset.objects.exclude(
             pk__in=pk_list
         ).first()
 
@@ -117,21 +117,21 @@ class AssetViewTestMixin:
     def _request_test_asset_delete_view(self):
         return self.post(
             viewname='converter:asset_single_delete', kwargs={
-                'asset_id': self.test_asset.pk
+                'asset_id': self._test_asset.pk
             }
         )
 
     def _request_test_asset_detail_view(self):
         return self.get(
             viewname='converter:asset_detail', kwargs={
-                'asset_id': self.test_asset.pk
+                'asset_id': self._test_asset.pk
             }
         )
 
     def _request_test_asset_edit_view(self):
         return self.post(
             viewname='converter:asset_edit', kwargs={
-                'asset_id': self.test_asset.pk
+                'asset_id': self._test_asset.pk
             }, data={
                 'label': TEST_ASSET_LABEL_EDITED,
                 'internal_name': TEST_ASSET_INTERNAL_NAME,
@@ -155,31 +155,31 @@ class LayerTestMixin(PermissionTestMixin):
         super().setUp()
 
         if self.auto_create_test_layer:
-            self.test_layer = Layer(
+            self._test_layer = Layer(
                 label=TEST_LAYER_LABEL, name=TEST_LAYER_NAME,
                 order=TEST_LAYER_ORDER, permissions={}
             )
 
             self._create_test_permission()
 
-            self.test_layer_permission = self.test_permission
+            self._test_layer_permission = self._test_permission
             ModelPermission.register(
-                model=self.test_document._meta.model, permissions=(
-                    self.test_permission,
+                model=self._test_document._meta.model, permissions=(
+                    self._test_permission,
                 )
             )
 
-            self.test_layer.permissions = {
-                'create': self.test_layer_permission,
-                'delete': self.test_layer_permission,
-                'edit': self.test_layer_permission,
-                'select': self.test_layer_permission,
-                'view': self.test_layer_permission,
+            self._test_layer.permissions = {
+                'create': self._test_layer_permission,
+                'delete': self._test_layer_permission,
+                'edit': self._test_layer_permission,
+                'select': self._test_layer_permission,
+                'view': self._test_layer_permission,
             }
 
     def tearDown(self):
         if self.auto_create_test_layer:
-            Layer._registry.pop(self.test_layer.name, None)
+            Layer._registry.pop(self._test_layer.name, None)
 
         super().tearDown()
 
@@ -193,15 +193,16 @@ class TransformationTestMixin(LayerTestMixin):
             self._create_test_transformation_class()
 
         BaseTransformation.register(
-            layer=self.test_layer, transformation=self.TestTransformationClass
+            layer=self._test_layer,
+            transformation=self.TestTransformationClass
         )
 
     def _create_test_transformation(self):
-        self.test_transformation = self.test_layer.add_transformation_to(
-            obj=self.test_document,
+        self._test_transformation = self._test_layer.add_transformation_to(
+            obj=self._test_document,
             transformation_class=self.TestTransformationClass,
             arguments=getattr(
-                self, 'test_transformation_arguments',
+                self, '_test_transformation_arguments',
                 TEST_TRANSFORMATION_ARGUMENT
             )
         )
@@ -220,15 +221,15 @@ class TransformationTestMixin(LayerTestMixin):
         self.TestTransformationClass = TestTransformation
 
 
-class TransformationViewsTestMixin:
+class TransformationViewTestMixin:
     def _request_transformation_create_post_view(self):
         pk_list = list(LayerTransformation.objects.values('pk'))
 
         response = self.post(
             viewname='converter:transformation_create', kwargs={
                 'app_label': 'documents', 'model_name': 'document',
-                'object_id': self.test_document.pk,
-                'layer_name': self.test_layer.name,
+                'object_id': self._test_document.pk,
+                'layer_name': self._test_layer.name,
                 'transformation_name': self.TestTransformationClass.name,
             }, data={
                 'arguments': getattr(
@@ -239,11 +240,11 @@ class TransformationViewsTestMixin:
         )
 
         try:
-            self.test_transformation = LayerTransformation.objects.get(
+            self._test_transformation = LayerTransformation.objects.get(
                 ~Q(pk__in=pk_list)
             )
         except LayerTransformation.DoesNotExist:
-            self.test_transformation = None
+            self._test_transformation = None
 
         return response
 
@@ -251,8 +252,8 @@ class TransformationViewsTestMixin:
         return self.get(
             viewname='converter:transformation_create', kwargs={
                 'app_label': 'documents', 'model_name': 'document',
-                'object_id': self.test_document.pk,
-                'layer_name': self.test_layer.name,
+                'object_id': self._test_document.pk,
+                'layer_name': self._test_layer.name,
                 'transformation_name': self.TestTransformationClass.name,
             }, data={
                 'arguments': getattr(
@@ -265,19 +266,19 @@ class TransformationViewsTestMixin:
     def _request_transformation_delete_view(self):
         return self.post(
             viewname='converter:transformation_delete', kwargs={
-                'layer_name': self.test_layer.name,
-                'transformation_id': self.test_transformation.pk
+                'layer_name': self._test_layer.name,
+                'transformation_id': self._test_transformation.pk
             }
         )
 
     def _request_transformation_edit_view(self):
         return self.post(
             viewname='converter:transformation_edit', kwargs={
-                'layer_name': self.test_layer.name,
-                'transformation_id': self.test_transformation.pk
+                'layer_name': self._test_layer.name,
+                'transformation_id': self._test_transformation.pk
             }, data={
                 'arguments': getattr(
-                    self, 'test_transformation_argument_edited',
+                    self, '_test_transformation_argument_edited',
                     TEST_TRANSFORMATION_ARGUMENT_EDITED
                 )
             }
@@ -287,8 +288,8 @@ class TransformationViewsTestMixin:
         return self.get(
             viewname='converter:transformation_list', kwargs={
                 'app_label': 'documents', 'model_name': 'document',
-                'object_id': self.test_document.pk,
-                'layer_name': self.test_layer.name
+                'object_id': self._test_document.pk,
+                'layer_name': self._test_layer.name
             }
         )
 
@@ -296,8 +297,8 @@ class TransformationViewsTestMixin:
         return self.get(
             viewname='converter:transformation_select', kwargs={
                 'app_label': 'documents', 'model_name': 'document',
-                'object_id': self.test_document.pk,
-                'layer_name': self.test_layer.name
+                'object_id': self._test_document.pk,
+                'layer_name': self._test_layer.name
             }
         )
 
@@ -305,8 +306,8 @@ class TransformationViewsTestMixin:
         return self.post(
             viewname='converter:transformation_select', kwargs={
                 'app_label': 'documents', 'model_name': 'document',
-                'object_id': self.test_document.pk,
-                'layer_name': self.test_layer.name
+                'object_id': self._test_document.pk,
+                'layer_name': self._test_layer.name
             }, data={
                 'transformation': self.TestTransformationClass.name
             }

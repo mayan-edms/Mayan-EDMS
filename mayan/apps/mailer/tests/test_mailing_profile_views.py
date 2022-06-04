@@ -23,7 +23,7 @@ from .mailers import TestBackend
 from .mixins import MailerTestMixin, MailerViewTestMixin
 
 
-class MailerViewsTestCase(
+class MailerViewTestCase(
     MailerTestMixin, MailerViewTestMixin, GenericViewTestCase
 ):
     def test_user_mailer_create_view_no_permission(self):
@@ -240,7 +240,7 @@ class MailerViewsTestCase(
             obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
-        self.test_email_address = TEST_RECIPIENTS_MULTIPLE_COMMA
+        self._test_email_address = TEST_RECIPIENTS_MULTIPLE_COMMA
 
         self._clear_events()
 
@@ -268,7 +268,7 @@ class MailerViewsTestCase(
             obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
-        self.test_email_address = TEST_RECIPIENTS_MULTIPLE_MIXED
+        self._test_email_address = TEST_RECIPIENTS_MULTIPLE_MIXED
 
         self._clear_events()
 
@@ -296,7 +296,7 @@ class MailerViewsTestCase(
             obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
-        self.test_email_address = TEST_RECIPIENTS_MULTIPLE_SEMICOLON
+        self._test_email_address = TEST_RECIPIENTS_MULTIPLE_SEMICOLON
 
         self._clear_events()
 

@@ -29,14 +29,14 @@ class DocumentViewTestCase(
 
     def test_document_properties_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         self._clear_events()
 
         response = self._request_test_document_properties_view()
         self.assertContains(
-            response=response, status_code=200, text=self.test_document.label
+            response=response, status_code=200, text=self._test_document.label
         )
 
         events = self._get_test_events()
@@ -44,10 +44,10 @@ class DocumentViewTestCase(
 
     def test_trashed_document_properties_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -69,7 +69,7 @@ class DocumentViewTestCase(
     def test_document_properties_edit_get_view_with_access(self):
         self.grant_access(
             permission=permission_document_properties_edit,
-            obj=self.test_document_type
+            obj=self._test_document_type
         )
 
         self._clear_events()
@@ -83,10 +83,10 @@ class DocumentViewTestCase(
     def test_trashed_document_properties_edit_get_view_with_access(self):
         self.grant_access(
             permission=permission_document_properties_edit,
-            obj=self.test_document_type
+            obj=self._test_document_type
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -99,18 +99,18 @@ class DocumentViewTestCase(
     @override_settings(DOCUMENTS_LANGUAGE='fra')
     def test_document_properties_view_setting_non_us_language_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         self._clear_events()
 
         response = self._request_test_document_properties_view()
         self.assertContains(
-            response=response, status_code=200, text=self.test_document.label
+            response=response, status_code=200, text=self._test_document.label
         )
         self.assertContains(
             response=response, status_code=200,
-            text='Language:</label>\n                \n                \n                    English'
+            text='Language:</label>\n    \n    \n        English'
         )
 
         events = self._get_test_events()
@@ -120,7 +120,7 @@ class DocumentViewTestCase(
     def test_document_properties_edit_get_view_setting_non_us_language_with_access(self):
         self.grant_access(
             permission=permission_document_properties_edit,
-            obj=self.test_document_type
+            obj=self._test_document_type
         )
 
         self._clear_events()
@@ -147,14 +147,14 @@ class DocumentViewTestCase(
 
     def test_document_list_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         self._clear_events()
 
         response = self._request_test_document_list_view()
         self.assertContains(
-            response=response, status_code=200, text=self.test_document.label
+            response=response, status_code=200, text=self._test_document.label
         )
 
         events = self._get_test_events()
@@ -162,16 +162,16 @@ class DocumentViewTestCase(
 
     def test_trashed_document_list_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         response = self._request_test_document_list_view()
         self.assertNotContains(
-            response=response, status_code=200, text=self.test_document.label
+            response=response, status_code=200, text=self._test_document.label
         )
 
         events = self._get_test_events()
@@ -180,16 +180,16 @@ class DocumentViewTestCase(
     def test_document_type_change_post_view_no_permission(self):
         self._create_test_document_type()
 
-        document_type = self.test_document.document_type
+        document_type = self._test_document.document_type
 
         self._clear_events()
 
         response = self._request_test_document_type_change_post_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_document.refresh_from_db()
+        self._test_document.refresh_from_db()
         self.assertEqual(
-            self.test_document.document_type, document_type
+            self._test_document.document_type, document_type
         )
 
         events = self._get_test_events()
@@ -198,10 +198,10 @@ class DocumentViewTestCase(
     def test_document_type_change_post_view_with_access(self):
         self._create_test_document_type()
 
-        document_type = self.test_document.document_type
+        document_type = self._test_document.document_type
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_properties_edit
         )
 
@@ -210,39 +210,39 @@ class DocumentViewTestCase(
         response = self._request_test_document_type_change_post_view()
         self.assertEqual(response.status_code, 302)
 
-        self.test_document.refresh_from_db()
+        self._test_document.refresh_from_db()
         self.assertNotEqual(
-            self.test_document.document_type, document_type
+            self._test_document.document_type, document_type
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_types[1])
+        self.assertEqual(events[0].action_object, self._test_document_types[1])
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].target, self._test_document)
         self.assertEqual(events[0].verb, event_document_type_changed.id)
 
     def test_trashed_document_document_type_change_post_view_with_access(self):
         self._create_test_document_type()
 
-        document_type = self.test_document.document_type
+        document_type = self._test_document.document_type
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_properties_edit
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         response = self._request_test_document_type_change_post_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_document.refresh_from_db()
+        self._test_document.refresh_from_db()
         self.assertEqual(
-            self.test_document.document_type, document_type
+            self._test_document.document_type, document_type
         )
 
         events = self._get_test_events()
@@ -251,16 +251,16 @@ class DocumentViewTestCase(
     def test_document_type_change_view_get_no_permission(self):
         self._create_test_document_type()
 
-        document_type = self.test_document.document_type
+        document_type = self._test_document.document_type
 
         self._clear_events()
 
         response = self._request_test_document_type_change_get_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_document.refresh_from_db()
+        self._test_document.refresh_from_db()
         self.assertEqual(
-            self.test_document.document_type, document_type
+            self._test_document.document_type, document_type
         )
 
         events = self._get_test_events()
@@ -268,7 +268,7 @@ class DocumentViewTestCase(
 
     def test_document_type_change_view_get_with_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_properties_edit
         )
 
@@ -277,9 +277,9 @@ class DocumentViewTestCase(
         response = self._request_test_document_type_change_get_view()
         self.assertEqual(response.status_code, 200)
 
-        self.test_document.refresh_from_db()
+        self._test_document.refresh_from_db()
         self.assertEqual(
-            self.test_document.document_type, self.test_document_type
+            self._test_document.document_type, self._test_document_type
         )
 
         events = self._get_test_events()
@@ -287,24 +287,24 @@ class DocumentViewTestCase(
 
     def test_trashed_document_type_change_view_get_with_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_properties_edit
         )
 
         self._create_test_document_type()
 
-        document_type = self.test_document.document_type
+        document_type = self._test_document.document_type
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         response = self._request_test_document_type_change_get_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_document.refresh_from_db()
+        self._test_document.refresh_from_db()
         self.assertEqual(
-            self.test_document.document_type, document_type
+            self._test_document.document_type, document_type
         )
 
         events = self._get_test_events()
@@ -313,16 +313,16 @@ class DocumentViewTestCase(
     def test_document_multiple_document_type_change_view_no_permission(self):
         self._create_test_document_type()
 
-        document_type = self.test_document.document_type
+        document_type = self._test_document.document_type
 
         self._clear_events()
 
         response = self._request_test_document_multiple_type_change()
         self.assertEqual(response.status_code, 404)
 
-        self.test_document.refresh_from_db()
+        self._test_document.refresh_from_db()
         self.assertEqual(
-            self.test_document.document_type, document_type
+            self._test_document.document_type, document_type
         )
 
         events = self._get_test_events()
@@ -330,30 +330,30 @@ class DocumentViewTestCase(
 
     def test_document_multiple_document_type_change_view_with_permission(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_properties_edit
         )
 
         self._create_test_document_type()
 
-        document_type = self.test_document.document_type
+        document_type = self._test_document.document_type
 
         self._clear_events()
 
         response = self._request_test_document_multiple_type_change()
         self.assertEqual(response.status_code, 302)
 
-        self.test_document.refresh_from_db()
+        self._test_document.refresh_from_db()
         self.assertNotEqual(
-            self.test_document.document_type, document_type
+            self._test_document.document_type, document_type
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_types[1])
+        self.assertEqual(events[0].action_object, self._test_document_types[1])
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].target, self._test_document)
         self.assertEqual(events[0].verb, event_document_type_changed.id)
 
     def test_document_preview_view_no_permission(self):
@@ -367,14 +367,14 @@ class DocumentViewTestCase(
 
     def test_document_preview_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         self._clear_events()
 
         response = self._request_test_document_preview_view()
         self.assertContains(
-            response=response, status_code=200, text=self.test_document.label
+            response=response, status_code=200, text=self._test_document.label
         )
 
         events = self._get_test_events()
@@ -382,15 +382,15 @@ class DocumentViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].target, self._test_document)
         self.assertEqual(events[0].verb, event_document_viewed.id)
 
     def test_trashed_document_preview_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 

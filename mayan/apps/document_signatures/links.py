@@ -8,10 +8,11 @@ from .icons import (
     icon_document_file_all_signature_verify,
     icon_document_file_signature_detached_delete,
     icon_document_file_signature_detached_create,
-    icon_document_file_signature_details,
+    icon_document_file_signature_detail,
     icon_document_file_signature_detached_download,
+    icon_document_file_signature_detached_upload,
     icon_document_file_signature_embedded_create,
-    icon_document_file_signature_list, icon_document_file_signature_detached_upload,
+    icon_document_file_signature_list
 )
 from .permissions import (
     permission_document_file_sign_detached,
@@ -34,21 +35,6 @@ def condition_is_detached_signature(context, resolved_object):
     ).is_detached
 
 
-# Tools
-
-link_document_file_all_signature_refresh = Link(
-    icon=icon_document_file_all_signature_refresh,
-    permissions=(permission_document_file_signature_verify,),
-    text=_('Refresh all signatures'),
-    view='signatures:all_document_file_signature_refresh',
-)
-link_document_file_all_signature_verify = Link(
-    icon=icon_document_file_all_signature_verify,
-    permissions=(permission_document_file_signature_verify,),
-    text=_('Verify all documents'),
-    view='signatures:all_document_file_signature_verify',
-)
-
 # Detached signature
 
 link_document_file_signature_detached_create = Link(
@@ -63,14 +49,15 @@ link_document_file_signature_detached_delete = Link(
     icon=icon_document_file_signature_detached_delete,
     permissions=(permission_document_file_signature_delete,),
     tags='dangerous', text=_('Delete'),
-    view='signatures:document_file_signature_detached_delete',
+    view='signatures:document_file_signature_detached_delete'
 )
 link_document_file_signature_detached_download = Link(
     args='resolved_object.pk',
     icon=icon_document_file_signature_detached_download,
     condition=condition_is_detached_signature,
     permissions=(permission_document_file_signature_download,),
-    text=_('Download'), view='signatures:document_file_signature_detached_download'
+    text=_('Download'),
+    view='signatures:document_file_signature_detached_download'
 )
 link_document_file_signature_detached_upload = Link(
     args='resolved_object.pk',
@@ -92,15 +79,30 @@ link_document_file_signature_embedded_create = Link(
 
 # All
 
-link_document_file_signature_details = Link(
+link_document_file_signature_detail = Link(
     args='resolved_object.pk',
-    icon=icon_document_file_signature_details,
+    icon=icon_document_file_signature_detail,
     permissions=(permission_document_file_signature_view,),
-    text=_('Details'), view='signatures:document_file_signature_details',
+    text=_('Details'), view='signatures:document_file_signature_detail'
 )
 
 link_document_file_signature_list = Link(
     args='resolved_object.pk', icon=icon_document_file_signature_list,
     permissions=(permission_document_file_signature_view,),
     text=_('Signatures'), view='signatures:document_file_signature_list'
+)
+
+# Tools
+
+link_document_file_all_signature_refresh = Link(
+    icon=icon_document_file_all_signature_refresh,
+    permissions=(permission_document_file_signature_verify,),
+    text=_('Refresh all signatures'),
+    view='signatures:all_document_file_signature_refresh'
+)
+link_document_file_all_signature_verify = Link(
+    icon=icon_document_file_all_signature_verify,
+    permissions=(permission_document_file_signature_verify,),
+    text=_('Verify all documents'),
+    view='signatures:all_document_file_signature_verify'
 )

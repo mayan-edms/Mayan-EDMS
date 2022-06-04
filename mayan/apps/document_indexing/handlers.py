@@ -36,12 +36,43 @@ def handler_delete_empty(sender, **kwargs):
     task_index_instance_node_delete_empty.apply_async()
 
 
-def handler_index_document(sender, **kwargs):
-    task_index_instance_document_add.apply_async(
-        kwargs={
-            'document_id': kwargs['instance'].pk
-        }
+def handler_event_trigger(sender, **kwargs):
+    action = kwargs['instance']
+
+    Document = apps.get_model(
+        app_label='documents', model_name='Document'
     )
+    IndexInstance = apps.get_model(
+        app_label='document_indexing', model_name='IndexInstance'
+    )
+
+    if isinstance(action.target, Document):
+        document = action.target
+    elif isinstance(action.action_object, Document):
+        document = action.action_object
+    else:
+        document = None
+
+    if document:
+        index_instance_queryset = IndexInstance.objects.filter(
+            document_types=document.document_type,
+            event_triggers__stored_event_type__name=kwargs['instance'].verb
+        )
+
+        for index_instance in index_instance_queryset:
+            task_index_instance_document_add.apply_async(
+                kwargs={
+                    'document_id': document.pk,
+                    'index_instance_id': index_instance.pk
+                }
+            )
+
+
+def handler_index_document(sender, **kwargs):
+    if kwargs.get('created', False):
+        task_index_instance_document_add.apply_async(
+            kwargs={'document_id': kwargs['instance'].pk}
+        )
 
 
 def handler_remove_document(sender, **kwargs):

@@ -89,7 +89,7 @@ class DocumentCheckoutManager(models.Manager):
         expired_list = CheckedOutDocument.objects.filter(
             pk__in=self.model.objects.filter(
                 expiration_datetime__lte=now()
-            ).values_list('document__pk', flat=True)
+            ).values('document')
         )
         logger.debug('expired_list: %s', expired_list)
         return expired_list

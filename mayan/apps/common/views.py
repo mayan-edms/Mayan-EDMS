@@ -12,7 +12,10 @@ from mayan.apps.views.mixins import (
 
 from .classes import ModelCopy
 from .forms import LicenseForm
-from .icons import icon_setup
+from .icons import (
+    icon_about, icon_home, icon_license, icon_object_copy, icon_setup,
+    icon_tools
+)
 from .menus import menu_tools, menu_setup
 from .permissions import permission_object_copy
 from .settings import setting_home_view
@@ -21,6 +24,7 @@ from .settings import setting_home_view
 class AboutView(SimpleView):
     extra_context = {'title': _('About')}
     template_name = 'appearance/about.html'
+    view_icon = icon_about
 
 
 class FaviconRedirectView(RedirectView):
@@ -39,6 +43,7 @@ class HomeView(SimpleView):
         'title': _('Home'),
     }
     template_name = 'appearance/home.html'
+    view_icon = icon_home
 
 
 class LicenseView(SimpleView):
@@ -48,12 +53,14 @@ class LicenseView(SimpleView):
         'title': _('License'),
     }
     template_name = 'appearance/generic_form.html'
+    view_icon = icon_license
 
 
 class ObjectCopyView(
     ExternalContentTypeObjectViewMixin, ObjectNameViewMixin, ConfirmView
 ):
     external_object_permission = permission_object_copy
+    view_icon = icon_object_copy
 
     def get_extra_context(self):
         model_copy = ModelCopy.get(model=self.external_object._meta.model)
@@ -92,6 +99,7 @@ class RootView(StrongholdPublicMixin, SimpleView):
 
 class SetupListView(SimpleView):
     template_name = 'appearance/generic_list_horizontal.html'
+    view_icon = icon_setup
 
     def get_extra_context(self, **kwargs):
         return {
@@ -113,6 +121,7 @@ class SetupListView(SimpleView):
 
 class ToolsListView(SimpleView):
     template_name = 'appearance/generic_list_horizontal.html'
+    view_icon = icon_tools
 
     def get_extra_context(self):
         return {

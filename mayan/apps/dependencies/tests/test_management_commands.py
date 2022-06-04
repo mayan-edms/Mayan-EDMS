@@ -1,5 +1,5 @@
 from io import StringIO
-import mock
+from unittest import mock
 
 from django.core import management
 

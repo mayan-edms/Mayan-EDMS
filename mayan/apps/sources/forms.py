@@ -6,8 +6,8 @@ from django.db.models import Model
 from django.db.models.query import QuerySet
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.documents.classes import DocumentFileAction
 from mayan.apps.documents.forms.document_forms import DocumentForm
-from mayan.apps.documents.literals import DOCUMENT_FILE_ACTION_PAGE_CHOICES
 from mayan.apps.views.forms import DynamicModelForm
 
 from .classes import SourceBackend
@@ -28,12 +28,15 @@ class NewDocumentFileForm(forms.Form):
         widget=forms.widgets.Textarea(attrs={'rows': 4}),
     )
     action = forms.ChoiceField(
-        choices=DOCUMENT_FILE_ACTION_PAGE_CHOICES, label=_('Action'),
-        help_text=_(
+        label=_('Action'), help_text=_(
             'The action to take in regards to the pages of the new file '
             'being uploaded.'
         )
     )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['action'].choices = DocumentFileAction.get_choices()
 
 
 class UploadBaseForm(forms.Form):

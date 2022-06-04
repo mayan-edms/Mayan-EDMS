@@ -1,0 +1,136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Adek Lanin, 2022
+# Dzikri Hakim <dzikers@gmail.com>, 2022
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Dzikri Hakim <dzikers@gmail.com>, 2022\n"
+"Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:23 events.py:6
+msgid "Authentication OTP"
+msgstr ""
+
+#: events.py:10
+msgid "OTP disabled"
+msgstr ""
+
+#: events.py:13
+msgid "OTP enabled"
+msgstr ""
+
+#: forms.py:20
+msgid "Token is either invalid or expired."
+msgstr ""
+
+#: forms.py:25
+msgid "TOTP token"
+msgstr ""
+
+#: forms.py:84
+msgid "OTP enabled?"
+msgstr ""
+
+#: forms.py:85
+msgid "Yes"
+msgstr "Ya"
+
+#: forms.py:85
+msgid "No"
+msgstr "Tidak"
+
+#: forms.py:102
+msgid ""
+"Scan the QR code or enter the secret in your authentication device. Do not "
+"share this secret, treat it like a password."
+msgstr ""
+
+#: forms.py:104 forms.py:109
+msgid "Secret"
+msgstr ""
+
+#: forms.py:115
+msgid ""
+"Enter the corresponding token to validate that the secret was saved correct."
+msgstr ""
+
+#: forms.py:118
+msgid "Token"
+msgstr ""
+
+#: forms.py:152
+msgid "Token is incorrect for the specified secret."
+msgstr ""
+
+#: links.py:29
+msgid "OTP details"
+msgstr ""
+
+#: links.py:33
+msgid "Disable OTP"
+msgstr ""
+
+#: links.py:37
+msgid "Enable OTP"
+msgstr ""
+
+#: models.py:17
+msgid "User"
+msgstr "Pengguna"
+
+#: models.py:21
+msgid "16 character, base32 encoded random string."
+msgstr ""
+
+#: models.py:26
+msgid "User OTP data"
+msgstr ""
+
+#: models.py:27
+msgid "Users OTP data"
+msgstr ""
+
+#: views.py:28
+#, python-format
+msgid "One time pad details for user: %s"
+msgstr ""
+
+#: views.py:45
+#, python-format
+msgid "Disable one time pad for user: %s"
+msgstr ""
+
+#: views.py:56
+msgid "OTP disable successfully."
+msgstr ""
+
+#: views.py:78
+msgid "OTP is already enabled."
+msgstr ""
+
+#: views.py:94
+msgid "OTP enabled successfully."
+msgstr ""
+
+#: views.py:103
+#, python-format
+msgid "Enable one time pad for user: %s"
+msgstr ""
+
+#: views.py:115
+msgid "OTP secret validation error."
+msgstr ""

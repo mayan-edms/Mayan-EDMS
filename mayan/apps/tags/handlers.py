@@ -6,16 +6,16 @@ logger = logging.getLogger(name=__name__)
 
 
 def handler_index_document(sender, **kwargs):
-    if kwargs['action'] in ('post_add', 'post_remove'):
-        for pk in kwargs['pk_set']:
+    if not kwargs.get('created', False):
+        for document in kwargs['instance'].documents.all():
             task_index_instance_document_add.apply_async(
-                kwargs={'document_id': pk}
+                kwargs={'document_id': document.pk}
             )
 
 
 def handler_tag_pre_delete(sender, **kwargs):
     for document in kwargs['instance'].documents.all():
-        # Remove each of the documents from the tag
-        # Trigger the m2m_changed signal for each document so they can be
-        # reindexed
-        kwargs['instance'].documents.remove(document)
+        # Remove each of the documents from the tag.
+        # Trigger the remove event for each document so they can be
+        # reindexed.
+        kwargs['instance'].remove_from(document=document)

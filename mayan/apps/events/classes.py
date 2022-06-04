@@ -5,7 +5,6 @@ from furl import furl
 
 from django.apps import apps
 from django.contrib.auth import get_user_model
-from django.core.exceptions import PermissionDenied
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
@@ -23,7 +22,7 @@ from .literals import (
     EVENT_EVENTS_EXPORTED_NAME
 )
 from .links import (
-    link_events_for_object, link_object_event_types_user_subscriptions_list
+    link_object_event_list, link_object_event_type_user_subscription_list
 )
 from .permissions import (
     permission_events_clear, permission_events_export, permission_events_view
@@ -250,7 +249,7 @@ class EventModelRegistry:
                 menu.bind_links(
                     exclude=exclude,
                     links=(
-                        link_events_for_object,
+                        link_object_event_list,
                     ), sources=(model,)
                 )
 
@@ -258,7 +257,7 @@ class EventModelRegistry:
                 menu.bind_links(
                     exclude=exclude,
                     links=(
-                        link_object_event_types_user_subscriptions_list,
+                        link_object_event_type_user_subscription_list,
                     ), sources=(model,)
                 )
 
@@ -327,7 +326,7 @@ class EventType:
     @staticmethod
     def sort(event_type_list):
         return sorted(
-            event_type_list, key=lambda x: (x.namespace.label, x.label)
+            event_type_list, key=lambda event_type: (event_type.namespace.label, event_type.label)
         )
 
     @classmethod
@@ -358,9 +357,6 @@ class EventType:
         return '{}: {}'.format(self.namespace.label, self.label)
 
     def commit(self, actor=None, action_object=None, target=None):
-        AccessControlList = apps.get_model(
-            app_label='acls', model_name='AccessControlList'
-        )
         EventSubscription = apps.get_model(
             app_label='events', model_name='EventSubscription'
         )
@@ -418,41 +414,17 @@ class EventType:
             )
 
         for user in user_queryset:
-            if result.target:
-                try:
-                    AccessControlList.objects.check_access(
-                        obj=result.target,
-                        permissions=(permission_events_view,),
-                        user=user
-                    )
-                except PermissionDenied:
-                    """
-                    User is subscribed to the event but does
-                    not have permissions for the event's target.
-                    """
-                else:
-                    Notification.objects.create(action=result, user=user)
-                    # Don't check or add any other notification for the
-                    # same user-event-object.
-                    continue
-
             if result.action_object:
-                try:
-                    AccessControlList.objects.check_access(
-                        obj=result.action_object,
-                        permissions=(permission_events_view,),
-                        user=user
-                    )
-                except PermissionDenied:
-                    """
-                    User is subscribed to the event but does
-                    not have permissions for the event's action_object.
-                    """
-                else:
-                    Notification.objects.create(action=result, user=user)
-                    # Don't check or add any other notification for the
-                    # same user-event-object.
-                    continue
+                Notification.objects.create(action=result, user=user)
+                # Don't check or add any other notification for the
+                # same user-event-object.
+                continue
+
+            if result.target:
+                Notification.objects.create(action=result, user=user)
+                # Don't check or add any other notification for the
+                # same user-event-object.
+                continue
 
         return result
 
@@ -482,7 +454,8 @@ class ModelEventType:
 
     @classmethod
     def get_for_class(cls, klass):
-        return cls._registry.get(klass, ())
+        result = cls._registry.get(klass, ())
+        return EventType.sort(event_type_list=result)
 
     @classmethod
     def get_for_instance(cls, instance):

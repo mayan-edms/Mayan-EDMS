@@ -1,7 +1,7 @@
 from django.db import migrations, models
 
 
-def operation_rename_duplicates(apps, schema_editor):
+def code_rename_duplicates(apps, schema_editor):
     StatisticResult = apps.get_model(
         app_label='mayan_statistics', model_name='StatisticResult'
     )
@@ -25,17 +25,17 @@ def operation_rename_duplicates(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('mayan_statistics', '0001_initial'),
+        ('mayan_statistics', '0001_initial')
     ]
 
     operations = [
         migrations.RunPython(
-            code=operation_rename_duplicates,
+            code=code_rename_duplicates,
             reverse_code=migrations.RunPython.noop
         ),
         migrations.AlterField(
             model_name='statisticresult',
             name='slug',
-            field=models.SlugField(unique=True, verbose_name='Slug'),
-        ),
+            field=models.SlugField(unique=True, verbose_name='Slug')
+        )
     ]

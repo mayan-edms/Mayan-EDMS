@@ -30,7 +30,8 @@ class DocumentCheckout(ExtraDataModelMixin, models.Model):
     Model to store the state and information of a document checkout.
     """
     document = models.OneToOneField(
-        on_delete=models.CASCADE, to=Document, verbose_name=_('Document')
+        on_delete=models.CASCADE, to=Document, related_name='checkout',
+        verbose_name=_('Document')
     )
     checkout_datetime = models.DateTimeField(
         auto_now_add=True, verbose_name=_('Check out date and time')

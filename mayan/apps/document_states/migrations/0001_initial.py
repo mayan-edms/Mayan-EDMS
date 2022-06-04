@@ -175,13 +175,13 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='workflowtransition',
-            unique_together=set(
-                [('workflow', 'label', 'origin_state', 'destination_state')]
-            ),
+            unique_together={
+                ('workflow', 'label', 'origin_state', 'destination_state')
+            },
         ),
         migrations.AlterUniqueTogether(
             name='workflowstate',
-            unique_together=set([('workflow', 'label')]),
+            unique_together={('workflow', 'label')},
         ),
         migrations.AddField(
             model_name='workflowinstancelogentry',
@@ -214,6 +214,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='workflowinstance',
-            unique_together=set([('document', 'workflow')]),
+            unique_together={('document', 'workflow')},
         ),
     ]

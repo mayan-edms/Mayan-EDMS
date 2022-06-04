@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:26+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,11 +20,11 @@ msgstr ""
 "Language: es_PR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:40
+#: apps.py:41
 msgid "Linking"
 msgstr "Enlaces"
 
-#: apps.py:100 models.py:29
+#: apps.py:106 models.py:29
 msgid "Label"
 msgstr "Etiqueta"
 
@@ -244,12 +244,12 @@ msgstr "Editar enlaces inteligentes"
 msgid "View existing smart links"
 msgstr "Ver enlaces inteligentes existentes"
 
-#: serializers.py:49
+#: serializers.py:50
 msgid "Primary key of the document type to add to the smart link."
 msgstr ""
 "Llave principal del tipo de documento para agregar al enlace inteligente."
 
-#: serializers.py:58
+#: serializers.py:59
 msgid "Primary key of the document type to remove from the smart link."
 msgstr ""
 "Llave principal del tipo de documento que se eliminará del enlace "

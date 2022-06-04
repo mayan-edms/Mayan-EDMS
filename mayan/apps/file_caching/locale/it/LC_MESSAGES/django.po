@@ -4,18 +4,18 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
-# Giovanni Tricarico <gtricarico92@gmail.com>, 2021
+# Roberto Rosario, 2022
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2022
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2022
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -180,6 +180,16 @@ msgstr ""
 
 #: views.py:108
 msgid "Object cache partitions submitted for purging."
+msgstr ""
+
+#: views.py:117
+#, python-format
+msgid "%(count)d cache submitted for purging."
+msgstr ""
+
+#: views.py:118
+#, python-format
+msgid "%(count)d caches submitted for purging."
 msgstr ""
 
 #: views.py:125

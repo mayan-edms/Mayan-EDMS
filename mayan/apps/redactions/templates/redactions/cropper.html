@@ -32,7 +32,7 @@
 {% endblock %}
 
 {% block content %}
-    {% converter_get_object_image_data obj=content_object maximum_layer_order=layer.order as object_image_data %}
+    {% converter_get_object_image_data obj=content_object maximum_layer_order=layer.order|add:"-1" as object_image_data %}
 
     <div class="cropper-main">
         <img id="cropper-img" src="{{ object_image_data.url }}">

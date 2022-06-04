@@ -7,8 +7,51 @@ from ..classes import ErrorLog
 from .literals import TEST_ERROR_LOG_ENTRY_RESULT
 
 
-class ErrorLoggingTextMixin:
-    def _create_error_log_test_object(self):
+class ErrorLogPartitionEntryAPIViewTestMixin:
+    def _request_test_error_log_delete_api_view(self):
+        content_type = ContentType.objects.get_for_model(
+            model=self._test_object
+        )
+
+        return self.delete(
+            viewname='rest_api:errorlogpartitionentry-detail', kwargs={
+                'app_label': content_type.app_label,
+                'model_name': content_type.model,
+                'object_id': self._test_object.pk,
+                'error_log_partition_entry_id': self._test_error_log_entry.pk
+            }
+        )
+
+    def _request_test_error_log_detail_api_view(self):
+        content_type = ContentType.objects.get_for_model(
+            model=self._test_object
+        )
+
+        return self.get(
+            viewname='rest_api:errorlogpartitionentry-detail', kwargs={
+                'app_label': content_type.app_label,
+                'model_name': content_type.model,
+                'object_id': self._test_object.pk,
+                'error_log_partition_entry_id': self._test_error_log_entry.pk
+            }
+        )
+
+    def _request_test_error_log_list_api_view(self):
+        content_type = ContentType.objects.get_for_model(
+            model=self._test_object
+        )
+
+        return self.get(
+            viewname='rest_api:errorlogpartitionentry-list', kwargs={
+                'app_label': content_type.app_label,
+                'model_name': content_type.model,
+                'object_id': self._test_object.pk
+            }
+        )
+
+
+class ErrorLogPartitionEntryTestMixin:
+    def _create_test_error_log_object(self):
         self.test_model = get_user_model()
         app_config = apps.get_app_config(app_label='logging')
         self.error_log = ErrorLog(app_config=app_config)
@@ -17,38 +60,52 @@ class ErrorLoggingTextMixin:
         )
 
         self._create_test_user()
-        self.test_object = self.test_user
+        self._test_object = self._test_user
 
-    def _create_error_log_entry(self):
-        self._test_error_log_entry = self.test_object.error_log.create(
+    def _create_test_error_log_entry(self):
+        self._test_error_log_entry = self._test_object.error_log.create(
             text=TEST_ERROR_LOG_ENTRY_RESULT
         )
 
 
-class ErrorLoggingViewTestMixin:
+class ErrorLogViewTestMixin:
     def _request_object_error_log_list_view(self):
         content_type = ContentType.objects.get_for_model(
-            model=self.test_object
+            model=self._test_object
         )
 
         return self.get(
-            viewname='logging:object_error_list', kwargs={
+            viewname='logging:object_error_log_entry_list', kwargs={
                 'app_label': content_type.app_label,
                 'model_name': content_type.model,
-                'object_id': self.test_object.pk
+                'object_id': self._test_object.pk
             }
         )
 
-    def _request_object_error_log_list_clear_view(self):
+    def _request_object_error_log_clear_view(self):
         content_type = ContentType.objects.get_for_model(
-            model=self.test_object
+            model=self._test_object
         )
 
         return self.post(
-            viewname='logging:object_error_list_clear', kwargs={
+            viewname='logging:object_error_log_entry_list_clear', kwargs={
                 'app_label': content_type.app_label,
                 'model_name': content_type.model,
-                'object_id': self.test_object.pk
+                'object_id': self._test_object.pk
+            }
+        )
+
+    def _request_object_error_log_entry_delete_view(self):
+        content_type = ContentType.objects.get_for_model(
+            model=self._test_object
+        )
+
+        return self.post(
+            viewname='logging:object_error_log_entry_delete', kwargs={
+                'app_label': content_type.app_label,
+                'model_name': content_type.model,
+                'object_id': self._test_object.pk,
+                'error_log_partition_entry_id': self._test_error_log_entry.pk
             }
         )
 

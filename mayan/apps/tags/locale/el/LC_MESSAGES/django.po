@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Hmayag Antonian <hmayag@freemail.gr>, 2021
-# pyrotech <anastasios@tutamail.com>, 2021
+# pyrotech <anastasios@tutamail.com>, 2022
+# Hmayag Antonian <hmayag@freemail.gr>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
-"PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,13 +21,13 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:46 apps.py:125 apps.py:129 apps.py:133 apps.py:138 apps.py:142
+#: apps.py:47 apps.py:131 apps.py:135 apps.py:139 apps.py:144 apps.py:148
 #: events.py:5 forms.py:15 links.py:28 menus.py:14 models.py:41
 #: permissions.py:5 views.py:171 workflow_actions.py:18 workflow_actions.py:61
 msgid "Tags"
 msgstr "Ετικέτες"
 
-#: apps.py:163 models.py:35
+#: apps.py:169 models.py:35
 msgid "Documents"
 msgstr "Έγγραφα"
 
@@ -103,15 +103,15 @@ msgstr "Χρώμα"
 msgid "Tag"
 msgstr "Ετικέτα"
 
-#: models.py:83
+#: models.py:85
 msgid "Preview"
 msgstr "Προεπισκόπηση"
 
-#: models.py:112
+#: models.py:114
 msgid "Document tag"
 msgstr "Ετικέτα εγγράφου"
 
-#: models.py:113 search.py:19 search.py:25 search.py:31 search.py:37
+#: models.py:115 search.py:28 search.py:34 search.py:40 search.py:46
 msgid "Document tags"
 msgstr "Ετικέτες εγγράφου"
 
@@ -139,19 +139,43 @@ msgstr "Επισύναψη ετικετών σε έγγραφα"
 msgid "Remove tags from documents"
 msgstr "Αφαίρεση ετικετών από έγγραφα"
 
-#: search.py:13
+#: search.py:22
 msgid "Tag label"
 msgstr ""
 
-#: search.py:14
+#: search.py:23
 msgid "Tag color"
 msgstr ""
 
-#: serializers.py:33
+#: search.py:60
+msgid "Document type"
+msgstr "Τύπος εγγράφου"
+
+#: search.py:63
+msgid "Document label"
+msgstr "Ετικέτα εγγράφου"
+
+#: search.py:66
+msgid "Document description"
+msgstr "Περιγραφή εγγράφου"
+
+#: search.py:69
+msgid "Document UUID"
+msgstr "UUID εγγράφου"
+
+#: search.py:74
+msgid "Document file checksum"
+msgstr ""
+
+#: search.py:77
+msgid "Document file MIME type"
+msgstr ""
+
+#: serializers.py:32
 msgid "Primary key of the tag to add to the document."
 msgstr ""
 
-#: serializers.py:41
+#: serializers.py:40
 msgid "Primary key of the tag to remove from the document."
 msgstr ""
 

@@ -11,7 +11,6 @@ from mayan.apps.documents.serializers.document_type_serializers import (
     DocumentTypeSerializer
 )
 from mayan.apps.rest_api import serializers
-from mayan.apps.rest_api.serializer_mixins import CreateOnlyFieldSerializerMixin
 from mayan.apps.rest_api.relations import (
     FilteredPrimaryKeyRelatedField, FilteredSimplePrimaryKeyRelatedField
 )
@@ -39,7 +38,7 @@ class MetadataTypeSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class DocumentTypeMetadataTypeSerializer(
-    CreateOnlyFieldSerializerMixin, serializers.HyperlinkedModelSerializer
+    serializers.HyperlinkedModelSerializer
 ):
     document_type = DocumentTypeSerializer(read_only=True)
     metadata_type = MetadataTypeSerializer(read_only=True)
@@ -87,7 +86,7 @@ class DocumentTypeMetadataTypeSerializer(
 
 
 class DocumentMetadataSerializer(
-    CreateOnlyFieldSerializerMixin, serializers.HyperlinkedModelSerializer
+    serializers.ModelSerializer
 ):
     metadata_type_id = FilteredPrimaryKeyRelatedField(
         help_text=_(

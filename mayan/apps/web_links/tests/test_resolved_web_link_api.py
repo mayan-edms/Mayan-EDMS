@@ -1,6 +1,6 @@
 from rest_framework import status
 
-from mayan.apps.documents.tests.base import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..events import event_web_link_navigated
@@ -29,7 +29,7 @@ class ResolvedWebLinkAPIViewTestCase(
 
     def test_resolved_web_link_detail_api_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_web_link_instance_view
         )
 
@@ -43,7 +43,7 @@ class ResolvedWebLinkAPIViewTestCase(
 
     def test_resolved_web_link_detail_api_view_with_web_link_access(self):
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_instance_view
         )
 
@@ -57,11 +57,11 @@ class ResolvedWebLinkAPIViewTestCase(
 
     def test_resolved_web_link_detail_api_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_instance_view
         )
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_web_link_instance_view
         )
 
@@ -70,7 +70,7 @@ class ResolvedWebLinkAPIViewTestCase(
         response = self._request_resolved_web_link_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['id'], self.test_web_link.pk
+            response.data['id'], self._test_web_link.pk
         )
 
         events = self._get_test_events()
@@ -78,15 +78,15 @@ class ResolvedWebLinkAPIViewTestCase(
 
     def test_trashed_document_resolved_web_link_detail_api_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_instance_view
         )
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_web_link_instance_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -107,7 +107,7 @@ class ResolvedWebLinkAPIViewTestCase(
 
     def test_resolved_web_link_list_api_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_web_link_instance_view
         )
 
@@ -123,7 +123,7 @@ class ResolvedWebLinkAPIViewTestCase(
 
     def test_resolved_web_link_list_api_view_with_web_link_access(self):
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_instance_view
         )
 
@@ -138,11 +138,11 @@ class ResolvedWebLinkAPIViewTestCase(
 
     def test_resolved_web_link_list_api_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_instance_view
         )
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_web_link_instance_view
         )
 
@@ -151,7 +151,7 @@ class ResolvedWebLinkAPIViewTestCase(
         response = self._request_resolved_web_link_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['results'][0]['id'], self.test_web_link.pk
+            response.data['results'][0]['id'], self._test_web_link.pk
         )
 
         events = self._get_test_events()
@@ -159,15 +159,15 @@ class ResolvedWebLinkAPIViewTestCase(
 
     def test_trashed_document_resolved_web_link_list_api_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_instance_view
         )
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_web_link_instance_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -188,7 +188,7 @@ class ResolvedWebLinkAPIViewTestCase(
 
     def test_resolved_web_link_navigate_api_view_with_web_link_access(self):
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_instance_view
         )
 
@@ -202,7 +202,7 @@ class ResolvedWebLinkAPIViewTestCase(
 
     def test_resolved_web_link_navigate_api_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_web_link_instance_view
         )
 
@@ -217,11 +217,11 @@ class ResolvedWebLinkAPIViewTestCase(
 
     def test_resolved_web_link_navigate_api_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_web_link_instance_view
         )
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_instance_view
         )
 
@@ -231,29 +231,29 @@ class ResolvedWebLinkAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_302_FOUND)
         self.assertEqual(
             response.url, ResolvedWebLink.objects.get(
-                pk=self.test_web_link.pk
-            ).get_redirect_url_for(document=self.test_document)
+                pk=self._test_web_link.pk
+            ).get_redirect_url_for(document=self._test_document)
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document)
+        self.assertEqual(events[0].action_object, self._test_document)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_web_link)
+        self.assertEqual(events[0].target, self._test_web_link)
         self.assertEqual(events[0].verb, event_web_link_navigated.id)
 
     def test_trashed_document_resolved_web_link_navigate_api_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_web_link_instance_view
         )
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_instance_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 

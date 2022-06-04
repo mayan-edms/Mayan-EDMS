@@ -41,11 +41,11 @@ class DuplicateBackend(
     @classmethod
     def get_choices(cls):
         return sorted(
-            [
+            (
                 (
                     key, backend.label
                 ) for key, backend in cls.get_all().items()
-            ], key=lambda x: x[1]
+            ), key=lambda x: x[1]
         )
 
     @classmethod

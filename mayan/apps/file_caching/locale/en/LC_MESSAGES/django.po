@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -173,6 +173,16 @@ msgstr ""
 
 #: views.py:108
 msgid "Object cache partitions submitted for purging."
+msgstr ""
+
+#: views.py:117
+#, python-format
+msgid "%(count)d cache submitted for purging."
+msgstr ""
+
+#: views.py:118
+#, python-format
+msgid "%(count)d caches submitted for purging."
 msgstr ""
 
 #: views.py:125

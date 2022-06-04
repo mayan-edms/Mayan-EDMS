@@ -4,15 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Vítor Figueiró <vfigueiro@gmail.com>, 2021
+# Roberto Rosario, 2022
+# Vítor Figueiró <vfigueiro@gmail.com>, 2022
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-12 03:39+0000\n"
-"Last-Translator: Vítor Figueiró <vfigueiro@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,42 +22,52 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27
+#: apps.py:28 events.py:5
 msgid "Locales"
-msgstr ""
+msgstr "Locais"
 
-#: links.py:13
-msgid "Locale profile"
-msgstr ""
+#: events.py:8
+msgid "User locale profile edited"
+msgstr "Perfil local de utilizador editado"
 
 #: links.py:18
-msgid "Edit locale profile"
-msgstr ""
+msgid "Locale profile"
+msgstr "Perfil do local"
 
-#: models.py:18
+#: links.py:25
+msgid "Edit locale profile"
+msgstr "Editar perfil do local"
+
+#: models.py:21
 msgid "User"
 msgstr "Utilizador"
 
-#: models.py:22
-msgid "Timezone"
-msgstr ""
-
 #: models.py:25
+msgid "Timezone"
+msgstr "Fuso-horário "
+
+#: models.py:28
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
-#: models.py:31
+#: models.py:34
 msgid "User locale profile"
-msgstr ""
+msgstr "Perfil de utilizador de local"
 
-#: models.py:32
+#: models.py:35
 msgid "User locale profiles"
-msgstr ""
+msgstr "Peril de utilizador de locais"
 
-#: views.py:24
-msgid "Current user locale profile details"
-msgstr ""
+#: models.py:39
+msgid "None"
+msgstr "Nenhum"
 
-#: views.py:30
-msgid "Edit current user locale profile details"
-msgstr ""
+#: views.py:36
+#, python-format
+msgid "Locale profile for user: %s"
+msgstr "Perfil local para o utilizador: %s"
+
+#: views.py:82
+#, python-format
+msgid "Edit locale profile for user: %s"
+msgstr "Editar perfil local para o utilizador: %s"

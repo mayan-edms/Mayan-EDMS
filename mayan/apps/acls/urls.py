@@ -6,7 +6,7 @@ from .api_views import (
     APIClassPermissionList
 )
 from .views import (
-    ACLCreateView, ACLDeleteView, ACLListView, ACLPermissionsView,
+    ACLCreateView, ACLDeleteView, ACLListView, ACLPermissionAddRemoveView,
     GlobalACLListView
 )
 
@@ -21,7 +21,7 @@ urlpatterns = [
     ),
     url(
         regex=r'^acls/(?P<acl_id>\d+)/permissions/$', name='acl_permissions',
-        view=ACLPermissionsView.as_view()
+        view=ACLPermissionAddRemoveView.as_view()
     ),
     url(
         regex=r'^apps/(?P<app_label>[-\w]+)/models/(?P<model_name>[-\w]+)/objects/(?P<object_id>\d+)/acls/$',

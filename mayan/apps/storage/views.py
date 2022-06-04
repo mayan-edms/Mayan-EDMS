@@ -6,7 +6,10 @@ from mayan.apps.views.generics import (
     MultipleObjectDeleteView, SingleObjectDownloadView, SingleObjectListView
 )
 
-from .icons import icon_download_file_list
+from .icons import (
+    icon_download_file_delete, icon_download_file_download,
+    icon_download_file_list
+)
 from .models import DownloadFile
 from .view_mixins import RelatedObjectPermissionViewMixin
 
@@ -19,6 +22,7 @@ class DownloadFileDeleteView(
     post_action_redirect = reverse_lazy(
         viewname='storage:download_file_list'
     )
+    view_icon = icon_download_file_delete
 
     def get_instance_extra_data(self):
         return {
@@ -31,6 +35,7 @@ class DownloadFileDownloadViewView(
 ):
     model = DownloadFile
     pk_url_kwarg = 'download_file_id'
+    view_icon = icon_download_file_download
 
     def get_download_file_object(self):
         instance = self.get_object()
@@ -45,6 +50,7 @@ class DownloadFileListView(
     RelatedObjectPermissionViewMixin, SingleObjectListView
 ):
     model = DownloadFile
+    view_icon = icon_download_file_list
 
     def get_extra_context(self):
         return {

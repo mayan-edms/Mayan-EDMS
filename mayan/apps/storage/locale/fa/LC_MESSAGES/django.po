@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2021
+# Roberto Rosario, 2022
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
-"PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2022\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:23 settings.py:12
+#: apps.py:23 settings.py:14
 msgid "Storage"
 msgstr "ذخیره سازی"
 
@@ -131,23 +131,31 @@ msgstr "حذف آپلود های قدیمی"
 msgid "Delete stale download files"
 msgstr ""
 
-#: settings.py:17
+#: settings.py:19
+msgid "Time in seconds, after which download files will be deleted."
+msgstr ""
+
+#: settings.py:25
 msgid ""
 "A storage backend that all workers can use to generate and hold files for "
 "download."
 msgstr ""
 
-#: settings.py:28
+#: settings.py:36
 msgid "A storage backend that all workers can use to share files."
 msgstr "محلی که کلیه کاربران جهت به اشتراک گذاری فایل میتوانند استفاه کنند."
 
-#: settings.py:38
+#: settings.py:46
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr ""
 "دایرکتوری موقت از سایت گسترده برای ذخیره ریز عکسها، پیش نمایش ها و فایل های "
 "موقت استفاده می کند."
+
+#: settings.py:53
+msgid "Time in seconds, after which temporary uploaded files will be deleted."
+msgstr ""
 
 #: storages.py:15
 msgid ""

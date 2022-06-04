@@ -1,0 +1,128 @@
+Version 4.2.5
+=============
+
+Released: May 21, 2022
+
+Status: Stable
+
+Changes
+-------
+
+
+Converter
+^^^^^^^^^
+
+Fixed the asset transformations hash calculation. This fixes the issue
+where uploading a new file for an asset already added via transformation
+to a document page would not update the asset image in the document page.
+
+Fixes a wrong parameter in the ``ImageDraw.Draw`` usage of the
+``TransformationDrawRectangle`` transformation.
+
+Added sanity check to reject negative zoom values for the
+``TransformationZoom`` transformation.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+Updated Django from version 3.2.12 to 3.2.13.
+
+
+Documents
+^^^^^^^^^
+
+Fixed favorite document links reacting to favorite documents beyond the
+active user.
+
+
+REST API
+^^^^^^^^
+
+Fixed the asset image API view docstring. The docstring incorrectly displayed
+"document" instead of "asset".
+
+
+Search
+^^^^^^
+
+Converted the signal handler that triggers search indexing on many to many
+fields changes to a background task. This solves an issue where the user
+interface block when changing the document type to index template
+association on large installations.
+
+Updated the object index task to retry on missing object errors. There are
+situations where the broker will route the message to the workers faster
+than the database can commit the data, creating an false positive object
+not found.
+
+
+Task manager
+^^^^^^^^^^^^
+
+Added Celery queue deduplication to the ``CeleryQueue`` class. There are
+reported cases of duplicated queues but will prevent possible issues.
+
+Enabled app tests that were added but not enabled.
+
+Added support for runtime removal of queues. This is not used by the core
+system but is useful for third party apps wanting to remove queues defined
+by the core apps.
+
+
+User management
+^^^^^^^^^^^^^^^
+
+Added a warning message when users attempt to delete their own accounts.
+
+
+Other
+^^^^^
+
+- Remove unused authentication view.
+- Remove unused event link.
+- Make document version OCR submit view messages translatable.
+- Make file caching purge view messages translatable.
+- Make document file metadata submit view messages translatable.
+- Fix repeated model manager definition in ``DocumentFilePage``
+  models.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1104` Links 'Add to favorites' and 'Remove from favorites' should be shown according to user favorites
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

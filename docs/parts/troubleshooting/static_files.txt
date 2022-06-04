@@ -11,7 +11,7 @@ development or testing. For production deployments the management command:
 
 .. code-block:: console
 
-    /opt/mayan-edms/bin/mayan-edms.py preparestatic
+    /opt/mayan-edms/bin/mayan-edms.py appearance_prepare_static
 
 should be used and the resulting static folder served from a webserver.
 For more information check the

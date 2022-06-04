@@ -625,3 +625,28 @@ a i {
     padding-left: 0px;
     padding-right: 0px;
 }
+
+/* Fieldsets */
+
+.appearance-fieldset {
+    border: 1px solid rgb(44, 62, 80);
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+.appearance-legend {
+    background-color: rgb(44, 62, 80);
+    border-radius: 4px;
+    border-style: none;
+    border-width: 0;
+    color: white;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 0;
+    padding: 0 10px 3px;
+    width: auto;
+}

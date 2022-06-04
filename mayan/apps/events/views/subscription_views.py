@@ -1,29 +1,28 @@
 from django.contrib import messages
-from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from django.http import Http404
-from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.acls.models import AccessControlList
-from mayan.apps.views.generics import FormView
+from mayan.apps.views.generics import FormView, SingleObjectListView
+from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 
 from ..classes import EventType, ModelEventType
 from ..forms import (
     EventTypeUserRelationshipFormSet, ObjectEventTypeUserRelationshipFormSet
 )
-from ..models import StoredEventType
-from ..permissions import permission_events_view
-
-__all__ = (
-    'EventTypeSubscriptionListView', 'ObjectEventTypeSubscriptionListView'
+from ..icons import (
+    icon_event_types_subscriptions_list,
+    icon_object_event_type_user_subscription_list,
+    icon_user_object_subscriptions_list
 )
+from ..models import ObjectEventSubscription, StoredEventType
+from ..permissions import permission_events_view
 
 
 class EventTypeSubscriptionListView(FormView):
     form_class = EventTypeUserRelationshipFormSet
     main_model = 'user'
     submodel = StoredEventType
+    view_icon = icon_event_types_subscriptions_list
 
     def dispatch(self, *args, **kwargs):
         EventType.refresh()
@@ -61,11 +60,13 @@ class EventTypeSubscriptionListView(FormView):
         initial = []
 
         for element in self.get_queryset():
-            initial.append({
-                'user': obj,
-                'main_model': self.main_model,
-                'stored_event_type': element,
-            })
+            initial.append(
+                {
+                    'main_model': self.main_model,
+                    'stored_event_type': element,
+                    'user': obj
+                }
+            )
         return initial
 
     def get_object(self):
@@ -82,7 +83,9 @@ class EventTypeSubscriptionListView(FormView):
         # field.
         when_list = []
         for sort_index, event_type_id in enumerate(iterable=event_type_ids):
-            when_list.append(models.When(name=event_type_id, then=sort_index))
+            when_list.append(
+                models.When(name=event_type_id, then=sort_index)
+            )
 
         queryset = self.submodel.objects.filter(name__in=event_type_ids)
         queryset = queryset.annotate(
@@ -93,8 +96,12 @@ class EventTypeSubscriptionListView(FormView):
         return queryset.order_by('sort_index')
 
 
-class ObjectEventTypeSubscriptionListView(FormView):
+class ObjectEventTypeSubscriptionListView(
+    ExternalContentTypeObjectViewMixin, FormView
+):
+    external_object_permission = permission_events_view
     form_class = ObjectEventTypeUserRelationshipFormSet
+    view_icon = icon_object_event_type_user_subscription_list
 
     def dispatch(self, *args, **kwargs):
         EventType.refresh()
@@ -122,45 +129,45 @@ class ObjectEventTypeSubscriptionListView(FormView):
     def get_extra_context(self):
         return {
             'form_display_mode_table': True,
-            'object': self.get_object(),
+            'object': self.external_object,
             'title': _(
                 'Event subscriptions for: %s'
-            ) % self.get_object()
+            ) % self.external_object
         }
 
     def get_initial(self):
-        obj = self.get_object()
         initial = []
 
         for element in self.get_queryset():
             initial.append(
                 {
-                    'user': self.request.user,
-                    'object': obj,
+                    'object': self.external_object,
                     'stored_event_type': element,
+                    'user': self.request.user
                 }
             )
         return initial
 
-    def get_object(self):
-        object_content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model_name']
-        )
-
-        try:
-            content_object = object_content_type.get_object_for_this_type(
-                pk=self.kwargs['object_id']
-            )
-        except object_content_type.model_class().DoesNotExist:
-            raise Http404
-
-        AccessControlList.objects.check_access(
-            obj=content_object, permissions=(permission_events_view,),
-            user=self.request.user
-        )
-
-        return content_object
-
     def get_queryset(self):
-        return ModelEventType.get_for_instance(instance=self.get_object())
+        return ModelEventType.get_for_instance(instance=self.external_object)
+
+
+class UserObjectSubscriptionList(SingleObjectListView):
+    object_permission = permission_events_view
+    view_icon = icon_user_object_subscriptions_list
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'no_results_icon': icon_user_object_subscriptions_list,
+            'no_results_text': _(
+                'Subscribe to the events of an object to received '
+                'notifications when those events occur.'
+            ),
+            'no_results_title': _('There are no object event subscriptions'),
+            'object': self.request.user,
+            'title': _('Object event subscriptions')
+        }
+
+    def get_source_queryset(self):
+        return ObjectEventSubscription.objects.filter(user=self.request.user)

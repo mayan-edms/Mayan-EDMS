@@ -82,11 +82,11 @@ class SmartSettingNamespaceTestMixin(EnvironmentTestCaseMixin):
 
 class SmartSettingNamespaceViewTestMixin:
     def _request_namespace_list_view(self):
-        return self.get(viewname='settings:namespace_list')
+        return self.get(viewname='settings:setting_namespace_list')
 
     def _request_namespace_detail_view(self):
         return self.get(
-            viewname='settings:namespace_detail', kwargs={
+            viewname='settings:setting_namespace_detail', kwargs={
                 'namespace_name': self.test_settings_namespace.name
             }
         )

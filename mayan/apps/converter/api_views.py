@@ -59,7 +59,7 @@ class APIAssetDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 class APIAssetImageView(APIImageViewMixin, generics.RetrieveAPIView):
     """
-    get: Returns an image representation of the selected document.
+    get: Returns an image representation of the selected asset.
     """
     lookup_url_kwarg = 'asset_id'
     mayan_object_permissions = {

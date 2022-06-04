@@ -15,13 +15,24 @@ from ..forms import (
     WorkflowActionSelectionForm, WorkflowStateActionDynamicForm,
     WorkflowStateForm
 )
-from ..icons import icon_workflow_template_state, icon_workflow_template_state_action
+from ..icons import (
+    icon_workflow_template_state, icon_workflow_template_state_action,
+    icon_workflow_template_state_action_create,
+    icon_workflow_template_state_action_delete,
+    icon_workflow_template_state_action_edit,
+    icon_workflow_template_state_action_list,
+    icon_workflow_template_state_action_selection,
+    icon_workflow_template_state_create, icon_workflow_template_state_delete,
+    icon_workflow_template_state_edit, link_workflow_template_state_list
+)
 from ..links import (
     link_workflow_template_state_create,
-    link_workflow_template_state_action_selection,
+    link_workflow_template_state_action_selection
 )
 from ..models import Workflow, WorkflowState, WorkflowStateAction
-from ..permissions import permission_workflow_template_edit, permission_workflow_template_view
+from ..permissions import (
+    permission_workflow_template_edit, permission_workflow_template_view
+)
 
 
 class WorkflowTemplateStateActionCreateView(
@@ -31,6 +42,7 @@ class WorkflowTemplateStateActionCreateView(
     external_object_permission = permission_workflow_template_edit
     external_object_pk_url_kwarg = 'workflow_template_state_id'
     form_class = WorkflowStateActionDynamicForm
+    view_icon = icon_workflow_template_state_action_create
 
     def get_class(self):
         try:
@@ -83,6 +95,7 @@ class WorkflowTemplateStateActionDeleteView(SingleObjectDeleteView):
     model = WorkflowStateAction
     object_permission = permission_workflow_template_edit
     pk_url_kwarg = 'workflow_template_state_action_id'
+    view_icon = icon_workflow_template_state_action_delete
 
     def get_extra_context(self):
         return {
@@ -114,6 +127,7 @@ class WorkflowTemplateStateActionEditView(SingleObjectDynamicFormEditView):
     model = WorkflowStateAction
     object_permission = permission_workflow_template_edit
     pk_url_kwarg = 'workflow_template_state_action_id'
+    view_icon = icon_workflow_template_state_action_edit
 
     def get_extra_context(self):
         return {
@@ -157,6 +171,7 @@ class WorkflowTemplateStateActionListView(
     external_object_class = WorkflowState
     external_object_permission = permission_workflow_template_edit
     external_object_pk_url_kwarg = 'workflow_template_state_id'
+    view_icon = icon_workflow_template_state_action_list
 
     def get_extra_context(self):
         return {
@@ -195,6 +210,7 @@ class WorkflowTemplateStateActionSelectionView(
     external_object_permission = permission_workflow_template_edit
     external_object_pk_url_kwarg = 'workflow_template_state_id'
     form_class = WorkflowActionSelectionForm
+    view_icon = icon_workflow_template_state_action_selection
 
     def get_extra_context(self):
         return {
@@ -226,6 +242,7 @@ class WorkflowTemplateStateCreateView(
     external_object_permission = permission_workflow_template_edit
     external_object_pk_url_kwarg = 'workflow_template_id'
     form_class = WorkflowStateForm
+    view_icon = icon_workflow_template_state_create
 
     def get_extra_context(self):
         return {
@@ -258,6 +275,7 @@ class WorkflowTemplateStateDeleteView(SingleObjectDeleteView):
     model = WorkflowState
     object_permission = permission_workflow_template_edit
     pk_url_kwarg = 'workflow_template_state_id'
+    view_icon = icon_workflow_template_state_delete
 
     def get_extra_context(self):
         return {
@@ -288,6 +306,7 @@ class WorkflowTemplateStateEditView(SingleObjectEditView):
     model = WorkflowState
     object_permission = permission_workflow_template_edit
     pk_url_kwarg = 'workflow_template_state_id'
+    view_icon = icon_workflow_template_state_edit
 
     def get_extra_context(self):
         return {
@@ -317,7 +336,7 @@ class WorkflowTemplateStateListView(
     external_object_class = Workflow
     external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_template_id'
-    object_permission = permission_workflow_template_view
+    view_icon = link_workflow_template_state_list
 
     def get_extra_context(self):
         return {

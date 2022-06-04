@@ -3,7 +3,7 @@ from django.db import migrations
 from ..classes import DuplicateBackend
 
 
-def operation_initialize_stored_backend_model(apps, schema_editor):
+def code_initialize_stored_backend_model(apps, schema_editor):
     StoredDuplicateBackend = apps.get_model(
         app_label='duplicates', model_name='StoredDuplicateBackend'
     )
@@ -16,7 +16,7 @@ def operation_initialize_stored_backend_model(apps, schema_editor):
         )
 
 
-def operation_initialize_stored_backend_model_reverse(apps, schema_editor):
+def code_initialize_stored_backend_model_reverse(apps, schema_editor):
     StoredDuplicateBackend = apps.get_model(
         app_label='duplicates', model_name='StoredDuplicateBackend'
     )
@@ -29,12 +29,12 @@ def operation_initialize_stored_backend_model_reverse(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('duplicates', '0004_storedduplicatebackend'),
+        ('duplicates', '0004_storedduplicatebackend')
     ]
 
     operations = [
         migrations.RunPython(
-            code=operation_initialize_stored_backend_model,
+            code=code_initialize_stored_backend_model,
             reverse_code=migrations.RunPython.noop
-        ),
+        )
     ]

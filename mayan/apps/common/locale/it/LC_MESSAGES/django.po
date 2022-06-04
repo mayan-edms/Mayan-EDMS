@@ -4,19 +4,19 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
-# Giovanni Tricarico <gtricarico92@gmail.com>, 2021
-# Daniele Bortoluzzi <daniele@elkos.it>, 2021
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2022
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Daniele Bortoluzzi <daniele@elkos.it>, 2022
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:137 permissions.py:5 settings.py:15
+#: apps.py:132 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "Comune"
 
@@ -44,65 +44,65 @@ msgstr "Campi relativi al modello"
 msgid "Model reverse fields"
 msgstr "Modello campi inversi"
 
-#: dependencies.py:168
+#: dependencies.py:169
 msgid "Used to allow offline translation of the code text strings."
 msgstr ""
 "Usato per consentire la traduzione offline delle stringhe di testo nel "
 "codice."
 
-#: dependencies.py:177
+#: dependencies.py:178
 msgid "Provides style checking."
 msgstr "Fornisce controllo dello stile."
 
-#: dependencies.py:182
+#: dependencies.py:183
 msgid "Command line environment with autocompletion."
 msgstr "Ambiente a riga di comando con autocompletamento."
 
-#: dependencies.py:187
+#: dependencies.py:188
 msgid "Checks proper formatting of the README file."
 msgstr "Controlla la corretta formattazione del file README."
 
-#: links.py:29
+#: links.py:30
 msgid "About this"
 msgstr "A questo proposito"
 
-#: links.py:32
+#: links.py:33
 msgid "Get the book"
 msgstr "Prendi il libro"
 
-#: links.py:37
+#: links.py:38
 msgid "Documentation"
 msgstr "Documentazione"
 
-#: links.py:40
+#: links.py:41
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:44 views.py:48
+#: links.py:45 views.py:48
 msgid "License"
 msgstr "Licenza"
 
-#: links.py:49
+#: links.py:50
 msgid "Copy"
 msgstr "Copia"
 
-#: links.py:52
+#: links.py:54
 msgid "Setup"
 msgstr "Configurazione"
 
-#: links.py:55
+#: links.py:57
 msgid "Source code"
 msgstr "Codice sorgente"
 
-#: links.py:59
+#: links.py:61
 msgid "Online store"
 msgstr "Negozio online"
 
-#: links.py:63
+#: links.py:65
 msgid "Get support"
 msgstr "Ottieni supporto"
 
-#: links.py:67 queues.py:6 views.py:122
+#: links.py:69 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "Strumenti"
 
@@ -111,23 +111,15 @@ msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Questa funzionalità è obsoleta e verrà rimossa nelle versioni future."
 
-#: literals.py:23
-msgid ""
-"Your database backend is set to use SQLite. SQLite should only be used for "
-"development and testing, not for production."
-msgstr ""
-"Il tuo database attuale è impostato a SQLite, che dovrebbe essere usato solo"
-" per sviluppo e test, non in produzione."
-
-#: literals.py:32
+#: literals.py:28
 msgid "Days"
 msgstr "Giorni"
 
-#: literals.py:33
+#: literals.py:29
 msgid "Hours"
 msgstr "Orario"
 
-#: literals.py:34
+#: literals.py:30
 msgid "Minutes"
 msgstr "Minuti"
 
@@ -220,11 +212,7 @@ msgstr ""
 msgid "URL of the project's homepage."
 msgstr ""
 
-#: templates/common/app/viewport.html:9
-msgid "Warning"
-msgstr "Attenzione"
-
-#: templates/common/app/viewport.html:23
+#: templates/common/app/viewport.html:15
 msgid "Click here to fix this."
 msgstr "Clicca qui per risolvere questo problema."
 

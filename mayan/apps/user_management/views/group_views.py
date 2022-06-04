@@ -8,7 +8,10 @@ from mayan.apps.views.generics import (
     SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
 
-from ..icons import icon_group_setup
+from ..icons import (
+    icon_group_create, icon_group_detail, icon_group_edit, icon_group_list,
+    icon_group_setup, icon_group_single_delete, icon_group_user_list
+)
 from ..links import link_group_create
 from ..permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
@@ -24,6 +27,7 @@ class GroupCreateView(SingleObjectCreateView):
     post_action_redirect = reverse_lazy(
         viewname='user_management:group_list'
     )
+    view_icon = icon_group_create
     view_permission = permission_group_create
 
     def get_instance_extra_data(self):
@@ -44,6 +48,7 @@ class GroupDeleteView(MultipleObjectDeleteView):
     title_single = _('Delete group: %(object)s.')
     title_singular = _('Delete the %(count)d selected group.')
     title_plural = _('Delete the %(count)d selected groups.')
+    view_icon = icon_group_single_delete
 
 
 class GroupDetailView(SingleObjectDetailView):
@@ -51,6 +56,7 @@ class GroupDetailView(SingleObjectDetailView):
     model = Group
     object_permission = permission_group_view
     pk_url_kwarg = 'group_id'
+    view_icon = icon_group_detail
 
     def get_extra_context(self, **kwargs):
         return {
@@ -67,6 +73,7 @@ class GroupEditView(SingleObjectEditView):
     post_action_redirect = reverse_lazy(
         viewname='user_management:group_list'
     )
+    view_icon = icon_group_edit
 
     def get_extra_context(self):
         return {
@@ -81,6 +88,7 @@ class GroupEditView(SingleObjectEditView):
 class GroupListView(SingleObjectListView):
     model = Group
     object_permission = permission_group_view
+    view_icon = icon_group_list
 
     def get_extra_context(self):
         return {
@@ -102,7 +110,7 @@ class GroupListView(SingleObjectListView):
         }
 
 
-class GroupUsersView(AddRemoveView):
+class GroupUserAddRemoveView(AddRemoveView):
     main_object_method_add_name = 'users_add'
     main_object_method_remove_name = 'users_remove'
     main_object_model = Group
@@ -111,6 +119,7 @@ class GroupUsersView(AddRemoveView):
     secondary_object_permission = permission_user_edit
     list_available_title = _('Available users')
     list_added_title = _('Group users')
+    view_icon = icon_group_user_list
 
     def get_actions_extra_kwargs(self):
         return {'_event_actor': self.request.user}

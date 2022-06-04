@@ -7,23 +7,30 @@ from mayan.apps.views.generics import (
 )
 
 from .classes import Statistic, StatisticNamespace
+from .icons import (
+    icon_statistic_detail, icon_statistic_queue,
+    icon_statistic_namespace_detail, icon_statistic_namespace_list
+)
+
 from .permissions import permission_statistics_view
 from .tasks import task_execute_statistic
 
 
-class NamespaceListView(SingleObjectListView):
+class StatisticNamespaceListView(SingleObjectListView):
     extra_context = {
         'hide_link': True,
         'title': _('Statistics namespaces'),
     }
     template_name = 'appearance/generic_list.html'
+    view_icon = icon_statistic_namespace_list
     view_permission = permission_statistics_view
 
     def get_source_queryset(self):
         return StatisticNamespace.get_all()
 
 
-class NamespaceDetailView(SingleObjectListView):
+class StatisticNamespaceDetailView(SingleObjectListView):
+    view_icon = icon_statistic_namespace_detail
     view_permission = permission_statistics_view
 
     def get_extra_context(self):
@@ -41,6 +48,7 @@ class NamespaceDetailView(SingleObjectListView):
 
 
 class StatisticDetailView(SimpleView):
+    view_icon = icon_statistic_detail
     view_permission = permission_statistics_view
 
     def get_extra_context(self):
@@ -66,6 +74,7 @@ class StatisticDetailView(SimpleView):
 
 
 class StatisticQueueView(ConfirmView):
+    view_icon = icon_statistic_queue
     view_permission = permission_statistics_view
 
     def get_extra_context(self):

@@ -75,14 +75,6 @@ class QuotaBackend(QuotaBackendBase, metaclass=QuotaBackendMetaclass):
         """
 
     @classmethod
-    def as_choices(cls):
-        return [
-            (
-                backend.id, backend.label
-            ) for backend in QuotaBackend.get_all()
-        ]
-
-    @classmethod
     def create(cls, **kwargs):
         Quota = apps.get_model(app_label='quotas', model_name='Quota')
         return Quota.objects.create(
@@ -99,6 +91,14 @@ class QuotaBackend(QuotaBackendBase, metaclass=QuotaBackendMetaclass):
         return sorted(
             cls._registry.values(), key=lambda x: x.label
         )
+
+    @classmethod
+    def get_choices(cls):
+        return [
+            (
+                backend.id, backend.label
+            ) for backend in QuotaBackend.get_all()
+        ]
 
     @classmethod
     def get_dotted_path(cls):

@@ -2,7 +2,7 @@ from django.db import migrations
 from django.db.models import Count
 
 
-def operation_remove_duplicates(apps, schema_editor):
+def code_remove_duplicates(apps, schema_editor):
     WorkflowTransitionTriggerEvent = apps.get_model(
         app_label='document_states',
         model_name='WorkflowTransitionTriggerEvent'
@@ -27,12 +27,12 @@ def operation_remove_duplicates(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('document_states', '0023_auto_20200930_0726'),
+        ('document_states', '0023_auto_20200930_0726')
     ]
 
     operations = [
         migrations.RunPython(
-            code=operation_remove_duplicates,
+            code=code_remove_duplicates,
             reverse_code=migrations.RunPython.noop
         )
     ]

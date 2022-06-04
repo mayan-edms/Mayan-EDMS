@@ -8,7 +8,7 @@ from mayan.apps.rest_api.api_view_mixins import (
     AsymmetricSerializerAPIViewMixin, ExternalObjectAPIViewMixin
 )
 
-from ..models import IndexTemplate
+from ..models.index_template_models import IndexTemplate
 from ..permissions import (
     permission_index_template_create, permission_index_template_delete,
     permission_index_template_edit, permission_index_template_rebuild,

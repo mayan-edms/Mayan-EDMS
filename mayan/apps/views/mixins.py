@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.utils.translation import ungettext, ugettext_lazy as _
 from django.views.generic.detail import SingleObjectMixin
+from django.views.generic.edit import ModelFormMixin
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.models import AccessControlList
@@ -17,7 +18,7 @@ from mayan.apps.mime_types.classes import MIMETypeBackend
 from mayan.apps.permissions import Permission
 
 from .exceptions import ActionError
-from .forms import DynamicForm
+from .forms import DynamicForm, FormFieldsetMixin
 from .literals import (
     PK_LIST_SEPARATOR, TEXT_CHOICE_ITEMS, TEXT_CHOICE_LIST,
     TEXT_LIST_AS_ITEMS_PARAMETER, TEXT_LIST_AS_ITEMS_VARIABLE_NAME,
@@ -82,6 +83,13 @@ class DownloadViewMixin:
     def get_download_filename(self):
         return None
 
+    def get_download_mime_type_and_encoding(self, file_object):
+        mime_type, encoding = MIMETypeBackend.get_backend_instance().get_mime_type(
+            file_object=file_object, mime_type_only=True
+        )
+
+        return mime_type, encoding
+
     def render_to_response(self, **response_kwargs):
         response = FileResponse(
             as_attachment=self.get_as_attachment(),
@@ -92,17 +100,17 @@ class DownloadViewMixin:
         encoding_map = {
             'bzip2': 'application/x-bzip',
             'gzip': 'application/gzip',
-            'xz': 'application/x-xz',
+            'xz': 'application/x-xz'
         }
 
         if response.file_to_stream:
-            content_type, encoding = MIMETypeBackend.get_backend_instance().get_mime_type(
-                file_object=response.file_to_stream, mime_type_only=True
+            mime_type, encoding = self.get_download_mime_type_and_encoding(
+                file_object=response.file_to_stream
             )
             # Encoding isn't set to prevent browsers from automatically
             # uncompressing files.
-            content_type = encoding_map.get(encoding, content_type)
-            response.headers['Content-Type'] = content_type or 'application/octet-stream'
+            mime_type = encoding_map.get(encoding, mime_type)
+            response.headers['Content-Type'] = mime_type or 'application/octet-stream'
         else:
             response.headers['Content-Type'] = 'application/octet-stream'
 
@@ -259,6 +267,22 @@ class ListModeViewMixin:
             }
         )
         return context
+
+
+class ModelFormFieldsetsViewMixin(ModelFormMixin):
+    fields = None
+
+    def get_form_class(self):
+        form_class = super().get_form_class()
+
+        if FormFieldsetMixin in form_class.mro():
+            return form_class
+        else:
+            class FormFieldsetForm(FormFieldsetMixin, form_class):
+                """New class with the form fieldset support."""
+
+            FormFieldsetForm.fieldsets = getattr(self, 'fieldsets', None)
+            return FormFieldsetForm
 
 
 class MultipleObjectViewMixin(SingleObjectMixin):
@@ -585,6 +609,21 @@ class SortingViewMixin:
 
     def get_sort_fields(self):
         return self.request.GET.get(TEXT_SORT_FIELD_PARAMETER)
+
+
+class ViewIconMixin:
+    view_icon = None
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        view_icon = self.get_view_icon()
+        if view_icon:
+            context['view_icon'] = view_icon
+
+        return context
+
+    def get_view_icon(self):
+        return self.view_icon
 
 
 class ViewPermissionCheckViewMixin:

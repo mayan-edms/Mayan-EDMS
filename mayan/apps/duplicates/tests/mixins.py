@@ -8,7 +8,7 @@ class DuplicatedDocumentAPIViewTestMixin:
     def _request_test_document_duplicates_list_api_view(self):
         return self.get(
             viewname='rest_api:documentduplicate-list', kwargs={
-                'document_id': self.test_documents[0].pk
+                'document_id': self._test_documents[0].pk
             }
         )
 
@@ -20,7 +20,7 @@ class DuplicatedDocumentTaskTestMixin:
     def _execute_task_duplicates_scan_for(self):
         task_duplicates_scan_for.apply_async(
             kwargs={
-                'document_id': self.test_document.pk
+                'document_id': self._test_document.pk
             }
         ).get()
 
@@ -39,7 +39,7 @@ class DuplicatedDocumentViewTestMixin:
     def _request_test_document_duplicates_list_view(self):
         return self.get(
             viewname='duplicates:document_duplicates_list', kwargs={
-                'document_id': self.test_documents[0].pk
+                'document_id': self._test_documents[0].pk
             }
         )
 

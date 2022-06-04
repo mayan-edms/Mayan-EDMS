@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2021
-# Nima Towhidi <nima.towhidi@gmail.com>, 2021
+# Nima Towhidi <nima.towhidi@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:28+0000\n"
-"Last-Translator: Nima Towhidi <nima.towhidi@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2022\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:43 events.py:6 models.py:37 models.py:157 permissions.py:5
+#: apps.py:44 events.py:6 models.py:37 models.py:157 permissions.py:5
 msgid "Permissions"
 msgstr "مجوزها"
 
-#: apps.py:100 models.py:75
+#: apps.py:106 models.py:75
 msgid "Group count"
 msgstr ""
 
@@ -118,19 +118,19 @@ msgstr "دیدن نقش ها"
 msgid "Group name"
 msgstr "اسم گروه"
 
-#: serializers.py:31
+#: serializers.py:30
 msgid "Primary key of the group to add to the role."
 msgstr ""
 
-#: serializers.py:39
+#: serializers.py:38
 msgid "Primary key of the group to remove from the role."
 msgstr ""
 
-#: serializers.py:47
+#: serializers.py:46
 msgid "Primary key of the permission to add to the role."
 msgstr ""
 
-#: serializers.py:54
+#: serializers.py:53
 msgid "Primary key of the permission to remove from the role."
 msgstr ""
 

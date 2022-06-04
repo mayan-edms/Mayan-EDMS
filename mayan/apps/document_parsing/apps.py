@@ -6,13 +6,13 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
+from mayan.apps.databases.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.documents.signals import signal_post_document_file_upload
 from mayan.apps.events.classes import ModelEventType
-from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.logging.classes import ErrorLog
 
 from .events import (
     event_parsing_document_file_content_deleted,
@@ -20,26 +20,25 @@ from .events import (
     event_parsing_document_file_finished
 )
 from .handlers import (
-    handler_index_document, handler_initialize_new_parsing_settings,
-    handler_parse_document_file
+    handler_initialize_new_parsing_settings, handler_parse_document_file
 )
 from .links import (
-    link_document_file_content, link_document_file_content_delete_single,
-    link_document_file_content_delete_multiple, link_document_file_page_content,
-    link_document_file_content_download, link_document_file_parsing_errors_list,
-    link_document_file_metadata_submit_multiple, link_document_file_metadata_submit_single,
-    link_document_type_parsing_settings, link_document_type_submit,
-    link_error_list
+    link_document_file_content_detail, link_document_file_content_download,
+    link_document_file_content_multiple_delete,
+    link_document_file_content_single_delete,
+    link_document_file_page_content_detail,
+    link_document_file_parsing_multiple_submit,
+    link_document_file_parsing_single_submit,
+    link_document_type_parsing_settings, link_document_type_parsing_submit
 )
 from .methods import (
-    method_document_parsing_submit, method_document_file_parsing_submit
+    method_document_content, method_document_file_content,
+    method_document_file_parsing_submit, method_document_parsing_submit
 )
 from .permissions import (
     permission_document_file_content_view, permission_document_type_parsing_setup,
     permission_document_file_parse
 )
-from .signals import signal_post_document_file_parsing
-from .utils import get_document_file_content
 
 logger = logging.getLogger(name=__name__)
 
@@ -61,9 +60,6 @@ class DocumentParsingApp(MayanAppConfig):
         DocumentFile = apps.get_model(
             app_label='documents', model_name='DocumentFile'
         )
-        DocumentFileParseError = self.get_model(
-            model_name='DocumentFileParseError'
-        )
         DocumentFilePage = apps.get_model(
             app_label='documents', model_name='DocumentFilePage'
         )
@@ -75,13 +71,13 @@ class DocumentParsingApp(MayanAppConfig):
         )
 
         Document.add_to_class(
-            name='content', value=get_document_file_content
+            name='content', value=method_document_content
         )
         Document.add_to_class(
             name='submit_for_parsing', value=method_document_parsing_submit
         )
         DocumentFile.add_to_class(
-            name='content', value=get_document_file_content
+            name='content', value=method_document_file_content
         )
         DocumentFile.add_to_class(
             name='submit_for_parsing',
@@ -129,25 +125,14 @@ class DocumentParsingApp(MayanAppConfig):
             model=DocumentTypeSettings, related='document_type',
         )
 
-        SourceColumn(
-            attribute='document_file__document',
-            is_attribute_absolute_url=True, is_identifier=True,
-            is_sortable=True, source=DocumentFileParseError
-        )
-        SourceColumn(
-            attribute='datetime_submitted', is_sortable=True,
-            source=DocumentFileParseError
-        )
-        SourceColumn(
-            source=DocumentFileParseError, label=_('Result'),
-            attribute='result'
-        )
+        error_log = ErrorLog(app_config=self)
+        error_log.register_model(model=DocumentFile)
 
         menu_list_facet.bind_links(
-            links=(link_document_file_content,), sources=(DocumentFile,)
+            links=(link_document_file_content_detail,), sources=(DocumentFile,)
         )
         menu_list_facet.bind_links(
-            links=(link_document_file_page_content,),
+            links=(link_document_file_page_content_detail,),
             sources=(DocumentFilePage,)
         )
         menu_list_facet.bind_links(
@@ -156,28 +141,26 @@ class DocumentParsingApp(MayanAppConfig):
         )
         menu_multi_item.bind_links(
             links=(
-                link_document_file_content_delete_multiple,
-                link_document_file_metadata_submit_multiple,
+                link_document_file_content_multiple_delete,
+                link_document_file_parsing_multiple_submit
             ), sources=(DocumentFile,)
         )
         menu_secondary.bind_links(
             links=(
-                link_document_file_content_delete_single,
+                link_document_file_content_single_delete,
                 link_document_file_content_download,
-                link_document_file_parsing_errors_list,
-                link_document_file_metadata_submit_single
+                link_document_file_parsing_single_submit
             ),
             sources=(
                 'document_parsing:document_file_content_view',
-                'document_parsing:document_file_content_delete_single',
+                'document_parsing:document_file_content_single_delete',
                 'document_parsing:document_file_content_download',
-                'document_parsing:document_file_parsing_error_list',
-                'document_parsing:document_file_submit_single',
+                'document_parsing:document_file_parsing_single_submit'
             )
         )
         menu_tools.bind_links(
             links=(
-                link_document_type_submit, link_error_list,
+                link_document_type_parsing_submit,
             )
         )
 
@@ -185,11 +168,6 @@ class DocumentParsingApp(MayanAppConfig):
             dispatch_uid='document_parsing_handler_initialize_new_parsing_settings',
             receiver=handler_initialize_new_parsing_settings,
             sender=DocumentType
-        )
-        signal_post_document_file_parsing.connect(
-            dispatch_uid='document_parsing_handler_index_document',
-            receiver=handler_index_document,
-            sender=DocumentFile
         )
         signal_post_document_file_upload.connect(
             dispatch_uid='document_parsing_handler_parse_document_file',

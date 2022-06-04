@@ -2,12 +2,14 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import menu_secondary, menu_tools
+from mayan.apps.common.menus import menu_object, menu_secondary, menu_tools
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import ObjectLinkWidget
 
 from .links import (
-    link_global_error_log_partition_entry_list, link_object_error_list_clear
+    link_global_error_log_partition_entry_list,
+    link_object_error_log_entry_list_clear,
+    link_object_error_log_entry_delete
 )
 from .mixins import LoggingAppConfigMixin
 
@@ -15,6 +17,7 @@ from .mixins import LoggingAppConfigMixin
 class LoggingApp(LoggingAppConfigMixin, MayanAppConfig):
     app_namespace = 'logging'
     app_url = 'logging'
+    has_rest_api = True
     has_tests = True
     name = 'mayan.apps.logging'
     verbose_name = _('Logging')
@@ -56,9 +59,14 @@ class LoggingApp(LoggingAppConfigMixin, MayanAppConfig):
             source=ErrorLogPartitionEntry
         )
 
+        menu_object.bind_links(
+            links=(link_object_error_log_entry_delete,), sources=(
+                ErrorLogPartitionEntry,
+            )
+        )
         menu_secondary.bind_links(
-            links=(link_object_error_list_clear,), sources=(
-                'logging:object_error_list',
+            links=(link_object_error_log_entry_list_clear,), sources=(
+                'logging:object_error_log_entry_list',
             )
         )
         menu_tools.bind_links(

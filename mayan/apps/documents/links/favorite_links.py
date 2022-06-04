@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.authentication.link_conditions import condition_user_is_authenticated
+from mayan.apps.authentication.utils import get_context_user
 from mayan.apps.navigation.classes import Link
 
 from ..icons import (
@@ -11,11 +12,15 @@ from ..permissions import permission_document_view
 
 
 def condition_is_in_favorites(context, resolved_object):
-    return resolved_object.favorites.exists()
+    if condition_user_is_authenticated(context=context, resolved_object=resolved_object):
+        user = get_context_user(context=context)
+        return resolved_object.favorites.filter(user=user).exists()
 
 
 def condition_not_is_in_favorites(context, resolved_object):
-    return not resolved_object.favorites.exists()
+    if condition_user_is_authenticated(context=context, resolved_object=resolved_object):
+        user = get_context_user(context=context)
+        return not resolved_object.favorites.filter(user=user).exists()
 
 
 link_document_favorites_list = Link(

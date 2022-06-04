@@ -35,27 +35,36 @@ TEST_SERVER_PASSWORD = 'testpassword'
 
 TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT = 'test workflow instance log entry comment'
 TEST_WORKFLOW_INSTANCE_LOG_ENTRY_EXTRA_DATA = '{"test": "test"}'
-TEST_WORKFLOW_TEMPLATE_LABEL = 'test workflow template label'
+
 TEST_WORKFLOW_TEMPLATE_INTERNAL_NAME = 'test_workflow_template_name'
+TEST_WORKFLOW_TEMPLATE_LABEL = 'test workflow template label'
 TEST_WORKFLOW_TEMPLATE_LABEL_EDITED = 'test workflow template label edited'
 TEST_WORKFLOW_TEMPLATE_INITIAL_STATE_LABEL = 'test initial state'
 TEST_WORKFLOW_TEMPLATE_INITIAL_STATE_COMPLETION = 33
+
+TEST_WORKFLOW_INDEX_TEMPLATE_EXPRESSION = '{% if  document.workflows.first %}{{ document.workflows.first.workflow.label }}-{{ document.workflows.first.get_current_state }}{% endif %}'
+TEST_WORKFLOW_TEMPLATE_TRANSITION_INDEX_TEMPLATE_EXPRESSION = '{% if  document.workflows.first %}{{ document.workflows.first.workflow.label }}-{{ document.workflows.first.get_current_state }}-{{ document.workflows.first.workflow.transitions.first }}{% endif %}'
+
 TEST_WORKFLOW_TEMPLATE_STATE_ACTION_LABEL = 'test template state action label'
 TEST_WORKFLOW_TEMPLATE_STATE_ACTION_LABEL_EDITED = 'test template state action label edited'
 TEST_WORKFLOW_TEMPLATE_STATE_ACTION_WHEN = WORKFLOW_ACTION_ON_ENTRY
 TEST_WORKFLOW_TEMPLATE_STATE_ACTION_DOTTED_PATH = TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_DOTTED_PATH
 TEST_WORKFLOW_TEMPLATE_STATE_ACTION_GENERIC_DOTTED_PATH = 'mayan.apps.document_states.tests.workflow_actions.TestWorkflowAction'
+
 TEST_WORKFLOW_TEMPLATE_STATE_LABEL = 'test workflow template state label'
 TEST_WORKFLOW_TEMPLATE_STATE_LABEL_EDITED = 'test workflow template state label edited'
 TEST_WORKFLOW_TEMPLATE_STATE_COMPLETION = 66
+
+TEST_WORKFLOW_TEMPLATE_STATE_ESCALATION_COMMENT = 'test_workflow_template_state_escalation_comment'
+TEST_WORKFLOW_TEMPLATE_STATE_ESCALATION_UNIT = 'milliseconds'
+TEST_WORKFLOW_TEMPLATE_STATE_ESCALATION_AMOUNT = 1
+TEST_WORKFLOW_TEMPLATE_STATE_ESCALATION_AMOUNT_EDITED = 2
+
 TEST_WORKFLOW_TEMPLATE_TRANSITION_FIELD_HELP_TEXT = 'test workflow template transition field help test'
 TEST_WORKFLOW_TEMPLATE_TRANSITION_FIELD_LABEL = 'test workflow template transition field'
 TEST_WORKFLOW_TEMPLATE_TRANSITION_FIELD_LABEL_EDITED = 'test workflow template transition field edited'
 TEST_WORKFLOW_TEMPLATE_TRANSITION_FIELD_NAME = 'test_workflow_template_transition_field'
 TEST_WORKFLOW_TEMPLATE_TRANSITION_FIELD_TYPE = FIELD_TYPE_CHOICE_CHAR
+
 TEST_WORKFLOW_TEMPLATE_TRANSITION_LABEL = 'test workflow template transition label'
 TEST_WORKFLOW_TEMPLATE_TRANSITION_LABEL_EDITED = 'test worfklow template transition label edited'
-
-TEST_INDEX_TEMPLATE_METADATA_EXPRESSION = '{{{{ document.workflow.{}_0.get_current_state }}}}'.format(
-    TEST_WORKFLOW_TEMPLATE_INTERNAL_NAME
-)

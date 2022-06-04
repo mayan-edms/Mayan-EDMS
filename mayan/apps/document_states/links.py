@@ -15,36 +15,42 @@ from .icons import (
     icon_workflow_template_create, icon_workflow_template_delete,
     icon_workflow_template_document_type_list, icon_workflow_template_edit,
     icon_workflow_template_launch, icon_workflow_template_list,
-    icon_workflow_template_preview, icon_workflow_template_state,
-    icon_workflow_template_state_action,
+    icon_workflow_template_preview,
     icon_workflow_template_state_action_delete,
     icon_workflow_template_state_action_edit,
     icon_workflow_template_state_action_list,
+    icon_workflow_template_state_action_selection,
     icon_workflow_template_state_create, icon_workflow_template_state_delete,
-    icon_workflow_template_state_edit, icon_workflow_template_transition,
+    icon_workflow_template_state_edit,
+    link_workflow_template_state_list,
+    icon_workflow_template_state_escalation_create,
+    icon_workflow_template_state_escalation_delete,
+    icon_workflow_template_state_escalation_edit,
+    icon_workflow_template_state_escalation_list,
     icon_workflow_template_transition_create,
     icon_workflow_template_transition_delete,
     icon_workflow_template_transition_edit,
     icon_workflow_template_transition_triggers,
-    icon_workflow_template_transition_field,
+    icon_workflow_template_transition_field_create,
     icon_workflow_template_transition_field_delete,
     icon_workflow_template_transition_field_edit,
     icon_workflow_template_transition_field_list,
-    icon_document_workflow_templates_launch,
+    icon_workflow_template_transition_list,
+    icon_document_workflow_templates_launch
 )
 from .permissions import (
     permission_workflow_template_create, permission_workflow_template_delete,
     permission_workflow_template_edit, permission_workflow_tools,
-    permission_workflow_template_view,
+    permission_workflow_template_view
 )
 
-# Workflow templates
+# Workflow template
 
 link_document_type_workflow_templates = Link(
     args='resolved_object.pk',
     icon=icon_document_type_workflow_template_list,
     permissions=(permission_document_type_edit,), text=_('Workflows'),
-    view='document_states:document_type_workflow_templates',
+    view='document_states:document_type_workflow_templates'
 )
 link_workflow_template_create = Link(
     icon=icon_workflow_template_create,
@@ -54,26 +60,26 @@ link_workflow_template_create = Link(
 link_workflow_template_multiple_delete = Link(
     icon=icon_workflow_template_delete,
     tags='dangerous', text=_('Delete'),
-    view='document_states:workflow_template_multiple_delete',
+    view='document_states:workflow_template_multiple_delete'
 )
 link_workflow_template_single_delete = Link(
     args='resolved_object.pk',
     icon=icon_workflow_template_delete,
     permissions=(permission_workflow_template_delete,),
     tags='dangerous', text=_('Delete'),
-    view='document_states:workflow_template_single_delete',
+    view='document_states:workflow_template_single_delete'
 )
 link_workflow_template_document_types = Link(
     args='resolved_object.pk',
     icon=icon_workflow_template_document_type_list,
     permissions=(permission_workflow_template_edit,), text=_('Document types'),
-    view='document_states:workflow_template_document_types',
+    view='document_states:workflow_template_document_types'
 )
 link_workflow_template_edit = Link(
     args='resolved_object.pk',
     icon=icon_workflow_template_edit,
     permissions=(permission_workflow_template_edit,),
-    text=_('Edit'), view='document_states:workflow_template_edit',
+    text=_('Edit'), view='document_states:workflow_template_edit'
 )
 link_workflow_template_launch = Link(
     args='resolved_object.pk',
@@ -94,83 +100,117 @@ link_workflow_template_preview = Link(
     text=_('Preview'), view='document_states:workflow_template_preview'
 )
 
-# Workflow template state actions
+# Workflow template state action
 
 link_workflow_template_state_action_delete = Link(
     args='resolved_object.pk',
     icon=icon_workflow_template_state_action_delete,
     permissions=(permission_workflow_template_edit,),
     tags='dangerous', text=_('Delete'),
-    view='document_states:workflow_template_state_action_delete',
+    view='document_states:workflow_template_state_action_delete'
 )
 link_workflow_template_state_action_edit = Link(
     args='resolved_object.pk',
     icon=icon_workflow_template_state_action_edit,
     permissions=(permission_workflow_template_edit,),
-    text=_('Edit'), view='document_states:workflow_template_state_action_edit',
+    text=_('Edit'),
+    view='document_states:workflow_template_state_action_edit'
 )
 link_workflow_template_state_action_list = Link(
     args='resolved_object.pk',
     icon=icon_workflow_template_state_action_list,
     permissions=(permission_workflow_template_edit,),
     text=_('Actions'),
-    view='document_states:workflow_template_state_action_list',
+    view='document_states:workflow_template_state_action_list'
 )
 link_workflow_template_state_action_selection = Link(
     args='resolved_object.pk',
-    icon=icon_workflow_template_state_action,
-    permissions=(permission_workflow_template_edit,), text=_('Create action'),
-    view='document_states:workflow_template_state_action_selection',
+    icon=icon_workflow_template_state_action_selection,
+    permissions=(permission_workflow_template_edit,),
+    text=_('Create action'),
+    view='document_states:workflow_template_state_action_selection'
 )
 
-# Workflow template states
+# Workflow template state escalation
+
+link_workflow_template_state_escalation_create = Link(
+    args='resolved_object.pk',
+    icon=icon_workflow_template_state_escalation_create,
+    permissions=(permission_workflow_template_edit,),
+    text=_('Create escalation'),
+    view='document_states:workflow_template_state_escalation_create'
+)
+link_workflow_template_state_escalation_delete = Link(
+    args='resolved_object.pk',
+    icon=icon_workflow_template_state_escalation_delete,
+    permissions=(permission_workflow_template_edit,),
+    tags='dangerous', text=_('Delete'),
+    view='document_states:workflow_template_state_escalation_delete'
+)
+link_workflow_template_state_escalation_edit = Link(
+    args='resolved_object.pk',
+    icon=icon_workflow_template_state_escalation_edit,
+    permissions=(permission_workflow_template_edit,),
+    text=_('Edit'),
+    view='document_states:workflow_template_state_escalation_edit'
+)
+link_workflow_template_state_escalation_list = Link(
+    args='resolved_object.pk',
+    icon=icon_workflow_template_state_escalation_list,
+    permissions=(permission_workflow_template_edit,),
+    text=_('Escalations'),
+    view='document_states:workflow_template_state_escalation_list'
+)
+
+# Workflow template state
 
 link_workflow_template_state_create = Link(
     args='workflow.pk',
     icon=icon_workflow_template_state_create,
     permissions=(permission_workflow_template_edit,), text=_('Create state'),
-    view='document_states:workflow_template_state_create',
+    view='document_states:workflow_template_state_create'
 )
 link_workflow_template_state_delete = Link(
     args='resolved_object.pk',
     icon=icon_workflow_template_state_delete,
     permissions=(permission_workflow_template_edit,),
     tags='dangerous', text=_('Delete'),
-    view='document_states:workflow_template_state_delete',
+    view='document_states:workflow_template_state_delete'
 )
 link_workflow_template_state_edit = Link(
     args='resolved_object.pk',
     icon=icon_workflow_template_state_edit,
     permissions=(permission_workflow_template_edit,),
-    text=_('Edit'), view='document_states:workflow_template_state_edit',
+    text=_('Edit'), view='document_states:workflow_template_state_edit'
 )
 link_workflow_template_state_list = Link(
     args='resolved_object.pk',
-    icon=icon_workflow_template_state,
+    icon=link_workflow_template_state_list,
     permissions=(permission_workflow_template_view,), text=_('States'),
-    view='document_states:workflow_template_state_list',
+    view='document_states:workflow_template_state_list'
 )
 
-# Workflow template transitions
+# Workflow template transition
 
 link_workflow_template_transition_create = Link(
     args='workflow.pk',
     icon=icon_workflow_template_transition_create,
-    permissions=(permission_workflow_template_edit,), text=_('Create transition'),
-    view='document_states:workflow_template_transition_create',
+    permissions=(permission_workflow_template_edit,),
+    text=_('Create transition'),
+    view='document_states:workflow_template_transition_create'
 )
 link_workflow_template_transition_delete = Link(
     args='resolved_object.pk',
     icon=icon_workflow_template_transition_delete,
     permissions=(permission_workflow_template_edit,),
     tags='dangerous', text=_('Delete'),
-    view='document_states:workflow_template_transition_delete',
+    view='document_states:workflow_template_transition_delete'
 )
 link_workflow_template_transition_edit = Link(
     args='resolved_object.pk',
     icon=icon_workflow_template_transition_edit,
     permissions=(permission_workflow_template_edit,),
-    text=_('Edit'), view='document_states:workflow_template_transition_edit',
+    text=_('Edit'), view='document_states:workflow_template_transition_edit'
 )
 link_workflow_template_transition_triggers = Link(
     args='resolved_object.pk',
@@ -181,80 +221,81 @@ link_workflow_template_transition_triggers = Link(
 )
 link_workflow_template_transition_list = Link(
     args='resolved_object.pk',
-    icon=icon_workflow_template_transition,
+    icon=icon_workflow_template_transition_list,
     permissions=(permission_workflow_template_view,), text=_('Transitions'),
-    view='document_states:workflow_template_transition_list',
+    view='document_states:workflow_template_transition_list'
 )
 
-# Workflow transition fields
+# Workflow transition field
 
 link_document_multiple_workflow_templates_launch = Link(
     icon=icon_document_workflow_templates_launch,
     text=_('Launch workflows'),
-    view='document_states:document_multiple_workflow_templates_launch',
+    view='document_states:document_multiple_workflow_templates_launch'
 )
 link_document_single_workflow_templates_launch = Link(
     args='resolved_object.pk',
     icon=icon_document_workflow_templates_launch,
     permissions=(permission_workflow_tools,), text=_('Launch workflows'),
-    view='document_states:document_single_workflow_templates_launch',
+    view='document_states:document_single_workflow_templates_launch'
 )
 link_workflow_template_transition_field_create = Link(
     args='resolved_object.pk',
-    icon=icon_workflow_template_transition_field,
+    icon=icon_workflow_template_transition_field_create,
     permissions=(permission_workflow_template_edit,), text=_('Create field'),
-    view='document_states:workflow_template_transition_field_create',
+    view='document_states:workflow_template_transition_field_create'
 )
 link_workflow_template_transition_field_delete = Link(
     args='resolved_object.pk',
     icon=icon_workflow_template_transition_field_delete,
     permissions=(permission_workflow_template_edit,),
     tags='dangerous', text=_('Delete'),
-    view='document_states:workflow_template_transition_field_delete',
+    view='document_states:workflow_template_transition_field_delete'
 )
 link_workflow_template_transition_field_edit = Link(
     args='resolved_object.pk',
     icon=icon_workflow_template_transition_field_edit,
     permissions=(permission_workflow_template_edit,),
-    text=_('Edit'), view='document_states:workflow_template_transition_field_edit',
+    text=_('Edit'),
+    view='document_states:workflow_template_transition_field_edit'
 )
 link_workflow_template_transition_field_list = Link(
     args='resolved_object.pk',
     icon=icon_workflow_template_transition_field_list,
     permissions=(permission_workflow_template_edit,),
     text=_('Fields'),
-    view='document_states:workflow_template_transition_field_list',
+    view='document_states:workflow_template_transition_field_list'
 )
 
-# Document workflow instances
+# Document workflow instance
 
 link_workflow_instance_detail = Link(
     args='resolved_object.pk',
     icon=icon_workflow_instance_detail,
     permissions=(permission_workflow_template_view,),
-    text=_('Detail'), view='document_states:workflow_instance_detail',
+    text=_('Detail'), view='document_states:workflow_instance_detail'
 )
 link_workflow_instance_list = Link(
     args='resolved_object.pk',
     icon=icon_workflow_instance_list,
     permissions=(permission_workflow_template_view,), text=_('Workflows'),
-    view='document_states:workflow_instance_list',
+    view='document_states:workflow_instance_list'
 )
 link_workflow_instance_transition = Link(
     args='resolved_object.pk',
     icon=icon_workflow_instance_transition,
     text=_('Transition'),
-    view='document_states:workflow_instance_transition_selection',
+    view='document_states:workflow_instance_transition_selection'
 )
 
-# Runtime proxies
+# Runtime proxy
 
 link_workflow_runtime_proxy_document_list = Link(
     args='resolved_object.pk',
     icon=icon_workflow_runtime_proxy_document_list,
     permissions=(permission_workflow_template_view,),
     text=_('Workflow documents'),
-    view='document_states:workflow_runtime_proxy_document_list',
+    view='document_states:workflow_runtime_proxy_document_list'
 )
 link_workflow_runtime_proxy_list = Link(
     condition=factory_condition_queryset_access(
@@ -268,13 +309,13 @@ link_workflow_runtime_proxy_state_document_list = Link(
     icon=icon_workflow_runtime_proxy_state_document_list,
     permissions=(permission_workflow_template_view,),
     text=_('State documents'),
-    view='document_states:workflow_runtime_proxy_state_document_list',
+    view='document_states:workflow_runtime_proxy_state_document_list'
 )
 link_workflow_runtime_proxy_state_list = Link(
     args='resolved_object.pk',
     icon=icon_workflow_runtime_proxy_state_list,
-    permissions=(permission_workflow_template_view,),
-    text=_('States'), view='document_states:workflow_runtime_proxy_state_list',
+    permissions=(permission_workflow_template_view,), text=_('States'),
+    view='document_states:workflow_runtime_proxy_state_list'
 )
 
 # Tools

@@ -1,10 +1,10 @@
-from __future__ import absolute_import, unicode_literals
-
 import uuid
 
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import format_lazy
+
+from mayan.apps.databases.classes import BaseBackend
 
 __all__ = (
     'BaseDocumentFilenameGenerator', 'OriginalDocumentFilenameGenerator',
@@ -50,6 +50,15 @@ class BaseDocumentFilenameGenerator:
 
     def upload_to(self, instance, filename):
         raise NotImplementedError
+
+
+class DocumentFileAction(BaseBackend):
+    _backend_identifier = 'action_id'
+    _loader_module_name = 'document_file_actions'
+
+
+class DocumentVersionModification(BaseBackend):
+    _loader_module_name = 'document_version_modifications'
 
 
 class OriginalDocumentFilenameGenerator(BaseDocumentFilenameGenerator):

@@ -1,8 +1,9 @@
 from django.db import connection
 from django.utils.translation import ugettext_lazy as _
 from mayan.apps.documents.search import (
-    document_file_search, document_file_page_search, document_search,
-    document_version_search, document_version_page_search
+    search_model_document, search_model_document_file,
+    search_model_document_file_page, search_model_document_version,
+    search_model_document_version_page
 )
 from mayan.apps.dynamic_search.classes import SearchModel
 
@@ -18,72 +19,72 @@ def transformation_format_uuid(term_string):
 
 # Cabinet
 
-cabinet_search = SearchModel(
+search_model_cabinet = SearchModel(
     app_label='cabinets', model_name='CabinetSearchResult',
     permission=permission_cabinet_view,
     serializer_path='mayan.apps.cabinets.serializers.CabinetSerializer'
 )
-cabinet_search.add_proxy_model(
+search_model_cabinet.add_proxy_model(
     app_label='cabinets', model_name='Cabinet'
 )
 
-cabinet_search.add_model_field(field='label')
+search_model_cabinet.add_model_field(field='label')
 
 # Cabinet documents
 
-cabinet_search.add_model_field(
+search_model_cabinet.add_model_field(
     field='documents__document_type__label', label=_('Document type')
 )
-cabinet_search.add_model_field(
+search_model_cabinet.add_model_field(
     field='documents__label', label=_('Document label')
 )
-cabinet_search.add_model_field(
+search_model_cabinet.add_model_field(
     field='documents__description', label=_('Document description')
 )
-cabinet_search.add_model_field(
+search_model_cabinet.add_model_field(
     field='documents__uuid', label=_('Document UUID'),
     transformation_function=transformation_format_uuid
 )
 
 # Cabinet documents files
 
-cabinet_search.add_model_field(
+search_model_cabinet.add_model_field(
     field='documents__files__checksum', label=_('Document file checksum')
 )
-cabinet_search.add_model_field(
+search_model_cabinet.add_model_field(
     field='documents__files__mimetype', label=_('Document file MIME type')
 )
 
 # Document
 
-document_search.add_model_field(
+search_model_document.add_model_field(
     field='cabinets__label', label=_('Cabinets')
 )
 
 # Document file
 
-document_file_search.add_model_field(
+search_model_document_file.add_model_field(
     field='document__cabinets__label',
     label=_('Document cabinets')
 )
 
 # Document file page
 
-document_file_page_search.add_model_field(
+search_model_document_file_page.add_model_field(
     field='document_file__document__cabinets__label',
     label=_('Document cabinets')
 )
 
 # Document version
 
-document_version_search.add_model_field(
+search_model_document_version.add_model_field(
     field='document__cabinets__label',
     label=_('Document cabinets')
 )
 
 # Document version page
 
-document_version_page_search.add_model_field(
+search_model_document_version_page.add_model_field(
     field='document_version__document__cabinets__label',
     label=_('Document cabinets')
 )

@@ -127,7 +127,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='documenttypemetadatatype',
-            unique_together=set([('document_type', 'metadata_type')]),
+            unique_together={('document_type', 'metadata_type')},
         ),
         migrations.AddField(
             model_name='documentmetadata',
@@ -140,6 +140,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='documentmetadata',
-            unique_together=set([('document', 'metadata_type')]),
+            unique_together={('document', 'metadata_type')},
         ),
     ]

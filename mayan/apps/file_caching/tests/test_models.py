@@ -1,5 +1,6 @@
-import mock
+from unittest import mock
 
+from mayan.apps.lock_manager.exceptions import LockError
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..exceptions import FileCachingException
@@ -19,18 +20,18 @@ class CacheModelTestCase(CacheTestMixin, BaseTestCase):
     def test_cache_get_absolute_url_method(self):
         self._create_test_cache()
 
-        self.test_cache.get_absolute_url()
+        self._test_cache.get_absolute_url()
 
     def test_cache_purge(self):
         self._create_test_cache()
         self._create_test_cache_partition()
         self._create_test_cache_partition_file()
 
-        cache_total_size = self.test_cache.get_total_size()
+        cache_total_size = self._test_cache.get_total_size()
 
-        self.test_cache.purge()
+        self._test_cache.purge()
 
-        self.assertNotEqual(cache_total_size, self.test_cache.get_total_size())
+        self.assertNotEqual(cache_total_size, self._test_cache.get_total_size())
 
     @mock.patch('django.core.files.File.close')
     def test_storage_file_close(self, mock_storage_file_close_method):
@@ -46,19 +47,19 @@ class CacheModelTestCase(CacheTestMixin, BaseTestCase):
         self._create_test_cache()
         self._create_test_cache_partition()
 
-        cache_parition_file_count = self.test_cache_partition.files.count()
+        cache_parition_file_count = self._test_cache_partition.files.count()
 
         with self.assertRaises(expected_exception=CacheModelTestCase.FakeException):
-            with self.test_cache_partition.create_file(filename=TEST_CACHE_PARTITION_FILE_FILENAME):
+            with self._test_cache_partition.create_file(filename=TEST_CACHE_PARTITION_FILE_FILENAME):
                 raise CacheModelTestCase.FakeException
 
         self.assertEqual(
-            self.test_cache_partition.files.count(),
+            self._test_cache_partition.files.count(),
             cache_parition_file_count
         )
         self.assertFalse(
-            self.test_cache_partition.cache.storage.exists(
-                name=self.test_cache_partition.get_full_filename(
+            self._test_cache_partition.cache.storage.exists(
+                name=self._test_cache_partition.get_full_filename(
                     filename=TEST_CACHE_PARTITION_FILE_FILENAME
                 )
             )
@@ -73,19 +74,19 @@ class CacheModelTestCase(CacheTestMixin, BaseTestCase):
         self._create_test_cache()
         self._create_test_cache_partition()
 
-        cache_parition_file_count = self.test_cache_partition.files.count()
+        cache_parition_file_count = self._test_cache_partition.files.count()
 
         with self.assertRaises(expected_exception=CacheModelTestCase.FakeException):
-            with self.test_cache_partition.create_file(filename=TEST_CACHE_PARTITION_FILE_FILENAME) as file_object:
+            with self._test_cache_partition.create_file(filename=TEST_CACHE_PARTITION_FILE_FILENAME) as file_object:
                 file_object.write(b'')
 
         self.assertEqual(
-            self.test_cache_partition.files.count(),
+            self._test_cache_partition.files.count(),
             cache_parition_file_count
         )
         self.assertFalse(
-            self.test_cache_partition.cache.storage.exists(
-                name=self.test_cache_partition.get_full_filename(
+            self._test_cache_partition.cache.storage.exists(
+                name=self._test_cache_partition.get_full_filename(
                     filename=TEST_CACHE_PARTITION_FILE_FILENAME
                 )
             )
@@ -96,15 +97,15 @@ class CacheModelTestCase(CacheTestMixin, BaseTestCase):
         self._create_test_cache_partition()
         self._create_test_cache_partition_file()
 
-        cache_partition_file_hits = self.test_cache_partition_file.hits
+        cache_partition_file_hits = self._test_cache_partition_file.hits
 
-        with self.test_cache_partition_file.open():
+        with self._test_cache_partition_file.open():
             """Do nothing"""
 
-        self.test_cache_partition_file.refresh_from_db()
+        self._test_cache_partition_file.refresh_from_db()
 
         self.assertEqual(
-            self.test_cache_partition_file.hits, cache_partition_file_hits + 1
+            self._test_cache_partition_file.hits, cache_partition_file_hits + 1
         )
 
     def test_cache_partition_file_lru_eviction(self):
@@ -118,18 +119,18 @@ class CacheModelTestCase(CacheTestMixin, BaseTestCase):
         self._create_test_cache_partition_file(file_size=1)
         self._create_test_cache_partition_file(file_size=1)
 
-        with self.test_cache_partition_files[0].open():
+        with self._test_cache_partition_files[0].open():
             """Do nothing"""
 
         self._create_test_cache_partition_file(file_size=1)
 
         # Older but more hits was kept.
         self.assertTrue(
-            self.test_cache_partition_files[0] in CachePartitionFile.objects.all()
+            self._test_cache_partition_files[0] in CachePartitionFile.objects.all()
         )
         # Newer but less hits was purged.
         self.assertTrue(
-            self.test_cache_partition_files[1] not in CachePartitionFile.objects.all()
+            self._test_cache_partition_files[1] not in CachePartitionFile.objects.all()
         )
 
     def test_cache_partition_file_size_protection(self):
@@ -152,13 +153,23 @@ class CacheModelTestCase(CacheTestMixin, BaseTestCase):
             }
         )
 
-        self.test_cache.maximum_size = 2
-        self.test_cache.save()
+        self._test_cache.maximum_size = 2
+        self._test_cache.save()
         self.assertFalse(mock_cache_prune_method.called)
 
-        self.test_cache.maximum_size = 1
-        self.test_cache.save()
+        self._test_cache.maximum_size = 1
+        self._test_cache.save()
         self.assertTrue(mock_cache_prune_method.called)
+
+    def test_cache_partition_file_context_manager_locking(self):
+        self._create_test_cache()
+        self._create_test_cache_partition()
+        self._create_test_cache_partition_file()
+
+        with self._test_cache_partition_file.open():
+            with self.assertRaises(expected_exception=LockError):
+                with self._test_cache_partition_file.open():
+                    """Trigger LockError."""
 
     def test_incremental_file_index_cache_prune(self):
         self._create_test_cache(
@@ -171,19 +182,19 @@ class CacheModelTestCase(CacheTestMixin, BaseTestCase):
         self._create_test_cache_partition_file(file_size=1)
         self._create_test_cache_partition_file(file_size=1)
 
-        with self.test_cache_partition_files[1].open():
+        with self._test_cache_partition_files[1].open():
             """Increase hits of file #1"""
 
-        with self.test_cache_partition_files[0].open():
+        with self._test_cache_partition_files[0].open():
             """Lock and increase hits of file #0"""
             self._create_test_cache_partition_file(file_size=1)
 
         self.assertTrue(
-            self.test_cache_partition_files[0] in CachePartitionFile.objects.all()
+            self._test_cache_partition_files[0] in CachePartitionFile.objects.all()
         )
         self.assertTrue(
-            self.test_cache_partition_files[1] not in CachePartitionFile.objects.all()
+            self._test_cache_partition_files[1] not in CachePartitionFile.objects.all()
         )
         self.assertTrue(
-            self.test_cache_partition_files[2] in CachePartitionFile.objects.all()
+            self._test_cache_partition_files[2] in CachePartitionFile.objects.all()
         )

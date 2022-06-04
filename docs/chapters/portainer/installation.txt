@@ -1,0 +1,38 @@
+.. _portainer_install:
+
+
+======================
+Portainer installation
+======================
+
+#. Install Portainer:
+
+   Follow the instructions outlined in their documentation: https://www.portainer.io/
+
+
+#. Download the Mayan EDMS Portainer Compose files:
+
+   The files are located at: https://gitlab.com/mayan-edms/mayan-edms/-/tree/master/portainer/
+
+   .. code-block:: console
+
+       curl https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/portainer/portainer-compose.yml -O
+       curl https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/portainer/.env -O
+
+
+#. Launch the Mayan EDMS Portainer Compose stack:
+
+    - Go to :menuselection:`Stacks --> Add stack`
+    - Enter a name for the stack. For example, ``mayan-edms``.
+    - Under "Build method", select "Upload".
+    - Under "Upload", click "Select file" and upload the
+      ``portainer-compose.yml`` file obtained from the previous step.
+    - Under "Environment variables", click "Load variables from .env file"
+      and upload the ``.env`` file obtained from the previous step.
+    - Under "Actions", click "Deploy the stack".
+    - Wait until the Docker image is downloaded and deployed.
+    - Go to :menuselection:`Stacks --> <Your Mayan EDMS stack>`.
+    - Under "Published Ports" click on the port pair ``80:8000``.
+    - Login and use Mayan EDMS normally.
+
+

@@ -53,26 +53,13 @@ class Permission(AppsModuleLoaderMixin):
     _stored_permissions_cache = {}
 
     @classmethod
-    def all(cls, as_choices=False):
-        if as_choices:
-            results = PermissionCollection()
-
-            for namespace, permissions in itertools.groupby(cls.all(), lambda entry: entry.namespace):
-                permission_options = [
-                    (force_text(s=permission.pk), permission) for permission in permissions
-                ]
-                results.append(
-                    (namespace, permission_options)
-                )
-
-            return results
-        else:
-            # Return sorted permissions by namespace.name
-            return PermissionCollection(
-                sorted(
-                    cls._permissions.values(), key=lambda x: x.namespace.name
-                )
+    def all(cls):
+        # Return sorted permissions by namespace.name
+        return PermissionCollection(
+            sorted(
+                cls._permissions.values(), key=lambda x: x.namespace.name
             )
+        )
 
     @classmethod
     def check_user_permissions(cls, permissions, user):
@@ -91,6 +78,20 @@ class Permission(AppsModuleLoaderMixin):
             return cls._permissions[pk]
         else:
             return cls._permissions[pk].stored_permission
+
+    @classmethod
+    def get_choices(cls):
+        results = PermissionCollection()
+
+        for namespace, permissions in itertools.groupby(cls.all(), lambda entry: entry.namespace):
+            permission_options = [
+                (permission.pk, permission) for permission in permissions
+            ]
+            results.append(
+                (namespace, permission_options)
+            )
+
+        return results
 
     @classmethod
     def load_modules(cls):
@@ -122,7 +123,7 @@ class Permission(AppsModuleLoaderMixin):
         return force_text(s=self.label)
 
     def get_pk(self):
-        return '%s.%s' % (self.namespace.name, self.name)
+        return '{}.{}'.format(self.namespace.name, self.name)
 
     @property
     def stored_permission(self):

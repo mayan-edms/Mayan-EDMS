@@ -32,7 +32,7 @@ class WorkflowRuntimeProxyViewTestCase(
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=404
+            response=response, text=self._test_document.label, status_code=404
         )
 
         events = self._get_test_events()
@@ -52,7 +52,7 @@ class WorkflowRuntimeProxyViewTestCase(
             status_code=200
         )
         self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=200
+            response=response, text=self._test_document.label, status_code=200
         )
 
         events = self._get_test_events()
@@ -60,7 +60,7 @@ class WorkflowRuntimeProxyViewTestCase(
 
     def test_workflow_runtime_proxy_document_list_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         self._clear_events()
@@ -71,7 +71,7 @@ class WorkflowRuntimeProxyViewTestCase(
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=404
+            response=response, text=self._test_document.label, status_code=404
         )
 
         events = self._get_test_events()
@@ -79,7 +79,7 @@ class WorkflowRuntimeProxyViewTestCase(
 
     def test_workflow_runtime_proxy_document_list_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
         self.grant_access(
             obj=self._test_workflow_template,
@@ -94,7 +94,7 @@ class WorkflowRuntimeProxyViewTestCase(
             status_code=200
         )
         self.assertContains(
-            response=response, text=self.test_document.label, status_code=200
+            response=response, text=self._test_document.label, status_code=200
         )
 
         events = self._get_test_events()
@@ -102,14 +102,14 @@ class WorkflowRuntimeProxyViewTestCase(
 
     def test_trashed_document_workflow_runtime_proxy_document_list_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
         self.grant_access(
             obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -119,7 +119,7 @@ class WorkflowRuntimeProxyViewTestCase(
             status_code=200
         )
         self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=200
+            response=response, text=self._test_document.label, status_code=200
         )
 
         events = self._get_test_events()
@@ -175,10 +175,10 @@ class WorkflowRuntimeProxyStateViewTestCase(
             text=self._test_workflow_template_states[0].label, status_code=404
         )
         self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=404
+            response=response, text=self._test_document.label, status_code=404
         )
         self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=404
+            response=response, text=self._test_document.label, status_code=404
         )
 
         events = self._get_test_events()
@@ -198,7 +198,7 @@ class WorkflowRuntimeProxyStateViewTestCase(
             text=self._test_workflow_template_states[0].label, status_code=200
         )
         self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=200
+            response=response, text=self._test_document.label, status_code=200
         )
 
         events = self._get_test_events()
@@ -206,7 +206,7 @@ class WorkflowRuntimeProxyStateViewTestCase(
 
     def test_workflow_runtime_proxy_state_document_list_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         self._clear_events()
@@ -217,7 +217,7 @@ class WorkflowRuntimeProxyStateViewTestCase(
             text=self._test_workflow_template_states[0].label, status_code=404
         )
         self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=404
+            response=response, text=self._test_document.label, status_code=404
         )
 
         events = self._get_test_events()
@@ -225,7 +225,7 @@ class WorkflowRuntimeProxyStateViewTestCase(
 
     def test_workflow_runtime_proxy_state_document_list_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
         self.grant_access(
             obj=self._test_workflow_template,
@@ -240,7 +240,7 @@ class WorkflowRuntimeProxyStateViewTestCase(
             text=self._test_workflow_template_states[0].label, status_code=200
         )
         self.assertContains(
-            response=response, text=self.test_document.label, status_code=200
+            response=response, text=self._test_document.label, status_code=200
         )
 
         events = self._get_test_events()
@@ -248,14 +248,14 @@ class WorkflowRuntimeProxyStateViewTestCase(
 
     def test_trashed_document_workflow_runtime_proxy_state_document_list_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
         self.grant_access(
             obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -265,7 +265,7 @@ class WorkflowRuntimeProxyStateViewTestCase(
             text=self._test_workflow_template_states[0].label, status_code=200
         )
         self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=200
+            response=response, text=self._test_document.label, status_code=200
         )
 
         events = self._get_test_events()

@@ -22,5 +22,5 @@ class TaskManagerViewTestCase(
 
         response = self._request_queue_list()
         self.assertContains(
-            response, text=self.test_queue.name, status_code=200
+            response, text=self._test_queue.name, status_code=200
         )

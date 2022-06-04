@@ -10,22 +10,22 @@ class DuplicatedDocumentModelTestCase(
 ):
     def test_duplicates_after_delete(self):
         self._upload_duplicate_document()
-        self.test_documents[1].delete()
-        self.test_documents[1].delete()
+        self._test_documents[1].delete()
+        self._test_documents[1].delete()
 
         self.assertEqual(
             DuplicateBackendEntry.objects.filter(
-                document=self.test_documents[0]
+                document=self._test_documents[0]
             ).count(), 0
         )
 
     def test_duplicates_after_trash(self):
         self._upload_duplicate_document()
-        self.test_documents[1].delete()
+        self._test_documents[1].delete()
 
         self.assertFalse(
-            self.test_documents[1] in DuplicateBackendEntry.objects.get_duplicates_of(
-                document=self.test_documents[0]
+            self._test_documents[1] in DuplicateBackendEntry.objects.get_duplicates_of(
+                document=self._test_documents[0]
             )
         )
 
@@ -33,13 +33,13 @@ class DuplicatedDocumentModelTestCase(
         self._upload_duplicate_document()
 
         self.assertTrue(
-            self.test_documents[1] in DuplicateBackendEntry.objects.get_duplicates_of(
-                document=self.test_documents[0]
+            self._test_documents[1] in DuplicateBackendEntry.objects.get_duplicates_of(
+                document=self._test_documents[0]
             )
         )
         self.assertTrue(
-            self.test_documents[0] in DuplicateBackendEntry.objects.get_duplicates_of(
-                document=self.test_documents[1]
+            self._test_documents[0] in DuplicateBackendEntry.objects.get_duplicates_of(
+                document=self._test_documents[1]
             )
         )
 
@@ -48,5 +48,5 @@ class DuplicatedDocumentModelTestCase(
 
         # Should not return an error.
         StoredDuplicateBackend.objects.scan_document(
-            document=self.test_documents[0]
+            document=self._test_documents[0]
         )

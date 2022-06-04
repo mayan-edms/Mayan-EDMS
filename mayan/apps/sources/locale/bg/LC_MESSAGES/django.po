@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
-"PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,16 +22,16 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:56 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
+#: apps.py:57 events.py:5 links.py:137 menus.py:5 models.py:42 queues.py:7
 #: settings.py:13 views/source_views.py:164
 msgid "Sources"
 msgstr "Източници"
 
-#: apps.py:81
+#: apps.py:87
 msgid "Create a document source"
 msgstr "Създайте източник на документи"
 
-#: apps.py:83
+#: apps.py:89
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
@@ -41,7 +41,7 @@ msgstr ""
 "към Mayan EDMS, създайте поне източник на уеб формуляр, за да можете да "
 "качвате документи от браузър."
 
-#: apps.py:106
+#: apps.py:112
 msgid "Type"
 msgstr "Тип"
 
@@ -49,7 +49,7 @@ msgstr "Тип"
 msgid "Null backend"
 msgstr "Нулев бекенд"
 
-#: dependencies.py:11
+#: dependencies.py:12
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
@@ -100,27 +100,27 @@ msgstr "Файл"
 msgid "Default"
 msgstr "По подразбиране"
 
-#: links.py:74
+#: links.py:109
 msgid "New document"
 msgstr "Нов документ"
 
-#: links.py:82
+#: links.py:116
 msgid "Upload new file"
 msgstr "Качете нов файл"
 
-#: links.py:88
+#: links.py:122
 msgid "Create source"
 msgstr "Създайте източник"
 
-#: links.py:94 source_backends/staging_folder_backends.py:311
+#: links.py:128 source_backends/staging_folder_backends.py:311
 msgid "Delete"
 msgstr "Изтрийте"
 
-#: links.py:98
+#: links.py:132
 msgid "Edit"
 msgstr "Редактиране"
 
-#: links.py:110
+#: links.py:144
 msgid "Test"
 msgstr "Тест"
 
@@ -176,12 +176,12 @@ msgstr "Проверете интервалния източник"
 msgid "Handle upload"
 msgstr "Обработете качването"
 
-#: serializers.py:50
+#: serializers.py:51
 msgid "Optional arguments for the action. Must be JSON formatted."
 msgstr ""
 "Незадължителни аргументи за действието. Трябва да е форматиран в JSON."
 
-#: serializers.py:51 source_backends/sane_scanner_backends.py:44
+#: serializers.py:52 source_backends/sane_scanner_backends.py:45
 msgid "Arguments"
 msgstr "Аргументи"
 
@@ -199,15 +199,128 @@ msgstr ""
 msgid "Arguments to pass to the SOURCES_SOURCE_CACHE_STORAGE_BACKEND."
 msgstr "Аргументи за предаване към SOURCES_SOURCE_CACHE_STORAGE_BACKEND."
 
-#: source_backends/email_backends.py:37
+#: source_backends/email_backends.py:45
+msgid "Host"
+msgstr "Хост"
+
+#: source_backends/email_backends.py:54
+msgid "SSL"
+msgstr "SSL"
+
+#: source_backends/email_backends.py:60
+msgid ""
+"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
+"for IMAP over SSL."
+msgstr ""
+"Типичните възможности за избор са 110 за POP3, 995 за POP3 над SSL, 143 за "
+"IMAP, 993 за IMAP над SSL."
+
+#: source_backends/email_backends.py:66
+msgid "Port"
+msgstr "Порт"
+
+#: source_backends/email_backends.py:73
+msgid "Username"
+msgstr "Име на потребител"
+
+#: source_backends/email_backends.py:80
+msgid "Password"
+msgstr "Парола"
+
+#: source_backends/email_backends.py:87
+msgid ""
+"Name of the attachment that will contains the metadata type names and value "
+"pairs to be assigned to the rest of the downloaded attachments."
+msgstr ""
+"Име на прикачения файл, който ще съдържа имена на метаданни и двойки "
+"стойности, които ще бъдат присвоени на останалите изтеглени прикачени "
+"файлове."
+
+#: source_backends/email_backends.py:94
+msgid "Metadata attachment name"
+msgstr "Име за прикачени метаданни"
+
+#: source_backends/email_backends.py:100
+msgid ""
+"Select a metadata type to store the email's \"from\" value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
+"Изберете тип метаданни за съхраняване стойността „от“ на имейла. Трябва да е"
+" валиден тип метаданни за избрания преди това тип документ."
+
+#: source_backends/email_backends.py:110
+msgid "From metadata type"
+msgstr "От тип метаданни"
+
+#: source_backends/email_backends.py:118
+msgid ""
+"Select a metadata type to store the email's subject value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
+"Изберете типа метаданни за запазване стойността на темата на имейла. Трябва "
+"да е валиден тип метаданни за избрания преди това тип документ."
+
+#: source_backends/email_backends.py:128
+msgid "Subject metadata type"
+msgstr "Тип метаданните за темата"
+
+#: source_backends/email_backends.py:136
+msgid ""
+"Select a metadata type to store the email's message ID value. Must be a "
+"valid metadata type for the document type selected previously."
+msgstr ""
+"Изберете тип метаданни, за съхраняване стойността на идентификатора на имейл"
+" съобщението. Трябва да е валиден тип метаданни за предварително избрания "
+"тип документ."
+
+#: source_backends/email_backends.py:146
+msgid "Message ID metadata type"
+msgstr "Тип метаданни за ID на съобщението"
+
+#: source_backends/email_backends.py:154
+msgid "Store the body of the email as a text document."
+msgstr "Съхраняване основния текст на имейла като текстов документ."
+
+#: source_backends/email_backends.py:156
+msgid "Store email body"
+msgstr "Съхраняване основния текст на имейла"
+
+#: source_backends/email_backends.py:303
+#, python-format
+msgid ""
+"\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr ""
+"„От„ тип метаданни “%(metadata_type)s“ не е валиден за типа документ: "
+"%(document_type)s"
+
+#: source_backends/email_backends.py:317
+#, python-format
+msgid ""
+"Subject metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr ""
+"Типът метаданни за темата &quot;%(metadata_type)s&quot; не е валиден за типа"
+" документ: %(document_type)s"
+
+#: source_backends/email_backends.py:331
+#, python-format
+msgid ""
+"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
+" type: %(document_type)s"
+msgstr ""
+"Тип метаданни за идентификатор на съобщението „%(metadata_type)s“ не е "
+"валиден за типа документ: %(document_type)s"
+
+#: source_backends/email_backends.py:379
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "IMAP пощенска кутия, от която да проверявате за съобщения."
 
-#: source_backends/email_backends.py:41
+#: source_backends/email_backends.py:383
 msgid "Mailbox"
 msgstr "Пощенска кутия"
 
-#: source_backends/email_backends.py:48
+#: source_backends/email_backends.py:390
 msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
@@ -216,11 +329,11 @@ msgstr ""
 "Използвайте формата, посочен в "
 "https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
-#: source_backends/email_backends.py:52
+#: source_backends/email_backends.py:394
 msgid "Search criteria"
 msgstr "Критерии за търсене"
 
-#: source_backends/email_backends.py:60
+#: source_backends/email_backends.py:402
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
 "command per line. Use the commands specified in "
@@ -232,206 +345,93 @@ msgstr ""
 "https://tools.ietf.org/html/rfc2060.html#section-6.4.6 или персонализираните"
 " команди за вашия IMAP сървър."
 
-#: source_backends/email_backends.py:65
+#: source_backends/email_backends.py:407
 msgid "Store commands"
 msgstr "Съхраняване на команди"
 
-#: source_backends/email_backends.py:72
+#: source_backends/email_backends.py:414
 msgid "Execute the IMAP expunge command after processing each email message."
 msgstr ""
 "Изпълнете командата IMAP expunge след обработка на всяко имейл съобщение."
 
-#: source_backends/email_backends.py:75
+#: source_backends/email_backends.py:417
 msgid "Execute expunge"
 msgstr "Премахнете изцяло"
 
-#: source_backends/email_backends.py:82
+#: source_backends/email_backends.py:424
 msgid "IMAP Mailbox to which processed messages will be copied."
 msgstr ""
 "IMAP пощенска кутия, в която ще бъдат копирани обработените съобщения."
 
-#: source_backends/email_backends.py:84
+#: source_backends/email_backends.py:426
 msgid "Destination mailbox"
 msgstr "Пощенска кутия на получателя"
 
-#: source_backends/email_backends.py:90
+#: source_backends/email_backends.py:432
 msgid "IMAP email"
 msgstr "IMAP имейл"
 
-#: source_backends/email_backends.py:216
+#: source_backends/email_backends.py:559
 msgid "Timeout"
 msgstr "Изтичане на времето"
 
-#: source_backends/email_backends.py:219
+#: source_backends/email_backends.py:562
 msgid "POP3 email"
 msgstr "POP3 имейл"
 
-#: source_backends/literals.py:15 source_backends/literals.py:20
+#: source_backends/literals.py:18 source_backends/literals.py:23
 msgid "Always"
 msgstr "Винаги"
 
-#: source_backends/literals.py:16 source_backends/literals.py:21
+#: source_backends/literals.py:19 source_backends/literals.py:24
 msgid "Never"
 msgstr "Никога"
 
-#: source_backends/literals.py:22
+#: source_backends/literals.py:25
 msgid "Ask user"
 msgstr "Питане на потребителя"
 
-#: source_backends/mixins.py:139
+#: source_backends/mixins.py:132
 msgid "Uncompress"
 msgstr "Разкомпресиране"
 
-#: source_backends/mixins.py:143
+#: source_backends/mixins.py:136
 msgid "Whether to expand or not compressed archives."
 msgstr "Дали да разархивират или не компресирате архиви."
 
-#: source_backends/mixins.py:167
+#: source_backends/mixins.py:160
 msgid "Expand compressed files"
 msgstr "Разархивиране на компресирани файлове"
 
-#: source_backends/mixins.py:169
+#: source_backends/mixins.py:162
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr "Качване съдържанието на  компресиран файл като отделни документи."
 
-#: source_backends/mixins.py:202
-msgid "Host"
-msgstr "Хост"
-
-#: source_backends/mixins.py:211
-msgid "SSL"
-msgstr "SSL"
-
-#: source_backends/mixins.py:216
-msgid ""
-"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
-"for IMAP over SSL."
-msgstr ""
-"Типичните възможности за избор са 110 за POP3, 995 за POP3 над SSL, 143 за "
-"IMAP, 993 за IMAP над SSL."
-
-#: source_backends/mixins.py:222
-msgid "Port"
-msgstr "Порт"
-
-#: source_backends/mixins.py:229
-msgid "Username"
-msgstr "Име на потребител"
-
-#: source_backends/mixins.py:236
-msgid "Password"
-msgstr "Парола"
-
-#: source_backends/mixins.py:243
-msgid ""
-"Name of the attachment that will contains the metadata type names and value "
-"pairs to be assigned to the rest of the downloaded attachments."
-msgstr ""
-"Име на прикачения файл, който ще съдържа имена на метаданни и двойки "
-"стойности, които ще бъдат присвоени на останалите изтеглени прикачени "
-"файлове."
-
-#: source_backends/mixins.py:250
-msgid "Metadata attachment name"
-msgstr "Име за прикачени метаданни"
-
-#: source_backends/mixins.py:256
-msgid ""
-"Select a metadata type to store the email's \"from\" value. Must be a valid "
-"metadata type for the document type selected previously."
-msgstr ""
-"Изберете тип метаданни за съхраняване стойността „от“ на имейла. Трябва да е"
-" валиден тип метаданни за избрания преди това тип документ."
-
-#: source_backends/mixins.py:266
-msgid "From metadata type"
-msgstr "От тип метаданни"
-
-#: source_backends/mixins.py:274
-msgid ""
-"Select a metadata type to store the email's subject value. Must be a valid "
-"metadata type for the document type selected previously."
-msgstr ""
-"Изберете типа метаданни за запазване стойността на темата на имейла. Трябва "
-"да е валиден тип метаданни за избрания преди това тип документ."
-
-#: source_backends/mixins.py:284
-msgid "Subject metadata type"
-msgstr "Тип метаданните за темата"
-
-#: source_backends/mixins.py:292
-msgid ""
-"Select a metadata type to store the email's message ID value. Must be a "
-"valid metadata type for the document type selected previously."
-msgstr ""
-"Изберете тип метаданни, за съхраняване стойността на идентификатора на имейл"
-" съобщението. Трябва да е валиден тип метаданни за предварително избрания "
-"тип документ."
-
-#: source_backends/mixins.py:302
-msgid "Message ID metadata type"
-msgstr "Тип метаданни за ID на съобщението"
-
-#: source_backends/mixins.py:310
-msgid "Store the body of the email as a text document."
-msgstr "Съхраняване основния текст на имейла като текстов документ."
-
-#: source_backends/mixins.py:312
-msgid "Store email body"
-msgstr "Съхраняване основния текст на имейла"
-
-#: source_backends/mixins.py:459
-#, python-format
-msgid ""
-"\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
-"type: %(document_type)s"
-msgstr ""
-"„От„ тип метаданни “%(metadata_type)s“ не е валиден за типа документ: "
-"%(document_type)s"
-
-#: source_backends/mixins.py:473
-#, python-format
-msgid ""
-"Subject metadata type \"%(metadata_type)s\" is not valid for the document "
-"type: %(document_type)s"
-msgstr ""
-"Типът метаданни за темата &quot;%(metadata_type)s&quot; не е валиден за типа"
-" документ: %(document_type)s"
-
-#: source_backends/mixins.py:487
-#, python-format
-msgid ""
-"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
-" type: %(document_type)s"
-msgstr ""
-"Тип метаданни за идентификатор на съобщението „%(metadata_type)s“ не е "
-"валиден за типа документ: %(document_type)s"
-
-#: source_backends/mixins.py:588
+#: source_backends/mixins.py:251
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Задайте тип документ за документи, качени от този източник."
 
-#: source_backends/mixins.py:594
+#: source_backends/mixins.py:257
 msgid "Document type"
 msgstr "Тип документ"
 
-#: source_backends/mixins.py:601
+#: source_backends/mixins.py:264
 msgid "Interval in seconds between checks for new documents."
 msgstr "Интервал в секунди между проверки за нови документи."
 
-#: source_backends/mixins.py:607
+#: source_backends/mixins.py:270
 msgid "Interval"
 msgstr "Интервал"
 
-#: source_backends/sane_scanner_backends.py:30
+#: source_backends/sane_scanner_backends.py:31
 msgid "Device name as returned by the SANE backend."
 msgstr "Име на устройството, както е върнато от сървъра SANE."
 
-#: source_backends/sane_scanner_backends.py:33
+#: source_backends/sane_scanner_backends.py:34
 msgid "Device name"
 msgstr "Име на устройството"
 
-#: source_backends/sane_scanner_backends.py:39
+#: source_backends/sane_scanner_backends.py:40
 msgid ""
 "YAML formatted arguments to pass to the `scanimage` command. The arguments "
 "will change depending on the device. Execute `scanimage --help --device-"
@@ -441,30 +441,30 @@ msgstr ""
 "Аргументите ще се променят в зависимост от устройството. Изпълнете "
 "`scanimage --help --device-name = DEVICE` за списъка с поддържани аргументи."
 
-#: source_backends/sane_scanner_backends.py:48
+#: source_backends/sane_scanner_backends.py:49
 msgid "SANE Scanner"
 msgstr "SANE скенер"
 
-#: source_backends/sane_scanner_backends.py:106
+#: source_backends/sane_scanner_backends.py:108
 msgid "Document properties"
 msgstr "Свойства на документа"
 
-#: source_backends/sane_scanner_backends.py:107
+#: source_backends/sane_scanner_backends.py:109
 msgid "Scan"
 msgstr "Сканиране"
 
 #: source_backends/staging_folder_backends.py:222
-#: source_backends/staging_folder_backends.py:492
+#: source_backends/staging_folder_backends.py:493
 msgid "Staging file"
 msgstr "Изходен файл"
 
 #: source_backends/staging_folder_backends.py:253
-#: source_backends/watch_folder_backends.py:31
+#: source_backends/watch_folder_backends.py:38
 msgid "Server side filesystem path."
 msgstr "Пътят на файловата система към сървъра."
 
 #: source_backends/staging_folder_backends.py:258
-#: source_backends/watch_folder_backends.py:36
+#: source_backends/watch_folder_backends.py:43
 msgid "Folder path"
 msgstr "Пътека към папката"
 
@@ -507,22 +507,22 @@ msgstr "Създаден"
 msgid "Thumbnail"
 msgstr "Умалено изображение"
 
-#: source_backends/staging_folder_backends.py:472
+#: source_backends/staging_folder_backends.py:473
 #, python-format
 msgid "Error deleting staging file; %s"
 msgstr "Грешка при изтриването на изходен файл; %s"
 
-#: source_backends/staging_folder_backends.py:493
+#: source_backends/staging_folder_backends.py:494
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Да се изтрие ли изходния файл &quot;%s&quot;?"
 
-#: source_backends/staging_folder_backends.py:519
+#: source_backends/staging_folder_backends.py:520
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr "Невъзможно е да се получи списък с изходни файлове: %s"
 
-#: source_backends/staging_folder_backends.py:546
+#: source_backends/staging_folder_backends.py:547
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
@@ -532,11 +532,11 @@ msgstr ""
 "означава, че потребителският акаунт на операционната система, използвана за "
 "Mayan EDMS няма необходимите разрешения във файлова система за папката."
 
-#: source_backends/staging_folder_backends.py:553
+#: source_backends/staging_folder_backends.py:554
 msgid "No staging files available"
 msgstr "Няма налични изходни файлове"
 
-#: source_backends/watch_folder_backends.py:43
+#: source_backends/watch_folder_backends.py:50
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
@@ -544,11 +544,27 @@ msgstr ""
 "Ако е отметнато, ще бъде сканиран не само пътят на папката за файлове, но и "
 "нейните поддиректории."
 
-#: source_backends/watch_folder_backends.py:46
+#: source_backends/watch_folder_backends.py:53
 msgid "Include subdirectories?"
 msgstr "Да се включат ли поддиректории?"
 
-#: source_backends/watch_folder_backends.py:50
+#: source_backends/watch_folder_backends.py:60
+msgid "Regular expression used to select which files to upload."
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:62
+msgid "Include regular expression"
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:69
+msgid "Regular expression used to exclude which files to upload."
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:71
+msgid "Exclude regular expression"
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:75
 msgid "Watch folder"
 msgstr "Наблюдавана папка"
 
@@ -597,7 +613,7 @@ msgstr "Изчистване"
 msgid "Server responded with {{statusCode}} code."
 msgstr "Сървърът отговори с {{statusCode}} код."
 
-#: views/base.py:53 wizards.py:52
+#: views/base.py:53 wizards.py:54
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
@@ -707,23 +723,23 @@ msgstr "Изходният тест е на опашка."
 msgid "Select document type"
 msgstr "Изберете типа документ"
 
-#: wizards.py:71
+#: wizards.py:73
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr "Стъпка %(step)d от %(total_steps)d: %(step_label)s"
 
-#: wizards.py:76
+#: wizards.py:78
 msgid "Document upload wizard"
 msgstr "Съветник за качване на документи"
 
-#: wizards.py:85
+#: wizards.py:87
 msgid "First"
 msgstr "Първо"
 
-#: wizards.py:91
+#: wizards.py:93
 msgid "Previous"
 msgstr "Предна"
 
-#: wizards.py:98
+#: wizards.py:100
 msgid "Next"
 msgstr "Следваща"

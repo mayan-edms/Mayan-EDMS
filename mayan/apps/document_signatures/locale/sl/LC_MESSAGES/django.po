@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Jože Detečnik <joze.detecnik@3tav.si>, 2021
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,7 +65,7 @@ msgstr ""
 msgid "Key"
 msgstr ""
 
-#: forms.py:22 serializers.py:66 workflow_actions.py:30
+#: forms.py:22 serializers.py:67 workflow_actions.py:30
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document file."
@@ -159,6 +159,10 @@ msgstr "Podrobnosti"
 msgid "Signatures"
 msgstr ""
 
+#: managers.py:95
+msgid "signed"
+msgstr ""
+
 #: models.py:46
 msgid "Document file"
 msgstr ""
@@ -244,7 +248,7 @@ msgid "Verify document signatures"
 msgstr ""
 
 #: permissions.py:34
-msgid "View details of document signatures"
+msgid "View document signatures"
 msgstr ""
 
 #: queues.py:13
@@ -268,7 +272,7 @@ msgid "Refresh existing signature information"
 msgstr ""
 
 #: serializers.py:60
-msgid "Primary key of the tag to add to the document."
+msgid "Primary key of the secret key used to sign the document file."
 msgstr ""
 
 #: settings.py:20

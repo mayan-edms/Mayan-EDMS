@@ -38,6 +38,7 @@ class Announcement(ExtraDataModelMixin, models.Model):
     objects = AnnouncementManager()
 
     class Meta:
+        ordering = ('label',)
         verbose_name = _('Announcement')
         verbose_name_plural = _('Announcements')
 

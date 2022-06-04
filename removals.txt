@@ -3,10 +3,12 @@ codecov
 cssmin
 django-autoadmin
 django-celery
+django-colorful
 django-compressor
 django-downloadview
 django-environ
 django-filetransfers
+django-pure-pagination
 django-rest-swagger
 django-suit
 django-test-without-migrations

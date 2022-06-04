@@ -5,6 +5,9 @@ from rest_framework import status
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
+from ..events import (
+    event_workflow_instance_created, event_workflow_instance_transitioned
+)
 from ..permissions import (
     permission_workflow_instance_transition,
     permission_workflow_template_view, permission_workflow_tools
@@ -57,7 +60,7 @@ class WorkflowInstanceAPIViewTestCase(
 
     def test_workflow_instance_detail_api_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
 
@@ -75,7 +78,7 @@ class WorkflowInstanceAPIViewTestCase(
             permission=permission_workflow_template_view
         )
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
 
@@ -84,7 +87,7 @@ class WorkflowInstanceAPIViewTestCase(
         response = self._request_test_workflow_instance_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['id'], self.test_document.workflows.first().pk
+            response.data['id'], self._test_document.workflows.first().pk
         )
 
         events = self._get_test_events()
@@ -96,11 +99,11 @@ class WorkflowInstanceAPIViewTestCase(
             permission=permission_workflow_template_view
         )
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -121,7 +124,7 @@ class WorkflowInstanceAPIViewTestCase(
 
     def test_workflow_instance_list_api_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
 
@@ -154,7 +157,7 @@ class WorkflowInstanceAPIViewTestCase(
             permission=permission_workflow_template_view
         )
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
 
@@ -164,7 +167,7 @@ class WorkflowInstanceAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['id'],
-            self.test_document.workflows.first().pk
+            self._test_document.workflows.first().pk
         )
 
         events = self._get_test_events()
@@ -176,11 +179,11 @@ class WorkflowInstanceAPIViewTestCase(
             permission=permission_workflow_template_view
         )
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -191,7 +194,7 @@ class WorkflowInstanceAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_workflow_instance_log_entries_create_api_view_no_permission(self):
-        workflow_instance = self.test_document.workflows.first()
+        workflow_instance = self._test_document.workflows.first()
 
         self._clear_events()
 
@@ -210,7 +213,7 @@ class WorkflowInstanceAPIViewTestCase(
             obj=self._test_workflow_template,
             permission=permission_workflow_instance_transition
         )
-        workflow_instance = self.test_document.workflows.first()
+        workflow_instance = self._test_document.workflows.first()
 
         self._clear_events()
 
@@ -229,7 +232,7 @@ class WorkflowInstanceAPIViewTestCase(
             obj=self._test_workflow_template_transition,
             permission=permission_workflow_instance_transition
         )
-        workflow_instance = self.test_document.workflows.first()
+        workflow_instance = self._test_document.workflows.first()
 
         self._clear_events()
 
@@ -245,14 +248,14 @@ class WorkflowInstanceAPIViewTestCase(
 
     def test_workflow_instance_log_entries_create_api_view_with_document_and_transition_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
             obj=self._test_workflow_template_transition,
             permission=permission_workflow_instance_transition
         )
-        workflow_instance = self.test_document.workflows.first()
+        workflow_instance = self._test_document.workflows.first()
 
         self._clear_events()
 
@@ -264,20 +267,29 @@ class WorkflowInstanceAPIViewTestCase(
         self.assertEqual(workflow_instance.log_entries.count(), 1)
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(
+            events[0].target, self._test_document.workflows.first()
+        )
+        self.assertEqual(
+            events[0].verb, event_workflow_instance_transitioned.id
+        )
 
     def test_trashed_document_workflow_instance_log_entries_create_api_view_with_document_and_transition_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
             obj=self._test_workflow_template_transition,
             permission=permission_workflow_instance_transition
         )
-        workflow_instance = self.test_document.workflows.first()
+        workflow_instance = self._test_document.workflows.first()
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -296,7 +308,7 @@ class WorkflowInstanceAPIViewTestCase(
             obj=self._test_workflow_template,
             permission=permission_workflow_instance_transition
         )
-        workflow_instance = self.test_document.workflows.first()
+        workflow_instance = self._test_document.workflows.first()
 
         self._clear_events()
 
@@ -312,14 +324,14 @@ class WorkflowInstanceAPIViewTestCase(
 
     def test_workflow_instance_log_entries_create_api_view_with_document_and_workflow_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
             obj=self._test_workflow_template,
             permission=permission_workflow_instance_transition
         )
-        workflow_instance = self.test_document.workflows.first()
+        workflow_instance = self._test_document.workflows.first()
 
         self._clear_events()
 
@@ -331,20 +343,29 @@ class WorkflowInstanceAPIViewTestCase(
         self.assertEqual(workflow_instance.log_entries.count(), 1)
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(
+            events[0].target, self._test_document.workflows.first()
+        )
+        self.assertEqual(
+            events[0].verb, event_workflow_instance_transitioned.id
+        )
 
     def test_trashed_document_workflow_instance_log_entries_create_api_view_with_document_and_workflow_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
             obj=self._test_workflow_template,
             permission=permission_workflow_instance_transition
         )
-        workflow_instance = self.test_document.workflows.first()
+        workflow_instance = self._test_document.workflows.first()
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -360,14 +381,14 @@ class WorkflowInstanceAPIViewTestCase(
 
     def test_workflow_instance_log_entries_create_api_view_with_extra_data_document_and_workflow_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
             obj=self._test_workflow_template,
             permission=permission_workflow_instance_transition
         )
-        workflow_instance = self.test_document.workflows.first()
+        workflow_instance = self._test_document.workflows.first()
 
         self._clear_events()
 
@@ -387,7 +408,16 @@ class WorkflowInstanceAPIViewTestCase(
         )
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(
+            events[0].target, self._test_document.workflows.first()
+        )
+        self.assertEqual(
+            events[0].verb, event_workflow_instance_transitioned.id
+        )
 
     def test_workflow_instance_log_entries_list_api_view_no_permission(self):
         self._create_test_workflow_template_instance_log_entry()
@@ -404,7 +434,7 @@ class WorkflowInstanceAPIViewTestCase(
         self._create_test_workflow_template_instance_log_entry()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
 
@@ -439,7 +469,7 @@ class WorkflowInstanceAPIViewTestCase(
         self._create_test_workflow_template_instance_log_entry()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
         self.grant_access(
@@ -462,7 +492,7 @@ class WorkflowInstanceAPIViewTestCase(
         self._create_test_workflow_template_instance_log_entry()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
         self.grant_access(
@@ -470,7 +500,7 @@ class WorkflowInstanceAPIViewTestCase(
             permission=permission_workflow_template_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -499,14 +529,14 @@ class WorkflowInstanceLaunchAPIViewTestCase(
     def _request_test_workflow_instance_launch_api_view(self):
         return self.post(
             viewname='rest_api:workflow-instance-launch', kwargs={
-                'document_id': self.test_document.pk
+                'document_id': self._test_document.pk
             }, data={
                 'workflow_template_id': self._test_workflow_template.pk
             }
         )
 
     def test_workflow_instance_api_view_no_permission(self):
-        test_document_workflow_instance_count = self.test_document.workflows.count()
+        test_document_workflow_instance_count = self._test_document.workflows.count()
 
         self._clear_events()
 
@@ -514,12 +544,12 @@ class WorkflowInstanceLaunchAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(
-            self.test_document.workflows.count(),
+            self._test_document.workflows.count(),
             test_document_workflow_instance_count
         )
         self.assertNotEqual(
             list(
-                self.test_document.workflows.values_list(
+                self._test_document.workflows.values_list(
                     'workflow', flat=True
                 )
             ), [self._test_workflow_template.pk]
@@ -530,10 +560,10 @@ class WorkflowInstanceLaunchAPIViewTestCase(
 
     def test_workflow_instance_api_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_workflow_tools
+            obj=self._test_document, permission=permission_workflow_tools
         )
 
-        test_document_workflow_instance_count = self.test_document.workflows.count()
+        test_document_workflow_instance_count = self._test_document.workflows.count()
 
         self._clear_events()
 
@@ -541,12 +571,12 @@ class WorkflowInstanceLaunchAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
         self.assertEqual(
-            self.test_document.workflows.count(),
+            self._test_document.workflows.count(),
             test_document_workflow_instance_count
         )
         self.assertNotEqual(
             list(
-                self.test_document.workflows.values_list(
+                self._test_document.workflows.values_list(
                     'workflow', flat=True
                 )
             ), [self._test_workflow_template.pk]
@@ -561,7 +591,7 @@ class WorkflowInstanceLaunchAPIViewTestCase(
             permission=permission_workflow_tools
         )
 
-        test_document_workflow_instance_count = self.test_document.workflows.count()
+        test_document_workflow_instance_count = self._test_document.workflows.count()
 
         self._clear_events()
 
@@ -569,12 +599,12 @@ class WorkflowInstanceLaunchAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(
-            self.test_document.workflows.count(),
+            self._test_document.workflows.count(),
             test_document_workflow_instance_count
         )
         self.assertNotEqual(
             list(
-                self.test_document.workflows.values_list(
+                self._test_document.workflows.values_list(
                     'workflow', flat=True
                 )
             ), [self._test_workflow_template.pk]
@@ -585,14 +615,14 @@ class WorkflowInstanceLaunchAPIViewTestCase(
 
     def test_workflow_instance_api_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_workflow_tools
+            obj=self._test_document, permission=permission_workflow_tools
         )
         self.grant_access(
             obj=self._test_workflow_template,
             permission=permission_workflow_tools
         )
 
-        test_document_workflow_instance_count = self.test_document.workflows.count()
+        test_document_workflow_instance_count = self._test_document.workflows.count()
 
         self._clear_events()
 
@@ -600,19 +630,28 @@ class WorkflowInstanceLaunchAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
-            self.test_document.workflows.count(),
+            self._test_document.workflows.count(),
             test_document_workflow_instance_count + 1
         )
         self.assertEqual(
             list(
-                self.test_document.workflows.values_list(
+                self._test_document.workflows.values_list(
                     'workflow', flat=True
                 )
             ), [self._test_workflow_template.pk]
         )
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self._test_document)
+        self.assertEqual(
+            events[0].actor, self._test_document.workflows.first()
+        )
+        self.assertEqual(
+            events[0].target, self._test_document.workflows.first()
+        )
+        self.assertEqual(events[0].verb, event_workflow_instance_created.id)
 
 
 class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
@@ -629,7 +668,7 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
         self._create_test_document_stub()
-        self._test_workflow_instance = self.test_document.workflows.first()
+        self._test_workflow_instance = self._test_document.workflows.first()
 
     def test_workflow_instance_log_entry_transition_list_api_view_no_permission(self):
         self._clear_events()
@@ -642,7 +681,7 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
 
     def test_workflow_instance_log_entry_transition_list_api_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
 
@@ -671,7 +710,7 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
 
     def test_workflow_instance_log_entry_transition_list_api_view_with_document_and_template_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
         self.grant_access(
@@ -704,7 +743,7 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
 
     def test_workflow_instance_log_entry_transition_list_api_view_with_document_and_transition_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
         self.grant_access(
@@ -741,7 +780,7 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
 
     def test_workflow_instance_log_entry_transition_list_api_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
         self.grant_access(
@@ -768,7 +807,7 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
 
     def test_trashed_document_workflow_instance_log_entry_transition_list_api_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
         self.grant_access(
@@ -780,7 +819,7 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
             permission=permission_workflow_instance_transition
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 

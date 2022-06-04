@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,108 +20,108 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:75 events.py:6 forms.py:42 links.py:46 links.py:87 links.py:240
+#: apps.py:76 events.py:6 forms.py:42 links.py:46 links.py:87 links.py:240
 #: links.py:264 models/workflow_models.py:67 settings.py:13
 #: views/workflow_proxy_views.py:64 views/workflow_template_views.py:260
 #: workflow_actions.py:88
 msgid "Workflows"
 msgstr "Radni tok"
 
-#: apps.py:178 apps.py:185
+#: apps.py:185 apps.py:192
 msgid "Current state of a workflow"
 msgstr "Trenutno stanje toka posla"
 
-#: apps.py:179
+#: apps.py:186
 msgid "Return the current state of the selected workflow."
 msgstr ""
 
-#: apps.py:186
+#: apps.py:193
 msgid ""
 "Return the completion value of the current state of the selected workflow."
 msgstr ""
 
-#: apps.py:241
+#: apps.py:248
 msgid ""
 "Return the last workflow instance log entry. The log entry itself has the "
 "following fields: datetime, transition, user, and comment."
 msgstr ""
 
-#: apps.py:244
+#: apps.py:251
 msgid "Get last log entry"
 msgstr ""
 
-#: apps.py:249
+#: apps.py:256
 msgid ""
 "Return the current context dictionary which includes runtime data from the "
 "workflow transition fields."
 msgstr ""
 
-#: apps.py:251
+#: apps.py:258
 msgid "Get the context"
 msgstr ""
 
-#: apps.py:256
+#: apps.py:263
 msgid "Return the transition of the workflow instance."
 msgstr ""
 
-#: apps.py:257
+#: apps.py:264
 msgid "Get last transition"
 msgstr ""
 
-#: apps.py:271 apps.py:283 apps.py:292 apps.py:298
+#: apps.py:278 apps.py:290 apps.py:299 apps.py:305
 msgid "None"
 msgstr "Nijedno"
 
-#: apps.py:279
+#: apps.py:286
 msgid "Current state"
 msgstr "Trenutna stanje"
 
-#: apps.py:284 apps.py:308 models/workflow_instance_models.py:186
+#: apps.py:291 apps.py:315 models/workflow_instance_models.py:182
 msgid "User"
 msgstr "Korisnik"
 
-#: apps.py:288
+#: apps.py:295
 msgid "Last transition"
 msgstr "Poslednja tranzicija"
 
-#: apps.py:293 apps.py:304
+#: apps.py:300 apps.py:311
 msgid "Date and time"
 msgstr "Datum i vreme"
 
-#: apps.py:299 models/workflow_state_models.py:68
+#: apps.py:306 models/workflow_state_models.py:68
 msgid "Completion"
 msgstr "Završetak"
 
-#: apps.py:329
+#: apps.py:336
 msgid "Additional details"
 msgstr "Dodatni detalji"
 
-#: apps.py:356
+#: apps.py:367
 msgid "When?"
 msgstr "Kada?"
 
-#: apps.py:360
+#: apps.py:371
 msgid "Action type"
 msgstr "Vrsta akcije"
 
-#: apps.py:391
+#: apps.py:402
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
 msgstr ""
 
-#: apps.py:393
+#: apps.py:404
 msgid "Triggers"
 msgstr "Uzroci"
 
-#: apps.py:407 models/workflow_transition_models.py:139
+#: apps.py:418 models/workflow_transition_models.py:140
 msgid "Type"
 msgstr "Tip"
 
-#: apps.py:415
+#: apps.py:426
 msgid "Widget"
 msgstr ""
 
-#: apps.py:426 apps.py:432
+#: apps.py:437 apps.py:443
 msgid "Documents"
 msgstr "Dokumenti"
 
@@ -151,13 +151,13 @@ msgid "Namespace"
 msgstr "Imenovani prostor"
 
 #: forms.py:135 models/workflow_models.py:54
-#: models/workflow_state_models.py:55 models/workflow_state_models.py:172
+#: models/workflow_state_models.py:55 models/workflow_state_models.py:180
 #: models/workflow_transition_models.py:40
-#: models/workflow_transition_models.py:150
+#: models/workflow_transition_models.py:151
 msgid "Label"
 msgstr "Labela"
 
-#: forms.py:139 models/workflow_state_models.py:174
+#: forms.py:139 models/workflow_state_models.py:182
 msgid "Enabled"
 msgstr "Omogućeno"
 
@@ -173,13 +173,13 @@ msgstr "Da"
 msgid "Select a transition to execute in the next step."
 msgstr ""
 
-#: forms.py:191 links.py:246 models/workflow_instance_models.py:182
-#: models/workflow_transition_models.py:136
-#: models/workflow_transition_models.py:220
+#: forms.py:191 links.py:246 models/workflow_instance_models.py:178
+#: models/workflow_transition_models.py:137
+#: models/workflow_transition_models.py:221
 msgid "Transition"
 msgstr "Tranzicija"
 
-#: handlers.py:91
+#: handlers.py:97
 #, python-format
 msgid "Event trigger: %s"
 msgstr "Uzroci događaja: %s"
@@ -208,7 +208,7 @@ msgstr ""
 msgid "Preview"
 msgstr "Pregled"
 
-#: links.py:116
+#: links.py:116 models/workflow_state_models.py:103
 msgid "Actions"
 msgstr "Akcije"
 
@@ -244,7 +244,7 @@ msgstr ""
 msgid "Create field"
 msgstr ""
 
-#: links.py:225 models/workflow_transition_models.py:94
+#: links.py:225 models/workflow_transition_models.py:95
 msgid "Fields"
 msgstr ""
 
@@ -293,49 +293,49 @@ msgstr "Prilikom ulaska"
 msgid "On exit"
 msgstr "Na izlazu"
 
-#: models/workflow_instance_models.py:29 models/workflow_models.py:66
+#: models/workflow_instance_models.py:28 models/workflow_models.py:66
 #: models/workflow_state_models.py:51 models/workflow_transition_models.py:36
 msgid "Workflow"
 msgstr "Radni tok"
 
-#: models/workflow_instance_models.py:33
+#: models/workflow_instance_models.py:32
 msgid "Document"
 msgstr "Dokument"
 
-#: models/workflow_instance_models.py:36
+#: models/workflow_instance_models.py:35
 msgid "Context"
 msgstr ""
 
-#: models/workflow_instance_models.py:45
-#: models/workflow_instance_models.py:175
+#: models/workflow_instance_models.py:44
+#: models/workflow_instance_models.py:171
 msgid "Workflow instance"
 msgstr "Primjer posla"
 
-#: models/workflow_instance_models.py:46
+#: models/workflow_instance_models.py:45
 msgid "Workflow instances"
 msgstr "Primeri toka posla"
 
-#: models/workflow_instance_models.py:178
+#: models/workflow_instance_models.py:174
 msgid "Datetime"
 msgstr "Datum i vrijeme"
 
-#: models/workflow_instance_models.py:188 views/workflow_instance_views.py:135
+#: models/workflow_instance_models.py:184 views/workflow_instance_views.py:135
 msgid "Comment"
 msgstr "Komentar"
 
-#: models/workflow_instance_models.py:189
+#: models/workflow_instance_models.py:185
 msgid "Extra data"
 msgstr ""
 
-#: models/workflow_instance_models.py:193
+#: models/workflow_instance_models.py:189
 msgid "Workflow instance log entry"
 msgstr "Unos tragova u procesu toka posla"
 
-#: models/workflow_instance_models.py:194
+#: models/workflow_instance_models.py:190
 msgid "Workflow instance log entries"
 msgstr "Unos tragova u procesu toka posla"
 
-#: models/workflow_instance_models.py:201
+#: models/workflow_instance_models.py:197
 msgid "Not a valid transition choice."
 msgstr "Izbor tranzicije nije validan."
 
@@ -355,7 +355,7 @@ msgstr ""
 "Ova vrijednost će koristiti druge aplikacije za upućivanje na ovaj tok "
 "posla. Može sadržavati samo slova, brojeve i podvučice."
 
-#: models/workflow_models.py:50 models/workflow_transition_models.py:145
+#: models/workflow_models.py:50 models/workflow_transition_models.py:146
 msgid "Internal name"
 msgstr "Interno ime"
 
@@ -395,7 +395,7 @@ msgid ""
 "workflow. Use numbers without the percent sign."
 msgstr ""
 
-#: models/workflow_state_models.py:74 models/workflow_state_models.py:168
+#: models/workflow_state_models.py:74 models/workflow_state_models.py:176
 msgid "Workflow state"
 msgstr "Stanje radnog toka"
 
@@ -403,31 +403,31 @@ msgstr "Stanje radnog toka"
 msgid "Workflow states"
 msgstr "Stanje Radnog toka"
 
-#: models/workflow_state_models.py:171
+#: models/workflow_state_models.py:179
 msgid "A short text describing the action."
 msgstr ""
 
-#: models/workflow_state_models.py:178
+#: models/workflow_state_models.py:186
 msgid "At which moment of the state this action will execute."
 msgstr ""
 
-#: models/workflow_state_models.py:179
+#: models/workflow_state_models.py:187
 msgid "When"
 msgstr "Kada"
 
-#: models/workflow_state_models.py:183
+#: models/workflow_state_models.py:191
 msgid "The dotted Python path to the workflow action class to execute."
 msgstr "Podešena staza Python do klase akcije radnog toka."
 
-#: models/workflow_state_models.py:184
+#: models/workflow_state_models.py:192
 msgid "Entry action path"
 msgstr "Putanja za ulaznu akciju"
 
-#: models/workflow_state_models.py:187
+#: models/workflow_state_models.py:195
 msgid "Entry action data"
 msgstr "Podaci o ulaznoj akciji"
 
-#: models/workflow_state_models.py:191
+#: models/workflow_state_models.py:199
 msgid ""
 "The condition that will determine if this state action is executed or not. "
 "The condition is evaluated against the workflow instance. Conditions that do"
@@ -436,37 +436,37 @@ msgid ""
 "considered to be the logical true."
 msgstr ""
 
-#: models/workflow_state_models.py:197 models/workflow_transition_models.py:58
+#: models/workflow_state_models.py:205 models/workflow_transition_models.py:58
 msgid "Condition"
 msgstr ""
 
-#: models/workflow_state_models.py:203
+#: models/workflow_state_models.py:211
 msgid "Workflow state action"
 msgstr "Stanje akcije radnog toka"
 
-#: models/workflow_state_models.py:204
+#: models/workflow_state_models.py:212
 msgid "Workflow state actions"
 msgstr "Akcije stanja rada"
 
-#: models/workflow_state_models.py:261
+#: models/workflow_state_models.py:269
 msgid "Unknown action type"
 msgstr ""
 
-#: models/workflow_state_models.py:266
+#: models/workflow_state_models.py:274
 msgid ""
 "The state action will be executed, depending on the condition return value."
 msgstr ""
 
-#: models/workflow_state_models.py:269
-#: models/workflow_transition_models.py:114
+#: models/workflow_state_models.py:277
+#: models/workflow_transition_models.py:115
 msgid "Has a condition?"
 msgstr ""
 
-#: models/workflow_state_models.py:294
+#: models/workflow_state_models.py:302
 msgid "Workflow state runtime proxy"
 msgstr "Proxy za izvršavanje radnog procesa"
 
-#: models/workflow_state_models.py:295
+#: models/workflow_state_models.py:303
 msgid "Workflow state runtime proxies"
 msgstr "Radni proksi za izvršavanje posla"
 
@@ -499,72 +499,72 @@ msgstr "Prelazak na radni tok"
 msgid "Workflow transitions"
 msgstr "Prelazak na radni tok"
 
-#: models/workflow_transition_models.py:111
+#: models/workflow_transition_models.py:112
 msgid ""
 "The transition will be available, depending on the condition return value."
 msgstr ""
 
-#: models/workflow_transition_models.py:143
+#: models/workflow_transition_models.py:144
 msgid ""
 "The name that will be used to identify this field in other parts of the "
 "workflow system."
 msgstr ""
 
-#: models/workflow_transition_models.py:149
+#: models/workflow_transition_models.py:150
 msgid "The field name that will be shown on the user interface."
 msgstr ""
 
-#: models/workflow_transition_models.py:153
+#: models/workflow_transition_models.py:154
 msgid ""
 "An optional message that will help users better understand the purpose of "
 "the field and data to provide."
 msgstr ""
 
-#: models/workflow_transition_models.py:155
+#: models/workflow_transition_models.py:156
 msgid "Help text"
 msgstr ""
 
-#: models/workflow_transition_models.py:159
+#: models/workflow_transition_models.py:160
 msgid "Whether this fields needs to be filled out or not to proceed."
 msgstr ""
 
-#: models/workflow_transition_models.py:160
+#: models/workflow_transition_models.py:161
 msgid "Required"
 msgstr "Obavezno"
 
-#: models/workflow_transition_models.py:164
+#: models/workflow_transition_models.py:165
 msgid "An optional class to change the default presentation of the field."
 msgstr ""
 
-#: models/workflow_transition_models.py:165
+#: models/workflow_transition_models.py:166
 msgid "Widget class"
 msgstr ""
 
-#: models/workflow_transition_models.py:169
+#: models/workflow_transition_models.py:170
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
 msgstr ""
 
-#: models/workflow_transition_models.py:172
+#: models/workflow_transition_models.py:173
 msgid "Widget keyword arguments"
 msgstr ""
 
-#: models/workflow_transition_models.py:177
+#: models/workflow_transition_models.py:178
 msgid "Workflow transition field"
 msgstr ""
 
-#: models/workflow_transition_models.py:178
+#: models/workflow_transition_models.py:179
 msgid "Workflow transition fields"
 msgstr ""
 
-#: models/workflow_transition_models.py:224
+#: models/workflow_transition_models.py:225
 msgid "Event type"
 msgstr "Tip događaja"
 
-#: models/workflow_transition_models.py:228
+#: models/workflow_transition_models.py:230
 msgid "Workflow transition trigger event"
 msgstr "Događaji tranzicije radnog toka"
 
-#: models/workflow_transition_models.py:229
+#: models/workflow_transition_models.py:231
 msgid "Workflow transitions trigger events"
 msgstr "Događaji tranzicije radnog toka"
 
@@ -620,31 +620,44 @@ msgstr ""
 msgid "Document workflow transition comment"
 msgstr ""
 
-#: serializers.py:70
+#: serializers.py:29
+msgid "Primary key of the workflow template to launch."
+msgstr ""
+
+#: serializers.py:89
 msgid "Primary key of the document type to add to the workflow."
 msgstr ""
 
-#: serializers.py:79
+#: serializers.py:98
 msgid "Primary key of the document type to remove from the workflow."
 msgstr ""
 
-#: serializers.py:228
+#: serializers.py:263
 msgid "Primary key of the destination state to be added."
 msgstr "Primarni ključ odredišnog stanja koji treba dodati."
 
-#: serializers.py:236
+#: serializers.py:271
 msgid "Primary key of the origin state to be added."
 msgstr "Primarni ključ porekla stanja koji treba dodati."
 
-#: serializers.py:319
+#: serializers.py:361
+msgid "Event Type ID"
+msgstr ""
+
+#: serializers.py:451
+#, python-format
+msgid "Unknown or invalid event type ID `%s`"
+msgstr ""
+
+#: serializers.py:470
 msgid "Primary key of the transition to be added."
 msgstr "Primarni ključ tranzicije koji treba dodati."
 
-#: serializers.py:403
+#: serializers.py:554
 msgid "A link to the entire history of this workflow."
 msgstr "Veza na čitavu istoriju ovog toka posla."
 
-#: serializers.py:412
+#: serializers.py:563
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
@@ -843,85 +856,85 @@ msgstr ""
 msgid "This workflow doesn't have any states"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:38
+#: views/workflow_template_transition_views.py:43
 #, python-format
 msgid "Create transitions for workflow: %s"
 msgstr "Kreiranje prelazaka za radni tok: %s"
 
-#: views/workflow_template_transition_views.py:78
+#: views/workflow_template_transition_views.py:83
 #, python-format
 msgid "Delete workflow transition: %s?"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:106
+#: views/workflow_template_transition_views.py:111
 #, python-format
 msgid "Edit workflow transition: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:146
+#: views/workflow_template_transition_views.py:151
 msgid ""
 "Create a transition and use it to move a workflow from  one state to "
 "another."
 msgstr ""
 
-#: views/workflow_template_transition_views.py:150
+#: views/workflow_template_transition_views.py:155
 msgid "This workflow doesn't have any transitions"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:154
+#: views/workflow_template_transition_views.py:159
 #, python-format
 msgid "Transitions of workflow: %s"
 msgstr "Prelazak na radni tok: %s"
 
-#: views/workflow_template_transition_views.py:182
-#, python-format
-msgid "Error updating workflow transition trigger events; %s"
-msgstr "Greška u ažuriranju događaja pokretanja tranzicije tokom procesa; %s"
-
-#: views/workflow_template_transition_views.py:189
-msgid "Workflow transition trigger events updated successfully"
-msgstr "Događaji o pokretanju procesa prenosa posla uspešno su ažurirani"
-
-#: views/workflow_template_transition_views.py:201
-msgid ""
-"Triggers are events that cause this transition to execute automatically."
-msgstr ""
-
-#: views/workflow_template_transition_views.py:205
-#, python-format
-msgid "Workflow transition trigger events for: %s"
-msgstr "Događaji koji pokreću tranzistorski tok posla za: %s"
-
-#: views/workflow_template_transition_views.py:255
+#: views/workflow_template_transition_views.py:184
 #, python-format
 msgid "Create a field for workflow transition: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:289
+#: views/workflow_template_transition_views.py:218
 #, python-format
 msgid "Delete workflow transition field: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:323
+#: views/workflow_template_transition_views.py:252
 #, python-format
 msgid "Edit workflow transition field: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:362
+#: views/workflow_template_transition_views.py:291
 msgid ""
 "Workflow transition fields allow adding data to the workflow's context. This"
 " additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr ""
 
-#: views/workflow_template_transition_views.py:368
+#: views/workflow_template_transition_views.py:297
 msgid "There are no fields for this workflow transition"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:372
+#: views/workflow_template_transition_views.py:301
 #, python-format
 msgid "Fields for workflow transition: %s"
 msgstr ""
+
+#: views/workflow_template_transition_views.py:329
+#, python-format
+msgid "Error updating workflow transition trigger events; %s"
+msgstr "Greška u ažuriranju događaja pokretanja tranzicije tokom procesa; %s"
+
+#: views/workflow_template_transition_views.py:336
+msgid "Workflow transition trigger events updated successfully"
+msgstr "Događaji o pokretanju procesa prenosa posla uspešno su ažurirani"
+
+#: views/workflow_template_transition_views.py:348
+msgid ""
+"Triggers are events that cause this transition to execute automatically."
+msgstr ""
+
+#: views/workflow_template_transition_views.py:352
+#, python-format
+msgid "Workflow transition trigger events for: %s"
+msgstr "Događaji koji pokreću tranzistorski tok posla za: %s"
 
 #: views/workflow_template_views.py:39
 msgid "Available workflows"

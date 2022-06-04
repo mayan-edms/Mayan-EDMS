@@ -3,24 +3,24 @@ import uuid
 from django.db import connection, migrations, models
 
 
-def operation_forwards(apps, schema_editor):
+def code_change_uuid_field_type(apps, schema_editor):
     if not schema_editor.connection.vendor == 'oracle':
         # Skip this migration for Oracle
         # GitHub issue #251
         migrations.AlterField(
             model_name='document',
             name='uuid',
-            field=models.UUIDField(default=uuid.uuid4, editable=False),
+            field=models.UUIDField(default=uuid.uuid4, editable=False)
         )
 
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('documents', '0031_convert_uuid'),
+        ('documents', '0031_convert_uuid')
     ]
 
     operations = [
-        migrations.RunPython(code=operation_forwards)
+        migrations.RunPython(code=code_change_uuid_field_type)
     ]
 
     def __init__(self, *args, **kwargs):

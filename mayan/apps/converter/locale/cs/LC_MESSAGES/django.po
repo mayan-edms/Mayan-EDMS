@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Jiri Fait <fait@orkasolutions.cz>, 2021
-# Michal Švábík <snadno@lehce.cz>, 2021
-# trendspotter <jirka.p@volny.cz>, 2021
+# trendspotter <jirka.p@volny.cz>, 2022
+# Jiri Fait <fait@orkasolutions.cz>, 2022
+# Michal Švábík <snadno@lehce.cz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,7 +40,7 @@ msgstr "Výjimka určující počet stránek PDF; %s"
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Výjimka určující počet stránek pomocí Pillow; %s"
 
-#: classes.py:157
+#: classes.py:158
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice není nainstalován nebo nebyl nalezen."
 
@@ -320,71 +320,71 @@ msgstr ""
 msgid "Assets cache"
 msgstr ""
 
-#: transformations.py:226
+#: transformations.py:234
 msgid "Paste an asset"
 msgstr ""
 
-#: transformations.py:277
+#: transformations.py:285
 msgid "Paste an asset (percents coordinates)"
 msgstr "Vložit aktivum (procentní souřadnice)"
 
-#: transformations.py:324
+#: transformations.py:332
 msgid "Paste an asset as watermark"
 msgstr ""
 
-#: transformations.py:384
+#: transformations.py:392
 msgid "Crop"
 msgstr "Oříznutí"
 
-#: transformations.py:462
+#: transformations.py:470
 msgid "Draw rectangle"
 msgstr "Nakreslit obdélník"
 
-#: transformations.py:564
+#: transformations.py:572
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Nakreslit obdélník (procentuální souřadnice)"
 
-#: transformations.py:661
+#: transformations.py:669
 msgid "Flip"
 msgstr "Překlopit"
 
-#: transformations.py:672
+#: transformations.py:680
 msgid "Gaussian blur"
 msgstr "Gaussovské rozostření"
 
-#: transformations.py:684
+#: transformations.py:692
 msgid "Line art"
 msgstr "Kresba tužkou"
 
-#: transformations.py:698
+#: transformations.py:706
 msgid "Mirror"
 msgstr "Zrcadlo"
 
-#: transformations.py:709
+#: transformations.py:717
 msgid "Resize"
 msgstr "Změnit velikost"
 
-#: transformations.py:736
+#: transformations.py:744
 msgid "Rotate"
 msgstr "Otočit"
 
-#: transformations.py:766
+#: transformations.py:774
 msgid "Rotate 90 degrees"
 msgstr "Otočit o 90 stupňů"
 
-#: transformations.py:777
+#: transformations.py:785
 msgid "Rotate 180 degrees"
 msgstr "Otočit o 180 stupňů"
 
-#: transformations.py:788
+#: transformations.py:796
 msgid "Rotate 270 degrees"
 msgstr "Otočit o 270 stupňů"
 
-#: transformations.py:798
+#: transformations.py:806
 msgid "Unsharp masking"
 msgstr "Neostré maskování "
 
-#: transformations.py:814
+#: transformations.py:822
 msgid "Zoom"
 msgstr "Zoom"
 

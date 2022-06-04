@@ -2,7 +2,6 @@ from django.db import models
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.models.document_file_models import DocumentFile
 from mayan.apps.documents.models.document_file_page_models import DocumentFilePage
 from mayan.apps.documents.models.document_type_models import DocumentType
 
@@ -57,26 +56,3 @@ class DocumentTypeSettings(models.Model):
     class Meta:
         verbose_name = _('Document type settings')
         verbose_name_plural = _('Document types settings')
-
-
-class DocumentFileParseError(models.Model):
-    """
-    This module stores the errors captures when attempting to parse a
-    document file.
-    """
-    document_file = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='parsing_errors',
-        to=DocumentFile, verbose_name=_('Document file')
-    )
-    datetime_submitted = models.DateTimeField(
-        auto_now_add=True, db_index=True, verbose_name=_('Date time submitted')
-    )
-    result = models.TextField(blank=True, null=True, verbose_name=_('Result'))
-
-    class Meta:
-        ordering = ('datetime_submitted',)
-        verbose_name = _('Document file parse error')
-        verbose_name_plural = _('Document file parse errors')
-
-    def __str__(self):
-        return force_text(s=self.document_file)

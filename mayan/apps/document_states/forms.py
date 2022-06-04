@@ -7,14 +7,14 @@ from django.forms.formsets import formset_factory
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.converter.fields import ImageField
 from mayan.apps.templating.fields import ModelTemplateField
 from mayan.apps.views.forms import DynamicModelForm, FilteredSelectionForm
 
 from .classes import WorkflowAction
-from .fields import WorfklowImageField
 from .models import (
-    Workflow, WorkflowInstance, WorkflowState, WorkflowStateAction,
-    WorkflowTransition
+    Workflow, WorkflowStateEscalation, WorkflowInstance, WorkflowState,
+    WorkflowStateAction, WorkflowTransition
 )
 
 
@@ -93,6 +93,29 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
         return data
 
 
+class WorkflowStateEscalationForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        workflow_template_state = kwargs.pop('workflow_template_state')
+        super().__init__(*args, **kwargs)
+
+        self.fields[
+            'transition'
+        ].queryset = workflow_template_state.workflow.transitions.all()
+
+        self.fields['condition'] = ModelTemplateField(
+            initial_help_text=self.fields['condition'].help_text,
+            label=self.fields['condition'].label, model=WorkflowInstance,
+            model_variable='workflow_instance', required=False
+        )
+
+    class Meta:
+        fields = (
+            'enabled', 'transition', 'priority', 'unit', 'amount',
+            'condition'
+        )
+        model = WorkflowStateEscalation
+
+
 class WorkflowStateForm(forms.ModelForm):
     class Meta:
         fields = ('initial', 'label', 'completion')
@@ -136,11 +159,10 @@ class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
         widget=forms.TextInput(attrs={'readonly': 'readonly'})
     )
     relationship = forms.ChoiceField(
-        label=_('Enabled'),
-        widget=forms.RadioSelect(), choices=(
+        choices=(
             ('no', _('No')),
             ('yes', _('Yes')),
-        )
+        ), label=_('Enabled'), widget=forms.RadioSelect()
     )
 
     def __init__(self, *args, **kwargs):
@@ -150,7 +172,7 @@ class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
         self.fields['label'].initial = self.initial['event_type'].label
 
         relationship = self.initial['transition'].trigger_events.filter(
-            event_type=self.initial['event_type'],
+            event_type=self.initial['event_type']
         )
 
         if relationship.exists():
@@ -160,7 +182,7 @@ class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
 
     def save(self):
         relationship = self.initial['transition'].trigger_events.filter(
-            event_type=self.initial['event_type'],
+            event_type=self.initial['event_type']
         )
 
         if self.cleaned_data['relationship'] == 'no':
@@ -168,7 +190,7 @@ class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
         elif self.cleaned_data['relationship'] == 'yes':
             if not relationship.exists():
                 self.initial['transition'].trigger_events.create(
-                    event_type=self.initial['event_type'],
+                    event_type=self.initial['event_type']
                 )
 
 
@@ -193,7 +215,9 @@ class WorkflowInstanceTransitionSelectForm(forms.Form):
 
 
 class WorkflowPreviewForm(forms.Form):
-    workflow = WorfklowImageField()
+    workflow = ImageField(
+        image_alt_text=_('Workflow template preview image')
+    )
 
     def __init__(self, *args, **kwargs):
         instance = kwargs.pop('instance', None)

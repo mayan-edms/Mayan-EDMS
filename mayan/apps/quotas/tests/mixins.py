@@ -10,13 +10,13 @@ from .literals import (
 
 class QuotaTestMixin:
     def _create_test_quota(self):
-        self.test_quota = Quota.objects.create(
+        self._test_quota = Quota.objects.create(
             backend_data=json.dumps(obj=TEST_QUOTA_DATA),
             backend_path=TEST_QUOTA_DOTTED_PATH
         )
 
     def _create_test_quota_with_mixins(self):
-        self.test_quota = Quota.objects.create(
+        self._test_quota = Quota.objects.create(
             backend_data=json.dumps(obj=TEST_QUOTA_DATA),
             backend_path=TEST_QUOTA_WITH_MIXINS_DOTTED_PATH
         )
@@ -36,7 +36,7 @@ class QuotaViewTestMixin:
         )
 
         # Get the instance created ignoring existing ones.
-        self.test_quota = Quota.objects.exclude(pk__in=values).first()
+        self._test_quota = Quota.objects.exclude(pk__in=values).first()
 
         return response
 
@@ -50,7 +50,7 @@ class QuotaViewTestMixin:
         )
 
         # Get the instance created ignoring existing ones.
-        self.test_quota = Quota.objects.exclude(pk__in=values).first()
+        self._test_quota = Quota.objects.exclude(pk__in=values).first()
 
         return response
 
@@ -64,21 +64,21 @@ class QuotaViewTestMixin:
         )
 
         # Get the instance created ignoring existing ones.
-        self.test_quota = Quota.objects.exclude(pk__in=values).first()
+        self._test_quota = Quota.objects.exclude(pk__in=values).first()
 
         return response
 
     def _request_test_quota_delete_view(self):
         return self.post(
             viewname='quotas:quota_delete', kwargs={
-                'quota_id': self.test_quota.pk,
+                'quota_id': self._test_quota.pk,
             }
         )
 
     def _request_test_quota_edit_view(self):
         return self.post(
             viewname='quotas:quota_edit', kwargs={
-                'quota_id': self.test_quota.pk
+                'quota_id': self._test_quota.pk
             }, data={
                 'test_limit': TEST_QUOTA_TEST_LIMIT_EDITED,
             }

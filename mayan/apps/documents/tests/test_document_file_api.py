@@ -26,9 +26,9 @@ class DocumentFileAPIViewTestCase(
 
     def test_document_file_delete_api_view_no_permission(self):
         self._upload_test_document()
-        self._upload_new_file()
+        self._upload_test_document_file()
 
-        document_file_count = self.test_document.files.count()
+        document_file_count = self._test_document.files.count()
 
         self._clear_events()
 
@@ -36,7 +36,7 @@ class DocumentFileAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(
-            self.test_document.files.count(), document_file_count
+            self._test_document.files.count(), document_file_count
         )
 
         events = self._get_test_events()
@@ -44,13 +44,13 @@ class DocumentFileAPIViewTestCase(
 
     def test_document_file_delete_api_view_with_access(self):
         self._upload_test_document()
-        self._upload_new_file()
+        self._upload_test_document_file()
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_delete
         )
 
-        document_file_count = self.test_document.files.count()
+        document_file_count = self._test_document.files.count()
 
         self._clear_events()
 
@@ -58,11 +58,11 @@ class DocumentFileAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertEqual(
-            self.test_document.files.count(), document_file_count - 1
+            self._test_document.files.count(), document_file_count - 1
         )
 
         self.assertEqual(
-            self.test_document.files.first(), self.test_document.file_latest
+            self._test_document.files.first(), self._test_document.file_latest
         )
 
         events = self._get_test_events()
@@ -70,20 +70,20 @@ class DocumentFileAPIViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].target, self._test_document)
         self.assertEqual(events[0].verb, event_document_file_deleted.id)
 
     def test_trashed_document_file_delete_api_view_with_access(self):
         self._upload_test_document()
-        self._upload_new_file()
+        self._upload_test_document_file()
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_delete
         )
 
-        document_file_count = self.test_document.files.count()
+        document_file_count = self._test_document.files.count()
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -91,7 +91,7 @@ class DocumentFileAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(
-            self.test_document.files.count(), document_file_count
+            self._test_document.files.count(), document_file_count
         )
 
         events = self._get_test_events()
@@ -112,7 +112,7 @@ class DocumentFileAPIViewTestCase(
         self._upload_test_document()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_view
         )
 
@@ -122,7 +122,7 @@ class DocumentFileAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
-            response.data['checksum'], self.test_document.file_latest.checksum
+            response.data['checksum'], self._test_document.file_latest.checksum
         )
 
         events = self._get_test_events()
@@ -132,11 +132,11 @@ class DocumentFileAPIViewTestCase(
         self._upload_test_document()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -161,7 +161,7 @@ class DocumentFileAPIViewTestCase(
         self._upload_test_document()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_download
         )
 
@@ -170,11 +170,11 @@ class DocumentFileAPIViewTestCase(
         response = self._request_test_document_file_download_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        with self.test_document.file_latest.open() as file_object:
+        with self._test_document.file_latest.open() as file_object:
             self.assert_download_response(
                 response=response, content=file_object.read(),
-                filename=self.test_document.file_latest.filename,
-                mime_type=self.test_document.file_latest.mimetype
+                filename=self._test_document.file_latest.filename,
+                mime_type=self._test_document.file_latest.mimetype
             )
 
         events = self._get_test_events()
@@ -182,18 +182,18 @@ class DocumentFileAPIViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(events[0].target, self._test_document_file)
         self.assertEqual(events[0].verb, event_document_file_downloaded.id)
 
     def test_trashed_document_file_download_api_view_with_access(self):
         self._upload_test_document()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_download
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -218,7 +218,7 @@ class DocumentFileAPIViewTestCase(
         self._upload_test_document()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
@@ -228,7 +228,7 @@ class DocumentFileAPIViewTestCase(
 
         self.assertEqual(
             response.data['results'][0]['checksum'],
-            self.test_document.file_latest.checksum
+            self._test_document.file_latest.checksum
         )
 
         events = self._get_test_events()
@@ -238,10 +238,10 @@ class DocumentFileAPIViewTestCase(
         self._upload_test_document()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -254,7 +254,7 @@ class DocumentFileAPIViewTestCase(
     def test_document_file_upload_api_view_no_permission(self):
         self._upload_test_document()
 
-        document_file_count = self.test_document.files.count()
+        document_file_count = self._test_document.files.count()
 
         self._clear_events()
 
@@ -262,7 +262,7 @@ class DocumentFileAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(
-            self.test_document.files.count(), document_file_count
+            self._test_document.files.count(), document_file_count
         )
 
         events = self._get_test_events()
@@ -272,10 +272,10 @@ class DocumentFileAPIViewTestCase(
         self._upload_test_document()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_new
+            obj=self._test_document, permission=permission_document_file_new
         )
 
-        document_file_count = self.test_document.files.count()
+        document_file_count = self._test_document.files.count()
 
         self._clear_events()
 
@@ -283,38 +283,38 @@ class DocumentFileAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
 
         self.assertEqual(
-            self.test_document.files.count(), document_file_count + 1
+            self._test_document.files.count(), document_file_count + 1
         )
 
-        self.assertEqual(self.test_document.file_latest.exists(), True)
-        self.assertEqual(self.test_document.file_latest.size, 17436)
+        self.assertEqual(self._test_document.file_latest.exists(), True)
+        self.assertEqual(self._test_document.file_latest.size, 17436)
         self.assertEqual(
-            self.test_document.file_latest.mimetype, 'image/png'
+            self._test_document.file_latest.mimetype, 'image/png'
         )
-        self.assertEqual(self.test_document.file_latest.encoding, 'binary')
+        self.assertEqual(self._test_document.file_latest.encoding, 'binary')
         self.assertEqual(
-            self.test_document.file_latest.checksum,
+            self._test_document.file_latest.checksum,
             'efa10e6cc21f83078aaa94d5cbe51de67b51af706143bafc7fd6d4c02124879a'
         )
-        self.assertEqual(self.test_document.pages.count(), 1)
+        self.assertEqual(self._test_document.pages.count(), 1)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 4)
 
-        self.assertEqual(events[0].action_object, self.test_document)
+        self.assertEqual(events[0].action_object, self._test_document)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(events[0].target, self._test_document_file)
         self.assertEqual(events[0].verb, event_document_file_created.id)
 
-        self.assertEqual(events[1].action_object, self.test_document)
+        self.assertEqual(events[1].action_object, self._test_document)
         self.assertEqual(events[1].actor, self._test_case_user)
-        self.assertEqual(events[1].target, self.test_document_file)
+        self.assertEqual(events[1].target, self._test_document_file)
         self.assertEqual(events[1].verb, event_document_file_edited.id)
 
-        self.test_document.refresh_from_db()
-        test_document_version = self.test_document.versions.last()
+        self._test_document.refresh_from_db()
+        test_document_version = self._test_document.versions.last()
 
-        self.assertEqual(events[2].action_object, self.test_document)
+        self.assertEqual(events[2].action_object, self._test_document)
         self.assertEqual(events[2].actor, self._test_case_user)
         self.assertEqual(events[2].target, test_document_version)
         self.assertEqual(events[2].verb, event_document_version_created.id)
@@ -328,12 +328,12 @@ class DocumentFileAPIViewTestCase(
         self._upload_test_document()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_new
+            obj=self._test_document, permission=permission_document_file_new
         )
 
-        document_file_count = self.test_document.files.count()
+        document_file_count = self._test_document.files.count()
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -341,7 +341,7 @@ class DocumentFileAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(
-            self.test_document.files.count(), document_file_count
+            self._test_document.files.count(), document_file_count
         )
 
         events = self._get_test_events()

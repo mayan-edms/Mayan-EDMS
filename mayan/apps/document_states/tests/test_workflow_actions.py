@@ -1,5 +1,5 @@
 import json
-import mock
+from unittest import mock
 
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.testing.tests.base import GenericViewTestCase
@@ -84,11 +84,11 @@ class HTTPWorkflowActionTestCase(
                 'method': 'POST'
             }
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
 
         self.assertEqual(
             json.loads(s=self.test_view_request.body),
-            {'label': self.test_document.label}
+            {'label': self._test_document.label}
         )
 
     @mock.patch('requests.sessions.Session.get_adapter')
@@ -124,14 +124,14 @@ class HTTPWorkflowActionTestCase(
                 'method': 'POST'
             }
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
 
         self.assertTrue(
             TEST_HEADERS_JSON_TEMPLATE_KEY in self.test_view_request.META,
         )
         self.assertEqual(
             self.test_view_request.META[TEST_HEADERS_JSON_TEMPLATE_KEY],
-            self.test_document.label
+            self._test_document.label
         )
 
     @mock.patch('requests.sessions.Session.get_adapter')
@@ -262,34 +262,34 @@ class DocumentPropertiesEditActionTestCase(
         )
 
         test_values = self._model_instance_to_dictionary(
-            instance=self.test_document
+            instance=self._test_document
         )
 
-        action.execute(context={'document': self.test_document})
-        self.test_document.refresh_from_db()
+        action.execute(context={'document': self._test_document})
+        self._test_document.refresh_from_db()
 
         self.assertNotEqual(
             test_values, self._model_instance_to_dictionary(
-                instance=self.test_document
+                instance=self._test_document
             )
         )
 
     def test_document_properties_edit_action_field_templates(self):
         self._create_test_document_stub()
 
-        label = self.test_document.label
+        label = self._test_document.label
 
         action = DocumentPropertiesEditAction(
             form_data=TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEMPLATE_DATA
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
 
         self.assertEqual(
-            self.test_document.label,
+            self._test_document.label,
             '{} new'.format(label)
         )
         self.assertEqual(
-            self.test_document.description,
+            self._test_document.description,
             label
         )
 
@@ -310,17 +310,17 @@ class DocumentPropertiesEditActionTestCase(
 
         self._create_test_document_stub()
 
-        test_workflow_instance = self.test_document.workflows.first()
+        test_workflow_instance = self._test_document.workflows.first()
         test_workflow_instance.do_transition(
             transition=self._test_workflow_template_transition
         )
 
         self.assertEqual(
-            self.test_document.label,
+            self._test_document.label,
             TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_LABEL
         )
         self.assertEqual(
-            self.test_document.description,
+            self._test_document.description,
             TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_DESCRIPTION
         )
 
@@ -342,12 +342,12 @@ class DocumentWorkflowLaunchActionTestCase(
             form_data={'workflows': Workflow.objects.all()}
         )
 
-        workflow_count = self.test_document.workflows.count()
+        workflow_count = self._test_document.workflows.count()
 
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
 
         self.assertTrue(
-            self.test_document.workflows.count(), workflow_count + 1
+            self._test_document.workflows.count(), workflow_count + 1
         )
 
 

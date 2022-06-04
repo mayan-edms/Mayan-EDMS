@@ -302,12 +302,26 @@ class WorkflowStateRuntimeProxy(WorkflowState):
         verbose_name = _('Workflow state runtime proxy')
         verbose_name_plural = _('Workflow state runtime proxies')
 
+    def get_documents(self, permission=None, user=None):
+        """
+        Provide a queryset of the documents. The queryset is optionally
+        filtered by access.
+        """
+        queryset = super().get_documents()
+
+        if permission and user:
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=permission, queryset=queryset,
+                user=user
+            )
+
+        return queryset
+
     def get_document_count(self, user):
         """
         Return the numeric count of documents at this workflow state.
         The count is filtered by access.
         """
-        return AccessControlList.objects.restrict_queryset(
-            permission=permission_document_view, queryset=self.get_documents(),
-            user=user
+        return self.get_documents(
+            permission=permission_document_view, user=user
         ).count()

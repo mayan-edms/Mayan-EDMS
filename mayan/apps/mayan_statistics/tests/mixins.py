@@ -7,4 +7,4 @@ class StatisticsViewTestMixin:
         )
 
     def _request_test_namespace_list_view(self):
-        return self.get(viewname='statistics:namespace_list')
+        return self.get(viewname='statistics:statistic_namespace_list')

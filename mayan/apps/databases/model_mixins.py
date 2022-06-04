@@ -5,12 +5,18 @@ from django.db import models
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.templating.classes import Template
+
 from .literals import IMPORT_ERROR_EXCLUSION_TEXTS
 
 logger = logging.getLogger(name=__name__)
 
 
 class BackendModelMixin(models.Model):
+    """
+    Backends here represent drivers. This model allows storing multiple
+    instances of a single backend.
+    """
     _backend_model_null_backend = None
 
     backend_path = models.CharField(
@@ -87,6 +93,41 @@ class ExtraDataModelMixin:
             setattr(self, key, value)
 
         return result
+
+
+class ModelMixinConditionField(models.Model):
+    condition = models.TextField(
+        blank=True, help_text=_(
+            'The condition that will determine if this object '
+            'is executed or not. Conditions that do not return any value, '
+            'that return the Python logical None, or an empty string (\'\') '
+            'are considered to be logical false, any other value is '
+            'considered to be the logical true.'
+        ), verbose_name=_('Condition')
+    )
+
+    class Meta:
+        abstract = True
+
+    def evaluate_condition(self, context):
+        if self.has_condition():
+            result = Template(template_string=self.condition).render(
+                context=context
+            ).strip()
+            return result
+        else:
+            return True
+
+    def has_condition(self):
+        if self.condition.strip():
+            return True
+        else:
+            return False
+    has_condition.help_text = _(
+        'The object will be executed, depending on the condition '
+        'return value.'
+    )
+    has_condition.short_description = _('Has a condition?')
 
 
 class ValueChangeModelMixin:

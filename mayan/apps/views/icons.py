@@ -8,6 +8,7 @@ icon_add_all = Icon(
 )
 icon_assign_remove_add = Icon(driver_name='fontawesome', symbol='plus')
 icon_assign_remove_remove = Icon(driver_name='fontawesome', symbol='minus')
+icon_color_random = Icon(driver_name='fontawesome', symbol='random')
 icon_confirm_form_submit = Icon(driver_name='fontawesome', symbol='check')
 icon_confirm_form_cancel = Icon(driver_name='fontawesome', symbol='times')
 icon_fail = Icon(

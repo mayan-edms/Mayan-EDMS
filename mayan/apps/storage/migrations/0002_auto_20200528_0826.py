@@ -1,7 +1,7 @@
 from django.db import migrations
 
 
-def operation_copy_entries(apps, schema_editor):
+def code_copy_entries(apps, schema_editor):
     SharedUploadedFile = apps.get_model(
         app_label='common', model_name='SharedUploadedFile'
     )
@@ -9,7 +9,7 @@ def operation_copy_entries(apps, schema_editor):
         app_label='storage', model_name='StorageSharedUploadedFile'
     )
 
-    for entry in SharedUploadedFile.objects.using(schema_editor.connection.alias).all():
+    for entry in SharedUploadedFile.objects.using(alias=schema_editor.connection.alias).all():
         StorageSharedUploadedFile.objects.create(
             file=entry.file, filename=entry.filename,
             datetime=entry.datetime
@@ -17,7 +17,7 @@ def operation_copy_entries(apps, schema_editor):
         entry.delete()
 
 
-def operation_copy_entries_reverse(apps, schema_editor):
+def code_copy_entries_reverse(apps, schema_editor):
     SharedUploadedFile = apps.get_model(
         app_label='common', model_name='SharedUploadedFile'
     )
@@ -25,7 +25,7 @@ def operation_copy_entries_reverse(apps, schema_editor):
         app_label='storage', model_name='StorageSharedUploadedFile'
     )
 
-    for entry in StorageSharedUploadedFile.objects.using(schema_editor.connection.alias).all():
+    for entry in StorageSharedUploadedFile.objects.using(alias=schema_editor.connection.alias).all():
         SharedUploadedFile.objects.create(
             file=entry.file, filename=entry.filename,
             datetime=entry.datetime
@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunPython(
-            code=operation_copy_entries,
-            reverse_code=operation_copy_entries_reverse
-        ),
+            code=code_copy_entries,
+            reverse_code=code_copy_entries_reverse
+        )
     ]

@@ -1,0 +1,158 @@
+Version 4.2.4
+=============
+
+Released: April 29, 2022
+
+Status: Stable
+
+Changes
+-------
+
+
+Cabinets
+^^^^^^^^
+
+Trashed documents are now filtered from the cabinet document retrieval
+methods. This brings code parity with tag documents which work in a very
+similar way.
+
+
+Converter
+^^^^^^^^^
+
+The LUT values used when masking an asset for pasting via Pillow's
+``point()`` are now typecasted to integer which is what the function
+expects.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+Updated the Debian Docker image from version 11.2-slim to 11.3-slim.
+
+
+Downgraded the Python Docker image from version 3.11-slim to 3.10-slim.
+
+Pin Jinja2 version to workaround Sphinx bug. Sphinx Jinja2 dependency is
+not pinned or immutable, and causes the installation of an incompatible
+version breaking builds.
+
+
+Documentation
+^^^^^^^^^^^^^
+
+Fixes the paths to the OTP backends shown in the documentation.
+
+
+Installation
+^^^^^^^^^^^^
+
+Added community contributed Portainer installation files and documentation
+chapter.
+
+
+Metadata
+^^^^^^^^
+
+Improved the document metadata edit form validation.
+
+
+The ``disabled`` attribute was removed from the metadata type label field to
+avoid having its value removed after a refresh when there is a validation
+error.
+
+Removed the ``required`` flag from the value field when there is a required
+metadata for a document. The previous behavior cause the tabular form to
+display "(required)" in column title confusing users and causing them to
+think that all metadata type fields were required.
+
+Validation errors are now raised for specific required metadata entries and
+not for the entire form. This help users better understand which metadata
+field needs to be corrected.
+
+Improved the required metadata validation logic to take into account
+existing values and empty forms when data was entered into the field
+but the update checkbox was left unchecked.
+
+
+Python
+^^^^^^
+
+Improved Python 3.10 compatibility by adding a compatibility module to
+encapsulate import of the ``Iterable`` class.
+
+
+Search
+^^^^^^
+
+Removed the hardcoded search model variable name from the ``search_box.html``
+template. The variable name is now extracted via a template tag to ensure
+backward compatibility even if the variable name is updated again in the
+future.
+
+Fixed the search model API URL reference by having the API and view use
+the same variable to reference the search model.
+
+Used the ``SEARCH_MODEL_NAME_KWARG`` instead of hard coding the search model
+API URL reference.
+
+Retry failed bulk indexing tasks.
+
+Add max retry value to ``task_index_search_models``.
+
+Added improved search tasks error logging.
+
+
+Tags
+^^^^
+
+Trashed documents are now filtered from the tag document count column.
+
+
+Other
+^^^^^
+
+- Fix Docker pull counter.
+- Remove repeated Whoosh backend line of code from merge.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1083` python 3.10 AttributeError: module 'collections' has no attribute 'Iterable'
+- :gitlab-issue:`1098` Wrong or missleading API documentation
+- :gitlab-issue:`1099` wrong config sting for AUTHENTICATION_BACKEND TOTP authentication in Version 4.2 Changes documentation
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

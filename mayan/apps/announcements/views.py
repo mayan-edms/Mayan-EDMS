@@ -9,7 +9,10 @@ from mayan.apps.views.generics import (
     SingleObjectEditView, SingleObjectListView
 )
 
-from .icons import icon_announcement_list
+from .icons import (
+    icon_announcement_create, icon_announcement_delete, icon_announcement_edit,
+    icon_announcement_list
+)
 from .links import link_announcement_create
 from .models import Announcement
 from .permissions import (
@@ -23,6 +26,7 @@ logger = logging.getLogger(name=__name__)
 class AnnouncementCreateView(SingleObjectCreateView):
     fields = ('label', 'text', 'enabled', 'start_datetime', 'end_datetime')
     model = Announcement
+    view_icon = icon_announcement_create
     view_permission = permission_announcement_create
 
     def get_extra_context(self):
@@ -58,6 +62,7 @@ class AnnouncementDeleteView(MultipleObjectConfirmActionView):
     title_single = _('Delete announcement: %(object)s.')
     title_singular = _('Delete the %(count)d selected announcement.')
     title_plural = _('Delete the %(count)d selected announcements.')
+    view_icon = icon_announcement_delete
 
     def get_extra_context(self):
         context = {
@@ -85,6 +90,7 @@ class AnnouncementEditView(SingleObjectEditView):
     post_action_redirect = reverse_lazy(
         viewname='announcements:announcement_list'
     )
+    view_icon = icon_announcement_edit
 
     def get_extra_context(self):
         return {
@@ -101,6 +107,7 @@ class AnnouncementEditView(SingleObjectEditView):
 class AnnouncementListView(SingleObjectListView):
     model = Announcement
     object_permission = permission_announcement_view
+    view_icon = icon_announcement_list
 
     def get_extra_context(self):
         return {

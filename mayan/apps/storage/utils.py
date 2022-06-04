@@ -136,7 +136,12 @@ def mkdtemp(*args, **kwargs):
     The directory is readable, writable, and searchable only by the creating
     user ID.
     """
-    kwargs.update({'dir': setting_temporary_directory.value})
+    path = Path(setting_temporary_directory.value)
+
+    if 'dir' in kwargs:
+        path = path / kwargs['dir']
+
+    kwargs.update({'dir': path})
     return tempfile.mkdtemp(*args, **kwargs)
 
 

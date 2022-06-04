@@ -4,18 +4,19 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
-# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
-# Yves Dubois <ydubois@gmail.com>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Yves Dubois <ydubois@gmail.com>, 2022
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-12 03:39+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,42 +24,52 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:27
+#: apps.py:28 events.py:5
 msgid "Locales"
 msgstr "Langues"
 
-#: links.py:13
+#: events.py:8
+msgid "User locale profile edited"
+msgstr "Profil de paramètres régionaux de l'utilisateur modifié"
+
+#: links.py:18
 msgid "Locale profile"
 msgstr "Paramètres régionaux du profil"
 
-#: links.py:18
+#: links.py:25
 msgid "Edit locale profile"
 msgstr "Modifier les paramètres régionaux du profil"
 
-#: models.py:18
+#: models.py:21
 msgid "User"
 msgstr "Utilisateur"
 
-#: models.py:22
+#: models.py:25
 msgid "Timezone"
 msgstr "Fuseau horaire"
 
-#: models.py:25
+#: models.py:28
 msgid "Language"
 msgstr "Langue"
 
-#: models.py:31
+#: models.py:34
 msgid "User locale profile"
 msgstr "Paramètres régionaux du profil utilisateur"
 
-#: models.py:32
+#: models.py:35
 msgid "User locale profiles"
 msgstr "Paramètres régionaux des profils utilisateurs"
 
-#: views.py:24
-msgid "Current user locale profile details"
-msgstr "Détails des paramètres régionaux de l'utilisateur actuel"
+#: models.py:39
+msgid "None"
+msgstr "Aucun"
 
-#: views.py:30
-msgid "Edit current user locale profile details"
-msgstr "Modifier les paramètres régionaux de l'utilisateur actuel"
+#: views.py:36
+#, python-format
+msgid "Locale profile for user: %s"
+msgstr "Profil de paramètres régionaux pour l'utilisateur: %s"
+
+#: views.py:82
+#, python-format
+msgid "Edit locale profile for user: %s"
+msgstr ""

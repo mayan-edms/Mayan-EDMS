@@ -76,7 +76,7 @@ class ObjectEmailActionMixin:
                 'help_text': _(
                     'Subject of the email. Can be a string or a template.'
                 ),
-                'required': True
+                'required': False
             }
         },
         'body': {
@@ -86,7 +86,7 @@ class ObjectEmailActionMixin:
                     'Body of the email to send. Can be a string or '
                     'a template.'
                 ),
-                'required': True
+                'required': False
             }
         },
         'attachment': {
@@ -180,6 +180,9 @@ class DocumentEmailAction(ObjectEmailActionMixin, WorkflowAction):
         ObjectEmailActionMixin.field_order
     ).append('attachment')
     label = _('Send document via email')
+    previous_dotted_paths = (
+        'mayan.apps.mailer.workflow_actions.EmailAction',
+    )
 
     def get_execute_data(self, context):
         result = super().get_execute_data(context=context)

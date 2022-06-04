@@ -66,7 +66,7 @@ class SuperUserLocaleViewTestCase(
 
     def test_superuser_locale_profile_detail_view_with_access(self):
         self.grant_access(
-            obj=self.test_superuser, permission=permission_user_view
+            obj=self._test_superuser, permission=permission_user_view
         )
 
         self._clear_events()
@@ -78,31 +78,31 @@ class SuperUserLocaleViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_superuser_locale_profile_edit_view_no_permission(self):
-        language = self.test_superuser.locale_profile.language
-        timezone = self.test_superuser.locale_profile.timezone
+        language = self._test_superuser.locale_profile.language
+        timezone = self._test_superuser.locale_profile.timezone
 
         self._clear_events()
 
         response = self._request_test_superuser_locale_profile_edit_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_superuser.refresh_from_db()
+        self._test_superuser.refresh_from_db()
         self.assertEqual(
-            self.test_superuser.locale_profile.language, language
+            self._test_superuser.locale_profile.language, language
         )
         self.assertEqual(
-            self.test_superuser.locale_profile.timezone, timezone
+            self._test_superuser.locale_profile.timezone, timezone
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_superuser_locale_profile_edit_view_with_access(self):
-        language = self.test_superuser.locale_profile.language
-        timezone = self.test_superuser.locale_profile.timezone
+        language = self._test_superuser.locale_profile.language
+        timezone = self._test_superuser.locale_profile.timezone
 
         self.grant_access(
-            obj=self.test_superuser, permission=permission_user_edit
+            obj=self._test_superuser, permission=permission_user_edit
         )
 
         self._clear_events()
@@ -110,12 +110,12 @@ class SuperUserLocaleViewTestCase(
         response = self._request_test_superuser_locale_profile_edit_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_superuser.refresh_from_db()
+        self._test_superuser.refresh_from_db()
         self.assertEqual(
-            self.test_superuser.locale_profile.language, language
+            self._test_superuser.locale_profile.language, language
         )
         self.assertEqual(
-            self.test_superuser.locale_profile.timezone, timezone
+            self._test_superuser.locale_profile.timezone, timezone
         )
 
         events = self._get_test_events()
@@ -138,7 +138,7 @@ class UserLocaleProfileViewTestCase(
 
     def test_user_locale_profile_detail_view_with_access(self):
         self.grant_access(
-            obj=self.test_user, permission=permission_user_view
+            obj=self._test_user, permission=permission_user_view
         )
 
         self._clear_events()
@@ -150,27 +150,27 @@ class UserLocaleProfileViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_user_locale_profile_edit_view_no_permission(self):
-        language = self.test_user.locale_profile.language
-        timezone = self.test_user.locale_profile.timezone
+        language = self._test_user.locale_profile.language
+        timezone = self._test_user.locale_profile.timezone
 
         self._clear_events()
 
         response = self._request_test_user_locale_profile_edit_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_user.refresh_from_db()
-        self.assertEqual(self.test_user.locale_profile.language, language)
-        self.assertEqual(self.test_user.locale_profile.timezone, timezone)
+        self._test_user.refresh_from_db()
+        self.assertEqual(self._test_user.locale_profile.language, language)
+        self.assertEqual(self._test_user.locale_profile.timezone, timezone)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_user_locale_profile_edit_view_with_access(self):
-        language = self.test_user.locale_profile.language
-        timezone = self.test_user.locale_profile.timezone
+        language = self._test_user.locale_profile.language
+        timezone = self._test_user.locale_profile.timezone
 
         self.grant_access(
-            obj=self.test_user, permission=permission_user_edit
+            obj=self._test_user, permission=permission_user_edit
         )
 
         self._clear_events()
@@ -178,16 +178,16 @@ class UserLocaleProfileViewTestCase(
         response = self._request_test_user_locale_profile_edit_view()
         self.assertEqual(response.status_code, 302)
 
-        self.test_user.refresh_from_db()
-        self.assertNotEqual(self.test_user.locale_profile.language, language)
-        self.assertNotEqual(self.test_user.locale_profile.timezone, timezone)
+        self._test_user.refresh_from_db()
+        self.assertNotEqual(self._test_user.locale_profile.language, language)
+        self.assertNotEqual(self._test_user.locale_profile.timezone, timezone)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_user)
+        self.assertEqual(events[0].target, self._test_user)
         self.assertEqual(events[0].verb, event_user_locale_profile_edited.id)
 
 

@@ -1,0 +1,21 @@
+{% load appearance_tags %}
+
+{% appearance_get_icon 'mayan.apps.views.icons.icon_color_random' as icon_color_random %}
+
+<div class="input-group">
+    {% include "django/forms/widgets/input.html" %}
+    <div class="input-group-addon views-widget-color-random">{{ icon_color_random }}</div>
+</div>
+
+<script>
+    'use strict';
+
+    jQuery(document).ready(function() {
+        $('.views-widget-color-random').click(function (event) {
+            let randomColor = Math.floor(
+                Math.random() * 16777215
+            ).toString(16);
+            $(this).parent().children('input').val('#' + randomColor);
+        });
+    });
+</script>

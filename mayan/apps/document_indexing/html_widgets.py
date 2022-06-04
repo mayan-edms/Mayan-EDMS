@@ -33,11 +33,11 @@ def index_instance_item_link(index_instance_item):
         icon = ''
 
     return mark_safe(
-        s='%(icon)s&nbsp;<a href="%(url)s">%(text)s</a>' % {
-            'url': index_instance_item.get_absolute_url(),
-            'icon': icon,
-            'text': index_instance_item
-        }
+        s='{icon}&nbsp;<a href="{url}">{text}</a>'.format(
+            url=index_instance_item.get_absolute_url(),
+            icon=icon,
+            text=index_instance_item
+        )
     )
 
 

@@ -1,7 +1,7 @@
 from django.db import migrations
 
 
-def operation_add_full_path(apps, schema_editor):
+def code_add_full_path(apps, schema_editor):
     WorkflowStateAction = apps.get_model(
         app_label='document_states', model_name='WorkflowStateAction'
     )
@@ -13,7 +13,7 @@ def operation_add_full_path(apps, schema_editor):
         workflow_state_action.save()
 
 
-def operation_remove_full_path(apps, schema_editor):
+def code_remove_full_path(apps, schema_editor):
     WorkflowStateAction = apps.get_model(
         app_label='document_states', model_name='WorkflowStateAction'
     )
@@ -27,12 +27,12 @@ def operation_remove_full_path(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('document_states', '0012_auto_20180823_2353'),
+        ('document_states', '0012_auto_20180823_2353')
     ]
 
     operations = [
         migrations.RunPython(
-            code=operation_add_full_path,
-            reverse_code=operation_remove_full_path
+            code=code_add_full_path,
+            reverse_code=code_remove_full_path
         )
     ]

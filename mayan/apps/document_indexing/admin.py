@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
-from .models import IndexTemplate, IndexTemplateNode
+from .models.index_template_models import IndexTemplate, IndexTemplateNode
 
 
 class IndexTemplateNodeInline(admin.StackedInline):
@@ -18,7 +18,7 @@ class IndexTemplateAdmin(admin.ModelAdmin):
 
     def get_document_types(self, instance):
         return ', '.join(
-            ['"{0}"'.format(document_type) for document_type in instance.document_types.all()]
+            ['"{}"'.format(document_type) for document_type in instance.document_types.all()]
         ) or _('None')
 
     get_document_types.short_description = _('Document types')

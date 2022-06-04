@@ -6,7 +6,8 @@ from ..links import link_group_setup, link_user_setup
 from .literals import (
     TEST_CASE_GROUP_NAME, TEST_CASE_SUPERUSER_EMAIL,
     TEST_CASE_SUPERUSER_PASSWORD, TEST_CASE_SUPERUSER_USERNAME,
-    TEST_CASE_USER_EMAIL, TEST_CASE_USER_PASSWORD, TEST_CASE_USER_USERNAME,
+    TEST_CASE_USER_EMAIL, TEST_CASE_USER_FIRST_NAME, TEST_CASE_USER_LAST_NAME,
+    TEST_CASE_USER_PASSWORD, TEST_CASE_USER_USERNAME,
     TEST_GROUP_NAME, TEST_GROUP_NAME_EDITED, TEST_USER_EMAIL,
     TEST_USER_PASSWORD, TEST_USER_PASSWORD_EDITED, TEST_USER_USERNAME,
     TEST_USER_USERNAME_EDITED
@@ -52,28 +53,28 @@ class GroupAPIViewTestMixin:
             }
         )
         if 'id' in result.json():
-            self.test_group = Group.objects.get(pk=result.json()['id'])
+            self._test_group = Group.objects.get(pk=result.json()['id'])
 
         return result
 
     def _request_test_group_delete_api_view(self):
         return self.delete(
             viewname='rest_api:group-detail', kwargs={
-                'group_id': self.test_group.pk
+                'group_id': self._test_group.pk
             }
         )
 
     def _request_test_group_detail_api_view(self):
         return self.get(
             viewname='rest_api:group-detail', kwargs={
-                'group_id': self.test_group.pk
+                'group_id': self._test_group.pk
             }
         )
 
     def _request_test_group_edit_patch_api_view(self):
         return self.patch(
             viewname='rest_api:group-detail', kwargs={
-                'group_id': self.test_group.pk
+                'group_id': self._test_group.pk
             }, data={
                 'name': TEST_GROUP_NAME_EDITED
             }
@@ -82,7 +83,7 @@ class GroupAPIViewTestMixin:
     def _request_test_group_edit_put_api_view(self):
         return self.put(
             viewname='rest_api:group-detail', kwargs={
-                'group_id': self.test_group.pk
+                'group_id': self._test_group.pk
             }, data={
                 'name': TEST_GROUP_NAME_EDITED
             }
@@ -102,44 +103,44 @@ class GroupLinkTestMixin:
 class GroupTestMixin:
     def setUp(self):
         super().setUp()
-        self.test_groups = []
+        self._test_groups = []
 
     def _create_test_group(self, add_users=None):
-        total_test_groups = len(self.test_groups)
+        total_test_groups = len(self._test_groups)
         name = '{}_{}'.format(TEST_GROUP_NAME, total_test_groups)
 
-        self.test_group = Group.objects.create(name=name)
+        self._test_group = Group.objects.create(name=name)
 
-        self.test_groups.append(self.test_group)
+        self._test_groups.append(self._test_group)
 
         for user in add_users or []:
-            self.test_group.user_set.add(user)
+            self._test_group.user_set.add(user)
 
     def _edit_test_group(self):
-        self.test_group.name = TEST_GROUP_NAME_EDITED
-        self.test_group.save()
+        self._test_group.name = TEST_GROUP_NAME_EDITED
+        self._test_group.save()
 
 
 class GroupUserAPIViewTestMixin:
     def _request_test_group_user_add_api_view(self):
         return self.post(
             viewname='rest_api:group-user-add', kwargs={
-                'group_id': self.test_group.pk
-            }, data={'user': self.test_user.pk}
+                'group_id': self._test_group.pk
+            }, data={'user': self._test_user.pk}
         )
 
     def _request_test_group_user_list_api_view(self):
         return self.get(
             viewname='rest_api:group-user-list', kwargs={
-                'group_id': self.test_group.pk
+                'group_id': self._test_group.pk
             }
         )
 
     def _request_test_group_user_remove_api_view(self):
         return self.post(
             viewname='rest_api:group-user-remove', kwargs={
-                'group_id': self.test_group.pk
-            }, data={'user': self.test_user.pk}
+                'group_id': self._test_group.pk
+            }, data={'user': self._test_user.pk}
         )
 
 
@@ -147,27 +148,27 @@ class GroupUserViewTestMixin:
     def _request_test_group_user_add_remove_get_view(self):
         return self.get(
             viewname='user_management:group_members', kwargs={
-                'group_id': self.test_group.pk
+                'group_id': self._test_group.pk
             }
         )
 
     def _request_test_group_user_add_view(self):
         return self.post(
             viewname='user_management:group_members', kwargs={
-                'group_id': self.test_group.pk,
+                'group_id': self._test_group.pk,
             }, data={
                 'available-submit': 'true',
-                'available-selection': self.test_user.pk
+                'available-selection': self._test_user.pk
             }
         )
 
     def _request_test_group_user_remove_view(self):
         return self.post(
             viewname='user_management:group_members', kwargs={
-                'group_id': self.test_group.pk,
+                'group_id': self._test_group.pk,
             }, data={
                 'added-submit': 'true',
-                'added-selection': self.test_user.pk
+                'added-selection': self._test_user.pk
             }
         )
 
@@ -179,27 +180,27 @@ class GroupViewTestMixin:
                 'name': TEST_GROUP_NAME
             }
         )
-        self.test_group = Group.objects.filter(name=TEST_GROUP_NAME).first()
+        self._test_group = Group.objects.filter(name=TEST_GROUP_NAME).first()
         return reponse
 
-    def _request_test_group_delete_single_view(self):
+    def _request_test_group_single_delete_view(self):
         return self.post(
-            viewname='user_management:group_delete_single', kwargs={
-                'group_id': self.test_group.pk
+            viewname='user_management:group_single_delete', kwargs={
+                'group_id': self._test_group.pk
             }
         )
 
-    def _request_test_group_delete_multiple_view(self):
+    def _request_test_group_multiple_delete_view(self):
         return self.post(
-            viewname='user_management:group_delete_multiple', data={
-                'id_list': self.test_group.pk
+            viewname='user_management:group_multiple_delete', data={
+                'id_list': self._test_group.pk
             }
         )
 
     def _request_test_group_edit_view(self):
         return self.post(
             viewname='user_management:group_edit', kwargs={
-                'group_id': self.test_group.pk
+                'group_id': self._test_group.pk
             }, data={
                 'name': TEST_GROUP_NAME_EDITED
             }
@@ -211,7 +212,7 @@ class GroupViewTestMixin:
     def _request_test_group_members_view(self):
         return self.get(
             viewname='user_management:group_members', kwargs={
-                'group_id': self.test_group.pk
+                'group_id': self._test_group.pk
             }
         )
 
@@ -225,7 +226,7 @@ class UserAPIViewTestMixin:
             }
         )
         if 'id' in result.json():
-            self.test_user = get_user_model().objects.get(
+            self._test_user = get_user_model().objects.get(
                 pk=result.json()['id']
             )
 
@@ -234,41 +235,41 @@ class UserAPIViewTestMixin:
     def _request_test_user_delete_api_view(self):
         return self.delete(
             viewname='rest_api:user-detail', kwargs={
-                'user_id': self.test_user.pk
+                'user_id': self._test_user.pk
             }
         )
 
     def _request_test_user_detail_api_view(self):
         return self.get(
             viewname='rest_api:user-detail', kwargs={
-                'user_id': self.test_user.pk
+                'user_id': self._test_user.pk
             }
         )
 
     def _request_test_user_edit_patch_api_view(self):
         return self.patch(
             viewname='rest_api:user-detail', kwargs={
-                'user_id': self.test_user.pk
+                'user_id': self._test_user.pk
             }, data={'username': TEST_USER_USERNAME_EDITED}
         )
 
     def _request_test_user_edit_put_api_view(self):
         return self.put(
             viewname='rest_api:user-detail', kwargs={
-                'user_id': self.test_user.pk
+                'user_id': self._test_user.pk
             }, data={'username': TEST_USER_USERNAME_EDITED}
         )
 
     def _request_test_user_password_change_api_view(self):
         result = self.patch(
             viewname='rest_api:user-detail', kwargs={
-                'user_id': self.test_user.pk
+                'user_id': self._test_user.pk
             }, data={
                 'password': TEST_USER_PASSWORD_EDITED,
             }
         )
 
-        self.test_user.cleartext_password = TEST_USER_PASSWORD_EDITED
+        self._test_user.cleartext_password = TEST_USER_PASSWORD_EDITED
 
         return result
 
@@ -277,7 +278,7 @@ class UserGroupAPIViewTestMixin:
     def _request_test_user_group_list_api_view(self):
         return self.get(
             viewname='rest_api:user-group-list', kwargs={
-                'user_id': self.test_user.pk
+                'user_id': self._test_user.pk
             }
         )
 
@@ -333,16 +334,18 @@ class UserTestCaseMixin:
 
     def _create_test_case_superuser(self):
         self._test_case_superuser = get_user_model().objects.create_superuser(
-            username=TEST_CASE_SUPERUSER_USERNAME,
             email=TEST_CASE_SUPERUSER_EMAIL,
-            password=TEST_CASE_SUPERUSER_PASSWORD
+            password=TEST_CASE_SUPERUSER_PASSWORD,
+            username=TEST_CASE_SUPERUSER_USERNAME
         )
         self._test_case_superuser.cleartext_password = TEST_CASE_SUPERUSER_PASSWORD
 
     def _create_test_case_user(self):
         self._test_case_user = get_user_model().objects.create_user(
-            username=TEST_CASE_USER_USERNAME, email=TEST_CASE_USER_EMAIL,
-            password=TEST_CASE_USER_PASSWORD
+            email=TEST_CASE_USER_EMAIL, first_name=TEST_CASE_USER_FIRST_NAME,
+            last_name=TEST_CASE_USER_LAST_NAME,
+            password=TEST_CASE_USER_PASSWORD,
+            username=TEST_CASE_USER_USERNAME
         )
         self._test_case_user.cleartext_password = TEST_CASE_USER_PASSWORD
 
@@ -351,13 +354,14 @@ class UserTestCaseMixin:
 
     def login_superuser(self):
         return self.login(
-            username=TEST_CASE_SUPERUSER_USERNAME,
-            password=TEST_CASE_SUPERUSER_PASSWORD
+            password=TEST_CASE_SUPERUSER_PASSWORD,
+            username=TEST_CASE_SUPERUSER_USERNAME
         )
 
     def login_user(self):
         return self.login(
-            username=TEST_CASE_USER_USERNAME, password=TEST_CASE_USER_PASSWORD
+            password=TEST_CASE_USER_PASSWORD,
+            username=TEST_CASE_USER_USERNAME
         )
 
     def logout(self):
@@ -370,7 +374,7 @@ class UserTestMixin:
 
     def setUp(self):
         super().setUp()
-        self.test_users = []
+        self._test_users = []
 
         if self.auto_create_test_superuser:
             self._create_test_superuser()
@@ -379,75 +383,75 @@ class UserTestMixin:
             self._create_test_user()
 
     def _create_test_superuser(self):
-        self.test_superuser = get_user_model().objects.create_superuser(
-            username=TEST_CASE_SUPERUSER_USERNAME,
+        self._test_superuser = get_user_model().objects.create_superuser(
             email=TEST_CASE_SUPERUSER_EMAIL,
-            password=TEST_CASE_SUPERUSER_PASSWORD
+            password=TEST_CASE_SUPERUSER_PASSWORD,
+            username=TEST_CASE_SUPERUSER_USERNAME
         )
-        self.test_superuser.cleartext_password = TEST_USER_PASSWORD
+        self._test_superuser.cleartext_password = TEST_USER_PASSWORD
 
     def _create_test_user(self):
-        total_test_users = len(self.test_users)
+        total_test_users = len(self._test_users)
         username = '{}_{}'.format(TEST_USER_USERNAME, total_test_users)
 
-        self.test_user = get_user_model().objects.create_user(
-            username=username, email=TEST_USER_EMAIL,
-            password=TEST_USER_PASSWORD
+        self._test_user = get_user_model().objects.create_user(
+            email=TEST_USER_EMAIL, password=TEST_USER_PASSWORD,
+            username=username
         )
-        self.test_user.cleartext_password = TEST_USER_PASSWORD
-        self.test_users.append(self.test_user)
+        self._test_user.cleartext_password = TEST_USER_PASSWORD
+        self._test_users.append(self._test_user)
 
 
 class UserViewTestMixin:
     def _request_test_superuser_delete_view(self):
         return self.post(
-            viewname='user_management:user_delete_single',
-            kwargs={'user_id': self.test_superuser.pk}
+            viewname='user_management:user_single_delete',
+            kwargs={'user_id': self._test_superuser.pk}
         )
 
     def _request_test_superuser_detail_view(self):
         return self.get(
             viewname='user_management:user_details',
-            kwargs={'user_id': self.test_superuser.pk}
+            kwargs={'user_id': self._test_superuser.pk}
         )
 
     def _request_test_user_create_view(self):
         reponse = self.post(
             viewname='user_management:user_create', data={
-                'username': TEST_USER_USERNAME,
-                'password': TEST_USER_PASSWORD
+                'password': TEST_USER_PASSWORD,
+                'username': TEST_USER_USERNAME
             }
         )
 
-        self.test_user = get_user_model().objects.filter(
+        self._test_user = get_user_model().objects.filter(
             username=TEST_USER_USERNAME
         ).first()
         return reponse
 
-    def _request_test_user_delete_single_view(self):
+    def _request_test_user_single_delete_view(self):
         return self.post(
-            viewname='user_management:user_delete_single',
-            kwargs={'user_id': self.test_user.pk}
+            viewname='user_management:user_single_delete',
+            kwargs={'user_id': self._test_user.pk}
         )
 
-    def _request_test_user_delete_multiple_view(self):
+    def _request_test_user_multiple_delete_view(self):
         return self.post(
-            viewname='user_management:user_delete_multiple', data={
-                'id_list': self.test_user.pk
+            viewname='user_management:user_multiple_delete', data={
+                'id_list': self._test_user.pk
             }
         )
 
     def _request_test_user_detail_view(self):
         return self.get(
             viewname='user_management:user_details', kwargs={
-                'user_id': self.test_user.pk
+                'user_id': self._test_user.pk
             }
         )
 
     def _request_test_user_edit_view(self):
         return self.post(
             viewname='user_management:user_edit', kwargs={
-                'user_id': self.test_user.pk
+                'user_id': self._test_user.pk
             }, data={
                 'username': TEST_USER_USERNAME_EDITED
             }
@@ -459,7 +463,7 @@ class UserViewTestMixin:
     def _request_test_user_options_view(self):
         return self.post(
             viewname='user_management:user_options', kwargs={
-                'user_id': self.test_user.pk
+                'user_id': self._test_user.pk
             }, data={
                 'block_password_change': True
             }
@@ -470,26 +474,26 @@ class UserGroupViewTestMixin:
     def _request_test_user_group_add_remove_get_view(self):
         return self.get(
             viewname='user_management:user_groups', kwargs={
-                'user_id': self.test_user.pk
+                'user_id': self._test_user.pk
             }
         )
 
     def _request_test_user_group_add_view(self):
         return self.post(
             viewname='user_management:user_groups', kwargs={
-                'user_id': self.test_user.pk,
+                'user_id': self._test_user.pk,
             }, data={
                 'available-submit': 'true',
-                'available-selection': self.test_group.pk
+                'available-selection': self._test_group.pk
             }
         )
 
     def _request_test_user_group_remove_view(self):
         return self.post(
             viewname='user_management:user_groups', kwargs={
-                'user_id': self.test_user.pk,
+                'user_id': self._test_user.pk,
             }, data={
                 'added-submit': 'true',
-                'added-selection': self.test_group.pk
+                'added-selection': self._test_group.pk
             }
         )

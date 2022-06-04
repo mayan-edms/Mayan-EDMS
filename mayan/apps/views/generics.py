@@ -14,13 +14,12 @@ from django.views.generic import (
 from django.views.generic.base import View
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import (
-    CreateView, DeleteView, FormMixin, ModelFormMixin, UpdateView
+    CreateView, DeleteView, FormMixin, UpdateView
 )
 from django.views.generic.list import ListView
 
-from pure_pagination.mixins import PaginationMixin
-
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.dynamic_search.view_mixins import SearchEnabledListViewMixin
 
 from .forms import ChoiceForm
 from .icons import (
@@ -30,9 +29,10 @@ from .icons import (
 from .mixins import (
     ExtraDataDeleteViewMixin, DownloadViewMixin, DynamicFormViewMixin,
     ExternalObjectViewMixin, ExtraContextViewMixin, FormExtraKwargsViewMixin,
-    ListModeViewMixin, MultipleObjectViewMixin, ObjectActionViewMixin,
-    ObjectNameViewMixin, RedirectionViewMixin, RestrictedQuerysetViewMixin,
-    SortingViewMixin, ViewPermissionCheckViewMixin
+    ListModeViewMixin, ModelFormFieldsetsViewMixin, MultipleObjectViewMixin,
+    ObjectActionViewMixin, ObjectNameViewMixin, RedirectionViewMixin,
+    RestrictedQuerysetViewMixin, SortingViewMixin,
+    ViewIconMixin, ViewPermissionCheckViewMixin
 )
 
 from .settings import setting_paginate_by
@@ -116,13 +116,10 @@ class MultiFormView(DjangoFormView):
         return kwargs
 
     def get_forms(self, form_classes):
-        return dict(
-            [
-                (
-                    key, self._create_form(form_name=key, klass=klass)
-                ) for key, klass in form_classes.items()
-            ]
-        )
+        return {
+            key: self._create_form(form_name=key, klass=klass)
+            for key, klass in form_classes.items()
+        }
 
     def get_initial(self, form_name):
         initial_method = 'get_initial__{}'.format(form_name)
@@ -142,8 +139,9 @@ class MultiFormView(DjangoFormView):
 
 
 class AddRemoveView(
-    ExternalObjectViewMixin, ExtraContextViewMixin, ViewPermissionCheckViewMixin,
-    RestrictedQuerysetViewMixin, MultiFormView
+    ExternalObjectViewMixin, ExtraContextViewMixin,
+    ViewPermissionCheckViewMixin, RestrictedQuerysetViewMixin, ViewIconMixin,
+    MultiFormView
 ):
     form_classes = {'form_available': ChoiceForm, 'form_added': ChoiceForm}
     list_added_help_text = _(
@@ -397,7 +395,7 @@ class AddRemoveView(
 
 class ConfirmView(
     RestrictedQuerysetViewMixin, ViewPermissionCheckViewMixin,
-    ExtraContextViewMixin, RedirectionViewMixin, TemplateView
+    ExtraContextViewMixin, RedirectionViewMixin, ViewIconMixin, TemplateView
 ):
     """
     View that will execute an view action upon user Yes/No confirmation.
@@ -419,7 +417,7 @@ class ConfirmView(
 
 class FormView(
     ViewPermissionCheckViewMixin, ExtraContextViewMixin, RedirectionViewMixin,
-    FormExtraKwargsViewMixin, DjangoFormView
+    FormExtraKwargsViewMixin, ViewIconMixin, DjangoFormView
 ):
     """
     Basic form view that will check for view level permission, allow
@@ -436,7 +434,7 @@ class DynamicFormView(DynamicFormViewMixin, FormView):
 class MultipleObjectFormActionView(
     ExtraContextViewMixin, ObjectActionViewMixin, ViewPermissionCheckViewMixin,
     RestrictedQuerysetViewMixin, MultipleObjectViewMixin, FormExtraKwargsViewMixin,
-    RedirectionViewMixin, DjangoFormView
+    RedirectionViewMixin, ViewIconMixin, DjangoFormView
 ):
     """
     This view will present a form and upon receiving a POST request will
@@ -478,7 +476,8 @@ class MultipleObjectFormActionView(
 class MultipleObjectConfirmActionView(
     ExtraContextViewMixin, ObjectActionViewMixin,
     ViewPermissionCheckViewMixin, RestrictedQuerysetViewMixin,
-    MultipleObjectViewMixin, RedirectionViewMixin, TemplateView
+    MultipleObjectViewMixin, RedirectionViewMixin, ViewIconMixin,
+    TemplateView
 ):
     """
     Form that will execute an action to a queryset upon user Yes/No
@@ -563,7 +562,10 @@ class RelationshipView(FormView):
         )
 
 
-class SimpleView(ViewPermissionCheckViewMixin, ExtraContextViewMixin, TemplateView):
+class SimpleView(
+    ViewPermissionCheckViewMixin, ExtraContextViewMixin, ViewIconMixin,
+    TemplateView
+):
     """
     Basic template view class with permission check and extra context.
     """
@@ -571,7 +573,8 @@ class SimpleView(ViewPermissionCheckViewMixin, ExtraContextViewMixin, TemplateVi
 
 class SingleObjectCreateView(
     ObjectNameViewMixin, ViewPermissionCheckViewMixin, ExtraContextViewMixin,
-    RedirectionViewMixin, FormExtraKwargsViewMixin, CreateView
+    RedirectionViewMixin, FormExtraKwargsViewMixin,
+    ModelFormFieldsetsViewMixin, ViewIconMixin, CreateView
 ):
     error_message_duplicate = None
     template_name = 'appearance/generic_form.html'
@@ -639,8 +642,9 @@ class SingleObjectCreateView(
 
 
 class SingleObjectDeleteView(
-    ObjectNameViewMixin, ExtraDataDeleteViewMixin, ViewPermissionCheckViewMixin,
-    RestrictedQuerysetViewMixin, ExtraContextViewMixin, RedirectionViewMixin, DeleteView
+    ObjectNameViewMixin, ExtraDataDeleteViewMixin,
+    ViewPermissionCheckViewMixin, RestrictedQuerysetViewMixin,
+    ExtraContextViewMixin, RedirectionViewMixin, ViewIconMixin, DeleteView
 ):
     template_name = 'appearance/generic_confirm.html'
 
@@ -698,7 +702,8 @@ class SingleObjectDeleteView(
 class SingleObjectDetailView(
     ObjectNameViewMixin, ViewPermissionCheckViewMixin,
     RestrictedQuerysetViewMixin, FormExtraKwargsViewMixin,
-    ExtraContextViewMixin, ModelFormMixin, DetailView
+    ExtraContextViewMixin, ModelFormFieldsetsViewMixin, ViewIconMixin,
+    DetailView
 ):
     template_name = 'appearance/generic_form.html'
 
@@ -804,8 +809,10 @@ class SingleObjectDynamicFormCreateView(
 
 
 class SingleObjectEditView(
-    ObjectNameViewMixin, ViewPermissionCheckViewMixin, RestrictedQuerysetViewMixin,
-    ExtraContextViewMixin, FormExtraKwargsViewMixin, RedirectionViewMixin, UpdateView
+    ObjectNameViewMixin, ViewPermissionCheckViewMixin,
+    RestrictedQuerysetViewMixin, ExtraContextViewMixin,
+    FormExtraKwargsViewMixin, RedirectionViewMixin,
+    ModelFormFieldsetsViewMixin, ViewIconMixin, UpdateView
 ):
     template_name = 'appearance/generic_form.html'
 
@@ -868,9 +875,9 @@ class SingleObjectDynamicFormEditView(
 
 
 class SingleObjectListView(
-    SortingViewMixin, ListModeViewMixin, PaginationMixin,
-    ViewPermissionCheckViewMixin, RestrictedQuerysetViewMixin,
-    ExtraContextViewMixin, RedirectionViewMixin, ListView
+    SortingViewMixin, ListModeViewMixin, ViewPermissionCheckViewMixin,
+    SearchEnabledListViewMixin, RestrictedQuerysetViewMixin,
+    ExtraContextViewMixin, RedirectionViewMixin, ViewIconMixin, ListView
 ):
     """
     A view that will generate a list of instances from a queryset.

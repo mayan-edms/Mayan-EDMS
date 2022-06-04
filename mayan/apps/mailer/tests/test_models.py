@@ -203,7 +203,7 @@ class DocumentMailingTestCase(MailerTestMixin, GenericDocumentTestCase):
         self._clear_events()
 
         self._test_user_mailer.send_object(
-            obj=self.test_document, to=TEST_EMAIL_ADDRESS
+            obj=self._test_document, to=TEST_EMAIL_ADDRESS
         )
 
         self.assertEqual(len(mail.outbox), 1)
@@ -213,7 +213,7 @@ class DocumentMailingTestCase(MailerTestMixin, GenericDocumentTestCase):
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document)
+        self.assertEqual(events[0].action_object, self._test_document)
         self.assertEqual(events[0].actor, self._test_user_mailer)
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
@@ -226,12 +226,12 @@ class DocumentFileMailingTestCase(MailerTestMixin, GenericDocumentTestCase):
         self._clear_events()
 
         kwargs = {
-            'as_attachment': True, 'obj': self.test_document_file,
+            'as_attachment': True, 'obj': self._test_document_file,
             'to': TEST_EMAIL_ADDRESS
         }
         kwargs.update(
             MODEL_SEND_FUNCTION_DOTTED_PATH.get(
-                self.test_document_file._meta.model, {}
+                self._test_document_file._meta.model, {}
             )
         )
 
@@ -242,17 +242,17 @@ class DocumentFileMailingTestCase(MailerTestMixin, GenericDocumentTestCase):
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
         self.assertEqual(
             mail.outbox[0].attachments[0][0],
-            self.test_document_file.filename
+            self._test_document_file.filename
         )
         self.assertEqual(
             mail.outbox[0].attachments[0][2],
-            self.test_document_file.mimetype
+            self._test_document_file.mimetype
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_file)
+        self.assertEqual(events[0].action_object, self._test_document_file)
         self.assertEqual(events[0].actor, self._test_user_mailer)
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
@@ -263,7 +263,7 @@ class DocumentFileMailingTestCase(MailerTestMixin, GenericDocumentTestCase):
         self._clear_events()
 
         self._test_user_mailer.send_object(
-            obj=self.test_document_file, to=TEST_EMAIL_ADDRESS
+            obj=self._test_document_file, to=TEST_EMAIL_ADDRESS
         )
 
         self.assertEqual(len(mail.outbox), 1)
@@ -274,7 +274,7 @@ class DocumentFileMailingTestCase(MailerTestMixin, GenericDocumentTestCase):
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_file)
+        self.assertEqual(events[0].action_object, self._test_document_file)
         self.assertEqual(events[0].actor, self._test_user_mailer)
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
@@ -289,12 +289,12 @@ class DocumentVersionMailingTestCase(
         self._clear_events()
 
         kwargs = {
-            'as_attachment': True, 'obj': self.test_document_version,
+            'as_attachment': True, 'obj': self._test_document_version,
             'to': TEST_EMAIL_ADDRESS
         }
         kwargs.update(
             MODEL_SEND_FUNCTION_DOTTED_PATH.get(
-                self.test_document_version._meta.model, {}
+                self._test_document_version._meta.model, {}
             )
         )
 
@@ -305,7 +305,7 @@ class DocumentVersionMailingTestCase(
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
         self.assertEqual(
             mail.outbox[0].attachments[0][0],
-            str(self.test_document_version)
+            str(self._test_document_version)
         )
         self.assertEqual(
             mail.outbox[0].attachments[0][2],
@@ -315,7 +315,7 @@ class DocumentVersionMailingTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_version)
+        self.assertEqual(events[0].action_object, self._test_document_version)
         self.assertEqual(events[0].actor, self._test_user_mailer)
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
@@ -326,7 +326,7 @@ class DocumentVersionMailingTestCase(
         self._clear_events()
 
         self._test_user_mailer.send_object(
-            obj=self.test_document_version,
+            obj=self._test_document_version,
             to=TEST_EMAIL_ADDRESS
         )
 
@@ -338,7 +338,7 @@ class DocumentVersionMailingTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_version)
+        self.assertEqual(events[0].action_object, self._test_document_version)
         self.assertEqual(events[0].actor, self._test_user_mailer)
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)

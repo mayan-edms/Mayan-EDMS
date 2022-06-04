@@ -10,6 +10,10 @@ from mayan.apps.views.mixins import (
     ContentTypeViewMixin, ExternalObjectViewMixin
 )
 
+from .icons import (
+    icon_cache_detail, icon_cache_list, icon_cache_partition_detail,
+    icon_cache_partition_purge, icon_cache_purge
+)
 from .forms import CacheDetailForm, CachePartitionDetailForm
 from .models import Cache, CachePartition
 from .permissions import (
@@ -38,6 +42,7 @@ class CacheDetailView(SingleObjectDetailView):
     model = Cache
     object_permission = permission_cache_view
     pk_url_kwarg = 'cache_id'
+    view_icon = icon_cache_detail
 
     def get_extra_context(self):
         return {
@@ -49,6 +54,7 @@ class CacheDetailView(SingleObjectDetailView):
 class CacheListView(SingleObjectListView):
     model = Cache
     object_permission = permission_cache_view
+    view_icon = icon_cache_list
 
     def get_extra_context(self):
         return {
@@ -69,6 +75,7 @@ class CachePartitionDetailView(SingleObjectDetailView):
     model = CachePartition
     object_permission = permission_cache_view
     pk_url_kwarg = 'cache_partition_id'
+    view_icon = icon_cache_partition_detail
 
     def get_extra_context(self):
         return {
@@ -82,6 +89,7 @@ class CachePartitionPurgeView(
 ):
     external_object_permission = permission_cache_partition_purge
     external_object_pk_url_kwarg = 'object_id'
+    view_icon = icon_cache_partition_purge
 
     def get_external_object_queryset(self):
         return self.get_content_type().get_all_objects_for_this_type()
@@ -114,8 +122,9 @@ class CachePurgeView(MultipleObjectConfirmActionView):
     model = Cache
     object_permission = permission_cache_purge
     pk_url_kwarg = 'cache_id'
-    success_message_singular = '%(count)d cache submitted for purging.'
-    success_message_plural = '%(count)d caches submitted for purging.'
+    success_message_singular = _('%(count)d cache submitted for purging.')
+    success_message_plural = _('%(count)d caches submitted for purging.')
+    view_icon = icon_cache_purge
 
     def get_extra_context(self):
         queryset = self.object_list

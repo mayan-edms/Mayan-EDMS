@@ -3,7 +3,9 @@ from django.db.models.signals import post_delete, post_save, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.acls.permissions import (
+    permission_acl_edit, permission_acl_view
+)
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
@@ -20,7 +22,7 @@ from mayan.apps.views.html_widgets import TwoStateWidget
 from .events import event_index_template_created, event_index_template_edited
 from .handlers import (
     handler_create_default_document_index, handler_delete_empty,
-    handler_index_document, handler_remove_document
+    handler_event_trigger, handler_index_document, handler_remove_document
 )
 from .html_widgets import (
     get_instance_link, index_instance_item_link, node_level
@@ -31,9 +33,10 @@ from .links import (
     link_index_instances_reset, link_index_template_setup,
     link_index_template_create, link_index_template_document_types,
     link_index_template_delete, link_index_template_edit,
-    link_index_template_list, link_index_template_node_tree_view,
-    link_index_instances_rebuild, link_index_template_node_create,
-    link_index_template_node_delete, link_index_template_node_edit
+    link_index_template_event_triggers, link_index_template_list,
+    link_index_template_node_tree_view, link_index_instances_rebuild,
+    link_index_template_node_create, link_index_template_node_delete,
+    link_index_template_node_edit
 )
 from .permissions import (
     permission_index_template_delete, permission_index_template_edit,
@@ -52,6 +55,8 @@ class DocumentIndexingApp(MayanAppConfig):
 
     def ready(self):
         super().ready()
+
+        Action = apps.get_model(app_label='actstream', model_name='Action')
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -256,6 +261,7 @@ class DocumentIndexingApp(MayanAppConfig):
         menu_list_facet.bind_links(
             links=(
                 link_index_template_document_types,
+                link_index_template_event_triggers,
                 link_index_template_node_tree_view
             ), sources=(IndexTemplate,)
         )
@@ -267,8 +273,9 @@ class DocumentIndexingApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(
-                link_index_template_node_create, link_index_template_node_edit,
-                link_index_template_node_delete
+                link_index_template_node_create,
+                link_index_template_node_delete,
+                link_index_template_node_edit
             ), sources=(IndexTemplateNode,)
         )
         menu_main.bind_links(links=(link_index_instance_menu,), position=50)
@@ -298,15 +305,20 @@ class DocumentIndexingApp(MayanAppConfig):
             links=(link_index_instances_rebuild, link_index_instances_reset)
         )
 
-        post_save.connect(
-            dispatch_uid='document_indexing_handler_index_document',
-            receiver=handler_index_document,
-            sender=Document
-        )
         post_delete.connect(
             dispatch_uid='document_indexing_handler_delete_empty',
             receiver=handler_delete_empty,
             sender=Document
+        )
+        post_save.connect(
+            dispatch_uid='document_handler_index_document',
+            receiver=handler_index_document,
+            sender=Document
+        )
+        post_save.connect(
+            dispatch_uid='document_indexing_handler_event_trigger',
+            receiver=handler_event_trigger,
+            sender=Action
         )
         pre_delete.connect(
             dispatch_uid='document_indexing_handler_remove_document',

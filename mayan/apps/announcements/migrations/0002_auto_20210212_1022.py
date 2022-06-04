@@ -83,7 +83,7 @@ def code_copy_messages(apps, schema_editor):
         stored_permission.save()
 
 
-def reverse_code_copy_messages(apps, schema_editor):
+def code_copy_messages_reverse(apps, schema_editor):
     AccessControlList = apps.get_model(
         app_label='acls', model_name='AccessControlList'
     )
@@ -173,12 +173,12 @@ class Migration(migrations.Migration):
         ('announcements', '0001_initial'),
         ('contenttypes', '0002_remove_content_type_name'),
         ('events', '0008_auto_20180315_0029'),
-        ('permissions', '0004_auto_20191213_0044'),
+        ('permissions', '0004_auto_20191213_0044')
     ]
 
     operations = [
         migrations.RunPython(
             code=code_copy_messages,
-            reverse_code=reverse_code_copy_messages
-        ),
+            reverse_code=code_copy_messages_reverse
+        )
     ]

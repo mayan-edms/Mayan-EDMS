@@ -31,17 +31,17 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
         self._create_test_web_link()
 
     def test_document_type_web_link_add_remove_get_view_no_permission(self):
-        self.test_document_type.web_links.add(self.test_web_link)
+        self._test_document_type.web_links.add(self._test_web_link)
 
         self._clear_events()
 
         response = self._request_test_document_type_web_link_add_remove_get_view()
         self.assertNotContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=str(self.test_web_link),
+            response=response, text=str(self._test_web_link),
             status_code=404
         )
 
@@ -49,10 +49,10 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_type_web_link_add_remove_get_view_with_document_type_access(self):
-        self.test_document_type.web_links.add(self.test_web_link)
+        self._test_document_type.web_links.add(self._test_web_link)
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
 
@@ -60,11 +60,11 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
 
         response = self._request_test_document_type_web_link_add_remove_get_view()
         self.assertContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=200
         )
         self.assertNotContains(
-            response=response, text=str(self.test_web_link),
+            response=response, text=str(self._test_web_link),
             status_code=200
         )
 
@@ -72,10 +72,10 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_type_web_link_add_remove_get_view_with_web_link_access(self):
-        self.test_document_type.web_links.add(self.test_web_link)
+        self._test_document_type.web_links.add(self._test_web_link)
 
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_edit
         )
 
@@ -83,11 +83,11 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
 
         response = self._request_test_document_type_web_link_add_remove_get_view()
         self.assertNotContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=str(self.test_web_link),
+            response=response, text=str(self._test_web_link),
             status_code=404
         )
 
@@ -95,14 +95,14 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_type_web_link_add_remove_get_view_with_full_access(self):
-        self.test_document_type.web_links.add(self.test_web_link)
+        self._test_document_type.web_links.add(self._test_web_link)
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_edit
         )
 
@@ -110,11 +110,11 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
 
         response = self._request_test_document_type_web_link_add_remove_get_view()
         self.assertContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=200
         )
         self.assertContains(
-            response=response, text=str(self.test_web_link),
+            response=response, text=str(self._test_web_link),
             status_code=200
         )
 
@@ -128,7 +128,7 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            self.test_web_link not in self.test_document_type.web_links.all()
+            self._test_web_link not in self._test_document_type.web_links.all()
         )
 
         events = self._get_test_events()
@@ -136,7 +136,7 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
 
     def test_document_type_web_link_add_view_with_document_type_access(self):
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
 
@@ -146,7 +146,7 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertTrue(
-            self.test_web_link not in self.test_document_type.web_links.all()
+            self._test_web_link not in self._test_document_type.web_links.all()
         )
 
         events = self._get_test_events()
@@ -154,7 +154,7 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
 
     def test_document_type_web_link_add_view_with_web_link_access(self):
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_edit
         )
 
@@ -164,7 +164,7 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            self.test_web_link not in self.test_document_type.web_links.all()
+            self._test_web_link not in self._test_document_type.web_links.all()
         )
 
         events = self._get_test_events()
@@ -172,11 +172,11 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
 
     def test_document_type_web_link_add_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_edit
         )
 
@@ -186,19 +186,19 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(
-            self.test_web_link in self.test_document_type.web_links.all()
+            self._test_web_link in self._test_document_type.web_links.all()
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].action_object, self._test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_web_link)
+        self.assertEqual(events[0].target, self._test_web_link)
         self.assertEqual(events[0].verb, event_web_link_edited.id)
 
     def test_document_type_web_link_remove_view_no_permission(self):
-        self.test_document_type.web_links.add(self.test_web_link)
+        self._test_document_type.web_links.add(self._test_web_link)
 
         self._clear_events()
 
@@ -206,17 +206,17 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            self.test_web_link in self.test_document_type.web_links.all()
+            self._test_web_link in self._test_document_type.web_links.all()
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_type_web_link_remove_view_with_document_type_access(self):
-        self.test_document_type.web_links.add(self.test_web_link)
+        self._test_document_type.web_links.add(self._test_web_link)
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
 
@@ -226,17 +226,17 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertTrue(
-            self.test_web_link in self.test_document_type.web_links.all()
+            self._test_web_link in self._test_document_type.web_links.all()
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_type_web_link_remove_view_with_web_link_access(self):
-        self.test_document_type.web_links.add(self.test_web_link)
+        self._test_document_type.web_links.add(self._test_web_link)
 
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_edit
         )
 
@@ -246,21 +246,21 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            self.test_web_link in self.test_document_type.web_links.all()
+            self._test_web_link in self._test_document_type.web_links.all()
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_type_web_link_remove_view_with_full_access(self):
-        self.test_document_type.web_links.add(self.test_web_link)
+        self._test_document_type.web_links.add(self._test_web_link)
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_edit
         )
 
@@ -270,15 +270,15 @@ class DocumentTypeAddRemoveWebLinkViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(
-            self.test_web_link not in self.test_document_type.web_links.all()
+            self._test_web_link not in self._test_document_type.web_links.all()
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].action_object, self._test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_web_link)
+        self.assertEqual(events[0].target, self._test_web_link)
         self.assertEqual(events[0].verb, event_web_link_edited.id)
 
 
@@ -315,7 +315,7 @@ class WebLinkViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_web_link)
+        self.assertEqual(events[0].target, self._test_web_link)
         self.assertEqual(events[0].verb, event_web_link_created.id)
 
     def test_web_link_delete_view_no_permission(self):
@@ -337,7 +337,7 @@ class WebLinkViewTestCase(
         self._create_test_web_link()
 
         self.grant_access(
-            obj=self.test_web_link, permission=permission_web_link_delete
+            obj=self._test_web_link, permission=permission_web_link_delete
         )
 
         web_link_count = WebLink.objects.count()
@@ -355,15 +355,15 @@ class WebLinkViewTestCase(
     def test_web_link_edit_view_no_permission(self):
         self._create_test_web_link()
 
-        web_link_label = self.test_web_link.label
+        web_link_label = self._test_web_link.label
 
         self._clear_events()
 
         response = self._request_test_web_link_edit_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_web_link.refresh_from_db()
-        self.assertEqual(self.test_web_link.label, web_link_label)
+        self._test_web_link.refresh_from_db()
+        self.assertEqual(self._test_web_link.label, web_link_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -372,25 +372,25 @@ class WebLinkViewTestCase(
         self._create_test_web_link()
 
         self.grant_access(
-            obj=self.test_web_link, permission=permission_web_link_edit
+            obj=self._test_web_link, permission=permission_web_link_edit
         )
 
-        web_link_label = self.test_web_link.label
+        web_link_label = self._test_web_link.label
 
         self._clear_events()
 
         response = self._request_test_web_link_edit_view()
         self.assertEqual(response.status_code, 302)
 
-        self.test_web_link.refresh_from_db()
-        self.assertNotEqual(self.test_web_link.label, web_link_label)
+        self._test_web_link.refresh_from_db()
+        self.assertNotEqual(self._test_web_link.label, web_link_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_web_link)
+        self.assertEqual(events[0].target, self._test_web_link)
         self.assertEqual(events[0].verb, event_web_link_edited.id)
 
     def test_web_link_list_view_with_no_permission(self):
@@ -400,7 +400,7 @@ class WebLinkViewTestCase(
 
         response = self._request_test_web_link_list_view()
         self.assertNotContains(
-            response=response, text=self.test_web_link.label, status_code=200
+            response=response, text=self._test_web_link.label, status_code=200
         )
 
         events = self._get_test_events()
@@ -409,13 +409,13 @@ class WebLinkViewTestCase(
     def test_web_link_list_view_with_access(self):
         self._create_test_web_link()
 
-        self.grant_access(obj=self.test_web_link, permission=permission_web_link_view)
+        self.grant_access(obj=self._test_web_link, permission=permission_web_link_view)
 
         self._clear_events()
 
         response = self._request_test_web_link_list_view()
         self.assertContains(
-            response=response, text=self.test_web_link.label, status_code=200
+            response=response, text=self._test_web_link.label, status_code=200
         )
 
         events = self._get_test_events()
@@ -433,24 +433,24 @@ class WebLinkDocumentTypeViewTestCase(
         self._create_test_web_link()
 
     def test_web_link_document_type_add_remove_get_view_no_permission(self):
-        self.test_web_link.document_types.add(self.test_document_type)
+        self._test_web_link.document_types.add(self._test_document_type)
 
-        test_web_link_document_type_count = self.test_web_link.document_types.count()
+        test_web_link_document_type_count = self._test_web_link.document_types.count()
 
         self._clear_events()
 
         response = self._request_test_web_link_document_type_add_remove_get_view()
         self.assertNotContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=str(self.test_web_link),
+            response=response, text=str(self._test_web_link),
             status_code=404
         )
 
         self.assertEqual(
-            self.test_web_link.document_types.count(),
+            self._test_web_link.document_types.count(),
             test_web_link_document_type_count
         )
 
@@ -458,12 +458,12 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_web_link_document_type_add_remove_get_view_with_document_type_access(self):
-        self.test_web_link.document_types.add(self.test_document_type)
+        self._test_web_link.document_types.add(self._test_document_type)
 
-        test_web_link_document_type_count = self.test_web_link.document_types.count()
+        test_web_link_document_type_count = self._test_web_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
 
@@ -471,16 +471,16 @@ class WebLinkDocumentTypeViewTestCase(
 
         response = self._request_test_web_link_document_type_add_remove_get_view()
         self.assertNotContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=str(self.test_web_link),
+            response=response, text=str(self._test_web_link),
             status_code=404
         )
 
         self.assertEqual(
-            self.test_web_link.document_types.count(),
+            self._test_web_link.document_types.count(),
             test_web_link_document_type_count
         )
 
@@ -488,12 +488,12 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_web_link_document_type_add_remove_get_view_with_web_link_access(self):
-        self.test_web_link.document_types.add(self.test_document_type)
+        self._test_web_link.document_types.add(self._test_document_type)
 
-        test_web_link_document_type_count = self.test_web_link.document_types.count()
+        test_web_link_document_type_count = self._test_web_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_edit
         )
 
@@ -501,16 +501,16 @@ class WebLinkDocumentTypeViewTestCase(
 
         response = self._request_test_web_link_document_type_add_remove_get_view()
         self.assertNotContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=200
         )
         self.assertContains(
-            response=response, text=str(self.test_web_link),
+            response=response, text=str(self._test_web_link),
             status_code=200
         )
 
         self.assertEqual(
-            self.test_web_link.document_types.count(),
+            self._test_web_link.document_types.count(),
             test_web_link_document_type_count
         )
 
@@ -518,16 +518,16 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_web_link_document_type_add_remove_get_view_with_full_access(self):
-        self.test_web_link.document_types.add(self.test_document_type)
+        self._test_web_link.document_types.add(self._test_document_type)
 
-        test_web_link_document_type_count = self.test_web_link.document_types.count()
+        test_web_link_document_type_count = self._test_web_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_edit
         )
 
@@ -535,16 +535,16 @@ class WebLinkDocumentTypeViewTestCase(
 
         response = self._request_test_web_link_document_type_add_remove_get_view()
         self.assertContains(
-            response=response, text=str(self.test_document_type),
+            response=response, text=str(self._test_document_type),
             status_code=200
         )
         self.assertContains(
-            response=response, text=str(self.test_web_link),
+            response=response, text=str(self._test_web_link),
             status_code=200
         )
 
         self.assertEqual(
-            self.test_web_link.document_types.count(),
+            self._test_web_link.document_types.count(),
             test_web_link_document_type_count
         )
 
@@ -552,10 +552,10 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_web_link_document_type_add_view_no_permission(self):
-        test_web_link_document_type_count = self.test_web_link.document_types.count()
+        test_web_link_document_type_count = self._test_web_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_type_edit
+            obj=self._test_document_type, permission=permission_document_type_edit
         )
 
         self._clear_events()
@@ -564,7 +564,7 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_web_link.document_types.count(),
+            self._test_web_link.document_types.count(),
             test_web_link_document_type_count
         )
 
@@ -572,10 +572,10 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_web_link_document_type_add_view_with_document_type_access(self):
-        test_web_link_document_type_count = self.test_web_link.document_types.count()
+        test_web_link_document_type_count = self._test_web_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_type_edit
+            obj=self._test_document_type, permission=permission_document_type_edit
         )
 
         self._clear_events()
@@ -584,7 +584,7 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_web_link.document_types.count(),
+            self._test_web_link.document_types.count(),
             test_web_link_document_type_count
         )
 
@@ -592,10 +592,10 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_web_link_document_type_add_view_with_web_link_access(self):
-        test_web_link_document_type_count = self.test_web_link.document_types.count()
+        test_web_link_document_type_count = self._test_web_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_web_link, permission=permission_web_link_edit
+            obj=self._test_web_link, permission=permission_web_link_edit
         )
 
         self._clear_events()
@@ -604,7 +604,7 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            self.test_web_link.document_types.count(),
+            self._test_web_link.document_types.count(),
             test_web_link_document_type_count
         )
 
@@ -612,14 +612,14 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_web_link_document_type_add_view_with_full_access(self):
-        test_web_link_document_type_count = self.test_web_link.document_types.count()
+        test_web_link_document_type_count = self._test_web_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_web_link, permission=permission_web_link_edit
+            obj=self._test_web_link, permission=permission_web_link_edit
         )
 
         self._clear_events()
@@ -628,25 +628,25 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_web_link.document_types.count(),
+            self._test_web_link.document_types.count(),
             test_web_link_document_type_count + 1
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].action_object, self._test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_web_link)
+        self.assertEqual(events[0].target, self._test_web_link)
         self.assertEqual(events[0].verb, event_web_link_edited.id)
 
     def test_web_link_document_type_remove_view_no_permission(self):
-        self.test_web_link.document_types.add(self.test_document_type)
+        self._test_web_link.document_types.add(self._test_document_type)
 
-        test_web_link_document_type_count = self.test_web_link.document_types.count()
+        test_web_link_document_type_count = self._test_web_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_type_edit
+            obj=self._test_document_type, permission=permission_document_type_edit
         )
 
         self._clear_events()
@@ -655,7 +655,7 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_web_link.document_types.count(),
+            self._test_web_link.document_types.count(),
             test_web_link_document_type_count
         )
 
@@ -663,12 +663,12 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_web_link_document_type_remove_view_with_document_type_access(self):
-        self.test_web_link.document_types.add(self.test_document_type)
+        self._test_web_link.document_types.add(self._test_document_type)
 
-        test_web_link_document_type_count = self.test_web_link.document_types.count()
+        test_web_link_document_type_count = self._test_web_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_type_edit
+            obj=self._test_document_type, permission=permission_document_type_edit
         )
 
         self._clear_events()
@@ -677,7 +677,7 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_web_link.document_types.count(),
+            self._test_web_link.document_types.count(),
             test_web_link_document_type_count
         )
 
@@ -685,12 +685,12 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_web_link_document_type_remove_view_with_web_link_access(self):
-        self.test_web_link.document_types.add(self.test_document_type)
+        self._test_web_link.document_types.add(self._test_document_type)
 
-        test_web_link_document_type_count = self.test_web_link.document_types.count()
+        test_web_link_document_type_count = self._test_web_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_web_link, permission=permission_web_link_edit
+            obj=self._test_web_link, permission=permission_web_link_edit
         )
 
         self._clear_events()
@@ -699,7 +699,7 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            self.test_web_link.document_types.count(),
+            self._test_web_link.document_types.count(),
             test_web_link_document_type_count
         )
 
@@ -707,16 +707,16 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_web_link_document_type_remove_view_with_full_access(self):
-        self.test_web_link.document_types.add(self.test_document_type)
+        self._test_web_link.document_types.add(self._test_document_type)
 
-        test_web_link_document_type_count = self.test_web_link.document_types.count()
+        test_web_link_document_type_count = self._test_web_link.document_types.count()
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_web_link, permission=permission_web_link_edit
+            obj=self._test_web_link, permission=permission_web_link_edit
         )
 
         self._clear_events()
@@ -725,16 +725,16 @@ class WebLinkDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_web_link.document_types.count(),
+            self._test_web_link.document_types.count(),
             test_web_link_document_type_count - 1
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].action_object, self._test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_web_link)
+        self.assertEqual(events[0].target, self._test_web_link)
         self.assertEqual(events[0].verb, event_web_link_edited.id)
 
 
@@ -748,63 +748,63 @@ class DocumentWebLinkViewTestCase(
     def test_document_web_links_list_view_no_permission(self):
         response = self._request_test_document_web_link_list_view()
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_document),
+            response=response, text=force_text(s=self._test_document),
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_web_link),
+            response=response, text=force_text(s=self._test_web_link),
             status_code=404
         )
 
     def test_document_web_links_list_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_web_link_instance_view
         )
 
         response = self._request_test_document_web_link_list_view()
         self.assertContains(
-            response=response, text=force_text(s=self.test_document),
+            response=response, text=force_text(s=self._test_document),
             status_code=200
         )
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_web_link),
+            response=response, text=force_text(s=self._test_web_link),
             status_code=200
         )
 
     def test_document_web_links_list_view_with_web_link_access(self):
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_instance_view
         )
 
         response = self._request_test_document_web_link_list_view()
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_document),
+            response=response, text=force_text(s=self._test_document),
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_web_link),
+            response=response, text=force_text(s=self._test_web_link),
             status_code=404
         )
 
     def test_document_web_links_list_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_web_link_instance_view
         )
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_instance_view
         )
 
         response = self._request_test_document_web_link_list_view()
         self.assertContains(
-            response=response, text=force_text(s=self.test_document),
+            response=response, text=force_text(s=self._test_document),
             status_code=200
         )
         self.assertContains(
-            response=response, text=force_text(s=self.test_web_link),
+            response=response, text=force_text(s=self._test_web_link),
             status_code=200
         )
         # Test if a valid resolved link navigate link is present.
@@ -812,7 +812,7 @@ class DocumentWebLinkViewTestCase(
         # base model WebLink.
         context = self._get_context_from_test_response(response=response)
         context['object'] = ResolvedWebLink.objects.get_for(
-            document=self.test_document, user=self._test_case_user
+            document=self._test_document, user=self._test_case_user
         ).first()
         resolved_web_link_link = link_web_link_instance_view.resolve(context=context)
         self.assertContains(
@@ -822,15 +822,15 @@ class DocumentWebLinkViewTestCase(
 
     def test_trashed_document_web_links_list_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_web_link_instance_view
         )
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_instance_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         response = self._request_test_document_web_link_list_view()
         self.assertEqual(response.status_code, 404)
@@ -841,7 +841,7 @@ class DocumentWebLinkViewTestCase(
 
     def test_document_resolved_web_link_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_web_link_instance_view
         )
 
@@ -850,7 +850,7 @@ class DocumentWebLinkViewTestCase(
 
     def test_document_resolved_web_link_view_with_web_link_access(self):
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_instance_view
         )
 
@@ -859,11 +859,11 @@ class DocumentWebLinkViewTestCase(
 
     def test_document_resolved_web_link_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_web_link_instance_view
         )
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_instance_view
         )
 
@@ -871,21 +871,21 @@ class DocumentWebLinkViewTestCase(
         self.assertEqual(response.status_code, 302)
         self.assertEqual(
             response.url, TEST_WEB_LINK_TEMPLATE.replace(
-                '{{ document.uuid }}', force_text(s=self.test_document.uuid)
+                '{{ document.uuid }}', force_text(s=self._test_document.uuid)
             )
         )
 
     def test_trashed_document_resolved_web_link_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_web_link_instance_view
         )
         self.grant_access(
-            obj=self.test_web_link,
+            obj=self._test_web_link,
             permission=permission_web_link_instance_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         response = self._request_test_document_web_link_instance_view()
         self.assertEqual(response.status_code, 404)

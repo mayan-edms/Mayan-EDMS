@@ -6,13 +6,18 @@ from qrcode.image.styles.moduledrawers import CircleModuleDrawer
 from django import forms
 from django.contrib.staticfiles.storage import staticfiles_storage
 
-from .widgets import AssetImageWidget, Base64ImageWidget
+from .widgets import Base64ImageWidget, ImageWidget
 
 LOGO_PATH = 'converter/images/logo.png'
 
 
-class AssetImageField(forms.fields.Field):
-    widget = AssetImageWidget
+class ImageField(forms.fields.Field):
+    widget = ImageWidget
+
+    def __init__(self, *args, **kwargs):
+        self.image_alt_text = kwargs.pop('image_alt_text', '')
+        super().__init__(*args, **kwargs)
+        self.widget.attrs['alt'] = self.image_alt_text
 
 
 class ReadOnlyImageField(forms.ImageField):

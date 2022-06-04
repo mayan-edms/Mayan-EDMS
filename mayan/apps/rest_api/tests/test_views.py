@@ -59,7 +59,7 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
 
         ModelPermission.register(
             model=self.TestModel, permissions=(
-                self.test_permission,
+                self._test_permission,
             )
         )
 
@@ -77,10 +77,10 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
         def _test_view_factory():
             class TestView(generics.ListCreateAPIView):
                 mayan_object_permissions = {
-                    'GET': (self.test_permission,)
+                    'GET': (self._test_permission,)
                 }
                 mayan_view_permissions = {
-                    'POST': (self.test_permission,)
+                    'POST': (self._test_permission,)
                 }
                 queryset = self.TestModel.objects.all()
                 serializer_class = TestModelSerializer
@@ -88,7 +88,7 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
             return TestView.as_view()
 
         self.add_test_view(
-            test_object=self.test_object,
+            test_object=self._test_object,
             test_view_factory=_test_view_factory,
             test_view_url=r'^test-view-url/$'
         )
@@ -100,10 +100,10 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
             class TestView(generics.RetrieveUpdateDestroyAPIView):
                 lookup_url_kwarg = 'test_object_id'
                 mayan_object_permissions = {
-                    'DELETE': (self.test_permission,),
-                    'GET': (self.test_permission,),
-                    'PATCH': (self.test_permission,),
-                    'PUT': (self.test_permission,)
+                    'DELETE': (self._test_permission,),
+                    'GET': (self._test_permission,),
+                    'PATCH': (self._test_permission,),
+                    'PUT': (self._test_permission,)
                 }
                 queryset = TestModel.objects.all()
                 serializer_class = TestModelSerializer
@@ -111,7 +111,7 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
             return TestView.as_view()
 
         self.add_test_view(
-            test_object=self.test_object,
+            test_object=self._test_object,
             test_view_factory=_test_view_factory,
             test_view_url=r'^test-view-url/(?P<test_object_id>\d+)/$'
         )
@@ -125,7 +125,7 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
         )
 
     def test_create_batch_api_request(self):
-        self.grant_permission(permission=self.test_permission)
+        self.grant_permission(permission=self._test_permission)
 
         requests = [
             {
@@ -140,7 +140,7 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
             }
         ]
 
-        self.test_object.delete()
+        self._test_object.delete()
 
         test_model_count = self.TestModel.objects.count()
 
@@ -166,7 +166,7 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
 
     def test_delete_batch_api_request(self):
         self.grant_access(
-            obj=self.test_object, permission=self.test_permission
+            obj=self._test_object, permission=self._test_permission
         )
 
         requests = [
@@ -176,7 +176,7 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
                 'url': reverse(
                     viewname='rest_api:{}'.format(
                         self._test_model_detail_api_view_name
-                    ), kwargs={'test_object_id': self.test_object.pk}
+                    ), kwargs={'test_object_id': self._test_object.pk}
                 )
             }
         ]
@@ -205,7 +205,7 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
 
     def test_edit_via_patch_batch_api_request(self):
         self.grant_access(
-            obj=self.test_object, permission=self.test_permission
+            obj=self._test_object, permission=self._test_permission
         )
 
         requests = [
@@ -216,12 +216,12 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
                 'url': reverse(
                     viewname='rest_api:{}'.format(
                         self._test_model_detail_api_view_name
-                    ), kwargs={'test_object_id': self.test_object.pk}
+                    ), kwargs={'test_object_id': self._test_object.pk}
                 )
             }
         ]
 
-        test_model_label = self.test_object.label
+        test_model_label = self._test_object.label
 
         self._clear_events()
 
@@ -235,15 +235,15 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
             response.data['results'][0]['status_code'], status.HTTP_200_OK
         )
 
-        self.test_object.refresh_from_db()
-        self.assertNotEqual(self.test_object.label, test_model_label)
+        self._test_object.refresh_from_db()
+        self.assertNotEqual(self._test_object.label, test_model_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_edit_via_put_batch_api_request(self):
         self.grant_access(
-            obj=self.test_object, permission=self.test_permission
+            obj=self._test_object, permission=self._test_permission
         )
 
         requests = [
@@ -254,12 +254,12 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
                 'url': reverse(
                     viewname='rest_api:{}'.format(
                         self._test_model_detail_api_view_name
-                    ), kwargs={'test_object_id': self.test_object.pk}
+                    ), kwargs={'test_object_id': self._test_object.pk}
                 )
             }
         ]
 
-        test_model_label = self.test_object.label
+        test_model_label = self._test_object.label
 
         self._clear_events()
 
@@ -273,15 +273,15 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
             response.data['results'][0]['status_code'], status.HTTP_200_OK
         )
 
-        self.test_object.refresh_from_db()
-        self.assertNotEqual(self.test_object.label, test_model_label)
+        self._test_object.refresh_from_db()
+        self.assertNotEqual(self._test_object.label, test_model_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_list_get_batch_api_request(self):
         self.grant_access(
-            obj=self.test_object, permission=self.test_permission
+            obj=self._test_object, permission=self._test_permission
         )
 
         requests = [
@@ -309,7 +309,7 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
         self.assertEqual(response.data['results'][0]['data']['count'], 1)
         self.assertEqual(
             response.data['results'][0]['data']['results'][0]['id'],
-            self.test_object.pk
+            self._test_object.pk
         )
 
         events = self._get_test_events()
@@ -317,7 +317,7 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
 
     def test_mass_edit_get_batch_api_request(self):
         self.grant_access(
-            obj=self.test_object, permission=self.test_permission
+            obj=self._test_object, permission=self._test_permission
         )
 
         requests = [
@@ -344,7 +344,7 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
             }
         ]
 
-        test_model_label = self.test_object.label
+        test_model_label = self._test_object.label
 
         self._clear_events()
 
@@ -360,15 +360,15 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
         self.assertEqual(response.data['results'][0]['data']['count'], 1)
         self.assertEqual(
             response.data['results'][0]['data']['results'][0]['id'],
-            self.test_object.pk
+            self._test_object.pk
         )
 
         self.assertEqual(
             response.data['results'][1]['status_code'], status.HTTP_200_OK
         )
 
-        self.test_object.refresh_from_db()
-        self.assertNotEqual(self.test_object.label, test_model_label)
+        self._test_object.refresh_from_db()
+        self.assertNotEqual(self._test_object.label, test_model_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)

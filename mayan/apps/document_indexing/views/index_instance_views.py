@@ -10,21 +10,20 @@ from mayan.apps.views.generics import SingleObjectListView
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..html_widgets import node_tree
-from ..icons import icon_index
+from ..icons import (
+    icon_index, icon_document_index_instance_list, icon_index_instance_list,
+    icon_index_instance_node_with_documents
+)
 from ..links import link_index_template_create
 from ..models import (
     DocumentIndexInstanceNode, IndexInstance, IndexInstanceNode
 )
 from ..permissions import permission_index_instance_view
 
-__all__ = (
-    'DocumentIndexInstanceNodeListView', 'IndexInstanceListView',
-    'IndexInstanceNodeView'
-)
-
 
 class IndexInstanceListView(SingleObjectListView):
     object_permission = permission_index_instance_view
+    view_icon = icon_index_instance_list
 
     def get_extra_context(self):
         return {
@@ -52,6 +51,7 @@ class IndexInstanceListView(SingleObjectListView):
 
 class IndexInstanceNodeView(DocumentListView):
     template_name = 'document_indexing/node_details.html'
+    view_icon = icon_index_instance_node_with_documents
 
     def dispatch(self, request, *args, **kwargs):
         self.index_instance_node = self.get_index_instance_node()
@@ -123,7 +123,9 @@ class IndexInstanceNodeView(DocumentListView):
             return IndexInstanceNode.objects.none()
 
 
-class DocumentIndexInstanceNodeListView(ExternalObjectViewMixin, SingleObjectListView):
+class DocumentIndexInstanceNodeListView(
+    ExternalObjectViewMixin, SingleObjectListView
+):
     """
     Show a list of indexes where the current document can be found
     """
@@ -131,6 +133,7 @@ class DocumentIndexInstanceNodeListView(ExternalObjectViewMixin, SingleObjectLis
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid.all()
     object_permission = permission_index_instance_view
+    view_icon = icon_document_index_instance_list
 
     def get_extra_context(self):
         return {

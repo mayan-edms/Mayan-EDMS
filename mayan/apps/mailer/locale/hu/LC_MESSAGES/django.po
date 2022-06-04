@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# molnars <szabolcs.molnar@gmail.com>, 2021
+# molnars <szabolcs.molnar@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2022\n"
 "Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,6 +34,14 @@ msgstr ""
 
 #: events.py:8
 msgid "Email sent"
+msgstr ""
+
+#: events.py:11
+msgid "Mailing profile created"
+msgstr ""
+
+#: events.py:14
+msgid "Mailing profile edited"
 msgstr ""
 
 #: forms.py:58 forms.py:93
@@ -58,7 +66,7 @@ msgstr "Szövegtörzs"
 msgid "The email profile that will be used to send this email."
 msgstr ""
 
-#: forms.py:69 models.py:57 views/mailing_profile_views.py:120
+#: forms.py:69 models.py:61 views/mailing_profile_views.py:126
 #: workflow_actions.py:19
 msgid "Mailing profile"
 msgstr ""
@@ -111,11 +119,11 @@ msgstr "Szerkesztés"
 msgid "Mailing profiles list"
 msgstr ""
 
-#: links.py:117 models.py:58
+#: links.py:117 models.py:62
 msgid "Mailing profiles"
 msgstr ""
 
-#: links.py:122 views/mailing_profile_views.py:144
+#: links.py:122 views/mailing_profile_views.py:152
 msgid "Test"
 msgstr ""
 
@@ -228,41 +236,41 @@ msgstr ""
 msgid "Django file based backend"
 msgstr ""
 
-#: models.py:34
+#: models.py:38
 msgid "A short text describing the mailing profile."
 msgstr ""
 
-#: models.py:35
+#: models.py:39
 msgid "Label"
 msgstr "Cimke"
 
-#: models.py:39
+#: models.py:43
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr ""
 
-#: models.py:41
+#: models.py:45
 msgid "Default"
 msgstr "Alapéretelmezett"
 
-#: models.py:43
+#: models.py:47
 msgid "Enabled"
 msgstr "Bekapcsolt"
 
-#: models.py:46
+#: models.py:50
 msgid "The dotted Python path to the backend class."
 msgstr ""
 
-#: models.py:47
+#: models.py:51
 msgid "Backend path"
 msgstr ""
 
-#: models.py:50
+#: models.py:54
 msgid "Backend data"
 msgstr ""
 
-#: models.py:221
+#: models.py:237
 msgid "Test email from Mayan EDMS"
 msgstr ""
 
@@ -394,31 +402,31 @@ msgstr ""
 msgid "Create a \"%s\" mailing profile"
 msgstr ""
 
-#: views/mailing_profile_views.py:82
+#: views/mailing_profile_views.py:85
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr ""
 
-#: views/mailing_profile_views.py:94
+#: views/mailing_profile_views.py:97
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr ""
 
-#: views/mailing_profile_views.py:115
+#: views/mailing_profile_views.py:121
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
 msgstr ""
 
-#: views/mailing_profile_views.py:119
+#: views/mailing_profile_views.py:125
 msgid "No mailing profiles available"
 msgstr ""
 
-#: views/mailing_profile_views.py:136
+#: views/mailing_profile_views.py:144
 msgid "Test email sent."
 msgstr ""
 
-#: views/mailing_profile_views.py:145
+#: views/mailing_profile_views.py:153
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr ""

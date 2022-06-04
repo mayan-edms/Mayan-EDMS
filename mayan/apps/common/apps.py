@@ -110,7 +110,7 @@ class MayanAppConfig(apps.AppConfig):
             mayan_urlpatterns += (
                 url(
                     regex=r'^{}'.format(top_url), view=include(
-                        (passthru_urlpatterns)
+                        passthru_urlpatterns
                     )
                 ),
             )

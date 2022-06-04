@@ -19,9 +19,10 @@ class AdvancedSearchForm(forms.Form):
         self.search_model = kwargs.pop('search_model')
         super().__init__(*args, **kwargs)
 
-        for name, label in self.search_model.get_fields_simple_list():
-            self.fields[name] = forms.CharField(
-                label=label, required=False
+        for search_field in self.search_model.get_search_fields():
+            self.fields[search_field.field] = forms.CharField(
+                help_text=search_field.get_help_text(),
+                label=search_field.label, required=False
             )
 
 

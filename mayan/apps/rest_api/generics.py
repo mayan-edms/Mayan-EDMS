@@ -5,6 +5,8 @@ from rest_framework.settings import api_settings
 
 from django.core.exceptions import ImproperlyConfigured
 
+from mayan.apps.dynamic_search.filters import RESTAPISearchFilter
+
 from .api_view_mixins import (
     CheckQuerysetAPIViewMixin, DynamicFieldListAPIViewMixin,
     InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
@@ -44,7 +46,9 @@ class ListAPIView(
     requires:
         object_permission = {'GET': ...}
     """
-    filter_backends = (MayanObjectPermissionsFilter, MayanSortingFilter)
+    filter_backends = (
+        MayanObjectPermissionsFilter, MayanSortingFilter, RESTAPISearchFilter
+    )
     # permission_classes is required for the EventListAPIView
     # when Actions objects support ACLs then this can be removed
     # as was intented.
@@ -62,7 +66,9 @@ class ListCreateAPIView(
         object_permission = {'GET': ...}
         view_permission = {'POST': ...}
     """
-    filter_backends = (MayanObjectPermissionsFilter, MayanSortingFilter)
+    filter_backends = (
+        MayanObjectPermissionsFilter, MayanSortingFilter, RESTAPISearchFilter
+    )
     permission_classes = (MayanPermission,)
 
 
@@ -78,9 +84,9 @@ class ObjectActionAPIView(SerializerExtraContextAPIViewMixin, GenericAPIView):
 
     def object_action(self, serializer):
         raise ImproperlyConfigured(
-            '%(cls)s class needs to specify the `.perform_action()` method.' % {
-                'cls': self.__class__.__name__
-            }
+            '{cls} class needs to specify the `.perform_action()` method.'.format(
+                cls=self.__class__.__name__
+            )
         )
 
     def post(self, request, *args, **kwargs):

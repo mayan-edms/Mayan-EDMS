@@ -6,10 +6,11 @@ from whoosh import qparser
 from whoosh.filedb.filestore import FileStorage
 from whoosh.index import EmptyIndexError
 from whoosh.query import Every
+from whoosh.writing import BufferedWriter
 
 from django.conf import settings
 
-from mayan.apps.common.utils import any_to_bool, parse_range
+from mayan.apps.common.utils import any_to_bool
 from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
 
@@ -214,18 +215,50 @@ class WhooshSearchBackend(SearchBackend):
             finally:
                 lock.release()
 
-    def index_search_model(self, search_model, range_string=None):
+    def index_instances(self, search_model, id_list):
         queryset = search_model.get_queryset()
+        queryset = queryset.filter(pk__in=id_list)
 
-        queryset = search_model.get_queryset()
-
-        if range_string:
-            queryset = queryset.filter(
-                pk__in=list(parse_range(range_string=range_string))
+        try:
+            lock = LockingBackend.get_backend().acquire_lock(
+                name=TEXT_LOCK_INSTANCE_INDEX
             )
+        except LockError:
+            raise
+        else:
+            try:
+                index = self.get_or_create_index(search_model=search_model)
 
-        for instance in queryset:
-            self.index_instance(instance=instance)
+                writer = BufferedWriter(index=index)
+                for instance in queryset:
+                    kwargs = search_model.populate(
+                        backend=self, instance=instance
+                    )
+                    try:
+                        writer.update_document(**kwargs)
+                    except Exception as exception:
+                        logger.error(
+                            'Unexpected exception while indexing search model '
+                            '%(search_model)s, id_list: %(id_list)s, '
+                            'index data: %(index_data)s, raw data: '
+                            '%(raw_data)s, field map: %(field_map)s; '
+                            '%(exception)s' % {
+                                'exception': exception,
+                                'field_map': self.get_resolved_field_map(
+                                    search_model=search_model
+                                ),
+                                'id_list': id_list,
+                                'index_data': kwargs,
+                                'raw_data': instance.__dict__,
+                                'search_model': search_model.get_full_name()
+                            }, exc_info=True
+                        )
+                        raise
+                writer.close()
+            except whoosh.index.LockError:
+                raise DynamicSearchRetry
+            finally:
+                lock.release()
 
     def reset(self, search_model=None):
         self.tear_down(search_model=search_model)

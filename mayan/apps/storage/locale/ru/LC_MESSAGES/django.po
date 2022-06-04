@@ -4,19 +4,19 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Sergey Glita <gsv70@mail.ru>, 2021
-# lilo.panic, 2021
-# Panasoft, 2021
-# Ilya Pavlov <spirkaa@gmail.com>, 2021
+# Panasoft, 2022
+# Sergey Glita <gsv70@mail.ru>, 2022
+# lilo.panic, 2022
+# Roberto Rosario, 2022
+# Ilya Pavlov <spirkaa@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
-"PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:23 settings.py:12
+#: apps.py:23 settings.py:14
 msgid "Storage"
 msgstr "Хранилище"
 
@@ -140,7 +140,11 @@ msgstr "Удалить устаревшие загрузки"
 msgid "Delete stale download files"
 msgstr "Удалить устаревшие файлы для скачивания"
 
-#: settings.py:17
+#: settings.py:19
+msgid "Time in seconds, after which download files will be deleted."
+msgstr ""
+
+#: settings.py:25
 msgid ""
 "A storage backend that all workers can use to generate and hold files for "
 "download."
@@ -148,19 +152,23 @@ msgstr ""
 "Бэкэнд хранилища, который могут использовать все процессы (workers) для "
 "генерации и хранения файлов для скачивания."
 
-#: settings.py:28
+#: settings.py:36
 msgid "A storage backend that all workers can use to share files."
 msgstr ""
 "Бэкэнд хранилища, который могут использовать все процессы (workers) для "
 "хранения файлов."
 
-#: settings.py:38
+#: settings.py:46
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr ""
 "Временный каталог, используемый на всем сайте для хранения миниатюр, превью "
 "и временных файлов."
+
+#: settings.py:53
+msgid "Time in seconds, after which temporary uploaded files will be deleted."
+msgstr ""
 
 #: storages.py:15
 msgid ""

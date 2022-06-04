@@ -3,7 +3,6 @@ import logging
 
 from django.apps import apps
 from django.core.exceptions import ImproperlyConfigured
-from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.menus import menu_list_facet
@@ -25,6 +24,22 @@ class ModelPermission:
     @classmethod
     def deregister(cls, model):
         cls._model_permissions.pop(model, None)
+
+    @classmethod
+    def get_choices_for_class(cls, klass):
+        result = []
+
+        for namespace, permissions in itertools.groupby(cls.get_for_class(klass=klass), lambda entry: entry.namespace):
+            permissions = [
+                (permission.pk, permission) for permission in permissions
+            ]
+            result.append(
+                (namespace, permissions)
+            )
+
+        # Sort by namespace label.
+        result.sort(key=lambda entry: entry[0].label)
+        return result
 
     @classmethod
     def get_classes(cls, as_content_type=False):
@@ -49,28 +64,18 @@ class ModelPermission:
         return cls._field_query_functions[model]
 
     @classmethod
-    def get_for_class(cls, klass, as_choices=False):
-        if as_choices:
-            results = []
+    def get_for_class(cls, klass):
+        # Return the permissions for the klass and the models that
+        # inherit from it.
+        result = set()
+        result.update(cls._model_permissions.get(klass, ()))
+        for model in cls._inheritances_reverse.get(klass, ()):
+            result.update(cls._model_permissions.get(model, ()))
 
-            for namespace, permissions in itertools.groupby(cls.get_for_class(klass=klass, as_choices=False), lambda entry: entry.namespace):
-                permission_options = [
-                    (force_text(s=permission.pk), permission) for permission in permissions
-                ]
-                results.append(
-                    (namespace, permission_options)
-                )
+        result = list(result)
+        result.sort(key=lambda permission: permission.namespace.name)
 
-            return results
-        else:
-            # Return the permissions for the klass and the models that
-            # inherit from it.
-            result = []
-            result.extend(cls._model_permissions.get(klass, ()))
-            for model in cls._inheritances_reverse.get(klass, ()):
-                result.extend(cls._model_permissions.get(model, ()))
-
-            return result
+        return result
 
     @classmethod
     def get_for_instance(cls, instance):
@@ -160,7 +165,8 @@ class ModelPermission:
             if not is_excluded_subclass:
                 ModelEventType.register(
                     event_types=(
-                        event_acl_created, event_acl_deleted, event_acl_edited
+                        event_acl_created, event_acl_deleted,
+                        event_acl_edited
                     ), model=model
                 )
 

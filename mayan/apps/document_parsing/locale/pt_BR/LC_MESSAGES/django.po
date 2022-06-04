@@ -4,19 +4,21 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
-# Rogerio Falcone <rogerio@falconeit.com.br>, 2021
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
-# Aline Freitas <aline@alinefreitas.com.br>, 2021
-# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# Rogerio Falcone <rogerio@falconeit.com.br>, 2022
+# Emerson Soares <on.emersonsoares@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# Aline Freitas <aline@alinefreitas.com.br>, 2022
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,6 +33,7 @@ msgstr "Análise de documentos"
 #: apps.py:112
 msgid "A generator returning the document file's pages parsed content."
 msgstr ""
+"Um gerador que devolve o conteúdo analisado das páginas do documento. "
 
 #: apps.py:113 links.py:23 links.py:46 models.py:24 search.py:10
 msgid "Content"
@@ -45,18 +48,20 @@ msgid ""
 "Utility from the poppler-utils package used to extract content from PDF "
 "files."
 msgstr ""
+"Utilidade do pacto de poppler-utils usada para extrair conteúdo de ficheiros"
+" PDF."
 
 #: events.py:10
 msgid "Document file parsed content deleted"
-msgstr ""
+msgstr "Conteúdo analisado do ficheiro removido."
 
 #: events.py:14
 msgid "Document file submitted for parsing"
-msgstr ""
+msgstr "Documento submetido para análise. "
 
 #: events.py:17
 msgid "Document file parsing finished"
-msgstr ""
+msgstr "Análise do documento terminada."
 
 #: forms.py:37
 #, python-format
@@ -93,7 +98,7 @@ msgstr "Analisar documentos por tipo"
 
 #: models.py:18
 msgid "Document file page"
-msgstr ""
+msgstr "Página do documento."
 
 #: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
@@ -103,11 +108,11 @@ msgstr ""
 
 #: models.py:30
 msgid "Document file page content"
-msgstr ""
+msgstr "Conteúdo de página do documento."
 
 #: models.py:31
 msgid "Document file page contents"
-msgstr ""
+msgstr "Conteúdos de página do documento."
 
 #: models.py:43
 msgid "Document type"
@@ -128,7 +133,7 @@ msgstr "Configurações de tipos de documentos"
 
 #: models.py:69
 msgid "Document file"
-msgstr ""
+msgstr "Ficheiro do documento"
 
 #: models.py:72
 msgid "Date time submitted"
@@ -136,11 +141,11 @@ msgstr "Data e Hora enviados"
 
 #: models.py:78
 msgid "Document file parse error"
-msgstr ""
+msgstr "Erro de análise do documento."
 
 #: models.py:79
 msgid "Document file parse errors"
-msgstr ""
+msgstr "Erros de análise do documento."
 
 #: parsers.py:93
 #, python-format
@@ -154,11 +159,11 @@ msgstr "Executável pdftotext não foi encontrado em: %s"
 
 #: permissions.py:10
 msgid "View the content of a document file"
-msgstr ""
+msgstr "Ver conteúdo de um ficheiro de documento."
 
 #: permissions.py:13
 msgid "Parse the content of a document file"
-msgstr ""
+msgstr "Analisar o conteúdo de um ficheiro do documento."
 
 #: permissions.py:16
 msgid "Change document type parsing settings"
@@ -170,11 +175,11 @@ msgstr "Análise"
 
 #: queues.py:12
 msgid "Document file parsing"
-msgstr ""
+msgstr "Análise do ficheiro do documento."
 
 #: search.py:16 search.py:23
 msgid "Document file content"
-msgstr ""
+msgstr "Conteúdo do ficheiro de documento."
 
 #: settings.py:15
 msgid "Set new document types to perform parsing automatically by default."
@@ -194,61 +199,67 @@ msgstr ""
 #, python-format
 msgid "Error deleting document version content \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Erro ao eliminar o conteúdo da versão do documento \" %(instance)s \"; "
+"2%(exception)s"
 
 #: views.py:36
 #, python-format
 msgid "Content of \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Conteúdo de \" %(object)s \" eliminados com sucesso."
 
 #: views.py:39
 #, python-format
 msgid "Content of %(count)d document version deleted successfully."
-msgstr ""
+msgstr "Conteúdo de %(count)d da versão do documento eliminada com sucesso."
 
 #: views.py:42
 #, python-format
 msgid "Content of %(count)d document versions deleted successfully."
 msgstr ""
+"Conteúdo de %(count)d das versões do documento eliminadas com sucesso."
 
 #: views.py:44
 #, python-format
 msgid "Delete the content of: %(object)s."
-msgstr ""
+msgstr "Eliminar o conteúdo de: %(object)s ."
 
 #: views.py:46
 #, python-format
 msgid "Delete the content of the %(count)d selected document version."
-msgstr ""
+msgstr "Eliminar o conteúdo de %(count)d da versão do documento selecionada."
 
 #: views.py:49
 #, python-format
 msgid "Delete the content of the %(count)d selected document versions."
 msgstr ""
+"Eliminar os conteúdos de %(count)d das versões do documento selecionado."
 
 #: views.py:87
 #, python-format
 msgid "Content for document file: %s"
-msgstr ""
+msgstr "Conteúdo para o ficheiro de documento: %s"
 
 #: views.py:108
 #, python-format
 msgid "Content for document file page: %s"
-msgstr ""
+msgstr "Conteúdo para a página do ficheiro de documento: %s"
 
 #: views.py:130
 #, python-format
 msgid "Parsing errors for document file: %s"
-msgstr ""
+msgstr "Erros de análise para o ficheiro de documento: %s"
 
 #: views.py:143
 #, python-format
 msgid "%(count)d document file added to the parsing queue"
 msgstr ""
+"%(count)d ficheiro de documento adicionado à fila de espera de análise."
 
 #: views.py:146
 #, python-format
 msgid "%(count)d documents files added to the parsing queue"
 msgstr ""
+"%(count)d ficheiros de documentos adicionado à linha de espera de análise."
 
 #: views.py:154
 #, python-format
@@ -260,7 +271,7 @@ msgstr[1] ""
 #: views.py:167
 #, python-format
 msgid "Submit document file \"%s\" to the parsing queue"
-msgstr ""
+msgstr "Submeter o ficheiro de documento \" %s \" à fila de espera de análise."
 
 #: views.py:194
 #, python-format

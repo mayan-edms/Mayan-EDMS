@@ -1,7 +1,7 @@
 from django.db import models, migrations
 
 
-def operation_make_existing_documents_not_stubs(apps, schema_editor):
+def code_make_existing_documents_not_stubs(apps, schema_editor):
     Document = apps.get_model(app_label='documents', model_name='Document')
 
     for document in Document.objects.using(alias=schema_editor.connection.alias).all():
@@ -11,7 +11,7 @@ def operation_make_existing_documents_not_stubs(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('documents', '0012_auto_20150705_0347'),
+        ('documents', '0012_auto_20150705_0347')
     ]
 
     operations = [
@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
             field=models.BooleanField(
                 default=True, verbose_name='Is stub?', editable=False
             ),
-            preserve_default=True,
+            preserve_default=True
         ),
-        migrations.RunPython(code=operation_make_existing_documents_not_stubs),
+        migrations.RunPython(code=code_make_existing_documents_not_stubs)
     ]

@@ -15,5 +15,5 @@ class IndexTemplateCopyTestCase(
         super().setUp()
         self._create_test_index_template()
         self._create_test_index_template_node()
-        self.test_index_template.document_types.add(self.test_document_type)
-        self.test_object = self.test_index_template
+        self._test_index_template.document_types.add(self._test_document_type)
+        self._test_object = self._test_index_template

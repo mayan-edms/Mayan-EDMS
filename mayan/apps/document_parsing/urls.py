@@ -6,8 +6,8 @@ from .api_views import (
 from .views import (
     DocumentFileContentView, DocumentFileContentDeleteView,
     DocumentFileContentDownloadView, DocumentFilePageContentView,
-    DocumentFileParsingErrorsListView, DocumentFileSubmitView,
-    DocumentTypeSettingsEditView, DocumentTypeSubmitView, ParseErrorListView
+    DocumentFileSubmitView, DocumentTypeSettingsEditView,
+    DocumentTypeSubmitView
 )
 
 urlpatterns_document_files = [
@@ -18,12 +18,12 @@ urlpatterns_document_files = [
     ),
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/content/delete/$',
-        name='document_file_content_delete_single',
+        name='document_file_content_single_delete',
         view=DocumentFileContentDeleteView.as_view()
     ),
     url(
         regex=r'^documents/files/multiple/content/delete/$',
-        name='document_file_content_delete_multiple',
+        name='document_file_content_multiple_delete',
         view=DocumentFileContentDeleteView.as_view()
     ),
     url(
@@ -33,26 +33,18 @@ urlpatterns_document_files = [
     ),
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/submit/$',
-        name='document_file_submit', view=DocumentFileSubmitView.as_view()
-    ),
-    url(
-        regex=r'^documents/files/multiple/submit/$',
-        name='document_file_multiple_submit',
+        name='document_file_parsing_single_submit',
         view=DocumentFileSubmitView.as_view()
     ),
     url(
-        regex=r'^documents/files/(?P<document_file_id>\d+)/errors/$',
-        name='document_file_parsing_error_list',
-        view=DocumentFileParsingErrorsListView.as_view()
+        regex=r'^documents/files/multiple/submit/$',
+        name='document_file_parsing_multiple_submit',
+        view=DocumentFileSubmitView.as_view()
     ),
     url(
         regex=r'^documents/files/pages/(?P<document_file_page_id>\d+)/content/$',
         name='document_file_page_content_view',
         view=DocumentFilePageContentView.as_view()
-    ),
-    url(
-        regex=r'^errors/all/$', name='error_list',
-        view=ParseErrorListView.as_view()
     )
 ]
 

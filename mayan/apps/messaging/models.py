@@ -91,11 +91,11 @@ class Message(ExtraDataModelMixin, models.Model):
         event_manager_class=EventManagerSave,
         created={
             'event': event_message_created,
-            'target': 'self',
+            'target': 'self'
         },
         edited={
             'event': event_message_edited,
-            'target': 'self',
+            'target': 'self'
         }
     )
     def save(self, *args, **kwargs):

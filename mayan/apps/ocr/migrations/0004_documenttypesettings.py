@@ -1,7 +1,7 @@
 from django.db import models, migrations
 
 
-def operation_create_ocr_setting_for_existing_document_types(apps, schema_editor):
+def code_create_ocr_setting_for_existing_document_types(apps, schema_editor):
     DocumentType = apps.get_model(
         app_label='documents', model_name='DocumentType'
     )
@@ -21,7 +21,7 @@ def operation_create_ocr_setting_for_existing_document_types(apps, schema_editor
 class Migration(migrations.Migration):
     dependencies = [
         ('documents', '0016_auto_20150708_0325'),
-        ('ocr', '0003_auto_20150617_0401'),
+        ('ocr', '0003_auto_20150617_0401')
     ]
 
     operations = [
@@ -54,9 +54,9 @@ class Migration(migrations.Migration):
                 'verbose_name': 'Document type settings',
                 'verbose_name_plural': 'Document types settings',
             },
-            bases=(models.Model,),
+            bases=(models.Model,)
         ),
         migrations.RunPython(
-            code=operation_create_ocr_setting_for_existing_document_types
-        ),
+            code=code_create_ocr_setting_for_existing_document_types
+        )
     ]

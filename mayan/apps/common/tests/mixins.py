@@ -1,4 +1,5 @@
 from ..classes import ModelCopy
+from ..links import link_object_copy
 
 
 class CommonAPITestMixin:
@@ -11,6 +12,14 @@ class CommonViewTestMixin:
         return self.get(viewname='common:about_view')
 
 
+class ObjectCopyLinkTestMixin:
+    def _resolve_test_object_copy_link(self):
+        self.add_test_view(test_object=self._test_object)
+
+        context = self.get_test_view()
+        return link_object_copy.resolve(context=context)
+
+
 class ObjectCopyTestMixin:
     _test_copy_method = None
 
@@ -18,7 +27,7 @@ class ObjectCopyTestMixin:
         exclude_fields = exclude_fields or ()
 
         if not test_object:
-            test_object = self.test_object
+            test_object = self._test_object
 
         model_copy = ModelCopy.get(model=test_object._meta.model)
         if not test_object_copy:
@@ -118,5 +127,5 @@ class ObjectCopyTestMixin:
 class ObjectCopyViewTestMixin:
     def _request_object_copy_view(self):
         return self.post(
-            kwargs=self.test_object_view_kwargs, viewname='common:object_copy'
+            kwargs=self._test_object_view_kwargs, viewname='common:object_copy'
         )

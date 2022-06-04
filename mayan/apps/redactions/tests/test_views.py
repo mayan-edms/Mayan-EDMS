@@ -1,6 +1,6 @@
 from mayan.apps.converter.models import LayerTransformation
 from mayan.apps.converter.tests.mixins import (
-    TransformationTestMixin, TransformationViewsTestMixin
+    TransformationTestMixin, TransformationViewTestMixin
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
@@ -13,14 +13,14 @@ from .literals import (
 
 
 class RedactionViewTestCase(
-    TransformationTestMixin, TransformationViewsTestMixin,
+    TransformationTestMixin, TransformationViewTestMixin,
     GenericDocumentViewTestCase
 ):
+    _test_layer = layer_redactions
+    _test_transformation_argument = TEST_REDACTION_ARGUMENT
+    _test_transformation_argument_edited = TEST_REDACTION_ARGUMENT_EDITED
     auto_create_test_layer = False
     auto_create_test_transformation_class = False
-    test_layer = layer_redactions
-    test_transformation_argument = TEST_REDACTION_ARGUMENT
-    test_transformation_argument_edited = TEST_REDACTION_ARGUMENT_EDITED
     TestTransformationClass = TransformationRedactionPercent
 
     def test_redaction_create_post_view_no_permission(self):
@@ -40,8 +40,8 @@ class RedactionViewTestCase(
 
     def test_redaction_create_post_view_with_permission(self):
         self.grant_access(
-            obj=self.test_document,
-            permission=self.test_layer.permissions['create']
+            obj=self._test_document,
+            permission=self._test_layer.permissions['create']
         )
         transformation_count = LayerTransformation.objects.count()
 
@@ -74,8 +74,8 @@ class RedactionViewTestCase(
 
     def test_redaction_create_get_view_with_permission(self):
         self.grant_access(
-            obj=self.test_document,
-            permission=self.test_layer.permissions['create']
+            obj=self._test_document,
+            permission=self._test_layer.permissions['create']
         )
         transformation_count = LayerTransformation.objects.count()
 
@@ -110,8 +110,8 @@ class RedactionViewTestCase(
     def test_redaction_delete_view_with_access(self):
         self._create_test_transformation()
         self.grant_access(
-            obj=self.test_document,
-            permission=self.test_layer.permissions['delete']
+            obj=self._test_document,
+            permission=self._test_layer.permissions['delete']
         )
         transformation_count = LayerTransformation.objects.count()
 
@@ -129,16 +129,16 @@ class RedactionViewTestCase(
 
     def test_redaction_edit_view_no_permission(self):
         self._create_test_transformation()
-        transformation_arguments = self.test_transformation.arguments
+        transformation_arguments = self._test_transformation.arguments
 
         self._clear_events()
 
         response = self._request_transformation_edit_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_transformation.refresh_from_db()
+        self._test_transformation.refresh_from_db()
         self.assertEqual(
-            transformation_arguments, self.test_transformation.arguments
+            transformation_arguments, self._test_transformation.arguments
         )
 
         events = self._get_test_events()
@@ -147,19 +147,19 @@ class RedactionViewTestCase(
     def test_redaction_edit_view_with_access(self):
         self._create_test_transformation()
         self.grant_access(
-            obj=self.test_document,
-            permission=self.test_layer.permissions['edit']
+            obj=self._test_document,
+            permission=self._test_layer.permissions['edit']
         )
-        transformation_arguments = self.test_transformation.arguments
+        transformation_arguments = self._test_transformation.arguments
 
         self._clear_events()
 
         response = self._request_transformation_edit_view()
         self.assertEqual(response.status_code, 302)
 
-        self.test_transformation.refresh_from_db()
+        self._test_transformation.refresh_from_db()
         self.assertNotEqual(
-            transformation_arguments, self.test_transformation.arguments
+            transformation_arguments, self._test_transformation.arguments
         )
 
         events = self._get_test_events()
@@ -172,11 +172,11 @@ class RedactionViewTestCase(
 
         response = self._request_transformation_list_view()
         self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=404
+            response=response, text=self._test_document.label, status_code=404
         )
         self.assertNotContains(
             response=response,
-            text=self.test_transformation.get_transformation_class().label,
+            text=self._test_transformation.get_transformation_class().label,
             status_code=404
         )
 
@@ -186,19 +186,19 @@ class RedactionViewTestCase(
     def test_redaction_list_view_with_access(self):
         self._create_test_transformation()
         self.grant_access(
-            obj=self.test_document,
-            permission=self.test_layer.permissions['view']
+            obj=self._test_document,
+            permission=self._test_layer.permissions['view']
         )
 
         self._clear_events()
 
         response = self._request_transformation_list_view()
         self.assertContains(
-            response=response, text=self.test_document.label, status_code=200
+            response=response, text=self._test_document.label, status_code=200
         )
         self.assertContains(
             response=response,
-            text=self.test_transformation.get_transformation_class().label,
+            text=self._test_transformation.get_transformation_class().label,
             status_code=200
         )
 
@@ -222,8 +222,8 @@ class RedactionViewTestCase(
 
     def test_redaction_select_get_view_with_access(self):
         self.grant_access(
-            obj=self.test_document,
-            permission=self.test_layer.permissions['select']
+            obj=self._test_document,
+            permission=self._test_layer.permissions['select']
         )
         transformation_count = LayerTransformation.objects.count()
 
@@ -256,8 +256,8 @@ class RedactionViewTestCase(
 
     def test_redaction_select_post_view_with_access(self):
         self.grant_access(
-            obj=self.test_document,
-            permission=self.test_layer.permissions['select']
+            obj=self._test_document,
+            permission=self._test_layer.permissions['select']
         )
         transformation_count = LayerTransformation.objects.count()
 

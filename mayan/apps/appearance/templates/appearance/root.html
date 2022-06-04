@@ -1,5 +1,4 @@
 {% load i18n %}
-{% load static %}
 
 {% load appearance_tags %}
 {% load navigation_tags %}
@@ -63,12 +62,6 @@
                     <p>{% blocktrans %}Check you network connection and try again in a few moments.{% endblocktrans %}</p>
                 </div>
             </div>
-        </script>
-
-        <script>
-            {# Transfer variable from Django to javascript #}
-            const initialURL = '{% url home_view %}';
-            const djangoDEBUG = {% if debug %}true{% else %}false{% endif %};
         </script>
 
         {% appearance_app_templates template_name='foot' %}

@@ -7,6 +7,7 @@ from mayan.apps.common.literals import TIME_DELTA_UNIT_DAYS
 
 CHECK_DELETE_PERIOD_INTERVAL = 60
 CHECK_TRASH_PERIOD_INTERVAL = 60
+
 DELETE_STALE_STUBS_INTERVAL = 60 * 10  # 10 minutes
 DEFAULT_DELETE_PERIOD = 30
 DEFAULT_DELETE_TIME_UNIT = TIME_DELTA_UNIT_DAYS
@@ -73,15 +74,6 @@ DEFAULT_LANGUAGE_CODES = (
 )
 DEFAULT_STUB_EXPIRATION_INTERVAL = 60 * 60 * 24  # 24 hours
 
-DOCUMENT_FILE_ACTION_PAGES_NEW = 1
-DOCUMENT_FILE_ACTION_PAGES_APPEND = 2
-DOCUMENT_FILE_ACTION_PAGES_KEEP = 3
-DOCUMENT_FILE_ACTION_PAGE_CHOICES = (
-    (DOCUMENT_FILE_ACTION_PAGES_NEW, _('Replace. Create a new version and use the new file pages.')),
-    (DOCUMENT_FILE_ACTION_PAGES_APPEND, _('Append. Create a new version and append the new file pages.')),
-    (DOCUMENT_FILE_ACTION_PAGES_KEEP, _('Keep. Do not create a new version and keep the current version pages.')),
-)
-
 DOCUMENT_VERSION_EXPORT_MESSAGE_BODY = _(
     'Document version "%(document_version)s" has been '
     'exported and is available for download using the '
@@ -105,6 +97,7 @@ PAGE_RANGE_RANGE = 'range'
 PAGE_RANGE_CHOICES = (
     (PAGE_RANGE_ALL, _('All pages')), (PAGE_RANGE_RANGE, _('Page range'))
 )
+
 STORAGE_NAME_DOCUMENT_FILE_PAGE_IMAGE_CACHE = 'documents__documentfilepageimagecache'
 STORAGE_NAME_DOCUMENT_FILES = 'documents__documentfiles'
 STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE = 'documents__documentversionpageimagecache'

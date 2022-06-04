@@ -1,7 +1,7 @@
 import logging
 
 from django.apps import apps
-from django.db.models.signals import post_delete, post_save
+from django.db.models.signals import post_delete, post_save, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -9,12 +9,13 @@ from mayan.apps.acls.permissions import (
     permission_acl_edit, permission_acl_view
 )
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import (
-    ModelCopy, ModelFieldRelated, ModelProperty, ModelQueryFields
-)
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_object, menu_related,
     menu_secondary, menu_setup
+)
+from mayan.apps.databases.classes import (
+    ModelFieldRelated, ModelProperty, ModelQueryFields
 )
 from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.documents.signals import signal_post_document_type_change
@@ -32,17 +33,19 @@ from .events import (
     event_metadata_type_relationship_updated
 )
 from .handlers import (
-    handler_index_document, handler_post_document_type_metadata_type_add,
+    handler_index_metadata_type_documents,
+    handler_post_document_type_metadata_type_add,
     handler_post_document_type_metadata_type_delete,
-    handler_post_document_type_change_metadata
+    handler_post_document_type_change_metadata,
+    handler_pre_metadata_type_delete
 )
 from .html_widgets import DocumentMetadataWidget
 from .links import (
     link_metadata_add, link_metadata_edit, link_metadata_multiple_add,
     link_metadata_multiple_edit, link_metadata_multiple_remove,
-    link_metadata_remove, link_metadata_view,
+    link_metadata_remove, link_metadata_list,
     link_document_type_metadata_type_relationship, link_metadata_type_create,
-    link_metadata_type_delete_multiple, link_metadata_type_delete_single,
+    link_metadata_type_multiple_delete, link_metadata_type_single_delete,
     link_metadata_type_document_type_relationship, link_metadata_type_edit,
     link_metadata_type_list
 )
@@ -144,7 +147,7 @@ class MetadataApp(MayanAppConfig):
         )
         ModelFieldRelated(
             model=Document, name='metadata__value',
-            label=_('Metadata type value')
+            label=_('Metadata value')
         )
 
         ModelEventType.register(
@@ -251,7 +254,7 @@ class MetadataApp(MayanAppConfig):
         # Document metadata
 
         menu_list_facet.bind_links(
-            links=(link_metadata_view,), sources=(Document,)
+            links=(link_metadata_list,), sources=(Document,)
         )
         menu_multi_item.bind_links(
             links=(
@@ -265,7 +268,7 @@ class MetadataApp(MayanAppConfig):
                 link_metadata_add, link_metadata_edit, link_metadata_remove
             ), sources=(
                 'metadata:metadata_add', 'metadata:metadata_edit',
-                'metadata:metadata_remove', 'metadata:metadata_view'
+                'metadata:metadata_list', 'metadata:metadata_remove'
             )
         )
 
@@ -295,13 +298,13 @@ class MetadataApp(MayanAppConfig):
 
         menu_multi_item.bind_links(
             links=(
-                link_metadata_type_delete_multiple,
+                link_metadata_type_multiple_delete,
             ), sources=(MetadataType,)
         )
 
         menu_object.bind_links(
             links=(
-                link_metadata_type_delete_single, link_metadata_type_edit
+                link_metadata_type_single_delete, link_metadata_type_edit
             ), sources=(MetadataType,)
         )
 
@@ -344,15 +347,15 @@ class MetadataApp(MayanAppConfig):
             sender=Document
         )
 
-        # Index updating
+        # Index updates
 
-        post_delete.connect(
-            dispatch_uid='metadata_handler_index_document_delete',
-            receiver=handler_index_document,
-            sender=DocumentMetadata
-        )
         post_save.connect(
-            dispatch_uid='metadata_handler_index_document_save',
-            receiver=handler_index_document,
-            sender=DocumentMetadata
+            dispatch_uid='metadata_handler_index_metadata_type_documents',
+            receiver=handler_index_metadata_type_documents,
+            sender=MetadataType
+        )
+        pre_delete.connect(
+            dispatch_uid='metadata_handler_pre_metadata_type_delete',
+            receiver=handler_pre_metadata_type_delete,
+            sender=MetadataType
         )

@@ -11,9 +11,13 @@ from mayan.apps.views.generics import (
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
-from ..icons import icon_user_setup
+from ..icons import (
+    icon_current_user_detail, icon_user_create, icon_user_edit,
+    icon_user_group_list, icon_user_list, icon_user_single_delete,
+    icon_user_set_options, icon_user_setup
+)
 from ..links import link_user_create
-from ..literals import FIELDS_ALL
+from ..literals import FIELDS_ALL, FIELDSETS_ALL, FIELDSETS_USER
 from ..permissions import (
     permission_group_edit, permission_user_create, permission_user_delete,
     permission_user_edit, permission_user_view
@@ -27,9 +31,10 @@ class UserCreateView(SingleObjectCreateView):
     extra_context = {
         'title': _('Create new user'),
     }
-
     fields = FIELDS_ALL
+    fieldsets = FIELDSETS_ALL
     model = get_user_model()
+    view_icon = icon_user_create
     view_permission = permission_user_create
 
     def form_valid(self, form):
@@ -57,6 +62,17 @@ class UserDeleteView(MultipleObjectDeleteView):
     title_single = _('Delete user: %(object)s.')
     title_singular = _('Delete the %(count)d selected user.')
     title_plural = _('Delete the %(count)d selected users.')
+    view_icon = icon_user_single_delete
+
+    def get_extra_context(self, **kwargs):
+        if self.request.user in self.object_list:
+            return {
+                'message': _(
+                    'Warning! You are about to delete your own user '
+                    'account. You will lose access to the system. This '
+                    'process is not reversible.'
+                )
+            }
 
     def get_source_queryset(self):
         return get_user_queryset(user=self.request.user)
@@ -65,6 +81,7 @@ class UserDeleteView(MultipleObjectDeleteView):
 class UserDetailView(DynamicUserFormFieldViewMixin, SingleObjectDetailView):
     object_permission = permission_user_view
     pk_url_kwarg = 'user_id'
+    view_icon = icon_current_user_detail
 
     def get_extra_context(self, **kwargs):
         return {
@@ -77,11 +94,13 @@ class UserDetailView(DynamicUserFormFieldViewMixin, SingleObjectDetailView):
 
 
 class UserEditView(DynamicUserFormFieldViewMixin, SingleObjectEditView):
+    fieldsets = FIELDSETS_USER
     object_permission = permission_user_edit
     pk_url_kwarg = 'user_id'
     post_action_redirect = reverse_lazy(
         viewname='user_management:user_list'
     )
+    view_icon = icon_user_edit
 
     def get_extra_context(self):
         return {
@@ -96,7 +115,7 @@ class UserEditView(DynamicUserFormFieldViewMixin, SingleObjectEditView):
         return get_user_queryset(user=self.request.user)
 
 
-class UserGroupsView(AddRemoveView):
+class UserGroupAddRemoveView(AddRemoveView):
     main_object_method_add_name = 'groups_add'
     main_object_method_remove_name = 'groups_remove'
     main_object_permission = permission_user_edit
@@ -107,6 +126,7 @@ class UserGroupsView(AddRemoveView):
     # Translators: "User groups" here refer to the list of groups of a
     # specific user. The user's group membership.
     list_added_title = _('User groups')
+    view_icon = icon_user_group_list
 
     def get_actions_extra_kwargs(self):
         return {'_event_actor': self.request.user}
@@ -128,6 +148,7 @@ class UserGroupsView(AddRemoveView):
 
 class UserListView(SingleObjectListView):
     object_permission = permission_user_view
+    view_icon = icon_user_list
 
     def get_extra_context(self):
         return {
@@ -153,6 +174,7 @@ class UserOptionsEditView(ExternalObjectViewMixin, SingleObjectEditView):
     external_object_permission = permission_user_edit
     external_object_pk_url_kwarg = 'user_id'
     fields = ('block_password_change',)
+    view_icon = icon_user_set_options
 
     def get_extra_context(self):
         return {

@@ -12,8 +12,8 @@ from ..icons import (
     icon_document_file_page_return_to_document_file_page_list,
     icon_document_file_page_rotate_left,
     icon_document_file_page_rotate_right, icon_document_file_page_zoom_in,
-    icon_document_file_page_zoom_out, icon_document_file_page_view,
-    icon_document_file_page_view_reset, icon_document_file_page_count_update,
+    icon_document_file_page_zoom_out, icon_document_file_page_detail,
+    icon_document_file_page_detail_reset, icon_document_file_page_count_update,
     icon_document_file_page_list
 )
 from ..permissions import (
@@ -96,12 +96,12 @@ link_document_file_page_rotate_right = Link(
     text=_('Rotate right'), view='documents:document_file_page_rotate_right'
 )
 link_document_file_page_view = Link(
-    args='resolved_object.pk', icon=icon_document_file_page_view,
+    args='resolved_object.pk', icon=icon_document_file_page_detail,
     permissions=(permission_document_file_view,), text=_('Page image'),
     view='documents:document_file_page_view'
 )
 link_document_file_page_view_reset = Link(
-    args='resolved_object.pk', icon=icon_document_file_page_view_reset,
+    args='resolved_object.pk', icon=icon_document_file_page_detail_reset,
     permissions=(permission_document_file_view,), text=_('Reset view'),
     view='documents:document_file_page_view_reset'
 )

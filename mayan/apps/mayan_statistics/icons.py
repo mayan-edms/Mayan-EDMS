@@ -1,7 +1,19 @@
 from mayan.apps.appearance.classes import Icon
 
+# App
+
 icon_statistics = Icon(driver_name='fontawesome', symbol='chart-line')
-icon_execute = Icon(driver_name='fontawesome', symbol='cog')
-icon_namespace_details = Icon(driver_name='fontawesome', symbol='chart-line')
-icon_namespace_list = Icon(driver_name='fontawesome', symbol='chart-line')
-icon_view = Icon(driver_name='fontawesome', symbol='eye')
+
+# Statistic
+
+icon_statistic_detail = Icon(driver_name='fontawesome', symbol='eye')
+icon_statistic_queue = Icon(driver_name='fontawesome', symbol='cog')
+
+# Statisitic namespace
+
+icon_statistic_namespace_detail = Icon(
+    driver_name='fontawesome', symbol='chart-line'
+)
+icon_statistic_namespace_list = Icon(
+    driver_name='fontawesome', symbol='chart-line'
+)

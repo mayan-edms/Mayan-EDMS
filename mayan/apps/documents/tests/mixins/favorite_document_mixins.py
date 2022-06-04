@@ -9,30 +9,30 @@ class FavoriteDocumentAPIViewTestMixin:
 
         response = self.post(
             viewname='rest_api:favoritedocument-list', data={
-                'document_id': self.test_document.pk
+                'document_id': self._test_document.pk
             }
         )
 
         try:
-            self.test_favorite_document = FavoriteDocument.valid.get(
+            self._test_favorite_document = FavoriteDocument.valid.get(
                 ~Q(pk__in=pk_list)
             )
         except FavoriteDocument.DoesNotExist:
-            self.test_favorite_document = None
+            self._test_favorite_document = None
 
         return response
 
     def _request_test_favorite_document_delete_api_view(self):
         return self.delete(
             viewname='rest_api:favoritedocument-detail', kwargs={
-                'favorite_document_id': self.test_favorite_document.pk
+                'favorite_document_id': self._test_favorite_document.pk
             }
         )
 
     def _request_test_favorite_document_detail_api_view(self):
         return self.get(
             viewname='rest_api:favoritedocument-detail', kwargs={
-                'favorite_document_id': self.test_favorite_document.pk
+                'favorite_document_id': self._test_favorite_document.pk
             }
         )
 
@@ -41,9 +41,11 @@ class FavoriteDocumentAPIViewTestMixin:
 
 
 class FavoriteDocumentTestMixin:
-    def _test_document_favorite_add(self):
-        self.test_favorite_document = FavoriteDocument.valid.add_for_user(
-            document=self.test_document, user=self._test_case_user
+    def _test_document_favorite_add(self, user=None):
+        user = user or self._test_case_user
+
+        self._test_favorite_document = FavoriteDocument.valid.add_for_user(
+            document=self._test_document, user=user
         )
 
 
@@ -51,7 +53,7 @@ class FavoriteDocumentsViewTestMixin:
     def _request_test_document_favorite_add_view(self):
         return self.post(
             viewname='documents:document_favorite_add',
-            kwargs={'document_id': self.test_document.pk}
+            kwargs={'document_id': self._test_document.pk}
         )
 
     def _request_test_document_favorites_list_view(self):
@@ -62,5 +64,5 @@ class FavoriteDocumentsViewTestMixin:
     def _request_test_document_favorite_remove_view(self):
         return self.post(
             viewname='documents:document_favorite_remove',
-            kwargs={'document_id': self.test_document.pk}
+            kwargs={'document_id': self._test_document.pk}
         )

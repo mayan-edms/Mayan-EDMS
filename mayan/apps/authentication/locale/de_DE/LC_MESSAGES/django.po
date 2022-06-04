@@ -4,21 +4,21 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Berny <berny@bernhard-marx.de>, 2021
-# Jesaja Everling <jeverling@gmail.com>, 2021
-# 847f3f05406324d125c568a4b098bddb, 2021
-# Marvin Haschker <marvin@haschker.me>, 2021
-# Mathias Behrle <mathiasb@m9s.biz>, 2021
-# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
+# Jesaja Everling <jeverling@gmail.com>, 2022
+# 847f3f05406324d125c568a4b098bddb, 2022
+# Roberto Rosario, 2022
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2022
+# Marvin Haschker <marvin@haschker.me>, 2022
+# Mathias Behrle <mathiasb@m9s.biz>, 2022
+# Berny <berny@bernhard-marx.de>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:17+0000\n"
-"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Berny <berny@bernhard-marx.de>, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:35 events.py:6 permissions.py:6 settings.py:10
+#: apps.py:36 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Authentifizierung"
 
@@ -46,41 +46,21 @@ msgstr "Benutzer ist angemeldet"
 msgid "User logged out"
 msgstr "Benutzer ist abgemeldet"
 
-#: forms.py:20
-msgid "Email"
-msgstr "E-Mail"
-
-#: forms.py:23
-msgid "Password"
-msgstr "Passwort"
-
-#: forms.py:25 forms.py:105
+#: forms.py:31
 msgid "Remember me"
 msgstr "Angemeldet bleiben"
 
-#: forms.py:28
-msgid ""
-"Please enter a correct email and password. Note that the password field is "
-"case-sensitive."
-msgstr ""
-"Bitte geben Sie Ihre E-Mailadresse und ein Passwort an. Beachten Sie, dass "
-"das Passwortfeld Groß- und Kleinschreibung unterscheidet."
-
-#: forms.py:30
-msgid "This account is inactive."
-msgstr "Dieses Konto ist inaktiv."
-
-#: forms.py:79
+#: forms.py:77
 msgid "Permanent"
 msgstr "Permanent"
 
-#: forms.py:80
+#: forms.py:78
 msgid "If selected, disables ending impersonation."
 msgstr ""
 "Wenn diese Option ausgewählt ist, wird das Beenden des Identitätswechsels "
 "deaktiviert."
 
-#: forms.py:91
+#: forms.py:89
 msgid "User"
 msgstr "Benutzer"
 
@@ -110,25 +90,17 @@ msgstr "Benutzer imitieren"
 
 #: settings.py:15
 msgid ""
-"Controls the mechanism used to authenticated user. Options are: username, "
-"email"
-msgstr ""
-"Authentifizierungs-Mechanismus für die Benutzer. Optionen: Benutzername, E"
-"-Mail-Adresse"
-
-#: settings.py:22
-msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
-" in. Value is time in seconds."
-msgstr ""
-"Die maximale Zeit, die ein Benutzer, der das Kontrollkästchen \"Angemeldet "
-"bleiben\" aktiviert, angemeldet bleibt. Der Wert wird in Sekunden angegeben."
-
-#: settings.py:29
-msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
 msgstr "Entfernt den \"Passwort vergessen?\"-Link auf dem Anmeldeformular."
+
+#: settings.py:23
+msgid "Dotted path to the backend used to process user authentication."
+msgstr ""
+
+#: settings.py:29
+msgid "Arguments for the AUTHENTICATION_BACKEND."
+msgstr ""
 
 #: templates/authentication/app/viewport.html:11
 #, python-format
@@ -149,11 +121,20 @@ msgid "Login"
 msgstr "Login"
 
 #: templates/authentication/login.html:21
-#: templates/authentication/login.html:30
 msgid "Sign in"
 msgstr "Anmelden"
 
-#: templates/authentication/login.html:37
+#: templates/authentication/login.html:57
+msgid "Save"
+msgstr "Speichern"
+
+#: templates/authentication/login.html:57
+#: templates/authentication/password_reset_confirm.html:29
+#: templates/authentication/password_reset_form.html:29
+msgid "Submit"
+msgstr "Absenden"
+
+#: templates/authentication/login.html:67
 msgid "Forgot your password?"
 msgstr "Passwort vergessen?"
 
@@ -176,54 +157,58 @@ msgstr ""
 msgid "Login page"
 msgstr "Anmeldungsseite"
 
-#: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29
-msgid "Submit"
-msgstr "Absenden"
-
 #: templates/authentication/password_reset_done.html:15
 msgid "Password reset email sent!"
 msgstr "Mail für Passwortrücksetzung gesendet!"
 
-#: views/authentication_views.py:75
+#: views/authentication_views.py:153
+msgid "Next"
+msgstr "Nächste Seite"
+
+#: views/authentication_views.py:159
+#, python-format
+msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
+msgstr "Schritt %(step)d von %(total_steps)d: %(step_label)s"
+
+#: views/authentication_views.py:221
 msgid "Your password has been successfully changed."
 msgstr "Das Passwort wurde erfolgreich geändert."
 
-#: views/authentication_views.py:82
+#: views/authentication_views.py:228
 msgid "Current user password change"
 msgstr "Passwortänderung für aktuellen Benutzer"
 
-#: views/authentication_views.py:90
+#: views/authentication_views.py:236
 msgid "Changing the password is not allowed for this account."
 msgstr "Ein Passwortwechsel ist für diesen Account nicht erlaubt."
 
-#: views/authentication_views.py:157
+#: views/authentication_views.py:308
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Passwortwechsel für %(count)d Benutzer durchgeführt"
 
-#: views/authentication_views.py:159
+#: views/authentication_views.py:311
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Passwortwechsel für %(count)d Benutzer durchgeführt"
 
-#: views/authentication_views.py:167
+#: views/authentication_views.py:319
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] "Ändern Sie das Benutzerpasswort"
-msgstr[1] "Benutzerpasswörter ändern"
+msgstr[0] ""
+msgstr[1] ""
 
-#: views/authentication_views.py:177
+#: views/authentication_views.py:330
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Passwort ändern für Benutzer: %s"
 
-#: views/authentication_views.py:198
+#: views/authentication_views.py:352
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Passwort für Benutzer %s erfolgreich zurückgesetzt."
 
-#: views/authentication_views.py:204
+#: views/authentication_views.py:358
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr ""

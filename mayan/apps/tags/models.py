@@ -2,8 +2,6 @@ from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from colorful.fields import RGBColorField
-
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
@@ -27,9 +25,9 @@ class Tag(ExtraDataModelMixin, models.Model):
             'A short text used as the tag name.'
         ), max_length=128, unique=True, verbose_name=_('Label')
     )
-    color = RGBColorField(
+    color = models.CharField(
         help_text=_('The RGB color values for the tag.'),
-        verbose_name=_('Color')
+        max_length=7, verbose_name=_('Color')
     )
     documents = models.ManyToManyField(
         related_name='tags', to=Document, verbose_name=_('Documents')
@@ -62,13 +60,15 @@ class Tag(ExtraDataModelMixin, models.Model):
         Return the numeric count of documents that have this tag attached.
         The count is filtered by access.
         """
-        return self.get_documents(permission=permission_document_view, user=user).count()
+        return self.get_documents(
+            permission=permission_document_view, user=user
+        ).count()
 
     def get_documents(self, user, permission=None):
         """
         Return a filtered queryset documents that have this tag attached.
         """
-        queryset = self.documents.all()
+        queryset = Document.valid.filter(pk__in=self.documents.all())
 
         if permission:
             queryset = AccessControlList.objects.restrict_queryset(

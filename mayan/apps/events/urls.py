@@ -18,49 +18,50 @@ from .views.notification_views import (
     NotificationListView, NotificationMarkRead, NotificationMarkReadAll
 )
 from .views.subscription_views import (
-    EventTypeSubscriptionListView, ObjectEventTypeSubscriptionListView
+    EventTypeSubscriptionListView, ObjectEventTypeSubscriptionListView,
+    UserObjectSubscriptionList
 )
 
 
 urlpatterns_events = [
-    url(regex=r'^events/$', name='events_list', view=EventListView.as_view()),
+    url(regex=r'^events/$', name='event_list', view=EventListView.as_view()),
     url(
         regex=r'^object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/events/$',
-        name='events_for_object', view=ObjectEventListView.as_view()
+        name='object_event_list', view=ObjectEventListView.as_view()
     ),
     url(
-        regex=r'^verbs/(?P<verb>[\w\-\.]+)/$', name='events_by_verb',
-        view=VerbEventListView.as_view(),
+        regex=r'^verbs/(?P<verb>[\w\-\.]+)/events/$', name='verb_event_list',
+        view=VerbEventListView.as_view()
     )
 ]
 
 urlpatterns_events_clear = [
     url(
-        regex=r'^events/clear/$', name='events_list_clear',
+        regex=r'^events/clear/$', name='event_list_clear',
         view=EventListClearView.as_view()
     ),
     url(
         regex=r'^object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/events/clear/$',
-        name='events_for_object_clear', view=ObjectEventClearView.as_view()
+        name='object_event_list_clear', view=ObjectEventClearView.as_view()
     ),
     url(
-        regex=r'^verbs/(?P<verb>[\w\-\.]+)/clear/$', name='events_by_verb_clear',
-        view=VerbEventClearView.as_view(),
+        regex=r'^verbs/(?P<verb>[\w\-\.]+)/events/clear/$',
+        name='verb_event_list_clear', view=VerbEventClearView.as_view()
     )
 ]
 
 urlpatterns_events_export = [
     url(
-        regex=r'^events/export/$', name='events_list_export',
+        regex=r'^events/export/$', name='event_list_export',
         view=EventListExportView.as_view()
     ),
     url(
         regex=r'^object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/events/export/$',
-        name='events_for_object_export', view=ObjectEventExportView.as_view()
+        name='object_event_list_export', view=ObjectEventExportView.as_view()
     ),
     url(
-        regex=r'^verbs/(?P<verb>[\w\-\.]+)/export/$', name='events_by_verb_export',
-        view=VerbEventExportView.as_view(),
+        regex=r'^verbs/(?P<verb>[\w\-\.]+)/events/export/$',
+        name='verb_event_list_export', view=VerbEventExportView.as_view(),
     )
 ]
 
@@ -77,20 +78,25 @@ urlpatterns_notification = [
         regex=r'^user/notifications/all/mark_read/$',
         name='notification_mark_read_all',
         view=NotificationMarkReadAll.as_view()
-    ),
+    )
 ]
 
 urlpatterns_subscriptions = [
     url(
         regex=r'^user/event_types/subscriptions/$',
-        name='event_types_user_subscriptions_list',
+        name='event_type_user_subscription_list',
         view=EventTypeSubscriptionListView.as_view()
     ),
     url(
         regex=r'^user/object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/subscriptions/$',
-        name='object_event_types_user_subscriptions_list',
+        name='object_event_type_user_subscription_list',
         view=ObjectEventTypeSubscriptionListView.as_view()
     ),
+    url(
+        regex=r'^user/object/subscriptions/$',
+        name='user_object_subscription_list',
+        view=UserObjectSubscriptionList.as_view()
+    )
 ]
 
 urlpatterns = []

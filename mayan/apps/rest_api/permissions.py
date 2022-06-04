@@ -7,15 +7,32 @@ from mayan.apps.permissions import Permission
 
 
 class MayanPermission(BasePermission):
-    def has_permission(self, request, view):
-        required_permissions = getattr(
-            view, 'mayan_view_permissions', {}
-        ).get(request.method, None)
+    def get_mayan_object_permissions(self, request, view):
+        try:
+            return getattr(view, 'get_mayan_object_permissions')()
+        except AttributeError:
+            return getattr(
+                view, 'mayan_object_permissions', {}
+            ).get(request.method, None)
 
-        if required_permissions:
+    def get_mayan_view_permissions(self, request, view):
+        try:
+            return getattr(view, 'get_mayan_view_permissions')()
+        except AttributeError:
+            return getattr(
+                view, 'mayan_view_permissions', {}
+            ).get(request.method, None)
+
+    def has_object_permission(self, request, view, obj):
+        permissions = self.get_mayan_object_permissions(
+            request=request, view=view
+        )
+
+        if permissions:
             try:
-                Permission.check_user_permissions(
-                    permissions=required_permissions, user=request.user
+                AccessControlList.objects.check_access(
+                    obj=obj, permissions=permissions,
+                    user=request.user
                 )
             except PermissionDenied:
                 return False
@@ -24,16 +41,15 @@ class MayanPermission(BasePermission):
         else:
             return True
 
-    def has_object_permission(self, request, view, obj):
-        required_permissions = getattr(
-            view, 'mayan_object_permissions', {}
-        ).get(request.method, None)
+    def has_permission(self, request, view):
+        permissions = self.get_mayan_view_permissions(
+            request=request, view=view
+        )
 
-        if required_permissions:
+        if permissions:
             try:
-                AccessControlList.objects.check_access(
-                    obj=obj, permissions=required_permissions,
-                    user=request.user
+                Permission.check_user_permissions(
+                    permissions=permissions, user=request.user
                 )
             except PermissionDenied:
                 return False

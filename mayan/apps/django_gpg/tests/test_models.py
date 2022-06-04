@@ -1,7 +1,7 @@
 import io
+from unittest import mock
 
 import gnupg
-import mock
 
 from django.utils.encoding import force_bytes
 

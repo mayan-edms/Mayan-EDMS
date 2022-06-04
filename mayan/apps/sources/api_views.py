@@ -12,6 +12,91 @@ from .permissions import (
 from .serializers import SourceBackendActionSerializer, SourceSerializer
 
 
+class APISourceActionDetailView(generics.ObjectActionAPIView):
+    """
+    get: Get data from a source action.
+    post: Execute a source action.
+    """
+    lookup_url_kwarg = 'source_id'
+    mayan_object_permissions = {
+        'GET': (permission_document_create,),
+        'POST': (permission_document_create,)
+    }
+    serializer_class = SourceBackendActionSerializer
+
+    def dispatch(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        return super().dispatch(request=request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        if self.get_action().confirmation:
+            handler = self.http_method_not_allowed
+            response = handler(request, *args, **kwargs)
+            self.response = self.finalize_response(
+                request, response, *args, **kwargs
+            )
+            return self.response
+        else:
+            return self.view_action(request, *args, **kwargs)
+
+    def get_action(self):
+        return self.object.get_action(name=self.kwargs['action_name'])
+
+    def get_serializer_extra_context(self):
+        return {'action': self.get_action()}
+
+    def get_queryset(self):
+        return Source.objects.filter(enabled=True)
+
+    def object_action(self, request, serializer):
+        query_dict = request.GET
+
+        arguments = serializer.validated_data.get('arguments', {}) or {}
+        arguments.update(query_dict)
+
+        if self.get_action().accept_files:
+            arguments['file'] = serializer.validated_data['file']
+
+        return self.object.execute_action(
+            name=self.kwargs['action_name'], request=request, **arguments
+        ) or (None, None)
+
+    def post(self, request, *args, **kwargs):
+        if not self.get_action().confirmation:
+            handler = self.http_method_not_allowed
+            response = handler(request, *args, **kwargs)
+            self.response = self.finalize_response(
+                request, response, *args, **kwargs
+            )
+            return self.response
+        else:
+            return self.view_action(request, *args, **kwargs)
+
+    def view_action(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        if hasattr(self, 'get_instance_extra_data'):
+            for key, value in self.get_instance_extra_data().items():
+                setattr(self.object, key, value)
+
+        data, response = self.object_action(
+            request=request, serializer=serializer
+        )
+
+        if response:
+            return response
+        else:
+            if data:
+                # If object action returned serializer.data.
+                headers = self.get_success_headers(data=data)
+                return Response(
+                    data=data, status=status.HTTP_200_OK, headers=headers
+                )
+            else:
+                return Response(status=status.HTTP_200_OK)
+
+
 class APISourceListView(generics.ListCreateAPIView):
     """
     get: Returns a list of all the source.
@@ -53,82 +138,3 @@ class APISourceView(generics.RetrieveUpdateDestroyAPIView):
         return {
             '_event_actor': self.request.user
         }
-
-
-class APISourceActionView(generics.ObjectActionAPIView):
-    """
-    get: Get data from a source action.
-    post: Execute a source action.
-    """
-    lookup_url_kwarg = 'source_id'
-    mayan_object_permissions = {
-        'GET': (permission_document_create,),
-        'POST': (permission_document_create,)
-    }
-    serializer_class = SourceBackendActionSerializer
-
-    def dispatch(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        return super().dispatch(request=request, *args, **kwargs)
-
-    def get(self, request, *args, **kwargs):
-        if self.get_action().confirmation:
-            handler = self.http_method_not_allowed
-            response = handler(request, *args, **kwargs)
-            self.response = self.finalize_response(
-                request, response, *args, **kwargs
-            )
-            return self.response
-        else:
-            return self.view_action(request, *args, **kwargs)
-
-    def get_action(self):
-        return self.object.get_action(name=self.kwargs['action_name'])
-
-    def get_queryset(self):
-        return Source.objects.filter(enabled=True)
-
-    def object_action(self, request, serializer):
-        query_dict = request.GET
-
-        arguments = serializer.data.get('arguments', {}) or {}
-        arguments.update(query_dict)
-
-        return self.object.execute_action(
-            name=self.kwargs['action_name'], request=request, **arguments
-        ) or (None, None)
-
-    def post(self, request, *args, **kwargs):
-        if not self.get_action().confirmation:
-            handler = self.http_method_not_allowed
-            response = handler(request, *args, **kwargs)
-            self.response = self.finalize_response(
-                request, response, *args, **kwargs
-            )
-            return self.response
-        else:
-            return self.view_action(request, *args, **kwargs)
-
-    def view_action(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-
-        if hasattr(self, 'get_instance_extra_data'):
-            for key, value in self.get_instance_extra_data().items():
-                setattr(self.object, key, value)
-
-        data, response = self.object_action(
-            request=request, serializer=serializer
-        )
-
-        if response:
-            return response
-        else:
-            if data:
-                # If object action returned serializer.data.
-                headers = self.get_success_headers(data=data)
-                return Response(
-                    data=data, status=status.HTTP_200_OK, headers=headers
-                )
-            else:
-                return Response(status=status.HTTP_200_OK)

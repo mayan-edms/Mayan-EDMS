@@ -12,9 +12,9 @@ class DetachedSignatureAPIViewTestMixin:
         return self.delete(
             viewname='rest_api:detachedsignature-detail',
             kwargs={
-                'document_id': self.test_document.pk,
-                'document_file_id': self.test_document_file.pk,
-                'detached_signature_id': self.test_document_file.signatures.first().pk
+                'document_id': self._test_document.pk,
+                'document_file_id': self._test_document_file.pk,
+                'detached_signature_id': self._test_document_file.signatures.first().pk
             }
         )
 
@@ -22,9 +22,9 @@ class DetachedSignatureAPIViewTestMixin:
         return self.get(
             viewname='rest_api:detachedsignature-detail',
             kwargs={
-                'document_id': self.test_document.pk,
-                'document_file_id': self.test_document_file.pk,
-                'detached_signature_id': self.test_document_file.signatures.first().pk
+                'document_id': self._test_document.pk,
+                'document_file_id': self._test_document_file.pk,
+                'detached_signature_id': self._test_document_file.signatures.first().pk
             }
         )
 
@@ -32,8 +32,8 @@ class DetachedSignatureAPIViewTestMixin:
         return self.get(
             viewname='rest_api:document-file-signature-detached-list',
             kwargs={
-                'document_id': self.test_document.pk,
-                'document_file_id': self.test_document_file.pk
+                'document_id': self._test_document.pk,
+                'document_file_id': self._test_document_file.pk
             }
         )
 
@@ -41,10 +41,10 @@ class DetachedSignatureAPIViewTestMixin:
         return self.post(
             viewname='rest_api:document-file-signature-detached-sign',
             kwargs={
-                'document_id': self.test_document.pk,
-                'document_file_id': self.test_document_file.pk
+                'document_id': self._test_document.pk,
+                'document_file_id': self._test_document_file.pk
             }, data={
-                'key': self.test_key_private.pk,
+                'key': self._test_key_private.pk,
                 'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
             }
         )
@@ -54,8 +54,8 @@ class DetachedSignatureAPIViewTestMixin:
             return self.post(
                 viewname='rest_api:document-file-signature-detached-upload',
                 kwargs={
-                    'document_id': self.test_document.pk,
-                    'document_file_id': self.test_document_file.pk
+                    'document_id': self._test_document.pk,
+                    'document_file_id': self._test_document_file.pk
                 }, data={'signature_file': file_object}
             )
 
@@ -65,9 +65,9 @@ class DetachedSignatureViewTestMixin:
         return self.post(
             viewname='signatures:document_file_signature_detached_create',
             kwargs={
-                'document_file_id': self.test_document_file.pk
+                'document_file_id': self._test_document_file.pk
             }, data={
-                'key': self.test_key_private.pk,
+                'key': self._test_key_private.pk,
                 'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
             }
         )
@@ -76,14 +76,14 @@ class DetachedSignatureViewTestMixin:
         return self.post(
             viewname='signatures:document_file_signature_detached_delete',
             kwargs={
-                'signature_id': self.test_signature.pk
+                'signature_id': self._test_signature.pk
             }
         )
 
     def _request_test_document_file_signature_detached_download_view(self):
         return self.get(
             viewname='signatures:document_file_signature_detached_download',
-            kwargs={'signature_id': self.test_signature.pk}
+            kwargs={'signature_id': self._test_signature.pk}
         )
 
     def _request_test_document_file_signature_detached_upload_view(self):
@@ -91,7 +91,7 @@ class DetachedSignatureViewTestMixin:
             return self.post(
                 viewname='signatures:document_file_signature_detached_upload',
                 kwargs={
-                    'document_file_id': self.test_document.file_latest.pk
+                    'document_file_id': self._test_document.file_latest.pk
                 }, data={'signature_file': file_object}
             )
 
@@ -101,9 +101,9 @@ class EmbeddedSignatureAPIViewTestMixin:
         return self.get(
             viewname='rest_api:embeddedsignature-detail',
             kwargs={
-                'document_id': self.test_document.pk,
-                'document_file_id': self.test_document_file.pk,
-                'embedded_signature_id': self.test_document_file.signatures.first().pk
+                'document_id': self._test_document.pk,
+                'document_file_id': self._test_document_file.pk,
+                'embedded_signature_id': self._test_document_file.signatures.first().pk
             }
         )
 
@@ -111,8 +111,8 @@ class EmbeddedSignatureAPIViewTestMixin:
         return self.get(
             viewname='rest_api:document-file-signature-embedded-list',
             kwargs={
-                'document_id': self.test_document.pk,
-                'document_file_id': self.test_document_file.pk
+                'document_id': self._test_document.pk,
+                'document_file_id': self._test_document_file.pk
             }
         )
 
@@ -120,10 +120,10 @@ class EmbeddedSignatureAPIViewTestMixin:
         return self.post(
             viewname='rest_api:document-file-signature-embedded-sign',
             kwargs={
-                'document_id': self.test_document.pk,
-                'document_file_id': self.test_document_file.pk
+                'document_id': self._test_document.pk,
+                'document_file_id': self._test_document_file.pk
             }, data={
-                'key': self.test_key_private.pk,
+                'key': self._test_key_private.pk,
                 'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
             }
         )
@@ -134,9 +134,9 @@ class EmbeddedSignatureViewTestMixin:
         return self.post(
             viewname='signatures:document_file_signature_embedded_create',
             kwargs={
-                'document_file_id': self.test_document_file.pk
+                'document_file_id': self._test_document_file.pk
             }, data={
-                'key': self.test_key_private.pk,
+                'key': self._test_key_private.pk,
                 'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
             }
         )
@@ -145,25 +145,25 @@ class EmbeddedSignatureViewTestMixin:
 class DetachedSignatureTestMixin:
     def _upload_test_detached_signature(self):
         with open(file=TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
-            self.test_signature = DetachedSignature.objects.create(
-                document_file=self.test_document.file_latest,
+            self._test_signature = DetachedSignature.objects.create(
+                document_file=self._test_document.file_latest,
                 signature_file=File(file=file_object)
             )
 
 
 class SignatureViewTestMixin:
 
-    def _request_test_document_file_signature_details_view(self):
+    def _request_test_document_file_signature_detail_view(self):
         return self.get(
-            viewname='signatures:document_file_signature_details',
-            kwargs={'signature_id': self.test_signature.pk}
+            viewname='signatures:document_file_signature_detail',
+            kwargs={'signature_id': self._test_signature.pk}
         )
 
     def _request_test_document_file_signature_list_view(self, document):
         return self.get(
             viewname='signatures:document_file_signature_list',
             kwargs={
-                'document_file_id': self.test_document.file_latest.pk
+                'document_file_id': self._test_document.file_latest.pk
             }
         )
 

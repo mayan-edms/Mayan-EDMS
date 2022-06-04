@@ -59,7 +59,7 @@ class DocumentTypeAPIViewTestCase(
             DocumentType.objects.count(), document_type_count + 1
         )
         self.assertEqual(
-            self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL
+            self._test_document_type.label, TEST_DOCUMENT_TYPE_LABEL
         )
 
         events = self._get_test_events()
@@ -67,7 +67,7 @@ class DocumentTypeAPIViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document_type)
+        self.assertEqual(events[0].target, self._test_document_type)
         self.assertEqual(events[0].verb, event_document_type_created.id)
 
     def test_document_type_delete_api_view_no_permission(self):
@@ -93,7 +93,7 @@ class DocumentTypeAPIViewTestCase(
         document_type_count = DocumentType.objects.count()
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_delete
         )
 
@@ -124,7 +124,7 @@ class DocumentTypeAPIViewTestCase(
         self._create_test_document_type()
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_view
         )
 
@@ -134,7 +134,7 @@ class DocumentTypeAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['label'],
-            self.test_document_type.label
+            self._test_document_type.label
         )
 
         events = self._get_test_events()
@@ -143,16 +143,16 @@ class DocumentTypeAPIViewTestCase(
     def test_document_type_edit_via_patch_api_view_no_permission(self):
         self._create_test_document_type()
 
-        document_type_label = self.test_document_type.label
+        document_type_label = self._test_document_type.label
 
         self._clear_events()
 
         response = self._request_test_document_type_edit_via_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_document_type.refresh_from_db()
+        self._test_document_type.refresh_from_db()
         self.assertEqual(
-            self.test_document_type.label, document_type_label
+            self._test_document_type.label, document_type_label
         )
 
         events = self._get_test_events()
@@ -161,10 +161,10 @@ class DocumentTypeAPIViewTestCase(
     def test_document_type_edit_via_patch_api_view_with_access(self):
         self._create_test_document_type()
 
-        document_type_label = self.test_document_type.label
+        document_type_label = self._test_document_type.label
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
 
@@ -173,9 +173,9 @@ class DocumentTypeAPIViewTestCase(
         response = self._request_test_document_type_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_document_type.refresh_from_db()
+        self._test_document_type.refresh_from_db()
         self.assertNotEqual(
-            self.test_document_type.label, document_type_label
+            self._test_document_type.label, document_type_label
         )
 
         events = self._get_test_events()
@@ -183,22 +183,22 @@ class DocumentTypeAPIViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document_type)
+        self.assertEqual(events[0].target, self._test_document_type)
         self.assertEqual(events[0].verb, event_document_type_edited.id)
 
     def test_document_type_edit_via_put_api_view_no_permission(self):
         self._create_test_document_type()
 
-        document_type_label = self.test_document_type.label
+        document_type_label = self._test_document_type.label
 
         self._clear_events()
 
         response = self._request_test_document_type_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_document_type.refresh_from_db()
+        self._test_document_type.refresh_from_db()
         self.assertEqual(
-            self.test_document_type.label, document_type_label
+            self._test_document_type.label, document_type_label
         )
 
         events = self._get_test_events()
@@ -207,10 +207,10 @@ class DocumentTypeAPIViewTestCase(
     def test_document_type_edit_via_put_api_view_with_access(self):
         self._create_test_document_type()
 
-        document_type_label = self.test_document_type.label
+        document_type_label = self._test_document_type.label
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
 
@@ -219,9 +219,9 @@ class DocumentTypeAPIViewTestCase(
         response = self._request_test_document_type_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_document_type.refresh_from_db()
+        self._test_document_type.refresh_from_db()
         self.assertNotEqual(
-            self.test_document_type.label, document_type_label
+            self._test_document_type.label, document_type_label
         )
 
         events = self._get_test_events()
@@ -229,7 +229,7 @@ class DocumentTypeAPIViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document_type)
+        self.assertEqual(events[0].target, self._test_document_type)
         self.assertEqual(events[0].verb, event_document_type_edited.id)
 
     def test_document_type_list_api_view_no_permission(self):
@@ -252,7 +252,7 @@ class DocumentTypeAPIViewTestCase(
         document_type_count = DocumentType.objects.count()
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_view
         )
 
@@ -263,7 +263,7 @@ class DocumentTypeAPIViewTestCase(
         self.assertEqual(response.data['count'], document_type_count)
         self.assertEqual(
             response.data['results'][0]['label'],
-            self.test_document_type.label
+            self._test_document_type.label
         )
 
         events = self._get_test_events()
@@ -296,7 +296,7 @@ class DocumentTypeQuickLabelAPIViewTestCase(
     def test_document_type_quick_label_create_api_view_with_access(self):
         document_type_quick_label_count = DocumentTypeFilename.objects.count()
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
 
@@ -310,16 +310,16 @@ class DocumentTypeQuickLabelAPIViewTestCase(
             document_type_quick_label_count + 1
         )
         self.assertEqual(
-            self.test_document_type_quick_label.filename,
+            self._test_document_type_quick_label.filename,
             TEST_DOCUMENT_TYPE_QUICK_LABEL
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].action_object, self._test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document_type_quick_label)
+        self.assertEqual(events[0].target, self._test_document_type_quick_label)
         self.assertEqual(
             events[0].verb, event_document_type_quick_label_created.id
         )
@@ -348,7 +348,7 @@ class DocumentTypeQuickLabelAPIViewTestCase(
         document_type_quick_label_count = DocumentTypeFilename.objects.count()
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
 
@@ -367,7 +367,7 @@ class DocumentTypeQuickLabelAPIViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document_type)
+        self.assertEqual(events[0].target, self._test_document_type)
         self.assertEqual(
             events[0].verb, event_document_type_quick_label_deleted.id
         )
@@ -387,7 +387,7 @@ class DocumentTypeQuickLabelAPIViewTestCase(
         self._create_test_document_type_quick_label()
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_view
         )
 
@@ -397,7 +397,7 @@ class DocumentTypeQuickLabelAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['filename'],
-            self.test_document_type_quick_label.filename
+            self._test_document_type_quick_label.filename
         )
 
         events = self._get_test_events()
@@ -406,16 +406,16 @@ class DocumentTypeQuickLabelAPIViewTestCase(
     def test_document_type_quick_label_edit_via_patch_api_view_no_permission(self):
         self._create_test_document_type_quick_label()
 
-        document_type_quick_label_filename = self.test_document_type_quick_label.filename
+        document_type_quick_label_filename = self._test_document_type_quick_label.filename
 
         self._clear_events()
 
         response = self._request_test_document_type_quick_label_edit_via_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_document_type_quick_label.refresh_from_db()
+        self._test_document_type_quick_label.refresh_from_db()
         self.assertEqual(
-            self.test_document_type_quick_label.filename,
+            self._test_document_type_quick_label.filename,
             document_type_quick_label_filename
         )
 
@@ -425,10 +425,10 @@ class DocumentTypeQuickLabelAPIViewTestCase(
     def test_document_type_quick_label_edit_via_patch_api_view_with_access(self):
         self._create_test_document_type_quick_label()
 
-        document_type_quick_label_filename = self.test_document_type_quick_label.filename
+        document_type_quick_label_filename = self._test_document_type_quick_label.filename
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
 
@@ -437,19 +437,19 @@ class DocumentTypeQuickLabelAPIViewTestCase(
         response = self._request_test_document_type_quick_label_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_document_type_quick_label.refresh_from_db()
+        self._test_document_type_quick_label.refresh_from_db()
         self.assertNotEqual(
-            self.test_document_type_quick_label.filename,
+            self._test_document_type_quick_label.filename,
             document_type_quick_label_filename
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].action_object, self._test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(
-            events[0].target, self.test_document_type_quick_label
+            events[0].target, self._test_document_type_quick_label
         )
         self.assertEqual(
             events[0].verb, event_document_type_quick_label_edited.id
@@ -458,16 +458,16 @@ class DocumentTypeQuickLabelAPIViewTestCase(
     def test_document_type_quick_label_edit_via_put_api_view_no_permission(self):
         self._create_test_document_type_quick_label()
 
-        document_type_quick_label_filename = self.test_document_type_quick_label.filename
+        document_type_quick_label_filename = self._test_document_type_quick_label.filename
 
         self._clear_events()
 
         response = self._request_test_document_type_quick_label_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_document_type_quick_label.refresh_from_db()
+        self._test_document_type_quick_label.refresh_from_db()
         self.assertEqual(
-            self.test_document_type_quick_label.filename,
+            self._test_document_type_quick_label.filename,
             document_type_quick_label_filename
         )
 
@@ -477,10 +477,10 @@ class DocumentTypeQuickLabelAPIViewTestCase(
     def test_document_type_quick_label_edit_via_put_api_view_with_access(self):
         self._create_test_document_type_quick_label()
 
-        document_type_quick_label_filename = self.test_document_type_quick_label.filename
+        document_type_quick_label_filename = self._test_document_type_quick_label.filename
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_edit
         )
 
@@ -489,19 +489,19 @@ class DocumentTypeQuickLabelAPIViewTestCase(
         response = self._request_test_document_type_quick_label_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_document_type_quick_label.refresh_from_db()
+        self._test_document_type_quick_label.refresh_from_db()
         self.assertNotEqual(
-            self.test_document_type_quick_label.filename,
+            self._test_document_type_quick_label.filename,
             document_type_quick_label_filename
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].action_object, self._test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(
-            events[0].target, self.test_document_type_quick_label
+            events[0].target, self._test_document_type_quick_label
         )
         self.assertEqual(
             events[0].verb, event_document_type_quick_label_edited.id
@@ -524,7 +524,7 @@ class DocumentTypeQuickLabelAPIViewTestCase(
         document_type_quick_label_count = DocumentTypeFilename.objects.count()
 
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_view
         )
 
@@ -537,7 +537,7 @@ class DocumentTypeQuickLabelAPIViewTestCase(
         )
         self.assertEqual(
             response.data['results'][0]['filename'],
-            self.test_document_type_quick_label.filename
+            self._test_document_type_quick_label.filename
         )
 
         events = self._get_test_events()

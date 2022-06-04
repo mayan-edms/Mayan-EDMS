@@ -11,7 +11,11 @@ from mayan.apps.views.generics import (
 )
 
 from .forms import StoredPermissionDetailForm
-from .icons import icon_role_list
+from .icons import (
+    icon_group_role_list, icon_permission_detail, icon_role_create,
+    icon_role_edit, icon_role_group_list, icon_role_list,
+    icon_role_permission_list, icon_role_single_delete
+)
 from .links import link_role_create
 from .models import Role, StoredPermission
 from .permissions import (
@@ -20,7 +24,7 @@ from .permissions import (
 )
 
 
-class GroupRolesView(AddRemoveView):
+class GroupRoleAddRemoveView(AddRemoveView):
     main_object_method_add_name = 'roles_add'
     main_object_method_remove_name = 'roles_remove'
     main_object_model = Group
@@ -31,6 +35,7 @@ class GroupRolesView(AddRemoveView):
     list_available_title = _('Available roles')
     list_added_title = _('Group roles')
     related_field = 'roles'
+    view_icon = icon_group_role_list
 
     def get_actions_extra_kwargs(self):
         return {'_event_actor': self.request.user}
@@ -47,6 +52,7 @@ class RoleCreateView(SingleObjectCreateView):
     model = Role
     view_permission = permission_role_create
     post_action_redirect = reverse_lazy(viewname='permissions:role_list')
+    view_icon = icon_role_create
 
     def get_extra_context(self):
         return {'title': _('Create new role')}
@@ -67,6 +73,7 @@ class RoleDeleteView(MultipleObjectDeleteView):
     title_single = _('Delete role: %(object)s.')
     title_singular = _('Delete the %(count)d selected role.')
     title_plural = _('Delete the %(count)d selected roles.')
+    view_icon = icon_role_single_delete
 
 
 class RoleEditView(SingleObjectEditView):
@@ -74,6 +81,7 @@ class RoleEditView(SingleObjectEditView):
     model = Role
     object_permission = permission_role_edit
     pk_url_kwarg = 'role_id'
+    view_icon = icon_role_edit
 
     def get_instance_extra_data(self):
         return {'_event_actor': self.request.user}
@@ -82,6 +90,7 @@ class RoleEditView(SingleObjectEditView):
 class RoleListView(SingleObjectListView):
     model = Role
     object_permission = permission_role_view
+    view_icon = icon_role_list
 
     def get_extra_context(self):
         return {
@@ -104,7 +113,7 @@ class RoleListView(SingleObjectListView):
         }
 
 
-class RoleMembersView(AddRemoveView):
+class RoleGroupAddRemoveView(AddRemoveView):
     main_object_method_add_name = 'groups_add'
     main_object_method_remove_name = 'groups_remove'
     main_object_model = Role
@@ -115,6 +124,7 @@ class RoleMembersView(AddRemoveView):
     list_available_title = _('Available groups')
     list_added_title = _('Role groups')
     related_field = 'groups'
+    view_icon = icon_role_group_list
 
     def get_actions_extra_kwargs(self):
         return {'_event_actor': self.request.user}
@@ -130,7 +140,7 @@ class RoleMembersView(AddRemoveView):
         }
 
 
-class RolePermissionsView(AddRemoveView):
+class RolePermissionAddRemoveView(AddRemoveView):
     grouped = True
     main_object_method_add_name = 'permissions_add'
     main_object_method_remove_name = 'permissions_remove'
@@ -141,6 +151,7 @@ class RolePermissionsView(AddRemoveView):
     list_added_title = _('Granted permissions')
     related_field = 'permissions'
     secondary_object_model = StoredPermission
+    view_icon = icon_role_permission_list
 
     def generate_choices(self, queryset):
         namespaces_dictionary = {}
@@ -154,8 +165,7 @@ class RolePermissionsView(AddRemoveView):
         # Group permissions by namespace.
         for permission in object_list:
             namespaces_dictionary.setdefault(
-                permission.volatile_permission.namespace.label,
-                []
+                permission.volatile_permission.namespace.label, []
             )
             namespaces_dictionary[
                 permission.volatile_permission.namespace.label
@@ -191,6 +201,7 @@ class StoredPermissionDetailView(SingleObjectDetailView):
     }
     model = StoredPermission
     pk_url_kwarg = 'stored_permission_id'
+    view_icon = icon_permission_detail
 
     def get_extra_context(self, **kwargs):
         return {

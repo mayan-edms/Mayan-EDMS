@@ -5,14 +5,14 @@ from mayan.apps.navigation.classes import Link, Separator, Text
 from mayan.apps.navigation.utils import factory_condition_queryset_access
 
 from .icons import (
-    icon_current_user_details, icon_group_create, icon_group_delete_single,
-    icon_group_delete_multiple, icon_group_edit, icon_group_list,
+    icon_current_user_detail, icon_group_create, icon_group_single_delete,
+    icon_group_multiple_delete, icon_group_edit, icon_group_list,
     icon_group_setup, icon_group_user_list, icon_user_create,
     icon_user_edit, icon_user_group_list, icon_user_list,
-    icon_user_delete_single, icon_user_delete_multiple,
+    icon_user_single_delete, icon_user_multiple_delete,
     icon_user_set_options, icon_user_setup
 )
-from .link_conditions import condition_user_is_not_super_user
+from .link_conditions import condition_user_is_not_superuser
 from .permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
     permission_group_view, permission_user_create, permission_user_delete,
@@ -25,7 +25,7 @@ from .utils import get_user_label_text
 link_current_user_details = Link(
     args='request.user.id',
     condition=condition_user_is_authenticated,
-    icon=icon_current_user_details, text=_('User details'),
+    icon=icon_current_user_detail, text=_('User details'),
     view='user_management:user_details'
 )
 
@@ -35,14 +35,14 @@ link_group_create = Link(
     icon=icon_group_create, permissions=(permission_group_create,),
     text=_('Create new group'), view='user_management:group_create'
 )
-link_group_delete_single = Link(
-    args='object.id', icon=icon_group_delete_single,
+link_group_single_delete = Link(
+    args='object.id', icon=icon_group_single_delete,
     permissions=(permission_group_delete,), tags='dangerous',
-    text=_('Delete'), view='user_management:group_delete_single'
+    text=_('Delete'), view='user_management:group_single_delete'
 )
-link_group_delete_multiple = Link(
-    icon=icon_group_delete_multiple, tags='dangerous', text=_('Delete'),
-    view='user_management:group_delete_multiple'
+link_group_multiple_delete = Link(
+    icon=icon_group_multiple_delete, tags='dangerous', text=_('Delete'),
+    view='user_management:group_multiple_delete'
 )
 link_group_edit = Link(
     args='object.id', icon=icon_group_edit,
@@ -64,7 +64,7 @@ link_group_user_list = Link(
 link_group_setup = Link(
     condition=factory_condition_queryset_access(
         app_label='auth', model_name='Group',
-        callback=condition_user_is_not_super_user,
+        callback=condition_user_is_not_superuser,
         object_permission=permission_group_view,
         view_permission=permission_group_create
     ), icon=icon_group_setup, text=_('Groups'),
@@ -78,15 +78,15 @@ link_user_create = Link(
     permissions=(permission_user_create,), text=_('Create new user'),
     view='user_management:user_create'
 )
-link_user_delete_single = Link(
+link_user_single_delete = Link(
     args='object.id', condition=condition_user_is_authenticated,
-    icon=icon_user_delete_single, permissions=(permission_user_delete,),
+    icon=icon_user_single_delete, permissions=(permission_user_delete,),
     tags='dangerous', text=_('Delete'),
-    view='user_management:user_delete_single'
+    view='user_management:user_single_delete'
 )
-link_user_delete_multiple = Link(
-    icon=icon_user_delete_multiple, tags='dangerous', text=_('Delete'),
-    view='user_management:user_delete_multiple'
+link_user_multiple_delete = Link(
+    icon=icon_user_multiple_delete, tags='dangerous', text=_('Delete'),
+    view='user_management:user_multiple_delete'
 )
 link_user_edit = Link(
     args='object.id', condition=condition_user_is_authenticated,

@@ -19,7 +19,7 @@ from rest_framework.relations import (  # NOQA
 from rest_framework.reverse import reverse
 
 from .classes import BatchRequestCollection
-from .serializer_mixins import DynamicFieldListSerializerMixin
+from .serializer_mixins import CreateOnlyFieldSerializerMixin, DynamicFieldListSerializerMixin
 
 
 class Serializer(
@@ -68,13 +68,15 @@ class EndpointSerializer(Serializer):
 
 
 class HyperlinkedModelSerializer(
-    DynamicFieldListSerializerMixin, RESTFrameworkHyperlinkedModelSerializer
+    CreateOnlyFieldSerializerMixin, DynamicFieldListSerializerMixin,
+    RESTFrameworkHyperlinkedModelSerializer
 ):
     """HyperlinkedModelSerializer subclass to add Mayan specific mixins."""
 
 
 class ModelSerializer(
-    DynamicFieldListSerializerMixin, RESTFrameworkModelSerializer
+    CreateOnlyFieldSerializerMixin, DynamicFieldListSerializerMixin,
+    RESTFrameworkModelSerializer
 ):
     """ModelSerializer subclass to add Mayan specific mixins."""
 

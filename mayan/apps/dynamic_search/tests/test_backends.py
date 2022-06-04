@@ -3,11 +3,12 @@ from unittest import skip
 from django.db import models
 
 from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.documents.search import document_search
+from mayan.apps.documents.search import search_model_document
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..classes import SearchModel
+from ..literals import QUERY_PARAMETER_ANY_FIELD
 
 from .mixins import SearchTestMixin
 
@@ -478,12 +479,13 @@ class DjangoSearchBackendDocumentSearchTestCase(
     def test_meta_only(self):
         self._upload_test_document(label='first_doc')
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
-            query={'q': 'OR first'}, user=self._test_case_user
+            search_model=search_model_document,
+            query={QUERY_PARAMETER_ANY_FIELD: 'OR first'},
+            user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
@@ -491,57 +493,58 @@ class DjangoSearchBackendDocumentSearchTestCase(
     def test_simple_or_search(self):
         self._upload_test_document(label='first_doc')
         self.grant_access(
-            obj=self.test_documents[0], permission=permission_document_view
+            obj=self._test_documents[0], permission=permission_document_view
         )
         self._upload_test_document(label='second_doc')
         self.grant_access(
-            obj=self.test_documents[1], permission=permission_document_view
+            obj=self._test_documents[1], permission=permission_document_view
         )
         queryset = self.search_backend.search(
-            search_model=document_search,
-            query={'q': 'first OR second'}, user=self._test_case_user
+            search_model=search_model_document,
+            query={QUERY_PARAMETER_ANY_FIELD: 'first OR second'},
+            user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
-        self.assertTrue(self.test_documents[0] in queryset)
-        self.assertTrue(self.test_documents[1] in queryset)
+        self.assertTrue(self._test_documents[0] in queryset)
+        self.assertTrue(self._test_documents[1] in queryset)
 
     def test_advanced_or_search(self):
         self._upload_test_document(label='first_doc')
         self.grant_access(
-            obj=self.test_documents[0], permission=permission_document_view
+            obj=self._test_documents[0], permission=permission_document_view
         )
 
         self._upload_test_document(label='second_doc')
         self.grant_access(
-            obj=self.test_documents[1], permission=permission_document_view
+            obj=self._test_documents[1], permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': 'first OR second'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
-        self.assertTrue(self.test_documents[0] in queryset)
-        self.assertTrue(self.test_documents[1] in queryset)
+        self.assertTrue(self._test_documents[0] in queryset)
+        self.assertTrue(self._test_documents[1] in queryset)
 
     def test_simple_and_search(self):
         self._upload_test_document(label='second_doc')
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
-            query={'q': 'non_valid second'},
+            search_model=search_model_document,
+            query={QUERY_PARAMETER_ANY_FIELD: 'non_valid second'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
-            query={'q': 'second non_valid'},
+            search_model=search_model_document,
+            query={QUERY_PARAMETER_ANY_FIELD: 'second non_valid'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
@@ -550,39 +553,39 @@ class DjangoSearchBackendDocumentSearchTestCase(
         self._upload_test_document(label='second_doc')
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
-            query={'q': '-non_valid second'},
+            search_model=search_model_document,
+            query={QUERY_PARAMETER_ANY_FIELD: '-non_valid second'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': '-second'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': '-second -Mayan'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': '-second OR -Mayan'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': '-non_valid -second'},
             user=self._test_case_user
         )
@@ -592,18 +595,18 @@ class DjangoSearchBackendDocumentSearchTestCase(
         self._upload_test_document(label='second-document')
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': '-second-document'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': '-"second-document"'},
             user=self._test_case_user
         )
@@ -618,20 +621,115 @@ class ElasticSearchBackendDocumentSearchTestCase(
     _test_search_backend_path = 'mayan.apps.dynamic_search.backends.elasticsearch.ElasticSearchBackend'
     auto_upload_test_document = False
 
-    def test_simple_document_search(self):
-        self._upload_test_document(label='first_doc')
+    def test_simple_search_model_document(self):
+        self._create_test_document_stub(label='first_doc')
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
-            query={'q': 'first*'}, user=self._test_case_user
+            search_model=search_model_document,
+            query={QUERY_PARAMETER_ANY_FIELD: 'first*'}, user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
-        self.assertTrue(self.test_document in queryset)
+        self.assertTrue(self._test_document in queryset)
+
+    def test_hyphenated_value(self):
+        self._create_test_document_stub(label='P01208-06')
+        self._create_test_document_stub(label='P00025-06')
+        self._create_test_document_stub(label='P00934-06')
+
+        self.grant_access(
+            obj=self._test_documents[0], permission=permission_document_view
+        )
+        self.grant_access(
+            obj=self._test_documents[1], permission=permission_document_view
+        )
+        self.grant_access(
+            obj=self._test_documents[2], permission=permission_document_view
+        )
+
+        queryset = self.search_backend.search(
+            search_model=search_model_document,
+            query={'q': 'P01208*'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self._test_documents[0] in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=search_model_document,
+            query={'q': 'P01208'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 0)
+
+        queryset = self.search_backend.search(
+            search_model=search_model_document,
+            query={'q': '*06'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 3)
+        self.assertTrue(self._test_documents[0] in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=search_model_document,
+            query={'q': 'P00025-06'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self._test_documents[1] in queryset)
+
+    def test_hyphenated_value_mixed(self):
+        self._create_test_document_stub(label='first-doc word')
+        self._create_test_document_stub(label='second-doc word')
+        self._create_test_document_stub(label='third-doc word')
+
+        self.grant_access(
+            obj=self._test_documents[0], permission=permission_document_view
+        )
+        self.grant_access(
+            obj=self._test_documents[1], permission=permission_document_view
+        )
+        self.grant_access(
+            obj=self._test_documents[2], permission=permission_document_view
+        )
+
+        queryset = self.search_backend.search(
+            search_model=search_model_document,
+            query={QUERY_PARAMETER_ANY_FIELD: 'first*'},
+            user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self._test_documents[0] in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=search_model_document,
+            query={'q': 'first-doc'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self._test_documents[0] in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=search_model_document,
+            query={'q': 'second-doc'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self._test_documents[1] in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=search_model_document,
+            query={'q': 'word'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 3)
+        self.assertTrue(self._test_documents[0] in queryset)
+        self.assertTrue(self._test_documents[1] in queryset)
 
 
 class WhooshSearchBackendDocumentSearchTestCase(
@@ -645,26 +743,28 @@ class WhooshSearchBackendDocumentSearchTestCase(
         self._upload_test_document(label='first_doc')
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
-            query={'q': 'first*'}, user=self._test_case_user
+            search_model=search_model_document,
+            query={QUERY_PARAMETER_ANY_FIELD: 'first*'},
+            user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
-        self.assertTrue(self.test_document in queryset)
+        self.assertTrue(self._test_document in queryset)
 
     def test_meta_only(self):
         self._upload_test_document(label='first_doc')
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
-            query={'q': 'OR first*'}, user=self._test_case_user
+            search_model=search_model_document,
+            query={QUERY_PARAMETER_ANY_FIELD: 'OR first*'},
+            user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
@@ -672,57 +772,58 @@ class WhooshSearchBackendDocumentSearchTestCase(
     def test_simple_or_search(self):
         self._upload_test_document(label='first_doc')
         self.grant_access(
-            obj=self.test_documents[0], permission=permission_document_view
+            obj=self._test_documents[0], permission=permission_document_view
         )
         self._upload_test_document(label='second_doc')
         self.grant_access(
-            obj=self.test_documents[1], permission=permission_document_view
+            obj=self._test_documents[1], permission=permission_document_view
         )
         queryset = self.search_backend.search(
-            search_model=document_search,
-            query={'q': 'first* OR second*'}, user=self._test_case_user
+            search_model=search_model_document,
+            query={QUERY_PARAMETER_ANY_FIELD: 'first* OR second*'},
+            user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
-        self.assertTrue(self.test_documents[0] in queryset)
-        self.assertTrue(self.test_documents[1] in queryset)
+        self.assertTrue(self._test_documents[0] in queryset)
+        self.assertTrue(self._test_documents[1] in queryset)
 
     def test_advanced_or_search(self):
         self._upload_test_document(label='first_doc')
         self.grant_access(
-            obj=self.test_documents[0], permission=permission_document_view
+            obj=self._test_documents[0], permission=permission_document_view
         )
 
         self._upload_test_document(label='second_doc')
         self.grant_access(
-            obj=self.test_documents[1], permission=permission_document_view
+            obj=self._test_documents[1], permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': 'first* OR second*'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
-        self.assertTrue(self.test_documents[0] in queryset)
-        self.assertTrue(self.test_documents[1] in queryset)
+        self.assertTrue(self._test_documents[0] in queryset)
+        self.assertTrue(self._test_documents[1] in queryset)
 
     def test_simple_and_search(self):
         self._upload_test_document(label='second_doc')
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
-            query={'q': 'non_valid AND second*'},
+            search_model=search_model_document,
+            query={QUERY_PARAMETER_ANY_FIELD: 'non_valid AND second*'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
-            query={'q': 'second* AND non_valid'},
+            search_model=search_model_document,
+            query={QUERY_PARAMETER_ANY_FIELD: 'second* AND non_valid'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)

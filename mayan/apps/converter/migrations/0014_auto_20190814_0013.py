@@ -165,12 +165,12 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='objectlayer',
-            unique_together=set(
-                [('content_type', 'object_id', 'stored_layer')]
-            ),
+            unique_together={
+                ('content_type', 'object_id', 'stored_layer')
+            },
         ),
         migrations.AlterUniqueTogether(
             name='layertransformation',
-            unique_together=set([('object_layer', 'order')]),
+            unique_together={('object_layer', 'order')},
         ),
     ]

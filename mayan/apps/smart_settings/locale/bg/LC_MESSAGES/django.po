@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
-"PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,11 +38,11 @@ msgstr "Име"
 msgid "Value"
 msgstr "Стойност"
 
-#: classes.py:347
+#: classes.py:348
 msgid "Overridden"
 msgstr "Заменена"
 
-#: classes.py:349
+#: classes.py:350
 msgid "Is this settings being overridden by an environment variable?"
 msgstr "Отменя ли се тази настройка от променлива на средата?"
 
@@ -461,10 +461,10 @@ msgid ""
 "preference to the Host header. This should only be enabled if a proxy which "
 "sets this header is in use."
 msgstr ""
-"Булева стойност, която определя дали да се използва заглавката на X"
-"-Forwarded-Host за предпочитане пред заглавката на Host. Това трябва да бъде"
-" активирано само ако се използва прокси, който задава, че това заглавие се "
-"използва."
+"Булева стойност, която определя дали да се използва заглавката на "
+"X-Forwarded-Host за предпочитане пред заглавката на Host. Това трябва да "
+"бъде активирано само ако се използва прокси, който задава, че това заглавие "
+"се използва."
 
 #: settings.py:313
 msgid ""
@@ -473,8 +473,8 @@ msgid ""
 "a proxy which sets this header is in use. USE_X_FORWARDED_HOST takes "
 "priority over this setting."
 msgstr ""
-"Булева стойност, която определя дали да се използва заглавката на X"
-"-Forwarded-Port за предпочитане пред променливата SERVER_PORT META. Това "
+"Булева стойност, която определя дали да се използва заглавката на "
+"X-Forwarded-Port за предпочитане пред променливата SERVER_PORT META. Това "
 "трябва да бъде активирано само ако се използва прокси, който задава това "
 "заглавие. USE_X_FORWARDED_HOST има приоритет пред тази настройка."
 

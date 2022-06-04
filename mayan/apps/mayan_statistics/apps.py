@@ -6,8 +6,11 @@ from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import StatisticLineChart, StatisticNamespace
 from .links import (
-    link_execute, link_namespace_details, link_namespace_list,
-    link_statistics, link_view
+    link_statistic_namespace_detail,
+    link_statistic_namespace_list,
+    link_statistic_queue,
+    link_statistic_detail,
+    link_statistics
 )
 
 
@@ -43,13 +46,17 @@ class StatisticsApp(MayanAppConfig):
         )
 
         menu_object.bind_links(
-            links=(link_execute, link_view), sources=(StatisticLineChart,)
+            links=(link_statistic_detail, link_statistic_queue),
+            sources=(StatisticLineChart,)
         )
         menu_object.bind_links(
-            links=(link_namespace_details,), sources=(StatisticNamespace,)
+            links=(link_statistic_namespace_detail,),
+            sources=(StatisticNamespace,)
         )
         menu_secondary.bind_links(
-            links=(link_namespace_list,),
-            sources=(StatisticNamespace, 'statistics:namespace_list')
+            links=(link_statistic_namespace_list,),
+            sources=(
+                StatisticNamespace, 'statistics:statistic_namespace_list'
+            )
         )
         menu_tools.bind_links(links=(link_statistics,))

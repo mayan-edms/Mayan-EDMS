@@ -27,7 +27,7 @@ class StagingFolderActionAPIViewTestCase(
     def test_staging_folder_file_delete_action_api_view_no_permission(self):
         self._copy_test_staging_folder_document()
 
-        test_staging_folder = self.test_source.get_backend_instance()
+        test_staging_folder = self._test_source.get_backend_instance()
 
         staging_folder_file_count = len(
             list(test_staging_folder.get_files())
@@ -49,12 +49,12 @@ class StagingFolderActionAPIViewTestCase(
 
     def test_staging_folder_file_delete_action_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_source, permission=permission_document_create
+            obj=self._test_source, permission=permission_document_create
         )
 
         self._copy_test_staging_folder_document()
 
-        test_staging_folder = self.test_source.get_backend_instance()
+        test_staging_folder = self._test_source.get_backend_instance()
 
         staging_folder_file_count = len(
             list(test_staging_folder.get_files())
@@ -87,7 +87,7 @@ class StagingFolderActionAPIViewTestCase(
 
     def test_staging_folder_file_image_action_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_source, permission=permission_document_create
+            obj=self._test_source, permission=permission_document_create
         )
 
         self._copy_test_staging_folder_document()
@@ -114,7 +114,7 @@ class StagingFolderActionAPIViewTestCase(
 
     def test_staging_folder_file_list_action_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_source, permission=permission_document_create
+            obj=self._test_source, permission=permission_document_create
         )
 
         self._copy_test_staging_folder_document()
@@ -126,7 +126,7 @@ class StagingFolderActionAPIViewTestCase(
 
         self.assertEqual(
             response.data[0]['encoded_filename'],
-            self.test_staging_folder_file.encoded_filename
+            self._test_staging_folder_file.encoded_filename
         )
 
         events = self._get_test_events()
@@ -153,7 +153,7 @@ class StagingFolderActionAPIViewTestCase(
         self._create_test_document_type()
 
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_create
+            obj=self._test_document_type, permission=permission_document_create
         )
 
         self._copy_test_staging_folder_document()
@@ -174,7 +174,7 @@ class StagingFolderActionAPIViewTestCase(
         self._create_test_document_type()
 
         self.grant_access(
-            obj=self.test_source, permission=permission_document_create
+            obj=self._test_source, permission=permission_document_create
         )
 
         self._copy_test_staging_folder_document()
@@ -195,10 +195,10 @@ class StagingFolderActionAPIViewTestCase(
         self._create_test_document_type()
 
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_create
+            obj=self._test_document_type, permission=permission_document_create
         )
         self.grant_access(
-            obj=self.test_source, permission=permission_document_create
+            obj=self._test_source, permission=permission_document_create
         )
 
         self._copy_test_staging_folder_document()
@@ -220,7 +220,7 @@ class StagingFolderActionAPIViewTestCase(
         test_document_version = test_document.version_active
         test_document_version_page = test_document_version.pages.first()
 
-        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].action_object, self._test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, test_document)
         self.assertEqual(events[0].verb, event_document_created.id)

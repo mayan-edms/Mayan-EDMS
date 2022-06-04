@@ -1,0 +1,93 @@
+Version 4.1.5
+=============
+
+Released: February 4, 2022
+
+Status: Stable
+
+Changes
+-------
+
+
+Logging
+^^^^^^^
+
+Error log entries are now created for objects that existed before the last
+error log changes. This fixes the
+``ErrorLogPartition matching query does not exist`` issue.
+
+
+Sources
+^^^^^^^
+
+Fixed email sources processing a single message but performing cleanup on
+multiple messages. The intended behavior is restored which is to processed
+one message and clean up the processed message only.
+
+Context managers are now used for the IMAP and POP3 sources to perform
+automatic cleanup and remove the possibility of orphaned descriptors. This
+update also fixed the reference to ``shared_uploaded_files`` before the
+variable being available.
+
+
+Workflows
+^^^^^^^^^
+
+The workflow template now exposes the ``auto_launch`` field via the REST API.
+
+The ``EmailAction`` subclass was added for backwards compatibility with
+existing email workflow state actions.
+
+
+Other
+^^^^^
+
+- Fix CAA document links. Closes GitLab issue #1068. Thanks to
+  Matthias Löblich (@startmat) for the report.
+- Remove superfluous apostrophe character in sort heading markup.
+- Expose the checkout datetime, expiration datetime and user fields via
+  the REST API. Thanks to forum user @qra for the request.
+- Fix GitLab CI upgrade test stage.
+- Add integrations settings module.
+- Print configuration path value when failing to access error is raised.
+- Fix references to the ``SourceBackendSANEScanner`` source backend class.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1068` links in CONTRIBUTING.md to caa_individual.rst and caa_entity.rst are broken
+- :gitlab-issue:`1069` 'ErrorLogPartition matching query does not exist' errors after upgrading 4.1.3 to 4.1.4
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

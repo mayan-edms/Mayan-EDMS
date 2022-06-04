@@ -15,5 +15,4 @@ TEST_RECIPIENTS_MULTIPLE_MIXED = 'test@example.com,test2@example.com;test2@examp
 TEST_RECIPIENTS_MULTIPLE_MIXED_RESULT = [
     'test@example.com', 'test2@example.com', 'test2@example.com'
 ]
-TEST_USER_MAILER_BACKEND_PATH = 'mayan.apps.mailer.tests.mailers.TestBackend'
 TEST_USER_MAILER_LABEL = 'test user mailer label'

@@ -31,6 +31,7 @@ services:
     <<: *mayan-container
     profiles:
       - all_in_one
+    # Disable ports if using Traefik.
     ports:
       - "80:8000"
 
@@ -77,7 +78,7 @@ services:
       POSTGRES_DB: ${MAYAN_DATABASE_NAME:-mayan}
       POSTGRES_PASSWORD: ${MAYAN_DATABASE_PASSWORD:-mayandbpass}
       POSTGRES_USER: ${MAYAN_DATABASE_USER:-mayan}
-    image: postgres:${MAYAN_DOCKER_POSTGRES_TAG:-12.9-alpine}
+    image: postgres:${MAYAN_DOCKER_POSTGRES_TAG:-12.10-alpine}
     networks:
       - mayan
     # Enable to allow external access to the database.
@@ -134,6 +135,7 @@ services:
       - "traefik.http.routers.mayan_frontend_https.tls=true"
       - "traefik.http.routers.mayan_frontend_https.tls.certresolver=letsencrypt"
       - "traefik.http.services.mayan_frontend.loadbalancer.server.port=8000"
+    # Disable ports if using Traefik.
     ports:
       - "80:8000"
     profiles:
@@ -228,7 +230,7 @@ services:
     restart: "no"
 
   rabbitmq:
-    image: rabbitmq:${MAYAN_DOCKER_RABBITMQ_TAG:-3.9-management-alpine}
+    image: rabbitmq:${MAYAN_DOCKER_RABBITMQ_TAG:-3.10-management-alpine}
     environment:
       RABBITMQ_DEFAULT_USER: ${MAYAN_RABBITMQ_USER:-mayan}
       RABBITMQ_DEFAULT_PASS: ${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}
@@ -256,7 +258,7 @@ services:
       - "--api.insecure=${MAYAN_TRAEFIK_API_INSECURE:-false}"
       - "--certificatesresolvers.letsencrypt.acme.caserver=${MAYAN_TRAEFIK_LETS_ENCRYPT_SERVER:-https://acme-staging-v02.api.letsencrypt.org/directory}"
       - "--certificatesresolvers.letsencrypt.acme.email=${MAYAN_TRAEFIK_LETS_ENCRYPT_EMAIL}"
-      - "--certificatesresolvers.letsencrypt.acme.storage=/certificates-letsencrypt/letsencrypt/acme.json"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/traefik-certificates-letsencrypt/acme.json"
       - "--certificatesresolvers.letsencrypt.acme.tlschallenge=${MAYAN_TRAEFIK_LETS_ENCRYPT_TLS_CHALLENGE:-false}"
       - "--entrypoints.http.address=:80"
       - "--entrypoints.https.address=:443"
@@ -272,14 +274,14 @@ services:
       - "8080:8080"
     profiles:
       - traefik
+    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - traefik-certificates-letsencrypt:/certificates
+      - traefik-certificates-letsencrypt:/traefik-certificates-letsencrypt
 
 volumes:
   app:
   elasticsearch:
-  pgadmin:
   postgres:
   mountindex:
   rabbitmq:

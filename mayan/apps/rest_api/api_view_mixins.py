@@ -103,15 +103,16 @@ class ExternalObjectAPIViewMixin(ExternalObjectBaseMixin):
     """
     Override get_external_object to use REST API get_object_or_404.
     """
-    def initial(self, *args, **kwargs):
-        result = super().initial(*args, **kwargs)
-        # Ensure self.external_object is initialized to allow the browseable
-        # API view to display when attempting to introspect the serializer
-        # and the parent object is not found.
-        self.external_object = None
+    def get_external_object(self):
+        return get_object_or_404(
+            queryset=self.get_external_object_queryset_filtered(),
+            **self.get_pk_url_kwargs()
+        )
 
-        self.external_object = self.get_external_object()
-        return result
+    def get_external_object_permission(self):
+        return getattr(
+            self, 'mayan_external_object_permissions', {}
+        ).get(self.request.method, (None,))[0]
 
     def get_serializer_extra_context(self):
         """
@@ -124,16 +125,15 @@ class ExternalObjectAPIViewMixin(ExternalObjectBaseMixin):
 
         return context
 
-    def get_external_object(self):
-        return get_object_or_404(
-            queryset=self.get_external_object_queryset_filtered(),
-            **self.get_pk_url_kwargs()
-        )
+    def initial(self, *args, **kwargs):
+        result = super().initial(*args, **kwargs)
+        # Ensure self.external_object is initialized to allow the browseable
+        # API view to display when attempting to introspect the serializer
+        # and the parent object is not found.
+        self.external_object = None
 
-    def get_external_object_permission(self):
-        return getattr(
-            self, 'mayan_external_object_permissions', {}
-        ).get(self.request.method, (None,))[0]
+        self.external_object = self.get_external_object()
+        return result
 
 
 class ExternalContentTypeObjectAPIViewMixin(
@@ -196,15 +196,6 @@ class SchemaInspectionAPIViewMixin:
 class SerializerActionAPIViewMixin:
     serializer_action_name = None
 
-    def serializer_action(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        self.perform_serializer_action(serializer=serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(
-            serializer.data, status=status.HTTP_200_OK, headers=headers
-        )
-
     def get_success_headers(self, data):
         try:
             return {'Location': str(data[api_settings.URL_FIELD_NAME])}
@@ -217,15 +208,24 @@ class SerializerActionAPIViewMixin:
     def post(self, request, *args, **kwargs):
         return self.serializer_action(request=request, *args, **kwargs)
 
+    def serializer_action(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_serializer_action(serializer=serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(
+            serializer.data, status=status.HTTP_200_OK, headers=headers
+        )
+
 
 class SerializerExtraContextAPIViewMixin:
-    def get_serializer_extra_context(self):
-        return {}
-
     def get_serializer_context(self):
         context = super().get_serializer_context()
         context.update(self.get_serializer_extra_context())
         return context
+
+    def get_serializer_extra_context(self):
+        return {}
 
 
 class SuccessHeadersAPIViewMixin:

@@ -638,7 +638,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='documenttypefilename',
-            unique_together=set([('document_type', 'filename')]),
+            unique_together={('document_type', 'filename')},
         ),
         migrations.AddField(
             model_name='documentpage',

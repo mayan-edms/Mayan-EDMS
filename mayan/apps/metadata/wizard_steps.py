@@ -37,7 +37,7 @@ class DocumentCreateWizardStepMetadata(DocumentCreateWizardStep):
                 initial.append(
                     {
                         'document_type': document_type,
-                        'metadata_type': document_type_metadata_type.metadata_type,
+                        'metadata_type': document_type_metadata_type.metadata_type
                     }
                 )
 

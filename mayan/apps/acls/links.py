@@ -4,14 +4,14 @@ from mayan.apps.navigation.classes import Link
 from mayan.apps.navigation.utils import get_content_type_kwargs_factory
 
 from .icons import (
-    icon_acl_delete, icon_acl_list, icon_acl_new, icon_acl_permissions,
+    icon_acl_delete, icon_acl_list, icon_acl_create, icon_acl_permissions,
     icon_global_acl_list
 )
 from .permissions import permission_acl_view, permission_acl_edit
 
 
 link_acl_create = Link(
-    icon=icon_acl_new, kwargs=get_content_type_kwargs_factory(
+    icon=icon_acl_create, kwargs=get_content_type_kwargs_factory(
         variable_name='resolved_object'
     ), permissions=(permission_acl_edit,), text=_('New ACL'),
     view='acls:acl_create'

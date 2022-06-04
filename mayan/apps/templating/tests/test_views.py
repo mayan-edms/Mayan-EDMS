@@ -14,7 +14,7 @@ class DocumentTemplateSandboxViewTestCase(
 
     def test_document_template_sanbox_get_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_template_sandbox
+            obj=self._test_document, permission=permission_template_sandbox
         )
 
         response = self._request_document_template_sandbox_get_view()
@@ -26,7 +26,7 @@ class DocumentTemplateSandboxViewTestCase(
 
     def test_document_template_sanbox_post_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_template_sandbox
+            obj=self._test_document, permission=permission_template_sandbox
         )
 
         response = self._request_document_template_sandbox_post_view()

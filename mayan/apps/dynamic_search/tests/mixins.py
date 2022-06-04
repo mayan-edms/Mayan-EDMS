@@ -1,8 +1,23 @@
-from mayan.apps.documents.search import document_search
+from mayan.apps.documents.search import search_model_document
 
 from ..classes import SearchBackend, SearchModel
+from ..literals import QUERY_PARAMETER_ANY_FIELD, SEARCH_MODEL_NAME_KWARG
+from ..tasks import task_reindex_backend, task_index_instances
 
 from .backends import TestSearchBackend
+
+
+class SearchTaskTestMixin:
+    def _execute_task_reindex_backend(self):
+        task_reindex_backend.apply_async().get()
+
+    def _execute_task_index_instances(self):
+        task_index_instances.apply_async(
+            kwargs={
+                'id_list': (self._test_object.pk,),
+                'search_model_full_name': self._test_model_search.get_full_name()
+            }
+        ).get()
 
 
 class SearchTestMixin:
@@ -45,20 +60,29 @@ class SearchTestMixin:
 
 
 class SearchAPIViewTestMixin(SearchTestMixin):
-    def _request_search_view(self):
-        query = {'q': self.test_document.label}
+    def _request_search_view(self, search_model_name=None, search_term=None):
+        query = {
+            QUERY_PARAMETER_ANY_FIELD: search_term or self._test_document.label
+        }
+        search_model_name = search_model_name or search_model_document.get_full_name()
+
         return self.get(
             viewname='rest_api:search-view', kwargs={
-                'search_model_name': document_search.get_full_name()
+                SEARCH_MODEL_NAME_KWARG: search_model_name
             }, query=query
         )
 
-    def _request_advanced_search_view(self):
-        query = {'document_type__label': self.test_document.document_type.label}
+    def _request_advanced_search_view(
+        self, search_model_name=None, search_term=None
+    ):
+        query = {
+            'document_type__label': search_term or self._test_document.document_type.label
+        }
+        search_model_name = search_model_name or search_model_document.get_full_name()
 
         return self.get(
             viewname='rest_api:advanced-search-view', kwargs={
-                'search_model_name': document_search.get_full_name()
+                SEARCH_MODEL_NAME_KWARG: search_model_name
             }, query=query
         )
 

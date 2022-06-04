@@ -1,7 +1,6 @@
 from django.db import migrations
 
-import colorful.fields
-
+from ..compatibility import RGBColorField
 
 COLOR_BLUE = 'blu'
 COLOR_CORAL = 'crl'
@@ -28,7 +27,7 @@ RGB_VALUES = {
 }
 
 
-def operation_convert_color_names_to_rgb(apps, schema_editor):
+def code_convert_color_names_to_rgb(apps, schema_editor):
     Tag = apps.get_model(app_label='tags', model_name='Tag')
 
     for tag in Tag.objects.using(alias=schema_editor.connection.alias).all():
@@ -38,15 +37,15 @@ def operation_convert_color_names_to_rgb(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('tags', '0001_initial'),
+        ('tags', '0001_initial')
     ]
 
     operations = [
         migrations.AddField(
             model_name='tag',
             name='selection',
-            field=colorful.fields.RGBColorField(default='#FFFFFF'),
+            field=RGBColorField(default='#FFFFFF'),
             preserve_default=False,
         ),
-        migrations.RunPython(code=operation_convert_color_names_to_rgb),
+        migrations.RunPython(code=code_convert_color_names_to_rgb)
     ]

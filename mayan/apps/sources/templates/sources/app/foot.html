@@ -37,6 +37,8 @@
 </script>
 
 <script>
+    'use strict';
+
     const messageCancelUpload = "{% trans 'Cancel upload' %}";
     const messageCancelUploadConfirmation = "{% trans 'Are you sure you want to cancel this upload?' %}";
     const messageDefaultMessage = "{% trans 'Drop files or click here to upload files' %}";
@@ -66,5 +68,12 @@
                 timeout: 1200000
             });
         {% endverbatim %}
+    });
+
+    $('body').on('click', '.sources-staging_folder-select', function (event) {
+        const $stagingFolderFileID = $('#id_source-staging_folder_file_id');
+        $stagingFolderFileID.val($(this).data('encoded_filename'));
+        $stagingFolderFileID.trigger('change');
+        event.preventDefault();
     });
 </script>

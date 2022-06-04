@@ -1,7 +1,7 @@
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.documents.models import DocumentFile
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import TEST_FILE_SMALL_PATH
 
 from ..models import DetachedSignature, EmbeddedSignature
 from ..permissions import permission_document_file_signature_verify
@@ -47,11 +47,11 @@ class SignatureToolsViewTestCase(
         old_hooks = DocumentFile._post_save_hooks
         DocumentFile._post_save_hooks = {}
 
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
             self._upload_test_document()
 
-        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
+        self._test_document_path = TEST_SIGNED_DOCUMENT_PATH
         for count in range(TEST_SIGNED_DOCUMENT_COUNT):
             self._upload_test_document()
 
@@ -82,11 +82,11 @@ class SignatureToolsViewTestCase(
         old_hooks = DocumentFile._post_save_hooks
         DocumentFile._post_save_hooks = {}
 
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
             self._upload_test_document()
 
-        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
+        self._test_document_path = TEST_SIGNED_DOCUMENT_PATH
         for count in range(TEST_SIGNED_DOCUMENT_COUNT):
             self._upload_test_document()
 
@@ -121,11 +121,11 @@ class SignatureToolsViewTestCase(
         old_hooks = DocumentFile._post_save_hooks
         DocumentFile._post_save_hooks = {}
 
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
             self._upload_test_document()
 
-        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
+        self._test_document_path = TEST_SIGNED_DOCUMENT_PATH
         for count in range(TEST_SIGNED_DOCUMENT_COUNT):
             self._upload_test_document()
 
@@ -140,7 +140,7 @@ class SignatureToolsViewTestCase(
             permission=permission_document_file_signature_verify
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -160,10 +160,10 @@ class SignatureToolsViewTestCase(
         # Silence converter logging
         self._silence_logger(name='mayan.apps.converter.backends')
 
-        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
+        self._test_document_path = TEST_SIGNED_DOCUMENT_PATH
         self._upload_test_document()
 
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
 
         self._upload_test_detached_signature()
@@ -195,10 +195,10 @@ class SignatureToolsViewTestCase(
         # Silence converter logging
         self._silence_logger(name='mayan.apps.converter.backends')
 
-        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
+        self._test_document_path = TEST_SIGNED_DOCUMENT_PATH
         self._upload_test_document()
 
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
 
         self._upload_test_detached_signature()
@@ -234,10 +234,10 @@ class SignatureToolsViewTestCase(
         # Silence converter logging.
         self._silence_logger(name='mayan.apps.converter.backends')
 
-        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
+        self._test_document_path = TEST_SIGNED_DOCUMENT_PATH
         self._upload_test_document()
 
-        self.test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
 
         self._upload_test_detached_signature()
@@ -250,8 +250,8 @@ class SignatureToolsViewTestCase(
         signature.date_time = None
         signature.save()
 
-        self.test_documents[0].delete()
-        self.test_documents[1].delete()
+        self._test_documents[0].delete()
+        self._test_documents[1].delete()
 
         self.grant_permission(
             permission=permission_document_file_signature_verify
