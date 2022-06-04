@@ -681,12 +681,7 @@ class UserOptionsViewTestCase(
 class MetadataLookupIntegrationTestCase(
     MetadataTypeTestMixin, GenericDocumentViewTestCase
 ):
-    def setUp(self):
-        super().setUp()
-        self._create_test_metadata_type()
-        self._test_document_type.metadata.create(
-            metadata_type=self._test_metadata_type
-        )
+    auto_create_test_metadata_type = True
 
     def test_user_list_lookup_render(self):
         self._test_metadata_type.lookup = '{{ users }}'
@@ -713,7 +708,8 @@ class MetadataLookupIntegrationTestCase(
         )
         self.assertContains(
             response=response, text='<option value="{}">{}</option>'.format(
-                self._test_case_user.username, self._test_case_user.username
+                self._test_case_user.get_full_name(),
+                self._test_case_user.get_full_name()
             ), status_code=200
         )
 
