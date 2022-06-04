@@ -11,7 +11,7 @@ from .mixins import (
 )
 
 
-class DocumentsDuplicateListViewsTestCase(
+class DocumentsDuplicateListViewTestCase(
     DuplicatedDocumentTestMixin, DuplicatedDocumentViewTestMixin,
     GenericDocumentViewTestCase
 ):
@@ -110,7 +110,7 @@ class DocumentsDuplicateListViewsTestCase(
         )
 
 
-class DuplicatedDocumentListViewsTestCase(
+class DuplicatedDocumentListViewTestCase(
     DuplicatedDocumentTestMixin, DuplicatedDocumentViewTestMixin,
     GenericDocumentViewTestCase
 ):
@@ -225,7 +225,7 @@ class DuplicatedDocumentListViewsTestCase(
         )
 
 
-class DuplicatedDocumentToolsViewsTestCase(
+class DuplicatedDocumentToolsViewTestCase(
     DuplicatedDocumentTestMixin, DuplicatedDocumentToolViewTestMixin,
     GenericDocumentViewTestCase
 ):

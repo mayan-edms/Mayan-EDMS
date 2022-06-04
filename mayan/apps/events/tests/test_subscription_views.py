@@ -5,13 +5,13 @@ from ..permissions import permission_events_view
 
 from .mixins import (
     EventObjectTestMixin, EventTypeTestMixin,
-    ObjectEventSubscriptionTestMixin, UserEventViewsTestMixin,
+    ObjectEventSubscriptionTestMixin, UserEventViewTestMixin,
     UserObjectSubscriptionViewTestMixin
 )
 
 
 class UserEventTypeSubscriptionViewTestCase(
-    UserEventViewsTestMixin, GenericViewTestCase
+    UserEventViewTestMixin, GenericViewTestCase
 ):
     def test_user_event_type_subscription_list_view_no_permission(self):
         response = self._request_test_user_event_type_subscription_list_view()

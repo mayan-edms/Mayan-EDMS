@@ -221,7 +221,7 @@ class TransformationTestMixin(LayerTestMixin):
         self.TestTransformationClass = TestTransformation
 
 
-class TransformationViewsTestMixin:
+class TransformationViewTestMixin:
     def _request_transformation_create_post_view(self):
         pk_list = list(LayerTransformation.objects.values('pk'))
 

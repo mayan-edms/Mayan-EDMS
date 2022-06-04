@@ -19,7 +19,7 @@ from .mixins import (
 )
 
 
-class DocumentTypeOCRViewsTestCase(
+class DocumentTypeOCRViewTestCase(
     DocumentTypeOCRViewTestMixin, GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
@@ -125,7 +125,7 @@ class DocumentTypeOCRViewsTestCase(
         self.assertEqual(events.count(), 0)
 
 
-class DocumentVersionOCRViewsTestCase(
+class DocumentVersionOCRViewTestCase(
     DocumentVersionOCRTestMixin, DocumentVersionOCRViewTestMixin,
     GenericDocumentViewTestCase
 ):
@@ -508,7 +508,7 @@ class DocumentVersionOCRViewsTestCase(
         self.assertEqual(events.count(), 0)
 
 
-class DocumentVersionPageOCRViewsTestCase(
+class DocumentVersionPageOCRViewTestCase(
     DocumentVersionOCRTestMixin, DocumentVersionPageOCRViewTestMixin,
     GenericDocumentViewTestCase
 ):

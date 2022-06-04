@@ -12,7 +12,7 @@ from .literals import TEST_EMAIL_ADDRESS, TEST_EMAIL_FROM_ADDRESS
 from .mixins import DocumentVersionMailerViewTestMixin, MailerTestMixin
 
 
-class MailDocumentVersionViewsTestCase(
+class MailDocumentVersionViewTestCase(
     DocumentVersionMailerViewTestMixin, MailerTestMixin,
     GenericDocumentViewTestCase
 ):

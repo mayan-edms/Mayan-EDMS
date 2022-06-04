@@ -15,7 +15,7 @@ from .mixins import (
 )
 
 
-class RoleViewsTestCase(
+class RoleViewTestCase(
     RoleTestMixin, RoleViewTestMixin, GenericViewTestCase
 ):
     def test_role_creation_view_no_permission(self):

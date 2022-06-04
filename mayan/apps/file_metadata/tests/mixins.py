@@ -1,4 +1,4 @@
-class DocumentTypeViewsTestMixin:
+class DocumentTypeViewTestMixin:
     def _request_document_type_file_metadata_settings_view(self):
         return self.get(
             viewname='file_metadata:document_type_file_metadata_settings',
@@ -13,7 +13,7 @@ class DocumentTypeViewsTestMixin:
         )
 
 
-class FileMetadataViewsTestMixin:
+class FileMetadataViewTestMixin:
     def _request_document_file_metadata_driver_list_view(self):
         return self.get(
             viewname='file_metadata:document_file_metadata_driver_list',

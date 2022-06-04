@@ -202,7 +202,7 @@ class ObjectEventSubscriptionTestMixin:
         )
 
 
-class UserEventViewsTestMixin:
+class UserEventViewTestMixin:
     def _request_test_user_event_type_subscription_list_view(self):
         return self.get(viewname='events:event_type_user_subscription_list')
 

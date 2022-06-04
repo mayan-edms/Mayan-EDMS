@@ -12,11 +12,11 @@ from ..permissions import (
 )
 
 from .literals import TEST_FILE_METADATA_KEY
-from .mixins import DocumentTypeViewsTestMixin, FileMetadataViewsTestMixin
+from .mixins import DocumentTypeViewTestMixin, FileMetadataViewTestMixin
 
 
-class DocumentTypeViewsTestCase(
-    DocumentTypeViewsTestMixin, GenericDocumentViewTestCase
+class DocumentTypeViewTestCase(
+    DocumentTypeViewTestMixin, GenericDocumentViewTestCase
 ):
     def test_document_type_settings_view_no_permission(self):
         self._clear_events()
@@ -116,8 +116,8 @@ class DocumentTypeViewsTestCase(
 
 
 @override_settings(FILE_METADATA_AUTO_PROCESS=True)
-class FileMetadataViewsTestCase(
-    FileMetadataViewsTestMixin, GenericDocumentViewTestCase
+class FileMetadataViewTestCase(
+    FileMetadataViewTestMixin, GenericDocumentViewTestCase
 ):
     def setUp(self):
         super().setUp()

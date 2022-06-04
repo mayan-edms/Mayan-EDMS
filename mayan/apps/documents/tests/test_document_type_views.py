@@ -85,7 +85,7 @@ class DocumentTypeFilenameGeneratorViewTestCase(
         self.assertEqual(response.status_code, 302)
 
 
-class DocumentTypeViewsTestCase(
+class DocumentTypeViewTestCase(
     DocumentTypeViewTestMixin, GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
@@ -173,7 +173,7 @@ class DocumentTypeViewsTestCase(
         )
 
 
-class DocumentTypeQuickLabelViewsTestCase(
+class DocumentTypeQuickLabelViewTestCase(
     DocumentTypeQuickLabelTestMixin, DocumentTypeQuickLabelViewTestMixin,
     GenericDocumentViewTestCase
 ):

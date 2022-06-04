@@ -16,7 +16,7 @@ from .mixins import (
 )
 
 
-class GroupViewsTestCase(
+class GroupViewTestCase(
     GroupTestMixin, GroupViewTestMixin, GenericViewTestCase
 ):
     def test_group_create_view_no_permission(self):

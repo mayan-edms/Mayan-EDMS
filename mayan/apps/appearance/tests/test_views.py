@@ -193,7 +193,7 @@ class ThemeViewTestCase(
         self.assertEqual(events.count(), 0)
 
 
-class ThemeEffectViewsTestCase(ThemeTestMixin, GenericViewTestCase):
+class ThemeEffectViewTestCase(ThemeTestMixin, GenericViewTestCase):
     def test_normal_view_after_theme_delete(self):
         self._create_test_theme()
 

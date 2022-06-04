@@ -15,12 +15,12 @@ from ..permissions import (
 )
 
 from .mixins import (
-    DocumentFileContentTestMixin, DocumentFileContentToolsViewsTestMixin,
-    DocumentFileContentViewTestMixin, DocumentTypeContentViewsTestMixin
+    DocumentFileContentTestMixin, DocumentFileContentToolsViewTestMixin,
+    DocumentFileContentViewTestMixin, DocumentTypeContentViewTestMixin
 )
 
 
-class DocumentFileContentViewsTestCase(
+class DocumentFileContentViewTestCase(
     DocumentFileContentViewTestMixin, DocumentFileContentTestMixin,
     GenericDocumentViewTestCase
 ):
@@ -197,7 +197,7 @@ class DocumentFileContentViewsTestCase(
         self.assertEqual(events.count(), 0)
 
 
-class DocumentFilePageContentViewsTestCase(
+class DocumentFilePageContentViewTestCase(
     DocumentFileContentViewTestMixin, DocumentFileContentTestMixin,
     GenericDocumentViewTestCase
 ):
@@ -246,7 +246,7 @@ class DocumentFilePageContentViewsTestCase(
         self.assertEqual(events.count(), 0)
 
 
-class DocumentFileContentParsingViewsTestCase(
+class DocumentFileContentParsingViewTestCase(
     DocumentFileContentViewTestMixin, GenericDocumentViewTestCase
 ):
     _skip_file_descriptor_test = True
@@ -405,8 +405,8 @@ class DocumentFileContentParsingViewsTestCase(
         self.assertEqual(events.count(), 0)
 
 
-class DocumentTypeParsingViewsTestCase(
-    DocumentFileContentToolsViewsTestMixin, GenericDocumentViewTestCase
+class DocumentTypeParsingViewTestCase(
+    DocumentFileContentToolsViewTestMixin, GenericDocumentViewTestCase
 ):
     _skip_file_descriptor_test = True
     _test_document_filename = TEST_FILE_HYBRID_PDF_FILENAME
@@ -468,8 +468,8 @@ class DocumentTypeParsingViewsTestCase(
         )
 
 
-class DocumentTypeContentViewsTestCase(
-    DocumentTypeContentViewsTestMixin, GenericDocumentViewTestCase
+class DocumentTypeContentViewTestCase(
+    DocumentTypeContentViewTestMixin, GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
 

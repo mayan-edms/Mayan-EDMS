@@ -7,7 +7,7 @@ from ..events import (
 from ..models import DocumentFilePageContent
 
 
-class DocumentFileContentToolsViewsTestMixin:
+class DocumentFileContentToolsViewTestMixin:
     def _request_document_type_parsing_view(self):
         return self.post(
             viewname='document_parsing:document_type_submit', data={
@@ -110,7 +110,7 @@ class DocumentFilePageContentAPITestMixin:
         )
 
 
-class DocumentTypeContentViewsTestMixin:
+class DocumentTypeContentViewTestMixin:
     def _request_test_document_type_parsing_settings_view(self):
         return self.get(
             viewname='document_parsing:document_type_parsing_settings',

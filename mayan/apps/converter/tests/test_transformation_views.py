@@ -2,11 +2,11 @@ from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..models import LayerTransformation
 
-from .mixins import TransformationTestMixin, TransformationViewsTestMixin
+from .mixins import TransformationTestMixin, TransformationViewTestMixin
 
 
-class TransformationViewsTestCase(
-    TransformationTestMixin, TransformationViewsTestMixin,
+class TransformationViewTestCase(
+    TransformationTestMixin, TransformationViewTestMixin,
     GenericDocumentViewTestCase
 ):
     def test_transformation_create_post_view_no_permission(self):
