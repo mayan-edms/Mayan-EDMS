@@ -19,6 +19,7 @@ job_docker_build:
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
+    - pip install wheel
     - cat requirements/base.txt | grep -v 'django-auth-ldap'| pip install -r /dev/stdin
   cache:
     paths:
@@ -46,7 +47,7 @@ job_docker_build:
     - docker logout $CI_REGISTRY
   services:
     - docker:20-dind
-    - postgres:12.9-alpine
+    - postgres:12.11-alpine
   stage: stage_build_docker
   tags:
     - postgres
@@ -124,6 +125,7 @@ job_docker_nightly:
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
+    - pip install wheel
     - cat requirements/base.txt | grep -v 'django-auth-ldap'| pip install -r /dev/stdin
   cache:
     paths:
@@ -157,6 +159,7 @@ job_docker_testing:
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
+    - pip install wheel
     - cat requirements/base.txt | grep -v 'django-auth-ldap'| pip install -r /dev/stdin
   cache:
     paths:
@@ -318,7 +321,7 @@ job_postgres_upgrade_test:
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --no-dependencies
   services:
-    - postgres:12.9-alpine
+    - postgres:12.11-alpine
   tags:
     - postgres
   variables:
@@ -376,7 +379,7 @@ job_postgres_test:
     - make test-all SETTINGS=mayan.settings.testing.gitlab-ci
     - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci
   services:
-    - postgres:12.9-alpine
+    - postgres:12.11-alpine
   tags:
     - postgres
   variables:
