@@ -8,7 +8,8 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.documents.models.document_models import Document
+from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.permissions import permission_document_type_edit
 from mayan.apps.documents.views.document_views import DocumentListView
 from mayan.apps.views.generics import (

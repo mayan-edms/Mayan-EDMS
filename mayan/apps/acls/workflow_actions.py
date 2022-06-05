@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.document_states.classes import WorkflowAction
 from mayan.apps.permissions.classes import Permission
 from mayan.apps.permissions.models import Role

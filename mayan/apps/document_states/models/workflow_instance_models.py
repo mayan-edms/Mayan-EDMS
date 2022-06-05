@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
 

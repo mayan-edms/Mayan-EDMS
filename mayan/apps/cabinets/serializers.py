@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from rest_framework.reverse import reverse
 from rest_framework_recursive.fields import RecursiveField
 
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import FilteredPrimaryKeyRelatedField
 

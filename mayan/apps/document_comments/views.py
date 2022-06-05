@@ -2,7 +2,7 @@ from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.views.generics import (
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
     SingleObjectEditView, SingleObjectListView

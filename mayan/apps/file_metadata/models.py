@@ -6,7 +6,8 @@ from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.models import DocumentFile, DocumentType
+from mayan.apps.documents.models.document_file_models import DocumentFile
+from mayan.apps.documents.models.document_type_models import DocumentType
 
 from .managers import DocumentTypeSettingsManager
 

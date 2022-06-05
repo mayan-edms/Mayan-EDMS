@@ -6,7 +6,7 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
 from mayan.apps.events.decorators import method_event
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.permissions import permission_document_view
 
 from .events import (

@@ -1,6 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 
 from ..icons import icon_document_link_send_single
 from ..permissions import permission_send_document_link

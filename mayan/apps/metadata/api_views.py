@@ -1,5 +1,6 @@
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.documents.models.document_models import Document
+from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_type_view, permission_document_type_edit
 )

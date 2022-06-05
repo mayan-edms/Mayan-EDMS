@@ -2,7 +2,7 @@ from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.models import DocumentType
+from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_type_edit
 )

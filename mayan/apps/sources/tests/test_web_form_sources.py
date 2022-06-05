@@ -1,6 +1,6 @@
 from django.core.files import File
 
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.literals import (
     TEST_FILE_COMPRESSED_PATH, TEST_DOCUMENT_SMALL_CHECKSUM,

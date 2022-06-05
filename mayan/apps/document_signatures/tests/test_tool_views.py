@@ -1,5 +1,5 @@
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
-from mayan.apps.documents.models import DocumentFile
+from mayan.apps.documents.models.document_file_models import DocumentFile
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import TEST_FILE_SMALL_PATH
 

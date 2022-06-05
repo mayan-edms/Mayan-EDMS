@@ -4,7 +4,8 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
-from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.documents.models.document_models import Document
+from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.events.classes import (
     EventManagerMethodAfter, EventManagerSave
 )

@@ -4,7 +4,7 @@ from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.views.document_views import DocumentListView
 from mayan.apps.views.generics import SingleObjectListView
 from mayan.apps.views.mixins import ExternalObjectViewMixin

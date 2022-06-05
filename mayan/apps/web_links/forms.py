@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.text import format_lazy
 
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.templating.fields import ModelTemplateField
 
 from .models import WebLink

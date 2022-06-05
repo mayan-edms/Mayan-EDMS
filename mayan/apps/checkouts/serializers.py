@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from rest_framework.generics import get_object_or_404
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.serializers.document_serializers import DocumentSerializer
 from mayan.apps.rest_api import serializers
 from mayan.apps.user_management.serializers import UserSerializer

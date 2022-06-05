@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.django_gpg.exceptions import DecryptionError
 from mayan.apps.django_gpg.models import Key
-from mayan.apps.documents.models import DocumentFile
+from mayan.apps.documents.models.document_file_models import DocumentFile
 from mayan.apps.storage.utils import NamedTemporaryFile
 
 from .events import (

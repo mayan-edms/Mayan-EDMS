@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.views.forms import DynamicForm
 from mayan.apps.views.generics import FormView, SingleObjectListView
 from mayan.apps.views.mixins import ExternalObjectViewMixin

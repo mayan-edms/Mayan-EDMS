@@ -1,5 +1,5 @@
 from mayan.apps.converter.api_view_mixins import APIImageViewMixin
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.rest_api import generics
 from mayan.apps.rest_api.api_view_mixins import ExternalObjectAPIViewMixin
 

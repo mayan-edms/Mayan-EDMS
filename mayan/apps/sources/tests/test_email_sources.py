@@ -3,7 +3,7 @@ from unittest import mock
 from django.core import mail
 
 from mayan.apps.common.serialization import yaml_dump
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.metadata.models import MetadataType
 from mayan.apps.metadata.tests.mixins import MetadataTypeTestMixin

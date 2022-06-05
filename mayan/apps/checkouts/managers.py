@@ -5,7 +5,7 @@ from django.db import models
 from django.utils.timezone import now
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 
 from .exceptions import DocumentNotCheckedOut
 from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN

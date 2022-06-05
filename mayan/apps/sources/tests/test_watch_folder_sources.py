@@ -1,7 +1,7 @@
 from pathlib import Path
 import shutil
 
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.literals import (
     TEST_FILE_NON_ASCII_FILENAME,

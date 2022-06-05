@@ -1,7 +1,7 @@
 from pathlib import Path
 from unittest.mock import patch
 
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.literals import (
     TEST_DOCUMENT_SMALL_CHECKSUM, TEST_FILE_SMALL_PATH

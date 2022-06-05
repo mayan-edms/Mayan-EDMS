@@ -5,7 +5,7 @@ from mayan.apps.django_gpg.tests.literals import (
     TEST_KEY_PRIVATE_PASSPHRASE, TEST_KEY_PUBLIC_ID
 )
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
-from mayan.apps.documents.models import DocumentFile
+from mayan.apps.documents.models.document_file_models import DocumentFile
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.literals import (
     TEST_FILE_PDF_PATH, TEST_FILE_SMALL_PATH

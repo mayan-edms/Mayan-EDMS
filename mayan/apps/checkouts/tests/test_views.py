@@ -1,6 +1,6 @@
 from django.utils.encoding import force_text
 
-from mayan.apps.documents.models import DocumentFile
+from mayan.apps.documents.models.document_models import DocumentFile
 from mayan.apps.documents.permissions import (
     permission_document_file_new, permission_document_file_view
 )

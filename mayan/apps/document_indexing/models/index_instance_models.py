@@ -9,7 +9,7 @@ from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError

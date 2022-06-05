@@ -3,7 +3,7 @@ import unittest
 
 from django.test import override_settings, tag
 
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.tests.literals import TEST_FILE_PDF_FILENAME
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.literals import EXCLUDE_TEST_TAG

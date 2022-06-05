@@ -1,4 +1,4 @@
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.sources.tests.mixins.web_form_source_mixins import WebFormSourceBackendTestMixin
