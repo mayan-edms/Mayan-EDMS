@@ -15,7 +15,7 @@ job_docker_build:
     - set -a && . ./config.env && set +a
     - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - apk update
-    - apk add cairo2 gcc libffi-dev libjpeg-turbo-dev make musl-dev python3 python3-dev zlib-dev
+    - apk add cairo gcc libffi-dev libjpeg-turbo-dev make musl-dev python3 python3-dev zlib-dev
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
@@ -121,7 +121,7 @@ job_docker_nightly:
     - set -a && . ./config.env && set +a
     - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - apk update
-    - apk add cairo2 gcc libffi-dev libjpeg-turbo-dev make musl-dev python3 python3-dev zlib-dev
+    - apk add cairo gcc libffi-dev libjpeg-turbo-dev make musl-dev python3 python3-dev zlib-dev
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
@@ -155,7 +155,7 @@ job_docker_testing:
     - set -a && . ./config.env && set +a
     - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - apk update
-    - apk add cairo2 gcc libffi-dev libjpeg-turbo-dev make musl-dev python3 python3-dev zlib-dev
+    - apk add cairo gcc libffi-dev libjpeg-turbo-dev make musl-dev python3 python3-dev zlib-dev
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
