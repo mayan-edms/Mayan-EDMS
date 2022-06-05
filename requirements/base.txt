@@ -32,7 +32,6 @@ graphviz==0.17
 gunicorn==20.1.0
 jsonschema==4.4.0
 node-semver==0.8.1
-packaging==21.3
 pycountry==22.3.5
 pycryptodome==3.10.4
 pyotp==2.6.0
