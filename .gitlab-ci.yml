@@ -273,7 +273,7 @@ job_python_push_pypi:
   script:
     - pip install --requirement requirements/build.txt
     - echo "$PYPIRC" > ~/.pypirc
-    - twine upload dist/* -r pypi
+    - twine upload --verbose dist/* -r pypi
   stage: stage_push_python
 
 # Test upgrade from the latest public version to the local version
