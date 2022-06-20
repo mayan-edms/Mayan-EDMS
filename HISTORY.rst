@@ -1146,7 +1146,7 @@
   - drf-yasg from 1.17.1 to 1.20.0
   - swagger-spec-validator from 2.5.0 to 2.7.3
   - dropzone from 5.7.2 to 5.9.2
-  - extract-msg from 0.23.3 to 0.28.7
+  - extract-msg from 0.23.3 to 0.34.3
   - pycryptodome from 3.9.7 to 3.10.1
   - celery from 4.4.7 to 5.1.2
   - django-celery-beat from 2.0.0 to 2.2.1
