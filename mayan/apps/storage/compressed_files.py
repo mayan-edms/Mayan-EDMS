@@ -90,7 +90,7 @@ class Archive:
 
 class MsgArchive(Archive):
     def _open(self, file_object):
-        self._archive = extract_msg.Message(file_object)
+        self._archive = extract_msg.Message(path=file_object)
 
     def member_contents(self, filename):
         if filename == 'message.txt':
