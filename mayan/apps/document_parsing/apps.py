@@ -32,6 +32,7 @@ from .links import (
     link_error_list
 )
 from .methods import (
+    method_document_content, method_document_file_content,
     method_document_parsing_submit, method_document_file_parsing_submit
 )
 from .permissions import (
@@ -39,7 +40,6 @@ from .permissions import (
     permission_document_file_parse
 )
 from .signals import signal_post_document_file_parsing
-from .utils import get_document_file_content
 
 logger = logging.getLogger(name=__name__)
 
@@ -75,13 +75,13 @@ class DocumentParsingApp(MayanAppConfig):
         )
 
         Document.add_to_class(
-            name='content', value=get_document_file_content
+            name='content', value=method_document_content
         )
         Document.add_to_class(
             name='submit_for_parsing', value=method_document_parsing_submit
         )
         DocumentFile.add_to_class(
-            name='content', value=get_document_file_content
+            name='content', value=method_document_file_content
         )
         DocumentFile.add_to_class(
             name='submit_for_parsing',

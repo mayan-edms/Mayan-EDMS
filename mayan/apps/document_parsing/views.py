@@ -22,7 +22,6 @@ from .permissions import (
     permission_document_file_content_view, permission_document_type_parsing_setup,
     permission_document_file_parse
 )
-from .utils import get_document_file_content
 
 
 class DocumentFileContentDeleteView(MultipleObjectDeleteView):
@@ -61,7 +60,7 @@ class DocumentFileContentDownloadView(SingleObjectDownloadView):
     source_queryset = DocumentFile.valid.all()
 
     def get_download_file_object(self):
-        return get_document_file_content(document_file=self.object)
+        return self.object.content()
 
     def get_download_filename(self):
         return '{}-content'.format(self.object)
@@ -84,7 +83,7 @@ class DocumentFileContentView(SingleObjectDetailView):
         return {
             'hide_labels': True,
             'object': self.object,
-            'title': _('Content for document file: %s') % self.object,
+            'title': _('Content for document file: %s') % self.object
         }
 
 

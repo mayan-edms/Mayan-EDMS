@@ -10,19 +10,20 @@ from ..permissions import (
     permission_document_file_content_view, permission_document_file_parse,
     permission_document_type_parsing_setup
 )
-from ..utils import get_document_file_content
 
 from .literals import TEST_DOCUMENT_CONTENT
 from .mixins import (
-    DocumentFileContentTestMixin, DocumentFileContentToolsViewsTestMixin,
-    DocumentFileContentViewTestMixin, DocumentTypeContentViewsTestMixin
+    DocumentFileContentTestMixin, DocumentFileContentToolsViewTestMixin,
+    DocumentFileContentViewTestMixin, DocumentTypeContentViewTestMixin
 )
 
 
-class DocumentFileContentViewsTestCase(
+class DocumentFileContentViewTestCase(
     DocumentFileContentViewTestMixin, DocumentFileContentTestMixin,
     GenericDocumentViewTestCase
 ):
+    auto_create_test_document_file_parsed_content = True
+
     def test_document_file_content_view_no_permission(self):
         self._clear_events()
 
@@ -189,10 +190,12 @@ class DocumentFileContentViewsTestCase(
         self.assertEqual(events.count(), 0)
 
 
-class DocumentFilePageContentViewsTestCase(
+class DocumentFilePageContentViewTestCase(
     DocumentFileContentViewTestMixin, DocumentFileContentTestMixin,
     GenericDocumentViewTestCase
 ):
+    auto_create_test_document_file_parsed_content = True
+
     def test_document_file_page_content_view_no_permission(self):
         self._clear_events()
 
@@ -273,7 +276,7 @@ class DocumentFilePageContentViewsTestCase(
         self.assertEqual(events.count(), 0)
 
 
-class DocumentFileContentParsingViewsTestCase(
+class DocumentFileContentParsingViewTestCase(
     DocumentFileContentViewTestMixin, GenericDocumentViewTestCase
 ):
     _skip_file_descriptor_test = True
@@ -303,11 +306,9 @@ class DocumentFileContentParsingViewsTestCase(
         self.assert_download_response(
             response=response, content=(
                 ''.join(
-                    get_document_file_content(
-                        document_file=self.test_document_file
-                    )
+                    self.test_document_file.content()
                 )
-            ),
+            )
         )
 
         events = self._get_test_events()
@@ -432,22 +433,17 @@ class DocumentFileContentParsingViewsTestCase(
         self.assertEqual(events.count(), 0)
 
 
-class DocumentTypeParsingViewsTestCase(
-    DocumentFileContentToolsViewsTestMixin, GenericDocumentViewTestCase
+class DocumentTypeParsingViewTestCase(
+    DocumentFileContentToolsViewTestMixin, GenericDocumentViewTestCase
 ):
     _skip_file_descriptor_test = True
     auto_upload_test_document = False
-
     # Ensure we use a PDF file
     test_document_filename = TEST_HYBRID_DOCUMENT
 
     def _get_document_file_content(self):
         return ''.join(
-            list(
-                get_document_file_content(
-                    document_file=self.test_document_file
-                )
-            )
+            self.test_document_file.content()
         )
 
     def test_document_parsing_error_list_view_no_permission(self):
@@ -521,8 +517,8 @@ class DocumentTypeParsingViewsTestCase(
         )
 
 
-class DocumentTypeContentViewsTestCase(
-    DocumentTypeContentViewsTestMixin, GenericDocumentViewTestCase
+class DocumentTypeContentViewTestCase(
+    DocumentTypeContentViewTestMixin, GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
 

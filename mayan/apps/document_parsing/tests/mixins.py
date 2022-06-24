@@ -3,7 +3,7 @@ from ..models import DocumentFilePageContent
 from .literals import TEST_DOCUMENT_CONTENT
 
 
-class DocumentFileContentToolsViewsTestMixin:
+class DocumentFileContentToolsViewTestMixin:
     def _request_document_parsing_error_list_view(self):
         return self.get(viewname='document_parsing:error_list')
 
@@ -16,9 +16,12 @@ class DocumentFileContentToolsViewsTestMixin:
 
 
 class DocumentFileContentTestMixin:
+    auto_create_test_document_file_parsed_content = False
+
     def setUp(self):
         super().setUp()
-        self._create_test_document_file_parsed_content()
+        if self.auto_create_test_document_file_parsed_content:
+            self._create_test_document_file_parsed_content()
 
     def _create_test_document_file_parsed_content(self):
         DocumentFilePageContent.objects.create(
@@ -101,7 +104,7 @@ class DocumentFilePageContentAPITestMixin:
         )
 
 
-class DocumentTypeContentViewsTestMixin:
+class DocumentTypeContentViewTestMixin:
     def _request_test_document_type_parsing_settings_view(self):
         return self.get(
             viewname='document_parsing:document_type_parsing_settings',
