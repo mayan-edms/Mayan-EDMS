@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"POT-Creation-Date: 2022-06-24 20:40+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: apps.py:36 events.py:5 permissions.py:5 queues.py:7 settings.py:21
 msgid "Converter"
@@ -405,6 +405,7 @@ msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: views.py:72
 #, python-format

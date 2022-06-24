@@ -7,14 +7,15 @@
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
 # Roberto Rosario, 2022
 # Jesaja Everling <jeverling@gmail.com>, 2022
+# Benjamin Epp, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"POT-Creation-Date: 2022-06-24 20:40+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Jesaja Everling <jeverling@gmail.com>, 2022\n"
+"Last-Translator: Benjamin Epp, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +29,7 @@ msgstr "Dashboards"
 
 #: apps.py:25
 msgid "Widgets"
-msgstr ""
+msgstr "Widgets"
 
 #: apps.py:29
 msgid "Label"
@@ -36,7 +37,7 @@ msgstr "Bezeichner"
 
 #: dashboards.py:6
 msgid "Administrator dashboard"
-msgstr ""
+msgstr "Administrator Dashboard"
 
 #: links.py:14
 msgid "Details"
@@ -49,4 +50,4 @@ msgstr "Details ansehen"
 
 #: views.py:27
 msgid "Dashboard detail"
-msgstr ""
+msgstr "Dashboard Details"

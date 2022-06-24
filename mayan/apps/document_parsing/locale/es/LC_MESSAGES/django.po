@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"POT-Creation-Date: 2022-06-24 20:40+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: apps.py:53 events.py:6 permissions.py:6 settings.py:10
 msgid "Document parsing"
@@ -75,7 +75,7 @@ msgstr "Eliminar contenido extraído"
 msgid "Download content"
 msgstr "Descargar contenido"
 
-#: links.py:52 links.py:91 views.py:237
+#: links.py:52 links.py:91 views.py:236
 msgid "Parsing errors"
 msgstr "Errores de extracción de contenido"
 
@@ -190,99 +190,100 @@ msgstr ""
 "Ruta de acceso al programa de poppler llamado pdftotext utilizado para "
 "extraer texto de archivos PDF."
 
-#: views.py:30
+#: views.py:29
 #, python-format
 msgid "Error deleting document version content \"%(instance)s\"; %(exception)s"
 msgstr ""
 "Error eliminando el contenido de la versión del documento \"%(instance)s\"; "
 "%(exception)s"
 
-#: views.py:36
+#: views.py:35
 #, python-format
 msgid "Content of \"%(object)s\" deleted successfully."
 msgstr "El contenido de \"%(object)s\" se eliminó con éxito."
 
-#: views.py:39
+#: views.py:38
 #, python-format
 msgid "Content of %(count)d document version deleted successfully."
 msgstr "El contenido de %(count)d versión del documento se eliminó con éxito."
 
-#: views.py:42
+#: views.py:41
 #, python-format
 msgid "Content of %(count)d document versions deleted successfully."
 msgstr ""
 "El contenido de las %(count)d versiones del documento se eliminó "
 "correctamente."
 
-#: views.py:44
+#: views.py:43
 #, python-format
 msgid "Delete the content of: %(object)s."
 msgstr "Eliminar el contenido de: %(object)s."
 
-#: views.py:46
+#: views.py:45
 #, python-format
 msgid "Delete the content of the %(count)d selected document version."
 msgstr "Eliminar contenido de %(count)d versión de documento seleccionada."
 
-#: views.py:49
+#: views.py:48
 #, python-format
 msgid "Delete the content of the %(count)d selected document versions."
 msgstr ""
 "Eliminar el contenido de las %(count)d versiones de documento seleccionadas."
 
-#: views.py:87
+#: views.py:86
 #, python-format
 msgid "Content for document file: %s"
 msgstr "Contenido del archivo de documento: %s"
 
-#: views.py:108
+#: views.py:107
 #, python-format
 msgid "Content for document file page: %s"
 msgstr "Contenido de la página del archivo del documento: %s"
 
-#: views.py:130
+#: views.py:129
 #, python-format
 msgid "Parsing errors for document file: %s"
 msgstr "Errores de extracción de contenido para el archivo de documento: %s"
 
-#: views.py:143
+#: views.py:142
 #, python-format
 msgid "%(count)d document file added to the parsing queue"
 msgstr ""
 "%(count)d archivo de documento agregado a la cola de extracción de contenido"
 
-#: views.py:146
+#: views.py:145
 #, python-format
 msgid "%(count)d documents files added to the parsing queue"
 msgstr ""
 "%(count)d documenta los archivos agregados a la cola de extracción de "
 "contenido"
 
-#: views.py:154
+#: views.py:153
 #, python-format
 msgid "Submit %(count)d document file to the parsing queue?"
 msgid_plural "Submit %(count)d documents files to the parsing queue?"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
-#: views.py:167
+#: views.py:166
 #, python-format
 msgid "Submit document file \"%s\" to the parsing queue"
 msgstr ""
 "Enviar el archivo de documento \"%s\" a la cola de extracción de contenido"
 
-#: views.py:194
+#: views.py:193
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr ""
 "Edite la configuración de extracción de contenido para el tipo de documento:"
 " %s."
 
-#: views.py:204
+#: views.py:203
 msgid "Submit all documents of a type for parsing"
 msgstr "Enviar todos los documentos de un tipo para extracción de contenido"
 
-#: views.py:225
+#: views.py:224
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "%(count)d documentos agregados a la cola de extracción de contenido."

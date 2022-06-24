@@ -94,7 +94,7 @@ class DocumentFileContentView(SingleObjectDetailView):
         return {
             'hide_labels': True,
             'object': self.object,
-            'title': _('Content for document file: %s') % self.object,
+            'title': _('Content for document file: %s') % self.object
         }
 
 

@@ -48,20 +48,20 @@ Search
 
 Converted the signal handler that triggers search indexing on many to many
 fields changes to a background task. This solves an issue where the user
-interface block when changing the document type to index template
+interface blocks when changing the document type to index template
 association on large installations.
 
 Updated the object index task to retry on missing object errors. There are
 situations where the broker will route the message to the workers faster
 than the database can commit the data, creating an false positive object
-not found.
+not found error.
 
 
 Task manager
 ^^^^^^^^^^^^
 
 Added Celery queue deduplication to the ``CeleryQueue`` class. There are
-reported cases of duplicated queues but will prevent possible issues.
+no reported cases of duplicated queues but this will prevent possible issues.
 
 Enabled app tests that were added but not enabled.
 

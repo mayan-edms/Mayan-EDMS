@@ -36,8 +36,8 @@ from .methods import (
     method_document_file_parsing_submit, method_document_parsing_submit
 )
 from .permissions import (
-    permission_document_file_content_view, permission_document_type_parsing_setup,
-    permission_document_file_parse
+    permission_document_file_content_view,
+    permission_document_type_parsing_setup, permission_document_file_parse
 )
 
 logger = logging.getLogger(name=__name__)

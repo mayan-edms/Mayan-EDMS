@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"POT-Creation-Date: 2022-06-24 20:40+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -73,7 +73,7 @@ msgstr ""
 msgid "Download content"
 msgstr "下载内容"
 
-#: links.py:52 links.py:91 views.py:237
+#: links.py:52 links.py:91 views.py:236
 msgid "Parsing errors"
 msgstr "解析错误"
 
@@ -181,87 +181,87 @@ msgid ""
 "files."
 msgstr "poppler的pdftotext程序的文件路径，用于从PDF文件中提取文本。"
 
-#: views.py:30
+#: views.py:29
 #, python-format
 msgid "Error deleting document version content \"%(instance)s\"; %(exception)s"
 msgstr ""
 
-#: views.py:36
+#: views.py:35
 #, python-format
 msgid "Content of \"%(object)s\" deleted successfully."
 msgstr ""
 
-#: views.py:39
+#: views.py:38
 #, python-format
 msgid "Content of %(count)d document version deleted successfully."
 msgstr ""
 
-#: views.py:42
+#: views.py:41
 #, python-format
 msgid "Content of %(count)d document versions deleted successfully."
 msgstr ""
 
-#: views.py:44
+#: views.py:43
 #, python-format
 msgid "Delete the content of: %(object)s."
 msgstr ""
 
-#: views.py:46
+#: views.py:45
 #, python-format
 msgid "Delete the content of the %(count)d selected document version."
 msgstr ""
 
-#: views.py:49
+#: views.py:48
 #, python-format
 msgid "Delete the content of the %(count)d selected document versions."
 msgstr ""
 
-#: views.py:87
+#: views.py:86
 #, python-format
 msgid "Content for document file: %s"
 msgstr ""
 
-#: views.py:108
+#: views.py:107
 #, python-format
 msgid "Content for document file page: %s"
 msgstr ""
 
-#: views.py:130
+#: views.py:129
 #, python-format
 msgid "Parsing errors for document file: %s"
 msgstr ""
 
-#: views.py:143
+#: views.py:142
 #, python-format
 msgid "%(count)d document file added to the parsing queue"
 msgstr ""
 
-#: views.py:146
+#: views.py:145
 #, python-format
 msgid "%(count)d documents files added to the parsing queue"
 msgstr ""
 
-#: views.py:154
+#: views.py:153
 #, python-format
 msgid "Submit %(count)d document file to the parsing queue?"
 msgid_plural "Submit %(count)d documents files to the parsing queue?"
 msgstr[0] ""
 
-#: views.py:167
+#: views.py:166
 #, python-format
 msgid "Submit document file \"%s\" to the parsing queue"
 msgstr ""
 
-#: views.py:194
+#: views.py:193
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr ""
 
-#: views.py:204
+#: views.py:203
 msgid "Submit all documents of a type for parsing"
 msgstr "提交某类型的所有文档进行解析"
 
-#: views.py:225
+#: views.py:224
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr ""

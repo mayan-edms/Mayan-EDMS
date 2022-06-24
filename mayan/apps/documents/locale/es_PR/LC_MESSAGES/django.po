@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"POT-Creation-Date: 2022-06-24 20:40+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es_PR\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: apps.py:215 apps.py:647 events.py:5 menus.py:8
 #: models/document_models.py:131 permissions.py:5 queues.py:21 settings.py:33
@@ -1400,6 +1400,9 @@ msgstr[0] ""
 msgstr[1] ""
 "¿Volver a calcular el número de páginas de los archivos de documentos "
 "seleccionados?"
+msgstr[2] ""
+"¿Volver a calcular el número de páginas de los archivos de documentos "
+"seleccionados?"
 
 #: views/document_file_page_views.py:77
 #, python-format
@@ -1542,6 +1545,9 @@ msgstr[0] ""
 "¿Borrar todas las transformaciones de página para el archivo de documento "
 "seleccionado?"
 msgstr[1] ""
+"¿Borrar todas las transformaciones de página para los archivos de documentos"
+" seleccionados?"
+msgstr[2] ""
 "¿Borrar todas las transformaciones de página para los archivos de documentos"
 " seleccionados?"
 
@@ -1730,6 +1736,9 @@ msgstr[0] ""
 msgstr[1] ""
 "¿Adjuntar todas las páginas del archivo del documento a las versiones del "
 "documento seleccionadas?"
+msgstr[2] ""
+"¿Adjuntar todas las páginas del archivo del documento a las versiones del "
+"documento seleccionadas?"
 
 #: views/document_version_page_views.py:156
 #, python-format
@@ -1779,6 +1788,8 @@ msgid_plural "Reset the page list of the selected document versions?"
 msgstr[0] ""
 "¿Reiniciar la lista de páginas de la versión de documento seleccionada?"
 msgstr[1] ""
+"¿Reiniciar la lista de páginas de las versiones de documentos seleccionadas?"
+msgstr[2] ""
 "¿Reiniciar la lista de páginas de las versiones de documentos seleccionadas?"
 
 #: views/document_version_page_views.py:312
@@ -1932,6 +1943,9 @@ msgstr[0] ""
 msgstr[1] ""
 "¿Borrar todas las transformaciones de página para la versión del documento "
 "seleccionado?"
+msgstr[2] ""
+"¿Borrar todas las transformaciones de página para la versión del documento "
+"seleccionado?"
 
 #: views/document_version_views.py:334
 #, python-format
@@ -1999,6 +2013,7 @@ msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
 msgstr[0] "Cambiar el tipo del documento seleccionado"
 msgstr[1] "Cambiar el tipo de los documentos seleccionados"
+msgstr[2] "Cambiar el tipo de los documentos seleccionados"
 
 #: views/document_views.py:104
 #, python-format
@@ -2053,6 +2068,7 @@ msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
 msgstr[0] "¿Añadir el documento seleccionado a favoritos?"
 msgstr[1] "¿Agregar los documentos seleccionados a favoritos?"
+msgstr[2] "¿Agregar los documentos seleccionados a favoritos?"
 
 #: views/favorite_document_views.py:74
 #, python-format
@@ -2074,6 +2090,7 @@ msgid "Remove the selected document from favorites?"
 msgid_plural "Remove the selected documents from favorites?"
 msgstr[0] "¿Eliminar el documento seleccionado de favoritos?"
 msgstr[1] "¿Eliminar los documentos seleccionados de favoritos?"
+msgstr[2] "¿Eliminar los documentos seleccionados de favoritos?"
 
 #: views/misc_views.py:44
 #, python-format

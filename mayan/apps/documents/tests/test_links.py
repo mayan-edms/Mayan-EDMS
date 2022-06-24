@@ -61,7 +61,9 @@ class FavoriteDocumentLinkTestCase(
 
         self.add_test_view(test_object=self._test_document)
         context = self.get_test_view()
-        resolved_link = link_document_favorites_remove.resolve(context=context)
+        resolved_link = link_document_favorites_remove.resolve(
+            context=context
+        )
 
         self.assertEqual(resolved_link, None)
 
@@ -74,7 +76,9 @@ class FavoriteDocumentLinkTestCase(
 
         self.add_test_view(test_object=self._test_document)
         context = self.get_test_view()
-        resolved_link = link_document_favorites_remove.resolve(context=context)
+        resolved_link = link_document_favorites_remove.resolve(
+            context=context
+        )
 
         self.assertNotEqual(resolved_link, None)
 
@@ -88,7 +92,9 @@ class FavoriteDocumentLinkTestCase(
 
         self.add_test_view(test_object=self._test_document)
         context = self.get_test_view()
-        resolved_link = link_document_favorites_remove.resolve(context=context)
+        resolved_link = link_document_favorites_remove.resolve(
+            context=context
+        )
 
         self.assertEqual(resolved_link, None)
 
@@ -133,7 +139,9 @@ class DocumentsLinksTestCase(
     def test_document_file_download_link_no_permission(self):
         self.add_test_view(test_object=self._test_document.file_latest)
         context = self.get_test_view()
-        resolved_link = link_document_file_download_quick.resolve(context=context)
+        resolved_link = link_document_file_download_quick.resolve(
+            context=context
+        )
 
         self.assertEqual(resolved_link, None)
 
@@ -145,7 +153,9 @@ class DocumentsLinksTestCase(
 
         self.add_test_view(test_object=self._test_document.file_latest)
         context = self.get_test_view()
-        resolved_link = link_document_file_download_quick.resolve(context=context)
+        resolved_link = link_document_file_download_quick.resolve(
+            context=context
+        )
 
         self.assertNotEqual(resolved_link, None)
         self.assertEqual(
@@ -173,7 +183,8 @@ class TrashedDocumentsLinksTestCase(GenericDocumentViewTestCase):
 
     def test_trashed_document_restore_link_with_permission(self):
         self.grant_access(
-            obj=self._test_document, permission=permission_trashed_document_restore
+            obj=self._test_document,
+            permission=permission_trashed_document_restore
         )
         resolved_link = link_document_restore.resolve(context=self.context)
         self.assertNotEqual(resolved_link, None)

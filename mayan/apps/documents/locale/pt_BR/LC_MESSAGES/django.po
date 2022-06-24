@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"POT-Creation-Date: 2022-06-24 20:40+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt_BR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: apps.py:215 apps.py:647 events.py:5 menus.py:8
 #: models/document_models.py:131 permissions.py:5 queues.py:21 settings.py:33
@@ -1400,6 +1400,7 @@ msgid "Recalculate the page count of the selected document file?"
 msgid_plural "Recalculate the page count of the selected document files?"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: views/document_file_page_views.py:77
 #, python-format
@@ -1539,6 +1540,7 @@ msgid_plural ""
 "Clear all the page transformations for the selected document files?"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: views/document_file_views.py:280
 #, python-format
@@ -1715,6 +1717,7 @@ msgid_plural ""
 "Append all the document file pages to the selected document versions?"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: views/document_version_page_views.py:156
 #, python-format
@@ -1759,6 +1762,7 @@ msgid "Reset the page list of the selected document version?"
 msgid_plural "Reset the page list of the selected document versions?"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: views/document_version_page_views.py:312
 #, python-format
@@ -1899,6 +1903,7 @@ msgid_plural ""
 "Clear all the page transformations for the selected document version?"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: views/document_version_views.py:334
 #, python-format
@@ -1964,6 +1969,7 @@ msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: views/document_views.py:104
 #, python-format
@@ -2018,6 +2024,7 @@ msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: views/favorite_document_views.py:74
 #, python-format
@@ -2039,6 +2046,7 @@ msgid "Remove the selected document from favorites?"
 msgid_plural "Remove the selected documents from favorites?"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: views/misc_views.py:44
 #, python-format
