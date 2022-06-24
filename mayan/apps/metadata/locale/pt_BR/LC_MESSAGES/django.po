@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"POT-Creation-Date: 2022-06-24 20:40+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt_BR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: apps.py:67 apps.py:205 apps.py:211 apps.py:215 apps.py:220 apps.py:224
 #: events.py:5 links.py:52 permissions.py:5 queues.py:7
@@ -411,6 +411,7 @@ msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: views/document_views.py:63
 #, python-format
@@ -469,6 +470,7 @@ msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: views/document_views.py:233
 #, python-format
@@ -520,6 +522,7 @@ msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: views/document_views.py:403
 #, python-format

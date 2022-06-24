@@ -7,14 +7,15 @@
 # e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2022
 # Roberto Rosario, 2022
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
+# bwakkie <bwakkie@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"POT-Creation-Date: 2022-06-24 20:40+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022\n"
+"Last-Translator: bwakkie <bwakkie@gmail.com>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -72,7 +73,7 @@ msgstr "App"
 
 #: classes.py:215 classes.py:840
 msgid "Environments"
-msgstr ""
+msgstr "Omgeving"
 
 #: classes.py:308
 msgid "Need to specify at least one: app_label or module."

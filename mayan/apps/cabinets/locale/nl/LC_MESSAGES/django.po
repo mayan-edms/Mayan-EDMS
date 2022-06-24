@@ -7,14 +7,15 @@
 # Roberto Rosario, 2022
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
 # e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2022
+# bwakkie <bwakkie@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"POT-Creation-Date: 2022-06-24 20:40+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2022\n"
+"Last-Translator: bwakkie <bwakkie@gmail.com>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -167,11 +168,11 @@ msgstr "Document UUID"
 
 #: search.py:51
 msgid "Document file checksum"
-msgstr ""
+msgstr "Controlesom documentbestand"
 
 #: search.py:54
 msgid "Document file MIME type"
-msgstr ""
+msgstr "Documentbestand MIME-type"
 
 #: serializers.py:18
 msgid "List of children cabinets."
@@ -240,32 +241,32 @@ msgstr "Geen folders beschikbaar"
 #: views.py:180
 #, python-format
 msgid "Document \"%(object)s\" added to cabinets successfully."
-msgstr ""
+msgstr "Document \"%(object)s\" succesvol toegevoegd aan rek."
 
 #: views.py:183
 #, python-format
 msgid "%(count)d document added to cabinets successfully."
-msgstr ""
+msgstr "%(count)d document succesvol toegevoegd aan rekken."
 
 #: views.py:186
 #, python-format
 msgid "%(count)d documents added to cabinets successfully."
-msgstr ""
+msgstr "%(count)d documenten succesvol toegevoegd aan rekken."
 
 #: views.py:188
 #, python-format
 msgid "Add document \"%(object)s\" to cabinets."
-msgstr ""
+msgstr "Voeg document \"%(object)s\" toe aan rekken."
 
 #: views.py:189
 #, python-format
 msgid "Add %(count)d document to cabinets."
-msgstr ""
+msgstr "Voeg %(count)d document toe aan rekken."
 
 #: views.py:190
 #, python-format
 msgid "Add %(count)d documents to cabinets."
-msgstr ""
+msgstr "Voeg %(count)d documenten toe aan rekken."
 
 #: views.py:207
 msgid "Cabinets to which the selected documents will be added."
@@ -287,32 +288,32 @@ msgstr "Folders met document: %s"
 #: views.py:276
 #, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
-msgstr ""
+msgstr "Document \"%(object)s\": is succesvol uit de rekken verwijderd."
 
 #: views.py:279
 #, python-format
 msgid "%(count)d document removed from cabinets successfully."
-msgstr ""
+msgstr "%(count)d document succesvol uit de rekken verwijderd."
 
 #: views.py:282
 #, python-format
 msgid "%(count)d documents removed from cabinets successfully."
-msgstr ""
+msgstr "%(count)d documenten succesvol uit de rekken verwijderd."
 
 #: views.py:284
 #, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
-msgstr ""
+msgstr "Verwijder document \"%(object)s\" uit de rekken."
 
 #: views.py:285
 #, python-format
 msgid "Remove %(count)d document from cabinets."
-msgstr ""
+msgstr "Verwijder %(count)d document uit rekken."
 
 #: views.py:286
 #, python-format
 msgid "Remove %(count)d documents from cabinets."
-msgstr ""
+msgstr "Verwijder %(count)d documenten uit rekken."
 
 #: views.py:303
 msgid "Cabinets from which the selected documents will be removed."

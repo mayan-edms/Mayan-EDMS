@@ -4,18 +4,18 @@
 # 
 # Translators:
 # Translators:
-# bwakkie <bwakkie@gmail.com>, 2022
 # e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2022
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
 # Roberto Rosario, 2022
+# bwakkie <bwakkie@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-21 08:49+0000\n"
+"POT-Creation-Date: 2022-06-24 20:40+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: bwakkie <bwakkie@gmail.com>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -77,27 +77,27 @@ msgstr "URI.js"
 
 #: events.py:8
 msgid "Theme created"
-msgstr ""
+msgstr "Thema aangemaakt"
 
 #: events.py:11
 msgid "Theme edited"
-msgstr ""
+msgstr "Thema bewerkt"
 
 #: events.py:14
 msgid "User theme edited"
-msgstr ""
+msgstr "Gebruikersthema bewerkt"
 
 #: links.py:18
 msgid "Theme settings"
-msgstr ""
+msgstr "Thema instellingen"
 
 #: links.py:25
 msgid "Edit theme settings"
-msgstr ""
+msgstr "Bewerk thema instellingen"
 
 #: links.py:31 views.py:27
 msgid "Create new theme"
-msgstr ""
+msgstr "Maak nieuw thema aan"
 
 #: links.py:36
 msgid "Delete"
@@ -109,11 +109,11 @@ msgstr "Bewerken"
 
 #: links.py:44 links.py:49 models.py:32 views.py:91
 msgid "Themes"
-msgstr ""
+msgstr "Thema's"
 
 #: models.py:19
 msgid "A short text describing the theme."
-msgstr ""
+msgstr "Een korte tekst die het thema beschrijft"
 
 #: models.py:20
 msgid "Label"
@@ -123,15 +123,15 @@ msgstr "Label"
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
-msgstr ""
+msgstr "De CCS stylesheet voor de user interface veranderingen"
 
 #: models.py:26
 msgid "Stylesheet"
-msgstr ""
+msgstr "Stylesheet"
 
 #: models.py:31 models.py:69
 msgid "Theme"
-msgstr ""
+msgstr "Thema"
 
 #: models.py:65
 msgid "User"
@@ -139,31 +139,31 @@ msgstr "Gebruiker"
 
 #: models.py:73
 msgid "User theme setting"
-msgstr ""
+msgstr "Gebruikers thema settings"
 
 #: models.py:74
 msgid "User theme settings"
-msgstr ""
+msgstr "Gebruikets thema instellingen"
 
 #: permissions.py:8
 msgid "Create new themes"
-msgstr ""
+msgstr "Maak nieuwe thema's"
 
 #: permissions.py:11
 msgid "Delete themes"
-msgstr ""
+msgstr "Verwijder thema's"
 
 #: permissions.py:14
 msgid "Edit themes"
-msgstr ""
+msgstr "Bewerk thema's"
 
 #: permissions.py:17
 msgid "View existing themes"
-msgstr ""
+msgstr "Bekijk bestaande thema's"
 
 #: settings.py:15
 msgid "Custom HTTP response code for AJAX redirections."
-msgstr ""
+msgstr "Aangepaste HTTP antwoordcode voor AJAX omleidingen."
 
 #: settings.py:21
 msgid "Maximum number of characters that will be displayed as the view title."
@@ -181,6 +181,8 @@ msgstr ""
 msgid ""
 "Delay in milliseconds after which the menus will be checked for updates."
 msgstr ""
+"Wachttijd (in miliseconden) alvorens menu's worden gecontroleerd op "
+"vernieuwingen"
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -367,7 +369,7 @@ msgstr "Identifier"
 
 #: templates/appearance/generic_list_subtemplate.html:133
 msgid "Facets"
-msgstr ""
+msgstr "Faceten"
 
 #: templates/appearance/home.html:27
 msgid "Getting started"
@@ -448,28 +450,30 @@ msgstr "Geen"
 #: views.py:49
 #, python-format
 msgid "Delete theme: %s"
-msgstr ""
+msgstr "Verwijder thema: %s"
 
 #: views.py:65
 #, python-format
 msgid "Edit theme: %s"
-msgstr ""
+msgstr "Bewerk thema: %s"
 
 #: views.py:85
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
 msgstr ""
+"Thema's maken het mogelijk om het visuele uiterlijk te wijzigen zonder dat "
+"codewijzigingen nodig zijn."
 
 #: views.py:89
 msgid "There are no themes"
-msgstr ""
+msgstr "Er zijn geen thema's"
 
 #: views.py:113
 #, python-format
 msgid "Theme settings for user: %s"
-msgstr ""
+msgstr "Thema-instellingen voor gebruiker: %s"
 
 #: views.py:134
 #, python-format
 msgid "Edit theme settings for user: %s"
-msgstr ""
+msgstr "Bewerk thema-instellingen voor gebruiker: %s"
