@@ -55,20 +55,26 @@ class ModelPermission:
 
             for namespace, permissions in itertools.groupby(cls.get_for_class(klass=klass, as_choices=False), lambda entry: entry.namespace):
                 permission_options = [
-                    (force_text(s=permission.pk), permission) for permission in permissions
+                    (permission.pk, str(permission)) for permission in permissions
                 ]
+                permission_options.sort(key=lambda entry: entry[1])
                 results.append(
                     (namespace, permission_options)
                 )
 
+            # Sort by namespace label.
+            results.sort(key=lambda entry: entry[0].label)
             return results
         else:
             # Return the permissions for the klass and the models that
             # inherit from it.
-            result = []
-            result.extend(cls._model_permissions.get(klass, ()))
+            result = set()
+            result.update(cls._model_permissions.get(klass, ()))
             for model in cls._inheritances_reverse.get(klass, ()):
-                result.extend(cls._model_permissions.get(model, ()))
+                result.update(cls._model_permissions.get(model, ()))
+
+            result = list(result)
+            result.sort(key=lambda permission: permission.namespace.name)
 
             return result
 

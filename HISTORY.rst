@@ -1,8 +1,9 @@
 4.2.6 (2022-06-XX)
 ==================
 - Backport document content parsing template method. This fix
-  allows accessing the parsed content of a document directly 
+  allows accessing the parsed content of a document directly
   in a template.
+- Backport permission form widget choice grouping and sorting improvements.
 
 4.2.5 (2022-05-21)
 ==================

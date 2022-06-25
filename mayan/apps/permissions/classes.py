@@ -59,7 +59,7 @@ class Permission(AppsModuleLoaderMixin):
 
             for namespace, permissions in itertools.groupby(cls.all(), lambda entry: entry.namespace):
                 permission_options = [
-                    (force_text(s=permission.pk), permission) for permission in permissions
+                    (permission.pk, permission) for permission in permissions
                 ]
                 results.append(
                     (namespace, permission_options)
