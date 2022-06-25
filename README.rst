@@ -25,6 +25,15 @@ at: https://docs.mayan-edms.com/parts/installation.html
 
 .. _Docker: https://www.docker.com/
 
+The final version of the book "Exploring Mayan EDMS" available now!
+
+.. image:: https://camo.githubusercontent.com/89d2fe787507c9247aa7bb406e2682b53eb7a5f9/68747470733a2f2f64313273776274773731397934732e636c6f756466726f6e742e6e65742f696d616765732f76365270785734302f615030714b4c6a6b50694175585a6859754234352f774441554c417a4679782e6a7065673f773d353438
+    :align: center
+    :width: 300
+    :target: https://sellfy.com/p/um2fkx/
+
+Click the image or visit: https://sellfy.com/p/um2fkx/
+
 Hardware requirements
 
 - 2 Gigabytes of RAM (1 Gigabyte if OCR is turned off).

@@ -30,11 +30,12 @@ class ModelPermission:
         result = []
 
         for namespace, permissions in itertools.groupby(cls.get_for_class(klass=klass), lambda entry: entry.namespace):
-            permissions = [
-                (permission.pk, permission) for permission in permissions
+            permission_options = [
+                (permission.pk, str(permission)) for permission in permissions
             ]
+            permission_options.sort(key=lambda entry: entry[1])
             result.append(
-                (namespace, permissions)
+                (namespace, permission_options)
             )
 
         # Sort by namespace label.

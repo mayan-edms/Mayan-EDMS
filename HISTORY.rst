@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 4.3 (2022-XX-XX)
 ================
 - Partials navigation updates:
@@ -384,11 +385,12 @@
 - Fix evaluation of "Match all" when using a single level scoped search.
 - Discard non supported images contained in MPO images files.
 
-4.2.6 (2022-06-XX)
+4.2.6 (2022-06-25)
 ==================
 - Backport document content parsing template method. This fix
   allows accessing the parsed content of a document directly
   in a template.
+- Backport permission form widget choice grouping and sorting improvements.
 
 4.2.5 (2022-05-21)
 ==================

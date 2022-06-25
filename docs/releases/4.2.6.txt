@@ -1,0 +1,62 @@
+Version 4.2.6
+=============
+
+Released: June 25, 2022
+
+Status: Stable
+
+Changes
+-------
+
+Document parsing
+^^^^^^^^^^^^^^^^
+
+Backported fixes to the document content parsing template method. This fix
+allows accessing the parsed content of a document directly in a template.
+
+
+Permissions
+^^^^^^^^^^^
+
+Backportes permission form widget choice grouping and sorting improvements.
+This fix improves the permission grouping by namespace when using the
+workflow action to modify the access control of a document or an object.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
