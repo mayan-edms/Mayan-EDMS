@@ -1,4 +1,4 @@
-4.2.6 (2022-06-XX)
+4.2.6 (2022-06-25)
 ==================
 - Backport document content parsing template method. This fix
   allows accessing the parsed content of a document directly
