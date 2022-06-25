@@ -3,7 +3,6 @@ import logging
 
 from django.apps import apps
 from django.core.exceptions import ImproperlyConfigured
-from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.menus import menu_list_facet
