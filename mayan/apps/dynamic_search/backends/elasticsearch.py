@@ -68,15 +68,14 @@ class ElasticSearchBackend(SearchBackend):
         result.append(title)
         result.append(len(title) * '=')
 
-        stats = client.indices.stats()
-
         for search_model in SearchModel.all():
             index_name = self.get_index_name(search_model=search_model)
-            index_stats = stats['indices'].get(index_name, {})
-            if index_stats:
-                count = index_stats['total']['docs']['count']
-            else:
-                count = '-1'
+            try:
+                index_stats = client.count(index=index_name)
+            except elasticsearch.exceptions.NotFoundError:
+                index_stats = {}
+
+            count = index_stats.get('count', '-1')
 
             result.append(
                 '{}: {}'.format(search_model.label, count)

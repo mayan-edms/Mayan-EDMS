@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 4.3 (2022-XX-XX)
 ================
 - Partials navigation updates:
@@ -384,6 +383,8 @@
 - Normalize how the search "Match all" parameter is evaluated.
 - Fix evaluation of "Match all" when using a single level scoped search.
 - Discard non supported images contained in MPO images files.
+- Use the ElasticSearch count API (https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-count.html)
+  to obtain accurate search model status information.
 
 4.2.6 (2022-06-25)
 ==================
