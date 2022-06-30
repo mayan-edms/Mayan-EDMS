@@ -385,6 +385,8 @@
 - Discard non supported images contained in MPO images files.
 - Use the ElasticSearch count API (https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-count.html)
   to obtain accurate search model status information.
+- Delete existing indexes when calling the ElasticSearch backend initialize
+  method.
 
 4.2.6 (2022-06-25)
 ==================

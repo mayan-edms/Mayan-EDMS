@@ -263,6 +263,14 @@ class ElasticSearchBackend(SearchBackend):
             mappings = self.get_search_model_mappings(search_model=search_model)
 
             try:
+                client.indices.delete(index=index_name)
+            except elasticsearch.exceptions.NotFoundError:
+                """
+                Non fatal, might be that this is the first time
+                the method is executed. Proceed.
+                """
+
+            try:
                 client.indices.create(
                     index=index_name,
                     body={
@@ -273,7 +281,6 @@ class ElasticSearchBackend(SearchBackend):
                         },
                     }
                 )
-
             except elasticsearch.exceptions.RequestError:
                 try:
                     client.indices.put_settings(
