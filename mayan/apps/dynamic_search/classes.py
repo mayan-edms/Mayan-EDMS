@@ -421,11 +421,20 @@ class SearchBackend:
         )
         # Recursive call to the backend's search using queries as unscoped
         # and then merge then using the corresponding operator.
-        queryset = self.solve_scope(
-            operators=result['operators'],
-            result_scope=result['result_scope'], search_model=search_model,
-            scopes=result['scopes'], user=user
-        )
+        try:
+            queryset = self.solve_scope(
+                operators=result['operators'],
+                result_scope=result['result_scope'], search_model=search_model,
+                scopes=result['scopes'], user=user
+            )
+        except Exception as exception:
+            raise DynamicSearchException(
+                _(
+                    'Search backend error. Verify that the search service is '
+                    'available and that the search syntax is valid for '
+                    'the active search backend; %s' % exception
+                )
+            ) from exception
 
         if search_model.permission:
             queryset = AccessControlList.objects.restrict_queryset(

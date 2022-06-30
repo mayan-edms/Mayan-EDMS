@@ -387,6 +387,8 @@
   to obtain accurate search model status information.
 - Delete existing indexes when calling the ElasticSearch backend initialize
   method.
+- Wrap search backend errors into a general exception with a short
+  explanation.
 
 4.2.6 (2022-06-25)
 ==================
