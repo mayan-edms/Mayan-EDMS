@@ -79,8 +79,8 @@ class SearchAgainView(RedirectView):
     query_string = True
 
     def get_redirect_url(self, *args, **kwargs):
-        query_dict = self.request.GET.copy()
-        query_dict.update(self.request.POST)
+        query_dict = self.request.GET.dict().copy()
+        query_dict.update(self.request.POST.dict())
 
         search_term_any_field = query_dict.get(
             QUERY_PARAMETER_ANY_FIELD, ''
@@ -142,8 +142,8 @@ class SearchView(SearchModelViewMixin, FormView):
         }
 
     def get_form(self):
-        query_dict = self.request.GET.copy()
-        query_dict.update(self.request.POST)
+        query_dict = self.request.GET.dict().copy()
+        query_dict.update(self.request.POST.dict())
 
         search_term_any_field = query_dict.get(
             QUERY_PARAMETER_ANY_FIELD, ''
@@ -164,5 +164,6 @@ class AdvancedSearchView(SearchView):
 
     def get_form(self):
         return AdvancedSearchForm(
-            data=self.request.GET, search_model=self.get_search_model()
+            data=self.request.GET.dict(),
+            search_model=self.get_search_model()
         )
