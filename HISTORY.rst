@@ -1,3 +1,10 @@
+4.2.7 (2022-07-XX)
+==================
+- Intercept document file and document version page transformation errors
+  and show a corresponding error template. This allows accessing the page
+  to fix the transformation error. Closes GitLab issue #1101. Thanks to
+  Munzir Taha (@munzirtaha) for the report.
+
 4.2.6 (2022-06-25)
 ==================
 - Backport document content parsing template method. This fix

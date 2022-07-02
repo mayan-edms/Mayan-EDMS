@@ -13,6 +13,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.converter.classes import ConverterBase
+from mayan.apps.converter.exceptions import AppImageError
 from mayan.apps.converter.models import LayerTransformation
 from mayan.apps.converter.settings import setting_image_generation_timeout
 from mayan.apps.converter.transformations import BaseTransformation
@@ -25,6 +26,7 @@ from ..events import (
     event_document_version_page_created, event_document_version_page_deleted,
     event_document_version_page_edited
 )
+from ..literals import IMAGE_ERROR_VERSION_PAGE_TRANSFORMATION_ERROR
 from ..managers import ValidDocumentVersionPageManager
 
 from .document_version_models import DocumentVersion
@@ -205,31 +207,36 @@ class DocumentVersionPage(
                 user=user
             )
         )
-        transformations_hash = BaseTransformation.combine(
-            transformations=transformation_list
-        )
+        try:
+            transformations_hash = BaseTransformation.combine(
+                transformations=transformation_list
+            )
+        except Exception as exception:
+            raise AppImageError(
+                error_name=IMAGE_ERROR_VERSION_PAGE_TRANSFORMATION_ERROR
+            ) from exception
+        else:
+            view_kwargs = view_kwargs or {
+                'document_id': self.document_version.document_id,
+                'document_version_id': self.document_version_id,
+                'document_version_page_id': self.pk
+            }
 
-        view_kwargs = view_kwargs or {
-            'document_id': self.document_version.document_id,
-            'document_version_id': self.document_version_id,
-            'document_version_page_id': self.pk
-        }
+            final_url = furl()
+            final_url.path = reverse(
+                viewname=viewname or 'rest_api:documentversionpage-image',
+                kwargs=view_kwargs
+            )
+            # Remove leading '?' character.
+            final_url.query = BaseTransformation.list_as_query_string(
+                transformation_instance_list=transformation_instance_list
+            )[1:]
+            final_url.args['_hash'] = transformations_hash
 
-        final_url = furl()
-        final_url.path = reverse(
-            viewname=viewname or 'rest_api:documentversionpage-image',
-            kwargs=view_kwargs
-        )
-        # Remove leading '?' character.
-        final_url.query = BaseTransformation.list_as_query_string(
-            transformation_instance_list=transformation_instance_list
-        )[1:]
-        final_url.args['_hash'] = transformations_hash
+            if maximum_layer_order is not None:
+                final_url.args['maximum_layer_order'] = maximum_layer_order
 
-        if maximum_layer_order is not None:
-            final_url.args['maximum_layer_order'] = maximum_layer_order
-
-        return final_url.tostr()
+            return final_url.tostr()
 
     def get_combined_cache_filename(
         self, maximum_layer_order=None, transformation_instance_list=None,

@@ -8,12 +8,14 @@ from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.converter.classes import ConverterBase
+from mayan.apps.converter.exceptions import AppImageError
 from mayan.apps.converter.models import LayerTransformation
 from mayan.apps.converter.settings import setting_image_generation_timeout
 from mayan.apps.converter.transformations import BaseTransformation
 from mayan.apps.file_caching.models import CachePartitionFile
 from mayan.apps.lock_manager.backends.base import LockingBackend
 
+from ..literals import IMAGE_ERROR_FILE_PAGE_TRANSFORMATION_ERROR
 from ..managers import DocumentFilePageManager, ValidDocumentFilePageManager
 
 from .document_file_models import DocumentFile
@@ -136,13 +138,18 @@ class DocumentFilePage(PagedModelMixin, models.Model):
         """
         transformation_instance_list = transformation_instance_list or ()
 
-        transformations_hash = BaseTransformation.combine(
-            transformations=self.get_combined_transformation_list(
-                maximum_layer_order=maximum_layer_order,
-                transformation_instance_list=transformation_instance_list,
-                user=user
+        try:
+            transformations_hash = BaseTransformation.combine(
+                transformations=self.get_combined_transformation_list(
+                    maximum_layer_order=maximum_layer_order,
+                    transformation_instance_list=transformation_instance_list,
+                    user=user
+                )
             )
-        )
+        except Exception as exception:
+            raise AppImageError(
+                error_name=IMAGE_ERROR_FILE_PAGE_TRANSFORMATION_ERROR
+            ) from exception
 
         final_url = furl()
         final_url.path = reverse(
