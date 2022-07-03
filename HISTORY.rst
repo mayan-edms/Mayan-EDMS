@@ -8,6 +8,7 @@
 
   - Normalize how the search "Match all" parameter is evaluated.
   - Fix evaluation of "Match all" when using a single level scoped search.
+  - Improve extraction of URL search query parameters.
 
 4.2.6 (2022-06-25)
 ==================
