@@ -1,4 +1,4 @@
-4.2.7 (2022-07-XX)
+4.2.7 (2022-07-01)
 ==================
 - Intercept document file and document version page transformation errors
   and show a corresponding error template. This allows accessing the page

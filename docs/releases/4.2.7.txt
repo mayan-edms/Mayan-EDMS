@@ -1,0 +1,66 @@
+Version 4.2.7
+=============
+
+Released: July 1, 2022
+
+Status: Stable
+
+Changes
+-------
+
+Documents
+^^^^^^^^^
+
+Document file and document version page transformation errors are now
+intercepted with a corresponding error template shown. This allows accessing
+the page to fix the transformation error.
+
+
+Search
+^^^^^^
+
+Some search fixes and improvements were backported from the development
+tree of the upcoming version 4.3:
+
+- Normalize how the search "Match all" parameter is evaluated.
+- Fix evaluation of "Match all" when using a single level scoped search.
+- Improve extraction of URL search query parameters.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1101` Server error when I paste an asset
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
