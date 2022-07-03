@@ -89,5 +89,6 @@ Issues closed
 -------------
 
 - :gitlab-issue:`957` Add document parser test to ensure office files are parsed for content
+- :gitlab-issue:`1110` Update dependency extract-msg to >= 0.32.0
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
