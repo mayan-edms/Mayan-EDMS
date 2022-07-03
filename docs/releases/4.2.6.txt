@@ -18,7 +18,7 @@ allows accessing the parsed content of a document directly in a template.
 Permissions
 ^^^^^^^^^^^
 
-Backportes permission form widget choice grouping and sorting improvements.
+Backported permission form widget choice grouping and sorting improvements.
 This fix improves the permission grouping by namespace when using the
 workflow action to modify the access control of a document or an object.
 
