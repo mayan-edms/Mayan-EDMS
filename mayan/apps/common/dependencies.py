@@ -212,7 +212,7 @@ PythonDependency(
 
 PythonDependency(
     environment=environment_documentation, module=__name__, name='Sphinx',
-    version_string='==3.5.4'
+    version_string='==4.5.0'
 )
 PythonDependency(
     environment=environment_documentation, module=__name__,

@@ -146,6 +146,7 @@
   - django-formtools from 2.2 to 2.3.
   - django-widget-tweaks from 1.4.9 to 1.4.12.
   - furl from 2.1.2 to 2.1.3.
+  - Sphinx from 3.5.4 to 4.5.0.
 
 - Silence warning about unordered object pagination for:
 
