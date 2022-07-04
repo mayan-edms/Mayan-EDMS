@@ -1,0 +1,69 @@
+.. _requirements:
+
+
+============
+Requirements
+============
+
+
+Minimum
+=======
+
+All deployment methods
+----------------------
+
+- RAM: 2 GB.
+- CPU: dual core, 32 bit, 1 GHz, Intel Core 2 Duo or similar.
+- Database manager: PostgreSQL 9.6.
+- Platform: GNU/Linux distributions or operating systems that support mature
+  virtualization and mature Docker with Docker Compose support.
+
+.. note::
+
+   Installation on devices with even lower specifications (like single
+   board computer with ARM CPUs) is possible with below minimal performance
+   and user experience expectations.
+
+.. note::
+
+   Due to the way container and virtualization technologies work, expected
+   a performance penalty if these are used. For best results, use hardware
+   that includes optimizations for virtualization and an operating system
+   with native support for containers.
+
+.. note::
+
+   Docker implementations may vary depending on the host operating system.
+   For best results use Docker on a well supported GNU/Linux distribution.
+
+
+Direct deployment method
+------------------------
+
+
+- |DEFAULT_OS_DISTRIBUTION| GNU/Linux or a derivative distribution.
+- Python version 3.7.
+
+
+Recommended
+===========
+
+
+All sizes
+---------
+
+- RAM: 4 GB or more.
+- CPU: 64 bit, 4 cores or more, 2 GHz or faster, third generation of the
+  Intel Core processors (Core i7, i5, i3) "IvyBridge" or better.
+- Storage: solid state drive.
+- Database manager: PostgreSQL 12 or later.
+
+
+Enterprise
+----------
+
+Each enterprise deployment is unique and there is no single requirement
+recommendation or guidance that applies to all.
+
+Please visit https://www.mayan-edms.com/support/ to discuss your deployment
+requirements.

@@ -3,51 +3,17 @@ Installation
 ============
 
 The easiest way to use Mayan EDMS is by using the official Docker_ image.
-Make sure Docker is properly installed and working before attempting to install
-Mayan EDMS.
+Make sure Docker is properly installed and working before attempting to
+install Mayan EDMS.
 
-Requirements
-============
-
-Minimum
--------
-
-- RAM: 2 GB.
-- CPU: dual core, 32 bit, 1 GHz, Intel Core 2 Duo or similar.
-- |DEFAULT_OS_DISTRIBUTION| GNU/Linux, or a derivative distribution is
-  doing a direct operating system installations. Other distributions or
-  operating systems can be used if they serve as host for a virtual machine
-  or have mature Docker and/or Docker Compose support.
-- Python version 3.7
-- PostgreSQL 9.6.
-
-.. note::
-
-   Installation on devices with even lower specifications (like single
-   board computer with ARM CPUs) is possible with below minimal performance
-   and user experience expectations.
-
-.. note::
-
-   Due to the way container and virtualization technologies work, expected
-   a performance penalty if these are used. For best results, use hardware
-   that includes optimizations for virtualization.
-
-.. note::
-
-   Docker is not a virtualization technology and its implementations may
-   vary depending on the host operating system. For best results use Docker
-   on a well supporte GNU/Linux distribution.
+Verify that your installation fulfills the minimum :ref:`requirements` to
+ensure you obtain a proper experience using Mayan EDMS.
 
 
-Recommended
------------
+.. toctree::
+    :hidden:
 
-- RAM: 4 GB or more.
-- CPU: 64 bit, 4 cores or more, 2 GHz or faster, Intel Core i5 or better.
-- Python version 3.9.
-- Storage: solid state storage.
-- PostgreSQL 12 or later.
+    ../chapters/requirements
 
 
 Installation methods
@@ -61,35 +27,55 @@ virtualization also known as containerization. It allows independent
 "containers" to run within a single Linux instance, avoiding the overhead
 of starting and maintaining virtual machines (VMs).
 
+Docker Compose
+--------------
+Docker Compose is a Docker plugin for defining and orchestrating Docker
+applications spanning multiple containers.
+
+
 .. note::
 
-   Starting with version 3.4, the preferred method of installation when using
-   Docker is with Docker Compose. The installation script at
-   ``https://get.mayan-edms.com`` and the :ref:`docker_install` are
-   deprecated and will be removed in the future.
+   This is the installation method recommended for the majority of cases.
+
 
 - :ref:`docker_compose_install`
-- :ref:`docker_install`
 
 .. toctree::
     :hidden:
 
     ../chapters/docker/install_docker_compose
-    ../chapters/docker/install_simple
 
 
-Direct installation
--------------------
+Kubernetes
+----------
 
-For users with knowledge of Python, Django, Ubuntu, and databases.
-
-- :doc:`../chapters/deploying`
+For enterprise installations.
 
 
-.. toctree::
-    :hidden:
+.. important::
 
-    ../chapters/deploying
+    This installation method requires deeper Docker knowledge and requires
+    additional software products like load balancers, object storage,
+    container registries, monitoring, among others.
+
+    Each enterprise deployment is unique and there is no single
+    recommendation or guidance that applies to all. For this reason
+    information on scaling up is not provided as it alone would be the topic
+    for an entire book.
+
+    If you or your organization needs to scale Mayan EDMS beyond what is
+    possible with a default installation, commercial services are available
+    and performed by members of the core team.
+
+    We have helped hundreds of companies scale up Mayan EDMS to host millions
+    of documents with unlimited growth potential as well as creating high
+    availability and fault tolerant deployments.
+
+    We would love to meet you and your team to have a discussion. For more
+    details, visit https://www.mayan-edms.com/support/
+
+
+Use the official Helm chart located at: https://gitlab.com/mayan-edms/helm-chart
 
 
 Portainer
@@ -104,6 +90,42 @@ For users with an existing installation of Portainer.
 
     ../chapters/portainer/installation
 
+
+Direct installation
+-------------------
+
+For users with advanced knowledge of Python, Django, Debian/Ubuntu, and
+database managers.
+
+.. warning::
+
+   This installation method is deprecated in favor of the Docker Compose
+   method and left here for documentation purposes only.
+
+- :doc:`../chapters/deploying`
+
+
+.. toctree::
+    :hidden:
+
+    ../chapters/deploying
+
+
+Manual Docker installation
+--------------------------
+
+.. warning::
+
+   This installation method is deprecated in favor of the Docker Compose
+   method and left here for documentation purposes only.
+
+
+- :ref:`docker_install`
+
+.. toctree::
+    :hidden:
+
+    ../chapters/docker/install_simple
 
 
 

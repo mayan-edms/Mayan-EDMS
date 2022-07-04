@@ -5,6 +5,13 @@
 Simple Docker installation
 ==========================
 
+
+.. warning::
+
+   Starting with version 3.4, the preferred method of installation when using
+   Docker is with Docker Compose.
+
+
 #. Install Docker:
 
    .. code-block:: console

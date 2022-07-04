@@ -19,6 +19,11 @@ Features
     cryptographic signatures or upload detached signatures for document
     signed after they were stored.
 
+- Signature captures.
+
+  - Signature captures are digital recording of handwritten signatures.
+  - Commonly used for business transactions and remote contract signing.
+
 - :doc:`User-defined document metadata <../chapters/metadata>`.
 
   - Several metadata fields can be matched to a document type as per technical,
@@ -58,8 +63,9 @@ Features
 
 - Full text searching.
 
-  - Documents can be searched by their text content, their metadata or any other
-    file attribute such as name, extension, etc.
+  - Documents can be searched by their text content, their metadata or any
+    other file attribute such as name, extension, etc. Multiple search
+    engines are supported.
 
 - :doc:`Configurable document grouping <../parts/categorization>`.
 
@@ -96,6 +102,8 @@ Features
   - Trigger external processes using the workflow. Execute actions in other
     systems when a document hits a specific state for complete business
     automation.
+  - Comply with regulations using automatic state expiration and workflow
+    escalation.
 
 - :doc:`Non destructive page remapping and disabling <../releases/4.0>`.
 

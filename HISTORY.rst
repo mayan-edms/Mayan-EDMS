@@ -389,6 +389,14 @@
   method.
 - Wrap search backend errors into a general exception with a short
   explanation.
+- Documentation updates:
+
+  - Set the Docker Compose installation method as the main method.
+  - Add warning notes for the deprecated installation methods.
+  - Expand the requirements section.
+  - Move the requirements to their on chapter.
+  - Update the features part.
+
 
 4.2.7 (2022-07-01)
 ==================

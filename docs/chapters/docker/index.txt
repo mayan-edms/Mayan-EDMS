@@ -14,34 +14,7 @@ provides an easy way to get started and will be sufficient for several
 thousand documents.
 
 
-.. important::
-
-    For larger installations, a distributed deployment will be required where
-    multiple Docker containers are started, each running a different part of the
-    software stack.
-
-    This requires deeper Docker knowledge and might require additional software
-    products like load balancers, object storage, container orchestration,
-    monitoring, self healing, among others.
-
-    Each multi container deployment is unique and there is no single
-    recommendation or guidance that applies to all. For this reason
-    information on scaling up is not provided as it alone would be the topic
-    of an entire book.
-
-    If you or your organization needs to scale Mayan EDMS beyond what is possible
-    with a default installation, commercial services are available and performed
-    by members of the core team.
-
-    We have helped hundred of companies scale up Mayan EDMS to host millions of
-    documents with unlimited growth potential as well as creating high
-    availability and fault tolerant deployments.
-
-    We would love to meet you and your team to have a discussion. For more details,
-    visit https://www.mayan-edms.com/support/
-
-
-- Installation: :doc:`install_simple` | :doc:`install_docker_network` | :doc:`docker_compose` | :doc:`start_stop`
+- Installation: :doc:`docker_compose` | :doc:`install_simple` | :doc:`install_docker_network` | :doc:`start_stop`
 - Setup: :doc:`environment_variables` | :doc:`drivers` | :doc:`customizing` | :doc:`user_scripts`
 - Integration: :doc:`accessing_data`
 - Development: :doc:`building` | :doc:`nightly`

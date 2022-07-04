@@ -1,8 +1,14 @@
-.. _deployment_basic:
+.. _deployment_direct:
 
 =================
 Direct deployment
 =================
+
+.. warning::
+
+   The direct deployment method is not recommended and intended for limited
+   scenarios.
+
 
 Mayan EDMS should be deployed like any other Django_ project and
 preferably using virtualenv_.
