@@ -85,6 +85,8 @@ DOCUMENT_VERSION_EXPORT_MIMETYPE = 'application/pdf'
 
 IMAGE_ERROR_NO_ACTIVE_VERSION = 'document_no_active_version'
 IMAGE_ERROR_NO_VERSION_PAGES = 'document_no_version_pages'
+IMAGE_ERROR_FILE_PAGE_TRANSFORMATION_ERROR = 'document_file_page_transformation_error'
+IMAGE_ERROR_VERSION_PAGE_TRANSFORMATION_ERROR = 'document_version_page_transformation_error'
 
 MONTH_NAMES = (
     _('January'), _('February'), _('March'), _('April'), _('May'),

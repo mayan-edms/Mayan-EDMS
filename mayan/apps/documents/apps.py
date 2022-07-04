@@ -159,7 +159,9 @@ from .links.trashed_document_links import (
     link_trash_can_empty
 )
 from .literals import (
-    IMAGE_ERROR_NO_ACTIVE_VERSION, IMAGE_ERROR_NO_VERSION_PAGES
+    IMAGE_ERROR_NO_ACTIVE_VERSION, IMAGE_ERROR_NO_VERSION_PAGES,
+    IMAGE_ERROR_FILE_PAGE_TRANSFORMATION_ERROR,
+    IMAGE_ERROR_VERSION_PAGE_TRANSFORMATION_ERROR
 )
 from .menus import menu_documents
 
@@ -255,6 +257,14 @@ class DocumentsApp(MayanAppConfig):
         AppImageErrorImage(
             name=IMAGE_ERROR_NO_VERSION_PAGES,
             template_name='documents/errors/no_version_pages.html'
+        )
+        AppImageErrorImage(
+            name=IMAGE_ERROR_FILE_PAGE_TRANSFORMATION_ERROR,
+            template_name='documents/errors/document_file_page_transformation_error.html'
+        )
+        AppImageErrorImage(
+            name=IMAGE_ERROR_VERSION_PAGE_TRANSFORMATION_ERROR,
+            template_name='documents/errors/document_version_page_transformation_error.html'
         )
 
         AJAXTemplate(

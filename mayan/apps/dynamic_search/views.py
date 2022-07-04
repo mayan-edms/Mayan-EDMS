@@ -173,5 +173,6 @@ class AdvancedSearchView(SearchView):
 
     def get_form(self):
         return AdvancedSearchForm(
-            data=self.request.GET, search_model=self.get_search_model()
+            data=self.request.GET.dict(),
+            search_model=self.get_search_model()
         )

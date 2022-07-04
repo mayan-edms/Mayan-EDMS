@@ -6,17 +6,30 @@
 {% converter_get_object_image_data obj=instance transformation_instance_list=transformation_instance_list as object_image_data %}
 
 <span class="instance-image-widget {{ container_class }}">
-    <span
-        class="spinner-container text-primary"
-        style="height: {% if display_full_height %}100%{% else %}{{ display_height|default:150 }}px{% endif %}; display: block;"
-    >
-        {% appearance_get_icon 'mayan.apps.documents.icons.icon_document_image_loading' %}
-    </span>
-    <img
-        alt="{{ image_alt }}"
-        class="thin_border {{ image_classes }}"
-        data-url="{{ object_image_data.url }}"
-        src="#"
-        style="{% if image_max_height %}max-height: {{ image_max_height }}; {% endif %}"
-     />
+    {% if 'app_image_error_image' in object_image_data %}
+        {# Hack to keep the stacked icons lined up top to the parent icon #}
+        <style>
+            a .fa-stack {
+                width: 2.4em;
+            }
+        </style>
+        {# Hack to keep the stacked icons from breaking up vertically #}
+        <span style="white-space: nowrap;">
+            {% include object_image_data.app_image_error_image.template_name %}
+        </span>
+    {% else %}
+        <span
+            class="spinner-container text-primary"
+            style="height: {% if display_full_height %}100%{% else %}{{ display_height|default:150 }}px{% endif %}; display: block;"
+        >
+            {% appearance_get_icon 'mayan.apps.documents.icons.icon_document_image_loading' %}
+        </span>
+        <img
+            alt="{{ image_alt }}"
+            class="thin_border {{ image_classes }}"
+            data-url="{{ object_image_data.url }}"
+            src="#"
+            style="{% if image_max_height %}max-height: {{ image_max_height }}; {% endif %}"
+         />
+    {% endif %}
 </span>
