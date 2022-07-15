@@ -5,8 +5,11 @@ from django.utils.encoding import force_text
 
 
 class NullFile:
+    def flush(self):
+        """Has no effect."""
+
     def write(self, string):
-        """Writes here go nowhere"""
+        """Writes here go nowhere."""
 
 
 def as_id_list(items):
