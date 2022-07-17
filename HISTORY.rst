@@ -265,10 +265,10 @@
   - ``checkversion`` replaced by ``dependencies_check_version``.
   - ``createautoadmin`` replaced by ``autoadmin_create``.
   - ``generaterequirements`` replaced by ``dependencies_generate_requirements``.
-  - ``initialsetup`` replaced by ``initial_setup``.
+  - ``initialsetup`` replaced by ``common_initial_setup``.
   - ``installdependencies`` replaced by ``dependencies_install``.
   - ``mountindex`` replaced by ``mirroring_mount_index``.
-  - ``performupgrade`` replaced by ``perform_upgrade``.
+  - ``performupgrade`` replaced by ``common_perform_upgrade``.
   - ``platformtemplate`` replaced by ``platform_template``.
   - ``preparestatic`` replaced by ``appearance_prepare_static``.
   - ``purgelocks`` replaced by ``lock_manager_purge_locks``.
@@ -398,6 +398,8 @@
   - Move the requirements to their on chapter.
   - Update the features part.
 
+- Add management command ``common_generate_random_secret_key`` to provide
+  random values suitable for use as ``SECRET_KEY``.
 
 4.2.7 (2022-07-01)
 ==================
