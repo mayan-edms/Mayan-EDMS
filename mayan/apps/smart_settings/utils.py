@@ -381,6 +381,11 @@ SettingNamespaceSingleton.register_setting(
 # Mayan
 
 SettingNamespaceSingleton.register_setting(
+    name='COMMON_DISABLE_LOCAL_STORAGE', klass=BaseSetting, kwargs={
+        'has_default': True, 'default_value': False
+    }
+)
+SettingNamespaceSingleton.register_setting(
     name='COMMON_DISABLED_APPS', klass=BaseSetting, kwargs={
         'critical': True, 'has_default': True, 'default_value': ()
     }

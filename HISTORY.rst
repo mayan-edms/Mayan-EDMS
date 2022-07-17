@@ -406,6 +406,12 @@
   - Move command code to a separate class.
   - Convert code to use pathlib.
 
+- Add support for disabling use of the media folder. Add the bootstrap
+  setting ``COMMON_DISABLE_LOCAL_STORAGE`` to disable use of the local
+  ``media`` folder. When using this setting, all apps must be also configured
+  via their respective storage backend settings to use alternate persistence
+  methods.
+
 4.2.7 (2022-07-01)
 ==================
 - Intercept document file and document version page transformation errors

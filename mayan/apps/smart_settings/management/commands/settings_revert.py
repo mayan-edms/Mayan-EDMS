@@ -1,7 +1,3 @@
-import errno
-from shutil import copyfile
-
-from django.conf import settings
 from django.core import management
 
 
@@ -10,16 +6,11 @@ class Command(management.BaseCommand):
 
     def handle(self, *args, **options):
         try:
-            copyfile(
-                src=settings.CONFIGURATION_LAST_GOOD_FILEPATH,
-                dst=settings.CONFIGURATION_FILEPATH
-            )
-        except IOError as exception:
-            if exception.errno == errno.ENOENT:
-                self.stdout.write(
-                    msg=self.style.NOTICE(
-                        'There is no last valid version to restore.'
-                    )
+            Setting.revert_configuration()
+        except Exception as exception:
+            self.stderr.write(
+                msg=self.style.NOTICE(
+                    str(exception)
                 )
-            else:
-                raise
+            )
+            exit(1)

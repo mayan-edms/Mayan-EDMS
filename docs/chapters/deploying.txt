@@ -186,7 +186,7 @@ The installation steps will be performed on |DEFAULT_OS_DISTRIBUTION|.
        MAYAN_LOCK_MANAGER_BACKEND="mayan.apps.lock_manager.backends.redis_lock.RedisLock" \
        MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS="{'redis_url':'redis://:|DEFAULT_REDIS_PASSWORD|@127.0.0.1:6379/2'}" \
        MAYAN_MEDIA_ROOT="|MAYAN_MEDIA_ROOT|" \
-       |MAYAN_BIN| initialsetup
+       |MAYAN_BIN| common_initial_setup
 
 
 #. Create the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
@@ -201,7 +201,7 @@ The installation steps will be performed on |DEFAULT_OS_DISTRIBUTION|.
 
    .. code-block:: console
 
-       sudo -u |DEFAULT_OS_USERNAME| MAYAN_MEDIA_ROOT="|MAYAN_MEDIA_ROOT|" |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_MEDIA_ROOT="|MAYAN_MEDIA_ROOT|" |MAYAN_BIN| platform_template supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
 
 
 #. Enable and restart the services [1_]:

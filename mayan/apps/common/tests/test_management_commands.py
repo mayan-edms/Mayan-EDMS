@@ -19,7 +19,7 @@ class CommonAppManagementCommandTestCase(BaseTransactionTestCase):
 
         with mute_stdout():
             management.call_command(
-                command_name='initial_setup', **options
+                command_name='common_initial_setup', **options
             )
 
     def _call_command_perform_upgrade(self):
@@ -29,7 +29,7 @@ class CommonAppManagementCommandTestCase(BaseTransactionTestCase):
 
         with mute_stdout():
             management.call_command(
-                command_name='perform_upgrade', **options
+                command_name='common_perform_upgrade', **options
             )
 
     def test_command_initial_setup_no_files(self):

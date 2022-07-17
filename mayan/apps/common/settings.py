@@ -4,7 +4,8 @@ from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import (
     DEFAULT_COMMON_COLLAPSE_LIST_MENU_LIST_FACET,
-    DEFAULT_COMMON_COLLAPSE_LIST_MENU_OBJECT, DEFAULT_COMMON_DISABLED_APPS,
+    DEFAULT_COMMON_COLLAPSE_LIST_MENU_OBJECT,
+    DEFAULT_COMMON_DISABLE_LOCAL_STORAGE, DEFAULT_COMMON_DISABLED_APPS,
     DEFAULT_COMMON_EXTRA_APPS, DEFAULT_COMMON_EXTRA_APPS_PRE,
     DEFAULT_COMMON_HOME_VIEW, DEFAULT_COMMON_HOME_VIEW_DASHBOARD_NAME,
     DEFAULT_COMMON_PROJECT_TITLE,
@@ -29,6 +30,14 @@ setting_collapse_list_menu_object = namespace.add_setting(
     help_text=_(
         'In list mode, show the "object" menu options as a dropdown menu '
         'instead of individual buttons.'
+    )
+)
+setting_disable_local_storage = namespace.add_setting(
+    default=DEFAULT_COMMON_DISABLE_LOCAL_STORAGE,
+    global_name='COMMON_DISABLE_LOCAL_STORAGE', help_text=_(
+        'Disables the use of the local `media` folder. When using this '
+        'setting, all apps must be also configured via their respective '
+        'storage backend settings to use alternate persistence.'
     )
 )
 setting_disabled_apps = namespace.add_setting(

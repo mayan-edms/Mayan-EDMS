@@ -1,2 +1,2 @@
 # DEPRECATION: Remove in version >= 4.4.
-from .initial_setup import *  # NOQA
+from .common_initial_setup import *  # NOQA

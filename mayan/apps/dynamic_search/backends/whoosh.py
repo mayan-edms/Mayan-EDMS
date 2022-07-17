@@ -74,58 +74,61 @@ class WhooshSearchBackend(SearchBackend):
         return '\n'.join(result)
 
     def _initialize(self):
-        self.index_path.mkdir(exist_ok=True)
+        if not settings.COMMON_DISABLE_LOCAL_STORAGE:
+            self.index_path.mkdir(exist_ok=True)
 
     def _search(
         self, query, search_model, user, global_and_search=False,
         ignore_limit=False
     ):
-        index = self.get_or_create_index(search_model=search_model)
+        if not settings.COMMON_DISABLE_LOCAL_STORAGE:
+            index = self.get_or_create_index(search_model=search_model)
 
-        id_list = []
-        with index.searcher() as searcher:
-            search_string = []
+            id_list = []
+            with index.searcher() as searcher:
+                search_string = []
 
-            for key, value in query.items():
-                search_string.append(
-                    '{}:({})'.format(key, value)
+                for key, value in query.items():
+                    search_string.append(
+                        '{}:({})'.format(key, value)
+                    )
+
+                global_logic_string = ' AND ' if global_and_search else ' OR '
+                search_string = global_logic_string.join(search_string)
+
+                logger.debug('search_string: %s', search_string)
+
+                parser = qparser.QueryParser(
+                    fieldname='_', schema=index.schema
                 )
+                parser.remove_plugin_class(cls=qparser.WildcardPlugin)
+                parser.add_plugin(pin=qparser.PrefixPlugin())
+                whoosh_query = parser.parse(text=search_string)
 
-            global_logic_string = ' AND ' if global_and_search else ' OR '
-            search_string = global_logic_string.join(search_string)
+                if ignore_limit:
+                    limit = None
+                else:
+                    limit = setting_results_limit.value
 
-            logger.debug('search_string: %s', search_string)
+                results = searcher.search(q=whoosh_query, limit=limit)
 
-            parser = qparser.QueryParser(
-                fieldname='_', schema=index.schema
-            )
-            parser.remove_plugin_class(cls=qparser.WildcardPlugin)
-            parser.add_plugin(pin=qparser.PrefixPlugin())
-            whoosh_query = parser.parse(text=search_string)
+                logger.debug('results: %s', results)
 
-            if ignore_limit:
-                limit = None
-            else:
-                limit = setting_results_limit.value
+                for result in results:
+                    id_list.append(result['id'])
 
-            results = searcher.search(q=whoosh_query, limit=limit)
-
-            logger.debug('results: %s', results)
-
-            for result in results:
-                id_list.append(result['id'])
-
-        return search_model.get_queryset().filter(
-            id__in=id_list
-        ).distinct()
+            return search_model.get_queryset().filter(
+                id__in=id_list
+            ).distinct()
 
     def clear_search_model_index(self, search_model):
         schema = self.get_search_model_schema(search_model=search_model)
 
-        # Clear the model index.
-        self.get_storage().create_index(
-            indexname=search_model.get_full_name(), schema=schema
-        )
+        if not settings.COMMON_DISABLE_LOCAL_STORAGE:
+            # Clear the model index.
+            self.get_storage().create_index(
+                indexname=search_model.get_full_name(), schema=schema
+            )
 
     def deindex_instance(self, instance):
         try:
@@ -139,8 +142,9 @@ class WhooshSearchBackend(SearchBackend):
                 search_model = SearchModel.get_for_model(instance=instance)
                 index = self.get_or_create_index(search_model=search_model)
 
-                with index.writer(**self.writer_kwargs) as writer:
-                    writer.delete_by_term('id', str(instance.pk))
+                if not settings.COMMON_DISABLE_LOCAL_STORAGE:
+                    with index.writer(**self.writer_kwargs) as writer:
+                        writer.delete_by_term('id', str(instance.pk))
             finally:
                 lock.release()
 
@@ -180,36 +184,37 @@ class WhooshSearchBackend(SearchBackend):
         else:
             try:
                 search_model = SearchModel.get_for_model(instance=instance)
-                index = self.get_or_create_index(search_model=search_model)
+                if not settings.COMMON_DISABLE_LOCAL_STORAGE:
+                    index = self.get_or_create_index(search_model=search_model)
 
-                with index.writer(**self.writer_kwargs) as writer:
-                    kwargs = search_model.populate(
-                        backend=self, instance=instance,
-                        exclude_model=exclude_model,
-                        exclude_kwargs=exclude_kwargs
-                    )
-
-                    try:
-                        writer.delete_by_term('id', str(instance.pk))
-                        writer.add_document(**kwargs)
-                    except Exception as exception:
-                        logger.error(
-                            'Unexpected exception while indexing object '
-                            'id: %(id)s, search model: %(search_model)s, '
-                            'index data: %(index_data)s, raw data: '
-                            '%(raw_data)s, field map: %(field_map)s; '
-                            '%(exception)s' % {
-                                'exception': exception,
-                                'field_map': self.get_resolved_field_map(
-                                    search_model=search_model
-                                ),
-                                'id': instance.pk,
-                                'index_data': kwargs,
-                                'raw_data': instance.__dict__,
-                                'search_model': search_model.get_full_name()
-                            }, exc_info=True
+                    with index.writer(**self.writer_kwargs) as writer:
+                        kwargs = search_model.populate(
+                            backend=self, instance=instance,
+                            exclude_model=exclude_model,
+                            exclude_kwargs=exclude_kwargs
                         )
-                        raise
+
+                        try:
+                            writer.delete_by_term('id', str(instance.pk))
+                            writer.add_document(**kwargs)
+                        except Exception as exception:
+                            logger.error(
+                                'Unexpected exception while indexing object '
+                                'id: %(id)s, search model: %(search_model)s, '
+                                'index data: %(index_data)s, raw data: '
+                                '%(raw_data)s, field map: %(field_map)s; '
+                                '%(exception)s' % {
+                                    'exception': exception,
+                                    'field_map': self.get_resolved_field_map(
+                                        search_model=search_model
+                                    ),
+                                    'id': instance.pk,
+                                    'index_data': kwargs,
+                                    'raw_data': instance.__dict__,
+                                    'search_model': search_model.get_full_name()
+                                }, exc_info=True
+                            )
+                            raise
             except whoosh.index.LockError:
                 raise DynamicSearchRetry
             finally:
@@ -227,34 +232,35 @@ class WhooshSearchBackend(SearchBackend):
             raise
         else:
             try:
-                index = self.get_or_create_index(search_model=search_model)
+                if not settings.COMMON_DISABLE_LOCAL_STORAGE:
+                    index = self.get_or_create_index(search_model=search_model)
 
-                writer = BufferedWriter(index=index)
-                for instance in queryset:
-                    kwargs = search_model.populate(
-                        backend=self, instance=instance
-                    )
-                    try:
-                        writer.update_document(**kwargs)
-                    except Exception as exception:
-                        logger.error(
-                            'Unexpected exception while indexing search model '
-                            '%(search_model)s, id_list: %(id_list)s, '
-                            'index data: %(index_data)s, raw data: '
-                            '%(raw_data)s, field map: %(field_map)s; '
-                            '%(exception)s' % {
-                                'exception': exception,
-                                'field_map': self.get_resolved_field_map(
-                                    search_model=search_model
-                                ),
-                                'id_list': id_list,
-                                'index_data': kwargs,
-                                'raw_data': instance.__dict__,
-                                'search_model': search_model.get_full_name()
-                            }, exc_info=True
+                    writer = BufferedWriter(index=index)
+                    for instance in queryset:
+                        kwargs = search_model.populate(
+                            backend=self, instance=instance
                         )
-                        raise
-                writer.close()
+                        try:
+                            writer.update_document(**kwargs)
+                        except Exception as exception:
+                            logger.error(
+                                'Unexpected exception while indexing search model '
+                                '%(search_model)s, id_list: %(id_list)s, '
+                                'index data: %(index_data)s, raw data: '
+                                '%(raw_data)s, field map: %(field_map)s; '
+                                '%(exception)s' % {
+                                    'exception': exception,
+                                    'field_map': self.get_resolved_field_map(
+                                        search_model=search_model
+                                    ),
+                                    'id_list': id_list,
+                                    'index_data': kwargs,
+                                    'raw_data': instance.__dict__,
+                                    'search_model': search_model.get_full_name()
+                                }, exc_info=True
+                            )
+                            raise
+                    writer.close()
             except whoosh.index.LockError:
                 raise DynamicSearchRetry
             finally:
@@ -270,8 +276,9 @@ class WhooshSearchBackend(SearchBackend):
         else:
             search_models = SearchModel.all()
 
-        for search_model in search_models:
-            self.clear_search_model_index(search_model=search_model)
+        if not settings.COMMON_DISABLE_LOCAL_STORAGE:
+            for search_model in search_models:
+                self.clear_search_model_index(search_model=search_model)
 
     def update_mappings(self, search_model=None):
         if search_model:
@@ -279,5 +286,6 @@ class WhooshSearchBackend(SearchBackend):
         else:
             search_models = SearchModel.all()
 
-        for search_model in search_models:
-            self.get_or_create_index(search_model=search_model)
+        if not settings.COMMON_DISABLE_LOCAL_STORAGE:
+            for search_model in search_models:
+                self.get_or_create_index(search_model=search_model)

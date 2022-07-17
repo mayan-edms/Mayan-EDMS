@@ -221,12 +221,12 @@ services:
     profiles:
       - extra_celery_beat
 
-  command_initialsetup_or_performupgrade:
+  setup_or_upgrade:
     <<: *mayan-container
     command:
-      - run_initialsetup_or_performupgrade
+      - run_initial_setup_or_perform_upgrade
     profiles:
-      - extra_command_initialsetup_or_performupgrade
+      - extra_setup_or_upgrade
     restart: "no"
 
   rabbitmq:

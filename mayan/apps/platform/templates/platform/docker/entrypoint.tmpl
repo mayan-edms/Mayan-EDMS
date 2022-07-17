@@ -10,19 +10,19 @@ apt_get_install() {
     rm --force --recursive /var/lib/apt/lists/*
 }
 
-initialsetup() {
-    echo "mayan: initialsetup()"
+initial_setup() {
+    echo "mayan: initial_setup()"
 
-    su mayan --command "${MAYAN_BIN} initialsetup --force --no-dependencies"
+    su mayan --command "${MAYAN_BIN} common_initial_setup --force --no-dependencies"
 }
 
 make_ready() {
     # Check if this is a new install, otherwise try to upgrade the existing
     # installation on subsequent starts.
     if [ ! -f $INSTALL_FLAG ]; then
-        initialsetup
+        initial_setup
     else
-        performupgrade
+        perform_upgrade
     fi
 }
 
@@ -33,9 +33,9 @@ os_package_installs() {
     fi
 }
 
-performupgrade() {
-    echo "mayan: performupgrade()"
-    su mayan --command "${MAYAN_BIN} performupgrade --no-dependencies"
+perform_upgrade() {
+    echo "mayan: perform_upgrade()"
+    su mayan --command "${MAYAN_BIN} common_perform_upgrade --no-dependencies"
 }
 
 pip_installs() {
@@ -172,15 +172,15 @@ run_frontend)
     /usr/local/bin/run_frontend.sh
     ;;
 
-run_initialsetup)
-    initialsetup
+run_initial_setup)
+    initial_setup
     ;;
 
-run_performupgrade)
-    performupgrade
+run_perform_upgrade)
+    perform_upgrade
     ;;
 
-run_initialsetup_or_performupgrade)
+run_initial_setup_or_perform_upgrade)
     make_ready
     ;;
 

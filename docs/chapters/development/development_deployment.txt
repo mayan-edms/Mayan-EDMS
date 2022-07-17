@@ -49,7 +49,7 @@ Development deployment
 
    .. code-block:: console
 
-     ./manage.py initialsetup
+     ./manage.py common_initial_setup
 
 #. Launch the development server
 
