@@ -400,6 +400,11 @@
 
 - Add management command ``common_generate_random_secret_key`` to provide
   random values suitable for use as ``SECRET_KEY``.
+- Refactor initial setup and upgrade commands:
+
+  - Consolidate management command code.
+  - Move command code to a separate class.
+  - Convert code to use pathlib.
 
 4.2.7 (2022-07-01)
 ==================
