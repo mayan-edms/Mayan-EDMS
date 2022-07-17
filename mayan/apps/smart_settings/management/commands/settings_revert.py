@@ -1,5 +1,7 @@
 from django.core import management
 
+from ...classes import Setting
+
 
 class Command(management.BaseCommand):
     help = 'Rollback the configuration file to the last valid version.'

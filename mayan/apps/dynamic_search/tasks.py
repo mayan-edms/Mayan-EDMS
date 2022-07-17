@@ -18,6 +18,7 @@ from .literals import (
 
 logger = logging.getLogger(name=__name__)
 
+
 @app.task(
     bind=True, ignore_result=True,
     max_retries=TASK_DEINDEX_INSTANCE_MAX_RETRIES, retry_backoff=True,

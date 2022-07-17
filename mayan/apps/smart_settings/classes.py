@@ -16,6 +16,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.serialization import yaml_dump, yaml_load
 
+from .exceptions import BaseSettingsException
 from .literals import (
     NAMESPACE_VERSION_INITIAL, SMART_SETTINGS_NAMESPACES_NAME
 )
