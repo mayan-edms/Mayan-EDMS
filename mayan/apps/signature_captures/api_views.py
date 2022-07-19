@@ -46,9 +46,6 @@ class APISignatureCapturesImageView(
     }
     queryset = SignatureCapture.valid.all()
 
-    def get_stream_mime_type(self):
-        return 'image/png'
-
 
 class APISignatureCaptureListView(
     ExternalObjectAPIViewMixin, generics.ListCreateAPIView

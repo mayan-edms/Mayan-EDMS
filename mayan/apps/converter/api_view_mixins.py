@@ -4,6 +4,8 @@ from django.core.files.base import File
 from django.http import StreamingHttpResponse
 from django.views.decorators.cache import patch_cache_control
 
+from mayan.apps.mime_types.classes import MIMETypeBackend
+
 from .settings import (
     setting_image_cache_time, setting_image_generation_timeout
 )
@@ -15,17 +17,22 @@ class APIImageViewMixin:
     """
     get: Returns an image representation of the selected object.
     """
+    def get_content_type(self):
+        return ContentType.objects.get_for_model(model=self.obj)
+
     def get_serializer(self, *args, **kwargs):
         return None
 
     def get_serializer_class(self):
         return None
 
-    def get_content_type(self):
-        return ContentType.objects.get_for_model(model=self.obj)
-
     def get_stream_mime_type(self):
-        return 'image'
+        mime_type_backend = MIMETypeBackend.get_backend_instance()
+        with self.cache_file.open() as file_object:
+            mime_type, mime_encoding = mime_type_backend.get_mime_type(
+                file_object=file_object, mime_type_only=True
+            )
+            return mime_type
 
     def retrieve(self, request, **kwargs):
         self.set_object()
@@ -47,7 +54,7 @@ class APIImageViewMixin:
                 'object_id': self.obj.pk,
                 'maximum_layer_order': maximum_layer_order,
                 'transformation_dictionary_list': transformation_dictionary_list,
-                'user_id': request.user.pk,
+                'user_id': request.user.pk
             }
         )
 
@@ -60,10 +67,10 @@ class APIImageViewMixin:
 
         cache_filename = task.get(**kwargs)
 
-        cache_file = self.obj.cache_partition.get_file(filename=cache_filename)
+        self.cache_file = self.obj.cache_partition.get_file(filename=cache_filename)
 
         def file_generator():
-            with cache_file.open() as file_object:
+            with self.cache_file.open() as file_object:
                 while True:
                     chunk = file_object.read(File.DEFAULT_CHUNK_SIZE)
                     if not chunk:
@@ -72,14 +79,14 @@ class APIImageViewMixin:
                         yield chunk
 
         response = StreamingHttpResponse(
-            streaming_content=file_generator(),
-            content_type=self.get_stream_mime_type()
+            content_type=self.get_stream_mime_type(),
+            streaming_content=file_generator()
         )
 
         if '_hash' in request.GET:
             patch_cache_control(
-                response=response,
-                max_age=setting_image_cache_time.value
+                max_age=setting_image_cache_time.value,
+                response=response
             )
         return response
 

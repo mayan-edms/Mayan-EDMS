@@ -411,6 +411,10 @@
   ``media`` folder. When using this setting, all apps must be also configured
   via their respective storage backend settings to use alternate persistence
   methods.
+- When serving images using ``APIImageViewMixin``, detect the MIME type of
+  the data before sending the stream. This ensures the image will load
+  correctly in all browsers that require a MIME type value in the header of
+  the stream.
 
 4.2.7 (2022-07-01)
 ==================
