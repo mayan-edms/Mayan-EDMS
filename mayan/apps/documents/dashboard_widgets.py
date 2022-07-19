@@ -169,7 +169,7 @@ class DashboardWidgetUserRecentlyCreatedDocuments(DashboardWidgetList):
         queryset = RecentlyCreatedDocument.valid.all()
 
         return AccessControlList.objects.restrict_queryset(
-            permission=permission_document_type_view, user=self.request.user,
+            permission=permission_document_view, user=self.request.user,
             queryset=queryset
         )
 

@@ -1,3 +1,10 @@
+4.2.8 (2022-07-XX)
+==================
+- Fix the permission requirement of the recently created documents dashboard
+  widget. The widget should filter by document view and not document type
+  view permission. Thanks to forum user LeVon Smoker (@lsmoker) for
+  the report.
+
 4.2.7 (2022-07-01)
 ==================
 - Intercept document file and document version page transformation errors
