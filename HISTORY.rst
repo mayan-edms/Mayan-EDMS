@@ -4,6 +4,8 @@
   widget. The widget should filter by document view and not document type
   view permission. Thanks to forum user LeVon Smoker (@lsmoker) for
   the report.
+- Update Django to version 3.2.14.
+  https://docs.djangoproject.com/en/4.0/releases/3.2.14/
 
 4.2.7 (2022-07-01)
 ==================
