@@ -4,9 +4,10 @@
   widget. The widget should filter by document view and not document type
   view permission. Thanks to forum user LeVon Smoker (@lsmoker) for
   the report.
-- Update Django to version 3.2.14.
+- Update Django from version 3.2.13 to 3.2.14.
   https://docs.djangoproject.com/en/4.0/releases/3.2.14/
-- Update Pillow to version 8.3.2.
+- Update Pillow from version 8.3.1 to 8.3.2.
+- Update safety from version 1.10.3 to 2.1.1.
 
 4.2.7 (2022-07-01)
 ==================
