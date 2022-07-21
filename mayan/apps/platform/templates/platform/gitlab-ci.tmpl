@@ -165,6 +165,7 @@ job_docker_testing:
   image: {{ DOCKER_DIND_IMAGE_VERSION }}
   only:
     - releases/testing
+    - releases/testing_docker
   script:
     - mkdir -p /etc/docker
     - if [ "${REGISTRY_MIRRORS}" ]; then echo "{\"registry-mirrors\":\[\"${REGISTRY_MIRRORS}\"\]}" > /etc/docker/daemon.json; fi
@@ -246,6 +247,7 @@ job_python_build:
     - releases/python_major
     - releases/python_minor
     - releases/testing
+    - releases/testing_python
   script:
     - pip install --requirement requirements/build.txt
     - make python-wheel
@@ -267,6 +269,7 @@ job_python_push_pypi:
     - releases/python_major
     - releases/python_minor
     - releases/testing
+    - releases/testing_python
   script:
     - pip install --requirement requirements/build.txt
     - echo "$PYPIRC" > ~/.pypirc

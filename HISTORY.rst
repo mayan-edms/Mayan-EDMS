@@ -12,6 +12,8 @@
 - Remove the package ``firefox-geckdriver`` from the make file target
   ``setup-dev-environment`` as it is no longer available in recent OS LTS
   releases.
+- Update the GitLab CI file to support releasing testing build of the
+  Python library and the Docker image separately.
 
 4.2.7 (2022-07-01)
 ==================
