@@ -9,6 +9,9 @@
 - Update Pillow from version 8.3.1 to 8.3.2.
 - Update safety from version 1.10.3 to 2.1.1.
 - Update cryptodome from version 3.10.1 to 3.10.4.
+- Remove the package ``firefox-geckdriver`` from the make file target
+  ``setup-dev-environment`` as it is no longer available in recent OS LTS
+  releases.
 
 4.2.7 (2022-07-01)
 ==================
