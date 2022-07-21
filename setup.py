@@ -99,7 +99,7 @@ mock==4.0.3
 node-semver==0.8.0
 packaging==21.0
 pycountry==20.7.3
-pycryptodome==3.10.1
+pycryptodome==3.10.4
 pyotp==2.6.0
 python-dateutil==2.8.2
 python-magic==0.4.24

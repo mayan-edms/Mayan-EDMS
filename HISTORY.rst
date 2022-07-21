@@ -8,6 +8,7 @@
   https://docs.djangoproject.com/en/4.0/releases/3.2.14/
 - Update Pillow from version 8.3.1 to 8.3.2.
 - Update safety from version 1.10.3 to 2.1.1.
+- Update cryptodome from version 3.10.1 to 3.10.4.
 
 4.2.7 (2022-07-01)
 ==================
