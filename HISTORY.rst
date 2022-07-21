@@ -6,6 +6,7 @@
   the report.
 - Update Django to version 3.2.14.
   https://docs.djangoproject.com/en/4.0/releases/3.2.14/
+- Update Pillow to version 8.3.2.
 
 4.2.7 (2022-07-01)
 ==================

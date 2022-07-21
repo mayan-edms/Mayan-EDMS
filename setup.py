@@ -61,7 +61,7 @@ def find_packages(directory):
 
 install_requires = """
 django==3.2.14
-Pillow==8.3.1
+Pillow==8.3.2
 PyPDF2==1.26.0
 PyYAML==5.4.1
 Whoosh==2.7.4
