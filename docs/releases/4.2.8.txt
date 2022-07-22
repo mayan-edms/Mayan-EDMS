@@ -1,0 +1,86 @@
+Version 4.2.8
+=============
+
+Released: July 22, 2022
+
+Status: Stable
+
+Changes
+-------
+
+
+CD/CI
+^^^^^
+
+The GitLab CI file was updated to support releasing testing builds of the
+Python library and the Docker image separately. The new GitOps branches
+are ``releases/testing_docker`` and ``releases/testing_python``. The
+existing GitOps branch of ``releases/testing`` is preserved and continues to
+behave as usual.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+The following Python dependencies were updated:
+
+- Django from version 3.2.13 to 3.2.14
+- Pillow from version 8.3.1 to 8.3.2.
+- cryptodome from version 3.10.1 to 3.10.4.
+- PyPDF2 from version 1.26.0 to 1.28.4.
+- Sphinx from version 3.5.4 to 4.5.0.
+
+The Docker Debian base image was updated from ``debian:11.3-slim`` to to
+``debian:11.4-slim``.
+
+The package ``firefox-geckdriver`` was removed from the make file target
+``setup-dev-environment`` as it is no longer available in recent OS LTS
+releases.
+
+
+Documents
+^^^^^^^^^
+
+Fixed the permission requirement of the recently created documents dashboard
+widget. The widget should filter by document view and not document type
+view permission.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1106` Exception determining pdf page count : Could not find xref table at specified location
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

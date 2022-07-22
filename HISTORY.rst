@@ -1,4 +1,4 @@
-4.2.8 (2022-07-21)
+4.2.8 (2022-07-22)
 ==================
 - Fix the permission requirement of the recently created documents dashboard
   widget. The widget should filter by document view and not document type
