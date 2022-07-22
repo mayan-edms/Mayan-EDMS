@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-21 23:46+0000\n"
+"POT-Creation-Date: 2022-07-22 04:06+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -1352,11 +1352,11 @@ msgstr "Vista previa de la imagen de la página del documento"
 
 #: templates/documents/errors/document_file_page_transformation_error.html:5
 msgid "Document file page transformation error"
-msgstr ""
+msgstr "Error de transformación de página de archivo de documento"
 
 #: templates/documents/errors/document_version_page_transformation_error.html:5
 msgid "Document version page transformation error"
-msgstr ""
+msgstr "Error de transformación de página de versión de documento"
 
 #: templates/documents/errors/no_valid_version.html:5
 msgid "No valid or active version"
