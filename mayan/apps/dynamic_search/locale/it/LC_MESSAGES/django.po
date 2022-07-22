@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-24 20:40+0000\n"
+"POT-Creation-Date: 2022-07-22 04:06+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -25,12 +25,12 @@ msgstr ""
 msgid "Dynamic search"
 msgstr "Ricerca dinamica"
 
-#: classes.py:562
+#: classes.py:568
 #, python-format
 msgid "Unknown search model `%s`."
 msgstr ""
 
-#: classes.py:619
+#: classes.py:625
 msgid "ID"
 msgstr "ID"
 
@@ -52,11 +52,11 @@ msgid "Search terms"
 msgstr "Cerca termini "
 
 #: links.py:13 permissions.py:5 queues.py:7 settings.py:11
-#: templates/dynamic_search/search_box.html:45 views.py:122 views.py:135
+#: templates/dynamic_search/search_box.html:45 views.py:126 views.py:139
 msgid "Search"
 msgstr "Cerca"
 
-#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:154
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:163
 msgid "Advanced search"
 msgstr "Ricerca avanzata"
 
@@ -64,7 +64,7 @@ msgstr "Ricerca avanzata"
 msgid "Search again"
 msgstr "Cerca ancora"
 
-#: links.py:25 views.py:100
+#: links.py:25 views.py:104
 msgid "Reindex search backend"
 msgstr "Reindicizza il backend di ricerca"
 
@@ -125,20 +125,20 @@ msgstr "Numero massimo di risultati di ricerca da recuperare e visualizzare."
 msgid "Advanced"
 msgstr "Avanzato"
 
-#: views.py:41
+#: views.py:42
 msgid "Try again using different terms. "
 msgstr "Riprova usando termini diversi."
 
-#: views.py:43
+#: views.py:44
 msgid "No search results"
 msgstr "Nessun risultato trovato"
 
-#: views.py:45
+#: views.py:46
 #, python-format
 msgid "Search results for: %s"
 msgstr "Risultati ricerca per: %s"
 
-#: views.py:96
+#: views.py:100
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
@@ -146,16 +146,16 @@ msgstr ""
 "Questo strumento è richiesto solo per alcuni backend di ricerca. I risultati"
 " della ricerca saranno influenzati durante la reindicizzazione del backend."
 
-#: views.py:102
+#: views.py:106
 msgid "This tool erases and populates the search backend's internal index."
 msgstr ""
 "Questo strumento cancella e popola l'indice interno del backend di ricerca."
 
-#: views.py:115
+#: views.py:119
 msgid "Search backend reindexing queued."
 msgstr "Reindicizzazione del backend di ricerca in coda."
 
-#: views.py:137
+#: views.py:141
 #, python-format
 msgid "Search for: %s"
 msgstr "Cerca: %s"

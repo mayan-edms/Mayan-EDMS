@@ -416,6 +416,27 @@
   correctly in all browsers that require a MIME type value in the header of
   the stream.
 
+4.2.8 (2022-07-22)
+==================
+- Fix the permission requirement of the recently created documents dashboard
+  widget. The widget should filter by document view and not document type
+  view permission. Thanks to forum user LeVon Smoker (@lsmoker) for
+  the report.
+- Update Django from version 3.2.13 to 3.2.14.
+  https://docs.djangoproject.com/en/4.0/releases/3.2.14/
+- Update Pillow from version 8.3.1 to 8.3.2.
+- Update cryptodome from version 3.10.1 to 3.10.4.
+- Remove the package ``firefox-geckdriver`` from the make file target
+  ``setup-dev-environment`` as it is no longer available in recent OS LTS
+  releases.
+- Update the GitLab CI file to support releasing testing build of the
+  Python library and the Docker image separately.
+- Update Docker Debian base image from debian:11.3-slim to to
+  debian:11.4-slim. https://www.debian.org/News/2022/20220709
+- Update PyPDF2 from version 1.26.0 to 1.28.4. Closes GitLab issue #1106.
+  Thanks to Stefan Denker (@denkerszaf) for the report and investigation.
+- Update Sphinx from version 3.5.4 to 4.5.0 to avoid bug #9038.
+
 4.2.7 (2022-07-01)
 ==================
 - Intercept document file and document version page transformation errors

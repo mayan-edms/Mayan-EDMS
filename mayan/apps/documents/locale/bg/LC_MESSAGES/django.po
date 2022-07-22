@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-24 20:40+0000\n"
+"POT-Creation-Date: 2022-07-22 04:06+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -23,21 +23,21 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:215 apps.py:647 events.py:5 menus.py:8
+#: apps.py:217 apps.py:657 events.py:5 menus.py:8
 #: models/document_models.py:131 permissions.py:5 queues.py:21 settings.py:33
 #: statistics.py:230
 msgid "Documents"
 msgstr "Документи"
 
-#: apps.py:269
+#: apps.py:279
 msgid "Decorations"
 msgstr "Декорации"
 
-#: apps.py:288
+#: apps.py:298
 msgid "Create a document type"
 msgstr "Създайте тип документ"
 
-#: apps.py:290
+#: apps.py:300
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
@@ -45,46 +45,46 @@ msgstr ""
 "На всеки качен документ трябва да бъде присвоен тип документ, това е "
 "основният начин, по който Mayan EDMS категоризира документите."
 
-#: apps.py:391
+#: apps.py:401
 msgid "File comments"
 msgstr "Файлови коментари"
 
-#: apps.py:395
+#: apps.py:405
 msgid "File encodings"
 msgstr "Файлови кодирания"
 
-#: apps.py:399
+#: apps.py:409
 msgid "File MIME types"
 msgstr "Файлови MIME типове"
 
-#: apps.py:403
+#: apps.py:413
 msgid "File timestamps"
 msgstr "Файлови времеви печати"
 
-#: apps.py:408 links/document_file_page_links.py:79
-#: models/document_file_models.py:120 models/document_file_page_models.py:34
+#: apps.py:418 links/document_file_page_links.py:79
+#: models/document_file_models.py:120 models/document_file_page_models.py:36
 #: search.py:52
 msgid "Document file"
 msgstr "Файл на документа"
 
-#: apps.py:412 models/document_file_page_models.py:38
-#: models/document_version_page_models.py:50
+#: apps.py:422 models/document_file_page_models.py:40
+#: models/document_version_page_models.py:52
 msgid "Page number"
 msgstr "Номер на страница"
 
-#: apps.py:417
+#: apps.py:427
 msgid "Return the latest file of the document."
 msgstr "Върнете най-новия файл на документа."
 
-#: apps.py:418
+#: apps.py:428
 msgid "Latest file"
 msgstr "Последен файл"
 
-#: apps.py:421
+#: apps.py:431
 msgid "Return the document instance."
 msgstr "Върнете екземпляра на документа."
 
-#: apps.py:422 links/document_file_links.py:63
+#: apps.py:432 links/document_file_links.py:63
 #: links/document_file_page_links.py:73 links/document_version_links.py:75
 #: links/document_version_page_links.py:102 models/document_file_models.py:76
 #: models/document_models.py:130 models/document_version_models.py:46
@@ -93,25 +93,25 @@ msgstr "Върнете екземпляра на документа."
 msgid "Document"
 msgstr "Документ"
 
-#: apps.py:552 apps.py:604 apps.py:633 apps.py:667 apps.py:692
+#: apps.py:562 apps.py:614 apps.py:643 apps.py:677 apps.py:702
 msgid "Thumbnail"
 msgstr "Умалено изображение"
 
-#: apps.py:558
+#: apps.py:568
 msgid "Type"
 msgstr "Тип"
 
-#: apps.py:562 apps.py:609 apps.py:672 forms/document_file_forms.py:71
+#: apps.py:572 apps.py:619 apps.py:682 forms/document_file_forms.py:71
 #: links/document_file_page_links.py:122
 #: links/document_version_page_links.py:52
 msgid "Pages"
 msgstr "Страници"
 
-#: apps.py:571 models/favorite_document_models.py:34
+#: apps.py:581 models/favorite_document_models.py:34
 msgid "Date and time added"
 msgstr "Добавени дата и час"
 
-#: apps.py:582
+#: apps.py:592
 msgid "Access date and time"
 msgstr "Дата и час на достъп"
 
@@ -356,7 +356,7 @@ msgstr "Номер на записваната страница"
 msgid "Target page number can't be repeated."
 msgstr "Номерът на целевата страница не може да се повтори."
 
-#: forms/misc_forms.py:12 literals.py:106
+#: forms/misc_forms.py:12 literals.py:108
 msgid "Page range"
 msgstr "Поредица от страници"
 
@@ -431,8 +431,8 @@ msgstr "Предишна страница"
 msgid "Next page"
 msgstr "Следваща страница"
 
-#: links/document_file_page_links.py:86 models/document_file_page_models.py:47
-#: models/document_file_page_models.py:306
+#: links/document_file_page_links.py:86 models/document_file_page_models.py:49
+#: models/document_file_page_models.py:313
 msgid "Document file pages"
 msgstr "Страници на файл с документи"
 
@@ -540,13 +540,13 @@ msgstr "Нулиране на страниците"
 
 #: links/document_version_page_links.py:108
 #: models/document_version_models.py:66
-#: models/document_version_page_models.py:44 search.py:128
+#: models/document_version_page_models.py:46 search.py:128
 msgid "Document version"
 msgstr "Версия на документа"
 
 #: links/document_version_page_links.py:114
-#: models/document_version_page_models.py:67
-#: models/document_version_page_models.py:399
+#: models/document_version_page_models.py:69
+#: models/document_version_page_models.py:406
 msgid "Document version pages"
 msgstr "Страници на версията на документа"
 
@@ -610,55 +610,55 @@ msgstr ""
 msgid "Document version exported."
 msgstr "Експортирана версия на документа."
 
-#: literals.py:98
+#: literals.py:100
 msgid "January"
 msgstr "Януари"
 
-#: literals.py:98
+#: literals.py:100
 msgid "February"
 msgstr "Февруари"
 
-#: literals.py:98
+#: literals.py:100
 msgid "March"
 msgstr "Март"
 
-#: literals.py:98
+#: literals.py:100
 msgid "April"
 msgstr "Април"
 
-#: literals.py:98
+#: literals.py:100
 msgid "May"
 msgstr "Май"
 
-#: literals.py:99
+#: literals.py:101
 msgid "June"
 msgstr "Юни"
 
-#: literals.py:99
+#: literals.py:101
 msgid "July"
 msgstr "Юли"
 
-#: literals.py:99
+#: literals.py:101
 msgid "August"
 msgstr "Август"
 
-#: literals.py:99
+#: literals.py:101
 msgid "September"
 msgstr "Септември"
 
-#: literals.py:99
+#: literals.py:101
 msgid "October"
 msgstr "Октомври"
 
-#: literals.py:100
+#: literals.py:102
 msgid "November"
 msgstr "Ноември"
 
-#: literals.py:100
+#: literals.py:102
 msgid "December"
 msgstr "Декември"
 
-#: literals.py:106
+#: literals.py:108
 msgid "All pages"
 msgstr "Всички страници"
 
@@ -708,20 +708,20 @@ msgstr ""
 msgid "Document files"
 msgstr "Файлове на документи"
 
-#: models/document_file_models.py:333 models/document_file_page_models.py:265
+#: models/document_file_models.py:333 models/document_file_page_models.py:272
 #: models/document_models.py:72 models/document_models.py:318
 #: models/document_type_models.py:41 models/document_type_models.py:203
 #: models/document_version_models.py:236
-#: models/document_version_page_models.py:347
+#: models/document_version_page_models.py:354
 msgid "Label"
 msgstr "Етикет"
 
-#: models/document_file_page_models.py:46
-#: models/document_file_page_models.py:305 search.py:84
+#: models/document_file_page_models.py:48
+#: models/document_file_page_models.py:312 search.py:84
 msgid "Document file page"
 msgstr "Страница на файл с документи"
 
-#: models/document_file_page_models.py:259
+#: models/document_file_page_models.py:266
 #, python-format
 msgid "%(document_file)s - page %(page_num)d of %(total_pages)d"
 msgstr "%(document_file)s - страница %(page_num)d на %(total_pages)d"
@@ -890,25 +890,25 @@ msgstr "Версии на документа"
 msgid "Document version export to PDF"
 msgstr "Експорт на версия на документа в PDF"
 
-#: models/document_version_page_models.py:48
+#: models/document_version_page_models.py:50
 msgid "Unique integer number for the page. Pages are ordered by this number."
 msgstr ""
 "Уникално цяло число за страницата. Страниците са подредени по този номер."
 
-#: models/document_version_page_models.py:53
+#: models/document_version_page_models.py:55
 msgid "Content type for the source object of the page."
 msgstr "Тип съдържание за изходния обект на страницата."
 
-#: models/document_version_page_models.py:57
+#: models/document_version_page_models.py:59
 msgid "ID for the source object of the page."
 msgstr "Идентификатор за изходния обект на страницата."
 
-#: models/document_version_page_models.py:66
-#: models/document_version_page_models.py:398 search.py:157
+#: models/document_version_page_models.py:68
+#: models/document_version_page_models.py:405 search.py:157
 msgid "Document version page"
 msgstr "Страница с версия на документа"
 
-#: models/document_version_page_models.py:341
+#: models/document_version_page_models.py:348
 #, python-format
 msgid "%(document_version)s page %(page_number)d of %(total_pages)d"
 msgstr "%(document_version)s страница %(page_number)d на %(total_pages)d"
@@ -1337,6 +1337,14 @@ msgstr "Изображения на страницата с версия на д
 #: templates/documents/document_print.html:13
 msgid "Document page image preview"
 msgstr "Визуализация на изображението на страницата на документа"
+
+#: templates/documents/errors/document_file_page_transformation_error.html:5
+msgid "Document file page transformation error"
+msgstr ""
+
+#: templates/documents/errors/document_version_page_transformation_error.html:5
+msgid "Document version page transformation error"
+msgstr ""
 
 #: templates/documents/errors/no_valid_version.html:5
 msgid "No valid or active version"

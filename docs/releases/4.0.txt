@@ -164,7 +164,7 @@ storage for image previews.
 
 The three storages are:
 
-  - ``DOCUMENTS_FILE_STORAGE_BACKENS`` - Stores the uploaded document files.
+  - ``DOCUMENTS_FILE_STORAGE_BACKEND`` - Stores the uploaded document files.
   - ``DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND`` - Stores the preview
     images of the uploaded document files.
   - ``DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND`` - Stores the

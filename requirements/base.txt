@@ -1,6 +1,6 @@
 CairoSVG==2.5.2
 Pillow==8.4.0
-PyPDF2==1.26.0
+PyPDF2==1.28.4
 PyYAML==6.0
 Whoosh==2.7.4
 bleach==4.1.0

@@ -13,7 +13,7 @@ Documents
 
 Document file and document version page transformation errors are now
 intercepted with a corresponding error template shown. This allows accessing
-the page to fix the transformation error.
+the page to fix any transformation errors.
 
 
 Search
