@@ -15,6 +15,8 @@
   Python library and the Docker image separately.
 - Update Docker Debian base image from debian:11.3-slim to to
   debian:11.4-slim. https://www.debian.org/News/2022/20220709
+- Update PyPDF2 from version 1.26.0 to 1.28.4. Closes GitLab issue #1106.
+  Thanks to Stefan Denker (@denkerszaf) for the report and investigation.
 
 4.2.7 (2022-07-01)
 ==================
