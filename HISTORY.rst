@@ -17,6 +17,7 @@
   debian:11.4-slim. https://www.debian.org/News/2022/20220709
 - Update PyPDF2 from version 1.26.0 to 1.28.4. Closes GitLab issue #1106.
   Thanks to Stefan Denker (@denkerszaf) for the report and investigation.
+- Update Sphinx from version 3.5.4 to 4.5.0 to avoid bug #9038.
 
 4.2.7 (2022-07-01)
 ==================
