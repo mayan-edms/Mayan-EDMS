@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-24 20:40+0000\n"
+"POT-Creation-Date: 2022-07-21 23:46+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -25,12 +25,12 @@ msgstr ""
 msgid "Dynamic search"
 msgstr "Δυναμική αναζήτηση"
 
-#: classes.py:562
+#: classes.py:568
 #, python-format
 msgid "Unknown search model `%s`."
 msgstr ""
 
-#: classes.py:619
+#: classes.py:625
 msgid "ID"
 msgstr "Αναγνωριστικό"
 
@@ -52,11 +52,11 @@ msgid "Search terms"
 msgstr "Όροι αναζήτησης"
 
 #: links.py:13 permissions.py:5 queues.py:7 settings.py:11
-#: templates/dynamic_search/search_box.html:45 views.py:122 views.py:135
+#: templates/dynamic_search/search_box.html:45 views.py:126 views.py:139
 msgid "Search"
 msgstr "Αναζήτηση"
 
-#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:154
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:163
 msgid "Advanced search"
 msgstr "Προχωρημένη αναζήτηση"
 
@@ -64,7 +64,7 @@ msgstr "Προχωρημένη αναζήτηση"
 msgid "Search again"
 msgstr "Αναζήτηση πάλι"
 
-#: links.py:25 views.py:100
+#: links.py:25 views.py:104
 msgid "Reindex search backend"
 msgstr "Αναδημιουργία ευρετηρίου αναζήτησης υποκείμενου συστήματος"
 
@@ -127,20 +127,20 @@ msgstr "Μέγιστος αριθμός αποτελεσμάτων αναζήτ�
 msgid "Advanced"
 msgstr "Προχωρημένη"
 
-#: views.py:41
+#: views.py:42
 msgid "Try again using different terms. "
 msgstr "Δοκιμάστε ξανά χρησιμοποιώντας διαφορετικούς όρους."
 
-#: views.py:43
+#: views.py:44
 msgid "No search results"
 msgstr "Δεν υπάρχουν αποτελέσματα αναζήτησης"
 
-#: views.py:45
+#: views.py:46
 #, python-format
 msgid "Search results for: %s"
 msgstr "Αποτελέσματα αναζήτησης για: %s"
 
-#: views.py:96
+#: views.py:100
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
@@ -149,19 +149,19 @@ msgstr ""
 "αναζήτησης. Τα αποτελέσματα αναζήτησης θα επηρεαστούν όσο διαρκεί η "
 "αναδημιουργία του ευρετηρίου του υποκείμενου συστήματος."
 
-#: views.py:102
+#: views.py:106
 msgid "This tool erases and populates the search backend's internal index."
 msgstr ""
 "Αυτό το εργαλείο διαγράφει και ενημερώνει τον εσωτερικό δείκτη του "
 "ευρετηρίου αναζήτησης του υποκείμενου συστήματος."
 
-#: views.py:115
+#: views.py:119
 msgid "Search backend reindexing queued."
 msgstr ""
 "Η αναδημιουργεία ευρετηρίου του υποκείμενου συστήματος αναζήτησης τέθηκε σε "
 "ουρά αναμονής."
 
-#: views.py:137
+#: views.py:141
 #, python-format
 msgid "Search for: %s"
 msgstr "Αναζήτηση για: %s"

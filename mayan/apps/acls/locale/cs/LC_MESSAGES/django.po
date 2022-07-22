@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-24 20:40+0000\n"
+"POT-Creation-Date: 2022-07-21 23:45+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
 "Last-Translator: Jiri Fait <fait@orkasolutions.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:26 classes.py:175 links.py:27
+#: apps.py:26 classes.py:180 links.py:27
 msgid "ACLs"
 msgstr "ACLs"
 
