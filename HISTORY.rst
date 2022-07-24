@@ -420,6 +420,9 @@
   containers with more than 910 documents. ElasticSearch's ``Keyword`` field
   is limited to 32766 bytes and attempting to index a container with more
   than 910 documents would exceed this limit.
+- Update the ElasticSearch backend search query configuration to be more
+  strict and lower the number of hits matched. Change the ``match`` query to
+  ``match_phrase`` and remove the ``fuzzy`` query.
 
 4.2.8 (2022-07-22)
 ==================

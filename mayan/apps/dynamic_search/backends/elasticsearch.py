@@ -102,9 +102,7 @@ class ElasticSearchBackend(SearchBackend):
         for key, value in query.items():
             elasticsearch_query = Q(
                 Q(
-                    name_or_query='fuzzy', _expand__to_dot=False, **{key: value}
-                ) | Q(
-                    name_or_query='match', _expand__to_dot=False, **{key: value}
+                    name_or_query='match_phrase', _expand__to_dot=False, **{key: value}
                 ) | Q(
                     name_or_query='regexp', _expand__to_dot=False, **{key: value}
                 ) | Q(
