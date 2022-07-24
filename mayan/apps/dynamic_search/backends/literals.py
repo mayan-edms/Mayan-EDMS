@@ -40,7 +40,7 @@ DJANGO_TO_ELASTICSEARCH_FIELD_MAP = {
         'analyzer': 'hyphen_analyzer', 'field': elasticsearch_dsl.field.Text
     },
     models.UUIDField: {
-        'field': elasticsearch_dsl.field.Keyword, 'transformation': str
+        'field': elasticsearch_dsl.field.Text, 'transformation': str
     }
 }
 

@@ -415,6 +415,11 @@
   the data before sending the stream. This ensures the image will load
   correctly in all browsers that require a MIME type value in the header of
   the stream.
+- Change the ``UUID`` field to ElasticSearch field mapping, from ``Keyword``
+  to ``Text`` to avoid search indexing error when processing document
+  containers with more than 910 documents. ElasticSearch's ``Keyword`` field
+  is limited to 32766 bytes and attempting to index a container with more
+  than 910 documents would exceed this limit.
 
 4.2.8 (2022-07-22)
 ==================
