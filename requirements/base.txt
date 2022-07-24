@@ -1,5 +1,5 @@
 CairoSVG==2.5.2
-Pillow==8.4.0
+Pillow==9.2.0
 PyPDF2==1.28.4
 PyYAML==6.0
 Whoosh==2.7.4

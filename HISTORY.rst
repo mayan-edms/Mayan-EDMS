@@ -124,7 +124,7 @@
   - transifex-client from 0.14.3 to 0.14.4.
   - twine from 3.4.2 to 3.8.0.
   - wheel from 0.37.0 to 0.37.1.
-  - Pillow from 8.3.1 to 8.4.0.
+  - Pillow from 8.3.1 to 9.2.0.
   - node-semver from 0.8.0 to 0.8.1.
   - packaging from 21.0 to 21.3.
   - python_gnupg from 0.4.7 to 0.4.8.
