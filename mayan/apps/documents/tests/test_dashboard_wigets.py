@@ -22,11 +22,11 @@ class DashboardWidgetUserRecentlyCreatedDocumentsTestCase(
         request.user = self._test_case_user
         widget.request = request
 
-        self.assertTrue(self.test_document not in widget.get_object_list())
+        self.assertTrue(self._test_document not in widget.get_object_list())
 
     def test_widget_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         widget = DashboardWidgetUserRecentlyCreatedDocuments()
@@ -35,4 +35,4 @@ class DashboardWidgetUserRecentlyCreatedDocumentsTestCase(
         request.user = self._test_case_user
         widget.request = request
 
-        self.assertTrue(self.test_document in widget.get_object_list())
+        self.assertTrue(self._test_document in widget.get_object_list())
