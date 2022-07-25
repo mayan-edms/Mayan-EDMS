@@ -1,4 +1,4 @@
-4.3 (2022-XX-XX)
+4.3 (2022-07-XX)
 ================
 - Partials navigation updates:
 
@@ -39,7 +39,7 @@
   - Define the ``q`` URL query key as an internal literal named
     ``QUERY_PARAMETER_ANY_FIELD``.
 
-- Support AJAX request cancelation. This avoid the user interface from
+- Support AJAX request cancellation. This avoid the user interface from
   appearing to unresponsive when the backend is overloaded.
 - Support AJAX request throttling. Prevents users from requesting too many
   consecutive page loads. Defaults to a maximum of 10 requests in 5 seconds
@@ -56,7 +56,7 @@
 - Convert document file actions from hardcoded logic to an extensible class
   using the ``BaseBackend`` class. Available classes will be loaded from the
   ``document_file_actions`` module. The id of the class defaults to the
-  existing literal values for compatility.
+  existing literal values for compatibility.
 - Add API endpoint called ``document_file_actions`` to list the available
   actions and their properties. API endpoint URL: /api/v4/document_file_actions/
 - Add document version modification backend. Convert the document version
@@ -69,14 +69,14 @@
     - /api/v4/document_version_modification_backends/
 
 - Add workflow action to send user messages.
-- Update ``WorkflowAction`` to user ``common.classes.BaseBackend``.
+- Update ``WorkflowAction`` to use ``common.classes.BaseBackend``.
 - Pagination refactor:
 
   - Remove ``django-pure-pagination`` package.
   - Use Django's 3.2 new ``get_proper_elided_page_range`` for paging.
   - Remove duplicate URL query string manipulation.
   - Remove duplicated pagination template.
-  - Make pagination argument conigurable. Added the setting
+  - Make pagination argument configurable. Added the setting
     ``VIEWS_PAGING_ARGUMENT``. Defaults to ``page`` for compatibility.
 
 - Update the default pagination size from 40 items to 30.
@@ -167,7 +167,7 @@
   - Support inclusion regular expression.
   - Support exclusion regular expression.
   - Support subfolders.
-  - Update scan code to user ``pathlib.Path``.
+  - Update scan code to use ``pathlib.Path``.
   - Support pagination.
 
 - Add support for workflow escalation. This feature allows moving a workflow
@@ -205,8 +205,8 @@
     is called ``.remove_search_field(search_field=)`` and requires the
     search field instance obtained from the method ``.get_search_fields()``.
   - Remove the ``search_fields`` list and use the ``search_fields_dict``
-    instead for both purposes. The conical method to obtain the search
-    field or a search model is now using the method ``.get_search_fields()``.
+    instead for both purposes. The canonical method to obtain the search
+    field of a search model is now using the method ``.get_search_fields()``.
 
 - Update the ElasticSearch backend default settings to match those of the
   official Python client.

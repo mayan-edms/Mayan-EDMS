@@ -1,13 +1,701 @@
 Version 4.3
 ===========
 
-Released: XX, 2022
+Released: July XX, 2022
 
 Status: Stable
 
 Changes
 -------
 
+
+Appearance
+^^^^^^^^^^
+
+The Single Page App JavaScript navigation code was streamlined to remove
+redundant code and use newer JavaScript paradigms. The custom HTTP response
+code used for AJAX redirects can now be configure via the new setting
+``APPEARANCE_AJAX_REDIRECTION_CODE``. This setting defaults to 278 for
+backward compatibility.
+
+The favicon was updated to include a thin white outline to improve
+visibility when using dark themes in browsers.
+
+The list template was updated to always show an item count, even on empty
+lists. This change prevents the list toolbar from "jumping" visually when
+there are no results.
+
+The way the view title is copied to the window title was simplified.
+Escaping of the title text is now performed by jQuery.
+
+
+Cabinets
+^^^^^^^^
+
+Support was added for cabinet mirroring. A new command with the name
+``mirroring_mount_cabinet`` was added for this function. This command
+work in a similar way to the command to mirror indexes. The command
+creates a user space file system that will mirror the structure of the
+cabinet tree structure as nested directories.
+
+
+Common
+^^^^^^
+
+The initial setup and upgrade commands were refactored. All common code was
+consolidated into a new command class. The code was updated to use Python's
+``pathlib`` instead of performing direct path manipulation.
+
+A new management command named ``common_generate_random_secret_key`` was
+added to provide random values suitable for use as ``SECRET_KEY``.
+
+
+Converter
+^^^^^^^^^
+
+Support was added for transformation forms. It is no longer necessary to pass
+arguments to transformation using JSON structures. Each transformation can
+specify its own form which can contain standard or custom fields. In the
+case of fields that reference stored objects, the field will support lists
+using a dropdown selection widget.
+
+The converter app view were separated into different modules based on usage.
+One module for transformations and another for assets.
+
+Better argument checking was added to the zoom transformation preventing
+negative zoom factor values.
+
+The calculation used to invalidate the cache of pages using an asset
+transformation was fixed for all remaining edge cases.
+
+When creating or editing redactions, the preview form will now use
+a lower image layer that will not show previous redactions and will allow
+seeing the entire document page. This is more natural as it gives the
+impression the redaction is actually being edited by being moved instead
+of showing two redactions (old in the image plus the interactive one).
+
+The code of the transformations ``TransformationDrawRectangle`` and
+``TransformationDrawRectanglePercent`` was unified into a single code base.
+
+The transformation ``TransformationDrawRectanglePercent`` now supports
+transparency. The transparency value can range from 0 to 100.
+
+The transformations ``TransformationDrawRectangle`` and
+``TransformationDrawRectanglePercent`` have been moved to the decorations
+layer.
+
+When uploading Multi-Picture Object Bitmap (MPO) images files, the converter
+will take in discard any non supported child images contained in the MPO
+file.
+
+The transformation argument column was improved. Arguments are property
+formatted and separated.
+
+The transformation mixins were moved to their own module.
+
+Subclasses using the ``APIImageViewMixin`` class can now specify the stream
+MIME type via the ``.get_stream_mime_type()`` method.
+
+When serving images using ``APIImageViewMixin``, the correct MIME type of
+the data is detected before sending the stream. This ensures the image will
+load correctly in all browsers that require a MIME type value in the header
+of the stream.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+Support for Python 3.6 was dropped, the minimum Python version supported now
+is 3.7. The code was updated to support Python 3.10.
+
+Dependencies updated:
+
+- ElasticSearch from 7.16.0 to 7.17.0.
+- Debian from 11.2-slim to 11.3-slim.
+- PostgreSQL from 12.9-alpine to 12.10-alpine.
+- RabbitMQ from 3.9-alpine to 3.10-alpine.
+- amqp from 5.0.9 to 5.1.0.
+- pip from 21.3.1 to 22.0.4.
+- psycopg2 from 2.9.2 to 2.9.3.
+- redis from 4.0.2 to 4.2.0.
+- FontAwesome from 5.6.3 to 5.15.4.
+- urijs from 1.19.7 to 1.19.10.
+- bleach from 4.0.0 to 4.1.0.
+- django-solo from 1.1.5 to 2.0.0.
+- jstree from 3.3.11 to 3.3.12.
+- PyYAML from 5.4.1 to 6.0.
+- django-model-utils from 4.1.1 to 4.2.0.
+- django-mptt from 0.12.0 to 0.13.4.
+- pycountry from 20.7.3 to 22.3.5.
+- requests from 2.26.0 to 2.27.0.
+- devpi-server from 6.2.0 to 6.5.0.
+- django-debug-toolbar from 3.2.2 to 3.2.4.
+- django-extensions from 3.1.3 to 3.1.5.
+- django-rosetta from 0.9.7 to 0.9.8.
+- django-silk from 4.1.0 to 4.3.0.
+- flake8 from 3.9.2 to 4.0.1.
+- ipython from 7.26.0 to 7.32.0.
+- transifex-client from 0.14.3 to 0.14.4.
+- twine from 3.4.2 to 3.8.0.
+- wheel from 0.37.0 to 0.37.1.
+- Pillow from 8.3.1 to 9.2.0.
+- node-semver from 0.8.0 to 0.8.1.
+- packaging from 21.0 to 21.3.
+- python_gnupg from 0.4.7 to 0.4.8.
+- elasticsearch from 7.16.0 to 7.17.1.
+- django-activity-stream from 0.10.0 to 1.4.0.
+- chart.js from 2.7.3 to 2.8.0.
+- python-magic from 0.4.24 to 0.4.26.
+- gevent from 21.8.0 to 21.12.0.
+- sentry-sdk from 1.4.1 to 1.5.8.
+- whitenoise from 5.3.0 to 6.0.0.
+- cropperjs from 1.5.2 to 1.5.12.
+- django-cors-headers from 3.8.0 to 3.10.0.
+- djangorestframework from 3.12.4 to 3.13.1.
+- jsonschema from 3.2.0 to 4.4.0.
+- swagger-spec-validator from 2.7.3 to 2.7.4.
+- dropzone from 5.9.2 to 5.9.3.
+- pycryptodome from 3.10.1 to 3.10.4.
+- celery from 5.1.2 to 5.2.3.
+- django-formtools from 2.2 to 2.3.
+- django-widget-tweaks from 1.4.9 to 1.4.12.
+- furl from 2.1.2 to 2.1.3.
+- Sphinx from 3.5.4 to 4.5.0.
+
+
+Documents
+^^^^^^^^^
+
+The document file upload actions were converted from hardcoded logic to an
+extensible class using the ``BaseBackend`` class. Available classes will be
+loaded from the ``document_file_actions`` module of each app. The ID of the
+class defaults to the existing literal values for compatibility.
+
+A new API endpoint called ``document_file_actions`` was added to list the
+available document file upload actions and their properties. The URL of the
+API endpoint URL is: ``/api/v4/document_file_actions/``
+
+Document version modification backend was added. The document version
+page reset and append functions were converted into document version
+modification backends.
+
+The document version views and API endpoints were updated to use the document
+version modification backends.
+
+New API endpoints:
+
+- /api/v4/documents/{ ID }/versions/{ ID }/modify/
+- /api/v4/document_version_modification_backends/
+
+The document type label fields size was increased from 96 characters to 196.
+
+Repeated model manager definitions in the ``DocumentFilePage`` model were
+removed.
+
+Support was added for easier test document stub creation via the new
+``auto_create_test_document_stub`` method. It is mutually exclusive with
+``auto_upload_test_document`` and requires setting it to False.
+
+A ``size`` field was added to the document file model. Since this value is
+not expected to change, it is now a persistent model field and not calculated
+on demand by querying the storage layer. This change also improves document
+mirroring performance by removing one disk access per document and using
+the database stored size value which is immutable.
+
+During the upgrade the storage layer will be queried for the size of each
+document file to transfer this value to the database, depending of the
+number of documents and the speed of your storage this process can take
+from minutes to hours or even days.
+
+The document version export code now makes sure that the document version
+pages point to an existing content object before attempting to export the
+source material. Pages without a content object are skipped.
+
+The document version export code was also updated to not assume that the
+first document version page was always valid. The page loop will skip pages
+with no content object and regard the first page found with a valid content
+object as the first exported page.
+
+When downloading document files, the MIME type is no longer introspected.
+Instead the original values is used. This ensures correct downloads in all
+cases and avoid an operation for each download.
+
+
+Events
+^^^^^^
+
+A view showing all of the currently logged user's object event subscriptions
+was added. This allows managing all object subscriptions from a single
+location.
+
+
+Indexes
+^^^^^^^
+
+The document indexing models were split into two modules. One for index
+templates and another for index instances.
+
+The document indexing code was optimized by reusing index instance nodes if
+they already exists at the same level and with the same value. This operation
+speeds up document indexing and reduces the number of database queries.
+
+Support was added for document index event triggers. Historically document
+indexes used hardcoded signals to trigger an index update. The indexing
+app was updated to now use events to trigger these updates. This has the
+additional benefits of allowing runtime configuration of the index event
+triggers, disabling the ones not relevant for an index to improve
+performance.
+
+New document indexes default to update on all available document events.
+Existing indexes will me automatically migrated and updated to update on all
+available document events.
+
+Index updates now support more events like adding or removing documents
+from cabinets.
+
+
+Logging
+^^^^^^^
+
+The error logging system received several updates.
+
+An error log entry delete permission was added. Users need have this
+permission granted either globally or for a specific object in order to be
+able to delete the object's error log entries.
+
+Support was added for deleting individual error log entries or the complete
+error log of an object.
+
+An error log entry deleted event was added.
+
+Support was added for subscribing to the error log entry delete event of an
+object.
+
+API views were added to access the error logs of objects. The URLs are:
+
+- http://127.0.0.1:8000/api/v4/objects/<app label>/<model name>/<object ID>/errors/
+- http://127.0.0.1:8000/api/v4/objects/<app label>/<model name>/<object ID>/errors/<error entry ID>/
+
+
+Messaging
+^^^^^^^^^
+
+Messages are now indexed for search. The fields indexed are: ``subject``,
+``body``, and ``date_time``.
+
+
+Notifications
+^^^^^^^^^^^^^
+
+Permission filtering was added the notification views. This change moves
+the access filtering of notification from the class to the view. Besides
+removing a block of single use permission code, notifications are now
+restricted when the access control is modified, even if the notification
+already exists.
+
+
+OCR
+^^^
+
+The OCR app was updated to use the error logging system instead of its own
+error logging code and views. The permission "View error log" is now
+required to view the document version OCR error log.
+
+
+Parsing
+^^^^^^^
+
+The document parsing app was updated to use the error logging system instead
+of its own error logging code and views. The permission "View error log" is
+now required to view the document file parsing error log.
+
+The parsing system was updated to pass the original document file to parsers
+instead of attempting to pre-processing the document file to PDF. Parsers
+now have access to the raw document file uploaded.
+
+Support was added for parsing office document files and text files.
+
+
+MIME types
+^^^^^^^^^^
+
+Trailing new lines are now removed from the MIME type and encoding returned
+by the ``MIMETypeBackendFileCommand`` fixing all remaining edge cases.
+
+The ``MIMETypeBackendFileCommand`` backend is now the default MIME backend.
+
+
+Navigation
+^^^^^^^^^^
+
+The ``PartialNavigation.js`` code received several improvements. URL query
+data is now removed on form submit and only the form's data is used as the
+new URL query data. Some dead code from the module was removed. Constants
+are now used where appropriate to save memory and improve speed.
+
+The navigation code now supports AJAX request cancellation. This avoid the
+user interface from appearing to be unresponsive when the backend is
+overloaded. AJAX request cancellation however allows users to request more
+information from the backend. To combat possible abuses the AJAX code now
+throttles requests. The throttling code defaults to a maximum of 10 requests
+in 5 seconds of less. This applies only to the user interface. The AJAX
+throttling resets the moment the last pending AJAX request is completed.
+
+Navigation improvements:
+
+- Add support for anchor extra HTML attributes.
+- Improve HTML data by allowing the entries to be resolved against the
+  context.
+- Support empty URL values. When empty, the link is rendered without a
+  href attribute.
+
+
+Search
+^^^^^^
+
+The search system received several updates and new features.
+
+The biggest change is the support for list view filtering. All list views
+that show instances of models with a corresponding defined search model,
+will show a text box for filtering the list. The syntax is the same as the
+standard simple search.
+
+Empty list views now show the toolbar for cases where the list is empty due
+to a filtering term.
+
+The special "match-all-fields" ``q`` URL query key has been converted into a
+documented literal named ``QUERY_PARAMETER_ANY_FIELD``.
+
+Support was added for hyphenated text when using the ElasticSearch backend.
+Hyphenated words behave are now indexed as a whole word and not split at
+the hyphen location.
+
+Similar to list filtering, REST API list filtering was added. Filtering is
+done using similar logic to that of the user interface list filtering.
+However, the API list filtering also supports filtering by any field and
+not just using the special "any field" ``q`` query key.
+
+The API search model names are now converted to lowercase to revert a
+backward incompatible change in version 4.2. Search model names via the API
+can now be specified in either lowercase (version 4.2) or hybrid case
+(version <4.2).
+
+Search model definitions are now declared with the layout "search_model..."
+instead of "...search".
+
+Support was added for removing search fields. The method is called
+``.remove_search_field(search_field=)`` and requires the search field
+instance obtained from the method ``.get_search_fields()``.
+This allows third party apps to remove standard search fields.
+
+The ``search_fields`` list was removed and now the ``search_fields_dict``
+dictionary instead for both purposes. The canonical method to obtain the
+search field of a search model is now using the method
+``.get_search_fields()`` instead of accessing the private structures.
+
+The ElasticSearch backend default settings were updated to match those of
+the official Python client. This change may affect connectivity with existing
+ElasticSearch server when used in clustered mode.
+
+Support was added for showing search model fields help texts. By default the
+help text from the model field will be used.
+
+The bulk object search indexing was refactored. The task
+``mayan.apps.dynamic_search.tasks.task_index_search_model`` was renamed to
+``mayan.apps.dynamic_search.tasks.task_index_instances`` to better match
+how it works now. The bulk index code will now index objects that actually
+exists instead of using blind ID ranges.
+
+The ``search_index_objects`` management command was updated to trigger
+multiple calls to ``task_index_instances`` using small lists of instances IDs
+instead of just one call with a large number of IDs. This increases the
+atomicity of the indexing tasks, allowing launching more tasks that complete
+faster for better resource utilization, lower query count per task and higher
+indexing scalability.
+
+Support was added for Whoosh bulk indexing using the ``BufferedWriter`` class.
+When reindexing the search indexes, for every lock obtained, a group of
+objects will be written as a single operation. The number of objects
+written concurrently is controlled by the settings
+``SEARCH_INDEXING_CHUNK_SIZE``.
+
+Unused ``SearchModel`` method were removed. Sorting ``SearchModel`` instances
+was improved.
+
+The ElasticSearch backend now uses the count API to obtain accurate search
+model status information.
+
+Existing indexes are now deleted when calling the ElasticSearch backend
+initialize method. This ensures complete initialization and cleanup of
+existing data as the command intends.
+
+Search backend errors are now wrapped into a search app exception alongside
+a short explanation. This helps debugging search errors by providing more
+context as part of the error trace.
+
+The was the "Match all" parameter is evaluated is now normalized and
+consolidated.
+
+The evaluation of the "Match all" parameter was fixed when using a single
+level scoped search.
+
+The ``UUID`` field to ElasticSearch field mapping was changed from ``Keyword``
+to ``Text`` to avoid search indexing error when processing document
+ontainers with more than 910 documents. ElasticSearch's ``Keyword`` field
+is limited to 32766 bytes and attempting to index a container with more
+than 910 documents would exceed this limit.
+
+The ElasticSearch backend search query configuration was updated to be more
+strict and lower the number of hits a search would match. The ``match``
+query was changed to ``match_phrase`` and the ``fuzzy`` query was removed.
+
+Task retry backoff maximum delay was added to the search tasks. This avoids
+abnormally running search index tasks from lingering in the message broker.
+
+
+Signature captures
+^^^^^^^^^^^^^^^^^^
+
+Support was adde for signature capture. The signature capture app allows
+capture of handwritten signatures by digitizing pen strokes.
+
+The original point data as well as an SVG version of the signature is stored.
+The point data represents the raw signature primitives that allows reloading
+them into the signature pad library. The SVG version allows for rendering as
+an image for preview. A transformation was added to allow pasting a
+signature as a document file or document version page image.
+
+
+Sources
+^^^^^^^
+
+An ``upload`` action was added to the web form source. This allows using web
+form sources to upload documents from the API.
+
+Support was added for supplying files to source backend via the API. The
+new ``accept_files`` property of the ``SourceBackendAction`` now dynamically
+adds a ``file`` serializer field for the corresponding action. This expands
+the types of sources third party apps can add.
+
+The staging folder sources now inclusion and exclusion regular expressions.
+
+Support was added for staging folder path subfolders.
+
+The staging folder scan code was updated to use Python's ``pathlib.Path``.
+
+Staging folder now also support pagination.
+
+A selection link is now added to each staging folder files to make selection
+easier.
+
+The staging folder file selection input widget is now a Select2 widget
+which supporting text filtering.
+
+
+Storage
+^^^^^^^
+
+Support was added for disabling use of the media folder. This is controlled
+with the new setting ``COMMON_DISABLE_LOCAL_STORAGE``. Changing this setting
+to True will disable use of the local ``media`` folder. When using this
+setting, all apps must be also configured via their respective storage
+backend settings to use alternate persistence methods. This change is
+important for Kubernetes deployments on providers that do not support
+multiple read and write volumes such as Google Kubernetes Engine (GKE).
+
+The ``mkdtemp`` function now accepts a ``dir`` argument like Python's
+upstream version. However the ``dir`` value is appended to the system wide
+value of ``STORAGE_TEMPORARY_DIRECTORY``. This allows for multiple temporary
+directories but keeps all temporary directories confined to the top level
+temporary directory.
+
+
+Tags
+^^^^
+
+The library ``django-colorful`` was removed. A standard HTML5 color field
+is now used instead.
+
+Support was added to randomize the color of a tag.
+
+
+Task manager
+^^^^^^^^^^^^
+
+The ``purgeperiodictasks`` command was moved from the common app to the
+task_manager app.
+
+
+Templating
+^^^^^^^^^^
+
+Date manipulation template tags were added. The new tags are ``date_parse``
+to convert a string into a datetime object and ``timedelta`` to apply time
+transformations to a datetime object.
+
+This change allows performing date calculation on metadata fields.
+
+
+Testing
+^^^^^^^
+
+All test objects are now prefixed with an underscore to avoid possible
+clashes with test methods or system test objects.
+
+The Python package ``mock`` was removed. This package is now available as
+unittest.mock in Python 3.3 and onward.
+
+
+Views
+^^^^^
+
+Added support for form fieldsets. Fieldset crate groups of fields.
+
+Fieldsets were added to the following forms:
+
+- document file properties
+- document type deletion policies
+- metadata type
+- user details
+
+The pagination system was refactored. The library ``django-pure-pagination``
+was removed. Django's 3.2 new ``get_proper_elided_page_range`` is now
+used for pagination.
+
+URL query pagination string manipulation was improved and duplication
+removed.
+
+The URL parameter user for pagination is now configurable. This is done via
+the new setting ``VIEWS_PAGING_ARGUMENT``. This setting defaults to
+``page`` for compatibility.
+
+The default pagination size was updated from 40 items to 30.
+
+Support for view icons was added. Icons were also added to all current views.
+Every view now has a corresponding icon to be displayed next to the title.
+
+
+Workflows
+^^^^^^^^^
+
+A new workflow action was added to send user messages. The body and the
+subject support templating.
+
+The ``WorkflowAction`` base class was updated to the consolidated base class
+``common.classes.BaseBackend``.
+
+Support was added for workflow escalation (also known as expirations). This
+feature allows moving forward a workflow after the workflow has remained in
+a certain state for a pre-determined amount of time.
+
+Multiple escalations are supported for each state. Conditions using the
+templating language are also supported.
+
+The workflow API views code was unified using parent resolution mixins. This
+removed repeated code and lowered the probability of future errors and/or
+regressions.
+
+A new workflow event was added called ``workflow instance created``. This
+event is committed when a new workflow is launched for a document. Another
+workflow event called ``workflow instance transitioned`` as also added.
+This even is committed when a workflow instance is transitioned to a new
+state, either manually or automatically.
+
+When a new workflow instance is created or transitioned the corresponding
+user is now tracked in the event.
+
+Sorting and grouping of permissions in the workflow action to grant
+or revoke document access was fixed and improved.
+
+
+Other
+^^^^^
+
+- Add support for optional ``get_mayan_object_permissions`` and
+  ``get_mayan_view_permissions`` methods to allow API views to customize
+  how required permissions are calculated.
+- Remove usage of flat ``values_list`` queryset in metadata managers module.
+- ``BaseBackend`` class improvements.
+
+  - Selectable identifier via the ``_backend_identifier`` property. Defaults
+    to ``backend_class_path`` for compatibility.
+  - Update ``.get_all`` to return a list and not a dictionary.
+  - Add property ``backend_id`` that returns the value of the class
+    ``_backend_identifier`` property.
+
+- Silence warning about unordered object pagination for:
+
+  - Announcements
+  - Document index instance nodes
+  - Workflow transition triggers
+  - File caches
+  - Quotas
+
+- Move model based classes to the databases app. Move the classes:
+
+  - ``ModelQueryFields``
+  - ``ModelAttribute``
+  - ``ModelProperty``
+  - ``ModelField``
+  - ``ModelFieldRelated``
+  - ``ModelReverseField``
+  - ``QuerysetParametersSerializer``
+
+- Update the document type label field help text.
+- Support empty ranges for ``parse_range``.
+- Add ``group_iterator`` to group iterators in to lists of tuples.
+- Migrations code style cleanup.
+
+  - Rename code migrations functions prefix from ``operation_`` to ``code_``.
+  - Add keyword arguments.
+  - PEP8 code style cleanups.
+
+- Rename test file literals for uniformity.
+- Rename management commands to include the app name where they are defined.
+  Add a stub command for backwards compatibility.
+
+  - ``checkdependencies`` replaced by ``dependencies_check``.
+  - ``checkversion`` replaced by ``dependencies_check_version``.
+  - ``createautoadmin`` replaced by ``autoadmin_create``.
+  - ``generaterequirements`` replaced by ``dependencies_generate_requirements``.
+  - ``initialsetup`` replaced by ``common_initial_setup``.
+  - ``installdependencies`` replaced by ``dependencies_install``.
+  - ``mountindex`` replaced by ``mirroring_mount_index``.
+  - ``performupgrade`` replaced by ``common_perform_upgrade``.
+  - ``platformtemplate`` replaced by ``platform_template``.
+  - ``preparestatic`` replaced by ``appearance_prepare_static``.
+  - ``purgelocks`` replaced by ``lock_manager_purge_locks``.
+  - ``purgepermissions`` replaced by ``permissions_purge``.
+  - ``purgeperiodictasks`` replaced by ``task_manager_purge_periodic_tasks``.
+  - ``purgestatistics`` replaced by ``statistics_purge``.
+  - ``revertsettings`` replaced by ``settings_revert``.
+  - ``savesettings`` replaced by ``settings_save``.
+  - ``showsettings`` replaced by ``settings_show``.
+  - ``showversion`` replaced by ``dependencies_show_version``.
+
+- Normalize icon, link and view names. Follow the pattern
+  object_sub_object_action.
+- Add warning message when user attempting to delete their own accounts.
+- Add first name and last name fields to the test case user.
+- Generalize image transformations into reusable mixins:
+  ``ImagePasteCoordinatesAbsoluteTransformationMixin``,
+  ``ImagePasteCoordinatesPercentTransformationMixin``,
+  ``ImageWatermarkPercentTransformationMixin``.
+
+- Modernize Python syntax:
+
+  - Pass generators instead of lists to ``sorted``.
+  - Update string formatting to use ``.format``.
+  - Remove creating of sets using the set factory and use instead the set
+    literal.
+
+- Documentation updates:
+
+  - Set the Docker Compose installation method as the main method.
+  - Add warning notes for the deprecated installation methods.
+  - Expand the requirements section.
+  - Move the requirements to their on chapter.
+  - Update the features part.
 
 
 Removals
@@ -39,17 +727,14 @@ Follow the solutions outlined in the troubleshooting section:
 Backward incompatible changes
 -----------------------------
 
-- The ``preparestatic`` command is now named ``appearance_prepare_static``.
-- The ``purgeperiodictasks`` command is now named
-  ``task_manager_purge_periodic_tasks``.
-- The ``purgelocks`` command is now named ``lock_manager_purge_locks``.
 - The permission "View error log" is now required to view document version
   OCR error logs.
 - The permission "View error log" is now required to view document file
   parsing error logs.
-- Several view, link, and icons names were modified. Third party app that
+- Several view, link, and icons names were modified. Third party apps that
   import links or icons, or redirects to any view, must be updated to match
   the updated names.
+
 
 Deprecations
 ------------
@@ -88,7 +773,14 @@ Deprecations
 Issues closed
 -------------
 
+- :gitlab-issue:`207` Workflow escalation
+- :gitlab-issue:`493` Mayan docker container does not successful start when external provisioned storage is used.
+- :gitlab-issue:`631` Indices do not refresh on change of cabinet
+- :gitlab-issue:`718` feature: mountcabinet
 - :gitlab-issue:`957` Add document parser test to ensure office files are parsed for content
+- :gitlab-issue:`1083` python 3.10 AttributeError: module 'collections' has no attribute 'Iterable'
+- :gitlab-issue:`1095` Feature Request: Cabinet Filesystem
+- :gitlab-issue:`1103` Can a transition be time triggered?
 - :gitlab-issue:`1110` Update dependency extract-msg to >= 0.32.0
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
