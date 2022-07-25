@@ -423,6 +423,11 @@
 - Update the ElasticSearch backend search query configuration to be more
   strict and lower the number of hits matched. Change the ``match`` query to
   ``match_phrase`` and remove the ``fuzzy`` query.
+- Ensure document version pages point to an existing content object when
+  exporting. Otherwise they are skipped.
+- Improve document version export code to skip invalid pages. The page loop
+  will skip pages with no content object and regard the first page found
+  with a content object as the first exported page.
 
 4.2.8 (2022-07-22)
 ==================

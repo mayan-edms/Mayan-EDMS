@@ -128,14 +128,19 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
         return super().delete(*args, **kwargs)
 
     def export(self, file_object):
-        first_page = self.pages.first()
+        pages_queryset = self.pages
 
-        # Only export the version if there is at least one page.
-        if first_page:
-            first_page.export(file_object=file_object)
-
-            for page in self.pages[1:]:
-                page.export(append=True, file_object=file_object)
+        if pages_queryset.exists():
+            # Only export the version if there is at least one page.
+            export_file_created = False
+            for page in pages_queryset:
+                if page.content_object:
+                    # Ensure only pages that point to actual content are
+                    # exported.
+                    if not export_file_created:
+                        page.export(file_object=file_object)
+                    else:
+                        page.export(append=True, file_object=file_object)
 
     def export_to_download_file(
         self, organization_installation_url='', user=None
