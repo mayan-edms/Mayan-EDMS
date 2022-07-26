@@ -29,7 +29,7 @@ class DatabaseFileModelMixin(models.Model):
 
     def open(self, **kwargs):
         default_kwargs = {
-            'mode': self.file.file.mode,
+            'mode': getattr(self.file.file, 'mode', 'rb'),
             'name': self.file.name
         }
 

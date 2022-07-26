@@ -428,6 +428,9 @@
 - Improve document version export code to skip invalid pages. The page loop
   will skip pages with no content object and regard the first page found
   with a content object as the first exported page.
+- Don't assume all storages have a preset mode attribute. Such is the case
+  with the ``S3Boto3Storage`` when used for shared uploaded files. Instead
+  introspect the mode and fallback to a safe default valur of ``'rb'``.
 
 4.2.8 (2022-07-22)
 ==================
