@@ -11,6 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.navigation.classes import Link
 from mayan.apps.views.generics import MultiFormView
+from mayan.apps.views.mixins import ViewIconMixin
 
 from ..icons import icon_upload_view_link
 from ..links import factory_conditional_active_by_source
@@ -20,7 +21,7 @@ from ..models import Source
 logger = logging.getLogger(name=__name__)
 
 
-class UploadBaseView(MultiFormView):
+class UploadBaseView(ViewIconMixin, MultiFormView):
     object_permission = None
     prefixes = {'source_form': 'source', 'document_form': 'document'}
     template_name = 'appearance/generic_form.html'

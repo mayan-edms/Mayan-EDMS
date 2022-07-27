@@ -10,14 +10,18 @@ from django.utils.translation import ugettext_lazy as _
 
 from formtools.wizard.views import SessionWizardView
 
+from mayan.apps.views.mixins import ViewIconMixin
+
 from .classes import DocumentCreateWizardStep
 from .icons import (
-    icon_wizard_step_first, icon_wizard_step_next, icon_wizard_step_previous
+    icon_document_create_multiple, icon_wizard_step_first,
+    icon_wizard_step_next, icon_wizard_step_previous
 )
 
 
-class DocumentCreateWizard(SessionWizardView):
+class DocumentCreateWizard(ViewIconMixin, SessionWizardView):
     template_name = 'appearance/generic_wizard.html'
+    view_icon = icon_document_create_multiple
 
     @classonlymethod
     def as_view(cls, *args, **kwargs):
