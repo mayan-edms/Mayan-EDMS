@@ -26,7 +26,7 @@ urlpatterns_authenticattion = [
     ),
     url(
         regex=r'^logout/$', view=MayanLogoutView.as_view(), name='logout_view'
-    ),
+    )
 ]
 
 urlpatterns_password = [

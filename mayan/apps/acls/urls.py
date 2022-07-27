@@ -60,5 +60,5 @@ api_urls = [
         regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/acls/(?P<acl_id>\d+)/permissions/remove/$',
         name='accesscontrollist-permission-remove',
         view=APIACLPermissionRemoveView.as_view()
-    ),
+    )
 ]

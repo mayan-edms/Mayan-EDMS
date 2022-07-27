@@ -50,7 +50,7 @@ urlpatterns = [
         regex=r'^messages/all/mark_read/$',
         name='message_all_mark_read',
         view=MessageMarkReadAllView.as_view()
-    ),
+    )
 ]
 
 api_urls = [

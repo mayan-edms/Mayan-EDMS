@@ -149,7 +149,7 @@ urlpatterns_document_files = [
         regex=r'^documents/files/(?P<document_file_id>\d+)/transformations/clone/$',
         name='document_file_transformations_clone',
         view=DocumentFileTransformationsCloneView.as_view()
-    ),
+    )
 ]
 
 urlpatterns_document_file_pages = [
@@ -213,7 +213,7 @@ urlpatterns_document_file_pages = [
         regex=r'^documents/files/pages/(?P<document_file_page_id>\d+)/reset/$',
         name='document_file_page_view_reset',
         view=DocumentFilePageViewResetView.as_view()
-    ),
+    )
 ]
 
 urlpatterns_document_types = [
@@ -267,7 +267,7 @@ urlpatterns_document_types = [
         regex=r'^document_types/filenames/(?P<document_type_filename_id>\d+)/edit/$',
         name='document_type_filename_edit',
         view=DocumentTypeFilenameEditView.as_view()
-    ),
+    )
 ]
 
 urlpatterns_document_version = [
@@ -339,7 +339,7 @@ urlpatterns_document_version = [
         regex=r'^documents/versions/(?P<document_version_id>\d+)/transformations/clone/$',
         name='document_version_transformations_clone',
         view=DocumentVersionTransformationsCloneView.as_view()
-    ),
+    )
 ]
 
 urlpatterns_document_version_pages = [
@@ -405,7 +405,7 @@ urlpatterns_document_version_pages = [
         regex=r'^documents/versions/(?P<document_version_page_id>\d+)/reset/$',
         name='document_version_page_view_reset',
         view=DocumentVersionPageViewResetView.as_view()
-    ),
+    )
 ]
 
 urlpatterns_documents = [
@@ -445,7 +445,7 @@ urlpatterns_documents = [
         regex=r'^documents/multiple/type/$',
         name='document_multiple_type_change',
         view=DocumentTypeChangeView.as_view()
-    ),
+    )
 ]
 
 urlpatterns_favorite_documents = [
@@ -469,7 +469,7 @@ urlpatterns_favorite_documents = [
         regex=r'^documents/multiple/remove_from_favorites/$',
         name='document_favorite_remove_multiple',
         view=FavoriteRemoveView.as_view()
-    ),
+    )
 ]
 
 urlpatterns_trashed_documents = [
@@ -506,7 +506,7 @@ urlpatterns_trashed_documents = [
     url(
         regex=r'^trash_can/empty/$', name='trash_can_empty',
         view=EmptyTrashCanView.as_view()
-    ),
+    )
 ]
 
 urlpatterns = []

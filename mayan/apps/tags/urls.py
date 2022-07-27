@@ -86,5 +86,5 @@ api_urls = [
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/tags/remove/$',
         name='document-tag-remove', view=APIDocumentTagRemoveView.as_view()
-    ),
+    )
 ]

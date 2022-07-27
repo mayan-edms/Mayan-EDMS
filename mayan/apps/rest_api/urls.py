@@ -29,7 +29,7 @@ api_urls = [
         view=schema_view.without_ui(cache_timeout=None),
     ),
     url(regex=r'^v{}/'.format(API_VERSION), view=include(api_version_urls)),
-    url(regex=r'^$', name='api_root', view=APIRoot.as_view()),
+    url(regex=r'^$', name='api_root', view=APIRoot.as_view())
 ]
 
 urlpatterns = [
@@ -41,5 +41,5 @@ urlpatterns = [
         regex=r'^redoc/ui/$', name='schema-redoc',
         view=schema_view.with_ui('redoc', cache_timeout=None)
     ),
-    url(regex=r'^', view=include(api_urls)),
+    url(regex=r'^', view=include(api_urls))
 ]

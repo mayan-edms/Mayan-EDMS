@@ -20,7 +20,7 @@ urlpatterns_misc = [
     url(
         regex=r'^object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/copy/$',
         name='object_copy', view=ObjectCopyView.as_view()
-    ),
+    )
 ]
 
 urlpatterns = [
@@ -35,7 +35,7 @@ urlpatterns = [
 urlpatterns.extend(urlpatterns_misc)
 
 passthru_urlpatterns = [
-    url(regex=r'^admin/', view=admin.site.urls),
+    url(regex=r'^admin/', view=admin.site.urls)
 ]
 
 api_urls = [

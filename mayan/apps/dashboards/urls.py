@@ -10,5 +10,5 @@ urlpatterns = [
     url(
         regex=r'^dashboards/(?P<dashboard_name>[-\w]+)/$',
         name='dashboard_detail', view=DashboardDetailView.as_view()
-    ),
+    )
 ]

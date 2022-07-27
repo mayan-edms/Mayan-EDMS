@@ -112,5 +112,5 @@ api_urls = [
     url(
         regex=r'^users/(?P<user_id>[0-9]+)/groups/$',
         view=APIUserGroupListView.as_view(), name='user-group-list'
-    ),
+    )
 ]

@@ -35,7 +35,7 @@ urlpatterns_cabinets = [
     url(
         regex=r'^cabinets/(?P<cabinet_id>\d+)/edit/$', name='cabinet_edit',
         view=CabinetEditView.as_view()
-    ),
+    )
 ]
 
 urlpatterns_documents_cabinets = [
@@ -94,5 +94,5 @@ api_urls = [
         regex=r'^documents/(?P<document_id>[0-9]+)/cabinets/$',
         name='document-cabinet-list',
         view=APIDocumentCabinetListView.as_view()
-    ),
+    )
 ]

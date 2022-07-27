@@ -136,5 +136,5 @@ api_urls = [
     url(
         regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/events/$',
         name='object-event-list', view=APIObjectEventListView.as_view()
-    ),
+    )
 ]

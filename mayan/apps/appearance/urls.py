@@ -23,7 +23,7 @@ urlpatterns_error_pages = [
         regex=r'^errors/500/$', name='error_500', view=SimpleView.as_view(
             template_name='500.html'
         )
-    ),
+    )
 ]
 
 urlpatterns_themes = [

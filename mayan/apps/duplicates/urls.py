@@ -23,7 +23,7 @@ urlpatterns = [
         regex=r'^documents/duplicated/scan/$',
         name='duplicated_document_scan',
         view=ScanDuplicatedDocuments.as_view()
-    ),
+    )
 ]
 
 api_urls = [
@@ -36,7 +36,5 @@ api_urls = [
         regex=r'^documents/(?P<document_id>[0-9]+)/duplicates/$',
         name='documentduplicate-list',
         view=APIDocumentDuplicateListView.as_view()
-    ),
-
-
+    )
 ]

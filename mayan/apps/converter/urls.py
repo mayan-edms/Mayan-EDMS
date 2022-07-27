@@ -37,7 +37,7 @@ urlpatterns_assets = [
     url(
         regex=r'^assets/(?P<asset_id>\d+)/edit/$', name='asset_edit',
         view=AssetEditView.as_view()
-    ),
+    )
 ]
 
 urlpatterns_transformations = [

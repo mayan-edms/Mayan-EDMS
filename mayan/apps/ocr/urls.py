@@ -91,5 +91,5 @@ api_urls = [
         regex=r'^documents/(?P<document_id>\d+)/versions/(?P<document_version_id>\d+)/pages/(?P<document_version_page_id>\d+)/ocr/$',
         name='document-version-page-ocr-content-detail-view',
         view=APIDocumentVersionPageOCRContentDetailView.as_view()
-    ),
+    )
 ]

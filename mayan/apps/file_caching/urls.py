@@ -29,5 +29,5 @@ urlpatterns = [
     url(
         regex=r'^apps/(?P<app_label>[-\w]+)/models/(?P<model_name>[-\w]+)/objects/(?P<object_id>\d+)/cache_partitions/purge/$',
         name='cache_partitions_purge', view=CachePartitionPurgeView.as_view()
-    ),
+    )
 ]

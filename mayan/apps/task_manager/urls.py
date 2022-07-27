@@ -6,5 +6,5 @@ urlpatterns = [
     url(
         regex=r'^queues/$', view=QueueListView.as_view(),
         name='queue_list'
-    ),
+    )
 ]

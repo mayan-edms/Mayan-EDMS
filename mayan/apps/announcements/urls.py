@@ -25,7 +25,7 @@ urlpatterns = [
     url(
         regex=r'^announcements/(?P<announcement_id>\d+)/edit/$', name='announcement_edit',
         view=AnnouncementEditView.as_view()
-    ),
+    )
 ]
 
 api_urls = [
@@ -36,5 +36,5 @@ api_urls = [
     url(
         regex=r'^announcements/(?P<announcement_id>[0-9]+)/$', name='announcement-detail',
         view=APIAnnouncementView.as_view()
-    ),
+    )
 ]

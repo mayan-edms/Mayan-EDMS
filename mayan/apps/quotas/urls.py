@@ -24,5 +24,5 @@ urlpatterns = [
     url(
         regex=r'^quotas/backend/selection/$', name='quota_backend_selection',
         view=QuotaBackendSelectionView.as_view()
-    ),
+    )
 ]

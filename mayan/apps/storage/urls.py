@@ -19,5 +19,5 @@ urlpatterns = [
     url(
         regex=r'^downloads/$', name='download_file_list',
         view=DownloadFileListView.as_view()
-    ),
+    )
 ]

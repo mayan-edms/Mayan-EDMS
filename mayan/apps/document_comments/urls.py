@@ -27,7 +27,7 @@ urlpatterns = [
     url(
         regex=r'^comments/(?P<comment_id>\d+)/edit/$', name='comment_edit',
         view=DocumentCommentEditView.as_view()
-    ),
+    )
 ]
 
 api_urls = [
@@ -38,5 +38,5 @@ api_urls = [
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/comments/(?P<comment_id>[0-9]+)/$',
         name='comment-detail', view=APICommentView.as_view()
-    ),
+    )
 ]

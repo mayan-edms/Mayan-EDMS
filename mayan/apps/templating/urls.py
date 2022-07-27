@@ -9,7 +9,7 @@ urlpatterns = [
         regex=r'^documents/(?P<document_id>\d+)/sandbox/$',
         name='document_template_sandbox',
         view=DocumentTemplateSandboxView.as_view()
-    ),
+    )
 ]
 
 api_urls = [

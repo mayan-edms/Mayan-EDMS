@@ -123,7 +123,7 @@ api_urls_document_indexes = [
         regex=r'^documents/(?P<document_id>[0-9]+)/indexes/$',
         name='document-index-list',
         view=APIDocumentIndexInstanceNodeListView.as_view()
-    ),
+    )
 ]
 
 api_urls_index_instances = [
@@ -155,7 +155,7 @@ api_urls_index_instances = [
         regex=r'^index_instances/(?P<index_instance_id>[0-9]+)/nodes/(?P<index_instance_node_id>[0-9]+)/documents/$',
         name='indexinstancenode-document-list',
         view=APIIndexInstanceNodeDocumentListView.as_view()
-    ),
+    )
 ]
 
 api_urls_index_templates = [
@@ -202,7 +202,7 @@ api_urls_index_templates = [
         regex=r'^index_templates/(?P<index_template_id>[0-9]+)/nodes/(?P<index_template_node_id>[0-9]+)/$',
         name='indextemplatenode-detail',
         view=APIIndexTemplateNodeDetailView.as_view()
-    ),
+    )
 ]
 
 api_urls = []

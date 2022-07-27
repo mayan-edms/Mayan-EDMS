@@ -87,5 +87,5 @@ api_urls = [
         regex=r'^web_links/(?P<web_link_id>[0-9]+)/document_types/remove/$',
         name='web_link-document_type-remove',
         view=APIWebLinkDocumentTypeRemoveView.as_view()
-    ),
+    )
 ]
