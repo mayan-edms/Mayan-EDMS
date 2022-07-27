@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"POT-Creation-Date: 2022-07-27 08:19+0000\n"
 "PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -114,15 +114,15 @@ msgstr "Remover"
 
 #: forms.py:178
 msgid "Basic"
-msgstr ""
+msgstr "Básico"
 
 #: forms.py:182
 msgid "Values"
-msgstr ""
+msgstr "Valores"
 
 #: forms.py:186
 msgid "Validation"
-msgstr ""
+msgstr "Validación"
 
 #: forms.py:190
 msgid "Parsing"
@@ -413,9 +413,9 @@ msgstr ""
 #: views/document_views.py:56
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Agregar tipos de metadatos al documento"
+msgstr[1] "Agregar tipos de metadatos a los documentos"
+msgstr[2] "Agregar tipos de metadatos a los documentos"
 
 #: views/document_views.py:67
 #, python-format
@@ -473,9 +473,9 @@ msgstr "No hay metadatos para editar"
 #: views/document_views.py:227
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Editar metadatos del documento"
+msgstr[1] "Editar metadatos de documentos"
+msgstr[2] "Editar metadatos de documentos"
 
 #: views/document_views.py:238
 #, python-format
@@ -527,9 +527,9 @@ msgstr ""
 #: views/document_views.py:399
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Eliminar tipos de metadatos del documento"
+msgstr[1] "Eliminar tipos de metadatos de los documentos"
+msgstr[2] "Eliminar tipos de metadatos de los documentos"
 
 #: views/document_views.py:410
 #, python-format
@@ -606,6 +606,12 @@ msgid ""
 "will block the upload of documents of that type until a metadata value is "
 "provided."
 msgstr ""
+"Los tipos de metadatos son propiedades definidas por el usuario a las que se"
+" les pueden asignar valores. Una vez creados, deben asociarse a tipos de "
+"documentos, ya sea como opcionales u obligatorios, para cada uno. Establecer"
+" un tipo de metadatos como requerido para un tipo de documento bloqueará la "
+"carga de documentos de ese tipo hasta que se proporcione un valor de "
+"metadatos."
 
 #: views/metadata_type_views.py:114
 msgid "There are no metadata types"

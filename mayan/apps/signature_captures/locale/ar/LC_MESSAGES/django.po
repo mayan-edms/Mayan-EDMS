@@ -8,12 +8,11 @@
 # Yaman Sanobar <yman.snober@gmail.com>, 2022
 # Marwan Rahhal <Marwanr@sssit.net>, 2022
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"POT-Creation-Date: 2022-07-27 08:19+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"POT-Creation-Date: 2022-07-27 08:19+0000\n"
 "PO-Revision-Date: 2022-07-27 05:35+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -30,6 +30,9 @@ msgid ""
 "Search backend error. Verify that the search service is available and that "
 "the search syntax is valid for the active search backend; %s"
 msgstr ""
+"Error de back-end de búsqueda. Verifique que el servicio de búsqueda esté "
+"disponible y que la sintaxis de búsqueda sea válida para el motor de "
+"búsqueda activo; %s"
 
 #: classes.py:584
 #, python-format
@@ -137,7 +140,7 @@ msgstr "Número máximo de resultados de búsqueda para obtener y mostrar."
 
 #: templates/dynamic_search/app/list_toolbar.html:13
 msgid "List filter"
-msgstr ""
+msgstr "Filtro de lista"
 
 #: templates/dynamic_search/search_box.html:47
 msgid "Advanced"

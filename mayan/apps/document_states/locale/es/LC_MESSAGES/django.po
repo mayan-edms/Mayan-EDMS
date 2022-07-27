@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"POT-Creation-Date: 2022-07-27 08:19+0000\n"
 "PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -141,11 +141,11 @@ msgstr "Error de plantilla en %(field_name)s: %(exception)s"
 
 #: events.py:10
 msgid "Workflow instance created"
-msgstr ""
+msgstr "Instancia de flujo de trabajo creada"
 
 #: events.py:13
 msgid "Workflow instance transitioned"
-msgstr ""
+msgstr "Instancia de flujo de trabajo transicionada"
 
 #: events.py:18
 msgid "Workflow created"
@@ -200,7 +200,7 @@ msgstr "Transición"
 
 #: forms.py:219
 msgid "Workflow template preview image"
-msgstr ""
+msgstr "Imagen de vista previa de la plantilla de flujo de trabajo"
 
 #: handlers.py:81
 #, python-format
@@ -243,11 +243,11 @@ msgstr "Crear acción"
 
 #: links.py:140
 msgid "Create escalation"
-msgstr ""
+msgstr "Crear escalamiento"
 
 #: links.py:161
 msgid "Escalations"
-msgstr ""
+msgstr "Escalamientos"
 
 #: links.py:170
 msgid "Create state"
@@ -339,7 +339,7 @@ msgstr "Flujo de trabajo"
 
 #: models/workflow_instance_models.py:40
 msgid "Workflow instance creation date time."
-msgstr ""
+msgstr "Fecha y hora de creación de la instancia de flujo de trabajo."
 
 #: models/workflow_instance_models.py:41
 #: models/workflow_instance_models.py:228
@@ -432,24 +432,29 @@ msgid ""
 "with a lower priority number are executed before escalations with a higher "
 "priority number."
 msgstr ""
+"Determine el orden en que se evaluarán los escalamientos. Los escalamientos "
+"con un número de prioridad más bajo se ejecutan antes que los escalamientos "
+"con un número de prioridad más alto."
 
 #: models/workflow_state_escalation_models.py:40
 msgid "Priority"
-msgstr ""
+msgstr "Prioridad"
 
 #: models/workflow_state_escalation_models.py:44
 msgid ""
 "Enable automatic transition the workflow after a specified amount of time "
 "has elapsed in the state without change."
 msgstr ""
+"Habilita la transición automática del flujo de trabajo después de que haya "
+"transcurrido una cantidad de tiempo especificada en el estado sin cambios."
 
 #: models/workflow_state_escalation_models.py:51
 msgid "Time unit"
-msgstr ""
+msgstr "Unidad de tiempo"
 
 #: models/workflow_state_escalation_models.py:56
 msgid "Amount of the selected escalation units of time."
-msgstr ""
+msgstr "Cantidad de las unidades de tiempo del escalamiento seleccionado."
 
 #: models/workflow_state_escalation_models.py:57
 msgid "Amount"
@@ -459,18 +464,20 @@ msgstr "Cantidad"
 msgid ""
 "Comment to save to the workflow instance when the escalation is executed."
 msgstr ""
+"Comentario para guardar en la instancia de flujo de trabajo cuando se "
+"ejecute el escalamiento."
 
 #: models/workflow_state_escalation_models.py:69
 msgid "Workflow state escalation"
-msgstr ""
+msgstr "Escalamiento de estado de flujo de trabajo"
 
 #: models/workflow_state_escalation_models.py:70
 msgid "Workflow state escalations"
-msgstr ""
+msgstr "Escalamientos de estado de flujo de trabajo"
 
 #: models/workflow_state_escalation_models.py:103
 msgid "Workflow escalation."
-msgstr ""
+msgstr "Escalamiento del flujo de trabajo."
 
 #: models/workflow_state_models.py:54
 msgid "A short text to describe the workflow state."
@@ -730,11 +737,12 @@ msgstr "Inicia todos los flujos de trabajo de un documento"
 
 #: queues.py:25
 msgid "Check a workflow instance for state escalation."
-msgstr ""
+msgstr "Verificar una instancia de flujo de trabajo para escalamientos."
 
 #: queues.py:29
 msgid "Check all workflow instances for state escalation."
 msgstr ""
+"Verificar todas las instancias de flujo de trabajo para escalamientos."
 
 #: queues.py:37
 msgid "Launch all workflows for all documents"
@@ -782,10 +790,12 @@ msgstr ""
 #: serializers/workflow_template_state_escalation_serializers.py:50
 msgid "Primary key of the workflow template transition to be added."
 msgstr ""
+"Llave principal de la transición de la plantilla de flujo de trabajo que se "
+"agregará."
 
 #: serializers/workflow_template_state_escalation_serializers.py:51
 msgid "Workflow template transition ID"
-msgstr ""
+msgstr "ID de transición de plantilla de flujo de trabajo"
 
 #: serializers/workflow_template_transition_serializers.py:86
 msgid "Primary key of the destination state to be added."
@@ -837,6 +847,8 @@ msgid ""
 "Interval in seconds on which the task to check for expired workflow states "
 "will be launched."
 msgstr ""
+"Intervalo en segundos en el que se iniciará la tarea para verificar los "
+"estados de flujo de trabajo caducados."
 
 #: storages.py:14
 msgid ""
@@ -968,32 +980,35 @@ msgstr "Estados del flujo de trabajo: %s"
 #: views/workflow_template_state_escalation_views.py:41
 #, python-format
 msgid "Create escalation for workflow state: %s"
-msgstr ""
+msgstr "Crear un escalamientos para el estado del flujo de trabajo: %s"
 
 #: views/workflow_template_state_escalation_views.py:84
 #, python-format
 msgid "Delete workflow state escalation: %s"
-msgstr ""
+msgstr "Eliminar escalamiento de estado de flujo de trabajo: %s"
 
 #: views/workflow_template_state_escalation_views.py:116
 #, python-format
 msgid "Edit workflow state escalation: %s"
-msgstr ""
+msgstr "Editar escalamiento de estado de flujo de trabajo: %s"
 
 #: views/workflow_template_state_escalation_views.py:155
 msgid ""
 "Workflow state escalation allow workflows to execute a a transition "
 "automatically after a specific amount of time."
 msgstr ""
+"El escalamiento del estado del flujo de trabajo permite que los flujos de "
+"trabajo ejecuten una transición automáticamente después de un período de "
+"tiempo específico."
 
 #: views/workflow_template_state_escalation_views.py:159
 msgid "There are no escalations for this workflow state"
-msgstr ""
+msgstr "No hay escalamientos para este estado de flujo de trabajo"
 
 #: views/workflow_template_state_escalation_views.py:162
 #, python-format
 msgid "Escalations for workflow template state: %s"
-msgstr ""
+msgstr "Escalamientos. para el estado de la plantilla de flujo de trabajo: %s"
 
 #: views/workflow_template_state_views.py:60
 #, python-format

@@ -7,12 +7,11 @@
 # jmcainzos <jmcainzos@vodafone.es>, 2022
 # Roberto Rosario, 2022
 # 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"POT-Creation-Date: 2022-07-27 08:19+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -25,23 +24,23 @@ msgstr ""
 #: apps.py:41 events.py:6 links.py:34 models.py:83 permissions.py:6
 #: settings.py:13
 msgid "Signature captures"
-msgstr ""
+msgstr "Capturas de firmas"
 
 #: events.py:11
 msgid "Signature capture created"
-msgstr ""
+msgstr "Captura de firma creada"
 
 #: events.py:15
 msgid "Signature capture deleted"
-msgstr ""
+msgstr "Captura de firma eliminada"
 
 #: events.py:19
 msgid "Signature capture edited"
-msgstr ""
+msgstr "Captura de firma editada"
 
 #: forms.py:27
 msgid "Asset preview image"
-msgstr ""
+msgstr "Imagen de vista previa del activo"
 
 #: forms.py:27
 msgid "Preview"
@@ -49,7 +48,7 @@ msgstr "Muestra"
 
 #: links.py:17
 msgid "Create new signature capture"
-msgstr ""
+msgstr "Crear nueva captura de firma"
 
 #: links.py:23
 msgid "Delete"
@@ -65,23 +64,23 @@ msgstr "Documento"
 
 #: models.py:43
 msgid "Data representing the handwritten signature."
-msgstr ""
+msgstr "Datos representativos de la firma manuscrita."
 
 #: models.py:44
 msgid "Signature capture data"
-msgstr ""
+msgstr "Datos de captura de firma"
 
 #: models.py:48
 msgid "Vector representation of the handwritten signature."
-msgstr ""
+msgstr "Representación vectorial de la firma manuscrita."
 
 #: models.py:49
 msgid "SVG signature capture data"
-msgstr ""
+msgstr "Datos SVG de captura de firma"
 
 #: models.py:52
 msgid "Print version of the captured signature."
-msgstr ""
+msgstr "Versión impresa de la firma capturada."
 
 #: models.py:53
 msgid "Text"
@@ -93,11 +92,11 @@ msgstr "Usuario"
 
 #: models.py:61
 msgid "Date and time created"
-msgstr ""
+msgstr "Fecha y hora de creación"
 
 #: models.py:65
 msgid "Date and time edited"
-msgstr ""
+msgstr "Fecha y hora editadas"
 
 #: models.py:69
 msgid ""
@@ -105,6 +104,9 @@ msgid ""
 "relationship to the document. Can only contain letters, numbers, and "
 "underscores."
 msgstr ""
+"Este valor se utilizará cuando se haga referencia a esta captura de firma en"
+" relación con el documento. Solo puede contener letras, números y guiones "
+"bajos."
 
 #: models.py:73 transformations.py:40
 msgid "Internal name"
@@ -112,7 +114,7 @@ msgstr "Nombre interno"
 
 #: models.py:82
 msgid "Signature capture"
-msgstr ""
+msgstr "Captura de firma"
 
 #: models.py:167
 msgid "Creation date and time"
@@ -120,35 +122,35 @@ msgstr "Fecha y hora de creación"
 
 #: permissions.py:10
 msgid "Create signature captures"
-msgstr ""
+msgstr "Crear capturas de firma"
 
 #: permissions.py:14
 msgid "Delete signature captures"
-msgstr ""
+msgstr "Eliminar capturas de firma"
 
 #: permissions.py:18
 msgid "Edit signature captures"
-msgstr ""
+msgstr "Editar capturas de firma"
 
 #: permissions.py:22
 msgid "View signature captures"
-msgstr ""
+msgstr "Ver capturas de firma"
 
 #: search.py:12
 msgid "Signature capture text"
-msgstr ""
+msgstr "Texto de captura de firma"
 
 #: search.py:16
 msgid "Signature capture user first name"
-msgstr ""
+msgstr "Nombre del usuario de captura de firma"
 
 #: search.py:20
 msgid "Signature capture user last name"
-msgstr ""
+msgstr "Apellido del usuario de captura de firma"
 
 #: search.py:24
 msgid "Signature capture user username"
-msgstr ""
+msgstr "Nombre de usuario del usuario de captura de firma"
 
 #: search.py:35
 msgid "Document type label"
@@ -160,15 +162,15 @@ msgstr "Etiqueta de documento"
 
 #: search.py:42
 msgid "User first name"
-msgstr ""
+msgstr "Nombre del usuario"
 
 #: search.py:45
 msgid "User last name"
-msgstr ""
+msgstr "Apellido del usuario"
 
 #: search.py:48
 msgid "User username"
-msgstr ""
+msgstr "Nombre de usuario del usuario"
 
 #: settings.py:21
 msgid ""
@@ -177,72 +179,85 @@ msgid ""
 "deleting the oldest signature capture cache files. Specify the size in "
 "bytes."
 msgstr ""
+"El limite en el que "
+"SIGNATURE_CAPTURES_SIGNATURE_CAPTURE_CACHE_STORAGE_BACKEND comenzará a "
+"eliminar los archivos de caché de captura de firma más antiguos. Especifique"
+" el tamaño en bytes."
 
 #: settings.py:29
 msgid ""
 "Path to the Storage subclass to use when storing the cached signature "
 "capture files."
 msgstr ""
+"Ruta a la subclase de almacenamiento que se usará al almacenar los archivos "
+"de captura de firma en caché."
 
 #: settings.py:37
 msgid ""
 "Arguments to pass to the "
 "SIGNATURE_CAPTURES_SIGNATURE_CAPTURE_CACHE_STORAGE_BACKEND."
 msgstr ""
+"Argumentos para pasar a "
+"SIGNATURE_CAPTURES_SIGNATURE_CAPTURE_CACHE_STORAGE_BACKEND."
 
 #: storages.py:15
 msgid ""
 "Unable to initialize the converter signature capture cachestorage. Check the"
 " settings {} and {} for formatting errors."
 msgstr ""
+"No se puede inicializar el almacenamiento en caché de captura de firma del "
+"convertidor. Verifique la configuración {} y {} para ver si hay errores de "
+"formato."
 
 #: storages.py:21
 msgid "Signature captures cache"
-msgstr ""
+msgstr "Caché de capturas de firma"
 
 #: templates/signature_captures/widget_signature_capture.html:64
 msgid "Sign above"
-msgstr ""
+msgstr "Firmar arriba"
 
 #: transformations.py:18
 msgid "Paste a signature capture (percent coordinates)"
-msgstr ""
+msgstr "Pegar una captura de firma (porcentaje de coordenadas)"
 
 #: transformations.py:39
 msgid "Signature capture internal name"
-msgstr ""
+msgstr "Nombre interno de captura de firma"
 
 #: views.py:44
 #, python-format
 msgid "Create signature capture for document: %s"
-msgstr ""
+msgstr "Crear captura de firma para documento: %s"
 
 #: views.py:78
 #, python-format
 msgid "Delete signature capture: %s"
-msgstr ""
+msgstr "Eliminar captura de firma: %s"
 
 #: views.py:100
 #, python-format
 msgid "Details of: %s"
-msgstr ""
+msgstr "Detalles de: %s"
 
 #: views.py:116
 #, python-format
 msgid "Edit document signature capture: %s"
-msgstr ""
+msgstr "Editar captura de firma de documento: %s"
 
 #: views.py:144
 msgid ""
 "Signature captures are electronic versions of a persons's handwritten "
 "signature."
 msgstr ""
+"Las capturas de firma son versiones electrónicas de la firma manuscrita de "
+"una persona."
 
 #: views.py:147
 msgid "Document has no signature captures"
-msgstr ""
+msgstr "El documento no tiene capturas de firma"
 
 #: views.py:150
 #, python-format
 msgid "Signature captures for document: %s"
-msgstr ""
+msgstr "Capturas de firma para documento: %s"

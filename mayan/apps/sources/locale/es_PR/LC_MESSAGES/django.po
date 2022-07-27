@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"POT-Creation-Date: 2022-07-27 08:19+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -561,7 +561,7 @@ msgstr "¿Eliminar archivo provisional \"%s\"?"
 #: source_backends/staging_folder_backends.py:612
 #, python-format
 msgid "Unable get list of staging files; %s"
-msgstr ""
+msgstr "No se puede obtener la lista de archivos provisionales; %s"
 
 #: source_backends/staging_folder_backends.py:630
 msgid ""

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"POT-Creation-Date: 2022-07-27 08:19+0000\n"
 "PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -27,7 +27,7 @@ msgstr "Registro"
 
 #: events.py:8
 msgid "Error log deleted"
-msgstr ""
+msgstr "Registro de errores eliminado"
 
 #: links.py:15 views.py:36
 msgid "Global error log"
@@ -91,7 +91,7 @@ msgstr "Objeto"
 
 #: permissions.py:8
 msgid "Delete error log"
-msgstr ""
+msgstr "Eliminar registro de errores"
 
 #: permissions.py:11
 msgid "View error log"
@@ -142,7 +142,7 @@ msgstr "El registro de errores del objeto se borró correctamente"
 #: views.py:74
 #, python-format
 msgid "Delete error log entry: %s"
-msgstr ""
+msgstr "Eliminar entrada de registro de errores: %s"
 
 #: views.py:97
 msgid ""

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"POT-Creation-Date: 2022-07-27 08:19+0000\n"
 "PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -184,7 +184,7 @@ msgstr ""
 
 #: document_version_modifications.py:11
 msgid "Append all file pages"
-msgstr ""
+msgstr "Agregar todas las páginas del archivo"
 
 #: document_version_modifications.py:13
 msgid ""
@@ -196,11 +196,12 @@ msgstr ""
 
 #: document_version_modifications.py:29
 msgid "Reset pages to latest file"
-msgstr ""
+msgstr "Restablecer páginas al archivo más reciente"
 
 #: document_version_modifications.py:30
 msgid "Match all pages to that of the latest document file."
 msgstr ""
+"Parear todas las páginas con las del archivo del documento más reciente."
 
 #: events.py:10
 msgid "Document created"
@@ -312,7 +313,7 @@ msgstr "Versión del documento cargada (histórico)"
 
 #: forms/document_file_forms.py:49
 msgid "Detected"
-msgstr ""
+msgstr "Detectado"
 
 #: forms/document_file_forms.py:53
 msgid "Storage"
@@ -320,7 +321,7 @@ msgstr "Almacenamiento"
 
 #: forms/document_file_forms.py:57
 msgid "Other"
-msgstr ""
+msgstr "Otro"
 
 #: forms/document_file_forms.py:66
 msgid "Date added"
@@ -384,7 +385,7 @@ msgstr "Tipo de documento"
 #: forms/document_version_forms.py:20
 msgid ""
 "The backend that will be executed against the selected document version."
-msgstr ""
+msgstr "El backend que se ejecutará en la versión del documento seleccionado."
 
 #: forms/document_version_forms.py:22
 msgid "Backend"
@@ -582,7 +583,7 @@ msgstr "Versiones"
 
 #: links/document_version_links.py:65
 msgid "Modify"
-msgstr ""
+msgstr "Modificar"
 
 #: links/document_version_page_links.py:55
 msgid "Remap pages"
@@ -846,7 +847,7 @@ msgstr "Recibo de documento, id: %d"
 
 #: models/document_type_models.py:40
 msgid "A short text identifying the document type."
-msgstr ""
+msgstr "Un breve texto que identifica el tipo de documento."
 
 #: models/document_type_models.py:45
 msgid ""
@@ -1194,11 +1195,11 @@ msgstr "ID de tipo de documento para el nuevo documento."
 
 #: serializers/document_version_serializers.py:24
 msgid "Backend ID"
-msgstr ""
+msgstr "ID de backend"
 
 #: serializers/document_version_serializers.py:25
 msgid "Primary key of the modification backend to execute."
-msgstr ""
+msgstr "Llave principal del backend de modificación a ejecutar."
 
 #: serializers/document_version_serializers.py:37
 msgid "Content type ID of the source object for the page."
@@ -1743,6 +1744,9 @@ msgid ""
 "Document version pages are links to actual content pages. Create them using "
 "the page remap actions or the version modification action."
 msgstr ""
+"Las páginas de versión del documento son enlaces a páginas de contenido "
+"real. Créelos usando las acciones de reasignación de página o la acción de "
+"modificación de versión."
 
 #: views/document_version_page_views.py:110
 msgid "No document version pages available"
@@ -1890,11 +1894,14 @@ msgstr "Versiones del documento: %s"
 #: views/document_version_views.py:288
 msgid "Document version modification backend queued successfully."
 msgstr ""
+"El backend de modificación de la versión del documento se puso en cola "
+"correctamente."
 
 #: views/document_version_views.py:298
 #, python-format
 msgid "Execute version modification action for document version: %s"
 msgstr ""
+"Ejecutar acción de modificación de versión para la versión del documento: %s"
 
 #: views/document_version_views.py:328
 #, python-format

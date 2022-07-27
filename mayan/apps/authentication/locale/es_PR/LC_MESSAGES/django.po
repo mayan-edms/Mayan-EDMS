@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"POT-Creation-Date: 2022-07-27 08:18+0000\n"
 "PO-Revision-Date: 2022-07-27 05:32+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -192,9 +192,9 @@ msgstr "Solicitud de cambio de contraseña realizada para %(count)d usuarios"
 #: views/authentication_views.py:323
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Cambiar contraseña de usuario"
+msgstr[1] "Cambiar las contraseñas de los usuarios"
+msgstr[2] "Cambiar las contraseñas de los usuarios"
 
 #: views/authentication_views.py:334
 #, python-format

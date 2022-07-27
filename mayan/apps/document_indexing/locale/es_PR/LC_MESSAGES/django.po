@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"POT-Creation-Date: 2022-07-27 08:18+0000\n"
 "PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -247,11 +247,11 @@ msgstr "Tipo de evento"
 
 #: models/index_template_models.py:194
 msgid "Index template event trigger"
-msgstr ""
+msgstr "Disparador de evento de plantilla de índice"
 
 #: models/index_template_models.py:195
 msgid "Index template event triggers"
-msgstr ""
+msgstr "Disparadores de evento de plantilla de índice"
 
 #: models/index_template_models.py:230
 msgid "Parent index template node of this node."
@@ -506,21 +506,26 @@ msgstr "Editar índice: %s"
 #, python-format
 msgid "Error updating index template event trigger; %s"
 msgstr ""
+"Error al actualizar el disparador de eventos de la plantilla de índice; %s"
 
 #: views/index_template_views.py:243
 msgid "Index template event triggers updated successfully."
 msgstr ""
+"Los disparadores de eventos de la plantilla de índice se actualizaron "
+"correctamente."
 
 #: views/index_template_views.py:253
 msgid ""
 "Triggers are document events that cause instances of this index template to "
 "be updated."
 msgstr ""
+"Los disparadores son eventos de documentos que hacen que se actualicen las "
+"instancias de esta plantilla de índice."
 
 #: views/index_template_views.py:258
 #, python-format
 msgid "Index template event triggers for: %s"
-msgstr ""
+msgstr "Disparadores de eventos de plantilla de índice para: %s"
 
 #: views/index_template_views.py:303
 #, python-format
@@ -555,17 +560,17 @@ msgstr "Plantilla de índice en cola para reconstrucción."
 #, python-format
 msgid "%(count)d index template queued for rebuild."
 msgid_plural "%(count)d index templates queued for rebuild."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%(count)d plantilla de índice en cola para reconstruir."
+msgstr[1] "%(count)d plantillas de índice en cola para reconstruir."
+msgstr[2] "%(count)d plantillas de índice en cola para reconstruir."
 
 #: views/index_template_views.py:482
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%(count)d índice reiniciado."
+msgstr[1] "%(count)d índices reiniciados."
+msgstr[2] "%(count)d índices reiniciados."
 
 #: views/index_template_views.py:495
 msgid "Index templates for which their instances will be deleted."

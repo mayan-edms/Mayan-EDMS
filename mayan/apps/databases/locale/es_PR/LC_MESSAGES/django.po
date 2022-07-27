@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"POT-Creation-Date: 2022-07-27 08:18+0000\n"
 "PO-Revision-Date: 2022-07-27 05:33+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -79,6 +79,10 @@ msgid ""
 "None, or an empty string ('') are considered to be logical false, any other "
 "value is considered to be the logical true."
 msgstr ""
+"La condición que determinará si este objeto se ejecuta o no. Las condiciones"
+" que no devuelven ningún valor, que devuelven el Ninguno lógico de Python o "
+"una cadena vacía ('') se consideran falsas lógicas, cualquier otro valor se "
+"considera verdadero lógico."
 
 #: model_mixins.py:106
 msgid "Condition"
@@ -87,6 +91,7 @@ msgstr "Condición"
 #: model_mixins.py:127
 msgid "The object will be executed, depending on the condition return value."
 msgstr ""
+"El objeto se ejecutará, dependiendo del valor de retorno de la condición."
 
 #: model_mixins.py:130
 msgid "Has a condition?"
