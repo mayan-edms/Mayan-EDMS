@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2022\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -21,17 +21,17 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:27 links.py:34 permissions.py:5 queues.py:7
+#: apps.py:30 links.py:35 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "آمار"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:36
+#: apps.py:39
 msgid "Schedule"
 msgstr "برنامه"
 
-#: apps.py:42
+#: apps.py:45
 msgid "Last update"
 msgstr ""
 
@@ -39,19 +39,19 @@ msgstr ""
 msgid "Never"
 msgstr "هرگز"
 
-#: links.py:14
+#: links.py:15
 msgid "Queue"
 msgstr "صف"
 
-#: links.py:19
+#: links.py:20
 msgid "View"
 msgstr "چشم انداز"
 
-#: links.py:24
+#: links.py:25
 msgid "Namespace details"
 msgstr "جزئیات نام دامنه"
 
-#: links.py:29
+#: links.py:30
 msgid "Namespace list"
 msgstr "لیست فضای نام"
 
@@ -94,31 +94,31 @@ msgstr ""
 msgid "Last update: %(datetime)s"
 msgstr ""
 
-#: views.py:17
+#: views.py:22
 msgid "Statistics namespaces"
 msgstr "فضاهای نامساعد"
 
-#: views.py:33
+#: views.py:40
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "جزئیات نام دامنه برای: %s"
 
-#: views.py:55
+#: views.py:63
 #, python-format
 msgid "Results for: %s"
 msgstr "نتایج برای: %s"
 
-#: views.py:62 views.py:88
+#: views.py:70 views.py:97
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "آمار \"%s\" یافت نشد"
 
-#: views.py:80
+#: views.py:89
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "آمار رسمی \"%s\" به روزرسانی می شود؟"
 
-#: views.py:94
+#: views.py:103
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr ""

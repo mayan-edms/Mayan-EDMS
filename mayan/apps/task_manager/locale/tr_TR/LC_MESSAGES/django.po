@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
@@ -20,47 +20,47 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:25 links.py:10 permissions.py:5
+#: apps.py:28 links.py:10 permissions.py:5
 msgid "Task manager"
 msgstr ""
 
-#: apps.py:84
+#: apps.py:87
 msgid "Label"
 msgstr "Etiket"
 
-#: apps.py:88
+#: apps.py:91
 msgid "Name"
 msgstr "İsim"
 
-#: apps.py:93
+#: apps.py:96
 msgid "Default queue?"
 msgstr ""
 
-#: apps.py:98
+#: apps.py:101
 msgid "Is transient?"
 msgstr ""
 
-#: apps.py:102
+#: apps.py:105
 msgid "Type"
 msgstr "Tür"
 
-#: apps.py:107
+#: apps.py:110
 msgid "Start time"
 msgstr ""
 
-#: apps.py:111
+#: apps.py:114
 msgid "Host"
 msgstr "Sunucu"
 
-#: apps.py:115
+#: apps.py:118
 msgid "Arguments"
 msgstr "Argümanlar"
 
-#: apps.py:119
+#: apps.py:122
 msgid "Keyword arguments"
 msgstr ""
 
-#: apps.py:123
+#: apps.py:126
 msgid "Worker process ID"
 msgstr ""
 
@@ -98,10 +98,10 @@ msgid ""
 "backend"
 msgstr ""
 
-#: tests/literals.py:3
+#: tests/literals.py:11
 msgid "Test queue"
 msgstr ""
 
-#: views.py:12
+#: views.py:13
 msgid "Background task queues"
 msgstr ""

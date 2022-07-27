@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# trendspotter <jirka.p@volny.cz>, 2022
 # Jiri Fait <fait@orkasolutions.cz>, 2022
+# trendspotter <jirka.p@volny.cz>, 2022
 # Michal Švábík <snadno@lehce.cz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:11+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -50,27 +50,27 @@ msgstr "FontAwesome"
 msgid "jQuery"
 msgstr "jQuery"
 
-#: dependencies.py:41
+#: dependencies.py:42
 msgid "JQuery Form"
 msgstr "Formulář JQuery"
 
-#: dependencies.py:45
+#: dependencies.py:46
 msgid "jQuery Lazy Load"
 msgstr "jQuery spožděné načítání"
 
-#: dependencies.py:49
+#: dependencies.py:50
 msgid "JQuery Match Height"
 msgstr "JQuery Match Height"
 
-#: dependencies.py:53
+#: dependencies.py:54
 msgid "Select 2"
 msgstr "Select 2"
 
-#: dependencies.py:57
+#: dependencies.py:58
 msgid "Toastr"
 msgstr "Toastr"
 
-#: dependencies.py:60
+#: dependencies.py:62
 msgid "URI.js"
 msgstr "URI.js"
 
@@ -94,7 +94,7 @@ msgstr "Nastavení motivu"
 msgid "Edit theme settings"
 msgstr "Upravit nastavení motivu"
 
-#: links.py:31 views.py:27
+#: links.py:31 views.py:31
 msgid "Create new theme"
 msgstr "Vytvořit nový motiv"
 
@@ -106,7 +106,7 @@ msgstr "Odstranit"
 msgid "Edit"
 msgstr "Upravit"
 
-#: links.py:44 links.py:49 models.py:32 views.py:91
+#: links.py:44 links.py:49 models.py:32 views.py:99
 msgid "Themes"
 msgstr "Motivy"
 
@@ -337,10 +337,10 @@ msgstr "Ano"
 msgid "No"
 msgstr "Ne"
 
-#: templates/appearance/generic_form_instance.html:51
-#: templates/appearance/generic_form_instance.html:57
 #: templates/appearance/generic_form_subtemplate.html:50
 #: templates/appearance/generic_multiform_subtemplate.html:37
+#: templates/appearance/partials/form_field.html:10
+#: templates/appearance/partials/form_field.html:16
 msgid "required"
 msgstr "Požadované"
 
@@ -363,11 +363,11 @@ msgstr "Odeslat"
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: templates/appearance/generic_list_subtemplate.html:34
+#: templates/appearance/generic_list_subtemplate.html:35
 msgid "Identifier"
 msgstr "Identifikátor"
 
-#: templates/appearance/generic_list_subtemplate.html:133
+#: templates/appearance/generic_list_subtemplate.html:134
 msgid "Facets"
 msgstr "Fazety"
 
@@ -387,7 +387,7 @@ msgstr "Přepnout navigaci"
 msgid "Open main menu"
 msgstr "Otevřete hlavní menu"
 
-#: templates/appearance/partials/list_header.html:12
+#: templates/appearance/partials/list_header.html:11
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
@@ -396,32 +396,32 @@ msgstr ""
 "Celkem (%(start)s - %(end)s z %(total)s) (stránka %(page_number)s z "
 "%(total_pages)s)"
 
-#: templates/appearance/partials/list_header.html:14
-#: templates/appearance/partials/list_header.html:17
+#: templates/appearance/partials/list_header.html:13
+#: templates/appearance/partials/list_header.html:16
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Celkem: %(total)s"
 
-#: templates/appearance/partials/list_toolbar.html:13
+#: templates/appearance/partials/list_toolbar.html:14
 msgid "Select/Deselect all"
 msgstr "Vyberte / Zrušte výběr všech"
 
-#: templates/appearance/partials/list_toolbar.html:17
+#: templates/appearance/partials/list_toolbar.html:18
 msgid "Toggle list display mode"
 msgstr "Přepnout režim zobrazení seznamu"
 
-#: templates/appearance/partials/list_toolbar.html:60
+#: templates/appearance/partials/list_toolbar.html:63
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
 "Vyberte položky pro aktivaci hromadných akcí. Použijte Shift + click pro "
 "výběr více položek."
 
-#: templates/appearance/partials/list_toolbar.html:65
+#: templates/appearance/partials/list_toolbar.html:68
 msgid "Bulk actions"
 msgstr "Hromadné akce"
 
-#: templates/appearance/partials/list_toolbar.html:67
+#: templates/appearance/partials/list_toolbar.html:70
 msgid "Toggle Dropdown"
 msgstr "Přepnout rozevírací seznam"
 
@@ -445,31 +445,31 @@ msgstr "Zkontrolujte připojení k síti a zkuste to znovu za chvíli."
 msgid "None"
 msgstr "Žádný"
 
-#: views.py:49
+#: views.py:55
 #, python-format
 msgid "Delete theme: %s"
 msgstr "Odstranit motiv: %s"
 
-#: views.py:65
+#: views.py:72
 #, python-format
 msgid "Edit theme: %s"
 msgstr "Upravit motiv: %s"
 
-#: views.py:85
+#: views.py:93
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
 msgstr "Motivy umožňují změnu vizuálního vzhledu bez nutnosti změn kódu."
 
-#: views.py:89
+#: views.py:97
 msgid "There are no themes"
 msgstr "Neexistují žádné motivy"
 
-#: views.py:113
+#: views.py:122
 #, python-format
 msgid "Theme settings for user: %s"
 msgstr ""
 
-#: views.py:134
+#: views.py:144
 #, python-format
 msgid "Edit theme settings for user: %s"
 msgstr ""

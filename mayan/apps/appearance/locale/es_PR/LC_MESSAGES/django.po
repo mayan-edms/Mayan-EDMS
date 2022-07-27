@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:11+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
@@ -48,27 +48,27 @@ msgstr "FontAwesome"
 msgid "jQuery"
 msgstr "jQuery"
 
-#: dependencies.py:41
+#: dependencies.py:42
 msgid "JQuery Form"
 msgstr "JQuery Form"
 
-#: dependencies.py:45
+#: dependencies.py:46
 msgid "jQuery Lazy Load"
 msgstr "jQuery Lazy Load"
 
-#: dependencies.py:49
+#: dependencies.py:50
 msgid "JQuery Match Height"
 msgstr "JQuery Match Height"
 
-#: dependencies.py:53
+#: dependencies.py:54
 msgid "Select 2"
 msgstr "Select 2"
 
-#: dependencies.py:57
+#: dependencies.py:58
 msgid "Toastr"
 msgstr "Toastr"
 
-#: dependencies.py:60
+#: dependencies.py:62
 msgid "URI.js"
 msgstr "URI.js"
 
@@ -92,7 +92,7 @@ msgstr "Ajustes de tema"
 msgid "Edit theme settings"
 msgstr "Editar los ajustes de tema"
 
-#: links.py:31 views.py:27
+#: links.py:31 views.py:31
 msgid "Create new theme"
 msgstr "Crear nuevo tema"
 
@@ -104,7 +104,7 @@ msgstr "Eliminar"
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:44 links.py:49 models.py:32 views.py:91
+#: links.py:44 links.py:49 models.py:32 views.py:99
 msgid "Themes"
 msgstr "Temas"
 
@@ -339,16 +339,16 @@ msgstr "¿Está seguro?"
 
 #: templates/appearance/generic_confirm.html:37
 msgid "Yes"
-msgstr "Si"
+msgstr "Sí"
 
 #: templates/appearance/generic_confirm.html:47
 msgid "No"
 msgstr "No"
 
-#: templates/appearance/generic_form_instance.html:51
-#: templates/appearance/generic_form_instance.html:57
 #: templates/appearance/generic_form_subtemplate.html:50
 #: templates/appearance/generic_multiform_subtemplate.html:37
+#: templates/appearance/partials/form_field.html:10
+#: templates/appearance/partials/form_field.html:16
 msgid "required"
 msgstr "requerido"
 
@@ -371,11 +371,11 @@ msgstr "Enviar"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: templates/appearance/generic_list_subtemplate.html:34
+#: templates/appearance/generic_list_subtemplate.html:35
 msgid "Identifier"
 msgstr "Identificador"
 
-#: templates/appearance/generic_list_subtemplate.html:133
+#: templates/appearance/generic_list_subtemplate.html:134
 msgid "Facets"
 msgstr "Facetas"
 
@@ -395,7 +395,7 @@ msgstr "Activar/Desactivar navegación"
 msgid "Open main menu"
 msgstr "Abrir menú principal"
 
-#: templates/appearance/partials/list_header.html:12
+#: templates/appearance/partials/list_header.html:11
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
@@ -404,32 +404,32 @@ msgstr ""
 "Total (%(start)s - %(end)s de %(total)s) (Página %(page_number)s de "
 "%(total_pages)s)"
 
-#: templates/appearance/partials/list_header.html:14
-#: templates/appearance/partials/list_header.html:17
+#: templates/appearance/partials/list_header.html:13
+#: templates/appearance/partials/list_header.html:16
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Total: %(total)s"
 
-#: templates/appearance/partials/list_toolbar.html:13
+#: templates/appearance/partials/list_toolbar.html:14
 msgid "Select/Deselect all"
 msgstr "Seleccionar / Deseleccionar todo"
 
-#: templates/appearance/partials/list_toolbar.html:17
+#: templates/appearance/partials/list_toolbar.html:18
 msgid "Toggle list display mode"
 msgstr "Cambiar el modo de visualización de la lista"
 
-#: templates/appearance/partials/list_toolbar.html:60
+#: templates/appearance/partials/list_toolbar.html:63
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
 "Seleccione elementos para activar acciones masivas. Use Shift + clic para "
 "seleccionar muchos."
 
-#: templates/appearance/partials/list_toolbar.html:65
+#: templates/appearance/partials/list_toolbar.html:68
 msgid "Bulk actions"
 msgstr "Acciones masivas"
 
-#: templates/appearance/partials/list_toolbar.html:67
+#: templates/appearance/partials/list_toolbar.html:70
 msgid "Toggle Dropdown"
 msgstr "Alternar desplegable"
 
@@ -453,33 +453,33 @@ msgstr "Verifique su conexión de red y vuelva a intentarlo en unos momentos."
 msgid "None"
 msgstr "Ninguno"
 
-#: views.py:49
+#: views.py:55
 #, python-format
 msgid "Delete theme: %s"
 msgstr "Eliminar tema: %s"
 
-#: views.py:65
+#: views.py:72
 #, python-format
 msgid "Edit theme: %s"
 msgstr "Editar tema: %s"
 
-#: views.py:85
+#: views.py:93
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
 msgstr ""
 "Los temas permiten cambiar la apariencia visual sin requerir cambios de "
 "código."
 
-#: views.py:89
+#: views.py:97
 msgid "There are no themes"
 msgstr "No hay temas"
 
-#: views.py:113
+#: views.py:122
 #, python-format
 msgid "Theme settings for user: %s"
 msgstr "Configuración de tema para el usuario: %s"
 
-#: views.py:134
+#: views.py:144
 #, python-format
 msgid "Edit theme settings for user: %s"
 msgstr "Editar la configuración de tema para el usuario: %s"

@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
@@ -21,17 +21,17 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:27 links.py:34 permissions.py:5 queues.py:7
+#: apps.py:30 links.py:35 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "统计"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:36
+#: apps.py:39
 msgid "Schedule"
 msgstr "安排"
 
-#: apps.py:42
+#: apps.py:45
 msgid "Last update"
 msgstr "最后更新"
 
@@ -39,19 +39,19 @@ msgstr "最后更新"
 msgid "Never"
 msgstr "从不"
 
-#: links.py:14
+#: links.py:15
 msgid "Queue"
 msgstr "队列"
 
-#: links.py:19
+#: links.py:20
 msgid "View"
 msgstr "视图"
 
-#: links.py:24
+#: links.py:25
 msgid "Namespace details"
 msgstr "命名空间详细信息"
 
-#: links.py:29
+#: links.py:30
 msgid "Namespace list"
 msgstr "命名空间列表"
 
@@ -94,31 +94,31 @@ msgstr "无可用数据"
 msgid "Last update: %(datetime)s"
 msgstr "最后更新%(datetime)s"
 
-#: views.py:17
+#: views.py:22
 msgid "Statistics namespaces"
 msgstr "统计命名空间"
 
-#: views.py:33
+#: views.py:40
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "命名空间详细信息：%s"
 
-#: views.py:55
+#: views.py:63
 #, python-format
 msgid "Results for: %s"
 msgstr "结果：%s"
 
-#: views.py:62 views.py:88
+#: views.py:70 views.py:97
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "统计“%s”未找到。"
 
-#: views.py:80
+#: views.py:89
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "队列统计“%s”有待更新？"
 
-#: views.py:94
+#: views.py:103
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr "统计“%s”已成功排队等待更新。"

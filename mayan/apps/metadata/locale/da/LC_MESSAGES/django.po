@@ -4,18 +4,18 @@
 # 
 # Translators:
 # Translators:
-# Allan Møller <it@brandts.dk>, 2022
-# Mads L. Nielsen <sirlundgaard@gmail.com>, 2022
-# René Rovsing Bach <reroba@outlook.com>, 2022
 # Roberto Rosario, 2022
+# Allan Møller <it@brandts.dk>, 2022
+# René Rovsing Bach <reroba@outlook.com>, 2022
+# Mads L. Nielsen <sirlundgaard@gmail.com>, 2022
 # Rasmus Kierudsen <tebrasso@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Rasmus Kierudsen <tebrasso@gmail.com>, 2022\n"
 "Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
 "MIME-Version: 1.0\n"
@@ -24,24 +24,24 @@ msgstr ""
 "Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:67 apps.py:205 apps.py:211 apps.py:215 apps.py:220 apps.py:224
+#: apps.py:70 apps.py:208 apps.py:214 apps.py:218 apps.py:223 apps.py:227
 #: events.py:5 links.py:52 permissions.py:5 queues.py:7
 msgid "Metadata"
 msgstr ""
 
-#: apps.py:137
+#: apps.py:140
 msgid "Return the value of a specific document metadata."
 msgstr ""
 
-#: apps.py:138
+#: apps.py:141
 msgid "Metadata value of"
 msgstr ""
 
-#: apps.py:143
+#: apps.py:146
 msgid "Metadata type name"
 msgstr ""
 
-#: apps.py:147 search.py:17
+#: apps.py:150 search.py:17
 msgid "Metadata value"
 msgstr "Metadata værdi"
 
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: forms.py:52 forms.py:211 models.py:292
+#: forms.py:52 forms.py:231 models.py:292
 msgid "Required"
 msgstr ""
 
@@ -116,15 +116,31 @@ msgstr "Metadata type"
 msgid "Remove"
 msgstr ""
 
-#: forms.py:185
+#: forms.py:178
+msgid "Basic"
+msgstr ""
+
+#: forms.py:182
+msgid "Values"
+msgstr ""
+
+#: forms.py:186
+msgid "Validation"
+msgstr ""
+
+#: forms.py:190
+msgid "Parsing"
+msgstr ""
+
+#: forms.py:205
 msgid " Available template context variables: "
 msgstr ""
 
-#: forms.py:209
+#: forms.py:229
 msgid "None"
 msgstr "Ingen"
 
-#: forms.py:210
+#: forms.py:230
 msgid "Optional"
 msgstr ""
 
@@ -140,8 +156,9 @@ msgstr ""
 msgid "Remove metadata"
 msgstr ""
 
-#: links.py:62 links.py:96 models.py:88 views/metadata_type_views.py:107
-#: workflow_actions.py:23 workflow_actions.py:170
+#: links.py:62 links.py:96 models.py:88 permissions.py:22
+#: views/metadata_type_views.py:115 workflow_actions.py:23
+#: workflow_actions.py:170
 msgid "Metadata types"
 msgstr ""
 
@@ -332,10 +349,6 @@ msgstr "Fjern metadata fra et dokument"
 msgid "View metadata from a document"
 msgstr "Se metadata fra et dokument"
 
-#: permissions.py:22
-msgid "Metadata setup"
-msgstr ""
-
 #: permissions.py:26
 msgid "Edit metadata types"
 msgstr ""
@@ -380,212 +393,212 @@ msgstr ""
 msgid "Primary key of the metadata type to be added to the document."
 msgstr ""
 
-#: views/document_views.py:42
+#: views/document_views.py:45
 #, python-format
 msgid "Metadata add request performed on %(count)d document"
 msgstr ""
 
-#: views/document_views.py:44
+#: views/document_views.py:47
 #, python-format
 msgid "Metadata add request performed on %(count)d documents"
 msgstr ""
 
-#: views/document_views.py:52
+#: views/document_views.py:56
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views/document_views.py:63
+#: views/document_views.py:67
 #, python-format
 msgid "Add metadata types to document: %s"
 msgstr ""
 
-#: views/document_views.py:141
+#: views/document_views.py:145
 #, python-format
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
 msgstr ""
 
-#: views/document_views.py:156
+#: views/document_views.py:160
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s successfully added to document "
 "%(document)s."
 msgstr ""
 
-#: views/document_views.py:166
+#: views/document_views.py:170
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
 msgstr ""
 
-#: views/document_views.py:183
+#: views/document_views.py:187
 #, python-format
 msgid "Metadata edit request performed on %(count)d document"
 msgstr ""
 
-#: views/document_views.py:186
+#: views/document_views.py:190
 #, python-format
 msgid "Metadata edit request performed on %(count)d documents"
 msgstr ""
 
-#: views/document_views.py:217
+#: views/document_views.py:222
 msgid ""
 "Add metadata types available for this document's type and assign them "
 "corresponding values."
 msgstr ""
 
-#: views/document_views.py:220
+#: views/document_views.py:225
 msgid "There is no metadata to edit"
 msgstr ""
 
-#: views/document_views.py:222
+#: views/document_views.py:227
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views/document_views.py:233
+#: views/document_views.py:238
 #, python-format
 msgid "Edit metadata for document: %s"
 msgstr ""
 
-#: views/document_views.py:321
+#: views/document_views.py:326
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
 msgstr ""
 
-#: views/document_views.py:334
+#: views/document_views.py:339
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr ""
 
-#: views/document_views.py:359
+#: views/document_views.py:365
 msgid ""
 "Add metadata types this document's type to be able to add them to individual"
 " documents. Once added to individual document, you can then edit their "
 "values."
 msgstr ""
 
-#: views/document_views.py:364
+#: views/document_views.py:370
 msgid "This document doesn't have any metadata"
 msgstr ""
 
-#: views/document_views.py:365
+#: views/document_views.py:371
 #, python-format
 msgid "Metadata for document: %s"
 msgstr ""
 
-#: views/document_views.py:380
+#: views/document_views.py:386
 #, python-format
 msgid "Metadata remove request performed on %(count)d document"
 msgstr ""
 
-#: views/document_views.py:383
+#: views/document_views.py:389
 #, python-format
 msgid "Metadata remove request performed on %(count)d documents"
 msgstr ""
 
-#: views/document_views.py:392
+#: views/document_views.py:399
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views/document_views.py:403
+#: views/document_views.py:410
 #, python-format
 msgid "Remove metadata types from the document: %s"
 msgstr ""
 
-#: views/document_views.py:469
+#: views/document_views.py:476
 #, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
 msgstr ""
 
-#: views/document_views.py:478
+#: views/document_views.py:485
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
 msgstr ""
 
-#: views/metadata_type_views.py:27
+#: views/metadata_type_views.py:31
 msgid "Create metadata type"
 msgstr ""
 
-#: views/metadata_type_views.py:43
+#: views/metadata_type_views.py:48
 #, python-format
 msgid "Error deleting metadata type \"%(instance)s\"; %(exception)s"
 msgstr ""
 
-#: views/metadata_type_views.py:52
+#: views/metadata_type_views.py:57
 #, python-format
 msgid "Metadata type \"%(object)s\" deleted successfully."
 msgstr ""
 
-#: views/metadata_type_views.py:55
+#: views/metadata_type_views.py:60
 #, python-format
 msgid "%(count)d metadata type deleted successfully."
 msgstr ""
 
-#: views/metadata_type_views.py:58
+#: views/metadata_type_views.py:63
 #, python-format
 msgid "%(count)d metadata types deleted successfully."
 msgstr ""
 
-#: views/metadata_type_views.py:60
+#: views/metadata_type_views.py:65
 #, python-format
 msgid "Delete metadata type: %(object)s."
 msgstr ""
 
-#: views/metadata_type_views.py:61
+#: views/metadata_type_views.py:66
 #, python-format
 msgid "Delete the %(count)d selected metadata type."
 msgstr ""
 
-#: views/metadata_type_views.py:62
+#: views/metadata_type_views.py:67
 #, python-format
 msgid "Delete the %(count)d selected metadata types."
 msgstr ""
 
-#: views/metadata_type_views.py:77
+#: views/metadata_type_views.py:84
 #, python-format
 msgid "Edit metadata type: %s"
 msgstr ""
 
-#: views/metadata_type_views.py:99
+#: views/metadata_type_views.py:107
 msgid ""
-"Metadata types are users defined properties that can be assigned values. "
-"Once created they must be associated to document types, either as optional "
-"or required, for each. Setting a metadata type as required for a document "
-"type will block the upload of documents of that type until a metadata value "
-"is provided."
+"Metadata types are user defined properties that can be assigned values. Once"
+" created they must be associated to document types, either as optional or "
+"required, for each. Setting a metadata type as required for a document type "
+"will block the upload of documents of that type until a metadata value is "
+"provided."
 msgstr ""
 
-#: views/metadata_type_views.py:106
+#: views/metadata_type_views.py:114
 msgid "There are no metadata types"
 msgstr ""
 
-#: views/metadata_type_views.py:129
+#: views/metadata_type_views.py:138
 msgid ""
 "Create metadata type relationships to be able to associate them to this "
 "document type."
 msgstr ""
 
-#: views/metadata_type_views.py:133
+#: views/metadata_type_views.py:142
 msgid "There are no metadata type relationships available"
 msgstr ""
 
-#: views/metadata_type_views.py:137
+#: views/metadata_type_views.py:146
 #, python-format
 msgid "Metadata type relationships for document type: %s"
 msgstr ""
 
-#: views/metadata_type_views.py:181
+#: views/metadata_type_views.py:191
 #, python-format
 msgid "Document type relationships for metadata type: %s"
 msgstr ""

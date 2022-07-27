@@ -4,22 +4,22 @@
 # 
 # Translators:
 # Translators:
-# Aline Freitas <aline@alinefreitas.com.br>, 2022
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
+# Aline Freitas <aline@alinefreitas.com.br>, 2022
 # Roberto Rosario, 2022
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
-# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2022
-# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # Márcia Ferreira, 2022
+# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Márcia Ferreira, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:37+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,7 +35,7 @@ msgstr "Permissões"
 msgid "Group count"
 msgstr "Contagem de grupos"
 
-#: classes.py:86
+#: classes.py:73
 msgid "Insufficient permissions."
 msgstr "Permissões insuficientes."
 
@@ -51,11 +51,11 @@ msgstr "Papel criado"
 msgid "Role edited"
 msgstr "Papel editado"
 
-#: links.py:20 links.py:46 models.py:48 views.py:103
+#: links.py:20 links.py:46 models.py:48 views.py:112
 msgid "Roles"
 msgstr "Papéis"
 
-#: links.py:28 views.py:52
+#: links.py:28 views.py:58
 msgid "Create new role"
 msgstr "Criar novo papel"
 
@@ -139,55 +139,55 @@ msgstr "Chave primária da permissão para adicionar à função."
 msgid "Primary key of the permission to remove from the role."
 msgstr "Chave primária da permissão para remover da função."
 
-#: views.py:31
+#: views.py:35
 msgid "Available roles"
 msgstr "Papéis disponíveis"
 
-#: views.py:32
+#: views.py:36
 msgid "Group roles"
 msgstr "Papéis do grupo"
 
-#: views.py:41
+#: views.py:46
 #, python-format
 msgid "Roles of group: %s"
 msgstr "Papéis do grupo: %s"
 
-#: views.py:59
+#: views.py:65
 #, python-format
 msgid "Error deleting role \"%(instance)s\"; %(exception)s"
 msgstr "Erro ao eliminar a função \"%(instance)s\"; %(exception)s"
 
-#: views.py:64
+#: views.py:70
 #, python-format
 msgid "Role \"%(object)s\" deleted successfully."
 msgstr "Função \"%(object)s\" eliminada com sucesso."
 
-#: views.py:65
+#: views.py:71
 #, python-format
 msgid "%(count)d role deleted successfully."
 msgstr "%(count)dfunção eliminada com sucesso"
 
-#: views.py:66
+#: views.py:72
 #, python-format
 msgid "%(count)d roles deleted successfully."
 msgstr "%(count)d funções eliminadas com sucesso."
 
-#: views.py:67
+#: views.py:73
 #, python-format
 msgid "Delete role: %(object)s."
 msgstr "Eliminar função: %(object)s."
 
-#: views.py:68
+#: views.py:74
 #, python-format
 msgid "Delete the %(count)d selected role."
 msgstr "Eliminar a função selecionada %(count)d"
 
-#: views.py:69
+#: views.py:75
 #, python-format
 msgid "Delete the %(count)d selected roles."
 msgstr "Eliminar as funções %(count)dselecionadas"
 
-#: views.py:95
+#: views.py:104
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -200,24 +200,24 @@ msgstr ""
 "são permissões concedidas a um papel para objetos específicos que seus "
 "membros de grupo herdam."
 
-#: views.py:102
+#: views.py:111
 msgid "There are no roles"
 msgstr "Não há papéis"
 
-#: views.py:115
+#: views.py:124
 msgid "Available groups"
 msgstr "Grupos disponíveis"
 
-#: views.py:116
+#: views.py:125
 msgid "Role groups"
 msgstr "Grupos do papel"
 
-#: views.py:125
+#: views.py:135
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Grupos do papel: %s"
 
-#: views.py:127
+#: views.py:137
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
@@ -225,27 +225,27 @@ msgstr ""
 "Adicione grupos para que façam parte de um papel. Eles irão herdar as "
 "permissões do papel e os controles de acesso."
 
-#: views.py:140
+#: views.py:150
 msgid "Available permissions"
 msgstr "Permissões disponíveis"
 
-#: views.py:141
+#: views.py:151
 msgid "Granted permissions"
 msgstr "Permissões concedidas"
 
-#: views.py:176
+#: views.py:186
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr ""
 "Permissões concedidas aqui serão aplicadas em todo o sistema e em todos os "
 "objetos."
 
-#: views.py:179
+#: views.py:189
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Permissões para papel: %s"
 
-#: views.py:198
+#: views.py:209
 #, python-format
 msgid "Details of permission: %s"
 msgstr "Detalhes de permissão: %s"

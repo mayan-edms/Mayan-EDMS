@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2022
 # Roberto Rosario, 2022
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2022
+# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2022
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -128,43 +128,43 @@ msgstr "Номер на потребителя на ключа"
 msgid "Key type"
 msgstr "Тип ключ"
 
-#: links.py:42
-msgid "Refresh all signatures"
-msgstr "Опреснете всички подписи"
-
-#: links.py:48
-msgid "Verify all documents"
-msgstr "Проверете всички документи"
-
-#: links.py:58
+#: links.py:44
 msgid "Sign detached"
 msgstr "Подпис отделен"
 
-#: links.py:65
+#: links.py:51
 msgid "Delete"
 msgstr "Изтрийте"
 
-#: links.py:73
+#: links.py:59
 msgid "Download"
 msgstr "Сваляне"
 
-#: links.py:79
+#: links.py:66
 msgid "Upload signature"
 msgstr "Качване на подпис"
 
-#: links.py:89
+#: links.py:76
 msgid "Sign embedded"
 msgstr "Подпис вграден"
 
-#: links.py:99
+#: links.py:86
 msgid "Details"
 msgstr "Подробности"
 
-#: links.py:105 queues.py:8
+#: links.py:92 queues.py:8
 msgid "Signatures"
 msgstr "Подписи"
 
-#: managers.py:95
+#: links.py:100
+msgid "Refresh all signatures"
+msgstr "Опреснете всички подписи"
+
+#: links.py:106
+msgid "Verify all documents"
+msgstr "Проверете всички документи"
+
+#: managers.py:94
 msgid "signed"
 msgstr ""
 
@@ -304,44 +304,44 @@ msgstr ""
 msgid "Detached signatures"
 msgstr "Отделени подписи"
 
-#: views.py:62 views.py:129
+#: views.py:75 views.py:145
 msgid "Passphrase is needed to unlock this key."
 msgstr "За отключване на този ключ е необходима фраза парола."
 
-#: views.py:75 views.py:142
+#: views.py:88 views.py:158
 msgid "Passphrase is incorrect."
 msgstr "Фразата парола е неправилна."
 
-#: views.py:88 views.py:155
+#: views.py:101 views.py:171
 msgid "Document file signed successfully."
 msgstr "Файлът на документа е подписан успешно."
 
-#: views.py:98
+#: views.py:111
 #, python-format
 msgid "Sign document file \"%s\" with a detached signature"
 msgstr "Подпишете файл с документи &quot;%s&quot; с отделен подпис"
 
-#: views.py:172
+#: views.py:188
 #, python-format
 msgid "Sign document file \"%s\" with a embedded signature"
 msgstr "Подпишете файла на документа &quot;%s&quot; с вграден подпис"
 
-#: views.py:188
+#: views.py:205
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Изтрийте отделен подпис: %s"
 
-#: views.py:238
+#: views.py:257
 #, python-format
 msgid "Upload detached signature for document file: %s"
 msgstr "Качете отделен подпис за файл с документ: %s"
 
-#: views.py:267
+#: views.py:287
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Данни за подпис: %s"
 
-#: views.py:291
+#: views.py:312
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
@@ -351,34 +351,34 @@ msgstr ""
 "на подправки. Те са много сигурни и трудно подправящи се. Подписът може да "
 "бъде вграден като част от самия документ или качен като отделен файл."
 
-#: views.py:320
+#: views.py:341
 msgid "There are no signatures for this document file."
 msgstr "Няма подписи за този файл с документи."
 
-#: views.py:324
+#: views.py:345
 #, python-format
 msgid "Signatures for document file: %s"
 msgstr "Подписи за файл с документи: %s"
 
-#: views.py:335 views.py:354
+#: views.py:356 views.py:377
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
 "При големи бази данни тази операция може да отнеме известно време за "
 "изпълнение."
 
-#: views.py:336
+#: views.py:358
 msgid "Refresh all signatures information?"
 msgstr "Опресняване на цялата информация за подписите?"
 
-#: views.py:346
+#: views.py:369
 msgid "Signature information refresh queued successfully."
 msgstr "Опресняването на информацията за подписите е на опашка успешно."
 
-#: views.py:355
+#: views.py:379
 msgid "Verify all document for signatures?"
 msgstr "Да проверите ли всички документи за подписи?"
 
-#: views.py:365
+#: views.py:390
 msgid "Signature verification queued successfully."
 msgstr "Проверката на подписа успешно е поставена на опашка."
 

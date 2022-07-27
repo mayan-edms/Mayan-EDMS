@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Sergey Glita <gsv70@mail.ru>, 2022
 # Panasoft, 2022
+# Sergey Glita <gsv70@mail.ru>, 2022
 # lilo.panic, 2022
 # Ilya Pavlov <spirkaa@gmail.com>, 2022
 # Alex Chigrin <chalex84@mail.ru>, 2022
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:39+0000\n"
 "Last-Translator: Alex Chigrin <chalex84@mail.ru>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"

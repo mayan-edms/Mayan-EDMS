@@ -5,16 +5,16 @@
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
-# Tomasz Szymanowicz <alakdae@gmail.com>, 2022
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2022\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -124,43 +124,43 @@ msgstr "ID użytkownika klucza"
 msgid "Key type"
 msgstr "Typ klucza"
 
-#: links.py:42
-msgid "Refresh all signatures"
-msgstr ""
-
-#: links.py:48
-msgid "Verify all documents"
-msgstr "Zweryfikuj wszystkie dokumenty"
-
-#: links.py:58
+#: links.py:44
 msgid "Sign detached"
 msgstr "Podpis odłączony"
 
-#: links.py:65
+#: links.py:51
 msgid "Delete"
 msgstr "Usuń"
 
-#: links.py:73
+#: links.py:59
 msgid "Download"
 msgstr "Pobierz"
 
-#: links.py:79
+#: links.py:66
 msgid "Upload signature"
 msgstr "Prześlij podpis"
 
-#: links.py:89
+#: links.py:76
 msgid "Sign embedded"
 msgstr "Podpis osadzone"
 
-#: links.py:99
+#: links.py:86
 msgid "Details"
 msgstr "Szczegóły"
 
-#: links.py:105 queues.py:8
+#: links.py:92 queues.py:8
 msgid "Signatures"
 msgstr "Podpisy"
 
-#: managers.py:95
+#: links.py:100
+msgid "Refresh all signatures"
+msgstr ""
+
+#: links.py:106
+msgid "Verify all documents"
+msgstr "Zweryfikuj wszystkie dokumenty"
+
+#: managers.py:94
 msgid "signed"
 msgstr ""
 
@@ -298,44 +298,44 @@ msgstr ""
 msgid "Detached signatures"
 msgstr "Odłączone podpisy"
 
-#: views.py:62 views.py:129
+#: views.py:75 views.py:145
 msgid "Passphrase is needed to unlock this key."
 msgstr "Aby odblokować ten klucz, potrzebne jest hasło."
 
-#: views.py:75 views.py:142
+#: views.py:88 views.py:158
 msgid "Passphrase is incorrect."
 msgstr "Hasło jest niepoprawne."
 
-#: views.py:88 views.py:155
+#: views.py:101 views.py:171
 msgid "Document file signed successfully."
 msgstr ""
 
-#: views.py:98
+#: views.py:111
 #, python-format
 msgid "Sign document file \"%s\" with a detached signature"
 msgstr ""
 
-#: views.py:172
+#: views.py:188
 #, python-format
 msgid "Sign document file \"%s\" with a embedded signature"
 msgstr ""
 
-#: views.py:188
+#: views.py:205
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Usuń odłączony podpis: %s"
 
-#: views.py:238
+#: views.py:257
 #, python-format
 msgid "Upload detached signature for document file: %s"
 msgstr ""
 
-#: views.py:267
+#: views.py:287
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Szczegóły podpisu: %s"
 
-#: views.py:291
+#: views.py:312
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
@@ -345,32 +345,32 @@ msgstr ""
 "bezpieczne i trudne do zafałszowania. Podpis może zostać osadzony jako część"
 " samego dokumentu lub przesłany jako osobny plik."
 
-#: views.py:320
+#: views.py:341
 msgid "There are no signatures for this document file."
 msgstr ""
 
-#: views.py:324
+#: views.py:345
 #, python-format
 msgid "Signatures for document file: %s"
 msgstr ""
 
-#: views.py:335 views.py:354
+#: views.py:356 views.py:377
 msgid "On large databases this operation may take some time to execute."
 msgstr "Na dużych bazach danych operacja może chwilę potrwać."
 
-#: views.py:336
+#: views.py:358
 msgid "Refresh all signatures information?"
 msgstr ""
 
-#: views.py:346
+#: views.py:369
 msgid "Signature information refresh queued successfully."
 msgstr ""
 
-#: views.py:355
+#: views.py:379
 msgid "Verify all document for signatures?"
 msgstr "Zweryfikować cały dokument pod kątem podpisów?"
 
-#: views.py:365
+#: views.py:390
 msgid "Signature verification queued successfully."
 msgstr "Weryfikacja podpisu w kolejce powiodła się."
 

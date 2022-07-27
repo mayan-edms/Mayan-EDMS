@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Márcia Ferreira, 2022
 # Roberto Rosario, 2022
+# Márcia Ferreira, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -71,28 +71,28 @@ msgstr "Sandbox"
 msgid "Use the template sandbox"
 msgstr "Usar a sandbox de template"
 
-#: views.py:38
+#: views.py:40
 #, python-format
 msgid "Template sandbox for: %s"
 msgstr "Sandbox do template para: %s"
 
-#: views.py:59
+#: views.py:61
 #, python-format
 msgid "Template error; %(exception)s"
 msgstr "Erro do template; %(exception)s"
 
-#: widgets.py:64
+#: widgets.py:65
 msgid "Filters"
 msgstr "Filtros"
 
-#: widgets.py:71
+#: widgets.py:72
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: widgets.py:77
+#: widgets.py:78
 msgid "<Filters and tags>"
 msgstr "<Filters and tags>"
 
-#: widgets.py:118
+#: widgets.py:119
 msgid "<Model attributes>"
 msgstr "<Model attributes>"

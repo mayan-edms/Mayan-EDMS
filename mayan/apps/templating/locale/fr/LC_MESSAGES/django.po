@@ -7,16 +7,16 @@
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Guillaume Trottier <gui.trottier@gmail.com>, 2022
-# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Benoît GROUSSET <benoit@grousset.xyz>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
-"Last-Translator: Benoît GROUSSET <benoit@grousset.xyz>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -73,28 +73,28 @@ msgstr "Bac à sable"
 msgid "Use the template sandbox"
 msgstr "Utilisez le modèle bac à sable"
 
-#: views.py:38
+#: views.py:40
 #, python-format
 msgid "Template sandbox for: %s"
 msgstr "Modèle bac à sable pour: %s"
 
-#: views.py:59
+#: views.py:61
 #, python-format
 msgid "Template error; %(exception)s"
 msgstr "Erreur de modèle; %(exception)s"
 
-#: widgets.py:64
+#: widgets.py:65
 msgid "Filters"
 msgstr "Filtres"
 
-#: widgets.py:71
+#: widgets.py:72
 msgid "Tags"
 msgstr "Étiquettes"
 
-#: widgets.py:77
+#: widgets.py:78
 msgid "<Filters and tags>"
 msgstr "<Filters and tags>"
 
-#: widgets.py:118
+#: widgets.py:119
 msgid "<Model attributes>"
 msgstr "<Model attributes>"

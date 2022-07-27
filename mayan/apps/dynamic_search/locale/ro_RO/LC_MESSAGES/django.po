@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:35+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -21,16 +21,23 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:25
+#: apps.py:26
 msgid "Dynamic search"
 msgstr "Căutarea dinamică"
 
-#: classes.py:568
+#: classes.py:432
+#, python-format
+msgid ""
+"Search backend error. Verify that the search service is available and that "
+"the search syntax is valid for the active search backend; %s"
+msgstr ""
+
+#: classes.py:584
 #, python-format
 msgid "Unknown search model `%s`."
 msgstr "Model de căutare necunoscut `%s`."
 
-#: classes.py:625
+#: classes.py:640
 msgid "ID"
 msgstr "ID-ul"
 
@@ -47,16 +54,16 @@ msgstr ""
 "tuturor câmpurilor. Atunci când rezultatele neconfirmate care corespund cel "
 "puțin un câmp vor fi returnate."
 
-#: forms.py:30 templates/dynamic_search/search_box.html:41
+#: forms.py:31 templates/dynamic_search/search_box.html:41
 msgid "Search terms"
 msgstr "Caută termeni"
 
 #: links.py:13 permissions.py:5 queues.py:7 settings.py:11
-#: templates/dynamic_search/search_box.html:45 views.py:126 views.py:139
+#: templates/dynamic_search/search_box.html:45 views.py:133 views.py:147
 msgid "Search"
 msgstr "Căutare"
 
-#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:163
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:171
 msgid "Advanced search"
 msgstr "Cautare avansată"
 
@@ -64,7 +71,7 @@ msgstr "Cautare avansată"
 msgid "Search again"
 msgstr "Caută din nou"
 
-#: links.py:25 views.py:104
+#: links.py:25 views.py:110
 msgid "Reindex search backend"
 msgstr "Reindexare backend de căutare"
 
@@ -126,24 +133,28 @@ msgstr "Setează starea implicită a casetei de selectare „Potriviți toate”
 msgid "Maximum number search results to fetch and display."
 msgstr "Numărul maxim de rezultate de căutare de preluat și afișat."
 
+#: templates/dynamic_search/app/list_toolbar.html:13
+msgid "List filter"
+msgstr ""
+
 #: templates/dynamic_search/search_box.html:47
 msgid "Advanced"
 msgstr "Avansate"
 
-#: views.py:42
+#: views.py:48
 msgid "Try again using different terms. "
 msgstr "Încercați din nou folosind termeni diferiți."
 
-#: views.py:44
+#: views.py:50
 msgid "No search results"
 msgstr "Nu există rezultate"
 
-#: views.py:46
+#: views.py:52
 #, python-format
 msgid "Search results for: %s"
 msgstr "Rezultatele căutării pentru: %s"
 
-#: views.py:100
+#: views.py:106
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
@@ -151,17 +162,17 @@ msgstr ""
 "Acest instrument este necesar numai pentru unele backend-uri de căutare. "
 "Rezultatele căutării vor fi afectate în timp ce backend-ul este reindexat."
 
-#: views.py:106
+#: views.py:112
 msgid "This tool erases and populates the search backend's internal index."
 msgstr ""
 "Acest instrument șterge și completează indexul intern al backend-ului de "
 "căutare."
 
-#: views.py:119
+#: views.py:126
 msgid "Search backend reindexing queued."
 msgstr "Reindexarea backend-ului de căutare a fost pusă la coadă."
 
-#: views.py:141
+#: views.py:149
 #, python-format
 msgid "Search for: %s"
 msgstr "Caută după: %s"

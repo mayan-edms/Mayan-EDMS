@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:35+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -31,8 +31,8 @@ msgstr "ربط"
 msgid "Label"
 msgstr "العنوان"
 
-#: events.py:6 links.py:24 links.py:75 links.py:80 links.py:85 models.py:48
-#: permissions.py:5 views.py:147
+#: events.py:6 links.py:27 links.py:35 links.py:68 links.py:73 models.py:48
+#: permissions.py:5 views/smart_link_views.py:157
 msgid "Smart links"
 msgstr "الروابط الذكية"
 
@@ -48,33 +48,33 @@ msgstr "تعديل الرابط الذكي"
 msgid "Foreign document field"
 msgstr "مجال المستند الأجنبي"
 
-#: links.py:29
-msgid "Create condition"
-msgstr "إنشاء الشرط"
-
-#: links.py:35 links.py:55
-msgid "Delete"
-msgstr "حذف"
-
-#: links.py:39 links.py:64
-msgid "Edit"
-msgstr "تعديل"
-
-#: links.py:44
-msgid "Conditions"
-msgstr "الشروط"
-
-#: links.py:50 views.py:248
+#: links.py:44 views/smart_link_views.py:261
 msgid "Create new smart link"
 msgstr "إنشاء ارتباط ذكي جديد"
 
-#: links.py:59 models.py:40
+#: links.py:49 links.py:87
+msgid "Delete"
+msgstr "حذف"
+
+#: links.py:53 models.py:40
 msgid "Document types"
 msgstr "أنواع الوثائق"
 
-#: links.py:69
+#: links.py:58 links.py:91
+msgid "Edit"
+msgstr "تعديل"
+
+#: links.py:63
 msgid "Documents"
 msgstr "الوثائق"
+
+#: links.py:81
+msgid "Create condition"
+msgstr "إنشاء الشرط"
+
+#: links.py:96
+msgid "Conditions"
+msgstr "الشروط"
 
 #: literals.py:7
 msgid "and"
@@ -252,24 +252,54 @@ msgstr ""
 msgid "Primary key of the document type to remove from the smart link."
 msgstr ""
 
-#: views.py:65
+#: views/smart_link_condition_views.py:45
+msgid ""
+"Conditions are small logic units that when combined define how the smart "
+"link will behave."
+msgstr ""
+"الشروط عبارة عن وحدات منطقية صغيرة تحدد عند دمجها كيفية عمل الارتباط الذكي."
+
+#: views/smart_link_condition_views.py:49
+msgid "There are no conditions for this smart link"
+msgstr "لا توجد شروط لهذا الارتباط الذكي"
+
+#: views/smart_link_condition_views.py:53
+#, python-format
+msgid "Conditions for smart link: %s"
+msgstr "شروط الارتباط الذكي: %s"
+
+#: views/smart_link_condition_views.py:73
+#, python-format
+msgid "Add new conditions to smart link: \"%s\""
+msgstr "أضف شرط جديد للرابط الذكي: \"%s\""
+
+#: views/smart_link_condition_views.py:107
+#, python-format
+msgid "Delete smart link condition: \"%s\"?"
+msgstr "هل تريد حذف شرط الارتباط الذكي: &quot;%s&quot;؟"
+
+#: views/smart_link_condition_views.py:134
+msgid "Edit smart link condition"
+msgstr "تحرير شرط الرابط الذكي"
+
+#: views/smart_link_views.py:74
 #, python-format
 msgid "Resolved smart link query error: %s"
 msgstr ""
 
-#: views.py:92
+#: views/smart_link_views.py:101
 #, python-format
 msgid "Resolved smart link dynamic label error: %s"
 msgstr ""
 
-#: views.py:97
+#: views/smart_link_views.py:106
 #, python-format
 msgid ""
 "Documents in resolved smart link \"%(resolved_smart_link)s\" for "
 "\"%(document)s\""
 msgstr ""
 
-#: views.py:138
+#: views/smart_link_views.py:148
 msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
@@ -278,11 +308,11 @@ msgstr ""
 "تقوم الفهارس بتجميع الوثائق ضمن وحدات ، ذات خصائص متماثلة \n"
 "تسمح الروابط الذكية من تعريف العلاقة بين الوثائف بمختلف فهارسها"
 
-#: views.py:145
+#: views/smart_link_views.py:155
 msgid "There are no smart links"
 msgstr "لا توجد روابط ذكية"
 
-#: views.py:166
+#: views/smart_link_views.py:177
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
@@ -290,77 +320,47 @@ msgstr ""
 "تمكن الروابط الذكية من جعل الاتباطات أكثر سهولة بين الوثائق سواءً كانت في "
 "فهارس مختلفة أو أنواع مختلفة"
 
-#: views.py:171
+#: views/smart_link_views.py:182
 msgid "There are no resolved smart links for this document"
 msgstr ""
 
-#: views.py:175
+#: views/smart_link_views.py:186
 #, python-format
 msgid "Resolved smart links for document: %s"
 msgstr ""
 
-#: views.py:191
+#: views/smart_link_views.py:202
 msgid "Available smart links"
 msgstr "الروابط الذكية المتاحة"
 
-#: views.py:192
+#: views/smart_link_views.py:203
 msgid "Smart links enabled"
 msgstr "تم تمكين الروابط الذكية"
 
-#: views.py:218
+#: views/smart_link_views.py:230
 #, python-format
 msgid "Smart links to enable for document type: %s"
 msgstr "روابط ذكية لتمكين نوع المستند: %s"
 
-#: views.py:231
+#: views/smart_link_views.py:243
 msgid "Available document types"
 msgstr "أنواع الوثائق المتاحة"
 
-#: views.py:232
+#: views/smart_link_views.py:244
 msgid "Document types enabled"
 msgstr "تفعيل الوثائق"
 
-#: views.py:242
+#: views/smart_link_views.py:255
 #, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr "نوع الوثيقة المطلوب تمكين الارتباط الذكي له: %s"
 
-#: views.py:270
+#: views/smart_link_views.py:285
 #, python-format
 msgid "Delete smart link: %s"
 msgstr "حذف الارتباط الذكي: %s"
 
-#: views.py:286
+#: views/smart_link_views.py:302
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "تحرير الرابط الذكي: %s"
-
-#: views.py:311
-msgid ""
-"Conditions are small logic units that when combined define how the smart "
-"link will behave."
-msgstr ""
-"الشروط عبارة عن وحدات منطقية صغيرة تحدد عند دمجها كيفية عمل الارتباط الذكي."
-
-#: views.py:315
-msgid "There are no conditions for this smart link"
-msgstr "لا توجد شروط لهذا الارتباط الذكي"
-
-#: views.py:319
-#, python-format
-msgid "Conditions for smart link: %s"
-msgstr "شروط الارتباط الذكي: %s"
-
-#: views.py:338
-#, python-format
-msgid "Add new conditions to smart link: \"%s\""
-msgstr "أضف شرط جديد للرابط الذكي: \"%s\""
-
-#: views.py:371
-#, python-format
-msgid "Delete smart link condition: \"%s\"?"
-msgstr "هل تريد حذف شرط الارتباط الذكي: &quot;%s&quot;؟"
-
-#: views.py:397
-msgid "Edit smart link condition"
-msgstr "تحرير شرط الرابط الذكي"

@@ -5,18 +5,18 @@
 # Translators:
 # Translators:
 # Alex Chigrin <chalex84@mail.ru>, 2022
-# mizhgan <i@mizhgan.ru>, 2022
-# Sergey Glita <gsv70@mail.ru>, 2022
-# Ilya Pavlov <spirkaa@gmail.com>, 2022
 # lilo.panic, 2022
+# mizhgan <i@mizhgan.ru>, 2022
+# Ilya Pavlov <spirkaa@gmail.com>, 2022
+# Sergey Glita <gsv70@mail.ru>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: lilo.panic, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
+"Last-Translator: Sergey Glita <gsv70@mail.ru>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,7 +68,7 @@ msgstr "Выход"
 msgid "Change password"
 msgstr "Изменить пароль"
 
-#: links.py:45 views/impersonation_views.py:50
+#: links.py:45 views/impersonation_views.py:52
 msgid "Impersonate user"
 msgstr "Имперсонировать пользователя"
 
@@ -155,38 +155,38 @@ msgstr "Вход"
 msgid "Password reset email sent!"
 msgstr "Письмо для сброса пароля отправлено!"
 
-#: views/authentication_views.py:153
+#: views/authentication_views.py:155
 msgid "Next"
 msgstr "Следующий"
 
-#: views/authentication_views.py:159
+#: views/authentication_views.py:161
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr "Шаг %(step)d из %(total_steps)d: %(step_label)s"
 
-#: views/authentication_views.py:221
+#: views/authentication_views.py:223
 msgid "Your password has been successfully changed."
 msgstr "Ваш пароль был изменен."
 
-#: views/authentication_views.py:228
+#: views/authentication_views.py:230
 msgid "Current user password change"
 msgstr "Изменить пароль пользователя"
 
-#: views/authentication_views.py:236
+#: views/authentication_views.py:239
 msgid "Changing the password is not allowed for this account."
 msgstr "Изменение пароля этой учетной записи запрещено."
 
-#: views/authentication_views.py:308
+#: views/authentication_views.py:311
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Запрос на изменение пароля выполнен для %(count)d пользователя"
 
-#: views/authentication_views.py:311
+#: views/authentication_views.py:314
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Запрос на изменение пароля выполнен для %(count)d пользователей"
 
-#: views/authentication_views.py:319
+#: views/authentication_views.py:323
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
@@ -194,22 +194,22 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: views/authentication_views.py:330
+#: views/authentication_views.py:334
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Изменить пароль пользователя: %s"
 
-#: views/authentication_views.py:352
+#: views/authentication_views.py:356
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Успешный сброс пароля пользователя: %s."
 
-#: views/authentication_views.py:358
+#: views/authentication_views.py:362
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Ошибка сброса пароля пользователя \"%(user)s\": %(error)s"
 
-#: views/impersonation_views.py:78
+#: views/impersonation_views.py:81
 #, python-format
 msgid "Impersonate user: %s"
 msgstr "Имперсонировать пользователя: %s"

@@ -5,16 +5,16 @@
 # Translators:
 # Translators:
 # Genlin Jiao <jiaogl@pkusz.edu.cn>, 2022
-# xisafe <root@xisafe.com>, 2022
 # Ford Guo <agile.guo@gmail.com>, 2022
+# xisafe <root@xisafe.com>, 2022
 # Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
@@ -115,11 +115,11 @@ msgstr "导入"
 msgid "Upload key"
 msgstr "上传密钥"
 
-#: links.py:50 views.py:189
+#: links.py:50 views.py:201
 msgid "Private keys"
 msgstr "私钥"
 
-#: links.py:54 views.py:213
+#: links.py:54 views.py:226
 msgid "Public keys"
 msgstr "公钥"
 
@@ -227,74 +227,74 @@ msgstr "后端的完整路径，用于处理密钥和签名。"
 msgid "Keyserver used to query for keys."
 msgstr "用于查询密钥的密钥服务器。"
 
-#: views.py:36
+#: views.py:41
 #, python-format
 msgid "Delete key: %s"
 msgstr "删除密钥：%s"
 
-#: views.py:53
+#: views.py:59
 #, python-format
 msgid "Details for key: %s"
 msgstr "密钥详情：%s"
 
-#: views.py:81
+#: views.py:89
 #, python-format
 msgid "Import key ID: %s?"
 msgstr "导入密钥ID：%s？"
 
-#: views.py:82
+#: views.py:90
 msgid "Import key"
 msgstr "导入密钥"
 
-#: views.py:91
+#: views.py:99
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "无法导入密钥：%(key_id)s; %(error)s"
 
-#: views.py:99
+#: views.py:107
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr "成功接收密钥：%(key_id)s"
 
-#: views.py:116
+#: views.py:125
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
 msgstr "使用名字，姓氏，密钥ID或电子邮件来搜索要从密钥服务器导入的公钥。"
 
-#: views.py:120
+#: views.py:129
 msgid "No results returned"
 msgstr "没有结果返回"
 
-#: views.py:122
+#: views.py:131
 msgid "Key query results"
 msgstr "密钥查询结果"
 
-#: views.py:142
+#: views.py:152
 msgid "Query key server"
 msgstr "查询密钥服务器"
 
-#: views.py:161
+#: views.py:172
 msgid "Upload new key"
 msgstr "上传新密钥"
 
-#: views.py:182
+#: views.py:194
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user. The view to upload private and public keys is the same."
 msgstr "私钥用于签名文档。私钥只能由用户上传。上传私钥和公钥的同一个视图"
 
-#: views.py:187
+#: views.py:199
 msgid "There no private keys"
 msgstr "没有私钥"
 
-#: views.py:205
+#: views.py:218
 msgid ""
 "Public keys are used to verify signed documents. Public keys can be uploaded"
 " by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr "公钥用于验证签名文档。公钥可以由用户上传或从密钥服务器下载。上传私钥和公钥的视图是相同的。"
 
-#: views.py:211
+#: views.py:224
 msgid "There no public keys"
 msgstr "没有公钥"

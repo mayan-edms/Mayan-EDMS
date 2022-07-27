@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
@@ -20,47 +20,47 @@ msgstr ""
 "Language: es_PR\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: apps.py:25 links.py:10 permissions.py:5
+#: apps.py:28 links.py:10 permissions.py:5
 msgid "Task manager"
 msgstr "Administrador de tareas"
 
-#: apps.py:84
+#: apps.py:87
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps.py:88
+#: apps.py:91
 msgid "Name"
 msgstr "Nombre"
 
-#: apps.py:93
+#: apps.py:96
 msgid "Default queue?"
 msgstr "¿Cola principal?"
 
-#: apps.py:98
+#: apps.py:101
 msgid "Is transient?"
 msgstr "¿Es transitoria?"
 
-#: apps.py:102
+#: apps.py:105
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:107
+#: apps.py:110
 msgid "Start time"
 msgstr "Tiempo de inicio"
 
-#: apps.py:111
+#: apps.py:114
 msgid "Host"
 msgstr "Servidor"
 
-#: apps.py:115
+#: apps.py:118
 msgid "Arguments"
 msgstr "Argumentos"
 
-#: apps.py:119
+#: apps.py:122
 msgid "Keyword arguments"
 msgstr "Argumentos explícitos"
 
-#: apps.py:123
+#: apps.py:126
 msgid "Worker process ID"
 msgstr "ID del proceso trabajador"
 
@@ -112,10 +112,10 @@ msgstr ""
 "http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
 "backend"
 
-#: tests/literals.py:3
+#: tests/literals.py:11
 msgid "Test queue"
 msgstr "Lista de prueba"
 
-#: views.py:12
+#: views.py:13
 msgid "Background task queues"
 msgstr "Listas de tareas de fondo"

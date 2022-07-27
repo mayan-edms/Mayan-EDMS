@@ -6,16 +6,16 @@
 # Translators:
 # Roberto Rosario, 2022
 # Mohammed ALDOUB <voulnet@gmail.com>, 2022
-# Yaman Sanobar <yman.snober@gmail.com>, 2022
 # Marwan Rahhal <Marwanr@sssit.net>, 2022
+# Yaman Sanobar <yman.snober@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:11+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
+"Last-Translator: Yaman Sanobar <yman.snober@gmail.com>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -51,27 +51,27 @@ msgstr "FontAwesome"
 msgid "jQuery"
 msgstr "مسج"
 
-#: dependencies.py:41
+#: dependencies.py:42
 msgid "JQuery Form"
 msgstr "نموذج JQuery"
 
-#: dependencies.py:45
+#: dependencies.py:46
 msgid "jQuery Lazy Load"
 msgstr "jQuery تحميل كسول"
 
-#: dependencies.py:49
+#: dependencies.py:50
 msgid "JQuery Match Height"
 msgstr "JQuery مطابقة الارتفاع"
 
-#: dependencies.py:53
+#: dependencies.py:54
 msgid "Select 2"
 msgstr "اختيار"
 
-#: dependencies.py:57
+#: dependencies.py:58
 msgid "Toastr"
 msgstr "توستر"
 
-#: dependencies.py:60
+#: dependencies.py:62
 msgid "URI.js"
 msgstr "URI.js"
 
@@ -95,7 +95,7 @@ msgstr "إعدادات القوالب"
 msgid "Edit theme settings"
 msgstr "تعديل اعدادات القالب"
 
-#: links.py:31 views.py:27
+#: links.py:31 views.py:31
 msgid "Create new theme"
 msgstr "انشاء قالب جديد"
 
@@ -107,7 +107,7 @@ msgstr "حذف"
 msgid "Edit"
 msgstr "تعديل"
 
-#: links.py:44 links.py:49 models.py:32 views.py:91
+#: links.py:44 links.py:49 models.py:32 views.py:99
 msgid "Themes"
 msgstr "القوالب"
 
@@ -338,10 +338,10 @@ msgstr "قبول"
 msgid "No"
 msgstr "رفض"
 
-#: templates/appearance/generic_form_instance.html:51
-#: templates/appearance/generic_form_instance.html:57
 #: templates/appearance/generic_form_subtemplate.html:50
 #: templates/appearance/generic_multiform_subtemplate.html:37
+#: templates/appearance/partials/form_field.html:10
+#: templates/appearance/partials/form_field.html:16
 msgid "required"
 msgstr "متطلب"
 
@@ -364,11 +364,11 @@ msgstr "اعتماد"
 msgid "Cancel"
 msgstr "إلغاء"
 
-#: templates/appearance/generic_list_subtemplate.html:34
+#: templates/appearance/generic_list_subtemplate.html:35
 msgid "Identifier"
 msgstr "معرف"
 
-#: templates/appearance/generic_list_subtemplate.html:133
+#: templates/appearance/generic_list_subtemplate.html:134
 msgid "Facets"
 msgstr ""
 
@@ -388,7 +388,7 @@ msgstr "تغير الاستعراض"
 msgid "Open main menu"
 msgstr "إستعراض القائمة الرئيسية"
 
-#: templates/appearance/partials/list_header.html:12
+#: templates/appearance/partials/list_header.html:11
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
@@ -397,30 +397,30 @@ msgstr ""
 "المجموع (%(start)s - %(end)s خارج %(total)sالصفحات  %(page_number)s من "
 "%(total_pages)s)"
 
-#: templates/appearance/partials/list_header.html:14
-#: templates/appearance/partials/list_header.html:17
+#: templates/appearance/partials/list_header.html:13
+#: templates/appearance/partials/list_header.html:16
 #, python-format
 msgid "Total: %(total)s"
 msgstr "المجموع : %(total)s"
 
-#: templates/appearance/partials/list_toolbar.html:13
+#: templates/appearance/partials/list_toolbar.html:14
 msgid "Select/Deselect all"
 msgstr "تحديد/عدم تحديد الكل"
 
-#: templates/appearance/partials/list_toolbar.html:17
+#: templates/appearance/partials/list_toolbar.html:18
 msgid "Toggle list display mode"
 msgstr "طريقة العرض "
 
-#: templates/appearance/partials/list_toolbar.html:60
+#: templates/appearance/partials/list_toolbar.html:63
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr "تحديد الكل ، يرجى الضغط على زر Sheft+ اختيار العناصر المراد تحديدها"
 
-#: templates/appearance/partials/list_toolbar.html:65
+#: templates/appearance/partials/list_toolbar.html:68
 msgid "Bulk actions"
 msgstr "الإعدادات "
 
-#: templates/appearance/partials/list_toolbar.html:67
+#: templates/appearance/partials/list_toolbar.html:70
 msgid "Toggle Dropdown"
 msgstr "تغير القائمة المنسدلة"
 
@@ -444,31 +444,31 @@ msgstr "مشكلة إتصال ! يرجى مراجعة مدير النظام "
 msgid "None"
 msgstr "لا شيء"
 
-#: views.py:49
+#: views.py:55
 #, python-format
 msgid "Delete theme: %s"
 msgstr "حذف القالب : %s"
 
-#: views.py:65
+#: views.py:72
 #, python-format
 msgid "Edit theme: %s"
 msgstr "تعديل القالب : %s"
 
-#: views.py:85
+#: views.py:93
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
 msgstr "السماح بتغير قوالب النظام بدون التعديلات البرمجية"
 
-#: views.py:89
+#: views.py:97
 msgid "There are no themes"
 msgstr "لا يوجد قوالب "
 
-#: views.py:113
+#: views.py:122
 #, python-format
 msgid "Theme settings for user: %s"
 msgstr ""
 
-#: views.py:134
+#: views.py:144
 #, python-format
 msgid "Edit theme settings for user: %s"
 msgstr ""

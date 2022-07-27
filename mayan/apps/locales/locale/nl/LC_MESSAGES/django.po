@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:35+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -60,12 +60,12 @@ msgstr "Gebruikerslandinstellingen"
 msgid "None"
 msgstr "Geen"
 
-#: views.py:36
+#: views.py:40
 #, python-format
 msgid "Locale profile for user: %s"
 msgstr ""
 
-#: views.py:82
+#: views.py:87
 #, python-format
 msgid "Edit locale profile for user: %s"
 msgstr ""

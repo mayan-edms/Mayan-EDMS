@@ -6,16 +6,16 @@
 # Translators:
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
 # Aline Freitas <aline@alinefreitas.com.br>, 2022
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # Roberto Rosario, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -188,7 +188,7 @@ msgstr ""
 "Não foi possível inicializar o storage compartilhado de upload de arquivos. "
 "Verifique as configurações {} e {} para erros de formatação."
 
-#: views.py:55
+#: views.py:61
 msgid ""
 "Download files are created as a results of a an external process like an "
 "export. Download files are retained over a span of time and then removed "
@@ -198,10 +198,10 @@ msgstr ""
 "como exportação. Download ficheiros são mantidos durante algum tempo e "
 "depois removidos automaticamente."
 
-#: views.py:59
+#: views.py:65
 msgid "There are no files to download."
 msgstr "Não há ficheiros para descarregar"
 
-#: views.py:60
+#: views.py:66
 msgid "Downloads"
 msgstr "Descargas"

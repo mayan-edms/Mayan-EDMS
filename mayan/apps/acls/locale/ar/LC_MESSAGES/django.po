@@ -4,18 +4,18 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2022
-# Marwan Rahhal <Marwanr@sssit.net>, 2022
-# Ayoub BENSAKHRIA <bensakhria.ayoub@gmail.com>, 2022
 # Yaman Sanobar <yman.snober@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Ayoub BENSAKHRIA <bensakhria.ayoub@gmail.com>, 2022
+# Marwan Rahhal <Marwanr@sssit.net>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:11+0000\n"
-"Last-Translator: Yaman Sanobar <yman.snober@gmail.com>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:26 classes.py:180 links.py:27
+#: apps.py:26 classes.py:182 links.py:27
 msgid "ACLs"
 msgstr "قوائم الصلاحيات"
 
@@ -53,7 +53,7 @@ msgstr ""
 msgid "ACL edited"
 msgstr "تعديل الصلاحيات"
 
-#: forms.py:13 models.py:51 views.py:67
+#: forms.py:13 models.py:51 views.py:71
 msgid "Role"
 msgstr "الدور"
 
@@ -65,7 +65,7 @@ msgstr "إنشاء صلاحيات جديدة"
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:32 models.py:45 workflow_actions.py:46 workflow_actions.py:161
+#: links.py:32 models.py:45 workflow_actions.py:46 workflow_actions.py:159
 msgid "Permissions"
 msgstr "الصلاحيات"
 
@@ -116,7 +116,7 @@ msgstr ""
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
 
-#: views.py:40
+#: views.py:44
 #, python-format
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
@@ -125,21 +125,21 @@ msgstr ""
 "توجد بالفعل قائمة صلاحيات ل \"%(object)s\" باستخدام الدور \"%(role)s\". قم "
 "بتحرير هذا العنصر من قائمة صلاحيات بدلاً من ذلك."
 
-#: views.py:53
+#: views.py:57
 #, python-format
 msgid "New access control lists for: %s"
 msgstr "إضافات للمستخدمين والصلاحيات: %s"
 
-#: views.py:96
+#: views.py:101
 #, python-format
 msgid "Delete ACL: %s"
 msgstr "حذف قائمة التحكم في الوصول: %s"
 
-#: views.py:141
+#: views.py:147
 msgid "There are no ACLs for this object"
 msgstr "لا توجد قوائم تحكم في الوصول لهذا الكائن"
 
-#: views.py:144 views.py:261
+#: views.py:150 views.py:269
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
@@ -147,25 +147,25 @@ msgid ""
 msgstr ""
 "قوائم الصلاحيات تسمح للمستخدم من الدخول الى الأذونات وحسب الادوار المخصصة"
 
-#: views.py:151
+#: views.py:157
 #, python-format
 msgid "Access control lists for: %s"
 msgstr " المستخدمين والصلاحيات: %s"
 
-#: views.py:165
+#: views.py:171
 msgid "Granted permissions"
 msgstr "الصلاحيات الممنوحة"
 
-#: views.py:166
+#: views.py:172
 msgid "Available permissions"
 msgstr "الصلاحيات المتاحة"
 
-#: views.py:210
+#: views.py:217
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "صلاحية الدور \"%(role)s\" لـ \"%(object)s\"."
 
-#: views.py:219
+#: views.py:226
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -176,11 +176,11 @@ msgstr ""
 "يمكن إزالتها من هذا العرض. يجب إزالة الصلاحيات الموروثة من قائمة التحكم في "
 "الوصول للكائن الأصلي أو من دورها عبر قائمة الإعداد."
 
-#: views.py:258
+#: views.py:266
 msgid "There are no ACLs"
 msgstr ""
 
-#: views.py:267
+#: views.py:275
 msgid "Global access control lists"
 msgstr ""
 
@@ -201,15 +201,15 @@ msgid ""
 "Numeric identifier of the object for which the access will be modified."
 msgstr "المعرف الرقمي للكائن الذي سيتم تعديل الوصول إليه."
 
-#: workflow_actions.py:40 workflow_actions.py:155
+#: workflow_actions.py:40 workflow_actions.py:153
 msgid "Roles"
 msgstr "أدوار"
 
-#: workflow_actions.py:42 workflow_actions.py:157
+#: workflow_actions.py:42 workflow_actions.py:155
 msgid "Roles whose access will be modified."
 msgstr "الأدوار التي سيتم تعديل الوصول إليها."
 
-#: workflow_actions.py:49 workflow_actions.py:164
+#: workflow_actions.py:49 workflow_actions.py:162
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr "صلاحيات منح / إبطال إلى / من دور الكائن المحدد أعلاه."
@@ -218,14 +218,14 @@ msgstr "صلاحيات منح / إبطال إلى / من دور الكائن ا�
 msgid "Grant object access"
 msgstr "إتاحة الوصول إلى الكائن"
 
-#: workflow_actions.py:140
+#: workflow_actions.py:138
 msgid "Revoke object access"
 msgstr "إبطال الوصول إلى الكائن"
 
-#: workflow_actions.py:172
+#: workflow_actions.py:170
 msgid "Grant document access"
 msgstr "منح حق الوصول إلى الوثيقة"
 
-#: workflow_actions.py:211
+#: workflow_actions.py:209
 msgid "Revoke document access"
 msgstr "إبطال صلاحية الوصول إلى الوثيقة"

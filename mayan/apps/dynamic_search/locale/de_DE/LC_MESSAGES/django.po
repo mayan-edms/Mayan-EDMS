@@ -4,21 +4,21 @@
 # 
 # Translators:
 # Translators:
-# Marvin Haschker <marvin@haschker.me>, 2022
-# 847f3f05406324d125c568a4b098bddb, 2022
-# Jesaja Everling <jeverling@gmail.com>, 2022
-# Mathias Behrle <mathiasb@m9s.biz>, 2022
-# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2022
 # Berny <berny@bernhard-marx.de>, 2022
+# 847f3f05406324d125c568a4b098bddb, 2022
+# Marvin Haschker <marvin@haschker.me>, 2022
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2022
 # Roberto Rosario, 2022
+# Mathias Behrle <mathiasb@m9s.biz>, 2022
+# Jesaja Everling <jeverling@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:35+0000\n"
+"Last-Translator: Jesaja Everling <jeverling@gmail.com>, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,16 +26,23 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:25
+#: apps.py:26
 msgid "Dynamic search"
 msgstr "Dynamische Suche"
 
-#: classes.py:568
+#: classes.py:432
+#, python-format
+msgid ""
+"Search backend error. Verify that the search service is available and that "
+"the search syntax is valid for the active search backend; %s"
+msgstr ""
+
+#: classes.py:584
 #, python-format
 msgid "Unknown search model `%s`."
 msgstr ""
 
-#: classes.py:625
+#: classes.py:640
 msgid "ID"
 msgstr "ID"
 
@@ -52,16 +59,16 @@ msgstr ""
 "zutreffen. Ohne diese Option werden Ergebnisse mit mindestens einem Feld "
 "angezeigt."
 
-#: forms.py:30 templates/dynamic_search/search_box.html:41
+#: forms.py:31 templates/dynamic_search/search_box.html:41
 msgid "Search terms"
 msgstr "Suchbegriffe"
 
 #: links.py:13 permissions.py:5 queues.py:7 settings.py:11
-#: templates/dynamic_search/search_box.html:45 views.py:126 views.py:139
+#: templates/dynamic_search/search_box.html:45 views.py:133 views.py:147
 msgid "Search"
 msgstr "Suche"
 
-#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:163
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:171
 msgid "Advanced search"
 msgstr "Erweiterte Suche"
 
@@ -69,7 +76,7 @@ msgstr "Erweiterte Suche"
 msgid "Search again"
 msgstr "Suche wiederholen"
 
-#: links.py:25 views.py:104
+#: links.py:25 views.py:110
 msgid "Reindex search backend"
 msgstr "Such-Backend neu indizieren"
 
@@ -125,38 +132,42 @@ msgstr ""
 msgid "Maximum number search results to fetch and display."
 msgstr "Maximale Anzahl von Treffern, die geholt und angezeigt werden."
 
+#: templates/dynamic_search/app/list_toolbar.html:13
+msgid "List filter"
+msgstr ""
+
 #: templates/dynamic_search/search_box.html:47
 msgid "Advanced"
 msgstr "Erweitert"
 
-#: views.py:42
+#: views.py:48
 msgid "Try again using different terms. "
 msgstr "Bitte erneut mit anderen Suchbegriffen versuchen."
 
-#: views.py:44
+#: views.py:50
 msgid "No search results"
 msgstr "Keine Suchergebnisse"
 
-#: views.py:46
+#: views.py:52
 #, python-format
 msgid "Search results for: %s"
 msgstr "Suchergebnisse für: %s"
 
-#: views.py:100
+#: views.py:106
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
 msgstr ""
 
-#: views.py:106
+#: views.py:112
 msgid "This tool erases and populates the search backend's internal index."
 msgstr ""
 
-#: views.py:119
+#: views.py:126
 msgid "Search backend reindexing queued."
 msgstr ""
 
-#: views.py:141
+#: views.py:149
 #, python-format
 msgid "Search for: %s"
 msgstr "Suche nach: %s"

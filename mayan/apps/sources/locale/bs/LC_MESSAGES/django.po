@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
 "MIME-Version: 1.0\n"
@@ -20,8 +20,8 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:57 events.py:5 links.py:137 menus.py:5 models.py:42 queues.py:7
-#: settings.py:13 views/source_views.py:164
+#: apps.py:57 events.py:5 links.py:141 menus.py:5 models.py:42 queues.py:7
+#: settings.py:13 views/source_views.py:173
 msgid "Sources"
 msgstr "Izvori"
 
@@ -43,7 +43,7 @@ msgstr ""
 msgid "Type"
 msgstr "Tip"
 
-#: classes.py:269
+#: classes.py:235
 msgid "Null backend"
 msgstr ""
 
@@ -73,20 +73,20 @@ msgstr "Komentar"
 msgid "Action"
 msgstr "Akcija"
 
-#: forms.py:33
+#: forms.py:32
 msgid ""
 "The action to take in regards to the pages of the new file being uploaded."
 msgstr ""
 
-#: forms.py:48
+#: forms.py:51
 msgid "The backend used to create the new source."
 msgstr ""
 
-#: forms.py:49
+#: forms.py:52
 msgid "Backend"
 msgstr "Backend"
 
-#: forms.py:99
+#: forms.py:102
 msgid "File"
 msgstr "Datoteka"
 
@@ -94,27 +94,27 @@ msgstr "Datoteka"
 msgid "Default"
 msgstr "default"
 
-#: links.py:109
+#: links.py:111
 msgid "New document"
 msgstr "Novi dokument"
 
-#: links.py:116
+#: links.py:118
 msgid "Upload new file"
 msgstr ""
 
-#: links.py:122
+#: links.py:126
 msgid "Create source"
 msgstr ""
 
-#: links.py:128 source_backends/staging_folder_backends.py:311
+#: links.py:132 source_backends/staging_folder_backends.py:355
 msgid "Delete"
 msgstr "Obriši"
 
-#: links.py:132
+#: links.py:136
 msgid "Edit"
 msgstr "Urediti"
 
-#: links.py:144
+#: links.py:148
 msgid "Test"
 msgstr "Test"
 
@@ -170,13 +170,17 @@ msgstr "Proverite intervalni izvor"
 msgid "Handle upload"
 msgstr "Handle upload"
 
-#: serializers.py:51
+#: serializers.py:52
 msgid "Optional arguments for the action. Must be JSON formatted."
 msgstr ""
 
-#: serializers.py:52 source_backends/sane_scanner_backends.py:45
+#: serializers.py:53 source_backends/sane_scanner_backends.py:45
 msgid "Arguments"
 msgstr "Argumenti"
+
+#: serializers.py:61
+msgid "Binary content for the new file."
+msgstr ""
 
 #: settings.py:20
 msgid "Arguments to use when creating source backends."
@@ -190,15 +194,15 @@ msgstr ""
 msgid "Arguments to pass to the SOURCES_SOURCE_CACHE_STORAGE_BACKEND."
 msgstr ""
 
-#: source_backends/email_backends.py:45
+#: source_backends/email_backends.py:47
 msgid "Host"
 msgstr "Domaćin"
 
-#: source_backends/email_backends.py:54
+#: source_backends/email_backends.py:56
 msgid "SSL"
 msgstr "SSL"
 
-#: source_backends/email_backends.py:60
+#: source_backends/email_backends.py:62
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
@@ -206,63 +210,63 @@ msgstr ""
 "Tipični izbori su 110 za POP3, 995 za POP3 preko SSL-a, 143 za IMAP, 993 za "
 "IMAP preko SSL-a."
 
-#: source_backends/email_backends.py:66
+#: source_backends/email_backends.py:68
 msgid "Port"
 msgstr "Port"
 
-#: source_backends/email_backends.py:73
+#: source_backends/email_backends.py:75
 msgid "Username"
 msgstr "Korisničko ime"
 
-#: source_backends/email_backends.py:80
+#: source_backends/email_backends.py:82
 msgid "Password"
 msgstr "Lozinka"
 
-#: source_backends/email_backends.py:87
+#: source_backends/email_backends.py:89
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
 msgstr ""
 
-#: source_backends/email_backends.py:94
+#: source_backends/email_backends.py:96
 msgid "Metadata attachment name"
 msgstr "Ime priloga metapodataka"
 
-#: source_backends/email_backends.py:100
+#: source_backends/email_backends.py:102
 msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
 msgstr ""
 
-#: source_backends/email_backends.py:110
+#: source_backends/email_backends.py:112
 msgid "From metadata type"
 msgstr "Od vrste metapodataka"
 
-#: source_backends/email_backends.py:118
+#: source_backends/email_backends.py:120
 msgid ""
 "Select a metadata type to store the email's subject value. Must be a valid "
 "metadata type for the document type selected previously."
 msgstr ""
 
-#: source_backends/email_backends.py:128
+#: source_backends/email_backends.py:130
 msgid "Subject metadata type"
 msgstr "Tip metapodataka predmeta"
 
-#: source_backends/email_backends.py:136
+#: source_backends/email_backends.py:138
 msgid ""
 "Select a metadata type to store the email's message ID value. Must be a "
 "valid metadata type for the document type selected previously."
 msgstr ""
 
-#: source_backends/email_backends.py:146
+#: source_backends/email_backends.py:148
 msgid "Message ID metadata type"
 msgstr ""
 
-#: source_backends/email_backends.py:154
+#: source_backends/email_backends.py:156
 msgid "Store the body of the email as a text document."
 msgstr "Telo e-pošte čuvajte kao tekstualni dokument."
 
-#: source_backends/email_backends.py:156
+#: source_backends/email_backends.py:158
 msgid "Store email body"
 msgstr "Spremite telo e-pošte"
 
@@ -421,114 +425,124 @@ msgstr "Osobine dokumenata"
 msgid "Scan"
 msgstr "Skeniraj"
 
-#: source_backends/staging_folder_backends.py:222
-#: source_backends/staging_folder_backends.py:493
+#: source_backends/staging_folder_backends.py:232
+#: source_backends/staging_folder_backends.py:546
 msgid "Staging file"
 msgstr "Osnovna datoteka"
 
-#: source_backends/staging_folder_backends.py:253
+#: source_backends/staging_folder_backends.py:267
 #: source_backends/watch_folder_backends.py:38
 msgid "Server side filesystem path."
 msgstr "Serverska putanja na filesystem-u"
 
-#: source_backends/staging_folder_backends.py:258
+#: source_backends/staging_folder_backends.py:272
 #: source_backends/watch_folder_backends.py:43
 msgid "Folder path"
 msgstr "Putanja foldera"
 
-#: source_backends/staging_folder_backends.py:264
+#: source_backends/staging_folder_backends.py:278
 msgid "Width value to be passed to the converter backend."
 msgstr "Vrijednost za širinu za konvertovanje na backend-u."
 
-#: source_backends/staging_folder_backends.py:269
+#: source_backends/staging_folder_backends.py:283
 msgid "Preview width"
 msgstr "Pregled širine"
 
-#: source_backends/staging_folder_backends.py:275
+#: source_backends/staging_folder_backends.py:289
 msgid "Height value to be passed to the converter backend."
 msgstr "Vrijednost za visinu za konvertovanje na backend-u."
 
-#: source_backends/staging_folder_backends.py:280
+#: source_backends/staging_folder_backends.py:294
 msgid "Preview height"
 msgstr "Pregled visine"
 
-#: source_backends/staging_folder_backends.py:286
+#: source_backends/staging_folder_backends.py:300
 msgid "Delete the file after is has been successfully uploaded."
 msgstr "Obriši datoteku nakon što bude uspješno upload-ana."
 
-#: source_backends/staging_folder_backends.py:288
+#: source_backends/staging_folder_backends.py:302
 msgid "Delete after upload"
 msgstr "Izbriši nakon uploada"
 
-#: source_backends/staging_folder_backends.py:293
-msgid "Staging folder"
-msgstr "Folder staging"
-
-#: source_backends/staging_folder_backends.py:323
-msgid "Created"
-msgstr "Kreiran"
-
-#: source_backends/staging_folder_backends.py:327
-msgid "Thumbnail"
-msgstr "Thumbnail"
-
-#: source_backends/staging_folder_backends.py:473
-#, python-format
-msgid "Error deleting staging file; %s"
-msgstr "Greška tokom brisanja staging fajla; %s"
-
-#: source_backends/staging_folder_backends.py:494
-#, python-format
-msgid "Delete staging file \"%s\"?"
-msgstr ""
-
-#: source_backends/staging_folder_backends.py:520
-#, python-format
-msgid "Unable get list of staging files: %s"
-msgstr "Onemogući dobivanje liste osnovnih datoteka: %s"
-
-#: source_backends/staging_folder_backends.py:547
-msgid ""
-"This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
-msgstr ""
-
-#: source_backends/staging_folder_backends.py:554
-msgid "No staging files available"
-msgstr ""
-
+#: source_backends/staging_folder_backends.py:309
 #: source_backends/watch_folder_backends.py:50
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
 msgstr ""
 
+#: source_backends/staging_folder_backends.py:312
 #: source_backends/watch_folder_backends.py:53
 msgid "Include subdirectories?"
 msgstr ""
 
+#: source_backends/staging_folder_backends.py:319
 #: source_backends/watch_folder_backends.py:60
 msgid "Regular expression used to select which files to upload."
 msgstr ""
 
+#: source_backends/staging_folder_backends.py:321
 #: source_backends/watch_folder_backends.py:62
 msgid "Include regular expression"
 msgstr ""
 
+#: source_backends/staging_folder_backends.py:328
 #: source_backends/watch_folder_backends.py:69
 msgid "Regular expression used to exclude which files to upload."
 msgstr ""
 
+#: source_backends/staging_folder_backends.py:330
 #: source_backends/watch_folder_backends.py:71
 msgid "Exclude regular expression"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:341
+msgid "Staging folder"
+msgstr "Folder staging"
+
+#: source_backends/staging_folder_backends.py:361
+msgid "Select"
+msgstr "Odabrati"
+
+#: source_backends/staging_folder_backends.py:373
+msgid "Created"
+msgstr "Kreiran"
+
+#: source_backends/staging_folder_backends.py:377
+msgid "Thumbnail"
+msgstr "Thumbnail"
+
+#: source_backends/staging_folder_backends.py:526
+#, python-format
+msgid "Error deleting staging file; %s"
+msgstr "Greška tokom brisanja staging fajla; %s"
+
+#: source_backends/staging_folder_backends.py:547
+#, python-format
+msgid "Delete staging file \"%s\"?"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:612
+#, python-format
+msgid "Unable get list of staging files; %s"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:630
+msgid ""
+"This could mean that the staging folder is empty. It could also mean that "
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:637
+msgid "No staging files available"
 msgstr ""
 
 #: source_backends/watch_folder_backends.py:75
 msgid "Watch folder"
 msgstr "Gledajte folder"
 
-#: source_backends/web_form_backends.py:24
+#: source_backends/web_form_backends.py:39
 msgid "Web form"
 msgstr "Ueb forma"
 
@@ -542,35 +556,35 @@ msgstr ""
 msgid "Staging folder files"
 msgstr ""
 
-#: templates/sources/app/foot.html:40
+#: templates/sources/app/foot.html:42
 msgid "Cancel upload"
 msgstr ""
 
-#: templates/sources/app/foot.html:41
+#: templates/sources/app/foot.html:43
 msgid "Are you sure you want to cancel this upload?"
 msgstr ""
 
-#: templates/sources/app/foot.html:42
+#: templates/sources/app/foot.html:44
 msgid "Drop files or click here to upload files"
 msgstr ""
 
-#: templates/sources/app/foot.html:43
+#: templates/sources/app/foot.html:45
 msgid "Your browser does not support drag and drop file uploads."
 msgstr ""
 
-#: templates/sources/app/foot.html:44
+#: templates/sources/app/foot.html:46
 msgid "Please use the fallback form below to upload your files."
 msgstr ""
 
-#: templates/sources/app/foot.html:45
+#: templates/sources/app/foot.html:47
 msgid "Clear"
 msgstr ""
 
-#: templates/sources/app/foot.html:46
+#: templates/sources/app/foot.html:48
 msgid "Server responded with {{statusCode}} code."
 msgstr ""
 
-#: views/base.py:53 wizards.py:54
+#: views/base.py:54 wizards.py:58
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
@@ -578,74 +592,74 @@ msgstr ""
 "Nisu definisani nikakvi interaktivni izvori dokumenta ili nijedan nije "
 "omogućen, stvoriti jedan prije nastavka."
 
-#: views/document_file_views.py:49
+#: views/document_file_views.py:51
 #, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
 
-#: views/document_file_views.py:73
+#: views/document_file_views.py:75
 #, python-format
 msgid "Error executing document file upload task; %(exception)s"
 msgstr ""
 
-#: views/document_file_views.py:92
+#: views/document_file_views.py:94
 msgid "New document file queued for upload and will be available shortly."
 msgstr ""
 
-#: views/document_file_views.py:125
+#: views/document_file_views.py:127
 #, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 
-#: views/document_file_views.py:131
+#: views/document_file_views.py:133
 msgid "Submit"
 msgstr "Podnijeti"
 
-#: views/document_views.py:38
+#: views/document_views.py:40
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr ""
 
-#: views/document_views.py:57
+#: views/document_views.py:59
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
-#: views/document_views.py:83
+#: views/document_views.py:85
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 
-#: views/source_views.py:37
+#: views/source_views.py:40
 msgid "New source backend selection"
 msgstr ""
 
-#: views/source_views.py:93
+#: views/source_views.py:99
 #, python-format
 msgid "Create a \"%s\" source"
 msgstr ""
 
-#: views/source_views.py:118
+#: views/source_views.py:125
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Izbrišite izvor: %s?"
 
-#: views/source_views.py:133
+#: views/source_views.py:141
 #, python-format
 msgid "Edit source: %s"
 msgstr "Izmijeni izvor: %s"
 
-#: views/source_views.py:158
+#: views/source_views.py:167
 msgid ""
 "Sources provide the means to upload documents. Some sources are interactive "
 "and require user input to operate. Others are automatic and run in the "
 "background without user intervention."
 msgstr ""
 
-#: views/source_views.py:163
+#: views/source_views.py:172
 msgid "No sources available"
 msgstr ""
 
-#: views/source_views.py:181
+#: views/source_views.py:191
 msgid ""
 "This will execute the source code even if the source is not enabled. Sources"
 " that delete content after downloading will not do so while being tested. "
@@ -653,12 +667,12 @@ msgid ""
 "test will clear the error log."
 msgstr ""
 
-#: views/source_views.py:187
+#: views/source_views.py:197
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Provjera provjera izvora \"%s\"?"
 
-#: views/source_views.py:199
+#: views/source_views.py:209
 msgid "Source test queued."
 msgstr ""
 
@@ -666,23 +680,23 @@ msgstr ""
 msgid "Select document type"
 msgstr "Izaberite vrstu dokumenta"
 
-#: wizards.py:73
+#: wizards.py:77
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr "Korak %(step)d od %(total_steps)d: %(step_label)s"
 
-#: wizards.py:78
+#: wizards.py:82
 msgid "Document upload wizard"
 msgstr "Čarobnjak za učitavanje dokumenta"
 
-#: wizards.py:87
+#: wizards.py:91
 msgid "First"
 msgstr ""
 
-#: wizards.py:93
+#: wizards.py:97
 msgid "Previous"
 msgstr ""
 
-#: wizards.py:100
+#: wizards.py:104
 msgid "Next"
 msgstr ""

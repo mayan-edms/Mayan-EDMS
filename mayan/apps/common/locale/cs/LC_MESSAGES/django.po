@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:33+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -21,25 +21,9 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:132 permissions.py:5 settings.py:15
+#: apps.py:132 permissions.py:5 settings.py:16
 msgid "Common"
 msgstr "Společný"
-
-#: classes.py:409
-msgid "Model properties"
-msgstr "Vlastnosti modelu"
-
-#: classes.py:414
-msgid "Model fields"
-msgstr "Pole modelu"
-
-#: classes.py:457
-msgid "Model related fields"
-msgstr "Pole související s modelem"
-
-#: classes.py:462
-msgid "Model reverse fields"
-msgstr "Modelování zpětných polí"
 
 #: dependencies.py:169
 msgid "Used to allow offline translation of the code text strings."
@@ -73,7 +57,7 @@ msgstr "Dokumentace"
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:45 views.py:48
+#: links.py:45 views.py:53
 msgid "License"
 msgstr "Licence"
 
@@ -97,24 +81,24 @@ msgstr "Internetový obchod"
 msgid "Get support"
 msgstr "Získat podporu"
 
-#: links.py:69 queues.py:6 views.py:122
+#: links.py:69 queues.py:6 views.py:131
 msgid "Tools"
 msgstr "Nástroje"
 
-#: literals.py:20
+#: literals.py:21
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Tato funkce byla ukončena a v budoucí verzi bude odstraněna."
 
-#: literals.py:28
+#: literals.py:29
 msgid "Days"
 msgstr "Dny"
 
-#: literals.py:29
+#: literals.py:30
 msgid "Hours"
 msgstr "Hodiny"
 
-#: literals.py:30
+#: literals.py:31
 msgid "Minutes"
 msgstr "Minuty"
 
@@ -150,7 +134,7 @@ msgstr "Uživatel"
 msgid "Copy object"
 msgstr "Zkopírujte objekt"
 
-#: settings.py:22
+#: settings.py:23
 msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
@@ -158,7 +142,7 @@ msgstr ""
 "V režimu seznamu místo jednotlivých tlačítek zobrazte možnosti nabídky "
 "„seznam faset“ jako rozevírací nabídku."
 
-#: settings.py:30
+#: settings.py:31
 msgid ""
 "In list mode, show the \"object\" menu options as a dropdown menu instead of"
 " individual buttons."
@@ -166,7 +150,14 @@ msgstr ""
 "V režimu seznamu místo jednotlivých tlačítek zobrazte možnosti nabídky "
 "„objekt“ jako rozevírací nabídku."
 
-#: settings.py:37
+#: settings.py:38
+msgid ""
+"Disables the use of the local `media` folder. When using this setting, all "
+"apps must be also configured via their respective storage backend settings "
+"to use alternate persistence."
+msgstr ""
+
+#: settings.py:46
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -178,7 +169,7 @@ msgstr ""
 "tečkovaná cesta Pythonu k: třídě konfigurace aplikace (upřednostňované) nebo"
 " balíčku, který obsahuje aplikaci. Příklad: ['app_1', 'app_2']"
 
-#: settings.py:47
+#: settings.py:56
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -190,7 +181,7 @@ msgstr ""
 " tečkovaná cesta Pythonu k: třídě konfigurace aplikace (upřednostňované) "
 "nebo balíčku, který obsahuje aplikaci. Příklad:  ['app_1', 'app_2']"
 
-#: settings.py:58
+#: settings.py:67
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -199,7 +190,7 @@ msgid ""
 "apps. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:69
+#: settings.py:78
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
@@ -207,15 +198,15 @@ msgstr ""
 "Název pohledu připojeného ke kotvě značky v hlavní nabídce. Toto je také "
 "pohled, na který budou uživatelé přesměrováni po přihlášení."
 
-#: settings.py:78
+#: settings.py:87
 msgid "Name of the dashboard to display in the home view."
 msgstr "Název řídicího panelu, který se má zobrazit v domovském zobrazení."
 
-#: settings.py:83
+#: settings.py:92
 msgid "Sets the project's name."
 msgstr "Nastavuje název projektu."
 
-#: settings.py:87
+#: settings.py:96
 msgid "URL of the project's homepage."
 msgstr "URL domovské stránky projektu."
 
@@ -238,29 +229,29 @@ msgid ""
 msgstr ""
 "Zadejte platný „interní název“ skládající se z písmen, číslic a podtržítek."
 
-#: views.py:22
+#: views.py:25
 msgid "About"
 msgstr "O nás"
 
-#: views.py:39
+#: views.py:43
 msgid "Home"
 msgstr "Domů"
 
-#: views.py:62
+#: views.py:69
 #, python-format
 msgid "Fields to be copied: %s"
 msgstr "Pole ke kopírování: %s"
 
-#: views.py:72
+#: views.py:79
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr "Vytvořit kopii %(object_name)s &quot;%(object)s&quot;?"
 
-#: views.py:83
+#: views.py:90
 msgid "Object copied successfully."
 msgstr "Objekt byl úspěšně zkopírován."
 
-#: views.py:100
+#: views.py:108
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
@@ -268,18 +259,18 @@ msgstr ""
 "Žádné výsledky zde znamenají, že nemáte potřebná oprávnění k provedení "
 "administrativní úlohy."
 
-#: views.py:103
+#: views.py:111
 msgid "No setup options available."
 msgstr "Nejsou k dispozici žádné možnosti nastavení."
 
-#: views.py:107
+#: views.py:115
 msgid "Setup items"
 msgstr "Položky nastavení"
 
-#: views.py:109
+#: views.py:117
 msgid "Here you can configure all aspects of the system."
 msgstr "Zde můžete nakonfigurovat všechny aspekty systému."
 
-#: views.py:124
+#: views.py:133
 msgid "These modules are used to do system maintenance."
 msgstr "Tyto moduly se používají k údržbě systému."

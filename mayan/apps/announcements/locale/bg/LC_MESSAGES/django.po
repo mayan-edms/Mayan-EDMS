@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:11+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -22,8 +22,8 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:36 events.py:5 links.py:40 models.py:42 permissions.py:6
-#: templates/announcements/announcements.html:8 views.py:119
+#: apps.py:36 events.py:5 links.py:40 models.py:43 permissions.py:6
+#: templates/announcements/announcements.html:8 views.py:126
 msgid "Announcements"
 msgstr "Съобщения"
 
@@ -39,7 +39,7 @@ msgstr "Съобщението е създадено"
 msgid "Announcement edited"
 msgstr "Съобщението е редактирано"
 
-#: links.py:17 views.py:30
+#: links.py:17 views.py:34
 msgid "Create announcement"
 msgstr "Създайте съобщение"
 
@@ -87,7 +87,7 @@ msgstr "Дата и час, до които трябва да се покаже 
 msgid "End date time"
 msgstr "Крайни дата и час"
 
-#: models.py:41
+#: models.py:42
 msgid "Announcement"
 msgstr "Съобщение"
 
@@ -107,47 +107,47 @@ msgstr "Редактиране на съобщения"
 msgid "View announcements"
 msgstr "Преглед на съобщенията"
 
-#: views.py:41
+#: views.py:45
 #, python-format
 msgid "Error deleting announcement \"%(instance)s\"; %(exception)s"
 msgstr "Грешка при изтриването на съобщение „%(instance)s“; %(exception)s"
 
-#: views.py:50
+#: views.py:54
 #, python-format
 msgid "Announcement \"%(object)s\" deleted successfully."
 msgstr "Съобщението &quot;%(object)s&quot; беше изтрито успешно."
 
-#: views.py:53
+#: views.py:57
 #, python-format
 msgid "%(count)d announcement deleted successfully."
 msgstr "%(count)d съобщение беше изтрито успешно."
 
-#: views.py:56
+#: views.py:60
 #, python-format
 msgid "%(count)d announcements deleted successfully."
 msgstr "%(count)d съобщения бяха изтрити успешно."
 
-#: views.py:58
+#: views.py:62
 #, python-format
 msgid "Delete announcement: %(object)s."
 msgstr "Изтриване на съобщение: %(object)s."
 
-#: views.py:59
+#: views.py:63
 #, python-format
 msgid "Delete the %(count)d selected announcement."
 msgstr "Изтрийте избраното съобщение %(count)d."
 
-#: views.py:60
+#: views.py:64
 #, python-format
 msgid "Delete the %(count)d selected announcements."
 msgstr "Изтрийте избраните съобщения %(count)d."
 
-#: views.py:92
+#: views.py:98
 #, python-format
 msgid "Edit announcement: %s"
 msgstr "Редактиране на съобщение: %s"
 
-#: views.py:114
+#: views.py:121
 msgid ""
 "Announcements are displayed in the login view. You can use announcements to "
 "convery information about your organzation, announcements or usage "
@@ -157,6 +157,6 @@ msgstr ""
 " събиране на информация за вашата организация, съобщения или насоки за "
 "използване за вашите потребители."
 
-#: views.py:118
+#: views.py:125
 msgid "No announcements available"
 msgstr "Няма налични съобщения"

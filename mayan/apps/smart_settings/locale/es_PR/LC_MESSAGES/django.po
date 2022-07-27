@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
@@ -36,11 +36,11 @@ msgstr "Nombre"
 msgid "Value"
 msgstr "Valor"
 
-#: classes.py:348
+#: classes.py:374
 msgid "Overridden"
 msgstr "Anulado"
 
-#: classes.py:350
+#: classes.py:376
 msgid "Is this settings being overridden by an environment variable?"
 msgstr "¿Esta configuración está siendo anulada por una variable de entorno?"
 
@@ -53,15 +53,15 @@ msgstr "Ingrese el nuevo valor del ajuste."
 msgid "\"%s\" not a valid entry."
 msgstr "\"%s\" no es una entrada válida."
 
-#: links.py:12 links.py:16
+#: links.py:20 links.py:24
 msgid "Settings"
 msgstr "Ajustes"
 
-#: links.py:22
+#: links.py:31
 msgid "Namespaces"
 msgstr "Categorías"
 
-#: links.py:26
+#: links.py:36
 msgid "Edit"
 msgstr "Editar"
 
@@ -510,16 +510,22 @@ msgstr ""
 msgid "English"
 msgstr "inglés"
 
-#: views.py:21
+#: views.py:27
+msgid ""
+"Local storage is currently disabled, changes to setting values will not be "
+"saved or take effect."
+msgstr ""
+
+#: views.py:38
 msgid "Setting updated successfully."
 msgstr "Ajuste actualizado con éxito."
 
-#: views.py:30
+#: views.py:47
 #, python-format
 msgid "Edit setting: %s"
 msgstr "Editar ajuste: %s"
 
-#: views.py:55
+#: views.py:73
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
@@ -527,16 +533,16 @@ msgstr ""
 "La configuración heredada de una variable de entorno tiene prioridad y no se"
 " puede cambiar en esta vista."
 
-#: views.py:58
+#: views.py:76
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr "Ajustes en la categoría: %s"
 
-#: views.py:66
+#: views.py:84
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "Categoría: %s, no encontrada"
 
-#: views.py:76
+#: views.py:94
 msgid "Setting namespaces"
 msgstr "Categoría de ajustes"

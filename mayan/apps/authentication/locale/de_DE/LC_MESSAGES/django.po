@@ -4,11 +4,11 @@
 # 
 # Translators:
 # Translators:
-# Jesaja Everling <jeverling@gmail.com>, 2022
 # 847f3f05406324d125c568a4b098bddb, 2022
+# Jesaja Everling <jeverling@gmail.com>, 2022
 # Roberto Rosario, 2022
-# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2022
 # Marvin Haschker <marvin@haschker.me>, 2022
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2022
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
 # Berny <berny@bernhard-marx.de>, 2022
 # 
@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
 "Last-Translator: Berny <berny@bernhard-marx.de>, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -72,7 +72,7 @@ msgstr "Abmelden"
 msgid "Change password"
 msgstr "Passwort ändern"
 
-#: links.py:45 views/impersonation_views.py:50
+#: links.py:45 views/impersonation_views.py:52
 msgid "Impersonate user"
 msgstr "Benutzeridentität annehmen"
 
@@ -161,61 +161,61 @@ msgstr "Anmeldungsseite"
 msgid "Password reset email sent!"
 msgstr "Mail für Passwortrücksetzung gesendet!"
 
-#: views/authentication_views.py:153
+#: views/authentication_views.py:155
 msgid "Next"
 msgstr "Nächste Seite"
 
-#: views/authentication_views.py:159
+#: views/authentication_views.py:161
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr "Schritt %(step)d von %(total_steps)d: %(step_label)s"
 
-#: views/authentication_views.py:221
+#: views/authentication_views.py:223
 msgid "Your password has been successfully changed."
 msgstr "Das Passwort wurde erfolgreich geändert."
 
-#: views/authentication_views.py:228
+#: views/authentication_views.py:230
 msgid "Current user password change"
 msgstr "Passwortänderung für aktuellen Benutzer"
 
-#: views/authentication_views.py:236
+#: views/authentication_views.py:239
 msgid "Changing the password is not allowed for this account."
 msgstr "Ein Passwortwechsel ist für diesen Account nicht erlaubt."
 
-#: views/authentication_views.py:308
+#: views/authentication_views.py:311
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Passwortwechsel für %(count)d Benutzer durchgeführt"
 
-#: views/authentication_views.py:311
+#: views/authentication_views.py:314
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Passwortwechsel für %(count)d Benutzer durchgeführt"
 
-#: views/authentication_views.py:319
+#: views/authentication_views.py:323
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views/authentication_views.py:330
+#: views/authentication_views.py:334
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Passwort ändern für Benutzer: %s"
 
-#: views/authentication_views.py:352
+#: views/authentication_views.py:356
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Passwort für Benutzer %s erfolgreich zurückgesetzt."
 
-#: views/authentication_views.py:358
+#: views/authentication_views.py:362
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr ""
 "Fehler beim Zurücksetzen des Passworts für den Benutzer  \"%(user)s\": "
 "%(error)s"
 
-#: views/impersonation_views.py:78
+#: views/impersonation_views.py:81
 #, python-format
 msgid "Impersonate user: %s"
 msgstr "Benutzeridentität annehmen: %s"

@@ -4,21 +4,21 @@
 # 
 # Translators:
 # Translators:
+# Felix <felix.com@gmx.com>, 2022
 # Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2022
+# Berny <berny@bernhard-marx.de>, 2022
 # Marvin Haschker <marvin@haschker.me>, 2022
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2022
 # Roberto Rosario, 2022
-# Felix <felix.com@gmx.com>, 2022
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
-# Berny <berny@bernhard-marx.de>, 2022
 # Tobias Paepke <tobias.paepke@paepke.net>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Tobias Paepke <tobias.paepke@paepke.net>, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -129,43 +129,43 @@ msgstr "Schlüssel-Benutzer-ID"
 msgid "Key type"
 msgstr "Schlüsseltyp"
 
-#: links.py:42
-msgid "Refresh all signatures"
-msgstr ""
-
-#: links.py:48
-msgid "Verify all documents"
-msgstr "Alle Dokumente überprüfen"
-
-#: links.py:58
+#: links.py:44
 msgid "Sign detached"
 msgstr "Unterschrift separat"
 
-#: links.py:65
+#: links.py:51
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:73
+#: links.py:59
 msgid "Download"
 msgstr "Herunterladen"
 
-#: links.py:79
+#: links.py:66
 msgid "Upload signature"
 msgstr "Unterschrift hochladen"
 
-#: links.py:89
+#: links.py:76
 msgid "Sign embedded"
 msgstr "Unterschrift eingebettet"
 
-#: links.py:99
+#: links.py:86
 msgid "Details"
 msgstr "Details"
 
-#: links.py:105 queues.py:8
+#: links.py:92 queues.py:8
 msgid "Signatures"
 msgstr "Unterschriften"
 
-#: managers.py:95
+#: links.py:100
+msgid "Refresh all signatures"
+msgstr ""
+
+#: links.py:106
+msgid "Verify all documents"
+msgstr "Alle Dokumente überprüfen"
+
+#: managers.py:94
 msgid "signed"
 msgstr ""
 
@@ -304,44 +304,44 @@ msgstr ""
 msgid "Detached signatures"
 msgstr "Separate Unterschriften"
 
-#: views.py:62 views.py:129
+#: views.py:75 views.py:145
 msgid "Passphrase is needed to unlock this key."
 msgstr "Passwort wird benötigt um den Schlüssel zu entsperren."
 
-#: views.py:75 views.py:142
+#: views.py:88 views.py:158
 msgid "Passphrase is incorrect."
 msgstr "Passwort ist ungültig."
 
-#: views.py:88 views.py:155
+#: views.py:101 views.py:171
 msgid "Document file signed successfully."
 msgstr ""
 
-#: views.py:98
+#: views.py:111
 #, python-format
 msgid "Sign document file \"%s\" with a detached signature"
 msgstr ""
 
-#: views.py:172
+#: views.py:188
 #, python-format
 msgid "Sign document file \"%s\" with a embedded signature"
 msgstr ""
 
-#: views.py:188
+#: views.py:205
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Separate Unterschrift %s löschen"
 
-#: views.py:238
+#: views.py:257
 #, python-format
 msgid "Upload detached signature for document file: %s"
 msgstr ""
 
-#: views.py:267
+#: views.py:287
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Details für Signatur %s"
 
-#: views.py:291
+#: views.py:312
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
@@ -352,33 +352,33 @@ msgstr ""
 "Unterschrift kann als Teil des Dokuments in dieses eingebettet sein oder "
 "separat erstellt und hochgeladen werden."
 
-#: views.py:320
+#: views.py:341
 msgid "There are no signatures for this document file."
 msgstr ""
 
-#: views.py:324
+#: views.py:345
 #, python-format
 msgid "Signatures for document file: %s"
 msgstr ""
 
-#: views.py:335 views.py:354
+#: views.py:356 views.py:377
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
 "Bei großen Datenbanken kann dieser Vorgang einige Zeit in Anspruch nehmen."
 
-#: views.py:336
+#: views.py:358
 msgid "Refresh all signatures information?"
 msgstr ""
 
-#: views.py:346
+#: views.py:369
 msgid "Signature information refresh queued successfully."
 msgstr ""
 
-#: views.py:355
+#: views.py:379
 msgid "Verify all document for signatures?"
 msgstr "Alle Dokumentenunterschriften überprüfen?"
 
-#: views.py:365
+#: views.py:390
 msgid "Signature verification queued successfully."
 msgstr "Überprüfung der Unterschriften erfolgreich eingereiht."
 

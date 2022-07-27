@@ -5,16 +5,16 @@
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2022
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2022
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:33+0000\n"
+"Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,25 +22,9 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:132 permissions.py:5 settings.py:15
+#: apps.py:132 permissions.py:5 settings.py:16
 msgid "Common"
 msgstr "Общи"
-
-#: classes.py:409
-msgid "Model properties"
-msgstr "Свойства на модела"
-
-#: classes.py:414
-msgid "Model fields"
-msgstr "Полета на модела"
-
-#: classes.py:457
-msgid "Model related fields"
-msgstr "Свързани с модела полета"
-
-#: classes.py:462
-msgid "Model reverse fields"
-msgstr "Обратни полета на модела"
 
 #: dependencies.py:169
 msgid "Used to allow offline translation of the code text strings."
@@ -74,7 +58,7 @@ msgstr "Документация"
 msgid "Forum"
 msgstr "Форум"
 
-#: links.py:45 views.py:48
+#: links.py:45 views.py:53
 msgid "License"
 msgstr "Лиценз"
 
@@ -98,24 +82,24 @@ msgstr "Онлайн магазин"
 msgid "Get support"
 msgstr "Поддръжка"
 
-#: links.py:69 queues.py:6 views.py:122
+#: links.py:69 queues.py:6 views.py:131
 msgid "Tools"
 msgstr "Инструменти"
 
-#: literals.py:20
+#: literals.py:21
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Тази функция е оттеглена и ще бъде премахната в бъдеща версия."
 
-#: literals.py:28
+#: literals.py:29
 msgid "Days"
 msgstr "Дни"
 
-#: literals.py:29
+#: literals.py:30
 msgid "Hours"
 msgstr "Часове"
 
-#: literals.py:30
+#: literals.py:31
 msgid "Minutes"
 msgstr "Минути"
 
@@ -151,7 +135,7 @@ msgstr "Потребител"
 msgid "Copy object"
 msgstr "Копиране на обект"
 
-#: settings.py:22
+#: settings.py:23
 msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
@@ -159,7 +143,7 @@ msgstr ""
 "В режим на списък покажете опциите на менюто &quot;фасет списък&quot; като "
 "падащо меню вместо отделни бутони."
 
-#: settings.py:30
+#: settings.py:31
 msgid ""
 "In list mode, show the \"object\" menu options as a dropdown menu instead of"
 " individual buttons."
@@ -167,7 +151,14 @@ msgstr ""
 "В режим на списък покажете опциите на менюто &quot;обект&quot; като падащо "
 "меню вместо отделни бутони."
 
-#: settings.py:37
+#: settings.py:38
+msgid ""
+"Disables the use of the local `media` folder. When using this setting, all "
+"apps must be also configured via their respective storage backend settings "
+"to use alternate persistence."
+msgstr ""
+
+#: settings.py:46
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -180,7 +171,7 @@ msgstr ""
 "приложение (за предпочитане) или пакет, съдържащ приложение. Пример: "
 "[&#39;app_1&#39;, &#39;app_2&#39;]"
 
-#: settings.py:47
+#: settings.py:56
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -193,7 +184,7 @@ msgstr ""
 "предпочитане) или пакет, съдържащ приложение. Пример: [&#39;app_1&#39;, "
 "&#39;app_2&#39;]"
 
-#: settings.py:58
+#: settings.py:67
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -208,7 +199,7 @@ msgstr ""
 "инсталирани преди приложенията по подразбиране. Пример: [&#39;app_1&#39;, "
 "&#39;app_2&#39;]"
 
-#: settings.py:69
+#: settings.py:78
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
@@ -216,15 +207,15 @@ msgstr ""
 "Име на изгледа, прикрепен към котвата на марката в главното меню. Това е и "
 "изгледът, към който потребителите ще бъдат пренасочени след влизане."
 
-#: settings.py:78
+#: settings.py:87
 msgid "Name of the dashboard to display in the home view."
 msgstr "Име на таблото за управление, което да се показва в началния изглед."
 
-#: settings.py:83
+#: settings.py:92
 msgid "Sets the project's name."
 msgstr "Задава името на проекта."
 
-#: settings.py:87
+#: settings.py:96
 msgid "URL of the project's homepage."
 msgstr "URL на началната страница на проекта."
 
@@ -247,29 +238,29 @@ msgid ""
 msgstr ""
 "Въведете валидно „вътрешно име“, състоящо се от букви, цифри и долни черти."
 
-#: views.py:22
+#: views.py:25
 msgid "About"
 msgstr "Относно"
 
-#: views.py:39
+#: views.py:43
 msgid "Home"
 msgstr "Начало"
 
-#: views.py:62
+#: views.py:69
 #, python-format
 msgid "Fields to be copied: %s"
 msgstr "Полета за копиране: %s"
 
-#: views.py:72
+#: views.py:79
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr "Да направя ли копие на %(object_name)s &quot;%(object)s&quot;?"
 
-#: views.py:83
+#: views.py:90
 msgid "Object copied successfully."
 msgstr "Обектът е копиран успешно."
 
-#: views.py:100
+#: views.py:108
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
@@ -277,18 +268,18 @@ msgstr ""
 "Липса на резултати тук означава, че нямате необходимите разрешения за "
 "изпълнение на административна задача."
 
-#: views.py:103
+#: views.py:111
 msgid "No setup options available."
 msgstr "Няма опции за настройка."
 
-#: views.py:107
+#: views.py:115
 msgid "Setup items"
 msgstr "Елементи за настройка"
 
-#: views.py:109
+#: views.py:117
 msgid "Here you can configure all aspects of the system."
 msgstr "Тук можете да конфигурирате всички аспекти на системата."
 
-#: views.py:124
+#: views.py:133
 msgid "These modules are used to do system maintenance."
 msgstr "Тези модули се използват за поддръжка на системата."

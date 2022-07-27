@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:39+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -22,27 +22,27 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:15 settings.py:7
+#: apps.py:15 settings.py:9
 msgid "Views"
 msgstr "Изгледи"
 
-#: forms.py:29
+#: forms.py:54
 msgid "Search"
 msgstr "Търсене"
 
-#: forms.py:43
+#: forms.py:68
 msgid "Selection"
 msgstr "Избиране"
 
-#: forms.py:357
+#: forms.py:385
 msgid "Label"
 msgstr "Етикет"
 
-#: forms.py:361
+#: forms.py:389
 msgid "Relationship"
 msgstr "Връзка"
 
-#: generics.py:150
+#: generics.py:148
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
@@ -52,7 +52,7 @@ msgstr ""
 " няколко записа. След като избирането приключи, щракнете върху бутона по-"
 "долу или щракнете двукратно върху списъка, за да активирате действието."
 
-#: generics.py:155
+#: generics.py:153
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
@@ -62,173 +62,177 @@ msgstr ""
 "записа. След като избирането приключи, щракнете върху бутона по-долу или "
 "щракнете двукратно върху списъка, за да активирате действието."
 
-#: generics.py:290
+#: generics.py:288
 msgid "Add all"
 msgstr "Добавете всички"
 
-#: generics.py:298
+#: generics.py:296
 msgid "Add"
 msgstr "Добавете"
 
-#: generics.py:308
+#: generics.py:306
 msgid "Remove all"
 msgstr "Премахнете всички"
 
-#: generics.py:316
+#: generics.py:314
 msgid "Remove"
 msgstr "Премахнете"
 
-#: generics.py:534
+#: generics.py:533
 #, python-format
 msgid "Error updating relationship; %s"
 msgstr "Грешка при актуализиране на връзката; %s"
 
-#: generics.py:541
+#: generics.py:540
 msgid "Relationships updated successfully"
 msgstr "Връзките са актуализирани успешно"
 
-#: generics.py:600
+#: generics.py:603
 #, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr "Грешка в дублиращи данни: %(error)s"
 
-#: generics.py:619
+#: generics.py:622
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s не е създаден, грешка: %(error)s"
 
-#: generics.py:630
+#: generics.py:633
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s е създаден успешно."
 
-#: generics.py:669
+#: generics.py:673
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s не е изтрит, грешка: %(error)s."
 
-#: generics.py:678
+#: generics.py:682
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s изтрит успешно."
 
-#: generics.py:732
+#: generics.py:737
 #, python-format
 msgid "Error retrieving %(object)s; %(error)s"
 msgstr "Грешка при извличане на %(object)s; %(error)s"
 
-#: generics.py:836
+#: generics.py:843
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s не е актуализиран, грешка: %(error)s."
 
-#: generics.py:845
+#: generics.py:852
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s актуализиран успешно."
 
-#: generics.py:907
+#: generics.py:914
 #, python-format
 msgid "\"%(object)s\" deleted successfully."
 msgstr "„%(object)s“ беше изтрит успешно."
 
-#: generics.py:908
+#: generics.py:915
 #, python-format
 msgid "%(count)d object deleted successfully."
 msgstr "%(count)d обект е изтрит успешно."
 
-#: generics.py:909
+#: generics.py:916
 #, python-format
 msgid "%(count)d objects deleted successfully."
 msgstr "%(count)d обекта бяха изтрити успешно."
 
-#: generics.py:910
+#: generics.py:917
 #, python-format
 msgid "Delete \"%(object)s\"."
 msgstr "Изтрийте &quot;%(object)s&quot;."
 
-#: generics.py:911
+#: generics.py:918
 #, python-format
 msgid "Delete %(count)d object."
 msgstr "Изтрийте %(count)d обект."
 
-#: generics.py:912
+#: generics.py:919
 #, python-format
 msgid "Delete %(count)d objects."
 msgstr "Изтрийте %(count)d обекта."
 
-#: mixins.py:350
+#: mixins.py:374
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr "Не е намерен %(verbose_name)s, отговарящ на заявката"
 
-#: mixins.py:375
+#: mixins.py:399
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
 msgstr ""
 "Не може да се извърши операция върху обект %(instance)s; %(exception)s."
 
-#: mixins.py:377
+#: mixins.py:401
 #, python-format
 msgid "Operation performed on %(object)s."
 msgstr "Операция, извършена на %(object)s."
 
-#: mixins.py:378
+#: mixins.py:402
 #, python-format
 msgid "Operation performed on %(count)d object."
 msgstr "Операция, извършена върху обект %(count)d."
 
-#: mixins.py:379
+#: mixins.py:403
 #, python-format
 msgid "Operation performed on %(count)d objects."
 msgstr "Операция, извършена върху обекти %(count)d."
 
-#: mixins.py:380
+#: mixins.py:404
 #, python-format
 msgid "Perform operation on %(object)s."
 msgstr "Извършете операция на %(object)s."
 
-#: mixins.py:381
+#: mixins.py:405
 #, python-format
 msgid "Perform operation on %(count)d object."
 msgstr "Извършете операция върху обект %(count)d."
 
-#: mixins.py:382
+#: mixins.py:406
 #, python-format
 msgid "Perform operation on %(count)d objects."
 msgstr "Извършете операция върху обекти %(count)d."
 
-#: mixins.py:464
+#: mixins.py:488
 msgid "Object"
 msgstr "Обект"
 
-#: settings.py:12
+#: settings.py:14
 msgid "The number objects that will be displayed per page."
 msgstr "Брой на обектите, които ще бъдат показани на страница."
 
-#: templatetags/views_tags.py:28
+#: settings.py:21
+msgid "A string specifying the name to use for the paging parameter."
+msgstr ""
+
+#: templatetags/views_tags.py:29
 msgid "Confirm delete"
 msgstr "Потвърдете изтриване"
 
-#: templatetags/views_tags.py:33
+#: templatetags/views_tags.py:34
 #, python-format
 msgid "Edit %s"
 msgstr "Редактиране %s"
 
-#: templatetags/views_tags.py:36
+#: templatetags/views_tags.py:37
 msgid "Confirm"
 msgstr "Потвърждаване"
 
-#: templatetags/views_tags.py:40
+#: templatetags/views_tags.py:41
 #, python-format
 msgid "Details for: %s"
 msgstr "Данни за: %s"
 
-#: templatetags/views_tags.py:44
+#: templatetags/views_tags.py:45
 #, python-format
 msgid "Edit: %s"
 msgstr "Редактиране: %s"
 
-#: templatetags/views_tags.py:48
+#: templatetags/views_tags.py:49
 msgid "Create"
 msgstr "Създаване"

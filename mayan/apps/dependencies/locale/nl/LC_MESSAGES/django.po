@@ -4,18 +4,18 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2022
-# Roberto Rosario, 2022
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
 # bwakkie <bwakkie@gmail.com>, 2022
+# Roberto Rosario, 2022
+# e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2022
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: bwakkie <bwakkie@gmail.com>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -73,7 +73,7 @@ msgstr "App"
 
 #: classes.py:215 classes.py:840
 msgid "Environments"
-msgstr "Omgeving"
+msgstr "Omgevingen"
 
 #: classes.py:308
 msgid "Need to specify at least one: app_label or module."
@@ -284,7 +284,7 @@ msgstr ""
 msgid "Testing"
 msgstr "Testlevel"
 
-#: links.py:14 views.py:18
+#: links.py:14 views.py:24
 msgid "Check for updates"
 msgstr "Controleren op updates"
 
@@ -304,18 +304,18 @@ msgstr "Details"
 msgid "Dependencies licenses"
 msgstr "Afhankelijkheden licenties"
 
-#: management/commands/checkdependencies.py:13
+#: management/commands/dependencies_check.py:13
 msgid "Outputs the dependencies as a comma delimited values list."
 msgstr "Kommagescheiden uitvoer van afhankelijkheden."
 
-#: management/commands/generaterequirements.py:14
+#: management/commands/dependencies_generate_requirements.py:14
 msgid ""
 "Comma separated names of dependencies to exclude from the list generated."
 msgstr ""
 "Door kommagescheiden namen van afhankelijkheden om uit te sluiten van de "
 "gegenereerde lijst."
 
-#: management/commands/generaterequirements.py:20
+#: management/commands/dependencies_generate_requirements.py:20
 msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
@@ -323,11 +323,11 @@ msgstr ""
 "Door kommagescheiden namen van afhankelijkheden die in de lijst moeten "
 "worden weergegeven, terwijl alle andere worden uitgesloten."
 
-#: management/commands/installdependencies.py:13
+#: management/commands/dependencies_install.py:13
 msgid "Process a specific app."
 msgstr "Verwerk een specifieke app."
 
-#: management/commands/installdependencies.py:17
+#: management/commands/dependencies_install.py:17
 msgid "Force installation even if already installed."
 msgstr "Installatie afdwingen zelfs als ze reeds geïnstalleerd zijn."
 
@@ -335,30 +335,30 @@ msgstr "Installatie afdwingen zelfs als ze reeds geïnstalleerd zijn."
 msgid "View dependencies"
 msgstr "Bekijk afhankelijkheden"
 
-#: views.py:32
+#: views.py:39
 #, python-format
 msgid "Entries for dependency group: %s"
 msgstr "Invoer voor afhankelijkheidsgroep: %s"
 
-#: views.py:45 views.py:90
+#: views.py:52 views.py:99
 #, python-format
 msgid "Group %s not found."
 msgstr "Groep %s niet gevonden."
 
-#: views.py:58
+#: views.py:66
 msgid "Dependency groups"
 msgstr "Afhankelijkheidsgroepen"
 
-#: views.py:78
+#: views.py:87
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
 msgstr "Afhankelijkheidsgroep en invoer: %(group)s, %(entry)s"
 
-#: views.py:102
+#: views.py:111
 #, python-format
 msgid "Entry %s not found."
 msgstr "Vermelding %s niet gevonden."
 
-#: views.py:120
+#: views.py:130
 msgid "Other packages licenses"
 msgstr "Andere pakketlicensies"

@@ -4,20 +4,20 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Vítor Figueiró <vfigueiro@gmail.com>, 2022
-# Roberto Rosario, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # Fernando Vieira <fera_br@yahoo.com.br>, 2022
-# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
+# Vítor Figueiró <vfigueiro@gmail.com>, 2022
+# Roberto Rosario, 2022
 # Aline Freitas <aline@alinefreitas.com.br>, 2022
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
 # Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -46,11 +46,11 @@ msgstr "Mensagem criada"
 msgid "Message edited"
 msgstr "Mensagem editada"
 
-#: forms.py:26 models.py:38
+#: forms.py:26 models.py:38 workflow_actions.py:55
 msgid "Body"
 msgstr "Corpo"
 
-#: links.py:49 views.py:33
+#: links.py:49 views.py:38
 msgid "Create message"
 msgstr "Criar mensagem"
 
@@ -78,7 +78,7 @@ msgstr "Utilizador"
 msgid "Short description of this message."
 msgstr "Breve descrição da mensagem"
 
-#: models.py:34
+#: models.py:34 workflow_actions.py:38
 msgid "Subject"
 msgstr "Assunto"
 
@@ -106,7 +106,7 @@ msgstr "Data e hora de criação"
 msgid "Message"
 msgstr "Mensagem"
 
-#: models.py:54 views.py:119
+#: models.py:54 views.py:127
 msgid "Messages"
 msgstr "Mensagens"
 
@@ -134,129 +134,149 @@ msgstr "Visualizar mensagens"
 msgid "Primary key of the recipient user of this message."
 msgstr "Chave primária do utilizador destinado desta mensagem "
 
-#: views.py:44
+#: views.py:49
 #, python-format
 msgid "Error deleting message \"%(instance)s\"; %(exception)s"
 msgstr "Erro ao eliminar mensagem \"%(instance)s\"; %(exception)s"
 
-#: views.py:48
+#: views.py:53
 #, python-format
 msgid "Message \"%(object)s\" deleted successfully."
 msgstr "Mensagem \"%(object)s\" eliminada com sucesso"
 
-#: views.py:49
+#: views.py:54
 #, python-format
 msgid "%(count)d message deleted successfully."
 msgstr "%(count)dmensagem eliminada com sucesso"
 
-#: views.py:50
+#: views.py:55
 #, python-format
 msgid "%(count)d messages deleted successfully."
 msgstr "%(count)dmensagens eliminadas com sucesso"
 
-#: views.py:51
+#: views.py:56
 #, python-format
 msgid "Delete message: %(object)s."
 msgstr "Eliminar mensagem: %(object)s."
 
-#: views.py:52
+#: views.py:57
 #, python-format
 msgid "Delete the %(count)d selected message."
 msgstr "Eliminar %(count)dmensagem selecionada"
 
-#: views.py:53
+#: views.py:58
 #, python-format
 msgid "Delete the %(count)d selected messages."
 msgstr "Eliminar %(count)dmensagens selecionadas"
 
-#: views.py:92
+#: views.py:99
 #, python-format
 msgid "Details of message: %s"
 msgstr "Detalhes da mensagem: %s"
 
-#: views.py:115
+#: views.py:123
 msgid "Here you will find text messages from other users or from the system."
 msgstr ""
 "Aqui irá encontrar mensagens de textos de outros utilizadores ou do sistema"
 
-#: views.py:118
+#: views.py:126
 msgid "There are no messages"
 msgstr "Não há mensagens"
 
-#: views.py:128
+#: views.py:136
 #, python-format
 msgid "Error marking message \"%(instance)s\" as read; %(exception)s"
 msgstr "Erro ao marcar a mensagem \"%(instance)s\" como lida; %(exception)s"
 
-#: views.py:134
+#: views.py:142
 #, python-format
 msgid "Message \"%(object)s\" marked as read successfully."
 msgstr "Mensagem \"%(object)s\" marcada como lida com sucesso "
 
-#: views.py:137
+#: views.py:145
 #, python-format
 msgid "%(count)d message marked as read successfully."
 msgstr "%(count)dmensagem marcada como lida com sucesso"
 
-#: views.py:140
+#: views.py:148
 #, python-format
 msgid "%(count)d messages marked as read successfully."
 msgstr "%(count)dmensagens marcadas como lidas com sucesso"
 
-#: views.py:142
+#: views.py:150
 #, python-format
 msgid "Mark the message \"%(object)s\" as read."
 msgstr "Marcar a mensagem \"%(object)s\" como lida"
 
-#: views.py:143
+#: views.py:151
 #, python-format
 msgid "Mark the %(count)d selected message as read."
 msgstr "Marcar %(count)dmensagem selecionada como lida"
 
-#: views.py:144
+#: views.py:152
 #, python-format
 msgid "Mark the %(count)d selected messages as read."
 msgstr "Marcar %(count)dmensagens selecionadas como lidas."
 
-#: views.py:171
+#: views.py:181
 msgid "Mark all message as read?"
 msgstr "Marcar todas as mensagem como lidas?"
 
-#: views.py:188
+#: views.py:198
 msgid "All messages marked as read."
 msgstr "Todas as mensagens marcadas como lidas."
 
-#: views.py:195
+#: views.py:205
 #, python-format
 msgid "Error marking message \"%(instance)s\" as unread; %(exception)s"
 msgstr "Erro ao marcar mensagem \"%(instance)s\" como não lida; %(exception)s"
 
-#: views.py:201
+#: views.py:211
 #, python-format
 msgid "Message \"%(object)s\" marked as unread successfully."
 msgstr "Mensagem \"%(object)s\" marcada como não lida com sucesso"
 
-#: views.py:204
+#: views.py:214
 #, python-format
 msgid "%(count)d message marked as unread successfully."
 msgstr "%(count)dmensagem marcada como não lida com sucesso"
 
-#: views.py:207
+#: views.py:217
 #, python-format
 msgid "%(count)d messages marked as unread successfully."
 msgstr "%(count)dmensagens marcadas como não lidas com sucesso"
 
-#: views.py:209
+#: views.py:219
 #, python-format
 msgid "Mark the message \"%(object)s\" as unread."
 msgstr "Marcar a mensagem \"%(object)s\" como não lida"
 
-#: views.py:210
+#: views.py:220
 #, python-format
 msgid "Mark the %(count)d selected message as unread."
 msgstr "Marcar %(count)dmensagem selecionada como não lida."
 
-#: views.py:211
+#: views.py:221
 #, python-format
 msgid "Mark the %(count)d selected messages as unread."
 msgstr "Marcar %(count)dmensagens selecionadas como não lidas."
+
+#: workflow_actions.py:19
+msgid "Username list"
+msgstr ""
+
+#: workflow_actions.py:26
+msgid "Comma separated list of username that will receive the message."
+msgstr ""
+
+#: workflow_actions.py:45
+msgid "Topic of the message to be sent."
+msgstr ""
+
+#: workflow_actions.py:62
+msgid "The actual text to send."
+msgstr ""
+
+#: workflow_actions.py:73
+msgid "Send user message"
+msgstr ""

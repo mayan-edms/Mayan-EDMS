@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
@@ -20,8 +20,8 @@ msgstr ""
 "Language: es_PR\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: apps.py:57 events.py:5 links.py:137 menus.py:5 models.py:42 queues.py:7
-#: settings.py:13 views/source_views.py:164
+#: apps.py:57 events.py:5 links.py:141 menus.py:5 models.py:42 queues.py:7
+#: settings.py:13 views/source_views.py:173
 msgid "Sources"
 msgstr "Fuentes"
 
@@ -43,7 +43,7 @@ msgstr ""
 msgid "Type"
 msgstr "Tipo"
 
-#: classes.py:269
+#: classes.py:235
 msgid "Null backend"
 msgstr "Controlador nulo"
 
@@ -75,22 +75,22 @@ msgstr "Comentario"
 msgid "Action"
 msgstr "Acción"
 
-#: forms.py:33
+#: forms.py:32
 msgid ""
 "The action to take in regards to the pages of the new file being uploaded."
 msgstr ""
 "La acción a tomar con respecto a las páginas del nuevo archivo que se está "
 "cargando."
 
-#: forms.py:48
+#: forms.py:51
 msgid "The backend used to create the new source."
 msgstr "El backend utilizado para crear la nueva fuente."
 
-#: forms.py:49
+#: forms.py:52
 msgid "Backend"
 msgstr "Controlador"
 
-#: forms.py:99
+#: forms.py:102
 msgid "File"
 msgstr "Archivo"
 
@@ -98,27 +98,27 @@ msgstr "Archivo"
 msgid "Default"
 msgstr "Por defecto"
 
-#: links.py:109
+#: links.py:111
 msgid "New document"
 msgstr "Nuevo documento"
 
-#: links.py:116
+#: links.py:118
 msgid "Upload new file"
 msgstr "Subir archivo nuevo"
 
-#: links.py:122
+#: links.py:126
 msgid "Create source"
 msgstr "Fuente de papel"
 
-#: links.py:128 source_backends/staging_folder_backends.py:311
+#: links.py:132 source_backends/staging_folder_backends.py:355
 msgid "Delete"
 msgstr "Eliminar"
 
-#: links.py:132
+#: links.py:136
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:144
+#: links.py:148
 msgid "Test"
 msgstr "Probar"
 
@@ -174,13 +174,17 @@ msgstr "Intervalo de comprobación de la fuente"
 msgid "Handle upload"
 msgstr "Manejar la carga"
 
-#: serializers.py:51
+#: serializers.py:52
 msgid "Optional arguments for the action. Must be JSON formatted."
 msgstr "Argumentos opcionales para la acción. Debe tener formato JSON."
 
-#: serializers.py:52 source_backends/sane_scanner_backends.py:45
+#: serializers.py:53 source_backends/sane_scanner_backends.py:45
 msgid "Arguments"
 msgstr "Argumentos"
+
+#: serializers.py:61
+msgid "Binary content for the new file."
+msgstr "Contenido binario para el nuevo archivo."
 
 #: settings.py:20
 msgid "Arguments to use when creating source backends."
@@ -196,15 +200,15 @@ msgstr ""
 msgid "Arguments to pass to the SOURCES_SOURCE_CACHE_STORAGE_BACKEND."
 msgstr "Argumentos para pasar a SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 
-#: source_backends/email_backends.py:45
+#: source_backends/email_backends.py:47
 msgid "Host"
 msgstr "Servidor"
 
-#: source_backends/email_backends.py:54
+#: source_backends/email_backends.py:56
 msgid "SSL"
 msgstr "SSL"
 
-#: source_backends/email_backends.py:60
+#: source_backends/email_backends.py:62
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
@@ -212,19 +216,19 @@ msgstr ""
 "Las opciones típicas son 110 para POP3, 995 para POP3 sobre SSL, 143 para "
 "IMAP, 993 para IMAP sobre SSL."
 
-#: source_backends/email_backends.py:66
+#: source_backends/email_backends.py:68
 msgid "Port"
 msgstr "Puerto"
 
-#: source_backends/email_backends.py:73
+#: source_backends/email_backends.py:75
 msgid "Username"
 msgstr "Nombre de usuario"
 
-#: source_backends/email_backends.py:80
+#: source_backends/email_backends.py:82
 msgid "Password"
 msgstr "Contraseña"
 
-#: source_backends/email_backends.py:87
+#: source_backends/email_backends.py:89
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
@@ -233,11 +237,11 @@ msgstr ""
 "los pares de valores que se asignarán al resto de los archivos adjuntos "
 "descargados."
 
-#: source_backends/email_backends.py:94
+#: source_backends/email_backends.py:96
 msgid "Metadata attachment name"
 msgstr "Nombre del anejo de metadatos"
 
-#: source_backends/email_backends.py:100
+#: source_backends/email_backends.py:102
 msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
@@ -246,11 +250,11 @@ msgstr ""
 "electrónico. Debe ser un tipo de metadatos válido para el tipo de documento "
 "seleccionado previamente."
 
-#: source_backends/email_backends.py:110
+#: source_backends/email_backends.py:112
 msgid "From metadata type"
 msgstr "Tipo de metadato de remitente"
 
-#: source_backends/email_backends.py:118
+#: source_backends/email_backends.py:120
 msgid ""
 "Select a metadata type to store the email's subject value. Must be a valid "
 "metadata type for the document type selected previously."
@@ -259,11 +263,11 @@ msgstr ""
 "correo electrónico. Debe ser un tipo de metadatos válido para el tipo de "
 "documento seleccionado previamente."
 
-#: source_backends/email_backends.py:128
+#: source_backends/email_backends.py:130
 msgid "Subject metadata type"
 msgstr "Tipo de metadatos de asunto "
 
-#: source_backends/email_backends.py:136
+#: source_backends/email_backends.py:138
 msgid ""
 "Select a metadata type to store the email's message ID value. Must be a "
 "valid metadata type for the document type selected previously."
@@ -272,16 +276,16 @@ msgstr ""
 "correo electrónico. Debe ser un tipo de metadatos válido para el tipo de "
 "documento seleccionado previamente."
 
-#: source_backends/email_backends.py:146
+#: source_backends/email_backends.py:148
 msgid "Message ID metadata type"
 msgstr "Tipo de metadatos de asunto "
 
-#: source_backends/email_backends.py:154
+#: source_backends/email_backends.py:156
 msgid "Store the body of the email as a text document."
 msgstr ""
 "Almacenar el cuerpo del correo electrónico como un documento de texto."
 
-#: source_backends/email_backends.py:156
+#: source_backends/email_backends.py:158
 msgid "Store email body"
 msgstr "Almacenar cuerpo del correo electrónico"
 
@@ -455,73 +459,111 @@ msgstr "Propiedades de documento"
 msgid "Scan"
 msgstr "Escanear"
 
-#: source_backends/staging_folder_backends.py:222
-#: source_backends/staging_folder_backends.py:493
+#: source_backends/staging_folder_backends.py:232
+#: source_backends/staging_folder_backends.py:546
 msgid "Staging file"
 msgstr "Archivo provisional"
 
-#: source_backends/staging_folder_backends.py:253
+#: source_backends/staging_folder_backends.py:267
 #: source_backends/watch_folder_backends.py:38
 msgid "Server side filesystem path."
 msgstr "Ruta a los archivos en el servidor."
 
-#: source_backends/staging_folder_backends.py:258
+#: source_backends/staging_folder_backends.py:272
 #: source_backends/watch_folder_backends.py:43
 msgid "Folder path"
 msgstr "Ruta de la carpeta"
 
-#: source_backends/staging_folder_backends.py:264
+#: source_backends/staging_folder_backends.py:278
 msgid "Width value to be passed to the converter backend."
 msgstr "Valor de la anchura que se pasa al backend convertidor."
 
-#: source_backends/staging_folder_backends.py:269
+#: source_backends/staging_folder_backends.py:283
 msgid "Preview width"
 msgstr "Ancho de muestra"
 
-#: source_backends/staging_folder_backends.py:275
+#: source_backends/staging_folder_backends.py:289
 msgid "Height value to be passed to the converter backend."
 msgstr "Valor de la altura que se pasa al backend convertidor."
 
-#: source_backends/staging_folder_backends.py:280
+#: source_backends/staging_folder_backends.py:294
 msgid "Preview height"
 msgstr "Alto de muestra"
 
-#: source_backends/staging_folder_backends.py:286
+#: source_backends/staging_folder_backends.py:300
 msgid "Delete the file after is has been successfully uploaded."
 msgstr "Eliminar el archivo después de que se haya cargado correctamente."
 
-#: source_backends/staging_folder_backends.py:288
+#: source_backends/staging_folder_backends.py:302
 msgid "Delete after upload"
 msgstr "Borrar después de subir"
 
-#: source_backends/staging_folder_backends.py:293
+#: source_backends/staging_folder_backends.py:309
+#: source_backends/watch_folder_backends.py:50
+msgid ""
+"If checked, not only will the folder path be scanned for files but also its "
+"subdirectories."
+msgstr ""
+"Si se marca, no solo se analizará la ruta de la carpeta en busca de "
+"archivos, sino también sus subdirectorios."
+
+#: source_backends/staging_folder_backends.py:312
+#: source_backends/watch_folder_backends.py:53
+msgid "Include subdirectories?"
+msgstr "¿Incluir subdirectorios?"
+
+#: source_backends/staging_folder_backends.py:319
+#: source_backends/watch_folder_backends.py:60
+msgid "Regular expression used to select which files to upload."
+msgstr "Expresión regular utilizada para seleccionar qué archivos cargar."
+
+#: source_backends/staging_folder_backends.py:321
+#: source_backends/watch_folder_backends.py:62
+msgid "Include regular expression"
+msgstr "Expresión regular de inclusión"
+
+#: source_backends/staging_folder_backends.py:328
+#: source_backends/watch_folder_backends.py:69
+msgid "Regular expression used to exclude which files to upload."
+msgstr "Expresión regular utilizada para excluir qué archivos cargar."
+
+#: source_backends/staging_folder_backends.py:330
+#: source_backends/watch_folder_backends.py:71
+msgid "Exclude regular expression"
+msgstr "Expresión regular de exclusión"
+
+#: source_backends/staging_folder_backends.py:341
 msgid "Staging folder"
 msgstr "Archivos provisionales"
 
-#: source_backends/staging_folder_backends.py:323
+#: source_backends/staging_folder_backends.py:361
+msgid "Select"
+msgstr "Seleccionar"
+
+#: source_backends/staging_folder_backends.py:373
 msgid "Created"
 msgstr "Creado"
 
-#: source_backends/staging_folder_backends.py:327
+#: source_backends/staging_folder_backends.py:377
 msgid "Thumbnail"
 msgstr "Foto miniatura"
 
-#: source_backends/staging_folder_backends.py:473
+#: source_backends/staging_folder_backends.py:526
 #, python-format
 msgid "Error deleting staging file; %s"
 msgstr "¿Eliminar archivo provisional \"%s\"?"
 
-#: source_backends/staging_folder_backends.py:494
+#: source_backends/staging_folder_backends.py:547
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "¿Eliminar archivo provisional \"%s\"?"
 
-#: source_backends/staging_folder_backends.py:520
+#: source_backends/staging_folder_backends.py:612
 #, python-format
-msgid "Unable get list of staging files: %s"
-msgstr "¿Eliminar archivo provisional \"%s\"?"
+msgid "Unable get list of staging files; %s"
+msgstr ""
 
-#: source_backends/staging_folder_backends.py:547
+#: source_backends/staging_folder_backends.py:630
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
@@ -532,43 +574,15 @@ msgstr ""
 "para Mayan EDMS no tiene los permisos necesarios del sistema de archivos "
 "para la carpeta."
 
-#: source_backends/staging_folder_backends.py:554
+#: source_backends/staging_folder_backends.py:637
 msgid "No staging files available"
 msgstr "No hay archivos de ensayo disponibles."
-
-#: source_backends/watch_folder_backends.py:50
-msgid ""
-"If checked, not only will the folder path be scanned for files but also its "
-"subdirectories."
-msgstr ""
-"Si se marca, no solo se analizará la ruta de la carpeta en busca de "
-"archivos, sino también sus subdirectorios."
-
-#: source_backends/watch_folder_backends.py:53
-msgid "Include subdirectories?"
-msgstr "¿Incluir subdirectorios?"
-
-#: source_backends/watch_folder_backends.py:60
-msgid "Regular expression used to select which files to upload."
-msgstr "Expresión regular utilizada para seleccionar qué archivos cargar."
-
-#: source_backends/watch_folder_backends.py:62
-msgid "Include regular expression"
-msgstr "Expresión regular de inclusión"
-
-#: source_backends/watch_folder_backends.py:69
-msgid "Regular expression used to exclude which files to upload."
-msgstr "Expresión regular utilizada para excluir qué archivos cargar."
-
-#: source_backends/watch_folder_backends.py:71
-msgid "Exclude regular expression"
-msgstr "Expresión regular de exclusión"
 
 #: source_backends/watch_folder_backends.py:75
 msgid "Watch folder"
 msgstr "Carpeta observada"
 
-#: source_backends/web_form_backends.py:24
+#: source_backends/web_form_backends.py:39
 msgid "Web form"
 msgstr "Formulario web"
 
@@ -585,38 +599,38 @@ msgstr ""
 msgid "Staging folder files"
 msgstr "Archivos de carpetas de ensayo"
 
-#: templates/sources/app/foot.html:40
+#: templates/sources/app/foot.html:42
 msgid "Cancel upload"
 msgstr "Cancelar carga"
 
-#: templates/sources/app/foot.html:41
+#: templates/sources/app/foot.html:43
 msgid "Are you sure you want to cancel this upload?"
 msgstr "¿Estás seguro de que desea cancelar esta carga?"
 
-#: templates/sources/app/foot.html:42
+#: templates/sources/app/foot.html:44
 msgid "Drop files or click here to upload files"
 msgstr "Soltar archivos o hacer clic aquí para subir archivos"
 
-#: templates/sources/app/foot.html:43
+#: templates/sources/app/foot.html:45
 msgid "Your browser does not support drag and drop file uploads."
 msgstr ""
 "Su navegador no admite la carga de archivos mediante arrastrar y soltar."
 
-#: templates/sources/app/foot.html:44
+#: templates/sources/app/foot.html:46
 msgid "Please use the fallback form below to upload your files."
 msgstr ""
 "Por favor, use el formulario de reserva a continuación para cargar sus "
 "archivos."
 
-#: templates/sources/app/foot.html:45
+#: templates/sources/app/foot.html:47
 msgid "Clear"
 msgstr "Limpiar"
 
-#: templates/sources/app/foot.html:46
+#: templates/sources/app/foot.html:48
 msgid "Server responded with {{statusCode}} code."
 msgstr "El servidor respondió con el código {{statusCode}}."
 
-#: views/base.py:53 wizards.py:54
+#: views/base.py:54 wizards.py:58
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
@@ -624,72 +638,72 @@ msgstr ""
 "No se han definido fuentes de documentos interactivos o no hay ninguna "
 "habilitada, cree una antes de continuar."
 
-#: views/document_file_views.py:49
+#: views/document_file_views.py:51
 #, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
 "No se pueden cargar archivos nuevos para el documento \"%(document)s\". "
 "%(exception)s"
 
-#: views/document_file_views.py:73
+#: views/document_file_views.py:75
 #, python-format
 msgid "Error executing document file upload task; %(exception)s"
 msgstr ""
 "Error al ejecutar la tarea de carga del archivo del documento; %(exception)s"
 
-#: views/document_file_views.py:92
+#: views/document_file_views.py:94
 msgid "New document file queued for upload and will be available shortly."
 msgstr ""
 "Nuevo archivo de documento en cola para su carga y estará disponible en "
 "breve."
 
-#: views/document_file_views.py:125
+#: views/document_file_views.py:127
 #, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 "Cargar un nuevo archivo para el documento \"%(document)s\" de la fuente: "
 "%(source)s"
 
-#: views/document_file_views.py:131
+#: views/document_file_views.py:133
 msgid "Submit"
 msgstr "Enviar"
 
-#: views/document_views.py:38
+#: views/document_views.py:40
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr "Error al ejecutar la tarea de carga de documentos; %(exception)s"
 
-#: views/document_views.py:57
+#: views/document_views.py:59
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 "Nuevo documento puesto en cola para su carga y estará disponible en breve."
 
-#: views/document_views.py:83
+#: views/document_views.py:85
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 "Cargar un documento del tipo \"%(document_type)s\" de la fuente: %(source)s"
 
-#: views/source_views.py:37
+#: views/source_views.py:40
 msgid "New source backend selection"
 msgstr "Nueva selección de backend de fuente"
 
-#: views/source_views.py:93
+#: views/source_views.py:99
 #, python-format
 msgid "Create a \"%s\" source"
 msgstr "Cree una fuente \"%s\""
 
-#: views/source_views.py:118
+#: views/source_views.py:125
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "¿Eliminar la fuente: %s?"
 
-#: views/source_views.py:133
+#: views/source_views.py:141
 #, python-format
 msgid "Edit source: %s"
 msgstr "Editar fuente: %s"
 
-#: views/source_views.py:158
+#: views/source_views.py:167
 msgid ""
 "Sources provide the means to upload documents. Some sources are interactive "
 "and require user input to operate. Others are automatic and run in the "
@@ -700,11 +714,11 @@ msgstr ""
 "usuario para operar. Otros, como las fuentes de correo electrónico, son "
 "automáticos y se ejecutan en segundo plano sin la intervención del usuario."
 
-#: views/source_views.py:163
+#: views/source_views.py:172
 msgid "No sources available"
 msgstr "No hay fuentes disponibles"
 
-#: views/source_views.py:181
+#: views/source_views.py:191
 msgid ""
 "This will execute the source code even if the source is not enabled. Sources"
 " that delete content after downloading will not do so while being tested. "
@@ -717,12 +731,12 @@ msgstr ""
 "la fuente para obtener información durante la prueba. Una prueba exitosa "
 "borrará el registro de errores."
 
-#: views/source_views.py:187
+#: views/source_views.py:197
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "¿Lanzar chequeo para la fuenta \"%s\"? "
 
-#: views/source_views.py:199
+#: views/source_views.py:209
 msgid "Source test queued."
 msgstr "Verificación del origen en sometida."
 
@@ -730,23 +744,23 @@ msgstr "Verificación del origen en sometida."
 msgid "Select document type"
 msgstr "Seleccione el tipo de documento"
 
-#: wizards.py:73
+#: wizards.py:77
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr "Paso %(step)d de %(total_steps)d: %(step_label)s"
 
-#: wizards.py:78
+#: wizards.py:82
 msgid "Document upload wizard"
 msgstr "Asistente de carga de documentos"
 
-#: wizards.py:87
+#: wizards.py:91
 msgid "First"
 msgstr "Primero"
 
-#: wizards.py:93
+#: wizards.py:97
 msgid "Previous"
 msgstr "Anterior"
 
-#: wizards.py:100
+#: wizards.py:104
 msgid "Next"
 msgstr "Siguiente paso"

@@ -5,16 +5,16 @@
 # 
 # Translators:
 # Stefaniu Criste <gupi@hangar.ro>, 2022
-# Badea Gabriel <gcbadea@gmail.com>, 2022
 # Harald Ersch, 2022
+# Badea Gabriel <gcbadea@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Harald Ersch, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:33+0000\n"
+"Last-Translator: Badea Gabriel <gcbadea@gmail.com>, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

@@ -4,19 +4,19 @@
 # 
 # Translators:
 # Translators:
-# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
+# Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
 # Vítor Figueiró <vfigueiro@gmail.com>, 2022
 # Emerson Soares <on.emersonsoares@gmail.com>, 2022
-# Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
 # Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "Sair"
 msgid "Change password"
 msgstr "Alterar palavra-passe"
 
-#: links.py:45 views/impersonation_views.py:50
+#: links.py:45 views/impersonation_views.py:52
 msgid "Impersonate user"
 msgstr "Utilizar utilizador"
 
@@ -162,63 +162,63 @@ msgstr "Página de login"
 msgid "Password reset email sent!"
 msgstr "E-mail de alteração de palavra-passe enviado!"
 
-#: views/authentication_views.py:153
+#: views/authentication_views.py:155
 msgid "Next"
 msgstr "Seguinte"
 
-#: views/authentication_views.py:159
+#: views/authentication_views.py:161
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr "Passo %(step)d de %(total_steps)d: %(step_label)s"
 
-#: views/authentication_views.py:221
+#: views/authentication_views.py:223
 msgid "Your password has been successfully changed."
 msgstr "A sua palavra-passe foi alterada com sucesso."
 
-#: views/authentication_views.py:228
+#: views/authentication_views.py:230
 msgid "Current user password change"
 msgstr "Alteração da palavra-passe do utilizador atual"
 
-#: views/authentication_views.py:236
+#: views/authentication_views.py:239
 msgid "Changing the password is not allowed for this account."
 msgstr "Alteração de palavra-passe não é permitida para este utilizador."
 
-#: views/authentication_views.py:308
+#: views/authentication_views.py:311
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr ""
 "Pedido de alteração de palavra-passe realizado em %(count)d utilizador"
 
-#: views/authentication_views.py:311
+#: views/authentication_views.py:314
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr ""
 "Pedido de alteração de palavra-passe realizado em %(count)d utilizadores"
 
-#: views/authentication_views.py:319
+#: views/authentication_views.py:323
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] "Alterar palavra-passe de utilizador"
-msgstr[1] "Alterar palavra-passe de utilizadores"
-msgstr[2] "Alterar palavra-passe de utilizadores"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
-#: views/authentication_views.py:330
+#: views/authentication_views.py:334
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Alterar palavra-passe para o utilizador 1%s"
 
-#: views/authentication_views.py:352
+#: views/authentication_views.py:356
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Palavra-passe alterada com sucesso para utilizador: 1%s"
 
-#: views/authentication_views.py:358
+#: views/authentication_views.py:362
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr ""
 "Erro ao redefinir a palavra-passe para o utilizador \"%(user)s\": %(error)s "
 
-#: views/impersonation_views.py:78
+#: views/impersonation_views.py:81
 #, python-format
 msgid "Impersonate user: %s"
 msgstr "Utilizar utilizador: %s"

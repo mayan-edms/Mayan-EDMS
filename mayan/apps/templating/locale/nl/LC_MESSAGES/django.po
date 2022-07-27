@@ -5,16 +5,16 @@
 # 
 # Translators:
 # Roberto Rosario, 2022
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
 # bwakkie <bwakkie@gmail.com>, 2022
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
-"Last-Translator: bwakkie <bwakkie@gmail.com>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -72,28 +72,28 @@ msgstr "Sandbox"
 msgid "Use the template sandbox"
 msgstr "De sjabloon sandbox gebruiken"
 
-#: views.py:38
+#: views.py:40
 #, python-format
 msgid "Template sandbox for: %s"
 msgstr "Sjabloon sandbox voor: %s"
 
-#: views.py:59
+#: views.py:61
 #, python-format
 msgid "Template error; %(exception)s"
 msgstr "Sjabloonfout; %(exception)s"
 
-#: widgets.py:64
+#: widgets.py:65
 msgid "Filters"
 msgstr "Filters"
 
-#: widgets.py:71
+#: widgets.py:72
 msgid "Tags"
 msgstr "Labels"
 
-#: widgets.py:77
+#: widgets.py:78
 msgid "<Filters and tags>"
 msgstr "<filters and=\"en\" tags=\"labels\">"
 
-#: widgets.py:118
+#: widgets.py:119
 msgid "<Model attributes>"
 msgstr "<model attributes=\"Modelattributen\">"

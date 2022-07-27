@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:11+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
 "Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2022\n"
 "Language-Team: Vietnamese (https://www.transifex.com/rosarior/teams/13584/vi/)\n"
 "MIME-Version: 1.0\n"
@@ -48,27 +48,27 @@ msgstr ""
 msgid "jQuery"
 msgstr ""
 
-#: dependencies.py:41
+#: dependencies.py:42
 msgid "JQuery Form"
 msgstr ""
 
-#: dependencies.py:45
+#: dependencies.py:46
 msgid "jQuery Lazy Load"
 msgstr ""
 
-#: dependencies.py:49
+#: dependencies.py:50
 msgid "JQuery Match Height"
 msgstr ""
 
-#: dependencies.py:53
+#: dependencies.py:54
 msgid "Select 2"
 msgstr ""
 
-#: dependencies.py:57
+#: dependencies.py:58
 msgid "Toastr"
 msgstr ""
 
-#: dependencies.py:60
+#: dependencies.py:62
 msgid "URI.js"
 msgstr ""
 
@@ -92,7 +92,7 @@ msgstr ""
 msgid "Edit theme settings"
 msgstr ""
 
-#: links.py:31 views.py:27
+#: links.py:31 views.py:31
 msgid "Create new theme"
 msgstr ""
 
@@ -104,7 +104,7 @@ msgstr "Xóa"
 msgid "Edit"
 msgstr "Sửa"
 
-#: links.py:44 links.py:49 models.py:32 views.py:91
+#: links.py:44 links.py:49 models.py:32 views.py:99
 msgid "Themes"
 msgstr ""
 
@@ -318,10 +318,10 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: templates/appearance/generic_form_instance.html:51
-#: templates/appearance/generic_form_instance.html:57
 #: templates/appearance/generic_form_subtemplate.html:50
 #: templates/appearance/generic_multiform_subtemplate.html:37
+#: templates/appearance/partials/form_field.html:10
+#: templates/appearance/partials/form_field.html:16
 msgid "required"
 msgstr ""
 
@@ -344,11 +344,11 @@ msgstr "Gửi"
 msgid "Cancel"
 msgstr ""
 
-#: templates/appearance/generic_list_subtemplate.html:34
+#: templates/appearance/generic_list_subtemplate.html:35
 msgid "Identifier"
 msgstr ""
 
-#: templates/appearance/generic_list_subtemplate.html:133
+#: templates/appearance/generic_list_subtemplate.html:134
 msgid "Facets"
 msgstr ""
 
@@ -368,37 +368,37 @@ msgstr ""
 msgid "Open main menu"
 msgstr ""
 
-#: templates/appearance/partials/list_header.html:12
+#: templates/appearance/partials/list_header.html:11
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr ""
 
-#: templates/appearance/partials/list_header.html:14
-#: templates/appearance/partials/list_header.html:17
+#: templates/appearance/partials/list_header.html:13
+#: templates/appearance/partials/list_header.html:16
 #, python-format
 msgid "Total: %(total)s"
 msgstr ""
 
-#: templates/appearance/partials/list_toolbar.html:13
+#: templates/appearance/partials/list_toolbar.html:14
 msgid "Select/Deselect all"
 msgstr ""
 
-#: templates/appearance/partials/list_toolbar.html:17
+#: templates/appearance/partials/list_toolbar.html:18
 msgid "Toggle list display mode"
 msgstr ""
 
-#: templates/appearance/partials/list_toolbar.html:60
+#: templates/appearance/partials/list_toolbar.html:63
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
 
-#: templates/appearance/partials/list_toolbar.html:65
+#: templates/appearance/partials/list_toolbar.html:68
 msgid "Bulk actions"
 msgstr ""
 
-#: templates/appearance/partials/list_toolbar.html:67
+#: templates/appearance/partials/list_toolbar.html:70
 msgid "Toggle Dropdown"
 msgstr ""
 
@@ -422,31 +422,31 @@ msgstr ""
 msgid "None"
 msgstr "None"
 
-#: views.py:49
+#: views.py:55
 #, python-format
 msgid "Delete theme: %s"
 msgstr ""
 
-#: views.py:65
+#: views.py:72
 #, python-format
 msgid "Edit theme: %s"
 msgstr ""
 
-#: views.py:85
+#: views.py:93
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
 msgstr ""
 
-#: views.py:89
+#: views.py:97
 msgid "There are no themes"
 msgstr ""
 
-#: views.py:113
+#: views.py:122
 #, python-format
 msgid "Theme settings for user: %s"
 msgstr ""
 
-#: views.py:134
+#: views.py:144
 #, python-format
 msgid "Edit theme settings for user: %s"
 msgstr ""

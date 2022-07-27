@@ -4,19 +4,19 @@
 # 
 # Translators:
 # Translators:
+# Berny <berny@bernhard-marx.de>, 2022
+# Marvin Haschker <marvin@haschker.me>, 2022
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2022
 # Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2022
 # Roberto Rosario, 2022
-# Marvin Haschker <marvin@haschker.me>, 2022
-# Berny <berny@bernhard-marx.de>, 2022
-# Ingo Buchholz <ingo.buchholz@takwa.de>, 2022
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -73,7 +73,7 @@ msgstr "Nachrichtenteil"
 msgid "The email profile that will be used to send this email."
 msgstr "Das Mailprofil, das für die Versendung dieser E-Mail verwendet wird."
 
-#: forms.py:69 models.py:61 views/mailing_profile_views.py:126
+#: forms.py:69 models.py:61 views/mailing_profile_views.py:135
 #: workflow_actions.py:19
 msgid "Mailing profile"
 msgstr "Mailprofil"
@@ -130,7 +130,7 @@ msgstr "Mailprofilliste"
 msgid "Mailing profiles"
 msgstr "Mailprofile"
 
-#: links.py:122 views/mailing_profile_views.py:152
+#: links.py:122 views/mailing_profile_views.py:162
 msgid "Test"
 msgstr "Test"
 
@@ -371,76 +371,76 @@ msgstr "%(email)s ist keine gültige E-Mailadresse."
 msgid "Document file"
 msgstr "Dokumentendatei"
 
-#: views/document_file_views.py:17
+#: views/document_file_views.py:21
 #, python-format
 msgid "%(count)d document file queued for email delivery"
 msgstr ""
 
-#: views/document_file_views.py:19
+#: views/document_file_views.py:23
 #, python-format
 msgid "%(count)d document files queued for email delivery"
 msgstr ""
 
-#: views/document_file_views.py:31
+#: views/document_file_views.py:36
 #, python-format
 msgid "%(count)d document file link queued for email delivery"
 msgstr ""
 
-#: views/document_file_views.py:34
+#: views/document_file_views.py:39
 #, python-format
 msgid "%(count)d document file links queued for email delivery"
 msgstr ""
 
-#: views/document_version_views.py:18
+#: views/document_version_views.py:22
 #, python-format
 msgid "%(count)d document version queued for email delivery"
 msgstr ""
 
-#: views/document_version_views.py:21
+#: views/document_version_views.py:25
 #, python-format
 msgid "%(count)d document versions queued for email delivery"
 msgstr ""
 
-#: views/document_version_views.py:33
+#: views/document_version_views.py:38
 #, python-format
 msgid "%(count)d document version link queued for email delivery"
 msgstr ""
 
-#: views/document_version_views.py:36
+#: views/document_version_views.py:41
 #, python-format
 msgid "%(count)d document version links queued for email delivery"
 msgstr ""
 
-#: views/document_views.py:14
+#: views/document_views.py:15
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr "%(count)d Dokumentenlinks in die Mailwarteschlange eingereiht"
 
-#: views/document_views.py:16
+#: views/document_views.py:17
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr "%(count)d Dokumentenlink in die Mailwarteschlange eingereiht"
 
-#: views/mailing_profile_views.py:29
+#: views/mailing_profile_views.py:33
 msgid "New mailing profile backend selection"
 msgstr "Auswahl des Backends für das neue Mailprofil"
 
-#: views/mailing_profile_views.py:61
+#: views/mailing_profile_views.py:67
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "Ein \"%s\" Mailprofil erstellen"
 
-#: views/mailing_profile_views.py:85
+#: views/mailing_profile_views.py:92
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Mailprofil %s löschen"
 
-#: views/mailing_profile_views.py:97
+#: views/mailing_profile_views.py:105
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Mailprofil %s bearbeiten"
 
-#: views/mailing_profile_views.py:121
+#: views/mailing_profile_views.py:130
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
@@ -448,15 +448,15 @@ msgstr ""
 "Mailprofile sind E-Mailkonfigurationen. Mailprofile erlauben das Senden von "
 "Dokumenten als Anhänge oder als Links."
 
-#: views/mailing_profile_views.py:125
+#: views/mailing_profile_views.py:134
 msgid "No mailing profiles available"
 msgstr "Keine Mailprofile vorhanden"
 
-#: views/mailing_profile_views.py:144
+#: views/mailing_profile_views.py:154
 msgid "Test email sent."
 msgstr "Test-E-Mail gesendet."
 
-#: views/mailing_profile_views.py:153
+#: views/mailing_profile_views.py:163
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Mailprofil %s testen"

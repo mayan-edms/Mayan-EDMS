@@ -4,22 +4,22 @@
 # 
 # Translators:
 # Translators:
-# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2022
+# Emerson Soares <on.emersonsoares@gmail.com>, 2022
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2022
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
-# Roberto Rosario, 2022
-# Emerson Soares <on.emersonsoares@gmail.com>, 2022
-# Rogerio Falcone <rogerio@falconeit.com.br>, 2022
+# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # Márcia Ferreira, 2022
+# Roberto Rosario, 2022
+# Rogerio Falcone <rogerio@falconeit.com.br>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Márcia Ferreira, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
+"Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,7 +71,7 @@ msgstr "Sair"
 msgid "Change password"
 msgstr "Alterar a senha"
 
-#: links.py:45 views/impersonation_views.py:50
+#: links.py:45 views/impersonation_views.py:52
 msgid "Impersonate user"
 msgstr "Usar o usuário"
 
@@ -162,60 +162,60 @@ msgstr "Página de login"
 msgid "Password reset email sent!"
 msgstr "E-mail de redefinição de senha enviado!"
 
-#: views/authentication_views.py:153
+#: views/authentication_views.py:155
 msgid "Next"
 msgstr "Próximo"
 
-#: views/authentication_views.py:159
+#: views/authentication_views.py:161
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr "Passo %(step)d de %(total_steps)d: %(step_label)s"
 
-#: views/authentication_views.py:221
+#: views/authentication_views.py:223
 msgid "Your password has been successfully changed."
 msgstr "Sua senha foi alterada com sucesso"
 
-#: views/authentication_views.py:228
+#: views/authentication_views.py:230
 msgid "Current user password change"
 msgstr "Alteração de senha do usuário atual"
 
-#: views/authentication_views.py:236
+#: views/authentication_views.py:239
 msgid "Changing the password is not allowed for this account."
 msgstr "Alterar a senha não é permitido para esta conta."
 
-#: views/authentication_views.py:308
+#: views/authentication_views.py:311
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Solicitação de alteração de senha executada em %(count)d usuário"
 
-#: views/authentication_views.py:311
+#: views/authentication_views.py:314
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Solicitação de alteração de senha realizada em %(count)d usuários"
 
-#: views/authentication_views.py:319
+#: views/authentication_views.py:323
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views/authentication_views.py:330
+#: views/authentication_views.py:334
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Alterar senha para o usuário: %s"
 
-#: views/authentication_views.py:352
+#: views/authentication_views.py:356
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Senha foi alterada com sucesso para o usuário %s."
 
-#: views/authentication_views.py:358
+#: views/authentication_views.py:362
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Erro de redefinição de senha para o usuário \"%(user)s\": %(error)s "
 
-#: views/impersonation_views.py:78
+#: views/impersonation_views.py:81
 #, python-format
 msgid "Impersonate user: %s"
 msgstr "Personificação de usuário: %s"

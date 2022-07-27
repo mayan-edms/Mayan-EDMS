@@ -4,9 +4,9 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
 # Roberto Rosario, 2022
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
 # Márcia Ferreira, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # 
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:37+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: apps.py:33 events.py:6 links.py:34 models.py:37 permissions.py:5
-#: views.py:136
+#: apps.py:33 events.py:6 links.py:34 models.py:38 permissions.py:5
+#: views.py:144
 msgid "Quotas"
 msgstr "Quotas"
 
@@ -49,7 +49,7 @@ msgstr "Quota criada"
 msgid "Quota edited"
 msgstr "Quota editada"
 
-#: forms.py:15 models.py:62
+#: forms.py:15 models.py:63
 msgid "Backend"
 msgstr "Backend"
 
@@ -161,19 +161,19 @@ msgstr "Permitir habilitação ou desabilitação rápida da quota."
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: models.py:36
+#: models.py:37
 msgid "Quota"
 msgstr "Quota"
 
-#: models.py:61
+#: models.py:62
 msgid "Driver used for this quota entry."
 msgstr "Driver usado para este registro de quota."
 
-#: models.py:66
+#: models.py:67
 msgid "Arguments"
 msgstr "Argumentos"
 
-#: models.py:70
+#: models.py:71
 msgid "Usage"
 msgstr "Uso"
 
@@ -231,29 +231,29 @@ msgstr "tamanho do documento: %(formatted_file_size)s"
 msgid "Document size quota exceeded."
 msgstr "Quota de tamanho de documento excedida."
 
-#: views.py:24
+#: views.py:27
 msgid "New quota backend selection"
 msgstr "Seleção de novo backend de quota"
 
-#: views.py:54
+#: views.py:59
 #, python-format
 msgid "Create a \"%s\" quota"
 msgstr "Criar uma quota \"%s\""
 
-#: views.py:86
+#: views.py:92
 #, python-format
 msgid "Delete quota: %s"
 msgstr "Excluir uma quota: %s"
 
-#: views.py:101
+#: views.py:108
 #, python-format
 msgid "Edit quota: %s"
 msgstr "Editar uma quota: %s"
 
-#: views.py:133
+#: views.py:141
 msgid "Quotas restrict usage of system resources. "
 msgstr "Quotas restrigem o uso de recursos do sistema."
 
-#: views.py:135
+#: views.py:143
 msgid "No quotas available"
 msgstr "Não há quotas disponíveis"

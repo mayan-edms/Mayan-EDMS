@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2022
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2022
 # 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2022
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2022
+# Roberto Rosario, 2022
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:37+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr "Разрешения"
 msgid "Group count"
 msgstr "Брой групи"
 
-#: classes.py:86
+#: classes.py:73
 msgid "Insufficient permissions."
 msgstr "Недостатъчни разрешения."
 
@@ -47,11 +47,11 @@ msgstr "Роля създадена"
 msgid "Role edited"
 msgstr "Роля редактирана"
 
-#: links.py:20 links.py:46 models.py:48 views.py:103
+#: links.py:20 links.py:46 models.py:48 views.py:112
 msgid "Roles"
 msgstr "Роли"
 
-#: links.py:28 views.py:52
+#: links.py:28 views.py:58
 msgid "Create new role"
 msgstr "Създайте нова роля"
 
@@ -135,56 +135,56 @@ msgstr "Основен ключ на разрешението за добавя�
 msgid "Primary key of the permission to remove from the role."
 msgstr "Основен ключ на разрешението за премахване от ролята."
 
-#: views.py:31
+#: views.py:35
 msgid "Available roles"
 msgstr "Налични роли"
 
-#: views.py:32
+#: views.py:36
 msgid "Group roles"
 msgstr "Групови роли"
 
-#: views.py:41
+#: views.py:46
 #, python-format
 msgid "Roles of group: %s"
 msgstr "Роли на групата: %s"
 
-#: views.py:59
+#: views.py:65
 #, python-format
 msgid "Error deleting role \"%(instance)s\"; %(exception)s"
 msgstr ""
 "Грешка при изтриване на ролята &quot;%(instance)s&quot;; %(exception)s"
 
-#: views.py:64
+#: views.py:70
 #, python-format
 msgid "Role \"%(object)s\" deleted successfully."
 msgstr "Ролята &quot;%(object)s&quot; е изтрита успешно."
 
-#: views.py:65
+#: views.py:71
 #, python-format
 msgid "%(count)d role deleted successfully."
 msgstr "%(count)d роля е изтрита успешно."
 
-#: views.py:66
+#: views.py:72
 #, python-format
 msgid "%(count)d roles deleted successfully."
 msgstr "%(count)d роли са изтрити успешно."
 
-#: views.py:67
+#: views.py:73
 #, python-format
 msgid "Delete role: %(object)s."
 msgstr "Изтриване на роля: %(object)s."
 
-#: views.py:68
+#: views.py:74
 #, python-format
 msgid "Delete the %(count)d selected role."
 msgstr "Изтрийте %(count)d избрана роля."
 
-#: views.py:69
+#: views.py:75
 #, python-format
 msgid "Delete the %(count)d selected roles."
 msgstr "Изтрийте %(count)dизбрани роли."
 
-#: views.py:95
+#: views.py:104
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -197,24 +197,24 @@ msgstr ""
 "разрешения, предоставени на роля за конкретни обекти, които членовете на "
 "нейната група наследяват."
 
-#: views.py:102
+#: views.py:111
 msgid "There are no roles"
 msgstr "Няма роли"
 
-#: views.py:115
+#: views.py:124
 msgid "Available groups"
 msgstr "Налични групи"
 
-#: views.py:116
+#: views.py:125
 msgid "Role groups"
 msgstr "Ролеви групи"
 
-#: views.py:125
+#: views.py:135
 #, python-format
 msgid "Groups of role: %s"
 msgstr "Групи за роля: %s"
 
-#: views.py:127
+#: views.py:137
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
@@ -222,27 +222,27 @@ msgstr ""
 "Добавете групи, които да бъдат част от роля. Те ще наследят разрешенията на "
 "ролите и контрола за достъп."
 
-#: views.py:140
+#: views.py:150
 msgid "Available permissions"
 msgstr "Налични разрешения"
 
-#: views.py:141
+#: views.py:151
 msgid "Granted permissions"
 msgstr "Дадени разрешения"
 
-#: views.py:176
+#: views.py:186
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr ""
 "Разрешенията, предоставени тук, ще се прилагат за цялата система и всички "
 "обекти."
 
-#: views.py:179
+#: views.py:189
 #, python-format
 msgid "Permissions for role: %s"
 msgstr "Разрешения за роля: %s"
 
-#: views.py:198
+#: views.py:209
 #, python-format
 msgid "Details of permission: %s"
 msgstr "Подробности за разрешението: %s"

@@ -4,22 +4,22 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Felix <felix.com@gmx.com>, 2022
-# Jesaja Everling <jeverling@gmail.com>, 2022
 # Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2022
-# Marvin Haschker <marvin@haschker.me>, 2022
+# Jesaja Everling <jeverling@gmail.com>, 2022
 # Berny <berny@bernhard-marx.de>, 2022
-# Roberto Rosario, 2022
+# Felix <felix.com@gmx.com>, 2022
+# Marvin Haschker <marvin@haschker.me>, 2022
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2022
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -286,7 +286,7 @@ msgstr ""
 msgid "Testing"
 msgstr "Testing"
 
-#: links.py:14 views.py:18
+#: links.py:14 views.py:24
 msgid "Check for updates"
 msgstr "Nach Updates suchen"
 
@@ -306,18 +306,18 @@ msgstr "Details"
 msgid "Dependencies licenses"
 msgstr "Lizenzen von Abhängigkeiten"
 
-#: management/commands/checkdependencies.py:13
+#: management/commands/dependencies_check.py:13
 msgid "Outputs the dependencies as a comma delimited values list."
 msgstr "Gibt die Abhängigkeiten als komma-getrennte Werteliste aus."
 
-#: management/commands/generaterequirements.py:14
+#: management/commands/dependencies_generate_requirements.py:14
 msgid ""
 "Comma separated names of dependencies to exclude from the list generated."
 msgstr ""
 "Kommagetrennte Liste von Abhängigkeiten, die aus der generierten Liste "
 "ausgeschlossen werden."
 
-#: management/commands/generaterequirements.py:20
+#: management/commands/dependencies_generate_requirements.py:20
 msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
@@ -325,11 +325,11 @@ msgstr ""
 "Kommagetrennte Liste von Abhängigkeiten, die in der generierten Liste  "
 "erscheinen sollen, während alle anderen ausgeschlossen werden."
 
-#: management/commands/installdependencies.py:13
+#: management/commands/dependencies_install.py:13
 msgid "Process a specific app."
 msgstr "Eine bestimmte Applikation ausführen."
 
-#: management/commands/installdependencies.py:17
+#: management/commands/dependencies_install.py:17
 msgid "Force installation even if already installed."
 msgstr "Installation erzwingen, obwohl bereits installiert."
 
@@ -337,30 +337,30 @@ msgstr "Installation erzwingen, obwohl bereits installiert."
 msgid "View dependencies"
 msgstr "Abhängigkeiten ansehen"
 
-#: views.py:32
+#: views.py:39
 #, python-format
 msgid "Entries for dependency group: %s"
 msgstr "Einträge für Abhängigkeitsgruppe %s"
 
-#: views.py:45 views.py:90
+#: views.py:52 views.py:99
 #, python-format
 msgid "Group %s not found."
 msgstr "Gruppe %s nicht gefunden."
 
-#: views.py:58
+#: views.py:66
 msgid "Dependency groups"
 msgstr "Abhängigkeitsgruppen"
 
-#: views.py:78
+#: views.py:87
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
 msgstr "Abhängigkeitsgruppe und Eintrag: %(group)s, %(entry)s"
 
-#: views.py:102
+#: views.py:111
 #, python-format
 msgid "Entry %s not found."
 msgstr "Eintrag %s nicht gefunden."
 
-#: views.py:120
+#: views.py:130
 msgid "Other packages licenses"
 msgstr "Andere Paket-Lizenzen"

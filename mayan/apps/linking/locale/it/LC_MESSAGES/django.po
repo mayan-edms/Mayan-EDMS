@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:35+0000\n"
 "Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
@@ -30,8 +30,8 @@ msgstr "Collegamento"
 msgid "Label"
 msgstr "Etichetta"
 
-#: events.py:6 links.py:24 links.py:75 links.py:80 links.py:85 models.py:48
-#: permissions.py:5 views.py:147
+#: events.py:6 links.py:27 links.py:35 links.py:68 links.py:73 models.py:48
+#: permissions.py:5 views/smart_link_views.py:157
 msgid "Smart links"
 msgstr "Link intelligenti"
 
@@ -47,33 +47,33 @@ msgstr "Collegamento intelligente modificato"
 msgid "Foreign document field"
 msgstr "Campo documento estero"
 
-#: links.py:29
-msgid "Create condition"
-msgstr "Crea condizione"
-
-#: links.py:35 links.py:55
-msgid "Delete"
-msgstr "Cancella"
-
-#: links.py:39 links.py:64
-msgid "Edit"
-msgstr "Modifica"
-
-#: links.py:44
-msgid "Conditions"
-msgstr "Condizioni"
-
-#: links.py:50 views.py:248
+#: links.py:44 views/smart_link_views.py:261
 msgid "Create new smart link"
 msgstr "Crea un nuovo link intelligente"
 
-#: links.py:59 models.py:40
+#: links.py:49 links.py:87
+msgid "Delete"
+msgstr "Cancella"
+
+#: links.py:53 models.py:40
 msgid "Document types"
 msgstr "Tipi documento"
 
-#: links.py:69
+#: links.py:58 links.py:91
+msgid "Edit"
+msgstr "Modifica"
+
+#: links.py:63
 msgid "Documents"
 msgstr "Documenti"
+
+#: links.py:81
+msgid "Create condition"
+msgstr "Crea condizione"
+
+#: links.py:96
+msgid "Conditions"
+msgstr "Condizioni"
 
 #: literals.py:7
 msgid "and"
@@ -253,24 +253,55 @@ msgstr ""
 msgid "Primary key of the document type to remove from the smart link."
 msgstr ""
 
-#: views.py:65
+#: views/smart_link_condition_views.py:45
+msgid ""
+"Conditions are small logic units that when combined define how the smart "
+"link will behave."
+msgstr ""
+"Le condizioni sono piccole unità logiche che, se combinate, definiscono come"
+" si comporterà lo collegamento intelligente."
+
+#: views/smart_link_condition_views.py:49
+msgid "There are no conditions for this smart link"
+msgstr "Non ci sono condizioni per questo collegamento intelligente"
+
+#: views/smart_link_condition_views.py:53
+#, python-format
+msgid "Conditions for smart link: %s"
+msgstr "Condizioni per il collegamento intelligente: %s"
+
+#: views/smart_link_condition_views.py:73
+#, python-format
+msgid "Add new conditions to smart link: \"%s\""
+msgstr "Aggiungi una nuova condizione al link intelligente: \"%s\""
+
+#: views/smart_link_condition_views.py:107
+#, python-format
+msgid "Delete smart link condition: \"%s\"?"
+msgstr "Cancella condizione collegamento intelligente: \"%s\" ?"
+
+#: views/smart_link_condition_views.py:134
+msgid "Edit smart link condition"
+msgstr "Modifica condizioni per i link intelligenti"
+
+#: views/smart_link_views.py:74
 #, python-format
 msgid "Resolved smart link query error: %s"
 msgstr ""
 
-#: views.py:92
+#: views/smart_link_views.py:101
 #, python-format
 msgid "Resolved smart link dynamic label error: %s"
 msgstr ""
 
-#: views.py:97
+#: views/smart_link_views.py:106
 #, python-format
 msgid ""
 "Documents in resolved smart link \"%(resolved_smart_link)s\" for "
 "\"%(document)s\""
 msgstr ""
 
-#: views.py:138
+#: views/smart_link_views.py:148
 msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
@@ -281,11 +312,11 @@ msgstr ""
 "definire le relazioni tra i documenti anche se si trovano in indici diversi "
 "e sono di tipi diversi."
 
-#: views.py:145
+#: views/smart_link_views.py:155
 msgid "There are no smart links"
 msgstr "Non ci sono collegamenti intelligenti"
 
-#: views.py:166
+#: views/smart_link_views.py:177
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
@@ -293,78 +324,47 @@ msgstr ""
 "I collegamenti intelligenti consentono di definire le relazioni tra i "
 "documenti anche se si trovano in indici diversi e sono di tipi diversi."
 
-#: views.py:171
+#: views/smart_link_views.py:182
 msgid "There are no resolved smart links for this document"
 msgstr ""
 
-#: views.py:175
+#: views/smart_link_views.py:186
 #, python-format
 msgid "Resolved smart links for document: %s"
 msgstr ""
 
-#: views.py:191
+#: views/smart_link_views.py:202
 msgid "Available smart links"
 msgstr "Collegamenti intelligenti disponibili"
 
-#: views.py:192
+#: views/smart_link_views.py:203
 msgid "Smart links enabled"
 msgstr "Collegamento intelligente abilitati"
 
-#: views.py:218
+#: views/smart_link_views.py:230
 #, python-format
 msgid "Smart links to enable for document type: %s"
 msgstr "Collegamenti intelligenti da abilitare per il tipo di documento: %s"
 
-#: views.py:231
+#: views/smart_link_views.py:243
 msgid "Available document types"
 msgstr "Tipi di documento disponibili"
 
-#: views.py:232
+#: views/smart_link_views.py:244
 msgid "Document types enabled"
 msgstr "Tipi documento abilitati"
 
-#: views.py:242
+#: views/smart_link_views.py:255
 #, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr "Tipo di documento per il quale attivare collegamento intelligente: %s"
 
-#: views.py:270
+#: views/smart_link_views.py:285
 #, python-format
 msgid "Delete smart link: %s"
 msgstr "Cancella collegamento intelligente: %s"
 
-#: views.py:286
+#: views/smart_link_views.py:302
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Modifica il link intelligente: %s"
-
-#: views.py:311
-msgid ""
-"Conditions are small logic units that when combined define how the smart "
-"link will behave."
-msgstr ""
-"Le condizioni sono piccole unità logiche che, se combinate, definiscono come"
-" si comporterà lo collegamento intelligente."
-
-#: views.py:315
-msgid "There are no conditions for this smart link"
-msgstr "Non ci sono condizioni per questo collegamento intelligente"
-
-#: views.py:319
-#, python-format
-msgid "Conditions for smart link: %s"
-msgstr "Condizioni per il collegamento intelligente: %s"
-
-#: views.py:338
-#, python-format
-msgid "Add new conditions to smart link: \"%s\""
-msgstr "Aggiungi una nuova condizione al link intelligente: \"%s\""
-
-#: views.py:371
-#, python-format
-msgid "Delete smart link condition: \"%s\"?"
-msgstr "Cancella condizione collegamento intelligente: \"%s\" ?"
-
-#: views.py:397
-msgid "Edit smart link condition"
-msgstr "Modifica condizioni per i link intelligenti"

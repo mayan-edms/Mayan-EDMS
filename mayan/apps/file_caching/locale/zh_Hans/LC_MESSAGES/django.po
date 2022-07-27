@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:35+0000\n"
 "Last-Translator: yan songwei <yansw@vip.163.com>, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
@@ -63,71 +63,71 @@ msgstr "定义存储名称"
 msgid "Maximum size of the cache in bytes."
 msgstr "缓存的最大字节尺寸。"
 
-#: models.py:47 models.py:73
+#: models.py:47 models.py:74
 msgid "Maximum size"
 msgstr "最大尺寸"
 
-#: models.py:51 models.py:206
+#: models.py:52 models.py:207
 msgid "Cache"
 msgstr "缓存"
 
-#: models.py:52
+#: models.py:53
 msgid "Caches"
 msgstr "缓存"
 
-#: models.py:71
+#: models.py:72
 msgid "Size at which the cache will start deleting old entries."
 msgstr "缓存将开始删除旧条目的大小。"
 
-#: models.py:80
+#: models.py:81
 msgid "Unknown"
 msgstr ""
 
-#: models.py:97 models.py:311
+#: models.py:98 models.py:312
 msgid "Current size"
 msgstr "当前大小"
 
-#: models.py:98
+#: models.py:99
 msgid "Current size of the cache."
 msgstr "当前缓存的大小。"
 
-#: models.py:209
+#: models.py:210
 msgid "Name"
 msgstr "名称"
 
-#: models.py:214 models.py:331
+#: models.py:215 models.py:332
 msgid "Cache partition"
 msgstr "缓存分区"
 
-#: models.py:215
+#: models.py:216
 msgid "Cache partitions"
 msgstr "缓存分区"
 
-#: models.py:313
+#: models.py:314
 msgid "Current size of the cache partition."
 msgstr ""
 
-#: models.py:334
+#: models.py:335
 msgid "Date time"
 msgstr "日期时间"
 
-#: models.py:336
+#: models.py:337
 msgid "Filename"
 msgstr "文件名"
 
-#: models.py:338
+#: models.py:339
 msgid "File size"
 msgstr "文件大小"
 
-#: models.py:342
+#: models.py:343
 msgid "Times this cache partition file has been accessed."
 msgstr ""
 
-#: models.py:349
+#: models.py:350
 msgid "Cache partition file"
 msgstr "缓存分区文件"
 
-#: models.py:350
+#: models.py:351
 msgid "Cache partition files"
 msgstr "缓存分区文件"
 
@@ -159,40 +159,40 @@ msgid ""
 " a file being requested, before giving up."
 msgstr ""
 
-#: views.py:45
+#: views.py:50
 #, python-format
 msgid "Details of cache: %s"
 msgstr ""
 
-#: views.py:56
+#: views.py:62
 msgid "File caches list"
 msgstr "文件缓存列表"
 
-#: views.py:76
+#: views.py:83
 #, python-format
 msgid "Details cache: %s"
 msgstr ""
 
-#: views.py:92
+#: views.py:100
 #, python-format
 msgid "Purge cache partitions of \"%s\"?"
 msgstr ""
 
-#: views.py:108
+#: views.py:116
 msgid "Object cache partitions submitted for purging."
 msgstr ""
 
-#: views.py:117
+#: views.py:125
 #, python-format
 msgid "%(count)d cache submitted for purging."
 msgstr ""
 
-#: views.py:118
+#: views.py:126
 #, python-format
 msgid "%(count)d caches submitted for purging."
 msgstr ""
 
-#: views.py:125
+#: views.py:134
 msgid "Submit the selected cache for purging?"
 msgid_plural "Submit the selected caches for purging?"
 msgstr[0] ""

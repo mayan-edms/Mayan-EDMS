@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -22,17 +22,17 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:27 links.py:34 permissions.py:5 queues.py:7
+#: apps.py:30 links.py:35 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "إحصائيات"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:36
+#: apps.py:39
 msgid "Schedule"
 msgstr "جدولة"
 
-#: apps.py:42
+#: apps.py:45
 msgid "Last update"
 msgstr "أخر تحديث"
 
@@ -40,19 +40,19 @@ msgstr "أخر تحديث"
 msgid "Never"
 msgstr "لا"
 
-#: links.py:14
+#: links.py:15
 msgid "Queue"
 msgstr "منتظر"
 
-#: links.py:19
+#: links.py:20
 msgid "View"
 msgstr "عرض"
 
-#: links.py:24
+#: links.py:25
 msgid "Namespace details"
 msgstr "تفاصيل خاصة"
 
-#: links.py:29
+#: links.py:30
 msgid "Namespace list"
 msgstr "قائمة خاصة"
 
@@ -95,31 +95,31 @@ msgstr "لا توجد معلومات متوفرة"
 msgid "Last update: %(datetime)s"
 msgstr "آخر تحديث: %(datetime)s"
 
-#: views.py:17
+#: views.py:22
 msgid "Statistics namespaces"
 msgstr " الإحصاءات"
 
-#: views.py:33
+#: views.py:40
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "تفاصيل المساحة : %s"
 
-#: views.py:55
+#: views.py:63
 #, python-format
 msgid "Results for: %s"
 msgstr "نتائج: %s"
 
-#: views.py:62 views.py:88
+#: views.py:70 views.py:97
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "الإحصائية &quot;%s&quot; غير موجودة."
 
-#: views.py:80
+#: views.py:89
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "سيتم تحديث إحصائية القائمة &quot;%s&quot;؟"
 
-#: views.py:94
+#: views.py:103
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr "تم وضع الإحصاء &quot;%s&quot; بنجاح"

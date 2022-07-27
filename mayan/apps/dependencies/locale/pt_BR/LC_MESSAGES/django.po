@@ -4,20 +4,20 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
+# Márcia Ferreira, 2022
 # Emerson Soares <on.emersonsoares@gmail.com>, 2022
 # Roberto Rosario, 2022
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
-# Márcia Ferreira, 2022
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -283,7 +283,7 @@ msgstr ""
 msgid "Testing"
 msgstr "Teste"
 
-#: links.py:14 views.py:18
+#: links.py:14 views.py:24
 msgid "Check for updates"
 msgstr "Buscar atualizações"
 
@@ -303,19 +303,19 @@ msgstr "Detalhes"
 msgid "Dependencies licenses"
 msgstr "Licenças das dependências"
 
-#: management/commands/checkdependencies.py:13
+#: management/commands/dependencies_check.py:13
 msgid "Outputs the dependencies as a comma delimited values list."
 msgstr ""
 "Gera as dependências como uma lista de valores delimitados por vírgula."
 
-#: management/commands/generaterequirements.py:14
+#: management/commands/dependencies_generate_requirements.py:14
 msgid ""
 "Comma separated names of dependencies to exclude from the list generated."
 msgstr ""
 "Lista separada por vírgulas dos nomes das dependências a serem excluídas da "
 "lista gerada."
 
-#: management/commands/generaterequirements.py:20
+#: management/commands/dependencies_generate_requirements.py:20
 msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
@@ -323,11 +323,11 @@ msgstr ""
 "Lista separada por vírgulas dos nomes das dependências a serem exibidas na "
 "lista ao se exluir todas as demais."
 
-#: management/commands/installdependencies.py:13
+#: management/commands/dependencies_install.py:13
 msgid "Process a specific app."
 msgstr "Processar um app específico."
 
-#: management/commands/installdependencies.py:17
+#: management/commands/dependencies_install.py:17
 msgid "Force installation even if already installed."
 msgstr "Forçar a instalação mesmo se já instaladas."
 
@@ -335,30 +335,30 @@ msgstr "Forçar a instalação mesmo se já instaladas."
 msgid "View dependencies"
 msgstr "Ver dependências"
 
-#: views.py:32
+#: views.py:39
 #, python-format
 msgid "Entries for dependency group: %s"
 msgstr "Entrada para o grupo de dependências: %s"
 
-#: views.py:45 views.py:90
+#: views.py:52 views.py:99
 #, python-format
 msgid "Group %s not found."
 msgstr "Grupo %s não encontrado."
 
-#: views.py:58
+#: views.py:66
 msgid "Dependency groups"
 msgstr "Grupos de dependências"
 
-#: views.py:78
+#: views.py:87
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
 msgstr "Grupo de dependências e entrada: %(group)s, %(entry)s"
 
-#: views.py:102
+#: views.py:111
 #, python-format
 msgid "Entry %s not found."
 msgstr "Entrada %s não encontrada."
 
-#: views.py:120
+#: views.py:130
 msgid "Other packages licenses"
 msgstr "Licenças de outros pacotes"

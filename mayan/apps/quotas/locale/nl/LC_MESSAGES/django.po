@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
 # Roberto Rosario, 2022
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:37+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,8 +21,8 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:33 events.py:6 links.py:34 models.py:37 permissions.py:5
-#: views.py:136
+#: apps.py:33 events.py:6 links.py:34 models.py:38 permissions.py:5
+#: views.py:144
 msgid "Quotas"
 msgstr "Quota"
 
@@ -46,7 +46,7 @@ msgstr "Quota aangemaakt"
 msgid "Quota edited"
 msgstr "Quota bewerkt"
 
-#: forms.py:15 models.py:62
+#: forms.py:15 models.py:63
 msgid "Backend"
 msgstr "Backend"
 
@@ -158,19 +158,19 @@ msgstr "Snel inschakelen en uitschakelen van quota toestaan."
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: models.py:36
+#: models.py:37
 msgid "Quota"
 msgstr "Quota"
 
-#: models.py:61
+#: models.py:62
 msgid "Driver used for this quota entry."
 msgstr "Stuurprogramma gebruikt voor deze quotumvermelding."
 
-#: models.py:66
+#: models.py:67
 msgid "Arguments"
 msgstr "Argumenten"
 
-#: models.py:70
+#: models.py:71
 msgid "Usage"
 msgstr "Gebruik"
 
@@ -228,29 +228,29 @@ msgstr "documentgrootte: %(formatted_file_size)s"
 msgid "Document size quota exceeded."
 msgstr "Quotum omvang documenten overschreden."
 
-#: views.py:24
+#: views.py:27
 msgid "New quota backend selection"
 msgstr "Nieuw quota backend selectie"
 
-#: views.py:54
+#: views.py:59
 #, python-format
 msgid "Create a \"%s\" quota"
 msgstr "Een \"%s\" quotum aanmaken"
 
-#: views.py:86
+#: views.py:92
 #, python-format
 msgid "Delete quota: %s"
 msgstr "Verwijder quotum: %s"
 
-#: views.py:101
+#: views.py:108
 #, python-format
 msgid "Edit quota: %s"
 msgstr "Bewerk quotum: %s"
 
-#: views.py:133
+#: views.py:141
 msgid "Quotas restrict usage of system resources. "
 msgstr "Quota beperken het gebruik van systeembronnen."
 
-#: views.py:135
+#: views.py:143
 msgid "No quotas available"
 msgstr "Geen quota beschikbaar"

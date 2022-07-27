@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Hmayag Antonian <hmayag@freemail.gr>, 2022
 # pyrotech <anastasios@tutamail.com>, 2022
+# Hmayag Antonian <hmayag@freemail.gr>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
-"Last-Translator: pyrotech <anastasios@tutamail.com>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
+"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,8 +21,8 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:57 events.py:5 links.py:137 menus.py:5 models.py:42 queues.py:7
-#: settings.py:13 views/source_views.py:164
+#: apps.py:57 events.py:5 links.py:141 menus.py:5 models.py:42 queues.py:7
+#: settings.py:13 views/source_views.py:173
 msgid "Sources"
 msgstr "Πηγές"
 
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Type"
 msgstr "Τύπος"
 
-#: classes.py:269
+#: classes.py:235
 msgid "Null backend"
 msgstr "Υποκείμενο σύστημα κενής τιμής"
 
@@ -76,20 +76,20 @@ msgstr "Σχόλιο"
 msgid "Action"
 msgstr "Ενέργεια"
 
-#: forms.py:33
+#: forms.py:32
 msgid ""
 "The action to take in regards to the pages of the new file being uploaded."
 msgstr ""
 
-#: forms.py:48
+#: forms.py:51
 msgid "The backend used to create the new source."
 msgstr ""
 
-#: forms.py:49
+#: forms.py:52
 msgid "Backend"
 msgstr "Υποκείμενο σύστημα"
 
-#: forms.py:99
+#: forms.py:102
 msgid "File"
 msgstr "Αρχείο"
 
@@ -97,27 +97,27 @@ msgstr "Αρχείο"
 msgid "Default"
 msgstr "Προεπιλογή"
 
-#: links.py:109
+#: links.py:111
 msgid "New document"
 msgstr "Νέο έγγραφο"
 
-#: links.py:116
+#: links.py:118
 msgid "Upload new file"
 msgstr ""
 
-#: links.py:122
+#: links.py:126
 msgid "Create source"
 msgstr ""
 
-#: links.py:128 source_backends/staging_folder_backends.py:311
+#: links.py:132 source_backends/staging_folder_backends.py:355
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: links.py:132
+#: links.py:136
 msgid "Edit"
 msgstr "Τροποποίηση"
 
-#: links.py:144
+#: links.py:148
 msgid "Test"
 msgstr "Δοκιμή"
 
@@ -173,13 +173,17 @@ msgstr "Έλεγχος της πηγής διαστημάτων"
 msgid "Handle upload"
 msgstr "Διαχείριση ανάρτησης"
 
-#: serializers.py:51
+#: serializers.py:52
 msgid "Optional arguments for the action. Must be JSON formatted."
 msgstr ""
 
-#: serializers.py:52 source_backends/sane_scanner_backends.py:45
+#: serializers.py:53 source_backends/sane_scanner_backends.py:45
 msgid "Arguments"
 msgstr "Ορίσματα"
+
+#: serializers.py:61
+msgid "Binary content for the new file."
+msgstr ""
 
 #: settings.py:20
 msgid "Arguments to use when creating source backends."
@@ -193,15 +197,15 @@ msgstr ""
 msgid "Arguments to pass to the SOURCES_SOURCE_CACHE_STORAGE_BACKEND."
 msgstr ""
 
-#: source_backends/email_backends.py:45
+#: source_backends/email_backends.py:47
 msgid "Host"
 msgstr "Διακομιστής"
 
-#: source_backends/email_backends.py:54
+#: source_backends/email_backends.py:56
 msgid "SSL"
 msgstr "SSL"
 
-#: source_backends/email_backends.py:60
+#: source_backends/email_backends.py:62
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
@@ -209,19 +213,19 @@ msgstr ""
 "Τυπικές τιμές είναι 110 για POP3, 995 για POP3 με χρήση SSL, 143 για IMAP, "
 "993 για IMAP με χρήση SSL."
 
-#: source_backends/email_backends.py:66
+#: source_backends/email_backends.py:68
 msgid "Port"
 msgstr "Θύρα"
 
-#: source_backends/email_backends.py:73
+#: source_backends/email_backends.py:75
 msgid "Username"
 msgstr "Όνομα χρήστη"
 
-#: source_backends/email_backends.py:80
+#: source_backends/email_backends.py:82
 msgid "Password"
 msgstr "Κωδικός πρόσβασης"
 
-#: source_backends/email_backends.py:87
+#: source_backends/email_backends.py:89
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
@@ -229,11 +233,11 @@ msgstr ""
 "Όνομα του συνημμένου που θα περιέχει ονόματα τύπων μεταδεδομένων και ζεύγη "
 "τιμών που θα αντιστοιχιστούν στα υπόλοιπα συνημμένα που έχουν ληφθεί."
 
-#: source_backends/email_backends.py:94
+#: source_backends/email_backends.py:96
 msgid "Metadata attachment name"
 msgstr "Όνομα συνημμένου μεταδεδομένων"
 
-#: source_backends/email_backends.py:100
+#: source_backends/email_backends.py:102
 msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
@@ -242,11 +246,11 @@ msgstr ""
 "email. Θα πρέπει να είναι  ένας έγκυρος τύπος μεταδεδομένων για τον "
 "επιλεγμένο τύπο εγγράφου."
 
-#: source_backends/email_backends.py:110
+#: source_backends/email_backends.py:112
 msgid "From metadata type"
 msgstr "Από τον τύπο μεταδεδομένων"
 
-#: source_backends/email_backends.py:118
+#: source_backends/email_backends.py:120
 msgid ""
 "Select a metadata type to store the email's subject value. Must be a valid "
 "metadata type for the document type selected previously."
@@ -255,25 +259,25 @@ msgstr ""
 "Θα πρέπει να είναι ένας έγκυρος τύπος μεταδεδομένων για τον επιλεγμένο τύπο "
 "εγγράφου."
 
-#: source_backends/email_backends.py:128
+#: source_backends/email_backends.py:130
 msgid "Subject metadata type"
 msgstr "Τύπος μεταδεδομένων θέματος"
 
-#: source_backends/email_backends.py:136
+#: source_backends/email_backends.py:138
 msgid ""
 "Select a metadata type to store the email's message ID value. Must be a "
 "valid metadata type for the document type selected previously."
 msgstr ""
 
-#: source_backends/email_backends.py:146
+#: source_backends/email_backends.py:148
 msgid "Message ID metadata type"
 msgstr ""
 
-#: source_backends/email_backends.py:154
+#: source_backends/email_backends.py:156
 msgid "Store the body of the email as a text document."
 msgstr "Αποθήκευση του σώματος του μηνύματος ως έγγραφο κειμένου."
 
-#: source_backends/email_backends.py:156
+#: source_backends/email_backends.py:158
 msgid "Store email body"
 msgstr "Αποθήκευση σώματος μηνύματος "
 
@@ -444,75 +448,113 @@ msgstr "Ιδιότητες εγγράφου"
 msgid "Scan"
 msgstr "Σάρωση"
 
-#: source_backends/staging_folder_backends.py:222
-#: source_backends/staging_folder_backends.py:493
+#: source_backends/staging_folder_backends.py:232
+#: source_backends/staging_folder_backends.py:546
 msgid "Staging file"
 msgstr "Αρχείο σε ενδιάμεσο στάδιο"
 
-#: source_backends/staging_folder_backends.py:253
+#: source_backends/staging_folder_backends.py:267
 #: source_backends/watch_folder_backends.py:38
 msgid "Server side filesystem path."
 msgstr "Διαδρομή συστήματος αρχείων στον διακομιστή."
 
-#: source_backends/staging_folder_backends.py:258
+#: source_backends/staging_folder_backends.py:272
 #: source_backends/watch_folder_backends.py:43
 msgid "Folder path"
 msgstr "Διαδρομή φακέλου"
 
-#: source_backends/staging_folder_backends.py:264
+#: source_backends/staging_folder_backends.py:278
 msgid "Width value to be passed to the converter backend."
 msgstr ""
 "Τιμή πλάτους που θα διαβιβαστεί στον μετατροπέα του υποκείμενου συστήματος."
 
-#: source_backends/staging_folder_backends.py:269
+#: source_backends/staging_folder_backends.py:283
 msgid "Preview width"
 msgstr "Πλάτος προεπισκόπησης"
 
-#: source_backends/staging_folder_backends.py:275
+#: source_backends/staging_folder_backends.py:289
 msgid "Height value to be passed to the converter backend."
 msgstr ""
 "Τιμή ύψους που θα διαβιβαστεί στον μετατροπέα του υποκείμενου συστήματος."
 
-#: source_backends/staging_folder_backends.py:280
+#: source_backends/staging_folder_backends.py:294
 msgid "Preview height"
 msgstr "Ύψος προεπισκόπησης"
 
-#: source_backends/staging_folder_backends.py:286
+#: source_backends/staging_folder_backends.py:300
 msgid "Delete the file after is has been successfully uploaded."
 msgstr "Διαγραφή του αρχείου μετά την επιτυχή μεταφόρτωση."
 
-#: source_backends/staging_folder_backends.py:288
+#: source_backends/staging_folder_backends.py:302
 msgid "Delete after upload"
 msgstr "Διαγραφή αφού μεταφορτωθεί"
 
-#: source_backends/staging_folder_backends.py:293
+#: source_backends/staging_folder_backends.py:309
+#: source_backends/watch_folder_backends.py:50
+msgid ""
+"If checked, not only will the folder path be scanned for files but also its "
+"subdirectories."
+msgstr ""
+"Εάν επιλεγεί, θα σαρωθεί για αρχεία η διαδρομή του φακέλου καθώς και οι "
+"υποφάκελοι."
+
+#: source_backends/staging_folder_backends.py:312
+#: source_backends/watch_folder_backends.py:53
+msgid "Include subdirectories?"
+msgstr "Συμπερίληψη υποκαταλόγων;"
+
+#: source_backends/staging_folder_backends.py:319
+#: source_backends/watch_folder_backends.py:60
+msgid "Regular expression used to select which files to upload."
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:321
+#: source_backends/watch_folder_backends.py:62
+msgid "Include regular expression"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:328
+#: source_backends/watch_folder_backends.py:69
+msgid "Regular expression used to exclude which files to upload."
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:330
+#: source_backends/watch_folder_backends.py:71
+msgid "Exclude regular expression"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:341
 msgid "Staging folder"
 msgstr "Φάκελος ενδιάμεσου σταδίου"
 
-#: source_backends/staging_folder_backends.py:323
+#: source_backends/staging_folder_backends.py:361
+msgid "Select"
+msgstr "Επιλογή"
+
+#: source_backends/staging_folder_backends.py:373
 msgid "Created"
 msgstr "Δημιουργήθηκε"
 
-#: source_backends/staging_folder_backends.py:327
+#: source_backends/staging_folder_backends.py:377
 msgid "Thumbnail"
 msgstr "Μικρογραφία"
 
-#: source_backends/staging_folder_backends.py:473
+#: source_backends/staging_folder_backends.py:526
 #, python-format
 msgid "Error deleting staging file; %s"
 msgstr "Σφάλμα κατά τη διαγραφή του αρχείου σε ενδιάμεσο στάδιο. %s"
 
-#: source_backends/staging_folder_backends.py:494
+#: source_backends/staging_folder_backends.py:547
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Διαγραφή αρχείου σε ενδιάμεσο στάδιο \"%s\";"
 
-#: source_backends/staging_folder_backends.py:520
+#: source_backends/staging_folder_backends.py:612
 #, python-format
-msgid "Unable get list of staging files: %s"
-msgstr "Αδυναμία λήψης λίστας αρχείων σε ενδιάμεσο στάδιο: %s"
+msgid "Unable get list of staging files; %s"
+msgstr ""
 
-#: source_backends/staging_folder_backends.py:547
+#: source_backends/staging_folder_backends.py:630
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
@@ -523,43 +565,15 @@ msgstr ""
 "συστήματος που χρησιμοποιείται για το Mayan EDMS δεν έχει τα απαραίτητα "
 "δικαιώματα για το φάκελο."
 
-#: source_backends/staging_folder_backends.py:554
+#: source_backends/staging_folder_backends.py:637
 msgid "No staging files available"
 msgstr "Μη διαθέσιμα αρχεία ενδιάμεσου σταδίου"
-
-#: source_backends/watch_folder_backends.py:50
-msgid ""
-"If checked, not only will the folder path be scanned for files but also its "
-"subdirectories."
-msgstr ""
-"Εάν επιλεγεί, θα σαρωθεί για αρχεία η διαδρομή του φακέλου καθώς και οι "
-"υποφάκελοι."
-
-#: source_backends/watch_folder_backends.py:53
-msgid "Include subdirectories?"
-msgstr "Συμπερίληψη υποκαταλόγων;"
-
-#: source_backends/watch_folder_backends.py:60
-msgid "Regular expression used to select which files to upload."
-msgstr ""
-
-#: source_backends/watch_folder_backends.py:62
-msgid "Include regular expression"
-msgstr ""
-
-#: source_backends/watch_folder_backends.py:69
-msgid "Regular expression used to exclude which files to upload."
-msgstr ""
-
-#: source_backends/watch_folder_backends.py:71
-msgid "Exclude regular expression"
-msgstr ""
 
 #: source_backends/watch_folder_backends.py:75
 msgid "Watch folder"
 msgstr "Φάκελος παρακολούθησης"
 
-#: source_backends/web_form_backends.py:24
+#: source_backends/web_form_backends.py:39
 msgid "Web form"
 msgstr "Φόρμα ιστού"
 
@@ -576,38 +590,38 @@ msgstr ""
 msgid "Staging folder files"
 msgstr "Αρχεία φακέλου ενδιάμεσου σταδίου"
 
-#: templates/sources/app/foot.html:40
+#: templates/sources/app/foot.html:42
 msgid "Cancel upload"
 msgstr "Ακύρωση ανάρτησης"
 
-#: templates/sources/app/foot.html:41
+#: templates/sources/app/foot.html:43
 msgid "Are you sure you want to cancel this upload?"
 msgstr "Είστε βέβαιοι ότι θέλετε να ακυρώσετε αυτήν την ανάρτηση;"
 
-#: templates/sources/app/foot.html:42
+#: templates/sources/app/foot.html:44
 msgid "Drop files or click here to upload files"
 msgstr "Αποθέστε αρχεία ή κάντε κλικ εδώ για την ανάρτησή τους"
 
-#: templates/sources/app/foot.html:43
+#: templates/sources/app/foot.html:45
 msgid "Your browser does not support drag and drop file uploads."
 msgstr ""
 "Το πρόγραμμα περιήγησής σας δεν υποστηρίζει αναρτήσεις αρχείων με επιλογή "
 "και σύρσιμο."
 
-#: templates/sources/app/foot.html:44
+#: templates/sources/app/foot.html:46
 msgid "Please use the fallback form below to upload your files."
 msgstr ""
 "Παρακαλώ χρησιμοποιήστε την παρακάτω εναλλακτική φόρμα ανάρτησης αρχείων."
 
-#: templates/sources/app/foot.html:45
+#: templates/sources/app/foot.html:47
 msgid "Clear"
 msgstr "Εκκαθάριση"
 
-#: templates/sources/app/foot.html:46
+#: templates/sources/app/foot.html:48
 msgid "Server responded with {{statusCode}} code."
 msgstr "Ο διακομιστής απάντησε με κωδικό {{statusCode}}."
 
-#: views/base.py:53 wizards.py:54
+#: views/base.py:54 wizards.py:58
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
@@ -615,75 +629,75 @@ msgstr ""
 "Δεν έχουν καθοριστεί αλληλεπιδραστικές πηγές εγγράφων ή δεν έχει "
 "ενεργοποιηθεί κάποια, δημιουργήστε μία πριν συνεχίσετε."
 
-#: views/document_file_views.py:49
+#: views/document_file_views.py:51
 #, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
 
-#: views/document_file_views.py:73
+#: views/document_file_views.py:75
 #, python-format
 msgid "Error executing document file upload task; %(exception)s"
 msgstr ""
 
-#: views/document_file_views.py:92
+#: views/document_file_views.py:94
 msgid "New document file queued for upload and will be available shortly."
 msgstr ""
 
-#: views/document_file_views.py:125
+#: views/document_file_views.py:127
 #, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 
-#: views/document_file_views.py:131
+#: views/document_file_views.py:133
 msgid "Submit"
 msgstr "Υποβολή"
 
-#: views/document_views.py:38
+#: views/document_views.py:40
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr ""
 
-#: views/document_views.py:57
+#: views/document_views.py:59
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 "Νέο έγγραφο βρίσκεται σε ουρά για ανάρτηση και θα είναι διαθέσιμο σύντομα."
 
-#: views/document_views.py:83
+#: views/document_views.py:85
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "Ανάρτηση εγγράφου τύπου \"%(document_type)s\" από την πηγή: %(source)s"
 
-#: views/source_views.py:37
+#: views/source_views.py:40
 msgid "New source backend selection"
 msgstr ""
 
-#: views/source_views.py:93
+#: views/source_views.py:99
 #, python-format
 msgid "Create a \"%s\" source"
 msgstr ""
 
-#: views/source_views.py:118
+#: views/source_views.py:125
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Διαγραφή πηγής: %s;"
 
-#: views/source_views.py:133
+#: views/source_views.py:141
 #, python-format
 msgid "Edit source: %s"
 msgstr "Τροποποίηση πηγής: %s"
 
-#: views/source_views.py:158
+#: views/source_views.py:167
 msgid ""
 "Sources provide the means to upload documents. Some sources are interactive "
 "and require user input to operate. Others are automatic and run in the "
 "background without user intervention."
 msgstr ""
 
-#: views/source_views.py:163
+#: views/source_views.py:172
 msgid "No sources available"
 msgstr "Δεν υπάρχουν διαθέσιμες πηγές"
 
-#: views/source_views.py:181
+#: views/source_views.py:191
 msgid ""
 "This will execute the source code even if the source is not enabled. Sources"
 " that delete content after downloading will not do so while being tested. "
@@ -691,12 +705,12 @@ msgid ""
 "test will clear the error log."
 msgstr ""
 
-#: views/source_views.py:187
+#: views/source_views.py:197
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Εκκίνηση ελέγχου πηγής \"%s\";"
 
-#: views/source_views.py:199
+#: views/source_views.py:209
 msgid "Source test queued."
 msgstr ""
 
@@ -704,23 +718,23 @@ msgstr ""
 msgid "Select document type"
 msgstr "Επιλογή τύπου εγγράφου"
 
-#: wizards.py:73
+#: wizards.py:77
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr "Βήμα %(step)d από %(total_steps)d: %(step_label)s"
 
-#: wizards.py:78
+#: wizards.py:82
 msgid "Document upload wizard"
 msgstr "Οδηγός ανάρτησης εγγράφου"
 
-#: wizards.py:87
+#: wizards.py:91
 msgid "First"
 msgstr ""
 
-#: wizards.py:93
+#: wizards.py:97
 msgid "Previous"
 msgstr ""
 
-#: wizards.py:100
+#: wizards.py:104
 msgid "Next"
 msgstr ""

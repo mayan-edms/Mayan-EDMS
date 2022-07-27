@@ -4,21 +4,21 @@
 # 
 # Translators:
 # Translators:
-# Berny <berny@bernhard-marx.de>, 2022
-# Marvin Haschker <marvin@haschker.me>, 2022
 # Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2022
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2022
+# Marvin Haschker <marvin@haschker.me>, 2022
+# Berny <berny@bernhard-marx.de>, 2022
+# Roberto Rosario, 2022
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
 # Tobias Paepke <tobias.paepke@paepke.net>, 2022
-# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
+"Last-Translator: Tobias Paepke <tobias.paepke@paepke.net>, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -120,11 +120,11 @@ msgstr "Importieren"
 msgid "Upload key"
 msgstr "Schlüssel hochladen"
 
-#: links.py:50 views.py:189
+#: links.py:50 views.py:201
 msgid "Private keys"
 msgstr "Private Schlüssel"
 
-#: links.py:54 views.py:213
+#: links.py:54 views.py:226
 msgid "Public keys"
 msgstr "Öffentliche Schlüssel"
 
@@ -236,36 +236,36 @@ msgstr ""
 msgid "Keyserver used to query for keys."
 msgstr "Server, der nach unbekannten Schlüsseln durchsucht wird."
 
-#: views.py:36
+#: views.py:41
 #, python-format
 msgid "Delete key: %s"
 msgstr "Schlüssel löschen: %s"
 
-#: views.py:53
+#: views.py:59
 #, python-format
 msgid "Details for key: %s"
 msgstr "Details für Schlüssel %s"
 
-#: views.py:81
+#: views.py:89
 #, python-format
 msgid "Import key ID: %s?"
 msgstr "Schlüssel-ID %s importieren?"
 
-#: views.py:82
+#: views.py:90
 msgid "Import key"
 msgstr "Schlüssel importieren"
 
-#: views.py:91
+#: views.py:99
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Schlüssel-ID %(key_id)s konnte nicht importiert werden: %(error)s"
 
-#: views.py:99
+#: views.py:107
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr "Schlüssel %(key_id)s erfolgreich heruntergeladen"
 
-#: views.py:116
+#: views.py:125
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
@@ -274,23 +274,23 @@ msgstr ""
 "öffentlichen Schlüsseln verwenden, um diese vom Schlüsselserver zu "
 "importieren."
 
-#: views.py:120
+#: views.py:129
 msgid "No results returned"
 msgstr "Keine Ergebnisse"
 
-#: views.py:122
+#: views.py:131
 msgid "Key query results"
 msgstr "Ergebnis Schlüsselsuche"
 
-#: views.py:142
+#: views.py:152
 msgid "Query key server"
 msgstr "Schlüsselserver abfragen"
 
-#: views.py:161
+#: views.py:172
 msgid "Upload new key"
 msgstr "Neuen Schlüssel hochladen"
 
-#: views.py:182
+#: views.py:194
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user. The view to upload private and public keys is the same."
@@ -299,11 +299,11 @@ msgstr ""
 "Schlüssel können nur vom Benutzer selbst hochgeladen werden. Das Formular "
 "für das Hochladen von privaten und öffentlichen Schlüsseln ist dasselbe."
 
-#: views.py:187
+#: views.py:199
 msgid "There no private keys"
 msgstr "Keine privaten Schlüssel vorhanden"
 
-#: views.py:205
+#: views.py:218
 msgid ""
 "Public keys are used to verify signed documents. Public keys can be uploaded"
 " by the user or downloaded from keyservers. The view to upload private and "
@@ -314,6 +314,6 @@ msgstr ""
 "heruntergeladen werden. Die Ansicht zum Hochladen von privaten und "
 "öffentlichen Schlüssel ist identisch."
 
-#: views.py:211
+#: views.py:224
 msgid "There no public keys"
 msgstr "Keine öffentlichen Schlüssel vorhanden"

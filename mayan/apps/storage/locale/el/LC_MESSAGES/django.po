@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# pyrotech <anastasios@tutamail.com>, 2022
 # Hmayag Antonian <hmayag@freemail.gr>, 2022
+# pyrotech <anastasios@tutamail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
-"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -179,17 +179,17 @@ msgstr ""
 "Η αρχικοποίηση του αποθηκευτικού χώρου διαμοιρασμένου αναρτημένου εγγράφου "
 "απέτυχε. Ελέγξτε τις ρυθμίσεις {} και {} για σφάλματα μορφοποίησης."
 
-#: views.py:55
+#: views.py:61
 msgid ""
 "Download files are created as a results of a an external process like an "
 "export. Download files are retained over a span of time and then removed "
 "automatically."
 msgstr ""
 
-#: views.py:59
+#: views.py:65
 msgid "There are no files to download."
 msgstr ""
 
-#: views.py:60
+#: views.py:66
 msgid "Downloads"
 msgstr ""

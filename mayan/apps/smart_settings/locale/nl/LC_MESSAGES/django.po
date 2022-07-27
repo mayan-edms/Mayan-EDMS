@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -37,11 +37,11 @@ msgstr "Naam"
 msgid "Value"
 msgstr "Waarde"
 
-#: classes.py:348
+#: classes.py:374
 msgid "Overridden"
 msgstr "Overschreven"
 
-#: classes.py:350
+#: classes.py:376
 msgid "Is this settings being overridden by an environment variable?"
 msgstr "Wordt deze instelling overschreven door een omgevingsvariabele?"
 
@@ -54,15 +54,15 @@ msgstr "De nieuwe instellingswaarde invoeren."
 msgid "\"%s\" not a valid entry."
 msgstr "\"%s\" is geen geldige invoer."
 
-#: links.py:12 links.py:16
+#: links.py:20 links.py:24
 msgid "Settings"
 msgstr "Instellingen"
 
-#: links.py:22
+#: links.py:31
 msgid "Namespaces"
 msgstr "Namespaces"
 
-#: links.py:26
+#: links.py:36
 msgid "Edit"
 msgstr "Bewerken"
 
@@ -506,16 +506,22 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-#: views.py:21
+#: views.py:27
+msgid ""
+"Local storage is currently disabled, changes to setting values will not be "
+"saved or take effect."
+msgstr ""
+
+#: views.py:38
 msgid "Setting updated successfully."
 msgstr "Instelling met succes bijgewerkt. "
 
-#: views.py:30
+#: views.py:47
 #, python-format
 msgid "Edit setting: %s"
 msgstr "Bewerk instelling: %s"
 
-#: views.py:55
+#: views.py:73
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
@@ -523,16 +529,16 @@ msgstr ""
 "Overgenomen instellingen van een omgevingsvariabele krijgen voorrang en "
 "kunnen niet gewijzigd worden in dit overzicht."
 
-#: views.py:58
+#: views.py:76
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr "Instellingen in namespace: %s"
 
-#: views.py:66
+#: views.py:84
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "Namespace: %s, niet gevonden"
 
-#: views.py:76
+#: views.py:94
 msgid "Setting namespaces"
 msgstr "Instelling namespaces"

@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
@@ -64,28 +64,28 @@ msgstr ""
 msgid "Use the template sandbox"
 msgstr ""
 
-#: views.py:38
+#: views.py:40
 #, python-format
 msgid "Template sandbox for: %s"
 msgstr ""
 
-#: views.py:59
+#: views.py:61
 #, python-format
 msgid "Template error; %(exception)s"
 msgstr ""
 
-#: widgets.py:64
+#: widgets.py:65
 msgid "Filters"
 msgstr ""
 
-#: widgets.py:71
+#: widgets.py:72
 msgid "Tags"
 msgstr "Etiketler"
 
-#: widgets.py:77
+#: widgets.py:78
 msgid "<Filters and tags>"
 msgstr ""
 
-#: widgets.py:118
+#: widgets.py:119
 msgid "<Model attributes>"
 msgstr ""

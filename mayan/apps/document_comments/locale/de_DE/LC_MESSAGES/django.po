@@ -4,19 +4,19 @@
 # 
 # Translators:
 # Translators:
+# Tobias Paepke <tobias.paepke@paepke.net>, 2022
 # 847f3f05406324d125c568a4b098bddb, 2022
 # Roberto Rosario, 2022
-# Tobias Paepke <tobias.paepke@paepke.net>, 2022
-# Robin Schubert <robin.schubert@gmx.de>, 2022
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
+# Robin Schubert <robin.schubert@gmx.de>, 2022
 # Berny <berny@bernhard-marx.de>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Berny <berny@bernhard-marx.de>, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:32 events.py:6 search.py:18 search.py:25 search.py:32 search.py:39
+#: apps.py:32 events.py:6 search.py:19 search.py:26 search.py:33 search.py:40
 msgid "Document comments"
 msgstr "Kommentare"
 
@@ -53,7 +53,7 @@ msgstr "Löschen"
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:31 models.py:46 permissions.py:5 search.py:11
+#: links.py:31 models.py:46 permissions.py:5 search.py:12
 msgid "Comments"
 msgstr "Kommentare"
 
@@ -93,27 +93,27 @@ msgstr "Kommentare bearbeiten"
 msgid "View comments"
 msgstr "Kommentare ansehen"
 
-#: views.py:31
+#: views.py:35
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Kommentar zu Dokument %s hinzufügen"
 
-#: views.py:59
+#: views.py:64
 #, python-format
 msgid "Delete comment: %s?"
 msgstr "Kommentar %s löschen?"
 
-#: views.py:90
+#: views.py:96
 #, python-format
 msgid "Details for comment: %s?"
 msgstr "Details für Kommentar: %s"
 
-#: views.py:109
+#: views.py:116
 #, python-format
 msgid "Edit comment: %s?"
 msgstr "Kommentar bearbeiten: %s?"
 
-#: views.py:144
+#: views.py:152
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
@@ -121,11 +121,11 @@ msgstr ""
 "Kommentare bei Dokumenten sind zeitgestempelte Texteinträge von Benutzers. "
 "Sie eignen sich hervorragend für die Zusammenarbeit. "
 
-#: views.py:147
+#: views.py:155
 msgid "There are no comments"
 msgstr "Keine Kommentare vorhanden"
 
-#: views.py:149
+#: views.py:157
 #, python-format
 msgid "Comments for document: %s"
 msgstr "Kommentare für Dokument %s"

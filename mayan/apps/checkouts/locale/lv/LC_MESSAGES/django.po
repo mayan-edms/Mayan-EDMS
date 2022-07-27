@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:33+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2022\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -20,11 +20,11 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:41 events.py:5 links.py:32
+#: apps.py:41 events.py:5 links.py:33
 msgid "Checkouts"
 msgstr "Izraksti"
 
-#: dashboard_widgets.py:14 views.py:178
+#: dashboard_widgets.py:14 views.py:183
 msgid "Checked out documents"
 msgstr "Izrakstītie dokumenti"
 
@@ -56,7 +56,7 @@ msgstr "Dokuments jau ir izrakstīts."
 msgid "Document status"
 msgstr "Dokumenta statuss"
 
-#: forms.py:37 models.py:46 models.py:126
+#: forms.py:37 models.py:47 models.py:127
 msgid "User"
 msgstr "Lietotājs"
 
@@ -80,23 +80,23 @@ msgstr "Jā"
 msgid "No"
 msgstr "Nē"
 
-#: links.py:39
+#: links.py:40
 msgid "Check out document"
 msgstr "Izrakstīt dokumentu"
 
-#: links.py:43
+#: links.py:44
 msgid "Check out"
 msgstr "Izrakstīt"
 
-#: links.py:50
+#: links.py:51
 msgid "Check in document"
 msgstr "Pierakstīt dokumentu"
 
-#: links.py:54
+#: links.py:55
 msgid "Check in"
 msgstr "Pierakstīt"
 
-#: links.py:60
+#: links.py:61
 msgid "Check in/out"
 msgstr "Pierakstīts/izrakstīt"
 
@@ -108,47 +108,47 @@ msgstr "Izrakstīts"
 msgid "Checked in/available"
 msgstr "Pierakstīts/pieejams"
 
-#: models.py:33
+#: models.py:34
 msgid "Document"
 msgstr "Dokuments"
 
-#: models.py:36
+#: models.py:37
 msgid "Check out date and time"
 msgstr "Izrakstīšanas datums un laiks"
 
-#: models.py:40
+#: models.py:41
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Laiks minūtēs, cik ilgi turēt dokumentu izrakstītu."
 
-#: models.py:42
+#: models.py:43
 msgid "Check out expiration date and time"
 msgstr "Izrakstīšanas derīguma termiņš un laiks"
 
-#: models.py:51
+#: models.py:52
 msgid "Do not allow new file of this document to be uploaded."
 msgstr ""
 
-#: models.py:53
+#: models.py:54
 msgid "Block new file upload"
 msgstr ""
 
-#: models.py:61 permissions.py:5
+#: models.py:62 permissions.py:5
 msgid "Document checkout"
 msgstr "Dokumentu izrakstīšana"
 
-#: models.py:62
+#: models.py:63
 msgid "Document checkouts"
 msgstr "Dokumentu izrakstīšanas"
 
-#: models.py:70
+#: models.py:71
 msgid "Check out expiration date and time must be in the future."
 msgstr "Izrakstīšanas derīguma termiņam un laikam ir jābūt norādītam nākotnē."
 
-#: models.py:131
+#: models.py:132
 msgid "Checkout time and date"
 msgstr "Izraksta laiks un datums"
 
-#: models.py:136
+#: models.py:137
 msgid "Checkout expiration"
 msgstr "Izraksta derīguma termiņš"
 
@@ -180,89 +180,89 @@ msgstr "Pārbaudiet izbeigušos izrakstus"
 msgid "Primary key of the document to be checked out."
 msgstr "Izrakstāmā dokumenta primārā atslēga."
 
-#: views.py:25
+#: views.py:28
 #, python-format
 msgid "Unable to check in document \"%(instance)s\"; %(exception)s"
 msgstr ""
 
-#: views.py:29
+#: views.py:32
 #, python-format
 msgid "Document \"%(object)s\" checked in successfully."
 msgstr ""
 
-#: views.py:32
+#: views.py:35
 #, python-format
 msgid "%(count)d document checked in successfully."
 msgstr ""
 
-#: views.py:35
+#: views.py:38
 #, python-format
 msgid "%(count)d documents checked in successfully."
 msgstr ""
 
-#: views.py:37
+#: views.py:40
 #, python-format
 msgid "Check in document \"%(object)s\"."
 msgstr ""
 
-#: views.py:38
+#: views.py:41
 #, python-format
 msgid "Check in %(count)d document."
 msgstr ""
 
-#: views.py:39
+#: views.py:42
 #, python-format
 msgid "Check in %(count)d documents."
 msgstr ""
 
-#: views.py:91
+#: views.py:95
 #, python-format
 msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
 msgstr ""
 
-#: views.py:98
+#: views.py:102
 #, python-format
 msgid "Document \"%(object)s\" checked out successfully."
 msgstr ""
 
-#: views.py:101
+#: views.py:105
 #, python-format
 msgid "%(count)d document checked out successfully."
 msgstr ""
 
-#: views.py:104
+#: views.py:108
 #, python-format
 msgid "%(count)d documents checked out successfully."
 msgstr ""
 
-#: views.py:106
+#: views.py:110
 #, python-format
 msgid "Checkout document \"%(object)s\"."
 msgstr ""
 
-#: views.py:107
+#: views.py:111
 #, python-format
 msgid "Checkout %(count)d document."
 msgstr ""
 
-#: views.py:108
+#: views.py:112
 #, python-format
 msgid "Checkout %(count)d documents."
 msgstr ""
 
-#: views.py:154
+#: views.py:160
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Izraksta detaļas dokumentam: %s"
 
-#: views.py:174
+#: views.py:179
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr ""
 "Izrakstot dokumentu, noteiktas darbības tiek bloķētas uz noteiktu laiku."
 
-#: views.py:177
+#: views.py:182
 msgid "No documents have been checked out"
 msgstr "Neviens dokuments nav izrakstīts"
 

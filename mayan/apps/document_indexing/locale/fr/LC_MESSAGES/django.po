@@ -7,17 +7,17 @@
 # Olivier W, 2022
 # Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
-# Roberto Rosario, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Roberto Rosario, 2022
 # Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -30,39 +30,39 @@ msgstr ""
 msgid "None"
 msgstr "Aucun"
 
-#: admin.py:24 links.py:95 models.py:54
+#: admin.py:24 links.py:89 models/index_template_models.py:52
 msgid "Document types"
 msgstr "Types de documents"
 
-#: apps.py:51 events.py:6
+#: apps.py:54 events.py:6
 msgid "Document indexing"
 msgstr "Indexation de document"
 
-#: apps.py:134 apps.py:163 apps.py:202 apps.py:235
+#: apps.py:139 apps.py:168 apps.py:207 apps.py:240
 msgid "Level"
 msgstr "Niveau"
 
-#: apps.py:142 apps.py:172
+#: apps.py:147 apps.py:177
 msgid "Depth"
 msgstr "Profondeur"
 
-#: apps.py:146
+#: apps.py:151
 msgid "Total nodes"
 msgstr "Nombre total de noeuds"
 
-#: apps.py:153
+#: apps.py:158
 msgid "Total documents"
 msgstr "Nombre total de documents"
 
-#: apps.py:155 apps.py:193
+#: apps.py:160 apps.py:198
 msgid "Number of unique documents this item contains."
 msgstr ""
 
-#: apps.py:180
+#: apps.py:185
 msgid "Nodes"
 msgstr "Noeuds"
 
-#: apps.py:191 models.py:438
+#: apps.py:196 models/index_instance_models.py:284
 msgid "Documents"
 msgstr "Documents"
 
@@ -74,15 +74,29 @@ msgstr "Modèle d'index créé"
 msgid "Index template edited"
 msgstr "Modèle d'index modifié"
 
-#: forms.py:16
+#: forms.py:19 forms.py:23
+msgid "Namespace"
+msgstr "Espace de nommage"
+
+#: forms.py:27 models/index_template_models.py:35
+msgid "Label"
+msgstr "Étiquette"
+
+#: forms.py:31 models/index_template_models.py:48
+#: models/index_template_models.py:251
+msgid "Enabled"
+msgstr "Activé"
+
+#: forms.py:45
 msgid "Index templates to be queued for rebuilding."
 msgstr "Les modèles d'index en en file d'attente pour la reconstruction."
 
-#: forms.py:17 links.py:36 models.py:62 views/index_template_views.py:96
+#: forms.py:46 links.py:38 models/index_template_models.py:60
+#: views/index_template_views.py:115
 msgid "Index templates"
 msgstr "Modèles d'index"
 
-#: forms.py:32
+#: forms.py:61
 msgid "Template"
 msgstr "Modèle"
 
@@ -90,135 +104,68 @@ msgstr "Modèle"
 msgid "Creation date"
 msgstr "Date de création"
 
-#: links.py:30 links.py:44 links.py:75 links.py:79
-#: views/index_instance_views.py:43
+#: links.py:32 links.py:48 links.py:102 links.py:110
+#: views/index_instance_views.py:42
 msgid "Indexes"
 msgstr "Index"
 
-#: links.py:49 queues.py:24
+#: links.py:53 queues.py:24
 msgid "Rebuild index"
 msgstr "Reconstruire l'index"
 
-#: links.py:56 links.py:65
+#: links.py:60 links.py:69
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Supprimer et reconstruire les index des documents en partant de zéro."
 
-#: links.py:57
+#: links.py:61
 msgid "Rebuild indexes"
 msgstr "Reconstruire les index"
 
-#: links.py:66 views/index_template_views.py:347
+#: links.py:70 views/index_template_views.py:469
 msgid "Reset indexes"
 msgstr "Réinitialiser les index"
 
-#: links.py:85 views/index_template_views.py:101
+#: links.py:79 views/index_template_views.py:120
 msgid "Create index"
 msgstr "Créer un index"
 
-#: links.py:90 links.py:115
+#: links.py:84 links.py:128
 msgid "Delete"
 msgstr "Supprimer"
 
-#: links.py:99 links.py:119
+#: links.py:93 links.py:132
 msgid "Edit"
 msgstr "Modifier"
 
-#: links.py:105
+#: links.py:98
+msgid "Triggers"
+msgstr "Déclencheurs"
+
+#: links.py:118
 msgid "Tree template"
 msgstr "Modèle d'arborescence"
 
-#: links.py:110
+#: links.py:123
 msgid "New child node"
 msgstr "Nouveau noeud enfant"
 
-#: models.py:36
-msgid "Short description of this index."
-msgstr "Description courte de cet index."
+#: literals.py:6
+msgid "No"
+msgstr "Non"
 
-#: models.py:37
-msgid "Label"
-msgstr "Étiquette"
+#: literals.py:7
+msgid "Yes"
+msgstr "Oui"
 
-#: models.py:41
-msgid "This value will be used by other apps to reference this index."
-msgstr ""
-"Cette valeur sera utilisée par d'autres applications pour faire référence à "
-"cet index."
-
-#: models.py:42
-msgid "Slug"
-msgstr "Jeton"
-
-#: models.py:47
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Permet à cet index d'être à la fois visible et mis à jour quand le contenu "
-"d'un document est modifié."
-
-#: models.py:50 models.py:190
-msgid "Enabled"
-msgstr "Activé"
-
-#: models.py:61
-msgid "Index template"
-msgstr ""
-
-#: models.py:169
-msgid "Parent index template node of this node."
-msgstr ""
-
-#: models.py:175
-msgid "Index"
-msgstr "Index"
-
-#: models.py:179
-msgid "Enter a template to render. Use Django's default templating language."
-msgstr ""
-
-#: models.py:182
-msgid "Indexing expression"
-msgstr "Expression d'indexation"
-
-#: models.py:187
-msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Permet à ce nœud d'être visible et mis à jour quand le contenu d'un document"
-" est modifié."
-
-#: models.py:195
-msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr ""
-"Cochez cette option pour permettre à ce nœud d'être un conteneur de "
-"documents et pas seulement un nœud parent d'autres nœuds enfants."
-
-#: models.py:198
-msgid "Link documents"
-msgstr "Lier les documents"
-
-#: models.py:202 models.py:431
-msgid "Index template node"
-msgstr "Nœud de modèle d'index"
-
-#: models.py:203
-msgid "Index template nodes"
-msgstr ""
-
-#: models.py:207
-msgid "Root"
-msgstr "Racine"
-
-#: models.py:228
+#: models/index_instance_models.py:37
 msgid "Index instance"
 msgstr "Instance d'index"
 
-#: models.py:229
+#: models/index_instance_models.py:38
 msgid "Index instances"
 msgstr "Instances d'index"
 
-#: models.py:310
+#: models/index_instance_models.py:129
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
@@ -227,50 +174,133 @@ msgstr ""
 "Erreur lors de l'indexation du document : %(document)s; expression: "
 "%(expression)s; %(exception)s"
 
-#: models.py:388
+#: models/index_instance_models.py:230
 msgid "Total number of nodes with unique values this item contains."
 msgstr ""
 "Nombre total de nœuds avec des valeurs uniques que cet élément contient."
 
-#: models.py:397
+#: models/index_instance_models.py:239
 msgid "Total number of unique documents this item contains."
 msgstr "Nombre total de documents uniques que cet élément contient."
 
-#: models.py:407
+#: models/index_instance_models.py:249
 msgid "Total number of node levels this item contains."
 msgstr "Nombre total de niveaux de nœuds que cet élément contient."
 
-#: models.py:434 search.py:26
+#: models/index_instance_models.py:277 models/index_template_models.py:263
+msgid "Index template node"
+msgstr "Nœud de modèle d'index"
+
+#: models/index_instance_models.py:280 search.py:26
 msgid "Value"
 msgstr "Valeur"
 
-#: models.py:443 models.py:524
+#: models/index_instance_models.py:290 models/index_instance_models.py:371
 msgid "Index instance node"
 msgstr "Nœud d'instance d'index"
 
-#: models.py:444
+#: models/index_instance_models.py:291
 msgid "Indexes instances node"
 msgstr "Nœud d'instances d'index"
 
-#: models.py:491
+#: models/index_instance_models.py:338
 msgid "The path to the index including all ancestors."
 msgstr "Le chemin d'accès à l'index, y compris tous les index parents."
 
-#: models.py:493
+#: models/index_instance_models.py:340
 msgid "Full path"
 msgstr "Chemin complet"
 
-#: models.py:517
+#: models/index_instance_models.py:364
 msgid "Document index node instance"
 msgstr "Instance de nœud d'index de document"
 
-#: models.py:518
+#: models/index_instance_models.py:365
 msgid "Document indexes node instances"
 msgstr "Instances de nœuds d'index de document"
 
-#: models.py:525
+#: models/index_instance_models.py:372
 msgid "Index instance nodes"
 msgstr "Nœuds des instances d'index"
+
+#: models/index_template_models.py:34
+msgid "Short description of this index."
+msgstr "Description courte de cet index."
+
+#: models/index_template_models.py:39
+msgid "This value will be used by other apps to reference this index."
+msgstr ""
+"Cette valeur sera utilisée par d'autres applications pour faire référence à "
+"cet index."
+
+#: models/index_template_models.py:40
+msgid "Slug"
+msgstr "Jeton"
+
+#: models/index_template_models.py:45
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Permet à cet index d'être à la fois visible et mis à jour quand le contenu "
+"d'un document est modifié."
+
+#: models/index_template_models.py:59 models/index_template_models.py:185
+msgid "Index template"
+msgstr ""
+
+#: models/index_template_models.py:189
+msgid "Event type"
+msgstr "Type d'évènement"
+
+#: models/index_template_models.py:194
+msgid "Index template event trigger"
+msgstr ""
+
+#: models/index_template_models.py:195
+msgid "Index template event triggers"
+msgstr ""
+
+#: models/index_template_models.py:230
+msgid "Parent index template node of this node."
+msgstr ""
+
+#: models/index_template_models.py:236
+msgid "Index"
+msgstr "Index"
+
+#: models/index_template_models.py:240
+msgid "Enter a template to render. Use Django's default templating language."
+msgstr ""
+
+#: models/index_template_models.py:243
+msgid "Indexing expression"
+msgstr "Expression d'indexation"
+
+#: models/index_template_models.py:248
+msgid "Causes this node to be visible and updated when document data changes."
+msgstr ""
+"Permet à ce nœud d'être visible et mis à jour quand le contenu d'un document"
+" est modifié."
+
+#: models/index_template_models.py:256
+msgid ""
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr ""
+"Cochez cette option pour permettre à ce nœud d'être un conteneur de "
+"documents et pas seulement un nœud parent d'autres nœuds enfants."
+
+#: models/index_template_models.py:259
+msgid "Link documents"
+msgstr "Lier les documents"
+
+#: models/index_template_models.py:264
+msgid "Index template nodes"
+msgstr ""
+
+#: models/index_template_models.py:268
+msgid "Root"
+msgstr "Racine"
 
 #: permissions.py:5 queues.py:8
 msgid "Indexing"
@@ -296,7 +326,7 @@ msgstr "Supprimer les modèles d'index"
 msgid "View index templates"
 msgstr "Afficher les modèles d'index"
 
-#: permissions.py:23 views/index_template_views.py:310
+#: permissions.py:23 views/index_template_views.py:431
 msgid "Rebuild index templates"
 msgstr "Reconstruire les modèles d'index"
 
@@ -359,7 +389,7 @@ msgstr "Clé primaire du type de document à ajouter au modèle d'index."
 msgid "Primary key of the document type to remove from the index template."
 msgstr "Clé primaire du type de document à supprimer du modèle d'index."
 
-#: views/index_instance_views.py:38
+#: views/index_instance_views.py:37
 msgid ""
 "This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
@@ -367,7 +397,7 @@ msgstr ""
 "Cela peut signifier qu'aucun modèle d'index n'a été créé ou qu'il existe des"
 " modèles d'index mais qu'ils ne sont pas correctement définis."
 
-#: views/index_instance_views.py:42
+#: views/index_instance_views.py:41
 msgid "There are no index instances available."
 msgstr "Il n'y a pas d'instance d'index disponible."
 
@@ -381,7 +411,7 @@ msgstr "Navigation : %s"
 msgid "Contents for index: %s"
 msgstr "Contenu de l'index : %s"
 
-#: views/index_instance_views.py:140
+#: views/index_instance_views.py:143
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
@@ -389,24 +419,24 @@ msgstr ""
 "Attribuez le type de document de ce document à un index pour qu'il "
 "apparaisse dans les instances de ces unités d'organisation d'index."
 
-#: views/index_instance_views.py:145
+#: views/index_instance_views.py:148
 msgid "This document is not in any index"
 msgstr "Ce document ne figure dans aucun index"
 
-#: views/index_instance_views.py:149
+#: views/index_instance_views.py:152
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr "Nœuds d'index contenant le document : %s"
 
-#: views/index_template_views.py:45
+#: views/index_template_views.py:62
 msgid "Available indexes"
 msgstr "Index disponibles"
 
-#: views/index_template_views.py:46
+#: views/index_template_views.py:63
 msgid "Indexes linked"
 msgstr "Index liés"
 
-#: views/index_template_views.py:70
+#: views/index_template_views.py:88
 msgid ""
 "Documents of this type will appear in the indexes linked when these are "
 "updated. Events of the documents of this type will trigger updates in the "
@@ -416,36 +446,36 @@ msgstr ""
 "à jour. Les événements des documents de ce type déclencheront des mises à "
 "jour dans les index liés."
 
-#: views/index_template_views.py:74
+#: views/index_template_views.py:92
 #, python-format
 msgid "Indexes linked to document type: %s"
 msgstr "Index liés au type de document: %s"
 
-#: views/index_template_views.py:90
+#: views/index_template_views.py:109
 msgid ""
 "Indexes group document automatically into levels. Indexes are defined using "
 "template whose markers are replaced with direct properties of documents like"
 " label or description, or that of extended properties like metadata."
 msgstr ""
 
-#: views/index_template_views.py:95
+#: views/index_template_views.py:114
 msgid "There are no index templates."
 msgstr "Il n'y a pas de modèles d'index."
 
-#: views/index_template_views.py:124
+#: views/index_template_views.py:145
 #, python-format
 msgid "Delete the index: %s?"
 msgstr "Supprimer l'index : %s?"
 
-#: views/index_template_views.py:136
+#: views/index_template_views.py:157
 msgid "Available document types"
 msgstr "Types de document disponibles"
 
-#: views/index_template_views.py:137
+#: views/index_template_views.py:158
 msgid "Document types linked"
 msgstr "Types de documents liés"
 
-#: views/index_template_views.py:147
+#: views/index_template_views.py:169
 msgid ""
 "Only the documents of the types selected will be shown in the index when "
 "built. Only the events of the documents of the types select will trigger "
@@ -455,46 +485,66 @@ msgstr ""
 " de la construction. Seuls les événements des documents des types "
 "sélectionnés déclencheront des mises à jour dans l'index."
 
-#: views/index_template_views.py:151
+#: views/index_template_views.py:173
 #, python-format
 msgid "Document types linked to index: %s"
 msgstr "Types de documents liés à l'index : %s"
 
-#: views/index_template_views.py:167
+#: views/index_template_views.py:190
 #, python-format
 msgid "Edit index: %s"
 msgstr "Modifier l'index : %s"
 
-#: views/index_template_views.py:186
+#: views/index_template_views.py:234
+#, python-format
+msgid "Error updating index template event trigger; %s"
+msgstr ""
+
+#: views/index_template_views.py:243
+msgid "Index template event triggers updated successfully."
+msgstr ""
+
+#: views/index_template_views.py:253
+msgid ""
+"Triggers are document events that cause instances of this index template to "
+"be updated."
+msgstr ""
+
+#: views/index_template_views.py:258
+#, python-format
+msgid "Index template event triggers for: %s"
+msgstr ""
+
+#: views/index_template_views.py:303
 #, python-format
 msgid "Tree template nodes for index: %s"
 msgstr "Nœuds de modèles d'arborescences pour l'index : %s"
 
-#: views/index_template_views.py:211
+#: views/index_template_views.py:329
 #, python-format
 msgid "Create child node of: %s"
 msgstr "Créer un nœud enfant de : %s"
 
-#: views/index_template_views.py:237
+#: views/index_template_views.py:356
 #, python-format
 msgid "Delete the index template node: %s?"
 msgstr "Supprimer le nœud du modèle d'index : %s?"
 
-#: views/index_template_views.py:261
+#: views/index_template_views.py:381
 #, python-format
 msgid "Edit the index template node: %s"
 msgstr ""
 
-#: views/index_template_views.py:281
+#: views/index_template_views.py:402
 #, python-format
 msgid "Rebuild index template: %s"
 msgstr "Reconstruction du modèle d'index: %s"
 
-#: views/index_template_views.py:303
+#: views/index_template_views.py:424
 msgid "Index template queued for rebuild."
 msgstr "Modèle d'index mis en file d'attente pour la reconstruction."
 
-#: views/index_template_views.py:326
+#: views/index_template_views.py:448
 #, python-format
 msgid "%(count)d index template queued for rebuild."
 msgid_plural "%(count)d index templates queued for rebuild."
@@ -502,7 +552,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views/index_template_views.py:359
+#: views/index_template_views.py:482
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
@@ -510,6 +560,6 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views/index_template_views.py:372
+#: views/index_template_views.py:495
 msgid "Index templates for which their instances will be deleted."
 msgstr "Modèles d'index pour lesquels leurs instances seront supprimées."

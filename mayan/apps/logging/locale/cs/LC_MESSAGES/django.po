@@ -4,14 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
+# Jiri Fait <fait@orkasolutions.cz>, 2022
 # Michal Švábík <snadno@lehce.cz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -20,67 +21,79 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:20 permissions.py:5 settings.py:10
+#: apps.py:23 events.py:5 permissions.py:5 settings.py:10
 msgid "Logging"
 msgstr "Protokolování"
 
-#: links.py:11 views.py:27
+#: events.py:8
+msgid "Error log deleted"
+msgstr ""
+
+#: links.py:15 views.py:36
 msgid "Global error log"
 msgstr ""
 
-#: links.py:17
+#: links.py:26
+msgid "Delete"
+msgstr "Odstranit"
+
+#: links.py:31
 msgid "Errors"
 msgstr "Chyby"
 
-#: links.py:23
+#: links.py:37
 msgid "Clear errors"
 msgstr "Vymazat chyby"
 
-#: models.py:11 models.py:39
+#: models.py:16 models.py:44
 msgid "Internal name"
 msgstr "Vnitřní název"
 
-#: models.py:16 models.py:36
+#: models.py:21 models.py:41
 msgid "Error log"
 msgstr "Protokol chyb"
 
-#: models.py:17
+#: models.py:22
 msgid "Error logs"
 msgstr "Protokoly chyb"
 
-#: models.py:26
+#: models.py:31
 msgid "App label"
 msgstr "Štítek aplikace"
 
-#: models.py:53 models.py:63
+#: models.py:58 models.py:68
 msgid "Error log partition"
 msgstr "Oddíl protokolu chyb"
 
-#: models.py:54
+#: models.py:59
 msgid "Error log partitions"
 msgstr "Chybové logické oddíly"
 
-#: models.py:66
+#: models.py:71
 msgid "Date and time"
 msgstr "Datum a čas"
 
-#: models.py:68
+#: models.py:73
 msgid "Text"
 msgstr "Text"
 
-#: models.py:73
+#: models.py:80
 msgid "Error log partition entry"
 msgstr "Chyba záznamu logického oddílu"
 
-#: models.py:74
+#: models.py:81
 msgid "Error log partition entries"
 msgstr "Chyba záznamu oddílu oddílu"
 
-#: models.py:82
+#: models.py:97
 msgid "Object"
 msgstr "Objekt"
 
 #: permissions.py:8
+msgid "Delete error log"
+msgstr ""
+
+#: permissions.py:11
 msgid "View error log"
 msgstr "Zobrazit protokol chyb"
 
@@ -103,32 +116,37 @@ msgstr "Úroveň systému protokolování."
 msgid "Path to the logfile that will track errors during production."
 msgstr "Cesta k souboru protokolu, který bude sledovat chyby produkce."
 
-#: views.py:21
+#: views.py:30
 msgid ""
 "This view displays the error log of different objects. An empty list is a "
 "good thing."
 msgstr ""
 
-#: views.py:25 views.py:66
+#: views.py:34 views.py:101
 msgid "There are no error log entries"
 msgstr "V protokolu chyb nejsou žádné záznamy"
 
-#: views.py:40
+#: views.py:50
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr "Vymažte položky protokolu chyb pro: %s"
 
-#: views.py:47
+#: views.py:57
 msgid "Object error log cleared successfully"
 msgstr "Protokol chyb objektu byl úspěšně vymazán"
 
-#: views.py:62
+#: views.py:74
+#, python-format
+msgid "Delete error log entry: %s"
+msgstr ""
+
+#: views.py:97
 msgid ""
 "This view displays the error log of an object. An empty list is a good "
 "thing."
 msgstr ""
 
-#: views.py:69
+#: views.py:104
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "Položky protokolu chyb pro: %s"

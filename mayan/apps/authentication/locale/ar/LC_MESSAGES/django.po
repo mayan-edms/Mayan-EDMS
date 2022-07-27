@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
+# Marwan Rahhal <Marwanr@sssit.net>, 2022
 # Roberto Rosario, 2022
 # Mohammed ALDOUB <voulnet@gmail.com>, 2022
-# Marwan Rahhal <Marwanr@sssit.net>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
+"Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,7 +66,7 @@ msgstr "خروج"
 msgid "Change password"
 msgstr "تغير كلمة المرور"
 
-#: links.py:45 views/impersonation_views.py:50
+#: links.py:45 views/impersonation_views.py:52
 msgid "Impersonate user"
 msgstr "تفويض المستخدم"
 
@@ -151,38 +151,38 @@ msgstr "صفحة تسجيل الدخول الى النظام"
 msgid "Password reset email sent!"
 msgstr "تم اعادة تعيني كلمة المرور ! تم ارسال الايميل "
 
-#: views/authentication_views.py:153
+#: views/authentication_views.py:155
 msgid "Next"
 msgstr "Next"
 
-#: views/authentication_views.py:159
+#: views/authentication_views.py:161
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr "الخطوة %(step)d من %(total_steps)d: %(step_label)s"
 
-#: views/authentication_views.py:221
+#: views/authentication_views.py:223
 msgid "Your password has been successfully changed."
 msgstr "تم تغيير كلمة المرور الخاصة بك بنجاح."
 
-#: views/authentication_views.py:228
+#: views/authentication_views.py:230
 msgid "Current user password change"
 msgstr "تغيير كلمة السر للمستخدم الحالي"
 
-#: views/authentication_views.py:236
+#: views/authentication_views.py:239
 msgid "Changing the password is not allowed for this account."
 msgstr "لا يمكن تغير كلمة المرور للمستخدم"
 
-#: views/authentication_views.py:308
+#: views/authentication_views.py:311
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "تم تغير كلمة المرور بانجاز %(count)d "
 
-#: views/authentication_views.py:311
+#: views/authentication_views.py:314
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "تم تغير كلمة المرور بانجاز %(count)d "
 
-#: views/authentication_views.py:319
+#: views/authentication_views.py:323
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
@@ -192,22 +192,22 @@ msgstr[3] ""
 msgstr[4] ""
 msgstr[5] ""
 
-#: views/authentication_views.py:330
+#: views/authentication_views.py:334
 #, python-format
 msgid "Change password for user: %s"
 msgstr "تغير كلمة المرور للمستخدم : %s"
 
-#: views/authentication_views.py:352
+#: views/authentication_views.py:356
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "تم إعادة تعين كلمة المرور : %s."
 
-#: views/authentication_views.py:358
+#: views/authentication_views.py:362
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "خطأ أثناء إعادة تعيين كلمة المرور للمستخدم \"%(user)s\": %(error)s"
 
-#: views/impersonation_views.py:78
+#: views/impersonation_views.py:81
 #, python-format
 msgid "Impersonate user: %s"
 msgstr ""

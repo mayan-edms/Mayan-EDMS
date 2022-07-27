@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:33+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:18 links.py:9 views.py:11
+#: apps.py:18 links.py:9 views.py:12
 msgid "Dashboards"
 msgstr "Контролни табла"
 
@@ -45,6 +45,6 @@ msgstr "Подробности"
 msgid "View details"
 msgstr "Разгледайте подробности"
 
-#: views.py:27
+#: views.py:30
 msgid "Dashboard detail"
 msgstr "Детайли на таблото"

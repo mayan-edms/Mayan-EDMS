@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -21,17 +21,17 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27 links.py:34 permissions.py:5 queues.py:7
+#: apps.py:30 links.py:35 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "Статистика"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:36
+#: apps.py:39
 msgid "Schedule"
 msgstr "План"
 
-#: apps.py:42
+#: apps.py:45
 msgid "Last update"
 msgstr "Последна актуализация"
 
@@ -39,19 +39,19 @@ msgstr "Последна актуализация"
 msgid "Never"
 msgstr "Никога"
 
-#: links.py:14
+#: links.py:15
 msgid "Queue"
 msgstr "Опашка"
 
-#: links.py:19
+#: links.py:20
 msgid "View"
 msgstr "Изглед"
 
-#: links.py:24
+#: links.py:25
 msgid "Namespace details"
 msgstr "Подробности за именното пространство"
 
-#: links.py:29
+#: links.py:30
 msgid "Namespace list"
 msgstr "Списък на именните пространства"
 
@@ -94,32 +94,32 @@ msgstr "Няма данни."
 msgid "Last update: %(datetime)s"
 msgstr "Последна актуализация: %(datetime)s"
 
-#: views.py:17
+#: views.py:22
 msgid "Statistics namespaces"
 msgstr "Именни пространства за статистика"
 
-#: views.py:33
+#: views.py:40
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "Подробности за именното пространство за: %s"
 
-#: views.py:55
+#: views.py:63
 #, python-format
 msgid "Results for: %s"
 msgstr "Резултати за: %s"
 
-#: views.py:62 views.py:88
+#: views.py:70 views.py:97
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "Статистиката &quot;%s&quot; не е намерена."
 
-#: views.py:80
+#: views.py:89
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr ""
 "Поставете на опашка статистиката &quot;%s&quot; за да бъде актуализирана?"
 
-#: views.py:94
+#: views.py:103
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr ""

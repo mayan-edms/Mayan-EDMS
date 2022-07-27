@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
 "MIME-Version: 1.0\n"
@@ -20,21 +20,17 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:53 events.py:6 permissions.py:6 settings.py:10
+#: apps.py:52 events.py:6 permissions.py:6 settings.py:10
 msgid "Document parsing"
 msgstr "Gramatička analiza dokumenta"
 
-#: apps.py:112
+#: apps.py:108
 msgid "A generator returning the document file's pages parsed content."
 msgstr ""
 
-#: apps.py:113 links.py:23 links.py:46 models.py:24 search.py:10
+#: apps.py:109 links.py:26 links.py:49 models.py:23 search.py:11
 msgid "Content"
 msgstr "Sadržaj"
-
-#: apps.py:142 models.py:74
-msgid "Result"
-msgstr "Rezultat"
 
 #: dependencies.py:9
 msgid ""
@@ -63,84 +59,64 @@ msgstr "Strana %(page_number)d"
 msgid "Contents"
 msgstr "Sadržaj"
 
-#: links.py:29 links.py:34
+#: links.py:32 links.py:37
 msgid "Delete parsed content"
 msgstr ""
 
-#: links.py:40
+#: links.py:43
 msgid "Download content"
 msgstr "Preuzmi sadržaj"
 
-#: links.py:52 links.py:91 views.py:236
-msgid "Parsing errors"
-msgstr "Greške u anlazi"
-
-#: links.py:57 links.py:64
+#: links.py:54 links.py:61
 msgid "Submit for parsing"
 msgstr "Dodaj za analizu"
 
-#: links.py:74
+#: links.py:71
 msgid "Setup parsing"
 msgstr "Podešavanja analize"
 
-#: links.py:83
+#: links.py:80
 msgid "Parse documents per type"
 msgstr "Analiziraj dokumente po tipu"
 
-#: models.py:18
+#: models.py:17
 msgid "Document file page"
 msgstr ""
 
-#: models.py:22
+#: models.py:21
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr ""
 
-#: models.py:30
+#: models.py:29
 msgid "Document file page content"
 msgstr ""
 
-#: models.py:31
+#: models.py:30
 msgid "Document file page contents"
 msgstr ""
 
-#: models.py:43
+#: models.py:42
 msgid "Document type"
 msgstr "Tip dokumenta"
 
-#: models.py:47
+#: models.py:46
 msgid "Automatically queue newly created documents for parsing."
 msgstr "Automatski dovodi u red novopostavljene dokumente za analizu."
 
-#: models.py:58
+#: models.py:57
 msgid "Document type settings"
 msgstr "Podešavanja tipa dokumenta"
 
-#: models.py:59
+#: models.py:58
 msgid "Document types settings"
 msgstr "Podešavanja tipova dokumenata"
 
-#: models.py:69
-msgid "Document file"
-msgstr ""
-
-#: models.py:72
-msgid "Date time submitted"
-msgstr "Datum podnošenja vremena"
-
-#: models.py:78
-msgid "Document file parse error"
-msgstr ""
-
-#: models.py:79
-msgid "Document file parse errors"
-msgstr ""
-
-#: parsers.py:93
+#: parsers.py:94
 #, python-format
 msgid "Exception parsing page; %s"
 msgstr "Stranica za izmenu izuzetaka; %s"
 
-#: parsers.py:119
+#: parsers.py:120
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
 msgstr "Ne mogu pronaći izvršnu datoteku pdftotekt na: %s"
@@ -165,7 +141,7 @@ msgstr "Gramatička analiza"
 msgid "Document file parsing"
 msgstr ""
 
-#: search.py:16 search.py:23
+#: search.py:17 search.py:24
 msgid "Document file content"
 msgstr ""
 
@@ -182,67 +158,62 @@ msgid ""
 msgstr ""
 "Staza do popplerovog programa pdftotext za vađenje teksta iz PDF datoteka."
 
-#: views.py:29
+#: views.py:37
 #, python-format
 msgid "Error deleting document version content \"%(instance)s\"; %(exception)s"
 msgstr ""
 
-#: views.py:35
+#: views.py:43
 #, python-format
 msgid "Content of \"%(object)s\" deleted successfully."
 msgstr ""
 
-#: views.py:38
+#: views.py:46
 #, python-format
 msgid "Content of %(count)d document version deleted successfully."
 msgstr ""
 
-#: views.py:41
+#: views.py:49
 #, python-format
 msgid "Content of %(count)d document versions deleted successfully."
 msgstr ""
 
-#: views.py:43
+#: views.py:51
 #, python-format
 msgid "Delete the content of: %(object)s."
 msgstr ""
 
-#: views.py:45
+#: views.py:53
 #, python-format
 msgid "Delete the content of the %(count)d selected document version."
 msgstr ""
 
-#: views.py:48
+#: views.py:56
 #, python-format
 msgid "Delete the content of the %(count)d selected document versions."
 msgstr ""
 
-#: views.py:86
+#: views.py:97
 #, python-format
 msgid "Content for document file: %s"
 msgstr ""
 
-#: views.py:107
+#: views.py:119
 #, python-format
 msgid "Content for document file page: %s"
 msgstr ""
 
-#: views.py:129
-#, python-format
-msgid "Parsing errors for document file: %s"
-msgstr ""
-
-#: views.py:142
+#: views.py:134
 #, python-format
 msgid "%(count)d document file added to the parsing queue"
 msgstr ""
 
-#: views.py:145
+#: views.py:137
 #, python-format
 msgid "%(count)d documents files added to the parsing queue"
 msgstr ""
 
-#: views.py:153
+#: views.py:146
 #, python-format
 msgid "Submit %(count)d document file to the parsing queue?"
 msgid_plural "Submit %(count)d documents files to the parsing queue?"
@@ -250,21 +221,21 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views.py:166
+#: views.py:159
 #, python-format
 msgid "Submit document file \"%s\" to the parsing queue"
 msgstr ""
 
-#: views.py:193
+#: views.py:187
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr ""
 
-#: views.py:203
+#: views.py:197
 msgid "Submit all documents of a type for parsing"
 msgstr "Pošaljite sve dokumente za analizu"
 
-#: views.py:224
+#: views.py:219
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr ""

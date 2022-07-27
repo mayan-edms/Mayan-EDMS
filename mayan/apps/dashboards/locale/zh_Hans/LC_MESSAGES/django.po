@@ -5,16 +5,16 @@
 # 
 # Translators:
 # xisafe <root@xisafe.com>, 2022
-# Genlin Jiao <jiaogl@pkusz.edu.cn>, 2022
 # Roberto Rosario, 2022
+# Genlin Jiao <jiaogl@pkusz.edu.cn>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:33+0000\n"
+"Last-Translator: Genlin Jiao <jiaogl@pkusz.edu.cn>, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:18 links.py:9 views.py:11
+#: apps.py:18 links.py:9 views.py:12
 msgid "Dashboards"
 msgstr "仪表盘"
 
@@ -47,6 +47,6 @@ msgstr "细节"
 msgid "View details"
 msgstr "查看详情"
 
-#: views.py:27
+#: views.py:30
 msgid "Dashboard detail"
 msgstr ""

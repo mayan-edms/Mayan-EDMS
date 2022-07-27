@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:33+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
@@ -20,9 +20,9 @@ msgstr ""
 "Language: es_PR\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: apps.py:18 links.py:9 views.py:11
+#: apps.py:18 links.py:9 views.py:12
 msgid "Dashboards"
-msgstr "Tablero"
+msgstr "Tableros"
 
 #: apps.py:25
 msgid "Widgets"
@@ -38,13 +38,13 @@ msgstr "Tablero del administrador"
 
 #: links.py:14
 msgid "Details"
-msgstr "Ver detalles"
+msgstr "Detalles"
 
 #: templates/dashboards/numeric_widget.html:27
 #: templates/dashboards/widget_list.html:47
 msgid "View details"
 msgstr "Ver detalles"
 
-#: views.py:27
+#: views.py:30
 msgid "Dashboard detail"
-msgstr "Tablero"
+msgstr "Detalles de tablero"

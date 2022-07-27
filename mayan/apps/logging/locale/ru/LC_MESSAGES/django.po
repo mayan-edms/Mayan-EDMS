@@ -4,19 +4,20 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
+# Panasoft, 2022
 # mizhgan <i@mizhgan.ru>, 2022
-# lilo.panic, 2022
-# Sergey Glita <gsv70@mail.ru>, 2022
-# Alex Chigrin <chalex84@mail.ru>, 2022
 # Ilya Pavlov <spirkaa@gmail.com>, 2022
+# Alex Chigrin <chalex84@mail.ru>, 2022
+# Sergey Glita <gsv70@mail.ru>, 2022
+# lilo.panic, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
+"Last-Translator: lilo.panic, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,67 +25,79 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:20 permissions.py:5 settings.py:10
+#: apps.py:23 events.py:5 permissions.py:5 settings.py:10
 msgid "Logging"
 msgstr "Логирование"
 
-#: links.py:11 views.py:27
+#: events.py:8
+msgid "Error log deleted"
+msgstr ""
+
+#: links.py:15 views.py:36
 msgid "Global error log"
 msgstr ""
 
-#: links.py:17
+#: links.py:26
+msgid "Delete"
+msgstr "Удалить"
+
+#: links.py:31
 msgid "Errors"
 msgstr "Ошибки"
 
-#: links.py:23
+#: links.py:37
 msgid "Clear errors"
 msgstr "Очистить ошибки"
 
-#: models.py:11 models.py:39
+#: models.py:16 models.py:44
 msgid "Internal name"
 msgstr "Внутреннее имя"
 
-#: models.py:16 models.py:36
+#: models.py:21 models.py:41
 msgid "Error log"
 msgstr "Журнал ошибок"
 
-#: models.py:17
+#: models.py:22
 msgid "Error logs"
 msgstr "Журналы ошибок"
 
-#: models.py:26
+#: models.py:31
 msgid "App label"
 msgstr "Заголовок приложения"
 
-#: models.py:53 models.py:63
+#: models.py:58 models.py:68
 msgid "Error log partition"
 msgstr "Раздел журнала ошибок"
 
-#: models.py:54
+#: models.py:59
 msgid "Error log partitions"
 msgstr "Разделы журнала ошибок"
 
-#: models.py:66
+#: models.py:71
 msgid "Date and time"
 msgstr "Дата и время"
 
-#: models.py:68
+#: models.py:73
 msgid "Text"
 msgstr "Текст"
 
-#: models.py:73
+#: models.py:80
 msgid "Error log partition entry"
 msgstr "Запись раздела журнала ошибок"
 
-#: models.py:74
+#: models.py:81
 msgid "Error log partition entries"
 msgstr "Записи раздела журнала ошибок"
 
-#: models.py:82
+#: models.py:97
 msgid "Object"
 msgstr "Объект"
 
 #: permissions.py:8
+msgid "Delete error log"
+msgstr ""
+
+#: permissions.py:11
 msgid "View error log"
 msgstr "Просмотр журнала ошибок"
 
@@ -110,26 +123,31 @@ msgid "Path to the logfile that will track errors during production."
 msgstr ""
 "Путь к файлу журнала, который будет отслеживать ошибки во время работы."
 
-#: views.py:21
+#: views.py:30
 msgid ""
 "This view displays the error log of different objects. An empty list is a "
 "good thing."
 msgstr ""
 
-#: views.py:25 views.py:66
+#: views.py:34 views.py:101
 msgid "There are no error log entries"
 msgstr "Нет записей в журнале ошибок"
 
-#: views.py:40
+#: views.py:50
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr "Очистить записи журнала ошибок для: %s"
 
-#: views.py:47
+#: views.py:57
 msgid "Object error log cleared successfully"
 msgstr "Журнал ошибок объекта очищен"
 
-#: views.py:62
+#: views.py:74
+#, python-format
+msgid "Delete error log entry: %s"
+msgstr ""
+
+#: views.py:97
 msgid ""
 "This view displays the error log of an object. An empty list is a good "
 "thing."
@@ -137,7 +155,7 @@ msgstr ""
 "Здесь отображаются записи журнала ошибок для объекта. Пустой список - это "
 "хорошо."
 
-#: views.py:69
+#: views.py:104
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "Записи журнала ошибок для: %s"

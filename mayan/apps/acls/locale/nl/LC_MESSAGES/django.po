@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:11+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
 "Last-Translator: bwakkie <bwakkie@gmail.com>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:26 classes.py:180 links.py:27
+#: apps.py:26 classes.py:182 links.py:27
 msgid "ACLs"
 msgstr "Authorisatielijsten"
 
@@ -54,7 +54,7 @@ msgstr "Toegangscontrolelijst verwijderd"
 msgid "ACL edited"
 msgstr "Authorisatie Controle Lijst bewerkt"
 
-#: forms.py:13 models.py:51 views.py:67
+#: forms.py:13 models.py:51 views.py:71
 msgid "Role"
 msgstr "Gebruikersrol"
 
@@ -66,7 +66,7 @@ msgstr "Nieuwe authorisatielijst"
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: links.py:32 models.py:45 workflow_actions.py:46 workflow_actions.py:161
+#: links.py:32 models.py:45 workflow_actions.py:46 workflow_actions.py:159
 msgid "Permissions"
 msgstr "Permissies"
 
@@ -121,7 +121,7 @@ msgstr ""
 "Primaire sleutel van de machtiging om te verwijderen van de "
 "toegangscontrolelijst."
 
-#: views.py:40
+#: views.py:44
 #, python-format
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
@@ -130,21 +130,21 @@ msgstr ""
 "Een authorisatielijst voor \"%(object)s\" die gebruik maakt van rol "
 "\"%(role)s\" bestaat reeds. Bewerk de bestaande authorisatielijst. "
 
-#: views.py:53
+#: views.py:57
 #, python-format
 msgid "New access control lists for: %s"
 msgstr "Nieuwe authorisatielijsten voor: %s"
 
-#: views.py:96
+#: views.py:101
 #, python-format
 msgid "Delete ACL: %s"
 msgstr "Verwijder authorisatielijst: %s"
 
-#: views.py:141
+#: views.py:147
 msgid "There are no ACLs for this object"
 msgstr "Er zijn geen authorisatielijsten voor dit object"
 
-#: views.py:144 views.py:261
+#: views.py:150 views.py:269
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
@@ -154,25 +154,25 @@ msgstr ""
 "het systeem te beheren. Authorisatielijsten kennen een permissie toe aan een"
 " rol maar enkel voor een bepaald object of verzamelingen van objecten."
 
-#: views.py:151
+#: views.py:157
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Authorisatielijsten voor: %s"
 
-#: views.py:165
+#: views.py:171
 msgid "Granted permissions"
 msgstr "Toegekende permissies"
 
-#: views.py:166
+#: views.py:172
 msgid "Available permissions"
 msgstr "Beschikbare permissies"
 
-#: views.py:210
+#: views.py:217
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "Rol \"%(role)s\" permissies voor \"%(object)s\"."
 
-#: views.py:219
+#: views.py:226
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -184,11 +184,11 @@ msgstr ""
 "Geërfde rechten moeten verwijderd worden vanaf het hogere niveau of via de "
 "gebruikersrol via het Instellingen menu. "
 
-#: views.py:258
+#: views.py:266
 msgid "There are no ACLs"
 msgstr "Er zijn geen toegangscontrolelijsten"
 
-#: views.py:267
+#: views.py:275
 msgid "Global access control lists"
 msgstr "Globale toegangscontrolelijsten"
 
@@ -209,15 +209,15 @@ msgid ""
 "Numeric identifier of the object for which the access will be modified."
 msgstr "Nummer van het object waarvoor de toegang wordt gewijzigd."
 
-#: workflow_actions.py:40 workflow_actions.py:155
+#: workflow_actions.py:40 workflow_actions.py:153
 msgid "Roles"
 msgstr "gebruikersrollen"
 
-#: workflow_actions.py:42 workflow_actions.py:157
+#: workflow_actions.py:42 workflow_actions.py:155
 msgid "Roles whose access will be modified."
 msgstr "Gebruikersrol waarvoor de toegang wordt gewijzigd."
 
-#: workflow_actions.py:49 workflow_actions.py:164
+#: workflow_actions.py:49 workflow_actions.py:162
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr ""
@@ -228,14 +228,14 @@ msgstr ""
 msgid "Grant object access"
 msgstr "Toegang tot object toekennen"
 
-#: workflow_actions.py:140
+#: workflow_actions.py:138
 msgid "Revoke object access"
 msgstr "Toegang tot object intrekken"
 
-#: workflow_actions.py:172
+#: workflow_actions.py:170
 msgid "Grant document access"
 msgstr "Toegang tot document toekennen"
 
-#: workflow_actions.py:211
+#: workflow_actions.py:209
 msgid "Revoke document access"
 msgstr "Toegang tot document intrekken"

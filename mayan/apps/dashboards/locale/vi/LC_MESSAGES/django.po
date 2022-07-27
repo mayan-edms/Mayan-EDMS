@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:33+0000\n"
 "Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2022\n"
 "Language-Team: Vietnamese (https://www.transifex.com/rosarior/teams/13584/vi/)\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:18 links.py:9 views.py:11
+#: apps.py:18 links.py:9 views.py:12
 msgid "Dashboards"
 msgstr ""
 
@@ -45,6 +45,6 @@ msgstr "Chi tiết"
 msgid "View details"
 msgstr ""
 
-#: views.py:27
+#: views.py:30
 msgid "Dashboard detail"
 msgstr ""

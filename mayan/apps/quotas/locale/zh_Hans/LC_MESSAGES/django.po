@@ -5,16 +5,16 @@
 # 
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2022
-# yan songwei <yansw@vip.163.com>, 2022
 # Roberto Rosario, 2022
+# yan songwei <yansw@vip.163.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:37+0000\n"
+"Last-Translator: yan songwei <yansw@vip.163.com>, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,8 +22,8 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:33 events.py:6 links.py:34 models.py:37 permissions.py:5
-#: views.py:136
+#: apps.py:33 events.py:6 links.py:34 models.py:38 permissions.py:5
+#: views.py:144
 msgid "Quotas"
 msgstr "配额"
 
@@ -47,7 +47,7 @@ msgstr "配额已创建"
 msgid "Quota edited"
 msgstr "配额已编辑"
 
-#: forms.py:15 models.py:62
+#: forms.py:15 models.py:63
 msgid "Backend"
 msgstr "后端"
 
@@ -154,19 +154,19 @@ msgstr ""
 msgid "Enabled"
 msgstr "启用"
 
-#: models.py:36
+#: models.py:37
 msgid "Quota"
 msgstr "配额"
 
-#: models.py:61
+#: models.py:62
 msgid "Driver used for this quota entry."
 msgstr "用于此配额条目的驱动程序。"
 
-#: models.py:66
+#: models.py:67
 msgid "Arguments"
 msgstr "参数"
 
-#: models.py:70
+#: models.py:71
 msgid "Usage"
 msgstr "用法"
 
@@ -224,29 +224,29 @@ msgstr ""
 msgid "Document size quota exceeded."
 msgstr ""
 
-#: views.py:24
+#: views.py:27
 msgid "New quota backend selection"
 msgstr ""
 
-#: views.py:54
+#: views.py:59
 #, python-format
 msgid "Create a \"%s\" quota"
 msgstr ""
 
-#: views.py:86
+#: views.py:92
 #, python-format
 msgid "Delete quota: %s"
 msgstr "删除配额：%s"
 
-#: views.py:101
+#: views.py:108
 #, python-format
 msgid "Edit quota: %s"
 msgstr "编辑配额：%s"
 
-#: views.py:133
+#: views.py:141
 msgid "Quotas restrict usage of system resources. "
 msgstr "配额限制了系统资源的使用。"
 
-#: views.py:135
+#: views.py:143
 msgid "No quotas available"
 msgstr "没有配额"

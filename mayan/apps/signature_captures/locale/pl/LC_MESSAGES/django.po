@@ -1,0 +1,248 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2022
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022\n"
+"Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: apps.py:41 events.py:6 links.py:34 models.py:83 permissions.py:6
+#: settings.py:13
+msgid "Signature captures"
+msgstr ""
+
+#: events.py:11
+msgid "Signature capture created"
+msgstr ""
+
+#: events.py:15
+msgid "Signature capture deleted"
+msgstr ""
+
+#: events.py:19
+msgid "Signature capture edited"
+msgstr ""
+
+#: forms.py:27
+msgid "Asset preview image"
+msgstr ""
+
+#: forms.py:27
+msgid "Preview"
+msgstr "Podgląd"
+
+#: links.py:17
+msgid "Create new signature capture"
+msgstr ""
+
+#: links.py:23
+msgid "Delete"
+msgstr "Usuń"
+
+#: links.py:28
+msgid "Edit"
+msgstr "Edytuj"
+
+#: models.py:39
+msgid "Document"
+msgstr "Dokument"
+
+#: models.py:43
+msgid "Data representing the handwritten signature."
+msgstr ""
+
+#: models.py:44
+msgid "Signature capture data"
+msgstr ""
+
+#: models.py:48
+msgid "Vector representation of the handwritten signature."
+msgstr ""
+
+#: models.py:49
+msgid "SVG signature capture data"
+msgstr ""
+
+#: models.py:52
+msgid "Print version of the captured signature."
+msgstr ""
+
+#: models.py:53
+msgid "Text"
+msgstr "Tekst"
+
+#: models.py:57
+msgid "User"
+msgstr "Użytkownik"
+
+#: models.py:61
+msgid "Date and time created"
+msgstr ""
+
+#: models.py:65
+msgid "Date and time edited"
+msgstr ""
+
+#: models.py:69
+msgid ""
+"This value will be used when referencing this signature capture in "
+"relationship to the document. Can only contain letters, numbers, and "
+"underscores."
+msgstr ""
+
+#: models.py:73 transformations.py:40
+msgid "Internal name"
+msgstr "Nazwa wewnętrzna"
+
+#: models.py:82
+msgid "Signature capture"
+msgstr ""
+
+#: models.py:167
+msgid "Creation date and time"
+msgstr ""
+
+#: permissions.py:10
+msgid "Create signature captures"
+msgstr ""
+
+#: permissions.py:14
+msgid "Delete signature captures"
+msgstr ""
+
+#: permissions.py:18
+msgid "Edit signature captures"
+msgstr ""
+
+#: permissions.py:22
+msgid "View signature captures"
+msgstr ""
+
+#: search.py:12
+msgid "Signature capture text"
+msgstr ""
+
+#: search.py:16
+msgid "Signature capture user first name"
+msgstr ""
+
+#: search.py:20
+msgid "Signature capture user last name"
+msgstr ""
+
+#: search.py:24
+msgid "Signature capture user username"
+msgstr ""
+
+#: search.py:35
+msgid "Document type label"
+msgstr "Etykieta typu dokumentu"
+
+#: search.py:38
+msgid "Document label"
+msgstr "Etykieta dokumentu"
+
+#: search.py:42
+msgid "User first name"
+msgstr ""
+
+#: search.py:45
+msgid "User last name"
+msgstr ""
+
+#: search.py:48
+msgid "User username"
+msgstr ""
+
+#: settings.py:21
+msgid ""
+"The threshold at which the "
+"SIGNATURE_CAPTURES_SIGNATURE_CAPTURE_CACHE_STORAGE_BACKEND will start "
+"deleting the oldest signature capture cache files. Specify the size in "
+"bytes."
+msgstr ""
+
+#: settings.py:29
+msgid ""
+"Path to the Storage subclass to use when storing the cached signature "
+"capture files."
+msgstr ""
+
+#: settings.py:37
+msgid ""
+"Arguments to pass to the "
+"SIGNATURE_CAPTURES_SIGNATURE_CAPTURE_CACHE_STORAGE_BACKEND."
+msgstr ""
+
+#: storages.py:15
+msgid ""
+"Unable to initialize the converter signature capture cachestorage. Check the"
+" settings {} and {} for formatting errors."
+msgstr ""
+
+#: storages.py:21
+msgid "Signature captures cache"
+msgstr ""
+
+#: templates/signature_captures/widget_signature_capture.html:64
+msgid "Sign above"
+msgstr ""
+
+#: transformations.py:18
+msgid "Paste a signature capture (percent coordinates)"
+msgstr ""
+
+#: transformations.py:39
+msgid "Signature capture internal name"
+msgstr ""
+
+#: views.py:44
+#, python-format
+msgid "Create signature capture for document: %s"
+msgstr ""
+
+#: views.py:78
+#, python-format
+msgid "Delete signature capture: %s"
+msgstr ""
+
+#: views.py:100
+#, python-format
+msgid "Details of: %s"
+msgstr ""
+
+#: views.py:116
+#, python-format
+msgid "Edit document signature capture: %s"
+msgstr ""
+
+#: views.py:144
+msgid ""
+"Signature captures are electronic versions of a persons's handwritten "
+"signature."
+msgstr ""
+
+#: views.py:147
+msgid "Document has no signature captures"
+msgstr ""
+
+#: views.py:150
+#, python-format
+msgid "Signature captures for document: %s"
+msgstr ""

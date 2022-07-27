@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:11+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2022\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -48,27 +48,27 @@ msgstr "FontAwesome"
 msgid "jQuery"
 msgstr "jQuery"
 
-#: dependencies.py:41
+#: dependencies.py:42
 msgid "JQuery Form"
 msgstr "JQuery veidlapa"
 
-#: dependencies.py:45
+#: dependencies.py:46
 msgid "jQuery Lazy Load"
 msgstr "jQuery Lazy Load"
 
-#: dependencies.py:49
+#: dependencies.py:50
 msgid "JQuery Match Height"
 msgstr "JQuery Match Height"
 
-#: dependencies.py:53
+#: dependencies.py:54
 msgid "Select 2"
 msgstr "Select 2"
 
-#: dependencies.py:57
+#: dependencies.py:58
 msgid "Toastr"
 msgstr "Toastr"
 
-#: dependencies.py:60
+#: dependencies.py:62
 msgid "URI.js"
 msgstr "URI.js"
 
@@ -92,7 +92,7 @@ msgstr "Tēmas iestatījumi"
 msgid "Edit theme settings"
 msgstr "Rediģēt tēmas iestatījumus"
 
-#: links.py:31 views.py:27
+#: links.py:31 views.py:31
 msgid "Create new theme"
 msgstr "Izveidot jaunu tēmu"
 
@@ -104,7 +104,7 @@ msgstr "Dzēst"
 msgid "Edit"
 msgstr "Rediģēt"
 
-#: links.py:44 links.py:49 models.py:32 views.py:91
+#: links.py:44 links.py:49 models.py:32 views.py:99
 msgid "Themes"
 msgstr "Tēmas"
 
@@ -338,10 +338,10 @@ msgstr "Jā"
 msgid "No"
 msgstr "Nē"
 
-#: templates/appearance/generic_form_instance.html:51
-#: templates/appearance/generic_form_instance.html:57
 #: templates/appearance/generic_form_subtemplate.html:50
 #: templates/appearance/generic_multiform_subtemplate.html:37
+#: templates/appearance/partials/form_field.html:10
+#: templates/appearance/partials/form_field.html:16
 msgid "required"
 msgstr "nepieciešams"
 
@@ -364,11 +364,11 @@ msgstr "Iesniegt"
 msgid "Cancel"
 msgstr "Atcelt"
 
-#: templates/appearance/generic_list_subtemplate.html:34
+#: templates/appearance/generic_list_subtemplate.html:35
 msgid "Identifier"
 msgstr "Identifikators"
 
-#: templates/appearance/generic_list_subtemplate.html:133
+#: templates/appearance/generic_list_subtemplate.html:134
 msgid "Facets"
 msgstr ""
 
@@ -388,7 +388,7 @@ msgstr "Pārslēgt navigāciju"
 msgid "Open main menu"
 msgstr "Atvērt galveno izvēlni"
 
-#: templates/appearance/partials/list_header.html:12
+#: templates/appearance/partials/list_header.html:11
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
@@ -397,32 +397,32 @@ msgstr ""
 "Kopā (%(start)s - %(end)s no %(total)s) (lappuse %(page_number)s no "
 "%(total_pages)s)"
 
-#: templates/appearance/partials/list_header.html:14
-#: templates/appearance/partials/list_header.html:17
+#: templates/appearance/partials/list_header.html:13
+#: templates/appearance/partials/list_header.html:16
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Kopā: %(total)s"
 
-#: templates/appearance/partials/list_toolbar.html:13
+#: templates/appearance/partials/list_toolbar.html:14
 msgid "Select/Deselect all"
 msgstr "Atlasīt / noņemt atlasi visiem"
 
-#: templates/appearance/partials/list_toolbar.html:17
+#: templates/appearance/partials/list_toolbar.html:18
 msgid "Toggle list display mode"
 msgstr "Pārslēgt saraksta skata režīmu"
 
-#: templates/appearance/partials/list_toolbar.html:60
+#: templates/appearance/partials/list_toolbar.html:63
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
 "Atlasiet vienumus, lai aktivizētu lielapjoma darbības. Izmantojiet taustiņu "
 "kombināciju Shift + noklikšķiniet, lai atlasītu daudzus."
 
-#: templates/appearance/partials/list_toolbar.html:65
+#: templates/appearance/partials/list_toolbar.html:68
 msgid "Bulk actions"
 msgstr "Lielapjoma darbības"
 
-#: templates/appearance/partials/list_toolbar.html:67
+#: templates/appearance/partials/list_toolbar.html:70
 msgid "Toggle Dropdown"
 msgstr "Toggle Dropdown"
 
@@ -446,31 +446,31 @@ msgstr "Pārbaudiet tīkla savienojumu un pēc brīža mēģiniet vēlreiz."
 msgid "None"
 msgstr "Nav neviens"
 
-#: views.py:49
+#: views.py:55
 #, python-format
 msgid "Delete theme: %s"
 msgstr "Dzēst tēmu: %s"
 
-#: views.py:65
+#: views.py:72
 #, python-format
 msgid "Edit theme: %s"
 msgstr "Rediģēt tēmu: %s"
 
-#: views.py:85
+#: views.py:93
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
 msgstr "Tēmas ļauj mainīt vizuālo izskatu, neprasot koda izmaiņas."
 
-#: views.py:89
+#: views.py:97
 msgid "There are no themes"
 msgstr "Nav tēmu"
 
-#: views.py:113
+#: views.py:122
 #, python-format
 msgid "Theme settings for user: %s"
 msgstr ""
 
-#: views.py:134
+#: views.py:144
 #, python-format
 msgid "Edit theme settings for user: %s"
 msgstr ""

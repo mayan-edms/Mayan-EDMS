@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:37+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr "Pravice"
 msgid "Group count"
 msgstr ""
 
-#: classes.py:86
+#: classes.py:73
 msgid "Insufficient permissions."
 msgstr ""
 
@@ -44,11 +44,11 @@ msgstr ""
 msgid "Role edited"
 msgstr ""
 
-#: links.py:20 links.py:46 models.py:48 views.py:103
+#: links.py:20 links.py:46 models.py:48 views.py:112
 msgid "Roles"
 msgstr "Vloge"
 
-#: links.py:28 views.py:52
+#: links.py:28 views.py:58
 msgid "Create new role"
 msgstr ""
 
@@ -132,55 +132,55 @@ msgstr ""
 msgid "Primary key of the permission to remove from the role."
 msgstr ""
 
-#: views.py:31
+#: views.py:35
 msgid "Available roles"
 msgstr ""
 
-#: views.py:32
+#: views.py:36
 msgid "Group roles"
 msgstr ""
 
-#: views.py:41
+#: views.py:46
 #, python-format
 msgid "Roles of group: %s"
 msgstr ""
 
-#: views.py:59
+#: views.py:65
 #, python-format
 msgid "Error deleting role \"%(instance)s\"; %(exception)s"
 msgstr ""
 
-#: views.py:64
+#: views.py:70
 #, python-format
 msgid "Role \"%(object)s\" deleted successfully."
 msgstr ""
 
-#: views.py:65
+#: views.py:71
 #, python-format
 msgid "%(count)d role deleted successfully."
 msgstr ""
 
-#: views.py:66
+#: views.py:72
 #, python-format
 msgid "%(count)d roles deleted successfully."
 msgstr ""
 
-#: views.py:67
+#: views.py:73
 #, python-format
 msgid "Delete role: %(object)s."
 msgstr ""
 
-#: views.py:68
+#: views.py:74
 #, python-format
 msgid "Delete the %(count)d selected role."
 msgstr ""
 
-#: views.py:69
+#: views.py:75
 #, python-format
 msgid "Delete the %(count)d selected roles."
 msgstr ""
 
-#: views.py:95
+#: views.py:104
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -188,48 +188,48 @@ msgid ""
 "specific objects which its group members inherit."
 msgstr ""
 
-#: views.py:102
+#: views.py:111
 msgid "There are no roles"
 msgstr ""
 
-#: views.py:115
+#: views.py:124
 msgid "Available groups"
 msgstr ""
 
-#: views.py:116
+#: views.py:125
 msgid "Role groups"
 msgstr ""
 
-#: views.py:125
+#: views.py:135
 #, python-format
 msgid "Groups of role: %s"
 msgstr ""
 
-#: views.py:127
+#: views.py:137
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
 msgstr ""
 
-#: views.py:140
+#: views.py:150
 msgid "Available permissions"
 msgstr "Razpoložljiva dovoljenja"
 
-#: views.py:141
+#: views.py:151
 msgid "Granted permissions"
 msgstr "Dodeljena dovoljenja"
 
-#: views.py:176
+#: views.py:186
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr ""
 
-#: views.py:179
+#: views.py:189
 #, python-format
 msgid "Permissions for role: %s"
 msgstr ""
 
-#: views.py:198
+#: views.py:209
 #, python-format
 msgid "Details of permission: %s"
 msgstr ""

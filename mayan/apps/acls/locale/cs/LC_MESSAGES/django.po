@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
+# Jiri Fait <fait@orkasolutions.cz>, 2022
 # trendspotter <jirka.p@volny.cz>, 2022
 # Michal Švábík <snadno@lehce.cz>, 2022
-# Jiri Fait <fait@orkasolutions.cz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:11+0000\n"
-"Last-Translator: Jiri Fait <fait@orkasolutions.cz>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:26 classes.py:180 links.py:27
+#: apps.py:26 classes.py:182 links.py:27
 msgid "ACLs"
 msgstr "ACLs"
 
@@ -54,7 +54,7 @@ msgstr "ACL smazán"
 msgid "ACL edited"
 msgstr "ACL upraven"
 
-#: forms.py:13 models.py:51 views.py:67
+#: forms.py:13 models.py:51 views.py:71
 msgid "Role"
 msgstr "Role"
 
@@ -66,7 +66,7 @@ msgstr "Nový ACL"
 msgid "Delete"
 msgstr "Odstranit"
 
-#: links.py:32 models.py:45 workflow_actions.py:46 workflow_actions.py:161
+#: links.py:32 models.py:45 workflow_actions.py:46 workflow_actions.py:159
 msgid "Permissions"
 msgstr "Práva"
 
@@ -118,7 +118,7 @@ msgstr "Primární klíč oprávnění přidat do seznamu ACL."
 msgid "Primary key of the permission to remove from the ACL."
 msgstr "Primární klíč oprávnění odebrat z ACL."
 
-#: views.py:40
+#: views.py:44
 #, python-format
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
@@ -127,21 +127,21 @@ msgstr ""
 "ACL pro &quot;%(object)s&quot; používající roli &quot;%(role)s&quot; již "
 "existuje. Místo toho upravte tuto položku ACL."
 
-#: views.py:53
+#: views.py:57
 #, python-format
 msgid "New access control lists for: %s"
 msgstr "Nové seznamy řízení přístupu pro: %s"
 
-#: views.py:96
+#: views.py:101
 #, python-format
 msgid "Delete ACL: %s"
 msgstr "Odstranit ACL: %s"
 
-#: views.py:141
+#: views.py:147
 msgid "There are no ACLs for this object"
 msgstr "Pro tento objekt neexistují žádné ACL"
 
-#: views.py:144 views.py:261
+#: views.py:150 views.py:269
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
@@ -151,25 +151,25 @@ msgstr ""
 "přístupu uživatelů k objektům v systému. Seznamy ACL umožňují udělit "
 "oprávnění roli, ale pouze pro určitý objekt nebo skupinu objektů."
 
-#: views.py:151
+#: views.py:157
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Seznamy řízení přístupu pro: %s"
 
-#: views.py:165
+#: views.py:171
 msgid "Granted permissions"
 msgstr "Udělení oprávnění"
 
-#: views.py:166
+#: views.py:172
 msgid "Available permissions"
 msgstr "Dostupná oprávnění"
 
-#: views.py:210
+#: views.py:217
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "Role „%(role)s“ má oprávnění „%(object)s“."
 
-#: views.py:219
+#: views.py:226
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -181,11 +181,11 @@ msgstr ""
 " z ACL nadřazeného objektu nebo z jeho role prostřednictvím nabídky "
 "Nastavení."
 
-#: views.py:258
+#: views.py:266
 msgid "There are no ACLs"
 msgstr "Neexistují žádné seznamy ACL"
 
-#: views.py:267
+#: views.py:275
 msgid "Global access control lists"
 msgstr "Globální seznamy řízení přístupu"
 
@@ -206,15 +206,15 @@ msgid ""
 "Numeric identifier of the object for which the access will be modified."
 msgstr "Numerický identifikátor objektu, pro který bude přístup upraven."
 
-#: workflow_actions.py:40 workflow_actions.py:155
+#: workflow_actions.py:40 workflow_actions.py:153
 msgid "Roles"
 msgstr "Role"
 
-#: workflow_actions.py:42 workflow_actions.py:157
+#: workflow_actions.py:42 workflow_actions.py:155
 msgid "Roles whose access will be modified."
 msgstr "Role, jejichž přístup bude upraven."
 
-#: workflow_actions.py:49 workflow_actions.py:164
+#: workflow_actions.py:49 workflow_actions.py:162
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr "Oprávnění udělit / zrušit / z role pro objekt vybraný výše."
@@ -223,14 +223,14 @@ msgstr "Oprávnění udělit / zrušit / z role pro objekt vybraný výše."
 msgid "Grant object access"
 msgstr "Udělte přístup k objektům"
 
-#: workflow_actions.py:140
+#: workflow_actions.py:138
 msgid "Revoke object access"
 msgstr "Odvolání přístupu k objektu"
 
-#: workflow_actions.py:172
+#: workflow_actions.py:170
 msgid "Grant document access"
 msgstr "Udělte přístup k dokumentům"
 
-#: workflow_actions.py:211
+#: workflow_actions.py:209
 msgid "Revoke document access"
 msgstr "Zrušit přístup k dokumentům"

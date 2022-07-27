@@ -5,17 +5,17 @@
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
+# Aline Freitas <aline@alinefreitas.com.br>, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
-# Aline Freitas <aline@alinefreitas.com.br>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
+"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,17 +23,17 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: apps.py:27 links.py:34 permissions.py:5 queues.py:7
+#: apps.py:30 links.py:35 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "Estatísticas"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:36
+#: apps.py:39
 msgid "Schedule"
 msgstr "Agenda"
 
-#: apps.py:42
+#: apps.py:45
 msgid "Last update"
 msgstr "Última atualização"
 
@@ -41,19 +41,19 @@ msgstr "Última atualização"
 msgid "Never"
 msgstr "Nunca"
 
-#: links.py:14
+#: links.py:15
 msgid "Queue"
 msgstr "Fila"
 
-#: links.py:19
+#: links.py:20
 msgid "View"
 msgstr "Ver"
 
-#: links.py:24
+#: links.py:25
 msgid "Namespace details"
 msgstr "Detalhes da categoria"
 
-#: links.py:29
+#: links.py:30
 msgid "Namespace list"
 msgstr "Lista de namespace"
 
@@ -96,31 +96,31 @@ msgstr "Não há dados disponíveis"
 msgid "Last update: %(datetime)s"
 msgstr "Última atualização: %(datetime)s"
 
-#: views.py:17
+#: views.py:22
 msgid "Statistics namespaces"
 msgstr "Namespaces de estatísticas"
 
-#: views.py:33
+#: views.py:40
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "Detalhes  da categoria para: %s"
 
-#: views.py:55
+#: views.py:63
 #, python-format
 msgid "Results for: %s"
 msgstr "Resultados para: %s"
 
-#: views.py:62 views.py:88
+#: views.py:70 views.py:97
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "Estatística \"%s\" não encontrada."
 
-#: views.py:80
+#: views.py:89
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "Enfileirar estatística \"%s\" para ser executada?"
 
-#: views.py:94
+#: views.py:103
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr "A estatística \"%s\" foi enfileirada com sucesso para atualização."

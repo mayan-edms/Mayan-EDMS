@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -20,17 +20,17 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:27 links.py:34 permissions.py:5 queues.py:7
+#: apps.py:30 links.py:35 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "Statistika"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:36
+#: apps.py:39
 msgid "Schedule"
 msgstr "Plán"
 
-#: apps.py:42
+#: apps.py:45
 msgid "Last update"
 msgstr "Poslední aktualizace"
 
@@ -38,19 +38,19 @@ msgstr "Poslední aktualizace"
 msgid "Never"
 msgstr "Nikdy"
 
-#: links.py:14
+#: links.py:15
 msgid "Queue"
 msgstr "Fronta"
 
-#: links.py:19
+#: links.py:20
 msgid "View"
 msgstr "Pohled"
 
-#: links.py:24
+#: links.py:25
 msgid "Namespace details"
 msgstr "Podrobnosti o oboru názvů"
 
-#: links.py:29
+#: links.py:30
 msgid "Namespace list"
 msgstr "Seznam jmenných prostorů"
 
@@ -93,31 +93,31 @@ msgstr "Nejsou k dispozici žádná data."
 msgid "Last update: %(datetime)s"
 msgstr "Poslední aktualizace: %(datetime)s"
 
-#: views.py:17
+#: views.py:22
 msgid "Statistics namespaces"
 msgstr "Statistika oborů názvů"
 
-#: views.py:33
+#: views.py:40
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "Podrobnosti o oboru názvů pro: %s"
 
-#: views.py:55
+#: views.py:63
 #, python-format
 msgid "Results for: %s"
 msgstr "Výsledky hledání pro: %s"
 
-#: views.py:62 views.py:88
+#: views.py:70 views.py:97
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "Statistické údaje „%s“ nebyly nalezeny."
 
-#: views.py:80
+#: views.py:89
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "Fronta statistiky \"%s\" má být aktualizována?"
 
-#: views.py:94
+#: views.py:103
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr "Statistiky \"%s\" byly úspěšně zařazeny do fronty pro aktualizaci."

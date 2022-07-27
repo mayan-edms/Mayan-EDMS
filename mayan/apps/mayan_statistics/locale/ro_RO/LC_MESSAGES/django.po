@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -22,17 +22,17 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:27 links.py:34 permissions.py:5 queues.py:7
+#: apps.py:30 links.py:35 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "Statistică"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:36
+#: apps.py:39
 msgid "Schedule"
 msgstr "Orar"
 
-#: apps.py:42
+#: apps.py:45
 msgid "Last update"
 msgstr "Ultima actualizare"
 
@@ -40,19 +40,19 @@ msgstr "Ultima actualizare"
 msgid "Never"
 msgstr "niciodată"
 
-#: links.py:14
+#: links.py:15
 msgid "Queue"
 msgstr "Coadă"
 
-#: links.py:19
+#: links.py:20
 msgid "View"
 msgstr "Vedere"
 
-#: links.py:24
+#: links.py:25
 msgid "Namespace details"
 msgstr "Detalii privind spațiul pentru nume"
 
-#: links.py:29
+#: links.py:30
 msgid "Namespace list"
 msgstr "Lista de spații de nume"
 
@@ -95,31 +95,31 @@ msgstr "Nici o informatie disponibila."
 msgid "Last update: %(datetime)s"
 msgstr "Ultima actualizare: %(datetime)s"
 
-#: views.py:17
+#: views.py:22
 msgid "Statistics namespaces"
 msgstr "Numele de spațiu pentru statistici"
 
-#: views.py:33
+#: views.py:40
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "Detalii despre spațiul de nume pentru: %s"
 
-#: views.py:55
+#: views.py:63
 #, python-format
 msgid "Results for: %s"
 msgstr "Rezultate pentru: %s"
 
-#: views.py:62 views.py:88
+#: views.py:70 views.py:97
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "Statistica \"%s\" nu a fost găsită."
 
-#: views.py:80
+#: views.py:89
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "Trimite în coada de statistici \"%s\" pentru a fi actualizată?"
 
-#: views.py:94
+#: views.py:103
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr "Statistica \"%s\" a fost așezată cu succes  la coada pentru actualizare."

@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -21,23 +21,19 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:53 events.py:6 permissions.py:6 settings.py:10
+#: apps.py:52 events.py:6 permissions.py:6 settings.py:10
 msgid "Document parsing"
 msgstr "Разбор на документи"
 
-#: apps.py:112
+#: apps.py:108
 msgid "A generator returning the document file's pages parsed content."
 msgstr ""
 "Генератор, връщащ анализираното съдържание на страниците на файла на "
 "документа."
 
-#: apps.py:113 links.py:23 links.py:46 models.py:24 search.py:10
+#: apps.py:109 links.py:26 links.py:49 models.py:23 search.py:11
 msgid "Content"
 msgstr "Съдържание"
-
-#: apps.py:142 models.py:74
-msgid "Result"
-msgstr "Резултат"
 
 #: dependencies.py:9
 msgid ""
@@ -68,86 +64,66 @@ msgstr "Страница %(page_number)d"
 msgid "Contents"
 msgstr "Съдържание"
 
-#: links.py:29 links.py:34
+#: links.py:32 links.py:37
 msgid "Delete parsed content"
 msgstr "Изтрийте анализираното съдържание"
 
-#: links.py:40
+#: links.py:43
 msgid "Download content"
 msgstr "Изтеглете съдържание"
 
-#: links.py:52 links.py:91 views.py:236
-msgid "Parsing errors"
-msgstr "Грешки при анализ"
-
-#: links.py:57 links.py:64
+#: links.py:54 links.py:61
 msgid "Submit for parsing"
 msgstr "Изпратете за анализ"
 
-#: links.py:74
+#: links.py:71
 msgid "Setup parsing"
 msgstr "Настройка на анализа"
 
-#: links.py:83
+#: links.py:80
 msgid "Parse documents per type"
 msgstr "Анализиране на документи по тип"
 
-#: models.py:18
+#: models.py:17
 msgid "Document file page"
 msgstr "Страница на файл с документи"
 
-#: models.py:22
+#: models.py:21
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr ""
 "Действителното текстово съдържание, извлечено от бекенда за анализ на "
 "документа."
 
-#: models.py:30
+#: models.py:29
 msgid "Document file page content"
 msgstr "Съдържание на страницата на файла на документа"
 
-#: models.py:31
+#: models.py:30
 msgid "Document file page contents"
 msgstr "Съдържание на страниците на файла на документа"
 
-#: models.py:43
+#: models.py:42
 msgid "Document type"
 msgstr "Тип документ"
 
-#: models.py:47
+#: models.py:46
 msgid "Automatically queue newly created documents for parsing."
 msgstr "Автоматично поставяне на новосъздадени документи на опашка за анализ."
 
-#: models.py:58
+#: models.py:57
 msgid "Document type settings"
 msgstr "Настройки за тип на документ"
 
-#: models.py:59
+#: models.py:58
 msgid "Document types settings"
 msgstr "Настройки за типове документи"
 
-#: models.py:69
-msgid "Document file"
-msgstr "Файл на документа"
-
-#: models.py:72
-msgid "Date time submitted"
-msgstr "Дата и час на подаване"
-
-#: models.py:78
-msgid "Document file parse error"
-msgstr "Грешка при синтактичния анализ на файла на документа"
-
-#: models.py:79
-msgid "Document file parse errors"
-msgstr "Грешки при синтактичния анализ на файла на документа"
-
-#: parsers.py:93
+#: parsers.py:94
 #, python-format
 msgid "Exception parsing page; %s"
 msgstr "Изключение при анализа на страница; %s"
 
-#: parsers.py:119
+#: parsers.py:120
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
 msgstr "Не може да се намери pdftotext изпълним файл: %s"
@@ -172,7 +148,7 @@ msgstr "Анализиране"
 msgid "Document file parsing"
 msgstr "Анализ на файл с документи"
 
-#: search.py:16 search.py:23
+#: search.py:17 search.py:24
 msgid "Document file content"
 msgstr "Съдържание на файла на документа"
 
@@ -190,95 +166,88 @@ msgstr ""
 "Пътят на файла към програмата pdftotext на poppler, използвана за извличане "
 "на текст от PDF файлове."
 
-#: views.py:29
+#: views.py:37
 #, python-format
 msgid "Error deleting document version content \"%(instance)s\"; %(exception)s"
 msgstr ""
 "Грешка при изтриване на съдържанието на версията на документа "
 "&quot;%(instance)s&quot;; %(exception)s"
 
-#: views.py:35
+#: views.py:43
 #, python-format
 msgid "Content of \"%(object)s\" deleted successfully."
 msgstr "Съдържанието на „%(object)s“ е изтрито успешно."
 
-#: views.py:38
+#: views.py:46
 #, python-format
 msgid "Content of %(count)d document version deleted successfully."
 msgstr "Съдържанието на %(count)d версия на документа е изтрито успешно."
 
-#: views.py:41
+#: views.py:49
 #, python-format
 msgid "Content of %(count)d document versions deleted successfully."
 msgstr "Съдържанието на %(count)d версии на документи е изтрито успешно."
 
-#: views.py:43
+#: views.py:51
 #, python-format
 msgid "Delete the content of: %(object)s."
 msgstr "Изтрийте съдържанието на: %(object)s."
 
-#: views.py:45
+#: views.py:53
 #, python-format
 msgid "Delete the content of the %(count)d selected document version."
 msgstr "Изтрийте съдържанието на %(count)d избрана версия."
 
-#: views.py:48
+#: views.py:56
 #, python-format
 msgid "Delete the content of the %(count)d selected document versions."
 msgstr "Изтрийте съдържанието на %(count)d избрани версии."
 
-#: views.py:86
+#: views.py:97
 #, python-format
 msgid "Content for document file: %s"
 msgstr "Съдържание на файл с документи: %s"
 
-#: views.py:107
+#: views.py:119
 #, python-format
 msgid "Content for document file page: %s"
 msgstr "Съдържание на страницата на файла с документи: %s"
 
-#: views.py:129
-#, python-format
-msgid "Parsing errors for document file: %s"
-msgstr "Грешки при синтактичния анализ на файл с документи: %s"
-
-#: views.py:142
+#: views.py:134
 #, python-format
 msgid "%(count)d document file added to the parsing queue"
 msgstr ""
 "%(count)d файл с документи, добавен към опашката за синтактичен анализ"
 
-#: views.py:145
+#: views.py:137
 #, python-format
 msgid "%(count)d documents files added to the parsing queue"
 msgstr ""
 "%(count)d файлове с документи, добавени към опашката за синтактичен анализ"
 
-#: views.py:153
+#: views.py:146
 #, python-format
 msgid "Submit %(count)d document file to the parsing queue?"
 msgid_plural "Submit %(count)d documents files to the parsing queue?"
 msgstr[0] ""
-"Да подадете ли документен файл %(count)d в опашката за синтактичен анализ?"
 msgstr[1] ""
-"Да подадете ли %(count)d документни файла в опашката за синтактичен анализ?"
 
-#: views.py:166
+#: views.py:159
 #, python-format
 msgid "Submit document file \"%s\" to the parsing queue"
 msgstr ""
 "Изпратете файла с документи &quot;%s&quot; в опашката за синтактичен анализ"
 
-#: views.py:193
+#: views.py:187
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr "Редактиране на настройките за анализ на типа документ: %s."
 
-#: views.py:203
+#: views.py:197
 msgid "Submit all documents of a type for parsing"
 msgstr "Изпратете всички документи от даден тип за анализ"
 
-#: views.py:224
+#: views.py:219
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "%(count)d документи са добавени към опашката за анализ."

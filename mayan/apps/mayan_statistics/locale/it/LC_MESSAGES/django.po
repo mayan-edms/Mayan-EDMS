@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2022
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
+"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,17 +22,17 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: apps.py:27 links.py:34 permissions.py:5 queues.py:7
+#: apps.py:30 links.py:35 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "Statistiche "
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:36
+#: apps.py:39
 msgid "Schedule"
 msgstr "Programma "
 
-#: apps.py:42
+#: apps.py:45
 msgid "Last update"
 msgstr "Ultimo aggiornamento"
 
@@ -40,19 +40,19 @@ msgstr "Ultimo aggiornamento"
 msgid "Never"
 msgstr "Mai"
 
-#: links.py:14
+#: links.py:15
 msgid "Queue"
 msgstr "Coda "
 
-#: links.py:19
+#: links.py:20
 msgid "View"
 msgstr "Vista "
 
-#: links.py:24
+#: links.py:25
 msgid "Namespace details"
 msgstr "Dettagli spazio dei nomi "
 
-#: links.py:29
+#: links.py:30
 msgid "Namespace list"
 msgstr "Lista spazio dei nomi "
 
@@ -95,31 +95,31 @@ msgstr "Nessun dato disponibile."
 msgid "Last update: %(datetime)s"
 msgstr "Ultimo aggiornamento: %(datetime)s"
 
-#: views.py:17
+#: views.py:22
 msgid "Statistics namespaces"
 msgstr "Statistiche spazio dei nomi "
 
-#: views.py:33
+#: views.py:40
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "Dettagli spazio dei nomi per: %s"
 
-#: views.py:55
+#: views.py:63
 #, python-format
 msgid "Results for: %s"
 msgstr "Risultati per: %s"
 
-#: views.py:62 views.py:88
+#: views.py:70 views.py:97
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "Statistica \"%s\" non trovata."
 
-#: views.py:80
+#: views.py:89
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "Mettere in coda le statistiche \"%s\" da aggiornare? "
 
-#: views.py:94
+#: views.py:103
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr ""

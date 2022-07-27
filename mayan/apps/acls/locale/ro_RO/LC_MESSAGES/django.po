@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Badea Gabriel <gcbadea@gmail.com>, 2022
-# Roberto Rosario, 2022
 # Stefaniu Criste <gupi@hangar.ro>, 2022
+# Roberto Rosario, 2022
+# Badea Gabriel <gcbadea@gmail.com>, 2022
 # Harald Ersch, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:11+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:26 classes.py:180 links.py:27
+#: apps.py:26 classes.py:182 links.py:27
 msgid "ACLs"
 msgstr "ACL-uri"
 
@@ -55,7 +55,7 @@ msgstr "ACL a fost șters"
 msgid "ACL edited"
 msgstr "ACL-ul a fost editat"
 
-#: forms.py:13 models.py:51 views.py:67
+#: forms.py:13 models.py:51 views.py:71
 msgid "Role"
 msgstr "Rol"
 
@@ -67,7 +67,7 @@ msgstr "ACL nou"
 msgid "Delete"
 msgstr "Șterge"
 
-#: links.py:32 models.py:45 workflow_actions.py:46 workflow_actions.py:161
+#: links.py:32 models.py:45 workflow_actions.py:46 workflow_actions.py:159
 msgid "Permissions"
 msgstr "Permisiuni"
 
@@ -118,7 +118,7 @@ msgstr "Cheia primară a permisiunii de adăugat la ACL."
 msgid "Primary key of the permission to remove from the ACL."
 msgstr "Cheia primară a permisiunii de eliminat din ACL."
 
-#: views.py:40
+#: views.py:44
 #, python-format
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
@@ -127,21 +127,21 @@ msgstr ""
 "Există deja un ACL pentru „%(object)s” folosind rolul „%(role)s”. Editați "
 "acea intrare ACL."
 
-#: views.py:53
+#: views.py:57
 #, python-format
 msgid "New access control lists for: %s"
 msgstr "Noi liste de control acces pentru: %s"
 
-#: views.py:96
+#: views.py:101
 #, python-format
 msgid "Delete ACL: %s"
 msgstr "Șterge ACL: %s"
 
-#: views.py:141
+#: views.py:147
 msgid "There are no ACLs for this object"
 msgstr "Nu există ACL-uri pentru acest obiect"
 
-#: views.py:144 views.py:261
+#: views.py:150 views.py:269
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
@@ -152,25 +152,25 @@ msgstr ""
 "acordarea unei permisiuni pentru un rol, dar numai pentru un anumit obiect "
 "sau un set de obiecte."
 
-#: views.py:151
+#: views.py:157
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Listele de control al accesului pentru: %s"
 
-#: views.py:165
+#: views.py:171
 msgid "Granted permissions"
 msgstr "Permisiuni acordate"
 
-#: views.py:166
+#: views.py:172
 msgid "Available permissions"
 msgstr "Permisiuni disponibile"
 
-#: views.py:210
+#: views.py:217
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "Permisiunile rolului \"%(role)s\" pentru \"%(object)s\""
 
-#: views.py:219
+#: views.py:226
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -182,11 +182,11 @@ msgstr ""
 "Prerogativele moștenite trebuie să fie eliminate din ACL-ul obiectului "
 "părinte sau din rolul acestora prin meniul Setup (Configurare)."
 
-#: views.py:258
+#: views.py:266
 msgid "There are no ACLs"
 msgstr "Nu există ACL-uri"
 
-#: views.py:267
+#: views.py:275
 msgid "Global access control lists"
 msgstr "Liste globale de control al accesului"
 
@@ -208,15 +208,15 @@ msgid ""
 msgstr ""
 "Identificatorul numeric al obiectului pentru care va fi modificat accesul."
 
-#: workflow_actions.py:40 workflow_actions.py:155
+#: workflow_actions.py:40 workflow_actions.py:153
 msgid "Roles"
 msgstr "Roluri"
 
-#: workflow_actions.py:42 workflow_actions.py:157
+#: workflow_actions.py:42 workflow_actions.py:155
 msgid "Roles whose access will be modified."
 msgstr "Roluri a căror acces va fi modificat."
 
-#: workflow_actions.py:49 workflow_actions.py:164
+#: workflow_actions.py:49 workflow_actions.py:162
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr ""
@@ -227,14 +227,14 @@ msgstr ""
 msgid "Grant object access"
 msgstr "Acordă acces la obiect"
 
-#: workflow_actions.py:140
+#: workflow_actions.py:138
 msgid "Revoke object access"
 msgstr "Revocați accesul la obiect"
 
-#: workflow_actions.py:172
+#: workflow_actions.py:170
 msgid "Grant document access"
 msgstr "Acordați acces la documente"
 
-#: workflow_actions.py:211
+#: workflow_actions.py:209
 msgid "Revoke document access"
 msgstr "Revocați accesul la documente"

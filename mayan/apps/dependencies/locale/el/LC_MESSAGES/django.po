@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
@@ -282,7 +282,7 @@ msgstr ""
 msgid "Testing"
 msgstr "Δοκιμή"
 
-#: links.py:14 views.py:18
+#: links.py:14 views.py:24
 msgid "Check for updates"
 msgstr "Έλεγχος για ενημερώσεις"
 
@@ -302,18 +302,18 @@ msgstr "Λεπτομέρειες"
 msgid "Dependencies licenses"
 msgstr "Άδειες χρήσης εξαρτήσεων"
 
-#: management/commands/checkdependencies.py:13
+#: management/commands/dependencies_check.py:13
 msgid "Outputs the dependencies as a comma delimited values list."
 msgstr "Εξάγει τις εξαρτήσεις ως λίστα τιμών διαχωρισμένων με κόμμα."
 
-#: management/commands/generaterequirements.py:14
+#: management/commands/dependencies_generate_requirements.py:14
 msgid ""
 "Comma separated names of dependencies to exclude from the list generated."
 msgstr ""
 "Διαχωρισμένα με κόμμα ονόματα εξαρτήσεων για εξαίρεση από την δημιουργημένη "
 "λίστα."
 
-#: management/commands/generaterequirements.py:20
+#: management/commands/dependencies_generate_requirements.py:20
 msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
@@ -321,11 +321,11 @@ msgstr ""
 "Διαχωρισμένα με κόμμα ονόματα εξαρτήσεων για εμφάνιση στη λίστα, ενώ θα "
 "αποκλείεται οποιαδήποτε άλλη."
 
-#: management/commands/installdependencies.py:13
+#: management/commands/dependencies_install.py:13
 msgid "Process a specific app."
 msgstr "Επεξεργασία συγκεκριμένης εφαρμογής."
 
-#: management/commands/installdependencies.py:17
+#: management/commands/dependencies_install.py:17
 msgid "Force installation even if already installed."
 msgstr "Υποχρεωτική εγκατάσταση ακόμη και αν έχει ήδη εγκατασταθεί."
 
@@ -333,30 +333,30 @@ msgstr "Υποχρεωτική εγκατάσταση ακόμη και αν έ�
 msgid "View dependencies"
 msgstr "Προβολή εξαρτήσεων"
 
-#: views.py:32
+#: views.py:39
 #, python-format
 msgid "Entries for dependency group: %s"
 msgstr "Καταχωρήσεις για ομάδα εξαρτήσεων: %s"
 
-#: views.py:45 views.py:90
+#: views.py:52 views.py:99
 #, python-format
 msgid "Group %s not found."
 msgstr "Η ομάδα %s δεν βρέθηκε."
 
-#: views.py:58
+#: views.py:66
 msgid "Dependency groups"
 msgstr "Ομάδες εξάρτησεων"
 
-#: views.py:78
+#: views.py:87
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
 msgstr "Ομάδα εξαρτήσεων και είσοδος: %(group)s, %(entry)s"
 
-#: views.py:102
+#: views.py:111
 #, python-format
 msgid "Entry %s not found."
 msgstr "Η καταχώριση %s δεν βρέθηκε."
 
-#: views.py:120
+#: views.py:130
 msgid "Other packages licenses"
 msgstr "Άδειες χρήσης λοιπών πακέτων"

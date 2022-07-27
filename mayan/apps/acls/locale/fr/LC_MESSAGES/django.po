@@ -4,22 +4,22 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2022
-# Benoît GROUSSET <benoit@grousset.xyz>, 2022
-# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
-# Yves Dubois <ydubois@gmail.com>, 2022
+# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2022
 # Olivier W, 2022
+# Roberto Rosario, 2022
 # Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Frédéric Sheedy <sheedf@gmail.com>, 2022
+# Yves Dubois <ydubois@gmail.com>, 2022
+# Benoît GROUSSET <benoit@grousset.xyz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:11+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
+"Last-Translator: Benoît GROUSSET <benoit@grousset.xyz>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: apps.py:26 classes.py:180 links.py:27
+#: apps.py:26 classes.py:182 links.py:27
 msgid "ACLs"
 msgstr "Droits"
 
@@ -59,7 +59,7 @@ msgstr "Droits supprimé"
 msgid "ACL edited"
 msgstr "Droits modifié"
 
-#: forms.py:13 models.py:51 views.py:67
+#: forms.py:13 models.py:51 views.py:71
 msgid "Role"
 msgstr "Rôle"
 
@@ -71,7 +71,7 @@ msgstr "Nouveau droit"
 msgid "Delete"
 msgstr "Supprimer"
 
-#: links.py:32 models.py:45 workflow_actions.py:46 workflow_actions.py:161
+#: links.py:32 models.py:45 workflow_actions.py:46 workflow_actions.py:159
 msgid "Permissions"
 msgstr "Autorisations"
 
@@ -122,7 +122,7 @@ msgstr "Clé primaire de l'autorisation à ajouter à l'ACL."
 msgid "Primary key of the permission to remove from the ACL."
 msgstr "Clé primaire de l'autorisation à supprimer de l'ACL."
 
-#: views.py:40
+#: views.py:44
 #, python-format
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
@@ -131,21 +131,21 @@ msgstr ""
 "Le droit pour %(object)s du rôle %(role)s existe déjà. Editer ce droit à la "
 "place."
 
-#: views.py:53
+#: views.py:57
 #, python-format
 msgid "New access control lists for: %s"
 msgstr "Nouvelle liste de contrôle d'accès pour : %s"
 
-#: views.py:96
+#: views.py:101
 #, python-format
 msgid "Delete ACL: %s"
 msgstr "Supprimer le droit : %s"
 
-#: views.py:141
+#: views.py:147
 msgid "There are no ACLs for this object"
 msgstr "Aucun droit pour cet objet"
 
-#: views.py:144 views.py:261
+#: views.py:150 views.py:269
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
@@ -156,25 +156,25 @@ msgstr ""
 "l'application. Les ACL permettent de donner les droits à un rôle mais "
 "uniquement pour un objet ou un ensemble d'objet."
 
-#: views.py:151
+#: views.py:157
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Liste de contrôle d'accès pour : %s"
 
-#: views.py:165
+#: views.py:171
 msgid "Granted permissions"
 msgstr "Autorisations accordées"
 
-#: views.py:166
+#: views.py:172
 msgid "Available permissions"
 msgstr "Autorisations disponibles"
 
-#: views.py:210
+#: views.py:217
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "Role \"%(role)s\" permissions pour \"%(object)s\"."
 
-#: views.py:219
+#: views.py:226
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -186,11 +186,11 @@ msgstr ""
 "autorisations héritées doivent être supprimées de l'ACL de l'objet parent ou"
 " de leur rôle via le menu Configuration."
 
-#: views.py:258
+#: views.py:266
 msgid "There are no ACLs"
 msgstr "Il n'y a pas d'ACL."
 
-#: views.py:267
+#: views.py:275
 msgid "Global access control lists"
 msgstr "Listes globales de contrôle d'accès"
 
@@ -213,15 +213,15 @@ msgstr ""
 "Identifiant numérique de l'objet pour lequel les droits d'accès vont être "
 "modifiés."
 
-#: workflow_actions.py:40 workflow_actions.py:155
+#: workflow_actions.py:40 workflow_actions.py:153
 msgid "Roles"
 msgstr "Rôles"
 
-#: workflow_actions.py:42 workflow_actions.py:157
+#: workflow_actions.py:42 workflow_actions.py:155
 msgid "Roles whose access will be modified."
 msgstr "Rôles pour lesquels les droits d'accès vont être modifiés."
 
-#: workflow_actions.py:49 workflow_actions.py:164
+#: workflow_actions.py:49 workflow_actions.py:162
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr ""
@@ -232,14 +232,14 @@ msgstr ""
 msgid "Grant object access"
 msgstr "Accorder l'accès à l'objet"
 
-#: workflow_actions.py:140
+#: workflow_actions.py:138
 msgid "Revoke object access"
 msgstr "Révoquer l'accès à l'objet"
 
-#: workflow_actions.py:172
+#: workflow_actions.py:170
 msgid "Grant document access"
 msgstr "Accorder l'accès au document"
 
-#: workflow_actions.py:211
+#: workflow_actions.py:209
 msgid "Revoke document access"
 msgstr "Révoquer l'accès au document"

@@ -5,22 +5,22 @@
 # Translators:
 # Translators:
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
-# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
-# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
-# Roberto Rosario, 2022
 # Vítor Figueiró <vfigueiro@gmail.com>, 2022
-# Aline Freitas <aline@alinefreitas.com.br>, 2022
-# Márcia Ferreira, 2022
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
 # Paulo Loureiro, 2022
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
+# Márcia Ferreira, 2022
+# Roberto Rosario, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# Aline Freitas <aline@alinefreitas.com.br>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Paulo Loureiro, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
+"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -133,49 +133,49 @@ msgstr "ID do utilizador da chave"
 msgid "Key type"
 msgstr "Tipo de chave"
 
-#: links.py:42
-msgid "Refresh all signatures"
-msgstr "Atualizar todas as assinaturas."
-
-#: links.py:48
-msgid "Verify all documents"
-msgstr "Verificar todos os documentos"
-
-#: links.py:58
+#: links.py:44
 msgid "Sign detached"
 msgstr "Assinatura destacada"
 
-#: links.py:65
+#: links.py:51
 msgid "Delete"
 msgstr "Remover"
 
-#: links.py:73
+#: links.py:59
 msgid "Download"
 msgstr "Descarregar"
 
-#: links.py:79
+#: links.py:66
 msgid "Upload signature"
 msgstr "Upload da assinatura"
 
-#: links.py:89
+#: links.py:76
 msgid "Sign embedded"
 msgstr "Assinatura integrada"
 
-#: links.py:99
+#: links.py:86
 msgid "Details"
 msgstr "Detalhes"
 
-#: links.py:105 queues.py:8
+#: links.py:92 queues.py:8
 msgid "Signatures"
 msgstr "Assinaturas"
 
-#: managers.py:95
+#: links.py:100
+msgid "Refresh all signatures"
+msgstr "Atualizar todas as assinaturas."
+
+#: links.py:106
+msgid "Verify all documents"
+msgstr "Verificar todos os documentos"
+
+#: managers.py:94
 msgid "signed"
 msgstr "assinado"
 
 #: models.py:46
 msgid "Document file"
-msgstr "Ficheiro do documento"
+msgstr "Arquivo do documento"
 
 #: models.py:51
 msgid "Date and time signed"
@@ -215,11 +215,11 @@ msgstr "Ficheiro de assinatura"
 
 #: models.py:168
 msgid "Document file detached signature"
-msgstr "Assinatura independente de ficheiro de documento"
+msgstr "Assinatura independente do arquivo de documento"
 
 #: models.py:169
 msgid "Document file detached signatures"
-msgstr "Assinaturas independentes de ficheiro de documento."
+msgstr "Assinaturas independentes do arquivo de documento."
 
 #: models.py:172
 msgid "signature"
@@ -227,11 +227,11 @@ msgstr "assinatura"
 
 #: models.py:222
 msgid "Document file embedded signature"
-msgstr "Assinatura integrada de ficheiro de documento"
+msgstr "Assinatura integrada de arquivo de documento"
 
 #: models.py:223
 msgid "Document file embedded signatures"
-msgstr "Assinaturas integradas de ficheiro de documento"
+msgstr "Assinaturas integradas de arquivo de documento"
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
@@ -271,7 +271,7 @@ msgstr "Anular verificações de assinaturas com chave"
 
 #: queues.py:21
 msgid "Verify document file"
-msgstr "Confirmar ficheiro de documento"
+msgstr "Confirmar arquivo de documento"
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
@@ -308,44 +308,44 @@ msgstr ""
 msgid "Detached signatures"
 msgstr "Assinaturas destacadas"
 
-#: views.py:62 views.py:129
+#: views.py:75 views.py:145
 msgid "Passphrase is needed to unlock this key."
 msgstr "É preciso senha para aceder à chave."
 
-#: views.py:75 views.py:142
+#: views.py:88 views.py:158
 msgid "Passphrase is incorrect."
 msgstr "Senha incorreta."
 
-#: views.py:88 views.py:155
+#: views.py:101 views.py:171
 msgid "Document file signed successfully."
-msgstr "Ficheiro de documento assinado com sucesso."
+msgstr "Arquivo de documento assinado com sucesso."
 
-#: views.py:98
+#: views.py:111
 #, python-format
 msgid "Sign document file \"%s\" with a detached signature"
-msgstr "Assinar ficheiro de documento \" %s \" com uma assinatura independente"
-
-#: views.py:172
-#, python-format
-msgid "Sign document file \"%s\" with a embedded signature"
-msgstr "Assinar ficheiro de documento \" %s \" com uma assinatura integrada"
+msgstr "Assinar arquivo de documento \" %s \" com uma assinatura independente"
 
 #: views.py:188
+#, python-format
+msgid "Sign document file \"%s\" with a embedded signature"
+msgstr "Assinar arquivo de documento \" %s \" com uma assinatura integrada"
+
+#: views.py:205
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Excluir assinatura destacada: %s"
 
-#: views.py:238
+#: views.py:257
 #, python-format
 msgid "Upload detached signature for document file: %s"
-msgstr "Carregar assinatura integrada do ficheiro do documento: %s"
+msgstr "Carregar assinatura integrada do arquivo do documento: %s"
 
-#: views.py:267
+#: views.py:287
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Detalhes para a assinatura: %s"
 
-#: views.py:291
+#: views.py:312
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
@@ -355,33 +355,33 @@ msgstr ""
 "manipulação. São muito seguras e difíceis de falsificar. Uma assinatura pode"
 " ser integrada ao próprio documento ou carregada como um arquivo destacado."
 
-#: views.py:320
+#: views.py:341
 msgid "There are no signatures for this document file."
-msgstr "Não há assinaturas para este ficheiro de documento."
+msgstr "Não há assinaturas para este arquivo de documento."
 
-#: views.py:324
+#: views.py:345
 #, python-format
 msgid "Signatures for document file: %s"
-msgstr "Assinaturas para ficheiro de documento: %s"
+msgstr "Assinaturas para arquivo de documento: %s"
 
-#: views.py:335 views.py:354
+#: views.py:356 views.py:377
 msgid "On large databases this operation may take some time to execute."
 msgstr "Esta operação pode levar algum tempo em bases de dados grandes."
 
-#: views.py:336
+#: views.py:358
 msgid "Refresh all signatures information?"
 msgstr "Atualizar todas as informações de assinaturas?"
 
-#: views.py:346
+#: views.py:369
 msgid "Signature information refresh queued successfully."
 msgstr ""
 "Atualização de informação de assinatura em lista de espera, com sucesso."
 
-#: views.py:355
+#: views.py:379
 msgid "Verify all document for signatures?"
 msgstr "Verificar todos os documentos para assinaturas?"
 
-#: views.py:365
+#: views.py:390
 msgid "Signature verification queued successfully."
 msgstr "Verificação de assinaturas colocada em fila."
 

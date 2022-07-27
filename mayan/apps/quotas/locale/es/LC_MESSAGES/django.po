@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:37+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
@@ -20,8 +20,8 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: apps.py:33 events.py:6 links.py:34 models.py:37 permissions.py:5
-#: views.py:136
+#: apps.py:33 events.py:6 links.py:34 models.py:38 permissions.py:5
+#: views.py:144
 msgid "Quotas"
 msgstr "Cuotas"
 
@@ -45,7 +45,7 @@ msgstr "Cuota creada"
 msgid "Quota edited"
 msgstr "Cuota editada"
 
-#: forms.py:15 models.py:62
+#: forms.py:15 models.py:63
 msgid "Backend"
 msgstr "Controlador"
 
@@ -157,19 +157,19 @@ msgstr "Permitir deshabilitar rápidamente o habilitar la cuota."
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: models.py:36
+#: models.py:37
 msgid "Quota"
 msgstr "Cuota"
 
-#: models.py:61
+#: models.py:62
 msgid "Driver used for this quota entry."
 msgstr "Controlador utilizado para esta entrada de cuota."
 
-#: models.py:66
+#: models.py:67
 msgid "Arguments"
 msgstr "Argumentos"
 
-#: models.py:70
+#: models.py:71
 msgid "Usage"
 msgstr "Uso"
 
@@ -227,29 +227,29 @@ msgstr "tamaño de documento: %(formatted_file_size)s"
 msgid "Document size quota exceeded."
 msgstr "Cuota de tamaño de documento excedida."
 
-#: views.py:24
+#: views.py:27
 msgid "New quota backend selection"
 msgstr "Nueva selección de controlador de cuota"
 
-#: views.py:54
+#: views.py:59
 #, python-format
 msgid "Create a \"%s\" quota"
 msgstr "Crear una cuota \"%s\""
 
-#: views.py:86
+#: views.py:92
 #, python-format
 msgid "Delete quota: %s"
 msgstr "Eliminar cuota: %s"
 
-#: views.py:101
+#: views.py:108
 #, python-format
 msgid "Edit quota: %s"
 msgstr "Editar cuota: %s"
 
-#: views.py:133
+#: views.py:141
 msgid "Quotas restrict usage of system resources. "
 msgstr "Las cuotas restringen el uso de los recursos del sistema."
 
-#: views.py:135
+#: views.py:143
 msgid "No quotas available"
 msgstr "No hay cuotas disponibles"

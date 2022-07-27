@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
@@ -21,13 +21,13 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:47 apps.py:131 apps.py:135 apps.py:139 apps.py:144 apps.py:148
-#: events.py:5 forms.py:15 links.py:28 menus.py:14 models.py:41
-#: permissions.py:5 views.py:171 workflow_actions.py:18 workflow_actions.py:61
+#: apps.py:46 apps.py:130 apps.py:134 apps.py:138 apps.py:143 apps.py:147
+#: events.py:5 forms.py:27 links.py:28 menus.py:14 models.py:39
+#: permissions.py:5 views.py:180 workflow_actions.py:18 workflow_actions.py:61
 msgid "Tags"
 msgstr "Ετικέτες"
 
-#: apps.py:169 models.py:35
+#: apps.py:168 models.py:33
 msgid "Documents"
 msgstr "Έγγραφα"
 
@@ -83,35 +83,35 @@ msgstr "Επιστροφή ετικετών συνημμένων στο έγγρ
 msgid "get_tags()"
 msgstr "get_tags()"
 
-#: models.py:27
+#: models.py:25
 msgid "A short text used as the tag name."
 msgstr "Σύντομο κείμενο που χρησιμοποιείται ως όνομα ετικέτας."
 
-#: models.py:28
+#: models.py:26
 msgid "Label"
 msgstr "Ετικέτα"
 
-#: models.py:31
+#: models.py:29
 msgid "The RGB color values for the tag."
 msgstr "Οι τιμές χρώματος RGB για την ετικέτα."
 
-#: models.py:32
+#: models.py:30
 msgid "Color"
 msgstr "Χρώμα"
 
-#: models.py:40
+#: models.py:38
 msgid "Tag"
 msgstr "Ετικέτα"
 
-#: models.py:85
+#: models.py:83
 msgid "Preview"
 msgstr "Προεπισκόπηση"
 
-#: models.py:114
+#: models.py:112
 msgid "Document tag"
 msgstr "Ετικέτα εγγράφου"
 
-#: models.py:115 search.py:28 search.py:34 search.py:40 search.py:46
+#: models.py:113 search.py:33 search.py:39 search.py:45 search.py:51
 msgid "Document tags"
 msgstr "Ετικέτες εγγράφου"
 
@@ -139,35 +139,35 @@ msgstr "Επισύναψη ετικετών σε έγγραφα"
 msgid "Remove tags from documents"
 msgstr "Αφαίρεση ετικετών από έγγραφα"
 
-#: search.py:22
+#: search.py:24
 msgid "Tag label"
 msgstr ""
 
-#: search.py:23
+#: search.py:27
 msgid "Tag color"
 msgstr ""
 
-#: search.py:60
+#: search.py:65
 msgid "Document type"
 msgstr "Τύπος εγγράφου"
 
-#: search.py:63
+#: search.py:68
 msgid "Document label"
 msgstr "Ετικέτα εγγράφου"
 
-#: search.py:66
+#: search.py:71
 msgid "Document description"
 msgstr "Περιγραφή εγγράφου"
 
-#: search.py:69
+#: search.py:74
 msgid "Document UUID"
 msgstr "UUID εγγράφου"
 
-#: search.py:74
+#: search.py:79
 msgid "Document file checksum"
 msgstr ""
 
-#: search.py:77
+#: search.py:82
 msgid "Document file MIME type"
 msgstr ""
 
@@ -179,89 +179,89 @@ msgstr ""
 msgid "Primary key of the tag to remove from the document."
 msgstr ""
 
-#: views.py:36
+#: views.py:42
 #, python-format
 msgid "Tags attached to document \"%(object)s\" successfully."
 msgstr ""
 
-#: views.py:39
+#: views.py:45
 #, python-format
 msgid "Tags attached to %(count)d document successfully."
 msgstr ""
 
-#: views.py:42
+#: views.py:48
 #, python-format
 msgid "Tags attached to %(count)d documents successfully."
 msgstr ""
 
-#: views.py:44
+#: views.py:50
 #, python-format
 msgid "Attach tags to document: %(object)s"
 msgstr ""
 
-#: views.py:45
+#: views.py:51
 #, python-format
 msgid "Attach tags to %(count)d document."
 msgstr ""
 
-#: views.py:46
+#: views.py:52
 #, python-format
 msgid "Attach tags to %(count)d documents."
 msgstr ""
 
-#: views.py:62 wizard_steps.py:27
+#: views.py:69 wizard_steps.py:27
 msgid "Tags to be attached."
 msgstr "Ετικέτες προς επισύναψη."
 
-#: views.py:101
+#: views.py:108
 msgid "Create tag"
 msgstr "Δημιουργία ετικέτας"
 
-#: views.py:114
+#: views.py:121
 #, python-format
 msgid "Error deleting tag \"%(instance)s\"; %(exception)s"
 msgstr ""
 
-#: views.py:119
+#: views.py:126
 #, python-format
 msgid "Tag \"%(object)s\" deleted successfully."
 msgstr ""
 
-#: views.py:120
+#: views.py:127
 #, python-format
 msgid "%(count)d tag deleted successfully."
 msgstr ""
 
-#: views.py:121
+#: views.py:128
 #, python-format
 msgid "%(count)d tags deleted successfully."
 msgstr ""
 
-#: views.py:122
-#, python-format
-msgid "Delete tag: %(object)s."
-msgstr ""
-
-#: views.py:123
-#, python-format
-msgid "Delete the %(count)d selected tag."
-msgstr ""
-
-#: views.py:124
-#, python-format
-msgid "Delete the %(count)d selected tags."
-msgstr ""
-
 #: views.py:129
+#, python-format
+msgid "Delete tag: %(object)s"
+msgstr ""
+
+#: views.py:130
+#, python-format
+msgid "Delete the %(count)d selected tag"
+msgstr ""
+
+#: views.py:131
+#, python-format
+msgid "Delete the %(count)d selected tags"
+msgstr ""
+
+#: views.py:137
 msgid "Will be removed from all documents."
 msgstr "Θα αφαιρεθεί από όλα τα έγραφα."
 
-#: views.py:145
+#: views.py:153
 #, python-format
 msgid "Edit tag: %s"
 msgstr "Τροποποίηση ετικέτας: %s"
 
-#: views.py:167
+#: views.py:176
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
@@ -269,55 +269,55 @@ msgstr ""
 "Οι ετικέτες είναι  ιδιότητες με χρωμοκώδικα που μπορούν να επισυναφθούν ή να"
 " αφαιρεθούν από έγγραφα."
 
-#: views.py:170
+#: views.py:179
 msgid "No tags available"
 msgstr "Δεν υπάρχουν διαθέσιμες ετικέτες"
 
-#: views.py:199
+#: views.py:209
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Έγγραφα με την ετικέτα: %s"
 
-#: views.py:224
+#: views.py:235
 msgid "Document has no tags attached"
 msgstr "Το έγγραφο δεν έχει συνημμένες ετικέτες"
 
-#: views.py:227
+#: views.py:238
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Ετικέτες για το έγγραφο: %s"
 
-#: views.py:245
+#: views.py:256
 #, python-format
 msgid "Tags removed from document \"%(object)s\" successfully."
 msgstr ""
 
-#: views.py:248
+#: views.py:259
 #, python-format
 msgid "Tags removed from %(count)d document successfully."
 msgstr ""
 
-#: views.py:251
+#: views.py:262
 #, python-format
 msgid "Tags removed from %(count)d documents successfully."
 msgstr ""
 
-#: views.py:253
+#: views.py:264
 #, python-format
 msgid "Remove tags from document: %(object)s"
 msgstr ""
 
-#: views.py:254
+#: views.py:265
 #, python-format
 msgid "Remove tags from %(count)d document."
 msgstr ""
 
-#: views.py:255
+#: views.py:266
 #, python-format
 msgid "Remove tags from %(count)d documents."
 msgstr ""
 
-#: views.py:271
+#: views.py:283
 msgid "Tags to be removed."
 msgstr "Ετικέτες που θα αφαιρεθούν."
 

@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:33+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -25,6 +25,22 @@ msgstr ""
 msgid "Databases"
 msgstr ""
 
+#: classes.py:199
+msgid "Model fields"
+msgstr "Pole modelu"
+
+#: classes.py:242
+msgid "Model related fields"
+msgstr "Pole související s modelem"
+
+#: classes.py:247
+msgid "Model properties"
+msgstr "Vlastnosti modelu"
+
+#: classes.py:252
+msgid "Model reverse fields"
+msgstr "Modelování zpětných polí"
+
 #: literals.py:12
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
@@ -33,29 +49,49 @@ msgstr ""
 "Backend vaší databáze je nastaven na použití SQLite. SQLite by se měl "
 "používat pouze pro vývoj a testování, nikoli pro produkční prostředí."
 
-#: model_mixins.py:18
+#: model_mixins.py:24
 msgid "The dotted Python path to the backend class."
 msgstr "Tečkovaná cesta Pythonu ke třídě backendu."
 
-#: model_mixins.py:19
+#: model_mixins.py:25
 msgid "Backend path"
 msgstr "Backend cesta"
 
-#: model_mixins.py:23
+#: model_mixins.py:29
 msgid "JSON encoded data for the backend class."
 msgstr "Data kódovaná ve formátu JSON pro backendovou třídu."
 
-#: model_mixins.py:24
+#: model_mixins.py:30
 msgid "Backend data"
 msgstr "Backend data"
 
-#: model_mixins.py:72
+#: model_mixins.py:78
 msgid "Backend"
 msgstr "Backend"
 
-#: model_mixins.py:73
+#: model_mixins.py:79
 msgid "The backend class for this entry."
 msgstr "Třída backendu pro tuto položku."
+
+#: model_mixins.py:101
+msgid ""
+"The condition that will determine if this object is executed or not. "
+"Conditions that do not return any value, that return the Python logical "
+"None, or an empty string ('') are considered to be logical false, any other "
+"value is considered to be the logical true."
+msgstr ""
+
+#: model_mixins.py:106
+msgid "Condition"
+msgstr "Stav"
+
+#: model_mixins.py:127
+msgid "The object will be executed, depending on the condition return value."
+msgstr ""
+
+#: model_mixins.py:130
+msgid "Has a condition?"
+msgstr "Má stav?"
 
 #: templates/databases/app/viewport.html:11
 msgid "Warning"

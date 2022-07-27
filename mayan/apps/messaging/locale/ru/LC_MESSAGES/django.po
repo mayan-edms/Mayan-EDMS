@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Sergey Glita <gsv70@mail.ru>, 2022
 # Panasoft, 2022
+# Sergey Glita <gsv70@mail.ru>, 2022
 # lilo.panic, 2022
 # Ilya Pavlov <spirkaa@gmail.com>, 2022
 # 
@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -43,11 +43,11 @@ msgstr "Сообщение создано"
 msgid "Message edited"
 msgstr "Сообщение изменено"
 
-#: forms.py:26 models.py:38
+#: forms.py:26 models.py:38 workflow_actions.py:55
 msgid "Body"
 msgstr "Содержимое"
 
-#: links.py:49 views.py:33
+#: links.py:49 views.py:38
 msgid "Create message"
 msgstr "Создать объявление"
 
@@ -75,7 +75,7 @@ msgstr "Пользователь"
 msgid "Short description of this message."
 msgstr "Краткое описание сообщения."
 
-#: models.py:34
+#: models.py:34 workflow_actions.py:38
 msgid "Subject"
 msgstr "Тема"
 
@@ -103,7 +103,7 @@ msgstr "Дата и время создания"
 msgid "Message"
 msgstr "Сообщение"
 
-#: models.py:54 views.py:119
+#: models.py:54 views.py:127
 msgid "Messages"
 msgstr "Сообщения"
 
@@ -131,133 +131,153 @@ msgstr "Просмотр сообщений"
 msgid "Primary key of the recipient user of this message."
 msgstr ""
 
-#: views.py:44
+#: views.py:49
 #, python-format
 msgid "Error deleting message \"%(instance)s\"; %(exception)s"
 msgstr "Ошибка при удалении сообщения \"%(instance)s\"; %(exception)s"
 
-#: views.py:48
+#: views.py:53
 #, python-format
 msgid "Message \"%(object)s\" deleted successfully."
 msgstr "Сообщение \"%(object)s\" удалено."
 
-#: views.py:49
+#: views.py:54
 #, python-format
 msgid "%(count)d message deleted successfully."
 msgstr "%(count)d сообщение удалено."
 
-#: views.py:50
+#: views.py:55
 #, python-format
 msgid "%(count)d messages deleted successfully."
 msgstr "%(count)d сообщений удалено."
 
-#: views.py:51
+#: views.py:56
 #, python-format
 msgid "Delete message: %(object)s."
 msgstr "Удалить сообщение: %(object)s."
 
-#: views.py:52
+#: views.py:57
 #, python-format
 msgid "Delete the %(count)d selected message."
 msgstr "Удалить %(count)d выбранное сообщение."
 
-#: views.py:53
+#: views.py:58
 #, python-format
 msgid "Delete the %(count)d selected messages."
 msgstr "Удалить %(count)d выбранных сообщений."
 
-#: views.py:92
+#: views.py:99
 #, python-format
 msgid "Details of message: %s"
 msgstr "Подробности сообщения: %s"
 
-#: views.py:115
+#: views.py:123
 msgid "Here you will find text messages from other users or from the system."
 msgstr ""
 "Здесь вы найдете текстовые сообщения от других пользователей или системы."
 
-#: views.py:118
+#: views.py:126
 msgid "There are no messages"
 msgstr "Нет сообщений"
 
-#: views.py:128
+#: views.py:136
 #, python-format
 msgid "Error marking message \"%(instance)s\" as read; %(exception)s"
 msgstr ""
 "Ошибка при отметке сообщения \"%(instance)s\" как прочитанного; "
 "%(exception)s"
 
-#: views.py:134
+#: views.py:142
 #, python-format
 msgid "Message \"%(object)s\" marked as read successfully."
 msgstr "Сообщение \"%(object)s\" отмечено как прочитанное."
 
-#: views.py:137
+#: views.py:145
 #, python-format
 msgid "%(count)d message marked as read successfully."
 msgstr "%(count)d сообщение отмечено как прочитанное."
 
-#: views.py:140
+#: views.py:148
 #, python-format
 msgid "%(count)d messages marked as read successfully."
 msgstr "%(count)d сообщений отмечено как прочитанные."
 
-#: views.py:142
+#: views.py:150
 #, python-format
 msgid "Mark the message \"%(object)s\" as read."
 msgstr "Отметить сообщение \"%(object)s\" как прочитанное."
 
-#: views.py:143
+#: views.py:151
 #, python-format
 msgid "Mark the %(count)d selected message as read."
 msgstr "Отметить %(count)d выбранное сообщение как прочитанное."
 
-#: views.py:144
+#: views.py:152
 #, python-format
 msgid "Mark the %(count)d selected messages as read."
 msgstr "Отметить %(count)d выбранных сообщений как прочитанные."
 
-#: views.py:171
+#: views.py:181
 msgid "Mark all message as read?"
 msgstr "Отметить все сообщения как прочитанные?"
 
-#: views.py:188
+#: views.py:198
 msgid "All messages marked as read."
 msgstr "Все сообщения отмечены как прочитанные."
 
-#: views.py:195
+#: views.py:205
 #, python-format
 msgid "Error marking message \"%(instance)s\" as unread; %(exception)s"
 msgstr ""
 "Ошибка при отметке сообщения \"%(instance)s\" как непрочитанного; "
 "%(exception)s"
 
-#: views.py:201
+#: views.py:211
 #, python-format
 msgid "Message \"%(object)s\" marked as unread successfully."
 msgstr "Сообщение \"%(object)s\" отмечено как непрочитанное."
 
-#: views.py:204
+#: views.py:214
 #, python-format
 msgid "%(count)d message marked as unread successfully."
 msgstr "%(count)d сообщение отмечено как непрочитанное."
 
-#: views.py:207
+#: views.py:217
 #, python-format
 msgid "%(count)d messages marked as unread successfully."
 msgstr "%(count)d сообщений отмечено как непрочитанные."
 
-#: views.py:209
+#: views.py:219
 #, python-format
 msgid "Mark the message \"%(object)s\" as unread."
 msgstr "Отметить сообщение \"%(object)s\" как непрочитанное."
 
-#: views.py:210
+#: views.py:220
 #, python-format
 msgid "Mark the %(count)d selected message as unread."
 msgstr "Отметить %(count)d выбранное сообщение как непрочитанное."
 
-#: views.py:211
+#: views.py:221
 #, python-format
 msgid "Mark the %(count)d selected messages as unread."
 msgstr "Отметить %(count)d выбранных сообщений как непрочитанные."
+
+#: workflow_actions.py:19
+msgid "Username list"
+msgstr ""
+
+#: workflow_actions.py:26
+msgid "Comma separated list of username that will receive the message."
+msgstr ""
+
+#: workflow_actions.py:45
+msgid "Topic of the message to be sent."
+msgstr ""
+
+#: workflow_actions.py:62
+msgid "The actual text to send."
+msgstr ""
+
+#: workflow_actions.py:73
+msgid "Send user message"
+msgstr ""

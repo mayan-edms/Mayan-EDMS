@@ -4,9 +4,9 @@
 # 
 # Translators:
 # Translators:
-# Vítor Figueiró <vfigueiro@gmail.com>, 2022
-# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
+# Vítor Figueiró <vfigueiro@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Márcia Ferreira, 2022
 # 
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -116,11 +116,11 @@ msgstr "Importar"
 msgid "Upload key"
 msgstr "Carregar Chave"
 
-#: links.py:50 views.py:189
+#: links.py:50 views.py:201
 msgid "Private keys"
 msgstr "Chaves privadas"
 
-#: links.py:54 views.py:213
+#: links.py:54 views.py:226
 msgid "Public keys"
 msgstr "Chaves públicas"
 
@@ -232,36 +232,36 @@ msgstr ""
 msgid "Keyserver used to query for keys."
 msgstr "Servidor de chaves utilizado para procurar chaves."
 
-#: views.py:36
+#: views.py:41
 #, python-format
 msgid "Delete key: %s"
 msgstr "Remover chave: %s"
 
-#: views.py:53
+#: views.py:59
 #, python-format
 msgid "Details for key: %s"
 msgstr "Detalhes da chave: %s"
 
-#: views.py:81
+#: views.py:89
 #, python-format
 msgid "Import key ID: %s?"
 msgstr "Importar ID da chave: %s ?"
 
-#: views.py:82
+#: views.py:90
 msgid "Import key"
 msgstr "Importar chave"
 
-#: views.py:91
+#: views.py:99
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Não foi possível importar a chave: %(key_id)s ; %(error)s"
 
-#: views.py:99
+#: views.py:107
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr "Chave: %(key_id)s recebida com sucesso."
 
-#: views.py:116
+#: views.py:125
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
@@ -269,23 +269,23 @@ msgstr ""
 "Utilize nomes, sobrenomes, ids de chaves ou e-mails para procurar chaves "
 "públicas a importar do servidos de chaves."
 
-#: views.py:120
+#: views.py:129
 msgid "No results returned"
 msgstr "Sem resultados devolvidos."
 
-#: views.py:122
+#: views.py:131
 msgid "Key query results"
 msgstr "Resultados de pesquisa de chave"
 
-#: views.py:142
+#: views.py:152
 msgid "Query key server"
 msgstr "Consultar servidor de chaves"
 
-#: views.py:161
+#: views.py:172
 msgid "Upload new key"
 msgstr "Carregar nova chave"
 
-#: views.py:182
+#: views.py:194
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user. The view to upload private and public keys is the same."
@@ -294,11 +294,11 @@ msgstr ""
 "podem ser carregadas apenas pelo utilizador. A visão geral para carregar "
 "chaves privadas e públicas é a mesma."
 
-#: views.py:187
+#: views.py:199
 msgid "There no private keys"
 msgstr "Não existem chaves privadas."
 
-#: views.py:205
+#: views.py:218
 msgid ""
 "Public keys are used to verify signed documents. Public keys can be uploaded"
 " by the user or downloaded from keyservers. The view to upload private and "
@@ -308,6 +308,6 @@ msgstr ""
 "carregadas pelo utilizador ou descarregadas do servidor de chaves. A visão "
 "geral para carregar chaves privadas e públicas é a mesma."
 
-#: views.py:211
+#: views.py:224
 msgid "There no public keys"
 msgstr "Não existem chaves públicas."

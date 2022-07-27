@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:35+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr ""
 msgid "Exact document label"
 msgstr ""
 
-#: links.py:18 models.py:41 views.py:73
+#: links.py:18 models.py:41 views.py:79
 msgid "Duplicated documents"
 msgstr "Duplirani dokumenti"
 
@@ -76,34 +76,34 @@ msgstr "Očistite prazne duplirane liste"
 msgid "Scan document duplicates"
 msgstr ""
 
-#: views.py:32
+#: views.py:36
 msgid "Only exact copies of this document will be shown in the this list."
 msgstr ""
 
-#: views.py:36
+#: views.py:40
 msgid "There are no duplicates for this document"
 msgstr ""
 
-#: views.py:40
+#: views.py:44
 #, python-format
 msgid "Duplicates for document: %s"
 msgstr "Duplikati za dokument: %s"
 
-#: views.py:64
+#: views.py:70
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or"
 " were saved using a different file format will not appear as duplicates."
 msgstr ""
 
-#: views.py:71
+#: views.py:77
 msgid "There are no duplicated documents"
 msgstr ""
 
-#: views.py:81
+#: views.py:87
 msgid "Scan for duplicated documents?"
 msgstr "Skeniraj za duplirana dokumenta?"
 
-#: views.py:88
+#: views.py:95
 msgid "Duplicated document scan queued successfully."
 msgstr "Duplirano skeniranje dokumenata je u redu."

@@ -4,20 +4,20 @@
 # 
 # Translators:
 # Translators:
+# Panasoft, 2022
 # Sergey Glita <gsv70@mail.ru>, 2022
+# Alex Chigrin <chalex84@mail.ru>, 2022
 # Roberto Rosario, 2022
 # lilo.panic, 2022
-# Alex Chigrin <chalex84@mail.ru>, 2022
 # Ilya Pavlov <spirkaa@gmail.com>, 2022
-# Panasoft, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:11+0000\n"
-"Last-Translator: Panasoft, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:26 classes.py:180 links.py:27
+#: apps.py:26 classes.py:182 links.py:27
 msgid "ACLs"
 msgstr "Списки контроля доступа"
 
@@ -57,7 +57,7 @@ msgstr "Список контроля доступа удален"
 msgid "ACL edited"
 msgstr "Список контроля доступа изменен"
 
-#: forms.py:13 models.py:51 views.py:67
+#: forms.py:13 models.py:51 views.py:71
 msgid "Role"
 msgstr "Роль"
 
@@ -69,7 +69,7 @@ msgstr "Новый список контроля доступа"
 msgid "Delete"
 msgstr "Удалить"
 
-#: links.py:32 models.py:45 workflow_actions.py:46 workflow_actions.py:161
+#: links.py:32 models.py:45 workflow_actions.py:46 workflow_actions.py:159
 msgid "Permissions"
 msgstr "Разрешения"
 
@@ -120,7 +120,7 @@ msgstr "Первичный ключ разрешения для добавлен
 msgid "Primary key of the permission to remove from the ACL."
 msgstr "Первичный ключ разрешения для удаления из списка контроля доступа."
 
-#: views.py:40
+#: views.py:44
 #, python-format
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
@@ -129,21 +129,21 @@ msgstr ""
 "Список контроля доступа для \"%(object)s\" с использованием роли "
 "\"%(role)s\" уже существует. Отредактируйте этот существующий список."
 
-#: views.py:53
+#: views.py:57
 #, python-format
 msgid "New access control lists for: %s"
 msgstr "Новый список контроля доступа для: %s"
 
-#: views.py:96
+#: views.py:101
 #, python-format
 msgid "Delete ACL: %s"
 msgstr "Удалить список контроля доступа: %s"
 
-#: views.py:141
+#: views.py:147
 msgid "There are no ACLs for this object"
 msgstr "Для этого объекта нет списков контроля доступа"
 
-#: views.py:144 views.py:261
+#: views.py:150 views.py:269
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
@@ -154,25 +154,25 @@ msgstr ""
 "контроля доступа предоставляют разрешения роли, но только для определенного "
 "объекта или группы объектов."
 
-#: views.py:151
+#: views.py:157
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Списки контроля доступа для: %s"
 
-#: views.py:165
+#: views.py:171
 msgid "Granted permissions"
 msgstr "Предоставленные разрешения"
 
-#: views.py:166
+#: views.py:172
 msgid "Available permissions"
 msgstr "Доступные разрешения"
 
-#: views.py:210
+#: views.py:217
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "Разрешения роли \"%(role)s\" для \"%(object)s\""
 
-#: views.py:219
+#: views.py:226
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -184,11 +184,11 @@ msgstr ""
 "Унаследованные разрешения должны быть удалены из списка контроля доступа "
 "родительского объекта или из роли через меню Настройки."
 
-#: views.py:258
+#: views.py:266
 msgid "There are no ACLs"
 msgstr "Нет списков контроля доступа"
 
-#: views.py:267
+#: views.py:275
 msgid "Global access control lists"
 msgstr "Глобальные списки контроля доступа"
 
@@ -209,15 +209,15 @@ msgid ""
 "Numeric identifier of the object for which the access will be modified."
 msgstr "Числовой идентификатор объекта, к которому будет изменен доступ."
 
-#: workflow_actions.py:40 workflow_actions.py:155
+#: workflow_actions.py:40 workflow_actions.py:153
 msgid "Roles"
 msgstr "Роли"
 
-#: workflow_actions.py:42 workflow_actions.py:157
+#: workflow_actions.py:42 workflow_actions.py:155
 msgid "Roles whose access will be modified."
 msgstr "Роли, для которых будет изменен доступ к объекту или документу."
 
-#: workflow_actions.py:49 workflow_actions.py:164
+#: workflow_actions.py:49 workflow_actions.py:162
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr ""
@@ -228,14 +228,14 @@ msgstr ""
 msgid "Grant object access"
 msgstr "Предоставить доступ к объекту"
 
-#: workflow_actions.py:140
+#: workflow_actions.py:138
 msgid "Revoke object access"
 msgstr "Отменить доступ к объекту"
 
-#: workflow_actions.py:172
+#: workflow_actions.py:170
 msgid "Grant document access"
 msgstr "Предоставить доступ к документу"
 
-#: workflow_actions.py:211
+#: workflow_actions.py:209
 msgid "Revoke document access"
 msgstr "Отменить доступ к документу"

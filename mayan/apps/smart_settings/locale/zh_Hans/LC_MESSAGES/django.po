@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
@@ -36,11 +36,11 @@ msgstr "名称"
 msgid "Value"
 msgstr "值"
 
-#: classes.py:348
+#: classes.py:374
 msgid "Overridden"
 msgstr ""
 
-#: classes.py:350
+#: classes.py:376
 msgid "Is this settings being overridden by an environment variable?"
 msgstr ""
 
@@ -53,15 +53,15 @@ msgstr "输入新的设定值。"
 msgid "\"%s\" not a valid entry."
 msgstr "“%s”不是有效的许可。"
 
-#: links.py:12 links.py:16
+#: links.py:20 links.py:24
 msgid "Settings"
 msgstr "设置"
 
-#: links.py:22
+#: links.py:31
 msgid "Namespaces"
 msgstr "命名空间"
 
-#: links.py:26
+#: links.py:36
 msgid "Edit"
 msgstr "编辑"
 
@@ -368,31 +368,37 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-#: views.py:21
+#: views.py:27
+msgid ""
+"Local storage is currently disabled, changes to setting values will not be "
+"saved or take effect."
+msgstr ""
+
+#: views.py:38
 msgid "Setting updated successfully."
 msgstr "设置已成功更新。"
 
-#: views.py:30
+#: views.py:47
 #, python-format
 msgid "Edit setting: %s"
 msgstr "编辑设定：%s"
 
-#: views.py:55
+#: views.py:73
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
 msgstr "从环境变量继承的设置优先，在此视图中无法更改。"
 
-#: views.py:58
+#: views.py:76
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr "命名空间中的设置：%s"
 
-#: views.py:66
+#: views.py:84
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "命名空间：%s，未找到"
 
-#: views.py:76
+#: views.py:94
 msgid "Setting namespaces"
 msgstr "设置命名空间"

@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:39+0000\n"
 "Last-Translator: bo feng <87289884@qq.com>, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
@@ -22,206 +22,210 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:15 settings.py:7
+#: apps.py:15 settings.py:9
 msgid "Views"
 msgstr "视图"
 
-#: forms.py:29
+#: forms.py:54
 msgid "Search"
 msgstr "搜索"
 
-#: forms.py:43
+#: forms.py:68
 msgid "Selection"
 msgstr "选择"
 
-#: forms.py:357
+#: forms.py:385
 msgid "Label"
 msgstr "标签"
 
-#: forms.py:361
+#: forms.py:389
 msgid "Relationship"
 msgstr "关系"
 
-#: generics.py:150
+#: generics.py:148
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr "选择要删除的条目。按住Control键可以选择多个条目。选择完成后，单击下面的按钮或双击列表以激活操作。"
 
-#: generics.py:155
+#: generics.py:153
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr "选择要添加的条目。按住Control键可以选择多个条目。选择完成后，单击下面的按钮或双击列表以激活操作。"
 
-#: generics.py:290
+#: generics.py:288
 msgid "Add all"
 msgstr "全部添加"
 
-#: generics.py:298
+#: generics.py:296
 msgid "Add"
 msgstr "添加"
 
-#: generics.py:308
+#: generics.py:306
 msgid "Remove all"
 msgstr "全部移除"
 
-#: generics.py:316
+#: generics.py:314
 msgid "Remove"
 msgstr "移除"
 
-#: generics.py:534
+#: generics.py:533
 #, python-format
 msgid "Error updating relationship; %s"
 msgstr "更新关系时出错; %s"
 
-#: generics.py:541
+#: generics.py:540
 msgid "Relationships updated successfully"
 msgstr "关系已成功更新"
 
-#: generics.py:600
+#: generics.py:603
 #, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr "复制数据错误：%(error)s"
 
-#: generics.py:619
+#: generics.py:622
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s未创建，错误：%(error)s"
 
-#: generics.py:630
+#: generics.py:633
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s创建成功。"
 
-#: generics.py:669
+#: generics.py:673
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s未删除，错误：%(error)s。"
 
-#: generics.py:678
+#: generics.py:682
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s已成功删除。"
 
-#: generics.py:732
+#: generics.py:737
 #, python-format
 msgid "Error retrieving %(object)s; %(error)s"
 msgstr ""
 
-#: generics.py:836
+#: generics.py:843
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s未更新，错误：%(error)s。"
 
-#: generics.py:845
+#: generics.py:852
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s已成功更新。"
 
-#: generics.py:907
+#: generics.py:914
 #, python-format
 msgid "\"%(object)s\" deleted successfully."
 msgstr "“ %(object)s”已成功删除。"
 
-#: generics.py:908
+#: generics.py:915
 #, python-format
 msgid "%(count)d object deleted successfully."
 msgstr "%(count)d对象已成功删除。"
 
-#: generics.py:909
+#: generics.py:916
 #, python-format
 msgid "%(count)d objects deleted successfully."
 msgstr "%(count)d对象已成功删除。"
 
-#: generics.py:910
+#: generics.py:917
 #, python-format
 msgid "Delete \"%(object)s\"."
 msgstr "删除“ %(object)s”。"
 
-#: generics.py:911
+#: generics.py:918
 #, python-format
 msgid "Delete %(count)d object."
 msgstr "删除%(count)d对象。"
 
-#: generics.py:912
+#: generics.py:919
 #, python-format
 msgid "Delete %(count)d objects."
 msgstr "删除%(count)d对象。"
 
-#: mixins.py:350
+#: mixins.py:374
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr "找不到与查询匹配的%(verbose_name)s"
 
-#: mixins.py:375
+#: mixins.py:399
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
 msgstr "无法对对象执行操作%(instance)s； %(exception)s。"
 
-#: mixins.py:377
+#: mixins.py:401
 #, python-format
 msgid "Operation performed on %(object)s."
 msgstr "在%(object)s上执行的操作。"
 
-#: mixins.py:378
+#: mixins.py:402
 #, python-format
 msgid "Operation performed on %(count)d object."
 msgstr "对%(count)d对象执行的操作。"
 
-#: mixins.py:379
+#: mixins.py:403
 #, python-format
 msgid "Operation performed on %(count)d objects."
 msgstr "对%(count)d对象执行的操作。"
 
-#: mixins.py:380
+#: mixins.py:404
 #, python-format
 msgid "Perform operation on %(object)s."
 msgstr "在%(object)s上执行操作。"
 
-#: mixins.py:381
+#: mixins.py:405
 #, python-format
 msgid "Perform operation on %(count)d object."
 msgstr "对%(count)d对象执行操作。"
 
-#: mixins.py:382
+#: mixins.py:406
 #, python-format
 msgid "Perform operation on %(count)d objects."
 msgstr "对%(count)d对象执行操作。"
 
-#: mixins.py:464
+#: mixins.py:488
 msgid "Object"
 msgstr "对象"
 
-#: settings.py:12
+#: settings.py:14
 msgid "The number objects that will be displayed per page."
 msgstr "每页显示的对象数。"
 
-#: templatetags/views_tags.py:28
+#: settings.py:21
+msgid "A string specifying the name to use for the paging parameter."
+msgstr ""
+
+#: templatetags/views_tags.py:29
 msgid "Confirm delete"
 msgstr "确认删除"
 
-#: templatetags/views_tags.py:33
+#: templatetags/views_tags.py:34
 #, python-format
 msgid "Edit %s"
 msgstr "编辑%s"
 
-#: templatetags/views_tags.py:36
+#: templatetags/views_tags.py:37
 msgid "Confirm"
 msgstr "确认"
 
-#: templatetags/views_tags.py:40
+#: templatetags/views_tags.py:41
 #, python-format
 msgid "Details for: %s"
 msgstr "%s的详细信息"
 
-#: templatetags/views_tags.py:44
+#: templatetags/views_tags.py:45
 #, python-format
 msgid "Edit: %s"
 msgstr "编辑：%s"
 
-#: templatetags/views_tags.py:48
+#: templatetags/views_tags.py:49
 msgid "Create"
 msgstr "创建"

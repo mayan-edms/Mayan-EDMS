@@ -6,19 +6,19 @@
 # Translators:
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2022
 # Vítor Figueiró <vfigueiro@gmail.com>, 2022
+# Márcia Ferreira, 2022
 # Roberto Rosario, 2022
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2022
 # Aline Freitas <aline@alinefreitas.com.br>, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
-# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Márcia Ferreira, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:35+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,16 +26,23 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: apps.py:25
+#: apps.py:26
 msgid "Dynamic search"
 msgstr "Busca dinâmica"
 
-#: classes.py:568
+#: classes.py:432
+#, python-format
+msgid ""
+"Search backend error. Verify that the search service is available and that "
+"the search syntax is valid for the active search backend; %s"
+msgstr ""
+
+#: classes.py:584
 #, python-format
 msgid "Unknown search model `%s`."
 msgstr "Modelo de pesquisa desconhecido `%s`."
 
-#: classes.py:625
+#: classes.py:640
 msgid "ID"
 msgstr "ID"
 
@@ -52,16 +59,16 @@ msgstr ""
 "serão retornados. Quando os resultados não verificados correspondentes a "
 "pelo menos um campo serão retornados."
 
-#: forms.py:30 templates/dynamic_search/search_box.html:41
+#: forms.py:31 templates/dynamic_search/search_box.html:41
 msgid "Search terms"
 msgstr "Termos de pesquisa"
 
 #: links.py:13 permissions.py:5 queues.py:7 settings.py:11
-#: templates/dynamic_search/search_box.html:45 views.py:126 views.py:139
+#: templates/dynamic_search/search_box.html:45 views.py:133 views.py:147
 msgid "Search"
 msgstr "Busca"
 
-#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:163
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:171
 msgid "Advanced search"
 msgstr "pesquisa avançada"
 
@@ -69,7 +76,7 @@ msgstr "pesquisa avançada"
 msgid "Search again"
 msgstr "Buscar novamente"
 
-#: links.py:25 views.py:104
+#: links.py:25 views.py:110
 msgid "Reindex search backend"
 msgstr "Reindexar backend de pesquisa"
 
@@ -127,24 +134,28 @@ msgstr "Define o estado padrão da caixa de seleção \"Corresponder a todos\"."
 msgid "Maximum number search results to fetch and display."
 msgstr "Número máximo de resultados de pesquisa para buscar e exibir."
 
+#: templates/dynamic_search/app/list_toolbar.html:13
+msgid "List filter"
+msgstr ""
+
 #: templates/dynamic_search/search_box.html:47
 msgid "Advanced"
 msgstr "Avançada"
 
-#: views.py:42
+#: views.py:48
 msgid "Try again using different terms. "
 msgstr "Tentar novamente usando termos diferentes."
 
-#: views.py:44
+#: views.py:50
 msgid "No search results"
 msgstr "Não há resultados de busca"
 
-#: views.py:46
+#: views.py:52
 #, python-format
 msgid "Search results for: %s"
 msgstr "Resultados da pesquisa para: %s"
 
-#: views.py:100
+#: views.py:106
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
@@ -153,16 +164,16 @@ msgstr ""
 "resultados da pesquisa serão afetados enquanto o backend está sendo "
 "reindexado."
 
-#: views.py:106
+#: views.py:112
 msgid "This tool erases and populates the search backend's internal index."
 msgstr ""
 "Essa ferramenta apaga e preenche o índice interno do backend de pesquisa."
 
-#: views.py:119
+#: views.py:126
 msgid "Search backend reindexing queued."
 msgstr "Reindexação de backend da pesquisa enfileirada."
 
-#: views.py:141
+#: views.py:149
 #, python-format
 msgid "Search for: %s"
 msgstr "Buscar por: %s"

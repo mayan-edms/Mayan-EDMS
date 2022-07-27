@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2022
-# Badea Gabriel <gcbadea@gmail.com>, 2022
 # Stefaniu Criste <gupi@hangar.ro>, 2022
+# Badea Gabriel <gcbadea@gmail.com>, 2022
+# Roberto Rosario, 2022
 # Harald Ersch, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -128,43 +128,43 @@ msgstr "Cod de identificare cheie"
 msgid "Key type"
 msgstr "Tipul cheii"
 
-#: links.py:42
-msgid "Refresh all signatures"
-msgstr "Actualizează toate semnăturile"
-
-#: links.py:48
-msgid "Verify all documents"
-msgstr "Verificați toate documentele"
-
-#: links.py:58
+#: links.py:44
 msgid "Sign detached"
 msgstr "Semnează detașat"
 
-#: links.py:65
+#: links.py:51
 msgid "Delete"
 msgstr "Șterge"
 
-#: links.py:73
+#: links.py:59
 msgid "Download"
 msgstr "Descărcare"
 
-#: links.py:79
+#: links.py:66
 msgid "Upload signature"
 msgstr "Încărcați semnătura"
 
-#: links.py:89
+#: links.py:76
 msgid "Sign embedded"
 msgstr "Semnează încorporat"
 
-#: links.py:99
+#: links.py:86
 msgid "Details"
 msgstr "Detalii"
 
-#: links.py:105 queues.py:8
+#: links.py:92 queues.py:8
 msgid "Signatures"
 msgstr "Semnături"
 
-#: managers.py:95
+#: links.py:100
+msgid "Refresh all signatures"
+msgstr "Actualizează toate semnăturile"
+
+#: links.py:106
+msgid "Verify all documents"
+msgstr "Verificați toate documentele"
+
+#: managers.py:94
 msgid "signed"
 msgstr ""
 
@@ -302,44 +302,44 @@ msgstr ""
 msgid "Detached signatures"
 msgstr "Semnături detașate"
 
-#: views.py:62 views.py:129
+#: views.py:75 views.py:145
 msgid "Passphrase is needed to unlock this key."
 msgstr "Fraza de acces este necesară pentru a debloca această cheie."
 
-#: views.py:75 views.py:142
+#: views.py:88 views.py:158
 msgid "Passphrase is incorrect."
 msgstr "Fraza de acces este incorectă."
 
-#: views.py:88 views.py:155
+#: views.py:101 views.py:171
 msgid "Document file signed successfully."
 msgstr "Fișierul documentului a fost semnat cu succes."
 
-#: views.py:98
+#: views.py:111
 #, python-format
 msgid "Sign document file \"%s\" with a detached signature"
 msgstr "Semnați fișierul document „%s” cu o semnătură detașată"
 
-#: views.py:172
+#: views.py:188
 #, python-format
 msgid "Sign document file \"%s\" with a embedded signature"
 msgstr "Semnați fișierul document „%s” cu o semnătură încorporată"
 
-#: views.py:188
+#: views.py:205
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Ștergeți semnătura detașată: %s"
 
-#: views.py:238
+#: views.py:257
 #, python-format
 msgid "Upload detached signature for document file: %s"
 msgstr "Încărcați semnătura detașată pentru fișierul document: %s"
 
-#: views.py:267
+#: views.py:287
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Detalii pentru semnătura: %s"
 
-#: views.py:291
+#: views.py:312
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
@@ -349,35 +349,35 @@ msgstr ""
 "fraudelor. Sunt foarte sigure și greu de falsificat. O semnătură poate fi "
 "încorporată ca parte a documentului sau încărcată ca fișier separat."
 
-#: views.py:320
+#: views.py:341
 msgid "There are no signatures for this document file."
 msgstr "Nu există semnături pentru acest document."
 
-#: views.py:324
+#: views.py:345
 #, python-format
 msgid "Signatures for document file: %s"
 msgstr "Semnături pentru fișier document: %s"
 
-#: views.py:335 views.py:354
+#: views.py:356 views.py:377
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
 "Pe baze de date mari, această operație poate dura ceva timp pentru a "
 "executa."
 
-#: views.py:336
+#: views.py:358
 msgid "Refresh all signatures information?"
 msgstr "Reîmprospătați toate informațiile despre semnături?"
 
-#: views.py:346
+#: views.py:369
 msgid "Signature information refresh queued successfully."
 msgstr ""
 "Actualizarea informațiilor despre semnătură a fost pusă în coadă cu succes."
 
-#: views.py:355
+#: views.py:379
 msgid "Verify all document for signatures?"
 msgstr "Verificați toate documentele pentru semnături?"
 
-#: views.py:365
+#: views.py:390
 msgid "Signature verification queued successfully."
 msgstr "Verificarea semnăturilor a intrat în coada de așteptare."
 

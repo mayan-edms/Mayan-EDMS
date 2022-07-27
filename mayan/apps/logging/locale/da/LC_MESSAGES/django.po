@@ -4,14 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
+# Rasmus Kierudsen <tebrasso@gmail.com>, 2022
 # Mads L. Nielsen <sirlundgaard@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Mads L. Nielsen <sirlundgaard@gmail.com>, 2022\n"
 "Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
 "MIME-Version: 1.0\n"
@@ -20,67 +21,79 @@ msgstr ""
 "Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:20 permissions.py:5 settings.py:10
+#: apps.py:23 events.py:5 permissions.py:5 settings.py:10
 msgid "Logging"
 msgstr ""
 
-#: links.py:11 views.py:27
+#: events.py:8
+msgid "Error log deleted"
+msgstr ""
+
+#: links.py:15 views.py:36
 msgid "Global error log"
 msgstr ""
 
-#: links.py:17
+#: links.py:26
+msgid "Delete"
+msgstr "Slet"
+
+#: links.py:31
 msgid "Errors"
 msgstr ""
 
-#: links.py:23
+#: links.py:37
 msgid "Clear errors"
 msgstr ""
 
-#: models.py:11 models.py:39
+#: models.py:16 models.py:44
 msgid "Internal name"
 msgstr ""
 
-#: models.py:16 models.py:36
+#: models.py:21 models.py:41
 msgid "Error log"
 msgstr ""
 
-#: models.py:17
+#: models.py:22
 msgid "Error logs"
 msgstr ""
 
-#: models.py:26
+#: models.py:31
 msgid "App label"
 msgstr ""
 
-#: models.py:53 models.py:63
+#: models.py:58 models.py:68
 msgid "Error log partition"
 msgstr ""
 
-#: models.py:54
+#: models.py:59
 msgid "Error log partitions"
 msgstr ""
 
-#: models.py:66
+#: models.py:71
 msgid "Date and time"
 msgstr ""
 
-#: models.py:68
+#: models.py:73
 msgid "Text"
 msgstr ""
 
-#: models.py:73
+#: models.py:80
 msgid "Error log partition entry"
 msgstr ""
 
-#: models.py:74
+#: models.py:81
 msgid "Error log partition entries"
 msgstr ""
 
-#: models.py:82
+#: models.py:97
 msgid "Object"
 msgstr "Objekt"
 
 #: permissions.py:8
+msgid "Delete error log"
+msgstr ""
+
+#: permissions.py:11
 msgid "View error log"
 msgstr ""
 
@@ -101,32 +114,37 @@ msgstr ""
 msgid "Path to the logfile that will track errors during production."
 msgstr ""
 
-#: views.py:21
+#: views.py:30
 msgid ""
 "This view displays the error log of different objects. An empty list is a "
 "good thing."
 msgstr ""
 
-#: views.py:25 views.py:66
+#: views.py:34 views.py:101
 msgid "There are no error log entries"
 msgstr ""
 
-#: views.py:40
+#: views.py:50
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr ""
 
-#: views.py:47
+#: views.py:57
 msgid "Object error log cleared successfully"
 msgstr ""
 
-#: views.py:62
+#: views.py:74
+#, python-format
+msgid "Delete error log entry: %s"
+msgstr ""
+
+#: views.py:97
 msgid ""
 "This view displays the error log of an object. An empty list is a good "
 "thing."
 msgstr ""
 
-#: views.py:69
+#: views.py:104
 #, python-format
 msgid "Error log entries for: %s"
 msgstr ""

@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Mads L. Nielsen <sirlundgaard@gmail.com>, 2022\n"
 "Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:32 events.py:6 search.py:18 search.py:25 search.py:32 search.py:39
+#: apps.py:32 events.py:6 search.py:19 search.py:26 search.py:33 search.py:40
 msgid "Document comments"
 msgstr ""
 
@@ -50,7 +50,7 @@ msgstr "Slet"
 msgid "Edit"
 msgstr "Redigér"
 
-#: links.py:31 models.py:46 permissions.py:5 search.py:11
+#: links.py:31 models.py:46 permissions.py:5 search.py:12
 msgid "Comments"
 msgstr "Kommentarer"
 
@@ -90,37 +90,37 @@ msgstr ""
 msgid "View comments"
 msgstr "Se kommentarer"
 
-#: views.py:31
+#: views.py:35
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Tilføj kommentar til dokument: %s"
 
-#: views.py:59
+#: views.py:64
 #, python-format
 msgid "Delete comment: %s?"
 msgstr ""
 
-#: views.py:90
+#: views.py:96
 #, python-format
 msgid "Details for comment: %s?"
 msgstr ""
 
-#: views.py:109
+#: views.py:116
 #, python-format
 msgid "Edit comment: %s?"
 msgstr ""
 
-#: views.py:144
+#: views.py:152
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
 msgstr ""
 
-#: views.py:147
+#: views.py:155
 msgid "There are no comments"
 msgstr ""
 
-#: views.py:149
+#: views.py:157
 #, python-format
 msgid "Comments for document: %s"
 msgstr ""

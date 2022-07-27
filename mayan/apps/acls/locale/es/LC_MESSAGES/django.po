@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:11+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:32+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: apps.py:26 classes.py:180 links.py:27
+#: apps.py:26 classes.py:182 links.py:27
 msgid "ACLs"
 msgstr "LCAs"
 
@@ -53,7 +53,7 @@ msgstr "LCA eliminada"
 msgid "ACL edited"
 msgstr "LCA editada"
 
-#: forms.py:13 models.py:51 views.py:67
+#: forms.py:13 models.py:51 views.py:71
 msgid "Role"
 msgstr "Rol"
 
@@ -65,7 +65,7 @@ msgstr "Nueva LCA"
 msgid "Delete"
 msgstr "Eliminar"
 
-#: links.py:32 models.py:45 workflow_actions.py:46 workflow_actions.py:161
+#: links.py:32 models.py:45 workflow_actions.py:46 workflow_actions.py:159
 msgid "Permissions"
 msgstr "Permisos"
 
@@ -116,7 +116,7 @@ msgstr "Llave principal del permiso para agregar a la LCA."
 msgid "Primary key of the permission to remove from the ACL."
 msgstr "Llave principal del permiso para eliminar de la LCA."
 
-#: views.py:40
+#: views.py:44
 #, python-format
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
@@ -125,21 +125,21 @@ msgstr ""
 "Ya existe una LCA para \"%(object)s\" con el rol \"%(role)s\". Edite esa "
 "entrada de LCA en su lugar."
 
-#: views.py:53
+#: views.py:57
 #, python-format
 msgid "New access control lists for: %s"
 msgstr "Nueva lista de control de acceso para: %s"
 
-#: views.py:96
+#: views.py:101
 #, python-format
 msgid "Delete ACL: %s"
 msgstr "Borrar LCA: %s"
 
-#: views.py:141
+#: views.py:147
 msgid "There are no ACLs for this object"
 msgstr "No hay LCAs para este objeto"
 
-#: views.py:144 views.py:261
+#: views.py:150 views.py:269
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
@@ -150,25 +150,25 @@ msgstr ""
 "permiten otorgar un permiso a un rol, pero solo para un objeto específico o "
 "un conjunto de objetos."
 
-#: views.py:151
+#: views.py:157
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Listas de control de acceso para: %s"
 
-#: views.py:165
+#: views.py:171
 msgid "Granted permissions"
 msgstr "Permisos otorgados"
 
-#: views.py:166
+#: views.py:172
 msgid "Available permissions"
 msgstr "Permisos disponibles"
 
-#: views.py:210
+#: views.py:217
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "Permisos del rol \"%(role)s\" para \"%(object)s\""
 
-#: views.py:219
+#: views.py:226
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -180,11 +180,11 @@ msgstr ""
 "heredados deben eliminarse de la LCA del objeto principal o de su rol a "
 "través del menú de Configuración."
 
-#: views.py:258
+#: views.py:266
 msgid "There are no ACLs"
 msgstr "No hay LCAs"
 
-#: views.py:267
+#: views.py:275
 msgid "Global access control lists"
 msgstr "Listas de control de acceso global"
 
@@ -206,15 +206,15 @@ msgid ""
 msgstr ""
 "Identificador numérico del objeto para el que se modificará el acceso."
 
-#: workflow_actions.py:40 workflow_actions.py:155
+#: workflow_actions.py:40 workflow_actions.py:153
 msgid "Roles"
 msgstr "Roles"
 
-#: workflow_actions.py:42 workflow_actions.py:157
+#: workflow_actions.py:42 workflow_actions.py:155
 msgid "Roles whose access will be modified."
 msgstr "Roles cuyo acceso será modificado."
 
-#: workflow_actions.py:49 workflow_actions.py:164
+#: workflow_actions.py:49 workflow_actions.py:162
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr ""
@@ -225,14 +225,14 @@ msgstr ""
 msgid "Grant object access"
 msgstr "Conceder acceso a objetos"
 
-#: workflow_actions.py:140
+#: workflow_actions.py:138
 msgid "Revoke object access"
 msgstr "Revocar acceso a objetos"
 
-#: workflow_actions.py:172
+#: workflow_actions.py:170
 msgid "Grant document access"
 msgstr "Otorgar acceso a documento"
 
-#: workflow_actions.py:211
+#: workflow_actions.py:209
 msgid "Revoke document access"
 msgstr "Revocar acceso documento"

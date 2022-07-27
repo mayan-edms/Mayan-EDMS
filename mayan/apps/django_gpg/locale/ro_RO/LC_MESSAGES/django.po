@@ -4,8 +4,8 @@
 # 
 # Translators:
 # Translators:
-# Badea Gabriel <gcbadea@gmail.com>, 2022
 # Stefaniu Criste <gupi@hangar.ro>, 2022
+# Badea Gabriel <gcbadea@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Harald Ersch, 2022
 # 
@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -65,11 +65,11 @@ msgstr "Gestionare chei"
 
 #: events.py:8
 msgid "Key created"
-msgstr "Cheia creată"
+msgstr "Cheie creată"
 
 #: events.py:12
 msgid "Key downloaded"
-msgstr "Cheia descărcată"
+msgstr "Cheie descărcată"
 
 #: forms.py:26
 msgid "None"
@@ -115,11 +115,11 @@ msgstr "Import"
 msgid "Upload key"
 msgstr "Încărcare chei"
 
-#: links.py:50 views.py:189
+#: links.py:50 views.py:201
 msgid "Private keys"
 msgstr "Chei private"
 
-#: links.py:54 views.py:213
+#: links.py:54 views.py:226
 msgid "Public keys"
 msgstr "Chei publice"
 
@@ -231,36 +231,36 @@ msgstr ""
 msgid "Keyserver used to query for keys."
 msgstr "Keyserver-ul  folosit la interogarea cheilor."
 
-#: views.py:36
+#: views.py:41
 #, python-format
 msgid "Delete key: %s"
 msgstr "Ștergeți cheia: %s"
 
-#: views.py:53
+#: views.py:59
 #, python-format
 msgid "Details for key: %s"
 msgstr "Detalii pentru cheia: %s"
 
-#: views.py:81
+#: views.py:89
 #, python-format
 msgid "Import key ID: %s?"
 msgstr "Importați cheia cu ID-ul:  %s?"
 
-#: views.py:82
+#: views.py:90
 msgid "Import key"
 msgstr "Import cheie"
 
-#: views.py:91
+#: views.py:99
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Imposibil de importat cheia: %(key_id)s; %(error)s"
 
-#: views.py:99
+#: views.py:107
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr "Ați primit cu succes cheia: %(key_id)s"
 
-#: views.py:116
+#: views.py:125
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
@@ -268,23 +268,23 @@ msgstr ""
 "Utilizați numele, numele de familie, identitatea cheilor sau e-mailurile "
 "pentru a căuta cheile publice de importat de pe serverul de chei."
 
-#: views.py:120
+#: views.py:129
 msgid "No results returned"
 msgstr "Nu s-au întors rezultate"
 
-#: views.py:122
+#: views.py:131
 msgid "Key query results"
 msgstr "Rezultatele interogării cheii"
 
-#: views.py:142
+#: views.py:152
 msgid "Query key server"
 msgstr "Interogare keyserver"
 
-#: views.py:161
+#: views.py:172
 msgid "Upload new key"
 msgstr "Încărcați o cheie nouă"
 
-#: views.py:182
+#: views.py:194
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user. The view to upload private and public keys is the same."
@@ -293,11 +293,11 @@ msgstr ""
 " încărcate doar de către utilizator. Vizualizarea pentru a încărca cheile "
 "private și publice este aceeași."
 
-#: views.py:187
+#: views.py:199
 msgid "There no private keys"
 msgstr "Nu există chei private"
 
-#: views.py:205
+#: views.py:218
 msgid ""
 "Public keys are used to verify signed documents. Public keys can be uploaded"
 " by the user or downloaded from keyservers. The view to upload private and "
@@ -307,6 +307,6 @@ msgstr ""
 "publice pot fi încărcate de utilizator sau descărcate de la serverele de "
 "chei. Vizualizarea pentru a încărca cheile private și publice este aceeași."
 
-#: views.py:211
+#: views.py:224
 msgid "There no public keys"
 msgstr "Nu există chei publice"

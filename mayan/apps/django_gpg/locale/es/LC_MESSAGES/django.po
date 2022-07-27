@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
@@ -114,11 +114,11 @@ msgstr "Importar"
 msgid "Upload key"
 msgstr "Subir llave"
 
-#: links.py:50 views.py:189
+#: links.py:50 views.py:201
 msgid "Private keys"
 msgstr "Llaves privadas"
 
-#: links.py:54 views.py:213
+#: links.py:54 views.py:226
 msgid "Public keys"
 msgstr "Llaves públicas"
 
@@ -229,36 +229,36 @@ msgstr ""
 msgid "Keyserver used to query for keys."
 msgstr "Servidor usado para buscar llaves."
 
-#: views.py:36
+#: views.py:41
 #, python-format
 msgid "Delete key: %s"
 msgstr "Borrar llave: %s"
 
-#: views.py:53
+#: views.py:59
 #, python-format
 msgid "Details for key: %s"
 msgstr "Detalles para llave: %s"
 
-#: views.py:81
+#: views.py:89
 #, python-format
 msgid "Import key ID: %s?"
 msgstr "¿Importar llave: %s?"
 
-#: views.py:82
+#: views.py:90
 msgid "Import key"
 msgstr "Importar llave"
 
-#: views.py:91
+#: views.py:99
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "No se pudo importar la llave: %(key_id)s; %(error)s "
 
-#: views.py:99
+#: views.py:107
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr "Llave: %(key_id)s, recibida con éxito"
 
-#: views.py:116
+#: views.py:125
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
@@ -267,23 +267,23 @@ msgstr ""
 "electrónicos para buscar llaves públicas para importar desde el servidor de "
 "llaves."
 
-#: views.py:120
+#: views.py:129
 msgid "No results returned"
 msgstr "No hay resultados devueltos"
 
-#: views.py:122
+#: views.py:131
 msgid "Key query results"
 msgstr "Resultado de búsqueda de llaves"
 
-#: views.py:142
+#: views.py:152
 msgid "Query key server"
 msgstr "Consultar servidor de llaves"
 
-#: views.py:161
+#: views.py:172
 msgid "Upload new key"
 msgstr "Subir una nueva llave"
 
-#: views.py:182
+#: views.py:194
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user. The view to upload private and public keys is the same."
@@ -292,11 +292,11 @@ msgstr ""
 "solo pueden ser cargadas por el usuario. La vista para cargar llaves "
 "privadas y públicas es la misma."
 
-#: views.py:187
+#: views.py:199
 msgid "There no private keys"
 msgstr "No hay llaves privadas"
 
-#: views.py:205
+#: views.py:218
 msgid ""
 "Public keys are used to verify signed documents. Public keys can be uploaded"
 " by the user or downloaded from keyservers. The view to upload private and "
@@ -307,6 +307,6 @@ msgstr ""
 "servidores de llaves. La vista para subir llaves privadas y públicas es la "
 "misma."
 
-#: views.py:211
+#: views.py:224
 msgid "There no public keys"
 msgstr "No hay llaves publicas"

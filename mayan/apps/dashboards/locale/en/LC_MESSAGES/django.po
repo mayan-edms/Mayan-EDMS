@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:18 links.py:9 views.py:11
+#: apps.py:18 links.py:9 views.py:12
 msgid "Dashboards"
 msgstr ""
 
@@ -41,6 +41,6 @@ msgstr ""
 msgid "View details"
 msgstr ""
 
-#: views.py:27
+#: views.py:30
 msgid "Dashboard detail"
 msgstr ""

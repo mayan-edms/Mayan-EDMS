@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:33+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -25,6 +25,22 @@ msgstr ""
 msgid "Databases"
 msgstr "Baze de date"
 
+#: classes.py:199
+msgid "Model fields"
+msgstr "Câmpurile modelului"
+
+#: classes.py:242
+msgid "Model related fields"
+msgstr "Câmpuri legate de model"
+
+#: classes.py:247
+msgid "Model properties"
+msgstr "Proprietățile modelului"
+
+#: classes.py:252
+msgid "Model reverse fields"
+msgstr "Model câmpuri invers"
+
 #: literals.py:12
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
@@ -33,29 +49,49 @@ msgstr ""
 "Backendul bazei de date este setat să utilizeze SQLite. SQLite ar trebui "
 "folosit numai pentru dezvoltare și testare, nu pentru producție."
 
-#: model_mixins.py:18
+#: model_mixins.py:24
 msgid "The dotted Python path to the backend class."
 msgstr "Calea Python punctată la clasa backend."
 
-#: model_mixins.py:19
+#: model_mixins.py:25
 msgid "Backend path"
 msgstr "Calea de backend"
 
-#: model_mixins.py:23
+#: model_mixins.py:29
 msgid "JSON encoded data for the backend class."
 msgstr "Date codificate JSON pentru clasa backend."
 
-#: model_mixins.py:24
+#: model_mixins.py:30
 msgid "Backend data"
 msgstr "Date backend"
 
-#: model_mixins.py:72
+#: model_mixins.py:78
 msgid "Backend"
 msgstr "Backend"
 
-#: model_mixins.py:73
+#: model_mixins.py:79
 msgid "The backend class for this entry."
 msgstr "Clasa backend pentru această intrare."
+
+#: model_mixins.py:101
+msgid ""
+"The condition that will determine if this object is executed or not. "
+"Conditions that do not return any value, that return the Python logical "
+"None, or an empty string ('') are considered to be logical false, any other "
+"value is considered to be the logical true."
+msgstr ""
+
+#: model_mixins.py:106
+msgid "Condition"
+msgstr "Condiție"
+
+#: model_mixins.py:127
+msgid "The object will be executed, depending on the condition return value."
+msgstr ""
+
+#: model_mixins.py:130
+msgid "Has a condition?"
+msgstr "Are o condiție?"
 
 #: templates/databases/app/viewport.html:11
 msgid "Warning"

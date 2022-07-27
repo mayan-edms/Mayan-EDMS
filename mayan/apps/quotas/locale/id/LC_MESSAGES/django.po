@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:37+0000\n"
 "Last-Translator: Adek Lanin, 2022\n"
 "Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
 "MIME-Version: 1.0\n"
@@ -20,8 +20,8 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:33 events.py:6 links.py:34 models.py:37 permissions.py:5
-#: views.py:136
+#: apps.py:33 events.py:6 links.py:34 models.py:38 permissions.py:5
+#: views.py:144
 msgid "Quotas"
 msgstr ""
 
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Quota edited"
 msgstr ""
 
-#: forms.py:15 models.py:62
+#: forms.py:15 models.py:63
 msgid "Backend"
 msgstr ""
 
@@ -152,19 +152,19 @@ msgstr ""
 msgid "Enabled"
 msgstr ""
 
-#: models.py:36
+#: models.py:37
 msgid "Quota"
 msgstr ""
 
-#: models.py:61
+#: models.py:62
 msgid "Driver used for this quota entry."
 msgstr ""
 
-#: models.py:66
+#: models.py:67
 msgid "Arguments"
 msgstr ""
 
-#: models.py:70
+#: models.py:71
 msgid "Usage"
 msgstr ""
 
@@ -222,29 +222,29 @@ msgstr ""
 msgid "Document size quota exceeded."
 msgstr ""
 
-#: views.py:24
+#: views.py:27
 msgid "New quota backend selection"
 msgstr ""
 
-#: views.py:54
+#: views.py:59
 #, python-format
 msgid "Create a \"%s\" quota"
 msgstr ""
 
-#: views.py:86
+#: views.py:92
 #, python-format
 msgid "Delete quota: %s"
 msgstr ""
 
-#: views.py:101
+#: views.py:108
 #, python-format
 msgid "Edit quota: %s"
 msgstr ""
 
-#: views.py:133
+#: views.py:141
 msgid "Quotas restrict usage of system resources. "
 msgstr ""
 
-#: views.py:135
+#: views.py:143
 msgid "No quotas available"
 msgstr ""

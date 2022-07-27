@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2022
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:14+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:38+0000\n"
+"Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,11 +38,11 @@ msgstr "Име"
 msgid "Value"
 msgstr "Стойност"
 
-#: classes.py:348
+#: classes.py:374
 msgid "Overridden"
 msgstr "Заменена"
 
-#: classes.py:350
+#: classes.py:376
 msgid "Is this settings being overridden by an environment variable?"
 msgstr "Отменя ли се тази настройка от променлива на средата?"
 
@@ -55,15 +55,15 @@ msgstr "Въведете новата стойност на настройкат
 msgid "\"%s\" not a valid entry."
 msgstr "&quot;%s&quot; не е валиден запис."
 
-#: links.py:12 links.py:16
+#: links.py:20 links.py:24
 msgid "Settings"
 msgstr "Настройки"
 
-#: links.py:22
+#: links.py:31
 msgid "Namespaces"
 msgstr "Именни пространства"
 
-#: links.py:26
+#: links.py:36
 msgid "Edit"
 msgstr "Редактиране"
 
@@ -506,16 +506,22 @@ msgstr ""
 msgid "English"
 msgstr "Английски"
 
-#: views.py:21
+#: views.py:27
+msgid ""
+"Local storage is currently disabled, changes to setting values will not be "
+"saved or take effect."
+msgstr ""
+
+#: views.py:38
 msgid "Setting updated successfully."
 msgstr "Настройката е актуализирана успешно."
 
-#: views.py:30
+#: views.py:47
 #, python-format
 msgid "Edit setting: %s"
 msgstr "Редактиране на настройката: %s"
 
-#: views.py:55
+#: views.py:73
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
@@ -523,16 +529,16 @@ msgstr ""
 "Настройките, наследени от системна променлива имат предимство и не могат да "
 "бъдат променени в този изглед."
 
-#: views.py:58
+#: views.py:76
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr "Настройки в именното пространството: %s"
 
-#: views.py:66
+#: views.py:84
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "Именно пространство: %s, не е намерено"
 
-#: views.py:76
+#: views.py:94
 msgid "Setting namespaces"
 msgstr "Задаване на именни пространства"

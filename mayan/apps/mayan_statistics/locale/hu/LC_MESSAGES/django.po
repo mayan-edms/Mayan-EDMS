@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2022\n"
 "Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -21,17 +21,17 @@ msgstr ""
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27 links.py:34 permissions.py:5 queues.py:7
+#: apps.py:30 links.py:35 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "Statisztika"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:36
+#: apps.py:39
 msgid "Schedule"
 msgstr "Időzítés"
 
-#: apps.py:42
+#: apps.py:45
 msgid "Last update"
 msgstr ""
 
@@ -39,19 +39,19 @@ msgstr ""
 msgid "Never"
 msgstr "Sohasem"
 
-#: links.py:14
+#: links.py:15
 msgid "Queue"
 msgstr "Munkasor"
 
-#: links.py:19
+#: links.py:20
 msgid "View"
 msgstr "Nézet"
 
-#: links.py:24
+#: links.py:25
 msgid "Namespace details"
 msgstr "Névtér részletek"
 
-#: links.py:29
+#: links.py:30
 msgid "Namespace list"
 msgstr "Névtérlista"
 
@@ -94,31 +94,31 @@ msgstr ""
 msgid "Last update: %(datetime)s"
 msgstr ""
 
-#: views.py:17
+#: views.py:22
 msgid "Statistics namespaces"
 msgstr "Statisztikai névterek"
 
-#: views.py:33
+#: views.py:40
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "Névtér részlete a: %s-hoz"
 
-#: views.py:55
+#: views.py:63
 #, python-format
 msgid "Results for: %s"
 msgstr "Eredmények a: %s-hez"
 
-#: views.py:62 views.py:88
+#: views.py:70 views.py:97
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "Nem található a \"%s\" statisztika"
 
-#: views.py:80
+#: views.py:89
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "Legyen frissítve a \"%s\" statisztika munkasora?"
 
-#: views.py:94
+#: views.py:103
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr ""

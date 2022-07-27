@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Marwan Rahhal <Marwanr@sssit.net>, 2022
 # Yaman Sanobar <yman.snober@gmail.com>, 2022
+# Marwan Rahhal <Marwanr@sssit.net>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Yaman Sanobar <yman.snober@gmail.com>, 2022\n"
+"POT-Creation-Date: 2022-07-27 05:32+0000\n"
+"PO-Revision-Date: 2022-07-27 05:37+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,8 +21,8 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:33 events.py:6 links.py:34 models.py:37 permissions.py:5
-#: views.py:136
+#: apps.py:33 events.py:6 links.py:34 models.py:38 permissions.py:5
+#: views.py:144
 msgid "Quotas"
 msgstr "المحددات"
 
@@ -46,7 +46,7 @@ msgstr "إنشاء محدد"
 msgid "Quota edited"
 msgstr "تعديل محدد"
 
-#: forms.py:15 models.py:62
+#: forms.py:15 models.py:63
 msgid "Backend"
 msgstr "في الخفاء"
 
@@ -156,19 +156,19 @@ msgstr "السماح بالتعطيل المختصر أو تحديد المحد�
 msgid "Enabled"
 msgstr "مفعل"
 
-#: models.py:36
+#: models.py:37
 msgid "Quota"
 msgstr "المحدد"
 
-#: models.py:61
+#: models.py:62
 msgid "Driver used for this quota entry."
 msgstr "المستخدم  المخصص لإدخال النسب"
 
-#: models.py:66
+#: models.py:67
 msgid "Arguments"
 msgstr "المحددات"
 
-#: models.py:70
+#: models.py:71
 msgid "Usage"
 msgstr "الإستخدام"
 
@@ -226,29 +226,29 @@ msgstr "حجم الوثائق : %(formatted_file_size)s"
 msgid "Document size quota exceeded."
 msgstr "تجاوزت الحجم المسموح للوثائق"
 
-#: views.py:24
+#: views.py:27
 msgid "New quota backend selection"
 msgstr "تحديد محدد جديدة"
 
-#: views.py:54
+#: views.py:59
 #, python-format
 msgid "Create a \"%s\" quota"
 msgstr "تحديد  \"%s\" المحدد"
 
-#: views.py:86
+#: views.py:92
 #, python-format
 msgid "Delete quota: %s"
 msgstr "حذف المحدد: %s"
 
-#: views.py:101
+#: views.py:108
 #, python-format
 msgid "Edit quota: %s"
 msgstr "تعديل المحدد: %s"
 
-#: views.py:133
+#: views.py:141
 msgid "Quotas restrict usage of system resources. "
 msgstr "مراجعة مدير النظام ، المحددات في النظام"
 
-#: views.py:135
+#: views.py:143
 msgid "No quotas available"
 msgstr "لا يوجد محددات متاحة ، مراجعة مدير النظام"

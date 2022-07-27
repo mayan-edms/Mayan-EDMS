@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -42,11 +42,11 @@ msgstr "Съобщението е създадено"
 msgid "Message edited"
 msgstr "Съобщението е редактирано"
 
-#: forms.py:26 models.py:38
+#: forms.py:26 models.py:38 workflow_actions.py:55
 msgid "Body"
 msgstr "Съдържание"
 
-#: links.py:49 views.py:33
+#: links.py:49 views.py:38
 msgid "Create message"
 msgstr "Създаване на съобщение"
 
@@ -74,7 +74,7 @@ msgstr "Потребител"
 msgid "Short description of this message."
 msgstr "Кратко описание на това съобщение."
 
-#: models.py:34
+#: models.py:34 workflow_actions.py:38
 msgid "Subject"
 msgstr "Относно"
 
@@ -102,7 +102,7 @@ msgstr "Дата и час на създаване"
 msgid "Message"
 msgstr "Съобщение"
 
-#: models.py:54 views.py:119
+#: models.py:54 views.py:127
 msgid "Messages"
 msgstr "Съобщения"
 
@@ -130,134 +130,154 @@ msgstr "Преглед на съобщения"
 msgid "Primary key of the recipient user of this message."
 msgstr "Първичен ключ на потребителя получател на това съобщение."
 
-#: views.py:44
+#: views.py:49
 #, python-format
 msgid "Error deleting message \"%(instance)s\"; %(exception)s"
 msgstr ""
 "Грешка при изтриване на съобщение &quot;%(instance)s&quot;; %(exception)s"
 
-#: views.py:48
+#: views.py:53
 #, python-format
 msgid "Message \"%(object)s\" deleted successfully."
 msgstr "Съобщението &quot;%(object)s&quot; беше изтрито успешно."
 
-#: views.py:49
+#: views.py:54
 #, python-format
 msgid "%(count)d message deleted successfully."
 msgstr "%(count)d съобщение беше изтрито успешно."
 
-#: views.py:50
+#: views.py:55
 #, python-format
 msgid "%(count)d messages deleted successfully."
 msgstr "%(count)d съобщения бяха изтрити успешно."
 
-#: views.py:51
+#: views.py:56
 #, python-format
 msgid "Delete message: %(object)s."
 msgstr "Изтриване на съобщение: %(object)s."
 
-#: views.py:52
+#: views.py:57
 #, python-format
 msgid "Delete the %(count)d selected message."
 msgstr "Изтрийте %(count)dизбрано съобщение."
 
-#: views.py:53
+#: views.py:58
 #, python-format
 msgid "Delete the %(count)d selected messages."
 msgstr "Изтрийте %(count)dизбрани съобщения."
 
-#: views.py:92
+#: views.py:99
 #, python-format
 msgid "Details of message: %s"
 msgstr "Подробности за съобщението: %s"
 
-#: views.py:115
+#: views.py:123
 msgid "Here you will find text messages from other users or from the system."
 msgstr ""
 "Тук ще намерите текстови съобщения от други потребители или от системата."
 
-#: views.py:118
+#: views.py:126
 msgid "There are no messages"
 msgstr "Няма съобщения"
 
-#: views.py:128
+#: views.py:136
 #, python-format
 msgid "Error marking message \"%(instance)s\" as read; %(exception)s"
 msgstr ""
 "Грешка при маркирането на съобщението „%(instance)s“ като прочетено; "
 "%(exception)s"
 
-#: views.py:134
+#: views.py:142
 #, python-format
 msgid "Message \"%(object)s\" marked as read successfully."
 msgstr "Съобщението „%(object)s“ е отбелязано като прочетено успешно."
 
-#: views.py:137
+#: views.py:145
 #, python-format
 msgid "%(count)d message marked as read successfully."
 msgstr "%(count)d съобщение, означено като успешно прочетено."
 
-#: views.py:140
+#: views.py:148
 #, python-format
 msgid "%(count)d messages marked as read successfully."
 msgstr "%(count)d съобщения, отбелязани като прочетени успешно."
 
-#: views.py:142
+#: views.py:150
 #, python-format
 msgid "Mark the message \"%(object)s\" as read."
 msgstr "Маркирайте съобщението &quot;%(object)s&quot; като прочетено."
 
-#: views.py:143
+#: views.py:151
 #, python-format
 msgid "Mark the %(count)d selected message as read."
 msgstr "Маркирайте %(count)d избрано съобщение като прочетено."
 
-#: views.py:144
+#: views.py:152
 #, python-format
 msgid "Mark the %(count)d selected messages as read."
 msgstr "Маркирайте %(count)d избрани съобщения като прочетени."
 
-#: views.py:171
+#: views.py:181
 msgid "Mark all message as read?"
 msgstr "Да се означат ли всички съобщения като прочетени?"
 
-#: views.py:188
+#: views.py:198
 msgid "All messages marked as read."
 msgstr "Всички съобщения са означени като прочетени."
 
-#: views.py:195
+#: views.py:205
 #, python-format
 msgid "Error marking message \"%(instance)s\" as unread; %(exception)s"
 msgstr ""
 "Грешка при маркирането на съобщението „%(instance)s“ като непрочетено; "
 "%(exception)s"
 
-#: views.py:201
+#: views.py:211
 #, python-format
 msgid "Message \"%(object)s\" marked as unread successfully."
 msgstr "Съобщението „%(object)s“ бе отбелязано като непрочетено успешно."
 
-#: views.py:204
+#: views.py:214
 #, python-format
 msgid "%(count)d message marked as unread successfully."
 msgstr "%(count)d съобщение, успешно означено като непрочетено."
 
-#: views.py:207
+#: views.py:217
 #, python-format
 msgid "%(count)d messages marked as unread successfully."
 msgstr "%(count)d съобщения, успешно отбелязани като непрочетени."
 
-#: views.py:209
+#: views.py:219
 #, python-format
 msgid "Mark the message \"%(object)s\" as unread."
 msgstr "Маркирайте съобщението \"%(object)s\" като непрочетено."
 
-#: views.py:210
+#: views.py:220
 #, python-format
 msgid "Mark the %(count)d selected message as unread."
 msgstr "Маркирайте избраното съобщение %(count)d като непрочетено."
 
-#: views.py:211
+#: views.py:221
 #, python-format
 msgid "Mark the %(count)d selected messages as unread."
 msgstr "Маркирайте избраните съобщения %(count)d като непрочетени."
+
+#: workflow_actions.py:19
+msgid "Username list"
+msgstr ""
+
+#: workflow_actions.py:26
+msgid "Comma separated list of username that will receive the message."
+msgstr ""
+
+#: workflow_actions.py:45
+msgid "Topic of the message to be sent."
+msgstr ""
+
+#: workflow_actions.py:62
+msgid "The actual text to send."
+msgstr ""
+
+#: workflow_actions.py:73
+msgid "Send user message"
+msgstr ""

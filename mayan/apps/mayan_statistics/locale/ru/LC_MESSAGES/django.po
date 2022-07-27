@@ -5,16 +5,16 @@
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
-# Sergey Glita <gsv70@mail.ru>, 2022
 # lilo.panic, 2022
+# Sergey Glita <gsv70@mail.ru>, 2022
 # Ilya Pavlov <spirkaa@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -23,17 +23,17 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:27 links.py:34 permissions.py:5 queues.py:7
+#: apps.py:30 links.py:35 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "Статистика"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:36
+#: apps.py:39
 msgid "Schedule"
 msgstr "Расписание"
 
-#: apps.py:42
+#: apps.py:45
 msgid "Last update"
 msgstr "Последнее обновление"
 
@@ -41,19 +41,19 @@ msgstr "Последнее обновление"
 msgid "Never"
 msgstr "Никогда"
 
-#: links.py:14
+#: links.py:15
 msgid "Queue"
 msgstr "Поставить в очередь"
 
-#: links.py:19
+#: links.py:20
 msgid "View"
 msgstr "Просмотр"
 
-#: links.py:24
+#: links.py:25
 msgid "Namespace details"
 msgstr "Подробности пространства имён"
 
-#: links.py:29
+#: links.py:30
 msgid "Namespace list"
 msgstr "Список пространств имён"
 
@@ -96,31 +96,31 @@ msgstr "Данные недоступны."
 msgid "Last update: %(datetime)s"
 msgstr "Последнее обновление: %(datetime)s"
 
-#: views.py:17
+#: views.py:22
 msgid "Statistics namespaces"
 msgstr "Статистика пространств имён"
 
-#: views.py:33
+#: views.py:40
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "Подробности пространства имён: %s"
 
-#: views.py:55
+#: views.py:63
 #, python-format
 msgid "Results for: %s"
 msgstr "Результаты для: %s"
 
-#: views.py:62 views.py:88
+#: views.py:70 views.py:97
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "Статистика \"%s\" не найдена."
 
-#: views.py:80
+#: views.py:89
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "Поставить статистику \"%s\" в очередь для обновления?"
 
-#: views.py:94
+#: views.py:103
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr "Статистика \"%s\" поставлена в очередь для обновления."

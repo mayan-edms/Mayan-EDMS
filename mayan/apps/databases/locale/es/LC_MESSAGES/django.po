@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:33+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
@@ -24,6 +24,22 @@ msgstr ""
 msgid "Databases"
 msgstr "Bases de datos"
 
+#: classes.py:199
+msgid "Model fields"
+msgstr "Campos del modelo"
+
+#: classes.py:242
+msgid "Model related fields"
+msgstr "Campos relacionados del modelo"
+
+#: classes.py:247
+msgid "Model properties"
+msgstr "Propiedades del modelo"
+
+#: classes.py:252
+msgid "Model reverse fields"
+msgstr "Campos inversos de modelo"
+
 #: literals.py:12
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
@@ -32,29 +48,49 @@ msgstr ""
 "El backend de su base de datos está configurado para usar SQLite. SQLite "
 "solo debe usarse para desarrollo y pruebas, no para producción."
 
-#: model_mixins.py:18
+#: model_mixins.py:24
 msgid "The dotted Python path to the backend class."
 msgstr "La ruta de Python separada por puntos a la clase del controlador."
 
-#: model_mixins.py:19
+#: model_mixins.py:25
 msgid "Backend path"
 msgstr "Ruta del controlador"
 
-#: model_mixins.py:23
+#: model_mixins.py:29
 msgid "JSON encoded data for the backend class."
 msgstr "Datos codificados en JSON para la clase de backend."
 
-#: model_mixins.py:24
+#: model_mixins.py:30
 msgid "Backend data"
 msgstr "Datos del controlador"
 
-#: model_mixins.py:72
+#: model_mixins.py:78
 msgid "Backend"
 msgstr "Controlador"
 
-#: model_mixins.py:73
+#: model_mixins.py:79
 msgid "The backend class for this entry."
 msgstr "La clase del controlador para esta entrada."
+
+#: model_mixins.py:101
+msgid ""
+"The condition that will determine if this object is executed or not. "
+"Conditions that do not return any value, that return the Python logical "
+"None, or an empty string ('') are considered to be logical false, any other "
+"value is considered to be the logical true."
+msgstr ""
+
+#: model_mixins.py:106
+msgid "Condition"
+msgstr "Condición"
+
+#: model_mixins.py:127
+msgid "The object will be executed, depending on the condition return value."
+msgstr ""
+
+#: model_mixins.py:130
+msgid "Has a condition?"
+msgstr "¿Tiene una condición?"
 
 #: templates/databases/app/viewport.html:11
 msgid "Warning"

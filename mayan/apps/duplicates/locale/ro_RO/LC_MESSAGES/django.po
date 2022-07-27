@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:35+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr "Sumă de verificare exactă a fișierului documentului"
 msgid "Exact document label"
 msgstr "Eticheta exactă a documentului"
 
-#: links.py:18 models.py:41 views.py:73
+#: links.py:18 models.py:41 views.py:79
 msgid "Duplicated documents"
 msgstr "Documente duplicate"
 
@@ -76,22 +76,22 @@ msgstr "Curățați listele de duplicate goale"
 msgid "Scan document duplicates"
 msgstr "Scanați după documente duplicate"
 
-#: views.py:32
+#: views.py:36
 msgid "Only exact copies of this document will be shown in the this list."
 msgstr ""
 "Numai exemplarele exacte ale acestui document vor fi afișate în această "
 "listă."
 
-#: views.py:36
+#: views.py:40
 msgid "There are no duplicates for this document"
 msgstr "Nu există duplicate pentru acest document"
 
-#: views.py:40
+#: views.py:44
 #, python-format
 msgid "Duplicates for document: %s"
 msgstr "Duplicate pentru document: %s"
 
-#: views.py:64
+#: views.py:70
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or"
@@ -102,14 +102,14 @@ msgstr ""
 "identice sau au fost salvate utilizând un alt format de fișier nu vor apărea"
 " ca duplicate."
 
-#: views.py:71
+#: views.py:77
 msgid "There are no duplicated documents"
 msgstr "Nu există documente duplicate"
 
-#: views.py:81
+#: views.py:87
 msgid "Scan for duplicated documents?"
 msgstr "Căutați documente duplicate?"
 
-#: views.py:88
+#: views.py:95
 msgid "Duplicated document scan queued successfully."
 msgstr "Căutarea documentelor duplicat a fost trimisă în coada de așteptare."

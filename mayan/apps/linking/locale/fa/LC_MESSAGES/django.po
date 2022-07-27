@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:35+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -29,8 +29,8 @@ msgstr ""
 msgid "Label"
 msgstr "برچسب"
 
-#: events.py:6 links.py:24 links.py:75 links.py:80 links.py:85 models.py:48
-#: permissions.py:5 views.py:147
+#: events.py:6 links.py:27 links.py:35 links.py:68 links.py:73 models.py:48
+#: permissions.py:5 views/smart_link_views.py:157
 msgid "Smart links"
 msgstr "پیوند هوشمند"
 
@@ -46,33 +46,33 @@ msgstr ""
 msgid "Foreign document field"
 msgstr ""
 
-#: links.py:29
-msgid "Create condition"
-msgstr "ایجاد شرط"
-
-#: links.py:35 links.py:55
-msgid "Delete"
-msgstr "حذف"
-
-#: links.py:39 links.py:64
-msgid "Edit"
-msgstr "ویرایش"
-
-#: links.py:44
-msgid "Conditions"
-msgstr "شرایط"
-
-#: links.py:50 views.py:248
+#: links.py:44 views/smart_link_views.py:261
 msgid "Create new smart link"
 msgstr "ایجاد پیوند هوشمند جدید"
 
-#: links.py:59 models.py:40
+#: links.py:49 links.py:87
+msgid "Delete"
+msgstr "حذف"
+
+#: links.py:53 models.py:40
 msgid "Document types"
 msgstr "نوع سند"
 
-#: links.py:69
+#: links.py:58 links.py:91
+msgid "Edit"
+msgstr "ویرایش"
+
+#: links.py:63
 msgid "Documents"
 msgstr "اسناد"
+
+#: links.py:81
+msgid "Create condition"
+msgstr "ایجاد شرط"
+
+#: links.py:96
+msgid "Conditions"
+msgstr "شرایط"
 
 #: literals.py:7
 msgid "and"
@@ -247,110 +247,110 @@ msgstr ""
 msgid "Primary key of the document type to remove from the smart link."
 msgstr ""
 
-#: views.py:65
+#: views/smart_link_condition_views.py:45
+msgid ""
+"Conditions are small logic units that when combined define how the smart "
+"link will behave."
+msgstr ""
+
+#: views/smart_link_condition_views.py:49
+msgid "There are no conditions for this smart link"
+msgstr ""
+
+#: views/smart_link_condition_views.py:53
+#, python-format
+msgid "Conditions for smart link: %s"
+msgstr "شرایط پیوند هوشمند : %s"
+
+#: views/smart_link_condition_views.py:73
+#, python-format
+msgid "Add new conditions to smart link: \"%s\""
+msgstr "اضافه کردن شرط جدید به پیوند هوشمند \"%s\""
+
+#: views/smart_link_condition_views.py:107
+#, python-format
+msgid "Delete smart link condition: \"%s\"?"
+msgstr ""
+
+#: views/smart_link_condition_views.py:134
+msgid "Edit smart link condition"
+msgstr "ویرایش شرط پیوند هوشمند \"%s\""
+
+#: views/smart_link_views.py:74
 #, python-format
 msgid "Resolved smart link query error: %s"
 msgstr ""
 
-#: views.py:92
+#: views/smart_link_views.py:101
 #, python-format
 msgid "Resolved smart link dynamic label error: %s"
 msgstr ""
 
-#: views.py:97
+#: views/smart_link_views.py:106
 #, python-format
 msgid ""
 "Documents in resolved smart link \"%(resolved_smart_link)s\" for "
 "\"%(document)s\""
 msgstr ""
 
-#: views.py:138
+#: views/smart_link_views.py:148
 msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
 msgstr ""
 
-#: views.py:145
+#: views/smart_link_views.py:155
 msgid "There are no smart links"
 msgstr ""
 
-#: views.py:166
+#: views/smart_link_views.py:177
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
 msgstr ""
 
-#: views.py:171
+#: views/smart_link_views.py:182
 msgid "There are no resolved smart links for this document"
 msgstr ""
 
-#: views.py:175
+#: views/smart_link_views.py:186
 #, python-format
 msgid "Resolved smart links for document: %s"
 msgstr ""
 
-#: views.py:191
+#: views/smart_link_views.py:202
 msgid "Available smart links"
 msgstr ""
 
-#: views.py:192
+#: views/smart_link_views.py:203
 msgid "Smart links enabled"
 msgstr ""
 
-#: views.py:218
+#: views/smart_link_views.py:230
 #, python-format
 msgid "Smart links to enable for document type: %s"
 msgstr ""
 
-#: views.py:231
+#: views/smart_link_views.py:243
 msgid "Available document types"
 msgstr "نوع سند موجود"
 
-#: views.py:232
+#: views/smart_link_views.py:244
 msgid "Document types enabled"
 msgstr ""
 
-#: views.py:242
+#: views/smart_link_views.py:255
 #, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr "نوع سند برای فعالسازی لینک هوشمند: %s"
 
-#: views.py:270
+#: views/smart_link_views.py:285
 #, python-format
 msgid "Delete smart link: %s"
 msgstr ""
 
-#: views.py:286
+#: views/smart_link_views.py:302
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "ویرایش پیوند هوشمند %s"
-
-#: views.py:311
-msgid ""
-"Conditions are small logic units that when combined define how the smart "
-"link will behave."
-msgstr ""
-
-#: views.py:315
-msgid "There are no conditions for this smart link"
-msgstr ""
-
-#: views.py:319
-#, python-format
-msgid "Conditions for smart link: %s"
-msgstr "شرایط پیوند هوشمند : %s"
-
-#: views.py:338
-#, python-format
-msgid "Add new conditions to smart link: \"%s\""
-msgstr "اضافه کردن شرط جدید به پیوند هوشمند \"%s\""
-
-#: views.py:371
-#, python-format
-msgid "Delete smart link condition: \"%s\"?"
-msgstr ""
-
-#: views.py:397
-msgid "Edit smart link condition"
-msgstr "ویرایش شرط پیوند هوشمند \"%s\""

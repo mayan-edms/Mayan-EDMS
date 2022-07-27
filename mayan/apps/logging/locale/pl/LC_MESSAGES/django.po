@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# mic <winterfall24@gmail.com>, 2022
-# Roberto Rosario, 2022
 # Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2022
+# Roberto Rosario, 2022
+# mic <winterfall24@gmail.com>, 2022
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
-"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"POT-Creation-Date: 2022-07-27 05:31+0000\n"
+"PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -23,67 +23,79 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:20 permissions.py:5 settings.py:10
+#: apps.py:23 events.py:5 permissions.py:5 settings.py:10
 msgid "Logging"
 msgstr "Zapisywanie w dzienniku zdarzeń"
 
-#: links.py:11 views.py:27
+#: events.py:8
+msgid "Error log deleted"
+msgstr ""
+
+#: links.py:15 views.py:36
 msgid "Global error log"
 msgstr ""
 
-#: links.py:17
+#: links.py:26
+msgid "Delete"
+msgstr "Usuń"
+
+#: links.py:31
 msgid "Errors"
 msgstr "Błędy"
 
-#: links.py:23
+#: links.py:37
 msgid "Clear errors"
 msgstr "Wyczyść błędy"
 
-#: models.py:11 models.py:39
+#: models.py:16 models.py:44
 msgid "Internal name"
 msgstr "Nazwa wewnętrzna"
 
-#: models.py:16 models.py:36
+#: models.py:21 models.py:41
 msgid "Error log"
 msgstr "Dziennik błędów"
 
-#: models.py:17
+#: models.py:22
 msgid "Error logs"
 msgstr "Dzienniki błędów"
 
-#: models.py:26
+#: models.py:31
 msgid "App label"
 msgstr "Etykieta aplikacji"
 
-#: models.py:53 models.py:63
+#: models.py:58 models.py:68
 msgid "Error log partition"
 msgstr "Partycja dziennika błędów"
 
-#: models.py:54
+#: models.py:59
 msgid "Error log partitions"
 msgstr "Partycje dziennika błędów"
 
-#: models.py:66
+#: models.py:71
 msgid "Date and time"
 msgstr "Data i godzina"
 
-#: models.py:68
+#: models.py:73
 msgid "Text"
 msgstr "Tekst"
 
-#: models.py:73
+#: models.py:80
 msgid "Error log partition entry"
 msgstr "Wpis w partycji dziennika błędów"
 
-#: models.py:74
+#: models.py:81
 msgid "Error log partition entries"
 msgstr "Wpisy w partycji błędów."
 
-#: models.py:82
+#: models.py:97
 msgid "Object"
 msgstr "Obiekt"
 
 #: permissions.py:8
+msgid "Delete error log"
+msgstr ""
+
+#: permissions.py:11
 msgid "View error log"
 msgstr "Wyświetl dziennik błędów"
 
@@ -106,32 +118,37 @@ msgstr "Poziom systemu dziennika zdarzeń."
 msgid "Path to the logfile that will track errors during production."
 msgstr "Ścieżka do pliku dziennika śledzącego błędy w systemie produkcyjnym."
 
-#: views.py:21
+#: views.py:30
 msgid ""
 "This view displays the error log of different objects. An empty list is a "
 "good thing."
 msgstr ""
 
-#: views.py:25 views.py:66
+#: views.py:34 views.py:101
 msgid "There are no error log entries"
 msgstr "Brak wpisów w dzienniku błędów"
 
-#: views.py:40
+#: views.py:50
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr "Wyczyść wpisy w dzienniku błędów dla: %s"
 
-#: views.py:47
+#: views.py:57
 msgid "Object error log cleared successfully"
 msgstr "Wpisy w dzienniku błędów dla obiektu zostały wyczyszczone"
 
-#: views.py:62
+#: views.py:74
+#, python-format
+msgid "Delete error log entry: %s"
+msgstr ""
+
+#: views.py:97
 msgid ""
 "This view displays the error log of an object. An empty list is a good "
 "thing."
 msgstr ""
 
-#: views.py:69
+#: views.py:104
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "Wpisy dziennika błędów dla: %s"
