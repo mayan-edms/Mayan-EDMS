@@ -316,13 +316,13 @@ job_postgres_upgrade_test:
     - apt-get install --yes libpq-dev
     - pip install psycopg2==$PYTHON_PSYCOPG2_VERSION_PREVIOUS
     - export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'postgres'}}"
-    - mayan-edms.py initialsetup --no-dependencies
+    - mayan-edms.py common_initial_setup --no-dependencies
     - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell
     - pip install --requirement requirements/build.txt --requirement requirements/testing-base.txt
     - pip install psycopg2==$PYTHON_PSYCOPG2_VERSION
     - make python-wheel
     - pip install dist/mayan_edms-*.whl
-    - mayan-edms.py performupgrade --no-dependencies
+    - mayan-edms.py common_perform_upgrade --no-dependencies
   services:
     - postgres:12.11-alpine
   tags:
@@ -335,12 +335,12 @@ job_postgres_upgrade_test:
 job_sqlite_upgrade_test:
   <<: *job_base_upgrade_test
   script:
-    - mayan-edms.py initialsetup --no-dependencies
+    - mayan-edms.py common_initial_setup --no-dependencies
     - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell
     - pip install --requirement requirements/build.txt --requirement requirements/testing-base.txt
     - make python-wheel
     - pip install dist/mayan_edms-*.whl
-    - mayan-edms.py performupgrade --no-dependencies
+    - mayan-edms.py common_perform_upgrade --no-dependencies
 
 # Run the test suit
 
