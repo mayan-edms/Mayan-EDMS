@@ -431,6 +431,9 @@
 - Don't assume all storages have a preset mode attribute. Such is the case
   with the ``S3Boto3Storage`` when used for shared uploaded files. Instead
   introspect the mode and fallback to a safe default valur of ``'rb'``.
+- Disable the settings edit link when local storage is disabled.
+- Display a warning message in the setting edit view when local storage is
+  disabled.
 
 4.2.8 (2022-07-22)
 ==================

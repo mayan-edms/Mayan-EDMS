@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import messages
 from django.http import Http404
 from django.urls import reverse
@@ -18,6 +19,17 @@ class SettingEditView(FormView):
     form_class = SettingForm
     view_icon = icon_setting_edit
     view_permission = permission_settings_edit
+
+    def dispatch(self, request, *args, **kwargs):
+        if settings.COMMON_DISABLE_LOCAL_STORAGE:
+            messages.warning(
+                message=_(
+                    'Local storage is currently disabled, changes to '
+                    'setting values will not be saved or take effect.'
+                ), request=self.request
+            )
+
+        return super().dispatch(request=request, *args, **kwargs)
 
     def form_valid(self, form):
         self.get_object().value = form.cleaned_data['value']
