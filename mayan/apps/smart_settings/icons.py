@@ -11,4 +11,4 @@ icon_setting_namespace_list = Icon(
 
 # Setting
 
-icon_setting_edit = Icon(driver_name='fontawesome', symbol='times')
+icon_setting_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
