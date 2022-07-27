@@ -101,7 +101,7 @@
   - PostgreSQL from 12.9-alpine to 12.10-alpine.
   - RabbitMQ from 3.9-alpine to 3.10-alpine.
   - amqp from 5.0.9 to 5.1.0.
-  - pip from 21.3.1 to 22.0.4.
+  - pip from 21.3.1 to 22.2.
   - psycopg2 from 2.9.2 to 2.9.3.
   - redis from 4.0.2 to 4.2.0.
   - FontAwesome from 5.6.3 to 5.15.4.
