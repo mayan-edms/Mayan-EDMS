@@ -273,8 +273,8 @@ object.
 
 API views were added to access the error logs of objects. The URLs are:
 
-- http://127.0.0.1:8000/api/v4/objects/<app label>/<model name>/<object ID>/errors/
-- http://127.0.0.1:8000/api/v4/objects/<app label>/<model name>/<object ID>/errors/<error entry ID>/
+- /api/v4/objects/<app label>/<model name>/<object ID>/errors/
+- /api/v4/objects/<app label>/<model name>/<object ID>/errors/<error entry ID>/
 
 
 Messaging
