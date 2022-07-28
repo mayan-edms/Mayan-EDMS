@@ -1,4 +1,4 @@
-4.3 (2022-07-XX)
+4.3 (2022-07-27)
 ================
 - Partials navigation updates:
 
