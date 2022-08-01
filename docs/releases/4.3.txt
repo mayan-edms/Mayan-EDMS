@@ -419,8 +419,9 @@ objects will be written as a single operation. The number of objects
 written concurrently is controlled by the settings
 ``SEARCH_INDEXING_CHUNK_SIZE``.
 
-Unused ``SearchModel`` method were removed. Sorting ``SearchModel`` instances
-was improved.
+Unused ``SearchModel`` methods were removed.
+
+Sorting of ``SearchModel`` instances was improved.
 
 The ElasticSearch backend now uses the count API to obtain accurate search
 model status information.
@@ -483,7 +484,7 @@ Support was added for staging folder path subfolders.
 
 The staging folder scan code was updated to use Python's ``pathlib.Path``.
 
-Staging folder now also support pagination.
+Staging folder now also supports pagination.
 
 A selection link is now added to each staging folder files to make selection
 easier.

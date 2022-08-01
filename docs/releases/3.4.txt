@@ -20,7 +20,7 @@ Compressed files
 ^^^^^^^^^^^^^^^^
 
 Support was added to expand Outlook .msg files, and have its individual
-content uploaded as separate documents. This support add a new dependency,
+content uploaded as separate documents. This support adds a new dependency,
 the ``extract-msg`` Python library.
 
 
@@ -165,7 +165,7 @@ All app now register their storage in an uniform manner using the
 DefinedStorage system.
 
 One of the advantages of the new DefinedStorage system is that storage
-usage is very deterministic. This allows to add stages to a storage setup.
+usage is very deterministic. This allows adding stages to a storage setup.
 The existing compressed storage backend was updated to take advantage of this
 and now behaves like a storage stage and not as a final storage. This
 allows compressing files transparently regardless of the final type storage
@@ -197,7 +197,6 @@ User interface
 Support was added to switch a view from the list mode to item mode and
 viceversa. A new icon is displayed in the list toolbal. Almost all views
 support this feature.
-
 
 The icons of several app were improve using icon composition for a more
 intuitive visual languge. Some of the apps that received these icon updates

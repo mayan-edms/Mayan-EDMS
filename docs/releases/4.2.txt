@@ -402,7 +402,7 @@ Backward incompatible changes
 
 - Renaming of the ``mimetype`` app to ``mime_types``.
 - Removal of the ``.api.get_mimetype`` function. The process now requires
-  instantiating the configure MIME type backend and calling the
+  instantiating the configured MIME type backend and calling the
   ``get_mime_type`` method:
 
   .. code-block:: python

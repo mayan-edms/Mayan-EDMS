@@ -306,7 +306,7 @@ The cache eviction logic was improve to use a LFU (Least frequently used) and
 LRU (Least recently used) combination algorithm. This ensures that only the
 least usable content is evicted from the cache during pruning.
 
-The caches are not only pruned during startup if their maximum size has
+The caches are now only pruned during startup if their maximum size has
 changed. This reduces the startup or restart time in installations that
 are under heavy use.
 
@@ -340,7 +340,7 @@ and for the mailing workflow actions.
 Messaging
 ^^^^^^^^^
 
-A new app was added to allowing sending messages to users. At the moment this
+A new app was added to allow sending messages to users. At the moment this
 app is only used by the downloads app to let users know their download is
 ready. This is a first stage app and we plan to expand the use of this app
 in subsequent versions.
@@ -519,7 +519,7 @@ launching new workflows and the initial processing of new documents.
 Other
 ^^^^^
 
-- Several renames for consistency. Use the major, minor, verb order
+- Several renames for consistency. Use of the major, minor, verb order
   for variable names in more places.
 - Point document to latest document version. This removes the document page
   views and makes them aliases of the document version pages views.

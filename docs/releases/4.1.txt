@@ -45,8 +45,8 @@ not the permission being added or removed.
 Appearance
 ^^^^^^^^^^
 
-The theme stylesheet sanitization process was moved to the theme save method.
-This improves performance when themes are used.
+The theme stylesheet sanitization process was moved to the ``.save()``
+method. This improves performance when themes are used.
 
 A setting was added to allow changing to menu polling interval. The value
 is specified in milliseconds with `None` used to disable polling.
@@ -107,8 +107,8 @@ existing widget classes.
 
 Dashboard CSS was moved from the appearance app to the dashboards app.
 
-Support disabling the home page dashboard. Used to disable the home view
-dashboard during tests.
+Support for disabling the home page dashboard was added. Used to disable
+the home view dashboard during tests.
 
 
 Dependencies
@@ -180,7 +180,7 @@ Documents
 ^^^^^^^^^
 
 The API was updated to exclude trashed documents from all endpoints. A new
-endpoints was added to service trashed documents.
+endpoint was added to serve trashed documents.
 
 A new ``valid`` model managers was added for recently accessed,
 recently created, and favorite documents. These managers exclude trashed
@@ -199,9 +199,11 @@ version.
 
 The UUID field of all document child objects was added as a search field.
 
-Stricter check to ensure the name and not the path of a file is used during
-upload. Compressed files can include path references, these are now
-scrubbed and only the filename of the file in the compressed archive is used.
+Stricter checks were added to ensure the name and not the path of a file
+is used during upload.
+
+Compressed files can include path references, these are now scrubbed and
+only the filename of the file in the compressed archive is used.
 
 Signals, hooks, and events were moved outside of the document file creation
 database transaction. These are only triggered when the transaction is
@@ -257,8 +259,8 @@ All events are now preloaded at bootup. This allow all events to be
 recognized even if they are not used and does not rely on imports to activate
 an event.
 
-Event can now be loaded by their name. This avoids doing direct imports when
-there circular dependencies.
+Events can now be loaded by their name. This avoids doing direct imports when
+there are circular dependencies.
 
 The events app was moved to the top of the installed apps list to allow it to
 preload all events.
@@ -266,7 +268,7 @@ preload all events.
 The event clear and event export links are now only displayed for object
 whose events can be cleared and/or exported.
 
-The events app was API updated to return error 404 on insufficient
+The events app API was updated to return error 404 on insufficient
 permissions.
 
 The event registrations for several models was adjusted:
@@ -368,7 +370,7 @@ Support was added for deleting multiple metadata types in a single action.
 Messaging
 ^^^^^^^^^
 
-This version add the API for the messaging app.
+This version adds the API for the messaging app.
 
 Super users and staff users are now excluded from being message recipients.
 
@@ -525,7 +527,7 @@ The refactor also allows unifying background tasks. Source can now also
 define callbacks that are execute after the document if created to allow
 add or changing document attributes in an asynchronous manner.
 
-Support for recoding email Message ID was added . The email source can now
+Support for recoding email Message ID was added. The email source can now
 record an email Message ID from the header as it is processed into documents.
 All documents created from the same email will have the same Message ID.
 

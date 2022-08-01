@@ -352,7 +352,7 @@ Web links
 The web link navigated event is now enabled to use for subscription and as
 workflow trigger.
 
-Web link were updated to enforce label uniqueness. A data migration is
+Web links were updated to enforce label uniqueness. A data migration is
 included to de-duplicate the labels before altering the schema.
 
 
