@@ -596,7 +596,7 @@ Other
 - Move user language and timezone code from the `common` app to a new app
   called `locales`.
 - Move common and smart settings app `base` template markup to their own
-  apps via the `viewport` app template.
+  app via the `viewport` app template.
 - Rename document comment model's `comment` field to `text`.
 - Support sorting document comments by user or by date.
 - Increase the size of the ``Lock`` lock manager model ``name`` field to a
@@ -649,7 +649,7 @@ Other
   ``setting_workflow_image_cache_storage_backend``.
 - Added a check to the task manager app to ensure all defined tasks are
   properly configure in their respective ``queues.py`` modules.
-- ACL apps updates: Add ACL deleted event, track action actor in API and
+- ACL app updates: Add ACL deleted event, track action actor in API and
   views. Simplify API views using REST API mixins. Update API views to return
   404 errors instead of 403, move global ACL list to the setup menu,
   model that are registered for ACLs are now also automatically register
