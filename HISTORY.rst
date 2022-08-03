@@ -1,3 +1,10 @@
+4.2.9 (2022-08-XX)
+==================
+- Add permission filtering to the source switch links. The permission
+  filtering will be the same as the views: document create permission for the
+  source links during document uploads and document file new permissions
+  for the source links in the new document file upload view.
+
 4.2.8 (2022-07-22)
 ==================
 - Fix the permission requirement of the recently created documents dashboard
