@@ -284,7 +284,7 @@ File caching
 ^^^^^^^^^^^^
 
 In addition to the existing tool to purge caches, it is now possible to purge
-specific document files or document version caches. This can be achieve with
+specific document files or document version caches. This can be achieved with
 the new action link and requires the cache purge permission for the object.
 
 Event tracking was added when purging a cache partition.
