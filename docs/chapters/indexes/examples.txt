@@ -61,7 +61,7 @@ Index document by department, taken from the first character of the invoice numb
 Requires one index node with the template::
 
     {% if document.metadata_value_of.invoice_number.0 == "A" %}Accounting
-    {% if document.metadata_value_of.invoice_number.0 == "H" %}Human Resources
+    {% elif document.metadata_value_of.invoice_number.0 == "H" %}Human Resources
     {% endif %}
 
 
