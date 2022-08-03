@@ -367,8 +367,8 @@ The special "match-all-fields" ``q`` URL query key has been converted into a
 documented literal named ``QUERY_PARAMETER_ANY_FIELD``.
 
 Support was added for hyphenated text when using the ElasticSearch backend.
-Hyphenated words behave are now indexed as a whole word and not split at
-the hyphen location.
+Hyphenated words are now indexed as a whole word and not split at the hyphen
+location.
 
 Similar to list filtering, REST API list filtering was added. Filtering is
 done using similar logic to that of the user interface list filtering.
@@ -457,7 +457,7 @@ abnormally running search index tasks from lingering in the message broker.
 Signature captures
 ^^^^^^^^^^^^^^^^^^
 
-Support was adde for signature capture. The signature capture app allows
+Support was added for signature capture. The signature capture app allows
 capture of handwritten signatures by digitizing pen strokes.
 
 The original point data as well as an SVG version of the signature is stored.
@@ -484,7 +484,7 @@ Support was added for staging folder path subfolders.
 
 The staging folder scan code was updated to use Python's ``pathlib.Path``.
 
-Staging folder now also supports pagination.
+Staging folders now also support pagination.
 
 A selection link is now added to each staging folder files to make selection
 easier.
