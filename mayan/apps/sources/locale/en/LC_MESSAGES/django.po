@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
+"POT-Creation-Date: 2022-08-03 20:17+0000\n"
 "PO-Revision-Date: 2020-05-25 06:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -563,39 +563,39 @@ msgid ""
 "create one before proceeding."
 msgstr ""
 
-#: views/document_file_views.py:49
+#: views/document_file_views.py:50
 #, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
 
-#: views/document_file_views.py:73
+#: views/document_file_views.py:74
 #, python-format
 msgid "Error executing document file upload task; %(exception)s"
 msgstr ""
 
-#: views/document_file_views.py:92
+#: views/document_file_views.py:93
 msgid "New document file queued for upload and will be available shortly."
 msgstr ""
 
-#: views/document_file_views.py:125
+#: views/document_file_views.py:131
 #, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 
-#: views/document_file_views.py:131
+#: views/document_file_views.py:137
 msgid "Submit"
 msgstr ""
 
-#: views/document_views.py:38
+#: views/document_views.py:39
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr ""
 
-#: views/document_views.py:57
+#: views/document_views.py:58
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
-#: views/document_views.py:83
+#: views/document_views.py:89
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""

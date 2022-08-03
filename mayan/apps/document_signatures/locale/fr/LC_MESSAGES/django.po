@@ -12,17 +12,17 @@
 # 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
-# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
 # Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
+"POT-Creation-Date: 2022-08-03 20:16+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2022\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -60,7 +60,7 @@ msgstr "Signature détachée créée"
 
 #: events.py:13
 msgid "Detached signature deleted"
-msgstr ""
+msgstr "Signature détachée supprimée"
 
 #: events.py:16
 msgid "Detached signature uploaded"
@@ -172,7 +172,7 @@ msgstr "Signatures"
 
 #: managers.py:95
 msgid "signed"
-msgstr ""
+msgstr "signé"
 
 #: models.py:46
 msgid "Document file"
@@ -260,7 +260,7 @@ msgstr "Vérifier les signatures du document"
 
 #: permissions.py:34
 msgid "View document signatures"
-msgstr ""
+msgstr "Afficher les signatures de documents"
 
 #: queues.py:13
 msgid "Verify key signatures"

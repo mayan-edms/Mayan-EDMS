@@ -7,17 +7,17 @@
 # Roberto Rosario, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
 # Guillaume Trottier <gui.trottier@gmail.com>, 2022
-# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
+"POT-Creation-Date: 2022-08-03 20:16+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>, 2022\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,7 +82,7 @@ msgstr ""
 
 #: events.py:15
 msgid "Events cleared"
-msgstr ""
+msgstr "Événements effacés"
 
 #: events.py:18
 msgid "Events exported"
@@ -106,7 +106,7 @@ msgstr "Système"
 
 #: links.py:61 links.py:75 views/clear_views.py:62
 msgid "Clear events"
-msgstr ""
+msgstr "Effacer les événements"
 
 #: links.py:68 links.py:79 views/export_views.py:57
 msgid "Export events"
@@ -183,7 +183,7 @@ msgstr "Abonnements aux événements de l'objet"
 
 #: permissions.py:8
 msgid "Clear the events of an object"
-msgstr ""
+msgstr "Effacer les événements d'un objet"
 
 #: permissions.py:11
 msgid "Export the events of an object"
@@ -214,12 +214,12 @@ msgstr ""
 #: views/clear_views.py:81
 #, python-format
 msgid "Clear events of: %s"
-msgstr ""
+msgstr "Effacer les événements de: %s"
 
 #: views/clear_views.py:104
 #, python-format
 msgid "Clear events of type: %s"
-msgstr ""
+msgstr "Effacer les événements de type: %s"
 
 #: views/event_views.py:26
 msgid "Events track actions that have been performed on, to, or with objects."
@@ -266,12 +266,12 @@ msgstr ""
 #: views/export_views.py:76
 #, python-format
 msgid "Export events of: %s"
-msgstr ""
+msgstr "Exporter les événements de: %s"
 
 #: views/export_views.py:93
 #, python-format
 msgid "Export events of type: %s"
-msgstr ""
+msgstr "Exporter les événements de type: %s"
 
 #: views/notification_views.py:25
 msgid "Subscribe to global or object events to receive notifications."

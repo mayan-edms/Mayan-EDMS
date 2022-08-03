@@ -6,19 +6,19 @@
 # Translators:
 # Olivier W, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
-# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
 # Roberto Rosario, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
+"POT-Creation-Date: 2022-08-03 20:16+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,7 +33,7 @@ msgstr "Recherche dynamique"
 #: classes.py:568
 #, python-format
 msgid "Unknown search model `%s`."
-msgstr ""
+msgstr "Modèle de recherche inconnu `%s`."
 
 #: classes.py:625
 msgid "ID"
@@ -79,7 +79,7 @@ msgstr "Exécuter les outils de recherche"
 
 #: queues.py:10
 msgid "Search slow"
-msgstr ""
+msgstr "Recherche lente"
 
 #: queues.py:15
 msgid "Remove a model instance from the search engine."

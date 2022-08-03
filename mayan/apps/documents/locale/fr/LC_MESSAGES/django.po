@@ -11,15 +11,15 @@
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
-# Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
+"POT-Creation-Date: 2022-08-03 20:16+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -277,7 +277,7 @@ msgstr "Fichier de document créé (historique)"
 
 #: events.py:111
 msgid "Document version reverted (historic)"
-msgstr ""
+msgstr "Version du document annulée (historique)"
 
 #: events.py:115
 msgid "Document version uploaded (historic)"
@@ -758,7 +758,7 @@ msgstr "Description"
 
 #: models/document_models.py:81
 msgid "The date and time of the document creation."
-msgstr ""
+msgstr "La date et l'heure de création du document."
 
 #: models/document_models.py:82
 msgid "Created"
@@ -1079,7 +1079,7 @@ msgstr "Réinitialiser la liste de pages d'une version de document"
 
 #: queues.py:42
 msgid "Delete a document version"
-msgstr ""
+msgstr "Supprimer une version de document"
 
 #: queues.py:46
 msgid "Export a document version"
@@ -1131,7 +1131,7 @@ msgstr "Somme de contrôle du fichier"
 
 #: search.py:113
 msgid "Document file MIME type"
-msgstr ""
+msgstr "Type MIME du fichier de document"
 
 #: search.py:172
 msgid "Document version comment"
@@ -1661,6 +1661,8 @@ msgstr "Pages de la version du document: %s"
 #, python-format
 msgid "%(count)d document version queued for page list append."
 msgstr ""
+"%(count)d version du document en file d'attente pour l'ajout de la liste de "
+"pages."
 
 #: views/document_version_page_views.py:132
 #, python-format

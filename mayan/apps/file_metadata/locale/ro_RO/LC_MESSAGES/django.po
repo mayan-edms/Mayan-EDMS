@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
+"POT-Creation-Date: 2022-08-03 20:16+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -243,12 +243,13 @@ msgstr ""
 #: views.py:112
 #, python-format
 msgid "%(count)d document file submitted to the file metadata queue."
-msgstr ""
+msgstr "%(count)d fișier document trimis în coada de metadate ale fișierului."
 
 #: views.py:115
 #, python-format
 msgid "%(count)d documents files submitted to the file metadata queue."
 msgstr ""
+"%(count)d fișiere document trimise în coada de metadate ale fișierelor."
 
 #: views.py:123
 msgid "Submit the selected document file to the file metadata queue?"

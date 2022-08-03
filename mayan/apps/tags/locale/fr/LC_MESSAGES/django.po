@@ -4,20 +4,20 @@
 # 
 # Translators:
 # Translators:
-# Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Frédéric Sheedy <sheedf@gmail.com>, 2022
+# Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
+"POT-Creation-Date: 2022-08-03 20:17+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
+"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -145,7 +145,7 @@ msgstr "Retirer des étiquettes des documents"
 
 #: search.py:22
 msgid "Tag label"
-msgstr ""
+msgstr "Libellé de l'étiquette"
 
 #: search.py:23
 msgid "Tag color"
@@ -173,7 +173,7 @@ msgstr "Somme de contrôle du fichier"
 
 #: search.py:77
 msgid "Document file MIME type"
-msgstr ""
+msgstr "Type MIME du fichier de document"
 
 #: serializers.py:32
 msgid "Primary key of the tag to add to the document."

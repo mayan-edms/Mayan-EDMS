@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
+"POT-Creation-Date: 2022-08-03 20:17+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -102,7 +102,7 @@ msgstr "Nombre de groupes"
 
 #: dashboards.py:5
 msgid "User dashboard"
-msgstr ""
+msgstr "Tableau de bord de l'utilisateur"
 
 #: events.py:10
 msgid "Group created"
@@ -335,6 +335,9 @@ msgid ""
 "Warning! You are about to delete your own user account. You will lose access"
 " to the system. This process is not reversible."
 msgstr ""
+"Avertissement! Vous êtes sur le point de supprimer votre propre compte "
+"utilisateur. Vous perdrez l'accès au système. Cette action n'est pas "
+"réversible."
 
 #: views/user_views.py:82
 #, python-format

@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
+"POT-Creation-Date: 2022-08-03 20:16+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +28,7 @@ msgstr "Tableaux de bord"
 
 #: apps.py:25
 msgid "Widgets"
-msgstr ""
+msgstr "Composant"
 
 #: apps.py:29
 msgid "Label"
@@ -36,7 +36,7 @@ msgstr "Étiquette"
 
 #: dashboards.py:6
 msgid "Administrator dashboard"
-msgstr ""
+msgstr "Tableau de bord administrateur"
 
 #: links.py:14
 msgid "Details"
@@ -49,4 +49,4 @@ msgstr "Voir les détails"
 
 #: views.py:27
 msgid "Dashboard detail"
-msgstr ""
+msgstr "Détail du tableau de bord"

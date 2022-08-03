@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:06+0000\n"
+"POT-Creation-Date: 2022-08-03 20:16+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -56,7 +56,7 @@ msgstr "Nombre total de documents"
 
 #: apps.py:155 apps.py:193
 msgid "Number of unique documents this item contains."
-msgstr ""
+msgstr "Nombre de documents uniques que cet élément contient."
 
 #: apps.py:180
 msgid "Nodes"
@@ -162,7 +162,7 @@ msgstr "Activé"
 
 #: models.py:61
 msgid "Index template"
-msgstr ""
+msgstr "Modèle d'index"
 
 #: models.py:169
 msgid "Parent index template node of this node."
@@ -175,6 +175,8 @@ msgstr "Index"
 #: models.py:179
 msgid "Enter a template to render. Use Django's default templating language."
 msgstr ""
+"Entrez un modèle à rendre. Utilisez le langage de gabarit par défaut de "
+"Django."
 
 #: models.py:182
 msgid "Indexing expression"
@@ -483,7 +485,7 @@ msgstr "Supprimer le nœud du modèle d'index : %s?"
 #: views/index_template_views.py:261
 #, python-format
 msgid "Edit the index template node: %s"
-msgstr ""
+msgstr "Modifiez le nœud du modèle d'index: %s"
 
 #: views/index_template_views.py:281
 #, python-format

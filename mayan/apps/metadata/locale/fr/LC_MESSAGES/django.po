@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-22 04:07+0000\n"
+"POT-Creation-Date: 2022-08-03 20:16+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -166,27 +166,27 @@ msgstr "Modifier"
 
 #: metadata_parsers.py:11
 msgid "Date and time parser"
-msgstr ""
+msgstr "Analyseur de date et heure"
 
 #: metadata_parsers.py:18
 msgid "Date parser"
-msgstr ""
+msgstr "Analyseur de dates"
 
 #: metadata_parsers.py:26
 msgid "Regular expression parser"
-msgstr ""
+msgstr "Analyseur d'expressions régulières"
 
 #: metadata_parsers.py:36
 msgid "Time parser"
-msgstr ""
+msgstr "Analyseur de temps"
 
 #: metadata_validators.py:12
 msgid "Date and time validator"
-msgstr ""
+msgstr "Validateur de date et heure"
 
 #: metadata_validators.py:19
 msgid "Date validator"
-msgstr ""
+msgstr "Validateur de date"
 
 #: metadata_validators.py:27
 msgid "Regular expression validator"
@@ -562,7 +562,7 @@ msgstr ""
 #: views/metadata_type_views.py:52
 #, python-format
 msgid "Metadata type \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Le type de métadonnées \"%(object)s\" a été supprimé avec succès."
 
 #: views/metadata_type_views.py:55
 #, python-format
