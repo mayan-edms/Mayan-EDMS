@@ -182,7 +182,7 @@ User impersonation
 ^^^^^^^^^^^^^^^^^^
 
 Support for user impersonation was added. This new feature make testing
-permission setup very easily. It removeds the need to login using multiple
+permission setup very easily. It removes the need to login using multiple
 browser windows to test a user access configuration.
 
 The user impersonation features also allows using Mayan EDMS inside a portal
