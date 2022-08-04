@@ -8,6 +8,8 @@
   the impersonation banner and settings change banner are triggered
   correctly in all edge cases where multiple frontend processes or load
   balancers are used.
+- Add make file development targets ``setup-dev-operating-system-packages``
+  and ``setup-dev-python-libraries``.
 
 4.2.8 (2022-07-22)
 ==================

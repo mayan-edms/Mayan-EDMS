@@ -38,6 +38,12 @@ uploads and the document file new permissions is required for the source
 links in the new document file upload view.
 
 
+Other
+^^^^^
+
+Added make file development targets ``setup-dev-operating-system-packages``
+and ``setup-dev-python-libraries``.
+
 Removals
 --------
 
