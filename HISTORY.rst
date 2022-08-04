@@ -1,4 +1,4 @@
-4.2.9 (2022-08-XX)
+4.2.9 (2022-08-04)
 ==================
 - Add permission filtering to the source switch links. The permission
   filtering will be the same as the views: document create permission for the
