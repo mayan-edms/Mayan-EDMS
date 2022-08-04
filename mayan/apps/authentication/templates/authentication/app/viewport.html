@@ -3,6 +3,8 @@
 
 {% load authentication_tags %}
 
+{# appearance_app_template_nocache #}
+
 {% authentication_impersonation_check as impersonated_user %}
 
 {% if impersonated_user %}

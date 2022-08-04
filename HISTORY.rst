@@ -4,6 +4,10 @@
   filtering will be the same as the views: document create permission for the
   source links during document uploads and document file new permissions
   for the source links in the new document file upload view.
+- Don't cache the impersonation and the settings app templates. This ensures
+  the impersonation banner and settings change banner are triggered
+  correctly in all edge cases where multiple frontend processes or load
+  balancers are used.
 
 4.2.8 (2022-07-22)
 ==================
