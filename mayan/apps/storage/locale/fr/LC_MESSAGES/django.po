@@ -144,6 +144,7 @@ msgstr "Supprimer les fichiers de téléchargement obsolètes"
 #: settings.py:19
 msgid "Time in seconds, after which download files will be deleted."
 msgstr ""
+"Temps en secondes, après quoi les fichiers téléchargés seront supprimés."
 
 #: settings.py:25
 msgid ""
@@ -170,6 +171,8 @@ msgstr ""
 #: settings.py:53
 msgid "Time in seconds, after which temporary uploaded files will be deleted."
 msgstr ""
+"Temps en secondes, après lequel les fichiers temporaires téléversées seront "
+"supprimés."
 
 #: storages.py:15
 msgid ""

@@ -67,7 +67,7 @@ msgstr ""
 
 #: apps.py:287
 msgid "Get the context"
-msgstr ""
+msgstr "Obtenez le contexte"
 
 #: apps.py:292
 msgid "Return the transition of the workflow instance."
@@ -692,7 +692,7 @@ msgstr "Modifier les modèles de flux de travail"
 
 #: permissions.py:19
 msgid "View workflow templates"
-msgstr ""
+msgstr "Afficher les modèles de flux de travail"
 
 #: permissions.py:25
 msgid "Transition workflow instances"
@@ -1162,12 +1162,12 @@ msgstr ""
 #: views/workflow_template_views.py:94
 #, python-format
 msgid "Workflows launched successfully for %(count)d document."
-msgstr ""
+msgstr "Flux de travail lancés avec succès pour le document %(count)d."
 
 #: views/workflow_template_views.py:97
 #, python-format
 msgid "Workflows launched successfully for %(count)d documents."
-msgstr ""
+msgstr "Flux de travail démarrés avec succès pour les documents %(count)d."
 
 #: views/workflow_template_views.py:99
 #, python-format
@@ -1317,7 +1317,7 @@ msgstr "Étiquette du document"
 
 #: workflow_actions.py:31
 msgid "The new label to be assigned to the document."
-msgstr ""
+msgstr "La nouvelle étiquette à attribuer au document."
 
 #: workflow_actions.py:40
 msgid "Document description"
@@ -1325,7 +1325,7 @@ msgstr "Description du document"
 
 #: workflow_actions.py:47
 msgid "The new description to be assigned to the document."
-msgstr ""
+msgstr "La nouvelle description à affecter au document."
 
 #: workflow_actions.py:59
 msgid "Modify document properties"
@@ -1341,7 +1341,7 @@ msgstr "URL"
 
 #: workflow_actions.py:140
 msgid "The URL to access."
-msgstr ""
+msgstr "L'URL à laquelle accéder."
 
 #: workflow_actions.py:149
 msgid "Timeout"
@@ -1357,7 +1357,7 @@ msgstr "Contenu"
 
 #: workflow_actions.py:171
 msgid "A JSON document to include in the request."
-msgstr ""
+msgstr "Un document JSON à inclure dans la requête."
 
 #: workflow_actions.py:180
 msgid "Username"
@@ -1366,6 +1366,7 @@ msgstr "Identifiant"
 #: workflow_actions.py:187
 msgid "Username to use for making the request with HTTP Basic Auth."
 msgstr ""
+"Nom d'utilisateur à utiliser pour effectuer la demande avec HTTP Basic Auth."
 
 #: workflow_actions.py:198
 msgid "Password"
@@ -1373,7 +1374,7 @@ msgstr "Mot de passe"
 
 #: workflow_actions.py:205
 msgid "Password to use for making the request with HTTP Basic Auth."
-msgstr ""
+msgstr "Mot de passe à utiliser pour faire la demande avec HTTP Basic Auth."
 
 #: workflow_actions.py:216
 msgid "Method"

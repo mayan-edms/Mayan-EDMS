@@ -313,7 +313,7 @@ msgstr "Fichier de document créé (historique)"
 
 #: events.py:111
 msgid "Document version reverted (historic)"
-msgstr ""
+msgstr "Version du document annulée (historique)"
 
 #: events.py:115
 msgid "Document version uploaded (historic)"
@@ -795,7 +795,7 @@ msgstr "Description"
 
 #: models/document_models.py:79
 msgid "The date and time of the document creation."
-msgstr ""
+msgstr "La date et l'heure de création du document."
 
 #: models/document_models.py:80
 msgid "Created"
@@ -1116,7 +1116,7 @@ msgstr "Réinitialiser la liste de pages d'une version de document"
 
 #: queues.py:42
 msgid "Delete a document version"
-msgstr ""
+msgstr "Supprimer une version de document"
 
 #: queues.py:46
 msgid "Export a document version"
@@ -1168,7 +1168,7 @@ msgstr "Somme de contrôle du fichier"
 
 #: search.py:121
 msgid "Document file MIME type"
-msgstr ""
+msgstr "Type MIME du fichier de document"
 
 #: search.py:180
 msgid "Document version comment"

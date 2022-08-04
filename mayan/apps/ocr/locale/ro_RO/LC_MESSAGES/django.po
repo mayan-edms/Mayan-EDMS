@@ -238,12 +238,12 @@ msgstr "Rezultatul OCR pentru document: %s"
 #: views.py:178
 #, python-format
 msgid "%(count)d document version submitted to the OCR queue."
-msgstr ""
+msgstr "%(count)d versiune a documentului trimisă în coada OCR."
 
 #: views.py:181
 #, python-format
 msgid "%(count)d document versions submitted to the OCR queue."
-msgstr ""
+msgstr "%(count)d versiuni ale documentului trimise în coada OCR."
 
 #: views.py:190
 msgid "Submit the selected document version to the OCR queue?"

@@ -175,7 +175,7 @@ msgstr "Somme de contrôle du fichier"
 
 #: search.py:55
 msgid "Document file MIME type"
-msgstr ""
+msgstr "Type MIME du fichier de document"
 
 #: serializers.py:18
 msgid "List of children cabinets."

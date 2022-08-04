@@ -183,27 +183,27 @@ msgstr "Modifier"
 
 #: metadata_parsers.py:11
 msgid "Date and time parser"
-msgstr ""
+msgstr "Analyseur de date et heure"
 
 #: metadata_parsers.py:18
 msgid "Date parser"
-msgstr ""
+msgstr "Analyseur de dates"
 
 #: metadata_parsers.py:26
 msgid "Regular expression parser"
-msgstr ""
+msgstr "Analyseur d'expressions régulières"
 
 #: metadata_parsers.py:36
 msgid "Time parser"
-msgstr ""
+msgstr "Analyseur de temps"
 
 #: metadata_validators.py:12
 msgid "Date and time validator"
-msgstr ""
+msgstr "Validateur de date et heure"
 
 #: metadata_validators.py:19
 msgid "Date validator"
-msgstr ""
+msgstr "Validateur de date"
 
 #: metadata_validators.py:27
 msgid "Regular expression validator"
@@ -575,7 +575,7 @@ msgstr ""
 #: views/metadata_type_views.py:57
 #, python-format
 msgid "Metadata type \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Le type de métadonnées \"%(object)s\" a été supprimé avec succès."
 
 #: views/metadata_type_views.py:60
 #, python-format

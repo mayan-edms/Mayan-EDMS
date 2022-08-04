@@ -510,7 +510,14 @@ check-missing-inits:
 	@contrib/scripts/find_missing_inits.py
 
 setup-dev-environment: ## Bootstrap a virtualenv by install all dependencies to start developing.
+setup-dev-environment: setup-dev-operating-system-packages setup-dev-python-libraries
+
+setup-dev-operating-system-packages:  ## Install the operating system packages needed for development.
+setup-dev-operating-system-packages:
 	sudo apt-get install --yes exiftool gcc gettext gnupg1 graphviz libcairo2 libffi-dev libjpeg-dev libpng-dev poppler-utils python3-dev sane-utils tesseract-ocr-deu
+
+setup-dev-python-libraries: ## Install the Python libraries needed for development.
+setup-dev-python-libraries:
 	pip install --requirement requirements.txt --requirement requirements/development.txt --requirement requirements/testing-base.txt --requirement requirements/documentation.txt --requirement requirements/build.txt
 
 setup-python-mysql:

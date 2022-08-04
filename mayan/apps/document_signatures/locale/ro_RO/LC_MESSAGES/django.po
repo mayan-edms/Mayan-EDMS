@@ -166,7 +166,7 @@ msgstr "Verificați toate documentele"
 
 #: managers.py:94
 msgid "signed"
-msgstr ""
+msgstr "semnat"
 
 #: models.py:46
 msgid "Document file"
@@ -254,7 +254,7 @@ msgstr "Verifica semnăturile de documente"
 
 #: permissions.py:34
 msgid "View document signatures"
-msgstr ""
+msgstr "Vizualizați semnăturile documentelor"
 
 #: queues.py:13
 msgid "Verify key signatures"
@@ -279,6 +279,7 @@ msgstr "Actualizează informațiile despre semnătură existente"
 #: serializers.py:60
 msgid "Primary key of the secret key used to sign the document file."
 msgstr ""
+"Cheia primară a cheii secrete utilizată pentru a semna fișierul document."
 
 #: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."

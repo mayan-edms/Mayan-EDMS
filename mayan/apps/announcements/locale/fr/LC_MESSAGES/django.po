@@ -63,7 +63,7 @@ msgstr "Étiquette"
 
 #: models.py:23
 msgid "The actual text to be displayed."
-msgstr ""
+msgstr "Le texte réel à afficher."
 
 #: models.py:24
 msgid "Text"

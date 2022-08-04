@@ -43,7 +43,7 @@ msgstr "Cache vidé"
 
 #: events.py:19
 msgid "Cache partition purged"
-msgstr ""
+msgstr "Partition de cache purgée"
 
 #: links.py:24
 msgid "File caches"

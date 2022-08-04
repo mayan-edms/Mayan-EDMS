@@ -64,7 +64,7 @@ with the rest of the API.
 Converter
 ^^^^^^^^^
 
-Image generation in all apps can consolidated to a common core which is then
+Image generation in all apps was consolidated to a common core which is then
 expanded and customized by the apps. As part of this consolidation settings
 and internal literals used by external app were merged or removed.
 The settings ``DOCUMENT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY``
@@ -97,7 +97,7 @@ installation.
 
 A tool was added to allow accessing all defined dashboards.
 
-Support as also added for selecting the default dashboard for display in the
+Support was also added for selecting the default dashboard for display in the
 home view.
 
 A new dashboard widget was added to allow displaying a list of objects.
@@ -523,8 +523,8 @@ sources while also allowing the sources to register their own unique
 functionality as source actions. Example of this is the staging folder file
 preview and staging folder file upload actions.
 
-The refactor also allows unifying background tasks. Source can now also
-define callbacks that are execute after the document if created to allow
+The refactor also allows unifying background tasks. Sources can now also
+define callbacks that are executed after the document is created to allow
 add or changing document attributes in an asynchronous manner.
 
 Support for recoding email Message ID was added. The email source can now
@@ -559,7 +559,7 @@ Tasks
 ^^^^^
 
 Celery workers are now launched with the options ``--without-gossip`` and
-``--without-heartbeat`` to reducer chatter and broker resources.
+``--without-heartbeat`` to reduce chatter and broker resources.
 
 
 Testing

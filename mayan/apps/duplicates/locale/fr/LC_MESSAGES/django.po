@@ -41,7 +41,7 @@ msgstr "Somme de contrôle du document"
 
 #: duplicate_backends.py:32
 msgid "Exact document label"
-msgstr ""
+msgstr "Nom exact du document"
 
 #: links.py:18 models.py:41 views.py:79
 msgid "Duplicated documents"

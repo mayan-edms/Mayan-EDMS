@@ -28,23 +28,23 @@ msgstr "Authentification par mot de passe à usage unique (OTP)"
 
 #: events.py:10
 msgid "OTP disabled"
-msgstr ""
+msgstr "OTP désactivé"
 
 #: events.py:13
 msgid "OTP enabled"
-msgstr ""
+msgstr "OTP activé"
 
 #: forms.py:20
 msgid "Token is either invalid or expired."
-msgstr ""
+msgstr "Le jeton n'est pas valide ou a expiré."
 
 #: forms.py:25
 msgid "TOTP token"
-msgstr ""
+msgstr "Jeton TOTP"
 
 #: forms.py:84
 msgid "OTP enabled?"
-msgstr ""
+msgstr "OTP activé?"
 
 #: forms.py:85
 msgid "Yes"
@@ -59,6 +59,9 @@ msgid ""
 "Scan the QR code or enter the secret in your authentication device. Do not "
 "share this secret, treat it like a password."
 msgstr ""
+"Scannez le code QR ou entrez le secret dans votre dispositif "
+"d'authentification. Ne partagez pas ce secret, traitez-le comme un mot de "
+"passe."
 
 #: forms.py:104 forms.py:109
 msgid "Secret"
@@ -68,6 +71,8 @@ msgstr "Secret"
 msgid ""
 "Enter the corresponding token to validate that the secret was saved correct."
 msgstr ""
+"Entrez le jeton correspondant pour valider que le secret a été enregistré "
+"correctement."
 
 #: forms.py:118
 msgid "Token"
@@ -75,19 +80,19 @@ msgstr "Jeton"
 
 #: forms.py:152
 msgid "Token is incorrect for the specified secret."
-msgstr ""
+msgstr "Le jeton est incorrect pour le secret spécifié."
 
 #: links.py:29
 msgid "OTP details"
-msgstr ""
+msgstr "Détails OTP"
 
 #: links.py:33
 msgid "Disable OTP"
-msgstr ""
+msgstr "Désactiver OTP"
 
 #: links.py:37
 msgid "Enable OTP"
-msgstr ""
+msgstr "Activer OTP"
 
 #: models.py:17
 msgid "User"
@@ -99,39 +104,39 @@ msgstr "16 caractères, chaîne aléatoire encodée en base32."
 
 #: models.py:26
 msgid "User OTP data"
-msgstr ""
+msgstr "Données OTP de l'utilisateur"
 
 #: models.py:27
 msgid "Users OTP data"
-msgstr ""
+msgstr "Données OTP des utilisateurs"
 
 #: views.py:28
 #, python-format
 msgid "One time pad details for user: %s"
-msgstr ""
+msgstr "Détails du masque jetable pour l'utilisateur: %s"
 
 #: views.py:45
 #, python-format
 msgid "Disable one time pad for user: %s"
-msgstr ""
+msgstr "Désactiver le masque jetable pour l'utilisateur: %s"
 
 #: views.py:56
 msgid "OTP disable successfully."
-msgstr ""
+msgstr "OTP désactivé avec succès."
 
 #: views.py:78
 msgid "OTP is already enabled."
-msgstr ""
+msgstr "OTP est déjà activé."
 
 #: views.py:94
 msgid "OTP enabled successfully."
-msgstr ""
+msgstr "OTP activé avec succès."
 
 #: views.py:103
 #, python-format
 msgid "Enable one time pad for user: %s"
-msgstr ""
+msgstr "Activer le masque jetable pour l'utilisateur: %s"
 
 #: views.py:115
 msgid "OTP secret validation error."
-msgstr ""
+msgstr "Erreur de validation du secret OTP."

@@ -199,7 +199,7 @@ class SANEScannerDocumentFileUploadViewTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_upload_view()
+        response = self._request_document_file_upload_post_view()
 
         self.assertEqual(response.status_code, 404)
 
@@ -217,7 +217,7 @@ class SANEScannerDocumentFileUploadViewTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_upload_view()
+        response = self._request_document_file_upload_post_view()
         self.assertEqual(response.status_code, 404)
 
         self._test_document.refresh_from_db()
@@ -234,7 +234,7 @@ class SANEScannerDocumentFileUploadViewTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_upload_view()
+        response = self._request_document_file_upload_post_view()
         self.assertEqual(response.status_code, 404)
 
         self._test_document.refresh_from_db()
@@ -254,7 +254,7 @@ class SANEScannerDocumentFileUploadViewTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_upload_view()
+        response = self._request_document_file_upload_post_view()
         self.assertEqual(response.status_code, 302)
 
         self._test_document.refresh_from_db()
@@ -305,7 +305,7 @@ class SANEScannerDocumentFileUploadViewTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_upload_view()
+        response = self._request_document_file_upload_post_view()
         self.assertEqual(response.status_code, 404)
 
         self._test_document.refresh_from_db()

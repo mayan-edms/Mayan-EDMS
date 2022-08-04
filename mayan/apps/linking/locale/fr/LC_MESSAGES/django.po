@@ -10,6 +10,7 @@
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Roberto Rosario, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
@@ -335,7 +336,7 @@ msgstr ""
 #: views/smart_link_views.py:186
 #, python-format
 msgid "Resolved smart links for document: %s"
-msgstr ""
+msgstr "Liens intelligents résolus pour le document: %s"
 
 #: views/smart_link_views.py:202
 msgid "Available smart links"

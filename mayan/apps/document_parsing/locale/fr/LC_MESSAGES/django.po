@@ -10,6 +10,7 @@
 # Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
@@ -42,6 +43,8 @@ msgid ""
 "Utility from the poppler-utils package used to extract content from PDF "
 "files."
 msgstr ""
+"Utilitaire de poppler-utils utilisé pour extraire le contenu des fichiers "
+"PDF."
 
 #: events.py:10
 msgid "Document file parsed content deleted"
@@ -176,7 +179,7 @@ msgstr ""
 #: views.py:43
 #, python-format
 msgid "Content of \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Contenu de \"%(object)s\" supprimé avec succès."
 
 #: views.py:46
 #, python-format
@@ -191,7 +194,7 @@ msgstr ""
 #: views.py:51
 #, python-format
 msgid "Delete the content of: %(object)s."
-msgstr ""
+msgstr "Supprimez le contenu de: %(object)s."
 
 #: views.py:53
 #, python-format

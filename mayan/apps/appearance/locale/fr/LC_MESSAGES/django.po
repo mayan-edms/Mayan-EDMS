@@ -89,7 +89,7 @@ msgstr "Thème modifié"
 
 #: events.py:14
 msgid "User theme edited"
-msgstr ""
+msgstr "Thème utilisateur modifié"
 
 #: links.py:18
 msgid "Theme settings"
@@ -169,7 +169,7 @@ msgstr "Afficher les thèmes existants"
 
 #: settings.py:15
 msgid "Custom HTTP response code for AJAX redirections."
-msgstr ""
+msgstr "Code de réponse HTTP personnalisé pour les redirections AJAX."
 
 #: settings.py:21
 msgid "Maximum number of characters that will be displayed as the view title."
@@ -188,6 +188,8 @@ msgstr ""
 msgid ""
 "Delay in milliseconds after which the menus will be checked for updates."
 msgstr ""
+"Délai en millisecondes après lequel les menus seront vérifiés pour les mises"
+" à jour."
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -486,9 +488,9 @@ msgstr "Il n'y a pas de thèmes"
 #: views.py:122
 #, python-format
 msgid "Theme settings for user: %s"
-msgstr ""
+msgstr "Paramètres du thème pour l'utilisateur: %s"
 
 #: views.py:144
 #, python-format
 msgid "Edit theme settings for user: %s"
-msgstr ""
+msgstr "Modifier les paramètres de thème pour l'utilisateur: %s"

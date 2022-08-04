@@ -56,7 +56,7 @@ msgstr "Nombre total de documents"
 
 #: apps.py:160 apps.py:198
 msgid "Number of unique documents this item contains."
-msgstr ""
+msgstr "Nombre de documents uniques que cet élément contient."
 
 #: apps.py:185
 msgid "Nodes"
@@ -533,7 +533,7 @@ msgstr "Supprimer le nœud du modèle d'index : %s?"
 #: views/index_template_views.py:381
 #, python-format
 msgid "Edit the index template node: %s"
-msgstr ""
+msgstr "Modifiez le nœud du modèle d'index: %s"
 
 #: views/index_template_views.py:402
 #, python-format

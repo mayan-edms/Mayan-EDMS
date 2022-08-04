@@ -11,6 +11,7 @@
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
@@ -91,7 +92,7 @@ msgstr ""
 
 #: events.py:15
 msgid "Events cleared"
-msgstr ""
+msgstr "Événements effacés"
 
 #: events.py:18
 msgid "Events exported"
@@ -115,7 +116,7 @@ msgstr "Système"
 
 #: links.py:55 links.py:100 views/clear_views.py:63
 msgid "Clear events"
-msgstr ""
+msgstr "Effacer les événements"
 
 #: links.py:59 links.py:107 views/export_views.py:59
 msgid "Export events"
@@ -188,7 +189,7 @@ msgstr "Abonnement aux événements de l'objet"
 
 #: permissions.py:8
 msgid "Clear the events of an object"
-msgstr ""
+msgstr "Effacer les événements d'un objet"
 
 #: permissions.py:11
 msgid "Export the events of an object"
@@ -219,12 +220,12 @@ msgstr ""
 #: views/clear_views.py:84
 #, python-format
 msgid "Clear events of: %s"
-msgstr ""
+msgstr "Effacer les événements de: %s"
 
 #: views/clear_views.py:109
 #, python-format
 msgid "Clear events of type: %s"
-msgstr ""
+msgstr "Effacer les événements de type: %s"
 
 #: views/event_views.py:25
 msgid "Events track actions that have been performed on, to, or with objects."
@@ -271,12 +272,12 @@ msgstr ""
 #: views/export_views.py:80
 #, python-format
 msgid "Export events of: %s"
-msgstr ""
+msgstr "Exporter les événements de: %s"
 
 #: views/export_views.py:99
 #, python-format
 msgid "Export events of type: %s"
-msgstr ""
+msgstr "Exporter les événements de type: %s"
 
 #: views/notification_views.py:29
 msgid "Subscribe to global or object events to receive notifications."

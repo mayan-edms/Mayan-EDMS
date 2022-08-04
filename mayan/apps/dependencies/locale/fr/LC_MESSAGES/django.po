@@ -74,7 +74,7 @@ msgstr "App"
 
 #: classes.py:215 classes.py:840
 msgid "Environments"
-msgstr ""
+msgstr "Environnements"
 
 #: classes.py:308
 msgid "Need to specify at least one: app_label or module."

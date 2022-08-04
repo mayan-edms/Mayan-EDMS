@@ -72,4 +72,4 @@ msgstr "Profil de paramètres régionaux pour l'utilisateur: %s"
 #: views.py:87
 #, python-format
 msgid "Edit locale profile for user: %s"
-msgstr ""
+msgstr "Modifier le profil de paramètres régionaux pour l'utilisateur: %s"

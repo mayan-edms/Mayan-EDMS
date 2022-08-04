@@ -135,7 +135,7 @@ class QuotaHooksTestCase(
         file_count = self._test_document.files.count()
 
         with self.assertRaises(expected_exception=QuotaExceeded):
-            self._request_document_file_upload_view()
+            self._request_document_file_upload_post_view()
 
         self._test_document.refresh_from_db()
         self.assertEqual(

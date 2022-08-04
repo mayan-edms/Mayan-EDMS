@@ -1402,11 +1402,11 @@ msgstr "Previzualizare imagine pagină document"
 
 #: templates/documents/errors/document_file_page_transformation_error.html:5
 msgid "Document file page transformation error"
-msgstr ""
+msgstr "Eroare de transformare a paginii fișierului de document"
 
 #: templates/documents/errors/document_version_page_transformation_error.html:5
 msgid "Document version page transformation error"
-msgstr ""
+msgstr "Eroare de transformare a paginii versiunii documentului"
 
 #: templates/documents/errors/no_valid_version.html:5
 msgid "No valid or active version"

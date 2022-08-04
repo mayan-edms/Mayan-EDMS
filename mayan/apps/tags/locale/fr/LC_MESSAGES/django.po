@@ -10,6 +10,7 @@
 # Roberto Rosario, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Frédéric Sheedy <sheedf@gmail.com>, 2022
+# Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
@@ -145,7 +146,7 @@ msgstr "Retirer des étiquettes des documents"
 
 #: search.py:24
 msgid "Tag label"
-msgstr ""
+msgstr "Libellé de l'étiquette"
 
 #: search.py:27
 msgid "Tag color"
@@ -173,7 +174,7 @@ msgstr "Somme de contrôle du fichier"
 
 #: search.py:82
 msgid "Document file MIME type"
-msgstr ""
+msgstr "Type MIME du fichier de document"
 
 #: serializers.py:32
 msgid "Primary key of the tag to add to the document."

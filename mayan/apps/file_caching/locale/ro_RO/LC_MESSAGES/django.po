@@ -190,12 +190,12 @@ msgstr "Partiții din memoria cache a obiectelor trimise pentru curățare."
 #: views.py:125
 #, python-format
 msgid "%(count)d cache submitted for purging."
-msgstr ""
+msgstr "%(count)d din memoria cache trimis pentru eliminare."
 
 #: views.py:126
 #, python-format
 msgid "%(count)d caches submitted for purging."
-msgstr ""
+msgstr "%(count)d din memoria cache trimise pentru eliminare."
 
 #: views.py:134
 msgid "Submit the selected cache for purging?"

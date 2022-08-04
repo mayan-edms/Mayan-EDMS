@@ -1,0 +1,84 @@
+Version 4.2.9
+=============
+
+Released: August 4, 2022
+
+Status: Maintenance
+
+
+Changes
+-------
+
+
+Authentication
+^^^^^^^^^^^^^^
+
+The impersonation app template caching was disabled. This ensures
+the impersonation banner is triggered correctly in all edge cases where
+multiple frontend processes or load balancers are used.
+
+
+Settings
+^^^^^^^^
+
+The settings app templates caching was disabled. Just like the as with the
+impersonation app, this ensures correct functionality of the settings change
+banner in all edge cases.
+
+
+Sources
+^^^^^^^
+
+Permission filtering was added the source switch links. This change is only
+visual and does not affect the functionality of the sources.
+
+The permission filtering for the links is the same as the views: The
+document create permission is required for the source links during document
+uploads and the document file new permissions is required for the source
+links in the new document file upload view.
+
+
+Other
+^^^^^
+
+Added make file development targets ``setup-dev-operating-system-packages``
+and ``setup-dev-python-libraries``.
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1108` DOC: missing {% endif %} in index example
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

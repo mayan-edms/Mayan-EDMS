@@ -44,11 +44,11 @@ msgstr "Courriel envoyé"
 
 #: events.py:11
 msgid "Mailing profile created"
-msgstr ""
+msgstr "Profil de messagerie créé"
 
 #: events.py:14
 msgid "Mailing profile edited"
-msgstr ""
+msgstr "Profil de messagerie modifié"
 
 #: forms.py:58 forms.py:93
 msgid ""
@@ -148,7 +148,7 @@ msgstr ""
 
 #: literals.py:11
 msgid "{{ object_name }}: {{ object }}"
-msgstr ""
+msgstr "{{ object_name }}: {{ object }}"
 
 #: literals.py:13
 #, python-format
@@ -329,23 +329,23 @@ msgstr "Envoyer le lien du document par courriel"
 
 #: permissions.py:34
 msgid "Send document file via email"
-msgstr ""
+msgstr "Envoyer le fichier du document par courriel"
 
 #: permissions.py:38
 msgid "Send document file link via email"
-msgstr ""
+msgstr "Envoyer le lien du fichier du document par courriel"
 
 #: permissions.py:45
 msgid "Send document version via email"
-msgstr ""
+msgstr "Envoyer la version du document par courriel"
 
 #: permissions.py:49
 msgid "Send document version link via email"
-msgstr ""
+msgstr "Envoyer le lien de la version du document par courriel"
 
 #: queues.py:11
 msgid "Send object"
-msgstr ""
+msgstr "Envoyer l'objet"
 
 #: settings.py:15
 msgid "Template for the document email form subject line."
@@ -380,41 +380,56 @@ msgstr "Fichier"
 #, python-format
 msgid "%(count)d document file queued for email delivery"
 msgstr ""
+"%(count)d fichier de document mis en file d'attente pour l'envoi par "
+"courriel"
 
 #: views/document_file_views.py:23
 #, python-format
 msgid "%(count)d document files queued for email delivery"
 msgstr ""
+"%(count)d fichiers de documents mis en file d'attente pour l'envoi par "
+"courriel"
 
 #: views/document_file_views.py:36
 #, python-format
 msgid "%(count)d document file link queued for email delivery"
 msgstr ""
+"%(count)d lien de fichier de document mis en file d'attente pour l'envoi par"
+" courriel"
 
 #: views/document_file_views.py:39
 #, python-format
 msgid "%(count)d document file links queued for email delivery"
 msgstr ""
+"%(count)d liens de fichiers de documents mis en file d'attente pour l'envoi "
+"par courriel"
 
 #: views/document_version_views.py:22
 #, python-format
 msgid "%(count)d document version queued for email delivery"
 msgstr ""
+"%(count)d version du document en file d'attente pour l'envoi par courriel"
 
 #: views/document_version_views.py:25
 #, python-format
 msgid "%(count)d document versions queued for email delivery"
 msgstr ""
+"%(count)d versions de documents mises en file d'attente pour l'envoi par "
+"courriel"
 
 #: views/document_version_views.py:38
 #, python-format
 msgid "%(count)d document version link queued for email delivery"
 msgstr ""
+"%(count)d lien de version de document mis en file d'attente pour l'envoi par"
+" courriel"
 
 #: views/document_version_views.py:41
 #, python-format
 msgid "%(count)d document version links queued for email delivery"
 msgstr ""
+"%(count)d liens de version de document mis en file d'attente pour l'envoi "
+"par courriel"
 
 #: views/document_views.py:15
 #, python-format
@@ -533,7 +548,7 @@ msgstr "Pièce jointe"
 
 #: workflow_actions.py:96
 msgid "Attach an object to the email."
-msgstr ""
+msgstr "Joignez un objet au courriel."
 
 #: workflow_actions.py:105
 msgid "Send object via email"
@@ -541,7 +556,7 @@ msgstr "Envoyer l'objet par courriel"
 
 #: workflow_actions.py:173
 msgid "Attach the exported document version to the email."
-msgstr ""
+msgstr "Joindre au courriel la version du document exporté."
 
 #: workflow_actions.py:182
 msgid "Send document via email"

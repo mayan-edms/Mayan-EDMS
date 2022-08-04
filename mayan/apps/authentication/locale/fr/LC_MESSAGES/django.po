@@ -195,9 +195,9 @@ msgstr ""
 #: views/authentication_views.py:323
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Changer le mot de passe de l&#39;utilisateur"
+msgstr[1] "Modifier les mots de passe des utilisateurs"
+msgstr[2] "Modifier les mots de passe des utilisateurs"
 
 #: views/authentication_views.py:334
 #, python-format

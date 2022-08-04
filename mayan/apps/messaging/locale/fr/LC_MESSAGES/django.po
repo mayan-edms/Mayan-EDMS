@@ -130,7 +130,7 @@ msgstr "Voir les messages"
 
 #: serializers.py:19
 msgid "Primary key of the recipient user of this message."
-msgstr ""
+msgstr "Clé primaire de l'utilisateur destinataire de ce message."
 
 #: views.py:49
 #, python-format

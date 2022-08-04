@@ -165,7 +165,7 @@ msgstr "Vizualizați temele existente"
 
 #: settings.py:15
 msgid "Custom HTTP response code for AJAX redirections."
-msgstr ""
+msgstr "Cod de răspuns HTTP personalizat pentru redirecționări AJAX."
 
 #: settings.py:21
 msgid "Maximum number of characters that will be displayed as the view title."

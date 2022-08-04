@@ -102,7 +102,7 @@ msgstr "Nombre de groupes"
 
 #: dashboards.py:5
 msgid "User dashboard"
-msgstr ""
+msgstr "Tableau de bord de l'utilisateur"
 
 #: events.py:10
 msgid "Group created"
@@ -347,6 +347,9 @@ msgid ""
 "Warning! You are about to delete your own user account. You will lose access"
 " to the system. This process is not reversible."
 msgstr ""
+"Avertissement! Vous êtes sur le point de supprimer votre propre compte "
+"utilisateur. Vous perdrez l'accès au système. Cette action n'est pas "
+"réversible."
 
 #: views/user_views.py:89
 #, python-format

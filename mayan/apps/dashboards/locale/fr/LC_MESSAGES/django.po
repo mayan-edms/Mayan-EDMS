@@ -28,7 +28,7 @@ msgstr "Tableaux de bord"
 
 #: apps.py:25
 msgid "Widgets"
-msgstr ""
+msgstr "Composant"
 
 #: apps.py:29
 msgid "Label"
@@ -36,7 +36,7 @@ msgstr "Étiquette"
 
 #: dashboards.py:6
 msgid "Administrator dashboard"
-msgstr ""
+msgstr "Tableau de bord administrateur"
 
 #: links.py:14
 msgid "Details"
@@ -49,4 +49,4 @@ msgstr "Voir les détails"
 
 #: views.py:30
 msgid "Dashboard detail"
-msgstr ""
+msgstr "Détail du tableau de bord"

@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.views.mixins import ExternalObjectViewMixin
@@ -71,9 +72,14 @@ class DocumentUploadInteractiveView(ExternalObjectViewMixin, UploadBaseView):
         )
 
     def get_active_tab_links(self):
+        sources = AccessControlList.objects.restrict_queryset(
+            permission=permission_document_create,
+            queryset=Source.objects.interactive().filter(enabled=True),
+            user=self.request.user
+        )
         return [
             UploadBaseView.get_tab_link_for_source(source=source)
-            for source in Source.objects.interactive().filter(enabled=True)
+            for source in sources
         ]
 
     def get_context_data(self, **kwargs):

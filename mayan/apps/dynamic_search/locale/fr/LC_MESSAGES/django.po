@@ -40,7 +40,7 @@ msgstr ""
 #: classes.py:584
 #, python-format
 msgid "Unknown search model `%s`."
-msgstr ""
+msgstr "Modèle de recherche inconnu `%s`."
 
 #: classes.py:640
 msgid "ID"
@@ -86,7 +86,7 @@ msgstr "Exécuter les outils de recherche"
 
 #: queues.py:10
 msgid "Search slow"
-msgstr ""
+msgstr "Recherche lente"
 
 #: queues.py:15
 msgid "Remove a model instance from the search engine."

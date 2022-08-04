@@ -26,7 +26,7 @@ msgstr "Organisations"
 
 #: setting_validators.py:13
 msgid "The path value must not include a leading or trailing slash."
-msgstr ""
+msgstr "La chemin ne doit pas inclure de barre oblique au début ou à la fin."
 
 #: settings.py:17
 msgid ""

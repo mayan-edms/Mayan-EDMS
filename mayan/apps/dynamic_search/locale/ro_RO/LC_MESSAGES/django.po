@@ -100,6 +100,8 @@ msgstr ""
 msgid ""
 "Index all related instances of a search model after a many to many event."
 msgstr ""
+"Indexați toate cazurile conexe ale unui model de căutare după un eveniment "
+"de tip de la mai multe la mai multe."
 
 #: queues.py:39
 msgid "Reset the search backend indices and index all instances again."

@@ -249,10 +249,14 @@ msgid ""
 "unpinned or immutable depedency bugs in third party libraries. End users can"
 " ignore missing dependencies under this environment."
 msgstr ""
+"Mediu utilizat pentru a specifica dependențe directe ale documentației "
+"pentru a rezolva erorile de dependență nefixate sau imuabile din "
+"bibliotecile terțelor părți. Utilizatorii finali pot ignora dependențele "
+"lipsă în acest mediu."
 
 #: environments.py:41
 msgid "Documentation (override)"
-msgstr ""
+msgstr "Documentație (înlocuire)"
 
 #: environments.py:45
 msgid ""

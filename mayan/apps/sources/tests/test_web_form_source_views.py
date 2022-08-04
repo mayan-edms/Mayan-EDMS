@@ -337,7 +337,7 @@ class WebFormDocumentFileUploadViewTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_upload_view()
+        response = self._request_document_file_upload_post_view()
 
         self.assertEqual(response.status_code, 404)
 
@@ -355,7 +355,7 @@ class WebFormDocumentFileUploadViewTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_upload_view()
+        response = self._request_document_file_upload_post_view()
         self.assertEqual(response.status_code, 404)
 
         self._test_document.refresh_from_db()
@@ -372,7 +372,7 @@ class WebFormDocumentFileUploadViewTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_upload_view()
+        response = self._request_document_file_upload_post_view()
         self.assertEqual(response.status_code, 404)
 
         self._test_document.refresh_from_db()
@@ -392,7 +392,7 @@ class WebFormDocumentFileUploadViewTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_upload_view()
+        response = self._request_document_file_upload_post_view()
         self.assertEqual(response.status_code, 302)
 
         self._test_document.refresh_from_db()
@@ -443,7 +443,7 @@ class WebFormDocumentFileUploadViewTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_upload_view()
+        response = self._request_document_file_upload_post_view()
         self.assertEqual(response.status_code, 404)
 
         self._test_document.refresh_from_db()
@@ -583,7 +583,7 @@ class WebFormDocumentFileUploadViewTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_upload_view()
+        response = self._request_document_file_upload_post_view()
         self.assertEqual(response.status_code, 302)
 
         self._test_document.refresh_from_db()
@@ -624,3 +624,77 @@ class WebFormDocumentFileUploadViewTestCase(
         self.assertEqual(
             events[3].verb, event_document_version_page_created.id
         )
+
+
+class WebFormDocumentCreateSourceSwitchLinkViewTestCase(
+    WebFormSourceTestMixin, DocumentUploadWizardViewTestMixin,
+    GenericDocumentViewTestCase
+):
+    auto_create_test_source = False
+    auto_upload_test_document = False
+
+    def test_source_switch_link_with_access(self):
+        self._create_test_web_form_source()
+        self._create_test_web_form_source()
+
+        self.grant_access(
+            obj=self.test_document_type, permission=permission_document_create
+        )
+        self.grant_access(
+            obj=self._test_sources[1], permission=permission_document_create
+        )
+
+        test_document_count = Document.objects.count()
+
+        self._clear_events()
+
+        response = self._request_upload_interactive_view()
+
+        self.assertNotContains(
+            response=response, text=self._test_sources[0].label, status_code=200
+        )
+        self.assertContains(
+            response=response, text=self._test_sources[1].label, status_code=200
+        )
+
+        self.assertEqual(Document.objects.count(), test_document_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+
+class WebFormDocumentFileUploadSourceSwitchLinkViewTestCase(
+    DocumentFileUploadViewTestMixin, WebFormSourceTestMixin,
+    GenericDocumentViewTestCase
+):
+    auto_create_test_source = False
+
+    def test_document_file_upload_view_with_full_access(self):
+        self._create_test_web_form_source()
+        self._create_test_web_form_source()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_file_new
+        )
+        self.grant_access(
+            obj=self._test_sources[1], permission=permission_document_file_new
+        )
+        file_count = self.test_document.files.count()
+
+        self._clear_events()
+
+        response = self._request_document_file_upload_get_view()
+        self.assertNotContains(
+            response=response, text=self._test_sources[0].label, status_code=200
+        )
+        self.assertContains(
+            response=response, text=self._test_sources[1].label, status_code=200
+        )
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.files.count(), file_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

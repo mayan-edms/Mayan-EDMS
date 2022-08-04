@@ -243,12 +243,13 @@ msgstr ""
 #: views.py:121
 #, python-format
 msgid "%(count)d document file submitted to the file metadata queue."
-msgstr ""
+msgstr "%(count)d fișier document trimis în coada de metadate ale fișierului."
 
 #: views.py:124
 #, python-format
 msgid "%(count)d documents files submitted to the file metadata queue."
 msgstr ""
+"%(count)d fișiere document trimise în coada de metadate ale fișierelor."
 
 #: views.py:133
 msgid "Submit the selected document file to the file metadata queue?"

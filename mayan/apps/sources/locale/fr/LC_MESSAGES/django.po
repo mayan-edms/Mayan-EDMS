@@ -65,11 +65,11 @@ msgstr ""
 
 #: events.py:8
 msgid "Source created"
-msgstr ""
+msgstr "Source créée"
 
 #: events.py:11
 msgid "Source edited"
-msgstr ""
+msgstr "Source modifiée"
 
 #: forms.py:26
 msgid "An optional comment to explain the upload."
@@ -116,7 +116,7 @@ msgstr "Téléverser un nouveau fichier"
 
 #: links.py:126
 msgid "Create source"
-msgstr ""
+msgstr "Créer une source"
 
 #: links.py:132 source_backends/staging_folder_backends.py:355
 msgid "Delete"
@@ -517,7 +517,7 @@ msgstr ""
 #: source_backends/staging_folder_backends.py:321
 #: source_backends/watch_folder_backends.py:62
 msgid "Include regular expression"
-msgstr ""
+msgstr "Inclure l'expression régulière"
 
 #: source_backends/staging_folder_backends.py:328
 #: source_backends/watch_folder_backends.py:69

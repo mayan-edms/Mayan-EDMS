@@ -435,6 +435,19 @@
 - Display a warning message in the setting edit view when local storage is
   disabled.
 
+4.2.9 (2022-08-04)
+==================
+- Add permission filtering to the source switch links. The permission
+  filtering will be the same as the views: document create permission for the
+  source links during document uploads and document file new permissions
+  for the source links in the new document file upload view.
+- Don't cache the impersonation and the settings app templates. This ensures
+  the impersonation banner and settings change banner are triggered
+  correctly in all edge cases where multiple frontend processes or load
+  balancers are used.
+- Add make file development targets ``setup-dev-operating-system-packages``
+  and ``setup-dev-python-libraries``.
+
 4.2.8 (2022-07-22)
 ==================
 - Fix the permission requirement of the recently created documents dashboard
