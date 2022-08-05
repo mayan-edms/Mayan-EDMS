@@ -627,7 +627,7 @@ class WebFormDocumentFileUploadViewTestCase(
 
 
 class WebFormDocumentCreateSourceSwitchLinkViewTestCase(
-    WebFormSourceTestMixin, DocumentUploadWizardViewTestMixin,
+    WebFormSourceBackendTestMixin, DocumentUploadWizardViewTestMixin,
     GenericDocumentViewTestCase
 ):
     auto_create_test_source = False
@@ -638,7 +638,7 @@ class WebFormDocumentCreateSourceSwitchLinkViewTestCase(
         self._create_test_web_form_source()
 
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_create
+            obj=self._test_document_type, permission=permission_document_create
         )
         self.grant_access(
             obj=self._test_sources[1], permission=permission_document_create
@@ -664,7 +664,7 @@ class WebFormDocumentCreateSourceSwitchLinkViewTestCase(
 
 
 class WebFormDocumentFileUploadSourceSwitchLinkViewTestCase(
-    DocumentFileUploadViewTestMixin, WebFormSourceTestMixin,
+    DocumentFileUploadViewTestMixin, WebFormSourceBackendTestMixin,
     GenericDocumentViewTestCase
 ):
     auto_create_test_source = False
@@ -674,12 +674,12 @@ class WebFormDocumentFileUploadSourceSwitchLinkViewTestCase(
         self._create_test_web_form_source()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_new
+            obj=self._test_document, permission=permission_document_file_new
         )
         self.grant_access(
             obj=self._test_sources[1], permission=permission_document_file_new
         )
-        file_count = self.test_document.files.count()
+        file_count = self._test_document.files.count()
 
         self._clear_events()
 
@@ -691,9 +691,9 @@ class WebFormDocumentFileUploadSourceSwitchLinkViewTestCase(
             response=response, text=self._test_sources[1].label, status_code=200
         )
 
-        self.test_document.refresh_from_db()
+        self._test_document.refresh_from_db()
         self.assertEqual(
-            self.test_document.files.count(), file_count
+            self._test_document.files.count(), file_count
         )
 
         events = self._get_test_events()

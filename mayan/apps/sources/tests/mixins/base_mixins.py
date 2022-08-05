@@ -22,13 +22,13 @@ class DocumentFileUploadViewTestMixin:
     def _request_document_file_upload_get_view(self):
         return self.get(
             viewname='sources:document_file_upload', kwargs={
-                'document_id': self.test_document.pk,
-                'source_id': self.test_source.pk,
+                'document_id': self._test_document.pk,
+                'source_id': self._test_source.pk,
             }
         )
 
     def _request_document_file_upload_post_view(self):
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_FILE_SMALL_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='sources:document_file_upload', kwargs={
                     'document_id': self._test_document.pk,
