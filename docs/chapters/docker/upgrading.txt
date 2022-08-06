@@ -42,6 +42,12 @@ Upgrade between minor versions
 
 #. Stop and delete the container stack:
 
+   .. important::
+
+     Do not skip this step. If the stack is not taken down, important
+     internal upgrades processes like database migrations will not be
+     executed.
+
    .. code-block:: console
 
      docker-compose --file docker-compose.yml --project-name mayan down
