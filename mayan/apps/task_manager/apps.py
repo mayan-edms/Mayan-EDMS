@@ -69,8 +69,21 @@ class TaskManagerApp(MayanAppConfig):
     def ready(self):
         super(TaskManagerApp, self).ready()
 
-        self.check_broker_connectivity()
-        self.check_results_backend_connectivity()
+        try:
+            self.check_broker_connectivity()
+        except Exception as exception:
+            print(
+                'Error checking Celery broker connectivity: {}'.format(exception)
+            )
+            exit(1)
+
+        try:
+            self.check_results_backend_connectivity()
+        except Exception as exception:
+            print(
+                'Error checking Celery result backend connectivity: {}'.format(exception)
+            )
+            exit(1)
 
         CeleryQueue.load_modules()
 
