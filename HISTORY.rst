@@ -4,6 +4,7 @@
   launch the PostgreSQL development container. Don't require a local
   redis client to launch the Redis development container. Fix the
   staging targets.
+- Display exception errors to console when Celery fails to initialize.
 
 4.2.9 (2022-08-04)
 ==================
