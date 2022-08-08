@@ -1,3 +1,10 @@
+4.2.10 (2022-XX-XX)
+===================
+- Make file improvements. Don't require a local ``psql`` client to
+  launch the PostgreSQL development container. Don't require a local
+  redis client to launch the Redis development container. Fix the
+  staging targets.
+
 4.2.9 (2022-08-04)
 ==================
 - Add permission filtering to the source switch links. The permission
