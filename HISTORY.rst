@@ -5,6 +5,10 @@
   redis client to launch the Redis development container. Fix the
   staging targets.
 - Display exception errors to console when Celery fails to initialize.
+- Use the ``DownloadFile`` filename attribute if avaible when performing
+  the actual download action. Fall back to the previous logic of the
+  string representation of the download file if the filename attribute
+  is not set.
 
 4.2.9 (2022-08-04)
 ==================

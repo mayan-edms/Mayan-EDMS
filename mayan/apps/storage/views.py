@@ -38,7 +38,7 @@ class DownloadFileDownloadViewView(
         return instance.get_download_file_object()
 
     def get_download_filename(self):
-        return force_text(s=self.object)
+        return self.object.filename or str(self.object)
 
 
 class DownloadFileListView(
