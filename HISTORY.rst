@@ -1,3 +1,7 @@
+4.3.1 (2022-08-XX)
+==================
+- Fixes and improvements merged from version 4.2.9 and 4.2.10.
+
 4.3 (2022-07-27)
 ================
 - Partials navigation updates:
@@ -434,6 +438,14 @@
 - Disable the settings edit link when local storage is disabled.
 - Display a warning message in the setting edit view when local storage is
   disabled.
+
+4.2.10 (2022-XX-XX)
+===================
+- Make file improvements. Don't require a local ``psql`` client to
+  launch the PostgreSQL development container. Don't require a local
+  redis client to launch the Redis development container. Fix the
+  staging targets.
+- Display exception errors to console when Celery fails to initialize.
 
 4.2.9 (2022-08-04)
 ==================
