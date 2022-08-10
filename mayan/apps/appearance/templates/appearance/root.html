@@ -9,67 +9,76 @@
 {% spaceless %}
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-    <head>
-        
-        <meta content="width=device-width, initial-scale=1, maximum-scale=5" name="viewport">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
-        <title>
-            {% block base_title %}
-                {% block title %}{% endblock %} :: {% block project_name %}{% smart_setting 'COMMON_PROJECT_TITLE' %}{% endblock %}
-            {% endblock base_title %}
-        </title>
 
-        <link href="{% static 'appearance/node_modules/@fortawesome/fontawesome-free/css/all.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
-        <link href="{% static 'appearance/node_modules/bootswatch/flatly/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
-        <link href="{% static 'appearance/node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
-        <link href="{% static 'appearance/node_modules/select2/dist/css/select2.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
-        <link href="{% static 'appearance/node_modules/toastr/build/toastr.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
-        <link href="{% static 'appearance/css/base.css' %}" media="screen" rel="stylesheet" type="text/css" />
-        <style id="style-javascript"></style>
-        {% appearance_app_templates template_name='head' %}
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        <div class="hidden-xs hidden-sm" id="ajax-spinner" style="display: none;"></div>
-        {% if appearance_type == 'plain' %}
-            {% block content_plain %}{% endblock %}
-        {% else %}
-            <div id="menu-topbar">
-                {% include 'appearance/menu_topbar.html' %}
+<head>
+    <meta name="description" content="This is a free and open-source software">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=5" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
+    <title>
+        {% block base_title %}
+        {% block title %}{% endblock %} :: {% block project_name %}{% smart_setting 'COMMON_PROJECT_TITLE' %}{% endblock
+        %}
+        {% endblock base_title %}
+    </title>
+
+    <link href="{% static 'appearance/node_modules/@fortawesome/fontawesome-free/css/all.min.css' %}" media="screen"
+        rel="stylesheet" type="text/css" />
+    <link href="{% static 'appearance/node_modules/bootswatch/flatly/bootstrap.min.css' %}" media="screen"
+        rel="stylesheet" type="text/css" />
+    <link href="{% static 'appearance/node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css' %}" media="screen"
+        rel="stylesheet" type="text/css" />
+    <link href="{% static 'appearance/node_modules/select2/dist/css/select2.min.css' %}" media="screen" rel="stylesheet"
+        type="text/css" />
+    <link href="{% static 'appearance/node_modules/toastr/build/toastr.min.css' %}" media="screen" rel="stylesheet"
+        type="text/css" />
+    <link href="{% static 'appearance/css/base.css' %}" media="screen" rel="stylesheet" type="text/css" />
+    <style id="style-javascript"></style>
+    {% appearance_app_templates template_name='head' %}
+    {% block stylesheets %}{% endblock %}
+</head>
+
+<body>
+    <div class="hidden-xs hidden-sm" id="ajax-spinner" style="display: none;"></div>
+    {% if appearance_type == 'plain' %}
+    {% block content_plain %}{% endblock %}
+    {% else %}
+    <div id="menu-topbar">
+        {% include 'appearance/menu_topbar.html' %}
+    </div>
+    <div id="menu-main">
+        {% include 'appearance/menu_main.html' %}
+    </div>
+    <div class="main">
+        <div class="row zero-margin">
+            <div class="col-xs-12">
+                <div id="ajax-header"></div>
+                <div id="ajax-content"></div>
             </div>
-            <div id="menu-main">
-                {% include 'appearance/menu_main.html' %}
-            </div>
-            <div class="main">
-                <div class="row zero-margin">
-                    <div class="col-xs-12">
-                        <div id="ajax-header"></div>
-                        <div id="ajax-content"></div>
-                    </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="modal fade" id="modal-server-error" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{% trans 'Server error' %}</h4>
                 </div>
-            </div>
-        {% endif %}
-
-        <div class="modal fade" id="modal-server-error" role="dialog" tabindex="-1" >
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">{% trans 'Server error' %}</h4>
-                    </div>
-                    <div class="modal-body">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
-                    </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="div-javascript-dynamic-content"></div>
+    <div id="div-javascript-dynamic-content"></div>
 
-        <script id="template-error" type="text/x-template">
+    <script id="template-error" type="text/x-template">
             <div class="content">
                 <h2 class="title">{% blocktrans %}Server communication error{% endblocktrans %}</h2>
                 <div class="inner">
@@ -78,72 +87,81 @@
             </div>
         </script>
 
-        <script src="{% static 'appearance/node_modules/jquery/dist/jquery.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/node_modules/bootstrap/dist/js/bootstrap.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/packages/jquery.scrollview.js' %}" type="text/javascript"></script>
+    <script src="{% static 'appearance/node_modules/jquery/dist/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'appearance/node_modules/bootstrap/dist/js/bootstrap.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static 'appearance/packages/jquery.scrollview.js' %}" type="text/javascript"></script>
 
-        <script src="{% static 'appearance/node_modules/jquery-lazyload/jquery.lazyload.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/node_modules/jquery-lazyload/jquery.scrollstop.js' %}" type="text/javascript"></script>
+    <script src="{% static 'appearance/node_modules/jquery-lazyload/jquery.lazyload.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static 'appearance/node_modules/jquery-lazyload/jquery.scrollstop.js' %}"
+        type="text/javascript"></script>
 
-        <script src="{% static 'appearance/node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/node_modules/select2/dist/js/select2.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/node_modules/toastr/build/toastr.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/node_modules/jquery-match-height/dist/jquery.matchHeight-min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/node_modules/@fortawesome/fontawesome-free/js/all.min.js' %}" data-auto-replace-svg="nest" type="text/javascript"></script>
-        <script src="{% static 'appearance/node_modules/urijs/src/IPv6.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/node_modules/urijs/src/punycode.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/node_modules/urijs/src/SecondLevelDomains.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/node_modules/urijs/src/URI.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/node_modules/urijs/src/URITemplate.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/node_modules/urijs/src/URI.fragmentURI.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/node_modules/jquery-form/dist/jquery.form.min.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/js/mayan_app.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/js/mayan_image.js' %}" type="text/javascript"></script>
-        <script src="{% static 'appearance/js/partial_navigation.js' %}" type="text/javascript"></script>
-        <script>
-            {# Transfer variable from Django to javascript #}
-            var initialURL = '{% url home_view %}';
-            var djangoDEBUG = {% if debug %}true{% else %}false{% endif %};
-        </script>
-        <script src="{% static 'appearance/js/base.js' %}" type="text/javascript"></script>
-        <script>
-            var app = new MayanApp({
-                ajaxMenusOptions: [
-                    {
-                        callback: function (options) {
-                            MayanApp.updateNavbarState();
-                        },
-                        interval: 5000,
-                        menuSelector: '#menu-main',
-                        name: 'menu_main',
-                        url: '{% url "rest_api:template-detail" "menu_main" %}'
+    <script src="{% static 'appearance/node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static 'appearance/node_modules/select2/dist/js/select2.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'appearance/node_modules/toastr/build/toastr.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'appearance/node_modules/jquery-match-height/dist/jquery.matchHeight-min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static 'appearance/node_modules/@fortawesome/fontawesome-free/js/all.min.js' %}"
+        data-auto-replace-svg="nest" type="text/javascript"></script>
+    <script src="{% static 'appearance/node_modules/urijs/src/IPv6.js' %}" type="text/javascript"></script>
+    <script src="{% static 'appearance/node_modules/urijs/src/punycode.js' %}" type="text/javascript"></script>
+    <script src="{% static 'appearance/node_modules/urijs/src/SecondLevelDomains.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static 'appearance/node_modules/urijs/src/URI.js' %}" type="text/javascript"></script>
+    <script src="{% static 'appearance/node_modules/urijs/src/URITemplate.js' %}" type="text/javascript"></script>
+    <script src="{% static 'appearance/node_modules/urijs/src/URI.fragmentURI.js' %}" type="text/javascript"></script>
+    <script src="{% static 'appearance/node_modules/jquery-form/dist/jquery.form.min.js' %}"
+        type="text/javascript"></script>
+    <script src="{% static 'appearance/js/mayan_app.js' %}" type="text/javascript"></script>
+    <script src="{% static 'appearance/js/mayan_image.js' %}" type="text/javascript"></script>
+    <script src="{% static 'appearance/js/partial_navigation.js' %}" type="text/javascript"></script>
+    <script>
+        {# Transfer variable from Django to javascript # }
+        var initialURL = '{% url home_view %}';
+        var djangoDEBUG = {% if debug %}true{% else %} false{% endif %};
+    </script>
+    <script src="{% static 'appearance/js/base.js' %}" type="text/javascript"></script>
+    <script>
+        var app = new MayanApp({
+            ajaxMenusOptions: [
+                {
+                    callback: function (options) {
+                        MayanApp.updateNavbarState();
                     },
-                    {
-                        interval: 5000,
-                        menuSelector: '#menu-topbar',
-                        name: 'menu_topbar',
-                        url: '{% url "rest_api:template-detail" "menu_topbar" %}'
-                    },
-                ],
-                messagePosition: '{% smart_setting "APPEARANCE_MESSAGE_POSITION" %}'
-            });
+                    interval: 5000,
+                    menuSelector: '#menu-main',
+                    name: 'menu_main',
+                    url: '{% url "rest_api:template-detail" "menu_main" %}'
+                },
+                {
+                    interval: 5000,
+                    menuSelector: '#menu-topbar',
+                    name: 'menu_topbar',
+                    url: '{% url "rest_api:template-detail" "menu_topbar" %}'
+                },
+            ],
+            messagePosition: '{% smart_setting "APPEARANCE_MESSAGE_POSITION" %}'
+        });
 
-            var afterBaseLoad = function () {
-                MayanImage.intialize({
-                    templateInvalidImage: '{% spaceless %}{% include "documents/invalid_document.html" %}{% endspaceless %}'
-                });
-                app.doToastrMessages();
-                app.resizeFullHeight();
-                app.setupSelect2();
-                app.setupScrollView();
-                app.setupListToolbar();
-            }
-
-            jQuery(document).ready(function() {
-                app.initialize();
+        var afterBaseLoad = function () {
+            MayanImage.intialize({
+                templateInvalidImage: '{% spaceless %}{% include "documents/invalid_document.html" %}{% endspaceless %}'
             });
-        </script>
-        {% appearance_app_templates template_name='foot' %}
-    </body>
+            app.doToastrMessages();
+            app.resizeFullHeight();
+            app.setupSelect2();
+            app.setupScrollView();
+            app.setupListToolbar();
+        }
+
+        jQuery(document).ready(function () {
+            app.initialize();
+        });
+    </script>
+    {% appearance_app_templates template_name='foot' %}
+</body>
+
 </html>
 {% endspaceless %}
