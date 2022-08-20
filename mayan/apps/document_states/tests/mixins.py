@@ -1,5 +1,10 @@
+from django.db.models import Q
+
 from ..classes import WorkflowAction
-from ..models import Workflow, WorkflowRuntimeProxy, WorkflowStateRuntimeProxy
+from ..models import (
+    Workflow, WorkflowRuntimeProxy, WorkflowStateAction,
+    WorkflowStateRuntimeProxy
+)
 
 from .literals import (
     DOCUMENT_WORKFLOW_LAUNCH_ACTION_CLASS_PATH,
@@ -277,13 +282,26 @@ class WorkflowStateActionViewTestMixin:
         if extra_data:
             data.update(extra_data)
 
-        return self.post(
+        pk_list = list(
+            WorkflowStateAction.objects.values_list('pk', flat=True)
+        )
+
+        response = self.post(
             viewname='document_states:workflow_template_state_action_create',
             kwargs={
                 'workflow_template_state_id': self.test_workflow_state.pk,
                 'class_path': class_path
             }, data=data
         )
+
+        try:
+            self._test_workflow_template_state_action = WorkflowStateAction.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except WorkflowStateAction.DoesNotExist:
+            self._test_workflow_template_state_action = None
+
+        return response
 
     def _request_test_worflow_template_state_action_delete_view(self):
         return self.post(
