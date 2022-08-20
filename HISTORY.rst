@@ -9,6 +9,9 @@
   the actual download action. Fall back to the previous logic of the
   string representation of the download file if the filename attribute
   is not set.
+- Ensure cabinet document is added using the correct method when using the
+  upload wizard. Closes GitLab issue #1118. Thanks to
+  haithoum (@haithembenammar) for the report.
 
 4.2.9 (2022-08-04)
 ==================
