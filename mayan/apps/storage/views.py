@@ -1,5 +1,4 @@
 from django.urls import reverse_lazy
-from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.views.generics import (

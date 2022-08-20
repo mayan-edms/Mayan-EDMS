@@ -52,6 +52,7 @@ class TagWorkflowActionTestCase(TagTestMixin, ActionTestCase):
         self.assertEqual(events[0].target, self.test_document)
         self.assertEqual(events[0].verb, event_tag_removed.id)
 
+
 class TagWorkflowActionViewTestCase(
     WorkflowTemplateStateActionViewTestMixin, WorkflowTemplateTestMixin,
     GenericViewTestCase
