@@ -48,7 +48,7 @@ class DocumentCreateWizardStepTags(DocumentCreateWizardStep):
         tag_id_list = URL(query_string=query_string).args.getlist('tags')
 
         for tag in Tag.objects.filter(pk__in=tag_id_list):
-            tag.documents.add(document)
+            tag.attach_to(document=document)
 
 
 DocumentCreateWizardStep.register(step=DocumentCreateWizardStepTags)

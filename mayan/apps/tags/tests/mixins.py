@@ -162,7 +162,7 @@ class TagTestMixin:
         self.test_tags.append(self.test_tag)
 
         if add_test_document:
-            self.test_tag.documents.add(self.test_document)
+            self.test_tag.attach_to(document=self.test_document)
 
 
 class TagViewTestMixin:

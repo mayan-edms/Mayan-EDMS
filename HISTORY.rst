@@ -12,6 +12,10 @@
 - Ensure cabinet document is added using the correct method when using the
   upload wizard. Closes GitLab issue #1118. Thanks to
   haithoum (@haithembenammar) for the report.
+- Improve cabinet, metadata, and tag app tests.
+- Ensure document tag is attached using the correct method when using the
+  upload wizard. Same issue to GitLab issue #1118. Thanks to
+  haithoum (@haithembenammar) for the initial report.
 
 4.2.9 (2022-08-04)
 ==================

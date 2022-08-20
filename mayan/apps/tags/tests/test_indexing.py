@@ -28,7 +28,7 @@ class TagSignalIndexingTestCase(
         )
 
     def test_tag_indexing_tag_attach(self):
-        self.test_tag.documents.add(self.test_document)
+        self.test_tag.attach_to(document=self.test_document)
 
         self.assertTrue(
             self.test_document in IndexInstanceNode.objects.get(
@@ -37,7 +37,7 @@ class TagSignalIndexingTestCase(
         )
 
     def test_tag_indexing_tag_remove(self):
-        self.test_tag.documents.add(self.test_document)
+        self.test_tag.attach_to(document=self.test_document)
         self.test_tag.delete()
 
         self.assertTrue(
