@@ -1,4 +1,4 @@
-4.2.10 (2022-XX-XX)
+4.2.10 (2022-08-20)
 ===================
 - Make file improvements. Don't require a local ``psql`` client to
   launch the PostgreSQL development container. Don't require a local
