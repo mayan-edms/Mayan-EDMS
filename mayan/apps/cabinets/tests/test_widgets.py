@@ -26,7 +26,7 @@ class DocumentSearchResultWidgetViewTestCase(
         super().setUp()
         self._create_test_cabinet()
         self._upload_test_document()
-        self.test_cabinet.documents.add(self.test_document)
+        self.test_cabinet.document_add(document=self.test_document)
         self._test_object_permission = permission_document_view
         self._test_object_text = self.test_document.label
         self._test_search_model = document_search

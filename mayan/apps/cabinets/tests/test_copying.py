@@ -16,5 +16,5 @@ class CabinetCopyTestCase(
         self._create_test_document_stub()
         self._create_test_cabinet()
         self._create_test_cabinet_child()
-        self.test_cabinet.documents.add(self.test_document)
+        self.test_cabinet.document_add(document=self.test_document)
         self.test_object = self.test_cabinet

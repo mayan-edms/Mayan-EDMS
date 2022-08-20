@@ -5,6 +5,9 @@ from mayan.apps.document_states.tests.mixins.workflow_template_state_mixins impo
 
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
+from ..events import (
+    event_cabinet_document_added, event_cabinet_document_removed
+)
 from ..models import Cabinet
 from ..workflow_actions import CabinetAddAction, CabinetRemoveAction
 
@@ -16,27 +19,49 @@ class CabinetWorkflowActionTestCase(CabinetTestMixin, ActionTestCase):
         super().setUp()
         self._create_test_cabinet()
 
-    def test_cabinet_add_action(self):
+    def test_cabinet_document_add_action(self):
         action = CabinetAddAction(
             form_data={'cabinets': Cabinet.objects.all()}
         )
+
+        self._clear_events()
+
         action.execute(context={'document': self.test_document})
 
         self.assertTrue(
             self.test_document in self.test_cabinet.documents.all()
         )
 
-    def test_cabinet_remove_action(self):
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_cabinet)
+        self.assertEqual(events[0].actor, self.test_document)
+        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].verb, event_cabinet_document_added.id)
+
+    def test_cabinet_document_remove_action(self):
         self.test_cabinet.document_add(document=self.test_document)
 
         action = CabinetRemoveAction(
             form_data={'cabinets': Cabinet.objects.all()}
         )
+
+        self._clear_events()
+
         action.execute(context={'document': self.test_document})
 
         self.assertFalse(
             self.test_document in self.test_cabinet.documents.all()
         )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_cabinet)
+        self.assertEqual(events[0].actor, self.test_document)
+        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].verb, event_cabinet_document_removed.id)
 
 
 class CabinetWorkflowActionViewTestCase(

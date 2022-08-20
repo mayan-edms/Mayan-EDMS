@@ -110,7 +110,7 @@ class CabinetTestMixin:
         self.test_cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
 
         if add_test_document:
-            self.test_cabinet.documents.add(self.test_document)
+            self.test_cabinet.document_add(document=self.test_document)
 
         self.test_cabinets.append(self.test_cabinet)
 
