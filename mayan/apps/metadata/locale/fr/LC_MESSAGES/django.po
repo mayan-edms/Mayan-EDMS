@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 20:16+0000\n"
+"POT-Creation-Date: 2022-08-20 10:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -190,7 +190,7 @@ msgstr "Validateur de date"
 
 #: metadata_validators.py:27
 msgid "Regular expression validator"
-msgstr ""
+msgstr "Validateur d'expression régulière"
 
 #: metadata_validators.py:35
 msgid "The input string does not match the pattern."
@@ -260,7 +260,7 @@ msgstr ""
 
 #: models.py:66
 msgid "Validator arguments"
-msgstr ""
+msgstr "Arguments du validateur"
 
 #: models.py:71
 msgid ""
@@ -276,11 +276,11 @@ msgstr "Analyseur"
 
 #: models.py:77
 msgid "Enter the arguments for the parser in YAML format."
-msgstr ""
+msgstr "Saisissez les arguments de l'analyseur au format YAML."
 
 #: models.py:79
 msgid "Parser arguments"
-msgstr ""
+msgstr "Arguments de l'analyseur"
 
 #: models.py:159
 msgid "Value is not one of the provided options."
@@ -567,12 +567,12 @@ msgstr "Le type de métadonnées \"%(object)s\" a été supprimé avec succès."
 #: views/metadata_type_views.py:55
 #, python-format
 msgid "%(count)d metadata type deleted successfully."
-msgstr ""
+msgstr "%(count)d type de métadonnées a été supprimé avec succès."
 
 #: views/metadata_type_views.py:58
 #, python-format
 msgid "%(count)d metadata types deleted successfully."
-msgstr ""
+msgstr "%(count)d types de métadonnées ont été supprimés avec succès."
 
 #: views/metadata_type_views.py:60
 #, python-format

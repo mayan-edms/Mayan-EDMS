@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 20:17+0000\n"
+"POT-Creation-Date: 2022-08-20 10:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -492,11 +492,11 @@ msgstr ""
 "Kommando erstellt eine einfache wsgi.py Datei mit einem application "
 "callable, auf das diese Einstellung zeigt."
 
-#: templates/smart_settings/app/viewport.html:9
+#: templates/smart_settings/app/viewport.html:11
 msgid "Warning"
 msgstr "Warnung"
 
-#: templates/smart_settings/app/viewport.html:9
+#: templates/smart_settings/app/viewport.html:11
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."

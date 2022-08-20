@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 20:16+0000\n"
+"POT-Creation-Date: 2022-08-20 10:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -230,7 +230,7 @@ msgstr "Étiquette complète"
 
 #: permissions.py:8
 msgid "View resolved smart links"
-msgstr ""
+msgstr "Afficher les liens intelligents résolus"
 
 #: permissions.py:11
 msgid "Create new smart links"
@@ -259,7 +259,7 @@ msgstr "Clé primaire du type de document à supprimer du lien intelligent."
 #: views.py:65
 #, python-format
 msgid "Resolved smart link query error: %s"
-msgstr ""
+msgstr "Erreur de requête de lien intelligent résolue : %s"
 
 #: views.py:92
 #, python-format
@@ -299,7 +299,7 @@ msgstr ""
 
 #: views.py:171
 msgid "There are no resolved smart links for this document"
-msgstr ""
+msgstr "Il n'y a pas de liens intelligents résolus pour ce document"
 
 #: views.py:175
 #, python-format

@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 20:17+0000\n"
+"POT-Creation-Date: 2022-08-20 10:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -91,7 +91,7 @@ msgstr ""
 
 #: forms.py:48
 msgid "The backend used to create the new source."
-msgstr ""
+msgstr "Le moteur utilisé pour créer la nouvelle source."
 
 #: forms.py:49
 msgid "Backend"
@@ -510,7 +510,7 @@ msgstr "Impossible de supprimer le fichier de pré-validation : %s"
 #: source_backends/staging_folder_backends.py:494
 #, python-format
 msgid "Delete staging file \"%s\"?"
-msgstr ""
+msgstr "Supprimer le fichier en importation \"%s\"?"
 
 #: source_backends/staging_folder_backends.py:520
 #, python-format
@@ -523,10 +523,14 @@ msgid ""
 "the operating system user account being used for Mayan EDMS doesn't have the"
 " necessary file system permissions for the folder."
 msgstr ""
+"Cela peut signifier que le dossier d'importation est vide. Cela peut "
+"également signifier que le compte d'utilisateur du système d'exploitation "
+"utilisé par Mayan EDMS ne dispose pas des autorisations d'accès nécessaires "
+"pour le dossier."
 
 #: source_backends/staging_folder_backends.py:554
 msgid "No staging files available"
-msgstr ""
+msgstr "Aucun fichier disponible"
 
 #: source_backends/watch_folder_backends.py:50
 msgid ""
@@ -543,6 +547,7 @@ msgstr "Inclure les sous-dossiers?"
 #: source_backends/watch_folder_backends.py:60
 msgid "Regular expression used to select which files to upload."
 msgstr ""
+"Expression régulière utilisée pour sélectionner les fichiers à téléverser."
 
 #: source_backends/watch_folder_backends.py:62
 msgid "Include regular expression"
@@ -550,11 +555,11 @@ msgstr "Inclure l'expression régulière"
 
 #: source_backends/watch_folder_backends.py:69
 msgid "Regular expression used to exclude which files to upload."
-msgstr ""
+msgstr "Expression régulière utilisée pour exclure les fichiers à téléverser."
 
 #: source_backends/watch_folder_backends.py:71
 msgid "Exclude regular expression"
-msgstr ""
+msgstr "Exclure les expressions régulières"
 
 #: source_backends/watch_folder_backends.py:75
 msgid "Watch folder"
@@ -569,10 +574,13 @@ msgid ""
 "Unable to initialize the staging folder file image storage. Check the "
 "settings {} and {} for formatting errors."
 msgstr ""
+"Impossible d'initialiser le stockage d'images de fichiers du dossier "
+"d'importation. Vérifiez les paramètres {} et {} pour les erreurs de "
+"formatage."
 
 #: storages.py:21
 msgid "Staging folder files"
-msgstr ""
+msgstr "Fichiers provenant du dossier d'importation"
 
 #: templates/sources/app/foot.html:40
 msgid "Cancel upload"
@@ -631,6 +639,8 @@ msgstr ""
 #: views/document_file_views.py:93
 msgid "New document file queued for upload and will be available shortly."
 msgstr ""
+"Le nouveau fichier est en file d'attente pour le téléchargement et sera "
+"disponible sous peu."
 
 #: views/document_file_views.py:131
 #, python-format
@@ -647,6 +657,7 @@ msgstr "Soumettre"
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr ""
+"Erreur de traitement du téléversement du document source ; %(exception)s"
 
 #: views/document_views.py:58
 msgid "New document queued for upload and will be available shortly."
@@ -662,12 +673,12 @@ msgstr ""
 
 #: views/source_views.py:37
 msgid "New source backend selection"
-msgstr ""
+msgstr "Nouvelle sélection de moteur source"
 
 #: views/source_views.py:93
 #, python-format
 msgid "Create a \"%s\" source"
-msgstr ""
+msgstr "Créer une source \"%s\""
 
 #: views/source_views.py:118
 #, python-format
@@ -697,6 +708,11 @@ msgid ""
 "Check the source's error log for information during testing. A successful "
 "test will clear the error log."
 msgstr ""
+"Cela exécutera le code source même si la source n'est pas activée. Les "
+"sources qui suppriment du contenu après le téléchargement ne le feront pas "
+"pendant le test. Vérifiez le journal des erreurs de la source pour plus "
+"d'informations pendant le test. Un test réussi effacera le journal des "
+"erreurs."
 
 #: views/source_views.py:187
 #, python-format
@@ -705,7 +721,7 @@ msgstr "Vérification de déclenchement pour la source \"%s\"?"
 
 #: views/source_views.py:199
 msgid "Source test queued."
-msgstr ""
+msgstr "Source test en file d'attente."
 
 #: wizard_steps.py:11
 msgid "Select document type"

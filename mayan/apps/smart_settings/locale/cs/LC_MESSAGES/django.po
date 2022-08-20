@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 20:17+0000\n"
+"POT-Creation-Date: 2022-08-20 10:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -478,11 +478,11 @@ msgstr ""
 " startproject management vytvoří jednoduchý soubor wsgi.py s volatelnou "
 "aplikací a odkáže toto nastavení na tuto aplikaci."
 
-#: templates/smart_settings/app/viewport.html:9
+#: templates/smart_settings/app/viewport.html:11
 msgid "Warning"
 msgstr "Varování"
 
-#: templates/smart_settings/app/viewport.html:9
+#: templates/smart_settings/app/viewport.html:11
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 20:16+0000\n"
+"POT-Creation-Date: 2022-08-20 10:52+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -100,7 +100,7 @@ msgstr ""
 msgid "Arguments for the AUTHENTICATION_BACKEND."
 msgstr "Argumentos para AUTHENTICATION_BACKEND."
 
-#: templates/authentication/app/viewport.html:11
+#: templates/authentication/app/viewport.html:13
 #, python-format
 msgid ""
 "\n"
@@ -110,7 +110,7 @@ msgstr ""
 "\n"
 "                Personificando el usuario \"%(user)s\"."
 
-#: templates/authentication/app/viewport.html:14
+#: templates/authentication/app/viewport.html:16
 msgid "Click here when finished"
 msgstr "Haga clic aquí cuando termine"
 

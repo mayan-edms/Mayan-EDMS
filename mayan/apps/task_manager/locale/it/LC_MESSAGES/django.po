@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 20:17+0000\n"
+"POT-Creation-Date: 2022-08-20 10:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -27,43 +27,43 @@ msgstr ""
 msgid "Task manager"
 msgstr "Task manager"
 
-#: apps.py:84
+#: apps.py:94
 msgid "Label"
 msgstr "Etichetta"
 
-#: apps.py:88
+#: apps.py:98
 msgid "Name"
 msgstr "Nome "
 
-#: apps.py:93
+#: apps.py:103
 msgid "Default queue?"
 msgstr "Coda predefinita?"
 
-#: apps.py:98
+#: apps.py:108
 msgid "Is transient?"
 msgstr "è transitorio?"
 
-#: apps.py:102
+#: apps.py:112
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:107
+#: apps.py:117
 msgid "Start time"
 msgstr "Ora d'inizio"
 
-#: apps.py:111
+#: apps.py:121
 msgid "Host"
 msgstr "Host"
 
-#: apps.py:115
+#: apps.py:125
 msgid "Arguments"
 msgstr "Argomenti"
 
-#: apps.py:119
+#: apps.py:129
 msgid "Keyword arguments"
 msgstr ""
 
-#: apps.py:123
+#: apps.py:133
 msgid "Worker process ID"
 msgstr ""
 

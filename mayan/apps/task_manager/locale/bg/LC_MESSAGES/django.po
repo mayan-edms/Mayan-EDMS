@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 20:17+0000\n"
+"POT-Creation-Date: 2022-08-20 10:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -25,43 +25,43 @@ msgstr ""
 msgid "Task manager"
 msgstr "Управление на задачите"
 
-#: apps.py:84
+#: apps.py:94
 msgid "Label"
 msgstr "Етикет"
 
-#: apps.py:88
+#: apps.py:98
 msgid "Name"
 msgstr "Име"
 
-#: apps.py:93
+#: apps.py:103
 msgid "Default queue?"
 msgstr "Опашка по подразбиране?"
 
-#: apps.py:98
+#: apps.py:108
 msgid "Is transient?"
 msgstr "Преходен ли е?"
 
-#: apps.py:102
+#: apps.py:112
 msgid "Type"
 msgstr "Тип"
 
-#: apps.py:107
+#: apps.py:117
 msgid "Start time"
 msgstr "Начален час"
 
-#: apps.py:111
+#: apps.py:121
 msgid "Host"
 msgstr "Хост"
 
-#: apps.py:115
+#: apps.py:125
 msgid "Arguments"
 msgstr "Аргументи"
 
-#: apps.py:119
+#: apps.py:129
 msgid "Keyword arguments"
 msgstr "Аргументи на ключови думи"
 
-#: apps.py:123
+#: apps.py:133
 msgid "Worker process ID"
 msgstr "Идентификационен номер на работния процес"
 

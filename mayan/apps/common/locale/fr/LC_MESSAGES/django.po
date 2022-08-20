@@ -7,20 +7,20 @@
 # Roberto Rosario, 2022
 # Olivier W, 2022
 # Franck Boucher <boucher.fk@gmail.com>, 2022
-# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2022
 # Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Benoît GROUSSET <benoit@grousset.xyz>, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 20:16+0000\n"
+"POT-Creation-Date: 2022-08-20 10:52+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>, 2022\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -223,7 +223,7 @@ msgstr ""
 
 #: settings.py:78
 msgid "Name of the dashboard to display in the home view."
-msgstr ""
+msgstr "Nom du tableau de bord à afficher dans la page d'accueil."
 
 #: settings.py:83
 msgid "Sets the project's name."

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 20:16+0000\n"
+"POT-Creation-Date: 2022-08-20 10:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -136,7 +136,7 @@ msgstr "Fichiers de partition de cache"
 
 #: permissions.py:8
 msgid "Purge an object cache"
-msgstr ""
+msgstr "Purger un cache d'objet"
 
 #: permissions.py:11 queues.py:18
 msgid "Purge a file cache"

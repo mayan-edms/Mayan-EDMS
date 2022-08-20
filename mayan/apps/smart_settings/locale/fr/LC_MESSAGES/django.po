@@ -9,14 +9,15 @@
 # Roberto Rosario, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
 # Frédéric Sheedy <sheedf@gmail.com>, 2022
+# Benoît GROUSSET <benoit@grousset.xyz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 20:17+0000\n"
+"POT-Creation-Date: 2022-08-20 10:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
+"Last-Translator: Benoît GROUSSET <benoit@grousset.xyz>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -290,6 +291,13 @@ msgid ""
 "named URL patterns which can be used to reduce configuration duplication "
 "since you don't have to define the URL in two places (settings and URLconf)."
 msgstr ""
+"Défault : '/account/profile/' L'URL sur laquelle les requêtes sont "
+"redirigées après l'authentification lorsque la vue contrib.auth.login ne "
+"reçois pas le paramètre suivant. C'est utilisé par le décorateur "
+"login_required() par exemple. Ce paramètre accepte aussi les noms des URL "
+"qui peuvent être utilisé pour réduire la duplication des configurations en "
+"permettant de ne pas saisir l'URL à plusieurs endroit différent (paramètres "
+"et URLconf)"
 
 #: settings.py:209
 msgid ""
@@ -342,6 +350,9 @@ msgid ""
 " whatever you want (as long as it's different from the other cookie names in"
 " your application)."
 msgstr ""
+"Défaut : 'sessionid'. Le nom du cookie à utiliser pour les sessions. "
+"N'importe quel nom (à condition qu'il soit différent des autres noms de "
+"cookie de votre application)."
 
 #: settings.py:262
 msgid ""
@@ -417,11 +428,11 @@ msgstr ""
 "gestion django-admin startproject créera un simple fichier wsgi.py contenant"
 " une application appelable et pointera ce paramètre vers cette application."
 
-#: templates/smart_settings/app/viewport.html:9
+#: templates/smart_settings/app/viewport.html:11
 msgid "Warning"
 msgstr "Avertissement"
 
-#: templates/smart_settings/app/viewport.html:9
+#: templates/smart_settings/app/viewport.html:11
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."

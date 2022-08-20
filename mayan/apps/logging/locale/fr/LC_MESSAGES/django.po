@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 20:16+0000\n"
+"POT-Creation-Date: 2022-08-20 10:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -33,7 +33,7 @@ msgstr "Événements"
 
 #: links.py:11 views.py:27
 msgid "Global error log"
-msgstr ""
+msgstr "Journal d'erreurs global"
 
 #: links.py:17
 msgid "Errors"
@@ -61,7 +61,7 @@ msgstr "Étiquette de l'application"
 
 #: models.py:53 models.py:63
 msgid "Error log partition"
-msgstr ""
+msgstr "Partition du journal des erreurs"
 
 #: models.py:54
 msgid "Error log partitions"
@@ -77,11 +77,11 @@ msgstr "Texte"
 
 #: models.py:73
 msgid "Error log partition entry"
-msgstr ""
+msgstr "Entrée de partition du journal des erreurs"
 
 #: models.py:74
 msgid "Error log partition entries"
-msgstr ""
+msgstr "Entrées de partition du journal des erreurs"
 
 #: models.py:82
 msgid "Object"
@@ -99,6 +99,8 @@ msgstr "Activation automatique de la trace pour toutes les applications."
 msgid ""
 "List of handlers to which logging messages will be sent. Options are: {}"
 msgstr ""
+"Liste des gestionnaires auxquels les messages de journalisation seront "
+"envoyés. Les options sont : {}"
 
 #: settings.py:25
 msgid "Level for the logging system."

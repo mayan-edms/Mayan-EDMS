@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 20:16+0000\n"
+"POT-Creation-Date: 2022-08-20 10:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -109,7 +109,7 @@ msgstr "Ajouter à la file d'attente OCR"
 
 #: links.py:92
 msgid "Edit OCR"
-msgstr ""
+msgstr "Modifier le contenu OCR"
 
 #: models.py:24
 msgid "Document type"
@@ -171,7 +171,7 @@ msgstr "Ajouter les documents à la liste d'attente OCR"
 
 #: permissions.py:11
 msgid "Edit the transcribed text from document"
-msgstr ""
+msgstr "Modifier le texte transcrit du document"
 
 #: permissions.py:15
 msgid "View the transcribed text from document"
@@ -191,7 +191,7 @@ msgstr ""
 
 #: queues.py:18
 msgid "Document file OCR"
-msgstr ""
+msgstr "OCR du fichier"
 
 #: search.py:11 search.py:23
 msgid "Document version OCR"
