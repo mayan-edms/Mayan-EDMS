@@ -4,6 +4,9 @@
 - Fix statistic queue view navigation context.
 - Add help text to the `SEARCH_BACKEND_ARGUMENTS` setting.
 - Improve metadata workflow actions tests.
+- Ensure cabinet document is added using the correct method when using the
+  upload wizard. Closes GitLab issue #1118. Thanks to
+  haithoum (@haithembenammar) for the report.
 
 3.5.11 (2021-08-19)
 ===================
