@@ -286,7 +286,7 @@ job_python_push_pypi:
     - set -a && . ./config.env && set +a
     - if [ "${APT_PROXY}" ]; then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/01proxy; fi
     - apt-get update
-    - apt-get install --yes curl exiftool gcc ghostscript gnupg1 libldap2-dev libjpeg-dev libmagic1 libpng-dev libsasl2-dev libtiff-dev make poppler-utils python3-venv python3-dev tesseract-ocr
+    - apt-get install --yes --no-install-recommends curl exiftool file gcc ghostscript gnupg1 libldap2-dev libjpeg-dev libmagic1 libpng-dev libsasl2-dev libtiff-dev make poppler-utils python3-venv python3-dev tesseract-ocr
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
