@@ -1,0 +1,96 @@
+Version 4.2.10
+==============
+
+Released: August 20, 2022
+
+Status: Maintenance
+
+
+Changes
+-------
+
+
+Cabinets
+^^^^^^^^
+
+An issue was fixed where documents uploaded via the wizard with one or
+more cabinets selected, would not trigger the cabinet added event.
+
+
+Storage
+^^^^^^^
+
+The ``DownloadFile`` filename was being ignored when performing the actual
+download action. The filename attribute is now used if available. If it is
+not available or set, the fallback value is the string representation of
+the download file object.
+
+
+Tags
+^^^^
+
+Similar to the document upload cabinet event issue, a tag app issue was
+fixed that allows now triggering the tag attached event for documents
+with a tag selected during upload.
+
+
+Task manager
+^^^^^^^^^^^^
+
+More verbose errors and exceptions are now displayed to console when Celery
+fails to initialize.
+
+
+Testing
+^^^^^^^
+
+The make file targets for staging deployments were fixed and improved.
+A local ``psql`` client is not longer required to monitor the launching
+of the staging PostgreSQL container. Likewise a local Redis client is no
+longer needed to launch the Redis container.
+
+
+Other
+^^^^^
+
+- Improve cabinet, metadata, and tag app tests.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1118` [4.2.5] Event create and delete document in cabinet
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

@@ -101,7 +101,7 @@ msgstr ""
 msgid "Arguments for the AUTHENTICATION_BACKEND."
 msgstr "Argumente pentru AUTHENTICATION_BACKEND."
 
-#: templates/authentication/app/viewport.html:11
+#: templates/authentication/app/viewport.html:13
 #, python-format
 msgid ""
 "\n"
@@ -111,7 +111,7 @@ msgstr ""
 "\n"
 "Preluarea identității utilizatorului „%(user)s”."
 
-#: templates/authentication/app/viewport.html:14
+#: templates/authentication/app/viewport.html:16
 msgid "Click here when finished"
 msgstr "Faceți clic aici când ați terminat"
 

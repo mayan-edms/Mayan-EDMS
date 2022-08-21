@@ -99,7 +99,7 @@ msgstr ""
 msgid "Arguments for the AUTHENTICATION_BACKEND."
 msgstr "Argumentos para AUTHENTICATION_BACKEND."
 
-#: templates/authentication/app/viewport.html:11
+#: templates/authentication/app/viewport.html:13
 #, python-format
 msgid ""
 "\n"
@@ -109,7 +109,7 @@ msgstr ""
 "\n"
 "                Personificando el usuario \"%(user)s\"."
 
-#: templates/authentication/app/viewport.html:14
+#: templates/authentication/app/viewport.html:16
 msgid "Click here when finished"
 msgstr "Haga clic aquí cuando termine"
 

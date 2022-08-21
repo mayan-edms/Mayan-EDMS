@@ -112,7 +112,7 @@ class CabinetTestMixin:
         )
 
         if add_test_document:
-            self._test_cabinet.documents.add(self._test_document)
+            self._test_cabinet.document_add(document=self._test_document)
 
         self._test_cabinets.append(self._test_cabinet)
 

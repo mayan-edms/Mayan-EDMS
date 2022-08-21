@@ -96,7 +96,7 @@ msgstr "Ajouter à la file d'attente OCR"
 
 #: links.py:86
 msgid "Edit OCR"
-msgstr ""
+msgstr "Modifier le contenu OCR"
 
 #: models.py:23
 msgid "Document type"
@@ -142,7 +142,7 @@ msgstr "Ajouter les documents à la liste d'attente OCR"
 
 #: permissions.py:11
 msgid "Edit the transcribed text from document"
-msgstr ""
+msgstr "Modifier le texte transcrit du document"
 
 #: permissions.py:15
 msgid "View the transcribed text from document"
@@ -162,7 +162,7 @@ msgstr ""
 
 #: queues.py:18
 msgid "Document file OCR"
-msgstr ""
+msgstr "OCR du fichier"
 
 #: search.py:12 search.py:24
 msgid "Document version OCR"

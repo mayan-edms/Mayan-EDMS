@@ -7,6 +7,7 @@
 # Ford Guo <agile.guo@gmail.com>, 2022
 # xisafe <root@xisafe.com>, 2022
 # Roberto Rosario, 2022
+# dave cheng, 2022
 # 
 msgid ""
 msgstr ""
@@ -64,7 +65,7 @@ msgstr "用户"
 
 #: models.py:36
 msgid "Text"
-msgstr ""
+msgstr "文字"
 
 #: models.py:39
 msgid "Date time submitted"

@@ -439,13 +439,24 @@
 - Display a warning message in the setting edit view when local storage is
   disabled.
 
-4.2.10 (2022-XX-XX)
+4.2.10 (2022-08-20)
 ===================
 - Make file improvements. Don't require a local ``psql`` client to
   launch the PostgreSQL development container. Don't require a local
-  redis client to launch the Redis development container. Fix the
+  Redis client to launch the Redis development container. Fix the
   staging targets.
 - Display exception errors to console when Celery fails to initialize.
+- Use the ``DownloadFile`` filename attribute if available when performing
+  the actual download action. Fall back to the previous logic of the
+  string representation of the download file if the filename attribute
+  is not set.
+- Ensure cabinet document is added using the correct method when using the
+  upload wizard. Closes GitLab issue #1118. Thanks to
+  haithoum (@haithembenammar) for the report.
+- Improve cabinet, metadata, and tag app tests.
+- Ensure document tag is attached using the correct method when using the
+  upload wizard. Same issue to GitLab issue #1118. Thanks to
+  haithoum (@haithembenammar) for the initial report.
 
 4.2.9 (2022-08-04)
 ==================

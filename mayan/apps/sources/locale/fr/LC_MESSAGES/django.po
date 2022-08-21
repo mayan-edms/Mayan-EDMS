@@ -92,7 +92,7 @@ msgstr ""
 
 #: forms.py:51
 msgid "The backend used to create the new source."
-msgstr ""
+msgstr "Le moteur utilisé pour créer la nouvelle source."
 
 #: forms.py:52
 msgid "Backend"
@@ -513,6 +513,7 @@ msgstr "Inclure les sous-dossiers?"
 #: source_backends/watch_folder_backends.py:60
 msgid "Regular expression used to select which files to upload."
 msgstr ""
+"Expression régulière utilisée pour sélectionner les fichiers à téléverser."
 
 #: source_backends/staging_folder_backends.py:321
 #: source_backends/watch_folder_backends.py:62
@@ -522,12 +523,12 @@ msgstr "Inclure l'expression régulière"
 #: source_backends/staging_folder_backends.py:328
 #: source_backends/watch_folder_backends.py:69
 msgid "Regular expression used to exclude which files to upload."
-msgstr ""
+msgstr "Expression régulière utilisée pour exclure les fichiers à téléverser."
 
 #: source_backends/staging_folder_backends.py:330
 #: source_backends/watch_folder_backends.py:71
 msgid "Exclude regular expression"
-msgstr ""
+msgstr "Exclure les expressions régulières"
 
 #: source_backends/staging_folder_backends.py:341
 msgid "Staging folder"
@@ -584,10 +585,13 @@ msgid ""
 "Unable to initialize the staging folder file image storage. Check the "
 "settings {} and {} for formatting errors."
 msgstr ""
+"Impossible d'initialiser le stockage d'images de fichiers du dossier "
+"d'importation. Vérifiez les paramètres {} et {} pour les erreurs de "
+"formatage."
 
 #: storages.py:21
 msgid "Staging folder files"
-msgstr ""
+msgstr "Fichiers provenant du dossier d'importation"
 
 #: templates/sources/app/foot.html:42
 msgid "Cancel upload"
@@ -646,6 +650,8 @@ msgstr ""
 #: views/document_file_views.py:94
 msgid "New document file queued for upload and will be available shortly."
 msgstr ""
+"Le nouveau fichier est en file d'attente pour le téléchargement et sera "
+"disponible sous peu."
 
 #: views/document_file_views.py:127
 #, python-format
@@ -662,6 +668,7 @@ msgstr "Soumettre"
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr ""
+"Erreur de traitement du téléversement du document source ; %(exception)s"
 
 #: views/document_views.py:59
 msgid "New document queued for upload and will be available shortly."
@@ -677,12 +684,12 @@ msgstr ""
 
 #: views/source_views.py:40
 msgid "New source backend selection"
-msgstr ""
+msgstr "Nouvelle sélection de moteur source"
 
 #: views/source_views.py:99
 #, python-format
 msgid "Create a \"%s\" source"
-msgstr ""
+msgstr "Créer une source \"%s\""
 
 #: views/source_views.py:125
 #, python-format
@@ -712,6 +719,11 @@ msgid ""
 "Check the source's error log for information during testing. A successful "
 "test will clear the error log."
 msgstr ""
+"Cela exécutera le code source même si la source n'est pas activée. Les "
+"sources qui suppriment du contenu après le téléchargement ne le feront pas "
+"pendant le test. Vérifiez le journal des erreurs de la source pour plus "
+"d'informations pendant le test. Un test réussi effacera le journal des "
+"erreurs."
 
 #: views/source_views.py:197
 #, python-format
@@ -720,7 +732,7 @@ msgstr "Vérification de déclenchement pour la source \"%s\"?"
 
 #: views/source_views.py:209
 msgid "Source test queued."
-msgstr ""
+msgstr "Source test en file d'attente."
 
 #: wizard_steps.py:11
 msgid "Select document type"

@@ -336,11 +336,11 @@ msgid ""
 "it, and point this setting to that application."
 msgstr ""
 
-#: templates/smart_settings/app/viewport.html:9
+#: templates/smart_settings/app/viewport.html:11
 msgid "Warning"
 msgstr ""
 
-#: templates/smart_settings/app/viewport.html:9
+#: templates/smart_settings/app/viewport.html:11
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."

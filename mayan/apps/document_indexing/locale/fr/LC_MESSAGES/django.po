@@ -308,7 +308,7 @@ msgstr "Indexation"
 
 #: permissions.py:8
 msgid "View index instances"
-msgstr ""
+msgstr "Afficher les instances d'index"
 
 #: permissions.py:11
 msgid "Create new index templates"

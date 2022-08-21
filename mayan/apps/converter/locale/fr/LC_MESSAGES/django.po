@@ -108,10 +108,12 @@ msgstr "\"%s\" n'est pas une entrée valide."
 msgid ""
 "Decorations are visual elements that add contextual information to images."
 msgstr ""
+"Les décorations sont des éléments visuels qui ajoutent des informations "
+"contextuelles aux images."
 
 #: layers.py:13
 msgid "Decorations"
-msgstr ""
+msgstr "Décorations"
 
 #: layers.py:24
 msgid "Saved transformations"

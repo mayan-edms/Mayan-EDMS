@@ -26,11 +26,11 @@ msgstr "Types MIME"
 
 #: backends/file_command.py:26
 msgid "file command not installed or not found."
-msgstr ""
+msgstr "commande de fichier non installée ou introuvable."
 
 #: backends/perl_file_mimeinfo.py:26
 msgid "mimetype not installed or not found."
-msgstr ""
+msgstr "type mime non installé ou introuvable."
 
 #: dependencies.py:10
 msgid ""
@@ -40,7 +40,7 @@ msgstr ""
 
 #: dependencies.py:17
 msgid "determine file type using content tests"
-msgstr ""
+msgstr "déterminer le type de fichier à l'aide de tests de contenu"
 
 #: settings.py:14
 msgid "Path to the class to use when to detect file MIME types."

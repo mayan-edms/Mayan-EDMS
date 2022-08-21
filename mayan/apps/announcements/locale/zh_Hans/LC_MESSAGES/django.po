@@ -64,7 +64,7 @@ msgstr ""
 
 #: models.py:24
 msgid "Text"
-msgstr ""
+msgstr "文字"
 
 #: models.py:26
 msgid "Enabled"

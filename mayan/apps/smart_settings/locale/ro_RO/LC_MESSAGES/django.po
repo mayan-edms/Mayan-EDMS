@@ -492,11 +492,11 @@ msgstr ""
 "startproject de administrare va crea un simplu fișier wsgi.py cu o aplicație"
 " care poate fi apelată în ea și va indica această setare acelei aplicații."
 
-#: templates/smart_settings/app/viewport.html:9
+#: templates/smart_settings/app/viewport.html:11
 msgid "Warning"
 msgstr "Alertă"
 
-#: templates/smart_settings/app/viewport.html:9
+#: templates/smart_settings/app/viewport.html:11
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."

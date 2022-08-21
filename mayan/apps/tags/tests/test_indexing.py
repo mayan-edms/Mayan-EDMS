@@ -38,6 +38,7 @@ class TagIndexingTestCase(
 
     def test_indexing_tag_delete(self):
         self._test_tag.attach_to(document=self._test_document)
+
         value = self._test_tag.label
 
         self._test_tag.delete()

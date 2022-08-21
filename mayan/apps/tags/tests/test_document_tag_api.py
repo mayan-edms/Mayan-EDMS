@@ -106,7 +106,7 @@ class DocumentTagAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_tag_list_api_view_no_permission(self):
-        self._test_tag.documents.add(self._test_document)
+        self._test_tag.attach_to(document=self._test_document)
 
         self._clear_events()
 
@@ -117,7 +117,7 @@ class DocumentTagAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_tag_list_api_view_with_document_access(self):
-        self._test_tag.documents.add(self._test_document)
+        self._test_tag.attach_to(document=self._test_document)
 
         self.grant_access(
             obj=self._test_document, permission=permission_tag_view
@@ -133,7 +133,7 @@ class DocumentTagAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_tag_list_api_view_with_tag_access(self):
-        self._test_tag.documents.add(self._test_document)
+        self._test_tag.attach_to(document=self._test_document)
 
         self.grant_access(obj=self._test_tag, permission=permission_tag_view)
 
@@ -146,7 +146,7 @@ class DocumentTagAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_tag_list_api_view_with_full_access(self):
-        self._test_tag.documents.add(self._test_document)
+        self._test_tag.attach_to(document=self._test_document)
 
         self.grant_access(
             obj=self._test_document, permission=permission_tag_view
@@ -163,7 +163,7 @@ class DocumentTagAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_tag_list_api_view_with_full_access(self):
-        self._test_tag.documents.add(self._test_document)
+        self._test_tag.attach_to(document=self._test_document)
 
         self.grant_access(
             obj=self._test_document, permission=permission_tag_view
@@ -181,7 +181,7 @@ class DocumentTagAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_tag_remove_api_view_no_permission(self):
-        self._test_tag.documents.add(self._test_document)
+        self._test_tag.attach_to(document=self._test_document)
 
         self._clear_events()
 
@@ -194,7 +194,7 @@ class DocumentTagAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_tag_remove_api_view_with_document_access(self):
-        self._test_tag.documents.add(self._test_document)
+        self._test_tag.attach_to(document=self._test_document)
 
         self.grant_access(
             obj=self._test_document, permission=permission_tag_remove
@@ -211,7 +211,7 @@ class DocumentTagAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_tag_remove_api_view_with_tag_access(self):
-        self._test_tag.documents.add(self._test_document)
+        self._test_tag.attach_to(document=self._test_document)
 
         self.grant_access(obj=self._test_tag, permission=permission_tag_remove)
 
@@ -226,7 +226,7 @@ class DocumentTagAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_tag_remove_api_view_with_full_access(self):
-        self._test_tag.documents.add(self._test_document)
+        self._test_tag.attach_to(document=self._test_document)
 
         self.grant_access(
             obj=self._test_document, permission=permission_tag_remove
@@ -249,7 +249,7 @@ class DocumentTagAPIViewTestCase(
         self.assertEqual(events[0].verb, event_tag_removed.id)
 
     def test_trashed_document_tag_remove_api_view_with_full_access(self):
-        self._test_tag.documents.add(self._test_document)
+        self._test_tag.attach_to(document=self._test_document)
 
         self.grant_access(
             obj=self._test_document, permission=permission_tag_remove

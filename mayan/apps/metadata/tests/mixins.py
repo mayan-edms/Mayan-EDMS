@@ -1,4 +1,8 @@
 from django.db.models import Q
+from django.urls import reverse
+
+from mayan.apps.documents.tests.literals import TEST_FILE_SMALL_PATH
+from mayan.apps.views.http import URL
 
 from ..models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
 
@@ -280,6 +284,33 @@ class DocumentTypeMetadataTypeTestMixin:
     def _create_test_document_type_metadata_type(self):
         self._test_document_type_metadata_type = self._test_document_type.metadata.create(
             metadata_type=self._test_metadata_type, required=False
+        )
+
+
+class MetadataDocumentUploadWizardStepTestMixin:
+    def _request_upload_interactive_document_create_view(
+        self, metadata_value
+    ):
+        url = URL(
+            path=reverse(viewname='sources:document_upload_interactive')
+        )
+        url.args['metadata0_metadata_type_id'] = self._test_metadata_type.pk
+        url.args['metadata0_value'] = metadata_value
+
+        with open(file=TEST_FILE_SMALL_PATH, mode='rb') as file_object:
+            return self.post(
+                path=url.to_string(), data={
+                    'document-language': 'eng', 'source-file': file_object,
+                    'document_type_id': self._test_document_type.pk,
+                }
+            )
+
+    def _request_document_create_view(self):
+        return self.post(
+            viewname='sources:document_create_multiple', data={
+                'document_type_selection-document_type': self._test_document_type.pk,
+                'document_create_wizard-current_step': 0
+            }
         )
 
 

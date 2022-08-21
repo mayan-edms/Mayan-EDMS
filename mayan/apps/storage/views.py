@@ -1,5 +1,4 @@
 from django.urls import reverse_lazy
-from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.views.generics import (
@@ -43,7 +42,7 @@ class DownloadFileDownloadViewView(
         return instance.get_download_file_object()
 
     def get_download_filename(self):
-        return force_text(s=self.object)
+        return self.object.filename or str(self.object)
 
 
 class DownloadFileListView(

@@ -276,13 +276,16 @@ class CabinetDocumentViewTestCase(
 
     def test_cabinet_add_document_view_with_access(self):
         self.grant_access(
-            obj=self._test_cabinet, permission=permission_cabinet_view
+            obj=self._test_cabinet,
+            permission=permission_cabinet_view
         )
         self.grant_access(
-            obj=self._test_cabinet, permission=permission_cabinet_add_document
+            obj=self._test_cabinet,
+            permission=permission_cabinet_add_document
         )
         self.grant_access(
-            obj=self._test_document, permission=permission_cabinet_add_document
+            obj=self._test_document,
+            permission=permission_cabinet_add_document
         )
 
         cabinet_document_count = self._test_cabinet.documents.count()
@@ -310,10 +313,12 @@ class CabinetDocumentViewTestCase(
             obj=self._test_cabinet, permission=permission_cabinet_view
         )
         self.grant_access(
-            obj=self._test_cabinet, permission=permission_cabinet_add_document
+            obj=self._test_cabinet,
+            permission=permission_cabinet_add_document
         )
         self.grant_access(
-            obj=self._test_document, permission=permission_cabinet_add_document
+            obj=self._test_document,
+            permission=permission_cabinet_add_document
         )
 
         self._test_document.delete()
@@ -353,10 +358,12 @@ class CabinetDocumentViewTestCase(
 
     def test_cabinet_add_multiple_documents_view_with_access(self):
         self.grant_access(
-            obj=self._test_cabinet, permission=permission_cabinet_add_document
+            obj=self._test_cabinet,
+            permission=permission_cabinet_add_document
         )
         self.grant_access(
-            obj=self._test_document, permission=permission_cabinet_add_document
+            obj=self._test_document,
+            permission=permission_cabinet_add_document
         )
 
         cabinet_document_count = self._test_cabinet.documents.count()
@@ -381,10 +388,12 @@ class CabinetDocumentViewTestCase(
 
     def test_cabinet_add_multiple_trashed_documents_view_with_access(self):
         self.grant_access(
-            obj=self._test_cabinet, permission=permission_cabinet_add_document
+            obj=self._test_cabinet,
+            permission=permission_cabinet_add_document
         )
         self.grant_access(
-            obj=self._test_document, permission=permission_cabinet_add_document
+            obj=self._test_document,
+            permission=permission_cabinet_add_document
         )
 
         self._test_document.delete()
@@ -405,7 +414,7 @@ class CabinetDocumentViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_cabinet_remove_document_view_no_permission(self):
-        self._test_cabinet.documents.add(self._test_document)
+        self._test_cabinet.document_add(document=self._test_document)
 
         cabinet_document_count = self._test_cabinet.documents.count()
 
@@ -423,7 +432,7 @@ class CabinetDocumentViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_cabinet_remove_document_view_with_access(self):
-        self._test_cabinet.documents.add(self._test_document)
+        self._test_cabinet.document_add(document=self._test_document)
 
         self.grant_access(
             obj=self._test_cabinet,
@@ -455,7 +464,7 @@ class CabinetDocumentViewTestCase(
         self.assertEqual(events[0].verb, event_cabinet_document_removed.id)
 
     def test_cabinet_remove_trashed_document_view_with_access(self):
-        self._test_cabinet.documents.add(self._test_document)
+        self._test_cabinet.document_add(document=self._test_document)
 
         self.grant_access(
             obj=self._test_cabinet,
@@ -484,7 +493,7 @@ class CabinetDocumentViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_cabinet_document_list_view_no_permission(self):
-        self._test_cabinet.documents.add(self._test_document)
+        self._test_cabinet.document_add(document=self._test_document)
 
         self._clear_events()
 
@@ -500,7 +509,7 @@ class CabinetDocumentViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_cabinet_document_list_view_with_cabinet_access(self):
-        self._test_cabinet.documents.add(self._test_document)
+        self._test_cabinet.document_add(document=self._test_document)
 
         self.grant_access(
             obj=self._test_cabinet, permission=permission_cabinet_view
@@ -520,7 +529,7 @@ class CabinetDocumentViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_cabinet_document_list_view_with_document_access(self):
-        self._test_cabinet.documents.add(self._test_document)
+        self._test_cabinet.document_add(document=self._test_document)
 
         self.grant_access(
             obj=self._test_document, permission=permission_document_view
@@ -540,7 +549,7 @@ class CabinetDocumentViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_cabinet_document_list_view_with_full_access(self):
-        self._test_cabinet.documents.add(self._test_document)
+        self._test_cabinet.document_add(document=self._test_document)
 
         self.grant_access(
             obj=self._test_cabinet, permission=permission_cabinet_view

@@ -13,6 +13,7 @@
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
 # Benoît GROUSSET <benoit@grousset.xyz>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
@@ -214,7 +215,7 @@ msgstr ""
 
 #: settings.py:87
 msgid "Name of the dashboard to display in the home view."
-msgstr ""
+msgstr "Nom du tableau de bord à afficher dans la page d'accueil."
 
 #: settings.py:92
 msgid "Sets the project's name."

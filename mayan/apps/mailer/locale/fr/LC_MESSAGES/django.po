@@ -91,27 +91,27 @@ msgstr "Backend"
 
 #: links.py:33 links.py:36
 msgid "Email document link"
-msgstr ""
+msgstr "Envoyer par courriel le lien vers le"
 
 #: links.py:46 links.py:51
 msgid "Email document file"
-msgstr ""
+msgstr "Envoyer par courriel le document"
 
 #: links.py:57 links.py:62
 msgid "Email document file link"
-msgstr ""
+msgstr "Envoyer par courriel le lien vers le fichier"
 
 #: links.py:72 links.py:77
 msgid "Email document version"
-msgstr ""
+msgstr "Envoyer par courriel la version du document"
 
 #: links.py:83
 msgid "Email document version link"
-msgstr ""
+msgstr "Envoyer par courriel le lien vers la version du document"
 
 #: links.py:88
 msgid "Email link version"
-msgstr ""
+msgstr "Envoyer par courriel le lien de la version"
 
 #: links.py:97
 msgid "Create mailing profile"

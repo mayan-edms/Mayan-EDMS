@@ -37,7 +37,7 @@ msgstr "Documents"
 
 #: apps.py:278
 msgid "Decorations"
-msgstr ""
+msgstr "Décorations"
 
 #: apps.py:300
 msgid "Create a document type"
@@ -742,6 +742,7 @@ msgid ""
 "The document file file encoding. binary 7-bit, binary 8-bit, text, base64, "
 "etc."
 msgstr ""
+"L'encodage du fichier. binaire 7 bits, binaire 8 bits, texte, base64, etc."
 
 #: models/document_file_models.py:126 storages.py:27
 msgid "Document files"
@@ -920,7 +921,7 @@ msgstr "Un court texte facultatif décrivant la version du document."
 
 #: models/document_version_models.py:62
 msgid "Determines the active version of the document."
-msgstr ""
+msgstr "Détermine la version active du document."
 
 #: models/document_version_models.py:63
 msgid "Active"
@@ -941,7 +942,7 @@ msgstr ""
 
 #: models/document_version_page_models.py:55
 msgid "Content type for the source object of the page."
-msgstr ""
+msgstr "Type de contenu de l'objet source de la page."
 
 #: models/document_version_page_models.py:59
 msgid "ID for the source object of the page."
@@ -1056,7 +1057,7 @@ msgstr "Exporter les versions du document"
 
 #: permissions.py:70
 msgid "Print document versions"
-msgstr ""
+msgstr "Imprimer les versions du document"
 
 #: permissions.py:73
 msgid "View document versions"
@@ -1185,7 +1186,7 @@ msgstr "ID"
 
 #: serializers/document_serializers.py:26
 msgid "Document type ID for the new document."
-msgstr ""
+msgstr "ID de type de document pour le nouveau document."
 
 #: serializers/document_version_serializers.py:24
 msgid "Backend ID"
@@ -1201,7 +1202,7 @@ msgstr ""
 
 #: serializers/favorite_document_serializers.py:14
 msgid "Document ID for the new favorite document."
-msgstr ""
+msgstr "ID de document pour le nouveau document favori."
 
 #: settings.py:49
 msgid ""
@@ -1230,6 +1231,7 @@ msgstr ""
 msgid ""
 "Arguments to pass to the DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND."
 msgstr ""
+"Arguments à transmettre au DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: settings.py:84
 msgid "Maximum number of favorite documents to remember per user."
@@ -1355,6 +1357,8 @@ msgid ""
 "Unable to initialize the document file image storage. Check the settings {} "
 "and {} for formatting errors."
 msgstr ""
+"Impossible d'initialiser le stockage de l'image du fichier. Vérifiez les "
+"paramètres {} et {} pour les erreurs de formatage."
 
 #: storages.py:41
 msgid "Document file page images"
@@ -1368,7 +1372,7 @@ msgstr ""
 
 #: storages.py:55
 msgid "Document version page images"
-msgstr ""
+msgstr "Images de la page de la version du document"
 
 #: templates/documents/document_print.html:13
 msgid "Document page image preview"
@@ -1421,6 +1425,8 @@ msgstr ""
 #, python-format
 msgid "%(count)d document files queued for page count recalculation."
 msgstr ""
+"%(count)d fichiers mis en file d'attente pour le recalcule du nombre de "
+"pages."
 
 #: views/document_file_page_views.py:70
 msgid "Recalculate the page count of the selected document file?"
@@ -1509,6 +1515,8 @@ msgid ""
 "All document files pages from this document file and the document version "
 "pages linked to them will be deleted too."
 msgstr ""
+"Toutes les pages de ce fichier et les pages de version du document qui leur "
+"sont associés seront également supprimées."
 
 #: views/document_file_views.py:131
 #, python-format
@@ -1520,6 +1528,9 @@ msgid ""
 "File are the actual files that were uploaded for each document. Their "
 "contents needs to be mapped to a version before it can be used."
 msgstr ""
+"Les fichiers sont les fichiers réels qui ont été téléversés pour chaque "
+"document. Leur contenu doit être associé à une version avant de pouvoir être"
+" utilisé."
 
 #: views/document_file_views.py:175
 msgid "No files available"
@@ -1550,6 +1561,7 @@ msgstr ""
 #, python-format
 msgid "Transformation clear request processed for %(count)d document files."
 msgstr ""
+"Demande de suppression de transformation traitée pour %(count)d fichiers."
 
 #: views/document_file_views.py:287
 msgid "Clear all the page transformations for the selected document file?"
@@ -1699,6 +1711,9 @@ msgid ""
 "Document version pages are links to actual content pages. Create them using "
 "the page remap actions or the version modification action."
 msgstr ""
+"Les pages de version de document sont des liens vers des pages de contenu "
+"réelles. Créez-les à l'aide des actions d'association de page ou de l'action"
+" de réinitialisation de page."
 
 #: views/document_version_page_views.py:110
 msgid "No document version pages available"
@@ -1724,7 +1739,7 @@ msgstr "Aucune source disponible"
 #: views/document_version_page_views.py:185
 #, python-format
 msgid "Remap pages of document version: %s"
-msgstr ""
+msgstr "Associer les pages de la version du document : %s"
 
 #: views/document_version_views.py:71
 #, python-format
@@ -1783,11 +1798,15 @@ msgstr "Modifier la version du document: %s"
 #, python-format
 msgid "Document version \"%(object)s\" export successfully queued."
 msgstr ""
+"Exportation de la version \"%(object)s\" du document mise en file d'attente "
+"avec succès."
 
 #: views/document_version_views.py:194
 #, python-format
 msgid "%(count)d document version export successfully queued."
 msgstr ""
+"%(count)d exportation de la version du document mise en file d'attente avec "
+"succès."
 
 #: views/document_version_views.py:197
 #, python-format
@@ -1809,7 +1828,7 @@ msgstr "Exporter %(count)d version du document."
 #: views/document_version_views.py:201
 #, python-format
 msgid "Export %(count)d document versions."
-msgstr ""
+msgstr "Exportez %(count)d versions du document ."
 
 #: views/document_version_views.py:207
 msgid ""
@@ -1852,6 +1871,8 @@ msgstr "Prévisualiser la version du document : %s"
 #, python-format
 msgid "Transformation clear request processed for %(count)d document version."
 msgstr ""
+"Demande de suppression de transformation traitée pour %(count)d version de "
+"document."
 
 #: views/document_version_views.py:378
 #, python-format

@@ -490,11 +490,11 @@ msgstr ""
 "django-admin startproject ще създаде прост файл wsgi.py с приложение, което "
 "може да се извиква в него и ще насочи тази настройка към това приложение."
 
-#: templates/smart_settings/app/viewport.html:9
+#: templates/smart_settings/app/viewport.html:11
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: templates/smart_settings/app/viewport.html:9
+#: templates/smart_settings/app/viewport.html:11
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."

@@ -48,10 +48,10 @@ class DocumentCreateWizardStepMetadata(DocumentCreateWizardStep):
         result = {}
         cleaned_data = wizard.get_cleaned_data_for_step(cls.name)
         if cleaned_data:
-            for identifier, metadata in enumerate(iterable=wizard.get_cleaned_data_for_step(cls.name)):
+            for index, metadata in enumerate(iterable=wizard.get_cleaned_data_for_step(cls.name)):
                 if metadata.get('update'):
-                    result['metadata%s_metadata_type_id' % identifier] = metadata['metadata_type_id']
-                    result['metadata%s_value' % identifier] = metadata['value']
+                    result['metadata{}_metadata_type_id'.format(index)] = metadata['metadata_type_id']
+                    result['metadata{}_value'.format(index)] = metadata['value']
 
         return result
 

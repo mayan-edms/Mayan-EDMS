@@ -231,7 +231,7 @@ msgstr "Étiquette complète"
 
 #: permissions.py:8
 msgid "View resolved smart links"
-msgstr ""
+msgstr "Afficher les liens intelligents résolus"
 
 #: permissions.py:11
 msgid "Create new smart links"
@@ -291,7 +291,7 @@ msgstr "Modifier la condition sur le lien intelligent"
 #: views/smart_link_views.py:74
 #, python-format
 msgid "Resolved smart link query error: %s"
-msgstr ""
+msgstr "Erreur de requête de lien intelligent résolue : %s"
 
 #: views/smart_link_views.py:101
 #, python-format
@@ -331,7 +331,7 @@ msgstr ""
 
 #: views/smart_link_views.py:182
 msgid "There are no resolved smart links for this document"
-msgstr ""
+msgstr "Il n'y a pas de liens intelligents résolus pour ce document"
 
 #: views/smart_link_views.py:186
 #, python-format
