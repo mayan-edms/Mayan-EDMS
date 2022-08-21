@@ -1,4 +1,4 @@
-4.3.1 (2022-08-XX)
+4.3.1 (2022-08-21)
 ==================
 - Fixes and improvements merged from version 4.2.9 and 4.2.10.
 
