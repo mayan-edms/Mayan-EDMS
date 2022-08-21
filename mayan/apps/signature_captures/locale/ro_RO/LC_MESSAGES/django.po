@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -25,23 +25,23 @@ msgstr ""
 #: apps.py:41 events.py:6 links.py:34 models.py:83 permissions.py:6
 #: settings.py:13
 msgid "Signature captures"
-msgstr ""
+msgstr "Capturi de semnături"
 
 #: events.py:11
 msgid "Signature capture created"
-msgstr ""
+msgstr "Captură de semnătură creată"
 
 #: events.py:15
 msgid "Signature capture deleted"
-msgstr ""
+msgstr "Captura semnăturii a fost ștearsă"
 
 #: events.py:19
 msgid "Signature capture edited"
-msgstr ""
+msgstr "Captură de semnătură editată"
 
 #: forms.py:27
 msgid "Asset preview image"
-msgstr ""
+msgstr "Imagine de previzualizare a materialelor"
 
 #: forms.py:27
 msgid "Preview"
@@ -49,7 +49,7 @@ msgstr "Previzualizare"
 
 #: links.py:17
 msgid "Create new signature capture"
-msgstr ""
+msgstr "Creați o nouă captură de semnătură"
 
 #: links.py:23
 msgid "Delete"
@@ -65,23 +65,23 @@ msgstr "Document"
 
 #: models.py:43
 msgid "Data representing the handwritten signature."
-msgstr ""
+msgstr "Date reprezentând semnătura de mână."
 
 #: models.py:44
 msgid "Signature capture data"
-msgstr ""
+msgstr "Date de captare a semnăturii"
 
 #: models.py:48
 msgid "Vector representation of the handwritten signature."
-msgstr ""
+msgstr "Reprezentare vectorială a semnăturii de mână."
 
 #: models.py:49
 msgid "SVG signature capture data"
-msgstr ""
+msgstr "Date de captare a semnăturii SVG"
 
 #: models.py:52
 msgid "Print version of the captured signature."
-msgstr ""
+msgstr "Versiunea tipărită a semnăturii capturate."
 
 #: models.py:53
 msgid "Text"
@@ -93,11 +93,11 @@ msgstr "Utilizator"
 
 #: models.py:61
 msgid "Date and time created"
-msgstr ""
+msgstr "Data și ora creării"
 
 #: models.py:65
 msgid "Date and time edited"
-msgstr ""
+msgstr "Data și ora editării"
 
 #: models.py:69
 msgid ""
@@ -105,6 +105,9 @@ msgid ""
 "relationship to the document. Can only contain letters, numbers, and "
 "underscores."
 msgstr ""
+"Această valoare va fi utilizată atunci când se face referire la această "
+"captură de semnătură în relație cu documentul. Poate conține numai litere, "
+"cifre și caractere de subliniere."
 
 #: models.py:73 transformations.py:40
 msgid "Internal name"
@@ -112,7 +115,7 @@ msgstr "Nume intern"
 
 #: models.py:82
 msgid "Signature capture"
-msgstr ""
+msgstr "Captură semnătură"
 
 #: models.py:167
 msgid "Creation date and time"
@@ -120,35 +123,35 @@ msgstr "Data și ora creării"
 
 #: permissions.py:10
 msgid "Create signature captures"
-msgstr ""
+msgstr "Creați capturi de semnătură"
 
 #: permissions.py:14
 msgid "Delete signature captures"
-msgstr ""
+msgstr "Ștergeți capturile de semnătură"
 
 #: permissions.py:18
 msgid "Edit signature captures"
-msgstr ""
+msgstr "Editați capturile de semnătură"
 
 #: permissions.py:22
 msgid "View signature captures"
-msgstr ""
+msgstr "Vizualizați capturile de semnătură"
 
 #: search.py:12
 msgid "Signature capture text"
-msgstr ""
+msgstr "Text de captare a semnăturii"
 
 #: search.py:16
 msgid "Signature capture user first name"
-msgstr ""
+msgstr "Prenumele utilizatorului  semnăturii capturarate"
 
 #: search.py:20
 msgid "Signature capture user last name"
-msgstr ""
+msgstr "Numele utilizatorului semnăturii capturate"
 
 #: search.py:24
 msgid "Signature capture user username"
-msgstr ""
+msgstr "Nume de utilizator pentru semnătura capturarată"
 
 #: search.py:35
 msgid "Document type label"
@@ -160,15 +163,15 @@ msgstr "Etichetele documentului"
 
 #: search.py:42
 msgid "User first name"
-msgstr ""
+msgstr "Prenume utilizator"
 
 #: search.py:45
 msgid "User last name"
-msgstr ""
+msgstr "Numele utilizatorului"
 
 #: search.py:48
 msgid "User username"
-msgstr ""
+msgstr "Nume utilizator al utilizatorului"
 
 #: settings.py:21
 msgid ""
@@ -177,72 +180,83 @@ msgid ""
 "deleting the oldest signature capture cache files. Specify the size in "
 "bytes."
 msgstr ""
+"Pragul la care SIGNATURE_CAPTURES_SIGNATURE_CAPTURE_CACHE_STORAGE_BACKEND va"
+" începe să șteargă cele mai vechi fișiere cache de captare a semnăturilor. "
+"Specificați dimensiunea în octeți."
 
 #: settings.py:29
 msgid ""
 "Path to the Storage subclass to use when storing the cached signature "
 "capture files."
 msgstr ""
+"Calea către subclasa Stocare de utilizat atunci când stocați fișierele de "
+"captare a semnăturii din cache."
 
 #: settings.py:37
 msgid ""
 "Arguments to pass to the "
 "SIGNATURE_CAPTURES_SIGNATURE_CAPTURE_CACHE_STORAGE_BACKEND."
 msgstr ""
+"Argumente de transmis către "
+"SIGNATURE_CAPTURES_SIGNATURE_CAPTURE_CACHE_STORAGE_BACKEND."
 
 #: storages.py:15
 msgid ""
 "Unable to initialize the converter signature capture cachestorage. Check the"
 " settings {} and {} for formatting errors."
 msgstr ""
+"Nu se poate inițializa stocarea în cache a captării semnăturii "
+"convertorului. Verificați setările {} și {} pentru erori de formatare."
 
 #: storages.py:21
 msgid "Signature captures cache"
-msgstr ""
+msgstr "Memorie cache pentru capturi de semnătură"
 
 #: templates/signature_captures/widget_signature_capture.html:64
 msgid "Sign above"
-msgstr ""
+msgstr "Semnează mai sus"
 
 #: transformations.py:18
 msgid "Paste a signature capture (percent coordinates)"
-msgstr ""
+msgstr "Lipiți o captură de semnătură (coordonate procentuale)"
 
 #: transformations.py:39
 msgid "Signature capture internal name"
-msgstr ""
+msgstr "Nume intern al captării de semnătură"
 
 #: views.py:44
 #, python-format
 msgid "Create signature capture for document: %s"
-msgstr ""
+msgstr "Creați captură de semnătură pentru document: %s"
 
 #: views.py:78
 #, python-format
 msgid "Delete signature capture: %s"
-msgstr ""
+msgstr "Ștergeți captarea semnăturii: %s"
 
 #: views.py:100
 #, python-format
 msgid "Details of: %s"
-msgstr ""
+msgstr "Detalii despre: %s"
 
 #: views.py:116
 #, python-format
 msgid "Edit document signature capture: %s"
-msgstr ""
+msgstr "Editați captarea semnăturii documentului: %s"
 
 #: views.py:144
 msgid ""
 "Signature captures are electronic versions of a persons's handwritten "
 "signature."
 msgstr ""
+"Capturile de semnătură sunt versiuni electronice ale semnăturii scrise de "
+"mână a unei persoane."
 
 #: views.py:147
 msgid "Document has no signature captures"
-msgstr ""
+msgstr "Documentul nu are capturi de semnături"
 
 #: views.py:150
 #, python-format
 msgid "Signature captures for document: %s"
-msgstr ""
+msgstr "Capturi de semnătură pentru document: %s"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
@@ -24,43 +24,43 @@ msgstr ""
 msgid "Task manager"
 msgstr "Menadzer rada"
 
-#: apps.py:87
+#: apps.py:97
 msgid "Label"
 msgstr "Labela"
 
-#: apps.py:91
+#: apps.py:101
 msgid "Name"
 msgstr "Ime"
 
-#: apps.py:96
+#: apps.py:106
 msgid "Default queue?"
 msgstr "Default queue?"
 
-#: apps.py:101
+#: apps.py:111
 msgid "Is transient?"
 msgstr "Da li je prolazan?"
 
-#: apps.py:105
+#: apps.py:115
 msgid "Type"
 msgstr "Tip"
 
-#: apps.py:110
+#: apps.py:120
 msgid "Start time"
 msgstr "Početno vrijeme"
 
-#: apps.py:114
+#: apps.py:124
 msgid "Host"
 msgstr "Domaćin"
 
-#: apps.py:118
+#: apps.py:128
 msgid "Arguments"
 msgstr "Argumenti"
 
-#: apps.py:122
+#: apps.py:132
 msgid "Keyword arguments"
 msgstr "Argumenti ključnih riječi"
 
-#: apps.py:126
+#: apps.py:136
 msgid "Worker process ID"
 msgstr "Id procesa rada"
 

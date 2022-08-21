@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -185,7 +185,7 @@ msgstr ""
 "No se puede inicializar el almacenamiento de archivos cargados compartidos. "
 "Verifique las configuraciones {} y {} para errores de formato."
 
-#: views.py:61
+#: views.py:60
 msgid ""
 "Download files are created as a results of a an external process like an "
 "export. Download files are retained over a span of time and then removed "
@@ -195,10 +195,10 @@ msgstr ""
 "una exportación. Los archivos de descarga se conservan durante un período de"
 " tiempo y luego se eliminan automáticamente."
 
-#: views.py:65
+#: views.py:64
 msgid "There are no files to download."
 msgstr "No hay archivos para descargar."
 
-#: views.py:66
+#: views.py:65
 msgid "Downloads"
 msgstr "Descargas"

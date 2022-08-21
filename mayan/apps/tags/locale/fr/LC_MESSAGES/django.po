@@ -4,7 +4,6 @@
 # 
 # Translators:
 # Translators:
-# Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
 # Roberto Rosario, 2022
@@ -16,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
+"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -246,17 +245,17 @@ msgstr " %(count)d étiquettes ont été supprimées avec succès."
 #: views.py:129
 #, python-format
 msgid "Delete tag: %(object)s"
-msgstr ""
+msgstr "Supprimer l'étiquette : %(object)s"
 
 #: views.py:130
 #, python-format
 msgid "Delete the %(count)d selected tag"
-msgstr ""
+msgstr "Supprimer l' %(count)d étiquette sélectionnée"
 
 #: views.py:131
 #, python-format
 msgid "Delete the %(count)d selected tags"
-msgstr ""
+msgstr "Supprimez les %(count)d étiquettes sélectionnées"
 
 #: views.py:137
 msgid "Will be removed from all documents."

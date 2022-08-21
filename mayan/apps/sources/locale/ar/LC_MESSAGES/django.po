@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -612,40 +612,40 @@ msgstr ""
 "لم يتم تحديد أية مصادر تفاعلية للمستندات أو لم يتم تمكين أي منها ، قم بإنشاء"
 " واحدة قبل المتابعة."
 
-#: views/document_file_views.py:51
+#: views/document_file_views.py:52
 #, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
 
-#: views/document_file_views.py:75
+#: views/document_file_views.py:76
 #, python-format
 msgid "Error executing document file upload task; %(exception)s"
 msgstr ""
 
-#: views/document_file_views.py:94
+#: views/document_file_views.py:95
 msgid "New document file queued for upload and will be available shortly."
 msgstr ""
 
-#: views/document_file_views.py:127
+#: views/document_file_views.py:133
 #, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 
-#: views/document_file_views.py:133
+#: views/document_file_views.py:139
 msgid "Submit"
 msgstr "اعتماد"
 
-#: views/document_views.py:40
+#: views/document_views.py:41
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr ""
 
-#: views/document_views.py:59
+#: views/document_views.py:60
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 "إصدار جديد في قائمة الانتظار من الوثيقة قيد التحميل وسيكون متاحًا قريبًا"
 
-#: views/document_views.py:85
+#: views/document_views.py:91
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""

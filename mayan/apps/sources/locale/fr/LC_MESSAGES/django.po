@@ -10,17 +10,17 @@
 # 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Olivier W, 2022
-# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
 # Roberto Rosario, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -554,12 +554,12 @@ msgstr "Impossible de supprimer le fichier de pré-validation : %s"
 #: source_backends/staging_folder_backends.py:547
 #, python-format
 msgid "Delete staging file \"%s\"?"
-msgstr ""
+msgstr "Supprimer le fichier en importation \"%s\"?"
 
 #: source_backends/staging_folder_backends.py:612
 #, python-format
 msgid "Unable get list of staging files; %s"
-msgstr ""
+msgstr "Impossible d'obtenir la liste des fichiers en importation ; %s"
 
 #: source_backends/staging_folder_backends.py:630
 msgid ""
@@ -567,10 +567,14 @@ msgid ""
 "the operating system user account being used for Mayan EDMS doesn't have the"
 " necessary file system permissions for the folder."
 msgstr ""
+"Cela peut signifier que le dossier d'importation est vide. Cela peut "
+"également signifier que le compte d'utilisateur du système d'exploitation "
+"utilisé par Mayan EDMS ne dispose pas des autorisations d'accès nécessaires "
+"pour le dossier."
 
 #: source_backends/staging_folder_backends.py:637
 msgid "No staging files available"
-msgstr ""
+msgstr "Aucun fichier disponible"
 
 #: source_backends/watch_folder_backends.py:75
 msgid "Watch folder"
@@ -633,49 +637,49 @@ msgstr ""
 "Aucune source interactive d'import de documents n'a été définie ou activée, "
 "créez-en une avant de continuer."
 
-#: views/document_file_views.py:51
+#: views/document_file_views.py:52
 #, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
 "Impossible de téléverser de nouveaux fichiers pour le document "
 "\"%(document)s\". %(exception)s"
 
-#: views/document_file_views.py:75
+#: views/document_file_views.py:76
 #, python-format
 msgid "Error executing document file upload task; %(exception)s"
 msgstr ""
 "Erreur lors de l'exécution de la tâche de téléversement du document; "
 "%(exception)s"
 
-#: views/document_file_views.py:94
+#: views/document_file_views.py:95
 msgid "New document file queued for upload and will be available shortly."
 msgstr ""
 "Le nouveau fichier est en file d'attente pour le téléchargement et sera "
 "disponible sous peu."
 
-#: views/document_file_views.py:127
+#: views/document_file_views.py:133
 #, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 "Téléverser un nouveau fichier pour le document \"%(document)s\", à partir de"
 " la source: %(source)s"
 
-#: views/document_file_views.py:133
+#: views/document_file_views.py:139
 msgid "Submit"
 msgstr "Soumettre"
 
-#: views/document_views.py:40
+#: views/document_views.py:41
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr ""
 "Erreur de traitement du téléversement du document source ; %(exception)s"
 
-#: views/document_views.py:59
+#: views/document_views.py:60
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 "Nouveau document en attente de téléversement, il sera disponible sous peu."
 
-#: views/document_views.py:85
+#: views/document_views.py:91
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""

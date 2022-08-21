@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -263,20 +263,22 @@ msgstr "Marquez les %(count)d messages sélectionnés comme non lus."
 
 #: workflow_actions.py:19
 msgid "Username list"
-msgstr ""
+msgstr "Liste des nom d'utilisateurs"
 
 #: workflow_actions.py:26
 msgid "Comma separated list of username that will receive the message."
 msgstr ""
+"Liste séparée par des virgules des noms d'tilisateur qui recevront le "
+"message."
 
 #: workflow_actions.py:45
 msgid "Topic of the message to be sent."
-msgstr ""
+msgstr "Sujet du message à envoyer."
 
 #: workflow_actions.py:62
 msgid "The actual text to send."
-msgstr ""
+msgstr "Le texte à envoyer."
 
 #: workflow_actions.py:73
 msgid "Send user message"
-msgstr ""
+msgstr "Envoyer un message utilisateur"

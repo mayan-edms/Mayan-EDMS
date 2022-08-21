@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -164,17 +164,17 @@ msgid ""
 "and {} for formatting errors."
 msgstr ""
 
-#: views.py:61
+#: views.py:60
 msgid ""
 "Download files are created as a results of a an external process like an "
 "export. Download files are retained over a span of time and then removed "
 "automatically."
 msgstr ""
 
-#: views.py:65
+#: views.py:64
 msgid "There are no files to download."
 msgstr ""
 
-#: views.py:66
+#: views.py:65
 msgid "Downloads"
 msgstr ""

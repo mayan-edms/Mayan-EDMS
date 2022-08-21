@@ -6,16 +6,16 @@
 # Translators:
 # Stefaniu Criste <gupi@hangar.ro>, 2022
 # Roberto Rosario, 2022
-# Harald Ersch, 2022
 # Badea Gabriel <gcbadea@gmail.com>, 2022
+# Harald Ersch, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:18+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:33+0000\n"
-"Last-Translator: Badea Gabriel <gcbadea@gmail.com>, 2022\n"
+"Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -160,6 +160,9 @@ msgid ""
 "apps must be also configured via their respective storage backend settings "
 "to use alternate persistence."
 msgstr ""
+"Dezactivează utilizarea folderului local „media”. Când utilizați această "
+"setare, toate aplicațiile trebuie configurate și prin setările backend-ului "
+"de stocare respective pentru a utiliza persistența alternativă."
 
 #: settings.py:46
 msgid ""

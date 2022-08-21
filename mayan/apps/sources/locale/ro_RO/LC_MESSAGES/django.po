@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -562,7 +562,7 @@ msgstr "Ștergeți fișierul de așteptare \"%s\"?"
 #: source_backends/staging_folder_backends.py:612
 #, python-format
 msgid "Unable get list of staging files; %s"
-msgstr ""
+msgstr "Nu s-a putut obține lista de fișiere intermediare; %s"
 
 #: source_backends/staging_folder_backends.py:630
 msgid ""
@@ -635,49 +635,49 @@ msgstr ""
 "Nu s-au definit surse de documente interactive sau nici una nu a fost "
 "activată, creați una înainte de a continua."
 
-#: views/document_file_views.py:51
+#: views/document_file_views.py:52
 #, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
 "Nu se pot încărca fișiere noi pentru documentul „%(document)s”. "
 "%(exception)s"
 
-#: views/document_file_views.py:75
+#: views/document_file_views.py:76
 #, python-format
 msgid "Error executing document file upload task; %(exception)s"
 msgstr ""
 "Eroare la executarea sarcinii de încărcare a fișierului documentului; "
 "%(exception)s"
 
-#: views/document_file_views.py:94
+#: views/document_file_views.py:95
 msgid "New document file queued for upload and will be available shortly."
 msgstr ""
 "Fișier nou document a fost pus în coadă pentru încărcare și va fi disponibil"
 " în curând."
 
-#: views/document_file_views.py:127
+#: views/document_file_views.py:133
 #, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 "Încărcați un fișier nou pentru documentul „%(document)s” din sursa: "
 "%(source)s"
 
-#: views/document_file_views.py:133
+#: views/document_file_views.py:139
 msgid "Submit"
 msgstr "Trimiteţi"
 
-#: views/document_views.py:40
+#: views/document_views.py:41
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr "Eroare la procesarea încărcării documentului sursă; %(exception)s"
 
-#: views/document_views.py:59
+#: views/document_views.py:60
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 "Documentul cel nou este în coada de așteptare pentru încărcare și va fi "
 "disponibil în scurt timp."
 
-#: views/document_views.py:85
+#: views/document_views.py:91
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:18+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:33+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -85,7 +85,7 @@ msgstr "Element modificat"
 
 #: forms.py:17
 msgid "Asset preview image"
-msgstr ""
+msgstr "Imagine de previzualizare a materialelor"
 
 #: forms.py:17
 msgid "Preview"
@@ -340,22 +340,24 @@ msgstr "Cache de active"
 msgid ""
 "Number of degrees to rotate the image counter clockwise around its center."
 msgstr ""
+"Numărul de grade pentru a roti imaginea în sens invers acelor de ceasornic "
+"în jurul centrului acesteia."
 
 #: transformation_mixins.py:22
 msgid "Rotation"
-msgstr ""
+msgstr "Rotație"
 
 #: transformation_mixins.py:25
 msgid "Opacity level of the image in percent"
-msgstr ""
+msgstr "Nivelul de opacitate al imaginii în procente"
 
 #: transformation_mixins.py:26
 msgid "Transparency"
-msgstr ""
+msgstr "Transparenţă"
 
 #: transformation_mixins.py:29 transformations.py:688
 msgid "Zoom level in percent."
-msgstr ""
+msgstr "Nivel de zoom în procente."
 
 #: transformation_mixins.py:29 transformations.py:683
 msgid "Zoom"
@@ -363,39 +365,39 @@ msgstr "Zoom"
 
 #: transformation_mixins.py:111
 msgid "Paste an image"
-msgstr ""
+msgstr "Lipiți o imagine"
 
 #: transformation_mixins.py:116
 msgid "Horizontal position in pixels from the left."
-msgstr ""
+msgstr "Poziție orizontală în pixeli din stânga."
 
 #: transformation_mixins.py:117 transformation_mixins.py:159
 #: transformation_mixins.py:220 transformations.py:197 transformations.py:294
 #: transformations.py:393
 msgid "Left"
-msgstr ""
+msgstr "Stânga"
 
 #: transformation_mixins.py:120
 msgid "Vertical position in pixels from the top."
-msgstr ""
+msgstr "Poziție verticală în pixeli din partea de sus."
 
 #: transformation_mixins.py:121 transformation_mixins.py:163
 #: transformation_mixins.py:228 transformations.py:201 transformations.py:298
 #: transformations.py:397
 msgid "Top"
-msgstr ""
+msgstr "Partea de sus"
 
 #: transformation_mixins.py:153
 msgid "Paste an image (percents coordinates)"
-msgstr ""
+msgstr "Lipiți o imagine (coordonate procente)"
 
 #: transformation_mixins.py:158
 msgid "Horizontal position in percent from the left."
-msgstr ""
+msgstr "Poziție orizontală în procente din stânga."
 
 #: transformation_mixins.py:162
 msgid "Vertical position in percent from the top."
-msgstr ""
+msgstr "Poziție verticală în procente din partea de sus."
 
 #: transformation_mixins.py:214 transformations.py:185
 msgid "Paste an asset as watermark"
@@ -403,85 +405,85 @@ msgstr "Inserați un element ca filigran"
 
 #: transformation_mixins.py:219
 msgid "Horizontal start position in pixels from the left."
-msgstr ""
+msgstr "Poziția de pornire orizontală în pixeli din stânga."
 
 #: transformation_mixins.py:223
 msgid "Horizontal end position in pixels from the right."
-msgstr ""
+msgstr "Poziția finală orizontală în pixeli din dreapta."
 
 #: transformation_mixins.py:224 transformations.py:205 transformations.py:302
 #: transformations.py:401
 msgid "Right"
-msgstr ""
+msgstr "Dreapta"
 
 #: transformation_mixins.py:227
 msgid "Vertical start position in pixels from the top."
-msgstr ""
+msgstr "Poziția de pornire verticală în pixeli din partea de sus."
 
 #: transformation_mixins.py:231
 msgid "Vertical end position in pixels from the top."
-msgstr ""
+msgstr "Poziția finală verticală în pixeli din partea de sus."
 
 #: transformation_mixins.py:232 transformations.py:209 transformations.py:307
 #: transformations.py:405
 msgid "Bottom"
-msgstr ""
+msgstr "Partea de jos"
 
 #: transformation_mixins.py:235
 msgid "Horizontal position increments in pixels."
-msgstr ""
+msgstr "Incremente poziție orizontală în pixeli."
 
 #: transformation_mixins.py:236
 msgid "Horizontal increment"
-msgstr ""
+msgstr "Incrementare orizontală"
 
 #: transformation_mixins.py:239
 msgid "Vertical position increments in pixels."
-msgstr ""
+msgstr "Incremente poziție verticală în pixeli."
 
 #: transformation_mixins.py:240
 msgid "Vertical increment"
-msgstr ""
+msgstr "Incrementare verticală"
 
 #: transformation_mixins.py:299
 msgid "Asset name"
-msgstr ""
+msgstr "Numele activului"
 
 #: transformation_mixins.py:342
 msgid "Color used to fill the rectangle."
-msgstr ""
+msgstr "Culoarea folosită pentru a umple dreptunghiul."
 
 #: transformation_mixins.py:343 transformations.py:590
 msgid "Fill color"
-msgstr ""
+msgstr "Culoare de umplere"
 
 #: transformation_mixins.py:346
 msgid "Opacity level of the fill color in percent"
-msgstr ""
+msgstr "Nivelul de opacitate al culorii de umplere în procente"
 
 #: transformation_mixins.py:347
 msgid "Fill transparency"
-msgstr ""
+msgstr "Transparența umplerii"
 
 #: transformation_mixins.py:350
 msgid "Color used for the outline of the rectangle."
-msgstr ""
+msgstr "Culoarea folosită pentru conturul dreptunghiului."
 
 #: transformation_mixins.py:351
 msgid "Outline color"
-msgstr ""
+msgstr "Culoarea conturului"
 
 #: transformation_mixins.py:354
 msgid "Width in pixels of the rectangle outline."
-msgstr ""
+msgstr "Lățimea în pixeli a conturului dreptunghiului."
 
 #: transformation_mixins.py:355
 msgid "Outline width"
-msgstr ""
+msgstr "Lățimea conturului"
 
 #: transformations.py:169
 msgid "Paste an asset (absolute coordinates)"
-msgstr ""
+msgstr "Inserați un activ (coordonate absolute)"
 
 #: transformations.py:177
 msgid "Paste an asset (percents coordinates)"
@@ -493,19 +495,19 @@ msgstr "Decupare"
 
 #: transformations.py:196
 msgid "Number of pixels to remove from the left."
-msgstr ""
+msgstr "Numărul de pixeli de eliminat din stânga."
 
 #: transformations.py:200
 msgid "Number of pixels to remove from the top."
-msgstr ""
+msgstr "Numărul de pixeli de eliminat din partea de sus."
 
 #: transformations.py:204
 msgid "Number of pixels to remove from the right."
-msgstr ""
+msgstr "Numărul de pixeli de eliminat din dreapta."
 
 #: transformations.py:208
 msgid "Number of pixels to remove from the bottom."
-msgstr ""
+msgstr "Numărul de pixeli de eliminat din partea de jos."
 
 #: transformations.py:289
 msgid "Draw rectangle"
@@ -513,19 +515,19 @@ msgstr "Desenați dreptunghiul"
 
 #: transformations.py:294
 msgid "Left side location in pixels."
-msgstr ""
+msgstr "Poziția din partea stângă în pixeli."
 
 #: transformations.py:298
 msgid "Top side location in pixels."
-msgstr ""
+msgstr "Poziția din partea de sus în pixeli."
 
 #: transformations.py:302
 msgid "Right side location in pixels."
-msgstr ""
+msgstr "Poziția din partea dreaptă în pixeli."
 
 #: transformations.py:306
 msgid "Bottom side location in pixels."
-msgstr ""
+msgstr "Poziția din partea de jos în pixeli."
 
 #: transformations.py:387
 msgid "Draw rectangle (percents coordinates)"
@@ -533,19 +535,19 @@ msgstr "Desenați un dreptunghi (coordonate procente)"
 
 #: transformations.py:392
 msgid "Left side location in percent."
-msgstr ""
+msgstr "Poziția din partea stângă în procente."
 
 #: transformations.py:396
 msgid "Top side location in percent."
-msgstr ""
+msgstr "Poziția din partea superioară în procente."
 
 #: transformations.py:400
 msgid "Right side location in percent."
-msgstr ""
+msgstr "Poziția din partea dreaptă în procente."
 
 #: transformations.py:404
 msgid "Bottom side location in percent."
-msgstr ""
+msgstr "Poziția din partea de jos în procente."
 
 #: transformations.py:483
 msgid "Flip"
@@ -557,7 +559,7 @@ msgstr "Încețoșare Gaussiană"
 
 #: transformations.py:499 transformations.py:658
 msgid "Radius"
-msgstr ""
+msgstr "Rază"
 
 #: transformations.py:511
 msgid "Line art"
@@ -573,19 +575,19 @@ msgstr "Redimensionare"
 
 #: transformations.py:542
 msgid "New width in pixels."
-msgstr ""
+msgstr "Lățime nouă în pixeli."
 
 #: transformations.py:543
 msgid "Width"
-msgstr ""
+msgstr "Lăţime"
 
 #: transformations.py:547
 msgid "New height in pixels."
-msgstr ""
+msgstr "Înălțime nouă în pixeli."
 
 #: transformations.py:548
 msgid "Height"
-msgstr ""
+msgstr "Înălţime"
 
 #: transformations.py:577
 msgid "Rotate"
@@ -593,11 +595,12 @@ msgstr "Rotire"
 
 #: transformations.py:585
 msgid "Degrees"
-msgstr ""
+msgstr "Grade"
 
 #: transformations.py:589
 msgid "Color to be used for area outside of the rotated image."
 msgstr ""
+"Culoarea care trebuie utilizată pentru zona din afara imaginii rotite."
 
 #: transformations.py:620
 msgid "Rotate 90 degrees"
@@ -617,23 +620,23 @@ msgstr "Unsharp masking"
 
 #: transformations.py:657
 msgid "The blur radius in pixels."
-msgstr ""
+msgstr "Raza de estompare în pixeli."
 
 #: transformations.py:661
 msgid "Unsharp strength in percent."
-msgstr ""
+msgstr "Intensitate accentuare în procente."
 
 #: transformations.py:662 transformations.py:689
 msgid "Percent"
-msgstr ""
+msgstr "Procent"
 
 #: transformations.py:666
 msgid "Minimum brightness change that will be sharpened."
-msgstr ""
+msgstr "Nivelul minim al luminozității care va fi accentuat."
 
 #: transformations.py:667
 msgid "Tthreshold"
-msgstr ""
+msgstr "Prag"
 
 #: views/asset_views.py:50
 #, python-format
@@ -648,9 +651,9 @@ msgstr "Solicitare de ștergere efectuată asupra %(count)d elemente"
 #: views/asset_views.py:60
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Ștergeți materialul selectat?"
+msgstr[1] "Ștergeți elementele selectate?"
+msgstr[2] "Ștergeți activele selectate?"
 
 #: views/asset_views.py:70
 #, python-format

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -258,20 +258,21 @@ msgstr "Marcați %(count)d mesaje selectate ca necitite."
 
 #: workflow_actions.py:19
 msgid "Username list"
-msgstr ""
+msgstr "Lista de nume de utilizator"
 
 #: workflow_actions.py:26
 msgid "Comma separated list of username that will receive the message."
 msgstr ""
+"Lista de nume de utilizator, separată prin virgulă, care va primi mesajul."
 
 #: workflow_actions.py:45
 msgid "Topic of the message to be sent."
-msgstr ""
+msgstr "Subiectul mesajului care urmează să fie trimis."
 
 #: workflow_actions.py:62
 msgid "The actual text to send."
-msgstr ""
+msgstr "Textul real de trimis."
 
 #: workflow_actions.py:73
 msgid "Send user message"
-msgstr ""
+msgstr "Trimiteți mesaj utilizatorului"

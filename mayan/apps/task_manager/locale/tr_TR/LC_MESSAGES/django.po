@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
@@ -24,43 +24,43 @@ msgstr ""
 msgid "Task manager"
 msgstr ""
 
-#: apps.py:87
+#: apps.py:97
 msgid "Label"
 msgstr "Etiket"
 
-#: apps.py:91
+#: apps.py:101
 msgid "Name"
 msgstr "İsim"
 
-#: apps.py:96
+#: apps.py:106
 msgid "Default queue?"
 msgstr ""
 
-#: apps.py:101
+#: apps.py:111
 msgid "Is transient?"
 msgstr ""
 
-#: apps.py:105
+#: apps.py:115
 msgid "Type"
 msgstr "Tür"
 
-#: apps.py:110
+#: apps.py:120
 msgid "Start time"
 msgstr ""
 
-#: apps.py:114
+#: apps.py:124
 msgid "Host"
 msgstr "Sunucu"
 
-#: apps.py:118
+#: apps.py:128
 msgid "Arguments"
 msgstr "Argümanlar"
 
-#: apps.py:122
+#: apps.py:132
 msgid "Keyword arguments"
 msgstr ""
 
-#: apps.py:126
+#: apps.py:136
 msgid "Worker process ID"
 msgstr ""
 

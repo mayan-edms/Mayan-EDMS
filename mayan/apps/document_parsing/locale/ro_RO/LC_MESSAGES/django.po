@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:18+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -228,9 +228,9 @@ msgstr "%(count)d fișiere document adăugate la coada de analiză"
 #, python-format
 msgid "Submit %(count)d document file to the parsing queue?"
 msgid_plural "Submit %(count)d documents files to the parsing queue?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Trimiteți fișierul document %(count)d la coada de analiză?"
+msgstr[1] "Trimiteți fișierele documentelor %(count)d la coada de analiză?"
+msgstr[2] "Trimiteți %(count)d fișiere document la coada de analiză?"
 
 #: views.py:159
 #, python-format

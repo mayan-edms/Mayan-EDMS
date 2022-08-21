@@ -10,18 +10,18 @@
 # Olivier W, 2022
 # Roberto Rosario, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
-# Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
-# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Guillaume Trottier <gui.trottier@gmail.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:34+0000\n"
-"Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>, 2022\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -195,7 +195,7 @@ msgstr ""
 
 #: document_version_modifications.py:11
 msgid "Append all file pages"
-msgstr ""
+msgstr "Ajouter toutes les pages du fichier"
 
 #: document_version_modifications.py:13
 msgid ""
@@ -205,7 +205,7 @@ msgstr ""
 
 #: document_version_modifications.py:29
 msgid "Reset pages to latest file"
-msgstr ""
+msgstr "Réinitialiser les pages au dernier fichier"
 
 #: document_version_modifications.py:30
 msgid "Match all pages to that of the latest document file."
@@ -321,7 +321,7 @@ msgstr ""
 
 #: forms/document_file_forms.py:49
 msgid "Detected"
-msgstr ""
+msgstr "Détecté"
 
 #: forms/document_file_forms.py:53
 msgid "Storage"
@@ -329,7 +329,7 @@ msgstr "Stockage"
 
 #: forms/document_file_forms.py:57
 msgid "Other"
-msgstr ""
+msgstr "Autre"
 
 #: forms/document_file_forms.py:66
 msgid "Date added"
@@ -591,7 +591,7 @@ msgstr "Versions"
 
 #: links/document_version_links.py:65
 msgid "Modify"
-msgstr ""
+msgstr "Modifier"
 
 #: links/document_version_page_links.py:55
 msgid "Remap pages"
@@ -1711,9 +1711,6 @@ msgid ""
 "Document version pages are links to actual content pages. Create them using "
 "the page remap actions or the version modification action."
 msgstr ""
-"Les pages de version de document sont des liens vers des pages de contenu "
-"réelles. Créez-les à l'aide des actions d'association de page ou de l'action"
-" de réinitialisation de page."
 
 #: views/document_version_page_views.py:110
 msgid "No document version pages available"
@@ -1885,8 +1882,14 @@ msgid "Clear all the page transformations for the selected document version?"
 msgid_plural ""
 "Clear all the page transformations for the selected document version?"
 msgstr[0] ""
+"Effacer toutes les transformations de page pour la version de document "
+"sélectionnée ?"
 msgstr[1] ""
+"Effacer toutes les transformations de page pour la version de document "
+"sélectionnée ?"
 msgstr[2] ""
+"Effacer toutes les transformations de page pour la version du document "
+"sélectionné?"
 
 #: views/document_version_views.py:396
 #, python-format
@@ -1952,9 +1955,9 @@ msgstr ""
 #: views/document_views.py:99
 msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Changer le type du document sélectionné"
+msgstr[1] "Modifier le type des documents sélectionnés"
+msgstr[2] "Modifier le type des documents sélectionnés"
 
 #: views/document_views.py:110
 #, python-format
@@ -2007,9 +2010,9 @@ msgstr "%(count)d documents ajoutés aux favoris."
 #: views/favorite_document_views.py:62
 msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Ajouter le document sélectionné aux favoris ?"
+msgstr[1] "Ajouter les documents sélectionnés aux favoris ?"
+msgstr[2] "Ajouter les documents sélectionnés aux favoris?"
 
 #: views/favorite_document_views.py:80
 #, python-format
@@ -2029,9 +2032,9 @@ msgstr "%(count)d documents retirés des favoris."
 #: views/favorite_document_views.py:95
 msgid "Remove the selected document from favorites?"
 msgid_plural "Remove the selected documents from favorites?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Supprimer le document sélectionné des favoris ?"
+msgstr[1] "Supprimer les documents sélectionnés des favoris ?"
+msgstr[2] "Supprimer les documents sélectionnés des favoris?"
 
 #: views/misc_views.py:44
 #, python-format

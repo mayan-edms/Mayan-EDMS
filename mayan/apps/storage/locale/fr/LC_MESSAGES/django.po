@@ -6,18 +6,18 @@
 # Translators:
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
-# Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
 # Frédéric Sheedy <sheedf@gmail.com>, 2022
+# Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
+"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -190,7 +190,7 @@ msgstr ""
 "Impossible d'initialiser le stockage de fichiers téléchargés partagés. "
 "Vérifiez les paramètres {} et {} pour les erreurs de formatage."
 
-#: views.py:61
+#: views.py:60
 msgid ""
 "Download files are created as a results of a an external process like an "
 "export. Download files are retained over a span of time and then removed "
@@ -200,10 +200,10 @@ msgstr ""
 "tel qu'une exportation. Les fichiers téléchargés sont conservés pendant un "
 "certain temps, puis supprimés automatiquement."
 
-#: views.py:65
+#: views.py:64
 msgid "There are no files to download."
 msgstr "Il n'y a aucun fichier à télécharger."
 
-#: views.py:66
+#: views.py:65
 msgid "Downloads"
 msgstr "Téléchargements"

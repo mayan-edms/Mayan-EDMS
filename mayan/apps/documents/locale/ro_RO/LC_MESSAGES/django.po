@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -187,7 +187,7 @@ msgstr ""
 
 #: document_version_modifications.py:11
 msgid "Append all file pages"
-msgstr ""
+msgstr "Adăugați toate paginile fișierului"
 
 #: document_version_modifications.py:13
 msgid ""
@@ -199,11 +199,12 @@ msgstr ""
 
 #: document_version_modifications.py:29
 msgid "Reset pages to latest file"
-msgstr ""
+msgstr "Resetați paginile la cel mai recent fișier"
 
 #: document_version_modifications.py:30
 msgid "Match all pages to that of the latest document file."
 msgstr ""
+"Potriviți toate paginile cu cele ale celui mai recent fișier document."
 
 #: events.py:10
 msgid "Document created"
@@ -315,7 +316,7 @@ msgstr "Versiunea documentului încărcată (istoric)"
 
 #: forms/document_file_forms.py:49
 msgid "Detected"
-msgstr ""
+msgstr "Detectate"
 
 #: forms/document_file_forms.py:53
 msgid "Storage"
@@ -323,7 +324,7 @@ msgstr "Stocare"
 
 #: forms/document_file_forms.py:57
 msgid "Other"
-msgstr ""
+msgstr "Alte"
 
 #: forms/document_file_forms.py:66
 msgid "Date added"
@@ -387,7 +388,7 @@ msgstr "Tipul documentului"
 #: forms/document_version_forms.py:20
 msgid ""
 "The backend that will be executed against the selected document version."
-msgstr ""
+msgstr "Backend-ul care va fi executat pe versiunea de document selectată."
 
 #: forms/document_version_forms.py:22
 msgid "Backend"
@@ -585,7 +586,7 @@ msgstr "Versiuni"
 
 #: links/document_version_links.py:65
 msgid "Modify"
-msgstr ""
+msgstr "Modifică"
 
 #: links/document_version_page_links.py:55
 msgid "Remap pages"
@@ -846,7 +847,7 @@ msgstr "Stub document, id: %d"
 
 #: models/document_type_models.py:40
 msgid "A short text identifying the document type."
-msgstr ""
+msgstr "Un scurt text care identifică tipul de document."
 
 #: models/document_type_models.py:45
 msgid ""
@@ -1194,11 +1195,11 @@ msgstr "ID tip document pentru noul document."
 
 #: serializers/document_version_serializers.py:24
 msgid "Backend ID"
-msgstr ""
+msgstr "ID backend"
 
 #: serializers/document_version_serializers.py:25
 msgid "Primary key of the modification backend to execute."
-msgstr ""
+msgstr "Cheia primară a backend-ului de modificare de executat."
 
 #: serializers/document_version_serializers.py:37
 msgid "Content type ID of the source object for the page."
@@ -1453,9 +1454,9 @@ msgstr ""
 #: views/document_file_page_views.py:70
 msgid "Recalculate the page count of the selected document file?"
 msgid_plural "Recalculate the page count of the selected document files?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Recalculați numărul de pagini ale fișierului document selectat?"
+msgstr[1] "Recalculați numărul de pagini al fișierelor de document selectate?"
+msgstr[2] "Recalculați numărul de pagini al fișierelor de document selectate?"
 
 #: views/document_file_page_views.py:81
 #, python-format
@@ -1594,8 +1595,13 @@ msgid "Clear all the page transformations for the selected document file?"
 msgid_plural ""
 "Clear all the page transformations for the selected document files?"
 msgstr[0] ""
+"Ștergeți toate transformările de pagină pentru fișierul document selectat?"
 msgstr[1] ""
+"Ștergeți toate transformările de pagină pentru fișierele de document "
+"selectate?"
 msgstr[2] ""
+"Ștergeți toate transformările de pagină pentru fișierele de document "
+"selectate?"
 
 #: views/document_file_views.py:298
 #, python-format
@@ -1667,7 +1673,7 @@ msgstr "Editați tipul de document: %s"
 
 #: views/document_type_views.py:157
 msgid "Trash"
-msgstr ""
+msgstr "Gunoi"
 
 #: views/document_type_views.py:176
 #, python-format
@@ -1739,6 +1745,9 @@ msgid ""
 "Document version pages are links to actual content pages. Create them using "
 "the page remap actions or the version modification action."
 msgstr ""
+"Paginile versiunii documentului sunt link-uri către pagini de conținut real."
+" Creați-le folosind acțiunile de remapare a paginii sau acțiunea de "
+"modificare a versiunii."
 
 #: views/document_version_page_views.py:110
 msgid "No document version pages available"
@@ -1885,11 +1894,15 @@ msgstr "Versiuni de document: %s"
 #: views/document_version_views.py:288
 msgid "Document version modification backend queued successfully."
 msgstr ""
+"Backend-ul pentru modificarea versiunii documentului a fost pus în coadă cu "
+"succes."
 
 #: views/document_version_views.py:298
 #, python-format
 msgid "Execute version modification action for document version: %s"
 msgstr ""
+"Executați acțiunea de modificare a versiunii pentru versiunea documentului: "
+"%s"
 
 #: views/document_version_views.py:328
 #, python-format
@@ -1916,8 +1929,14 @@ msgid "Clear all the page transformations for the selected document version?"
 msgid_plural ""
 "Clear all the page transformations for the selected document version?"
 msgstr[0] ""
+"Ștergeți toate transformările de pagină pentru versiunea de document "
+"selectată?"
 msgstr[1] ""
+"Ștergeți toate transformările de pagină pentru versiunea de document "
+"selectată?"
 msgstr[2] ""
+"Ștergeți toate transformările de pagină pentru versiunea de document "
+"selectată?"
 
 #: views/document_version_views.py:396
 #, python-format
@@ -1984,9 +2003,9 @@ msgstr ""
 #: views/document_views.py:99
 msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Schimbați tipul documentului selectat"
+msgstr[1] "Modificați tipul documentelor selectate"
+msgstr[2] "Modificați tipul documentelor selectate"
 
 #: views/document_views.py:110
 #, python-format
@@ -2039,9 +2058,9 @@ msgstr "%(count)d documente s-au adăugat la favorite."
 #: views/favorite_document_views.py:62
 msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Adăugați documentul selectat la favorite?"
+msgstr[1] "Adăugați documentele selectate la favorite?"
+msgstr[2] "Adăugați documentele selectate la favorite?"
 
 #: views/favorite_document_views.py:80
 #, python-format
@@ -2061,9 +2080,9 @@ msgstr "Documentele %(count)d au fost eliminate de la preferate."
 #: views/favorite_document_views.py:95
 msgid "Remove the selected document from favorites?"
 msgid_plural "Remove the selected documents from favorites?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Eliminați documentul selectat din favorite?"
+msgstr[1] "Eliminați documentele selectate din favorite?"
+msgstr[2] "Eliminați documentele selectate din favorite?"
 
 #: views/misc_views.py:44
 #, python-format

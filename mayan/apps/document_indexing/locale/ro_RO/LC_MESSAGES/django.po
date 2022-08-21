@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:18+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -253,11 +253,11 @@ msgstr "Tip eveniment"
 
 #: models/index_template_models.py:194
 msgid "Index template event trigger"
-msgstr ""
+msgstr "Declanșator eveniment șablon de index"
 
 #: models/index_template_models.py:195
 msgid "Index template event triggers"
-msgstr ""
+msgstr "Declanșatoare evenimente șablon de index"
 
 #: models/index_template_models.py:230
 msgid "Parent index template node of this node."
@@ -511,21 +511,26 @@ msgstr "Editați indexul: %s"
 #, python-format
 msgid "Error updating index template event trigger; %s"
 msgstr ""
+"Eroare la actualizarea declanșatorului evenimentului șablonului de index; %s"
 
 #: views/index_template_views.py:243
 msgid "Index template event triggers updated successfully."
 msgstr ""
+"Declanșatoarele evenimentelor șablonului de index au fost actualizate cu "
+"succes."
 
 #: views/index_template_views.py:253
 msgid ""
 "Triggers are document events that cause instances of this index template to "
 "be updated."
 msgstr ""
+"Declanșatoarele sunt evenimente de document care determină actualizarea "
+"instanțelor acestui șablon de index."
 
 #: views/index_template_views.py:258
 #, python-format
 msgid "Index template event triggers for: %s"
-msgstr ""
+msgstr "Declanșatoare eveniment ale șablonului de index pentru: %s"
 
 #: views/index_template_views.py:303
 #, python-format
@@ -560,17 +565,17 @@ msgstr "Șablonul de index a fost pus în coadă pentru reconstrucție."
 #, python-format
 msgid "%(count)d index template queued for rebuild."
 msgid_plural "%(count)d index templates queued for rebuild."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "șablon de index %(count)d pus în coadă pentru reconstrucție."
+msgstr[1] "%(count)d șabloane de index puse în coadă pentru reconstrucție."
+msgstr[2] "%(count)d șabloane de index puse în coadă pentru reconstrucție."
 
 #: views/index_template_views.py:482
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%(count)d resetare index."
+msgstr[1] "%(count)d indexurile resetate."
+msgstr[2] "%(count)d indexuri resetate."
 
 #: views/index_template_views.py:495
 msgid "Index templates for which their instances will be deleted."

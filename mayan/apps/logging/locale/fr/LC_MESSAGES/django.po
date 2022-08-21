@@ -7,19 +7,19 @@
 # Olivier W, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Frédéric Escudero <frederic.escudero@gmail.com>, 2022
-# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
 # Roberto Rosario, 2022
 # 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:36+0000\n"
-"Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>, 2022\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,7 +33,7 @@ msgstr "Événements"
 
 #: events.py:8
 msgid "Error log deleted"
-msgstr ""
+msgstr "Journal des erreurs supprimé"
 
 #: links.py:15 views.py:36
 msgid "Global error log"
@@ -97,7 +97,7 @@ msgstr "Objet"
 
 #: permissions.py:8
 msgid "Delete error log"
-msgstr ""
+msgstr "Supprimer le journal des erreurs"
 
 #: permissions.py:11
 msgid "View error log"
@@ -147,7 +147,7 @@ msgstr ""
 #: views.py:74
 #, python-format
 msgid "Delete error log entry: %s"
-msgstr ""
+msgstr "Supprimer l'entrée du journal des erreurs: %s"
 
 #: views.py:97
 msgid ""

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -180,7 +180,7 @@ msgstr ""
 "Nelze inicializovat sdílené úložiště nahraných souborů. Zkontrolujte v "
 "nastavení {} a {} chyby formátování."
 
-#: views.py:61
+#: views.py:60
 msgid ""
 "Download files are created as a results of a an external process like an "
 "export. Download files are retained over a span of time and then removed "
@@ -190,10 +190,10 @@ msgstr ""
 "export. Stažené soubory jsou uchovány po určitou dobu a poté automaticky "
 "odstraněny."
 
-#: views.py:65
+#: views.py:64
 msgid "There are no files to download."
 msgstr "Nejsou zde žádné soubory ke stažení."
 
-#: views.py:66
+#: views.py:65
 msgid "Downloads"
 msgstr "Soubory ke stažení"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -181,17 +181,17 @@ msgstr ""
 "Nie można zainicjować udostępnionego miejsca na przesyłane pliki. Sprawdź "
 "ustawienia {} i {} pod kątem błędów formatowania."
 
-#: views.py:61
+#: views.py:60
 msgid ""
 "Download files are created as a results of a an external process like an "
 "export. Download files are retained over a span of time and then removed "
 "automatically."
 msgstr ""
 
-#: views.py:65
+#: views.py:64
 msgid "There are no files to download."
 msgstr ""
 
-#: views.py:66
+#: views.py:65
 msgid "Downloads"
 msgstr ""

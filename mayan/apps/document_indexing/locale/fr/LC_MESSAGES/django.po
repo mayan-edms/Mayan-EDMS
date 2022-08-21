@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:18+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -246,7 +246,7 @@ msgstr ""
 
 #: models/index_template_models.py:59 models/index_template_models.py:185
 msgid "Index template"
-msgstr ""
+msgstr "Modèle d'index"
 
 #: models/index_template_models.py:189
 msgid "Event type"
@@ -271,6 +271,8 @@ msgstr "Index"
 #: models/index_template_models.py:240
 msgid "Enter a template to render. Use Django's default templating language."
 msgstr ""
+"Entrez un modèle à rendre. Utilisez le langage de gabarit par défaut de "
+"Django."
 
 #: models/index_template_models.py:243
 msgid "Indexing expression"

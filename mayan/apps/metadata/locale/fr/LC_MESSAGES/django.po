@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -121,15 +121,15 @@ msgstr "Retirer"
 
 #: forms.py:178
 msgid "Basic"
-msgstr ""
+msgstr "De base"
 
 #: forms.py:182
 msgid "Values"
-msgstr ""
+msgstr "Valeurs"
 
 #: forms.py:186
 msgid "Validation"
-msgstr ""
+msgstr "Validation"
 
 #: forms.py:190
 msgid "Parsing"
@@ -419,9 +419,9 @@ msgstr "Demande d'ajout de métadonnées effectuée sur %(count)d documents"
 #: views/document_views.py:56
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Ajouter des types de métadonnées au document"
+msgstr[1] "Ajouter des types de métadonnées aux documents"
+msgstr[2] "Ajouter des types de métadonnées aux documents"
 
 #: views/document_views.py:67
 #, python-format
@@ -481,9 +481,9 @@ msgstr "Il n'y a pas de métadonnées à modifier"
 #: views/document_views.py:227
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Modifier les métadonnées du document"
+msgstr[1] "Modifier les métadonnées des documents"
+msgstr[2] "Modifier les métadonnées des documents"
 
 #: views/document_views.py:238
 #, python-format
@@ -536,9 +536,9 @@ msgstr ""
 #: views/document_views.py:399
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Supprimer les types de métadonnées du document"
+msgstr[1] "Supprimer les types de métadonnées des documents"
+msgstr[2] "Supprimer les types de métadonnées des documents"
 
 #: views/document_views.py:410
 #, python-format

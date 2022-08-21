@@ -10,16 +10,16 @@
 # Roberto Rosario, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
-# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Olivier W, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:34+0000\n"
-"Last-Translator: Olivier W, 2022\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -442,7 +442,7 @@ msgstr ""
 
 #: models/workflow_state_escalation_models.py:51
 msgid "Time unit"
-msgstr ""
+msgstr "Unité de temps"
 
 #: models/workflow_state_escalation_models.py:56
 msgid "Amount of the selected escalation units of time."
@@ -756,7 +756,7 @@ msgstr ""
 
 #: serializers/workflow_template_serializers.py:61
 msgid "Primary key of the document type to add to the workflow."
-msgstr ""
+msgstr "Clé primaire du type de document à ajouter au flux de travail."
 
 #: serializers/workflow_template_serializers.py:70
 msgid "Primary key of the document type to remove from the workflow."
@@ -780,7 +780,7 @@ msgstr "Clé principale de l'état d'origine à ajouter."
 
 #: serializers/workflow_template_transition_serializers.py:184
 msgid "Event Type ID"
-msgstr ""
+msgstr "Identifiant du type d'événement"
 
 #: serializers/workflow_template_transition_serializers.py:274
 #, python-format

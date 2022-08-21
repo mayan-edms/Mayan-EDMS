@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -638,47 +638,47 @@ msgstr ""
 "No se han definido fuentes de documentos interactivos o no hay ninguna "
 "habilitada, cree una antes de continuar."
 
-#: views/document_file_views.py:51
+#: views/document_file_views.py:52
 #, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
 "No se pueden cargar archivos nuevos para el documento \"%(document)s\". "
 "%(exception)s"
 
-#: views/document_file_views.py:75
+#: views/document_file_views.py:76
 #, python-format
 msgid "Error executing document file upload task; %(exception)s"
 msgstr ""
 "Error al ejecutar la tarea de carga del archivo del documento; %(exception)s"
 
-#: views/document_file_views.py:94
+#: views/document_file_views.py:95
 msgid "New document file queued for upload and will be available shortly."
 msgstr ""
 "Nuevo archivo de documento en cola para su carga y estará disponible en "
 "breve."
 
-#: views/document_file_views.py:127
+#: views/document_file_views.py:133
 #, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 "Cargar un nuevo archivo para el documento \"%(document)s\" de la fuente: "
 "%(source)s"
 
-#: views/document_file_views.py:133
+#: views/document_file_views.py:139
 msgid "Submit"
 msgstr "Enviar"
 
-#: views/document_views.py:40
+#: views/document_views.py:41
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr "Error al ejecutar la tarea de carga de documentos; %(exception)s"
 
-#: views/document_views.py:59
+#: views/document_views.py:60
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 "Nuevo documento puesto en cola para su carga y estará disponible en breve."
 
-#: views/document_views.py:85
+#: views/document_views.py:91
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""

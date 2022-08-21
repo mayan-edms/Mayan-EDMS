@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2022\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
@@ -25,43 +25,43 @@ msgstr ""
 msgid "Task manager"
 msgstr "مدیر وظیفه"
 
-#: apps.py:87
+#: apps.py:97
 msgid "Label"
 msgstr "برچسب"
 
-#: apps.py:91
+#: apps.py:101
 msgid "Name"
 msgstr "نام"
 
-#: apps.py:96
+#: apps.py:106
 msgid "Default queue?"
 msgstr "صف پیشفرض؟"
 
-#: apps.py:101
+#: apps.py:111
 msgid "Is transient?"
 msgstr "آیا گذرا است؟"
 
-#: apps.py:105
+#: apps.py:115
 msgid "Type"
 msgstr "نوع"
 
-#: apps.py:110
+#: apps.py:120
 msgid "Start time"
 msgstr "زمان شروع"
 
-#: apps.py:114
+#: apps.py:124
 msgid "Host"
 msgstr "میزبان"
 
-#: apps.py:118
+#: apps.py:128
 msgid "Arguments"
 msgstr "استدلال"
 
-#: apps.py:122
+#: apps.py:132
 msgid "Keyword arguments"
 msgstr "آرگومان کلید واژه"
 
-#: apps.py:126
+#: apps.py:136
 msgid "Worker process ID"
 msgstr "شناسه روند کارگر"
 

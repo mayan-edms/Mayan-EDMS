@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -26,43 +26,43 @@ msgstr ""
 msgid "Task manager"
 msgstr "Taakbeheer"
 
-#: apps.py:87
+#: apps.py:97
 msgid "Label"
 msgstr "Label"
 
-#: apps.py:91
+#: apps.py:101
 msgid "Name"
 msgstr "Naam"
 
-#: apps.py:96
+#: apps.py:106
 msgid "Default queue?"
 msgstr "Standaard wachtrij?"
 
-#: apps.py:101
+#: apps.py:111
 msgid "Is transient?"
 msgstr "Is tijdelijk?"
 
-#: apps.py:105
+#: apps.py:115
 msgid "Type"
 msgstr "Type"
 
-#: apps.py:110
+#: apps.py:120
 msgid "Start time"
 msgstr "Starttijd"
 
-#: apps.py:114
+#: apps.py:124
 msgid "Host"
 msgstr "Host"
 
-#: apps.py:118
+#: apps.py:128
 msgid "Arguments"
 msgstr "Argumenten"
 
-#: apps.py:122
+#: apps.py:132
 msgid "Keyword arguments"
 msgstr "Trefwoord argumenten"
 
-#: apps.py:126
+#: apps.py:136
 msgid "Worker process ID"
 msgstr "Werkproces ID"
 

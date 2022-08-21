@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -118,15 +118,15 @@ msgstr "Eliminați"
 
 #: forms.py:178
 msgid "Basic"
-msgstr ""
+msgstr "De bază"
 
 #: forms.py:182
 msgid "Values"
-msgstr ""
+msgstr "Valori"
 
 #: forms.py:186
 msgid "Validation"
-msgstr ""
+msgstr "Validare"
 
 #: forms.py:190
 msgid "Parsing"
@@ -416,9 +416,9 @@ msgstr "Solicitarea de adăugare de metadate efectuată pe %(count)ddocumente"
 #: views/document_views.py:56
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Adăugați tipuri de metadate la document"
+msgstr[1] "Adăugați tipuri de metadate la documente"
+msgstr[2] "Adăugați tipuri de metadate la documente"
 
 #: views/document_views.py:67
 #, python-format
@@ -476,9 +476,9 @@ msgstr "Nu există metadate pentru a fi editate"
 #: views/document_views.py:227
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Editați metadatele documentului"
+msgstr[1] "Editați metadatele documentelor"
+msgstr[2] "Editați metadatele documentelor"
 
 #: views/document_views.py:238
 #, python-format
@@ -528,9 +528,9 @@ msgstr "Cererea de eliminare a metadatelor efectuată pe %(count)ddocumente "
 #: views/document_views.py:399
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Eliminați tipurile de metadate din document"
+msgstr[1] "Eliminați tipurile de metadate din documente"
+msgstr[2] "Eliminați tipurile de metadate din documente"
 
 #: views/document_views.py:410
 #, python-format
@@ -607,6 +607,12 @@ msgid ""
 "will block the upload of documents of that type until a metadata value is "
 "provided."
 msgstr ""
+"Tipurile de metadate sunt proprietăți definite de utilizator cărora li se "
+"pot atribui valori. Odată create, acestea trebuie să fie asociate tipurilor "
+"de documente, fie opționale, fie obligatorii, pentru fiecare. Setarea unui "
+"tip de metadate așa cum este necesar pentru un tip de document va bloca "
+"încărcarea documentelor de acest tip până când este furnizată o valoare de "
+"metadate."
 
 #: views/metadata_type_views.py:114
 msgid "There are no metadata types"

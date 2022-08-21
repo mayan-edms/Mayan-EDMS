@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -185,7 +185,7 @@ msgstr ""
 "Не може да се инициализира съхраняването на качени файлове. Проверете "
 "настройките {} и {} за форматиране на грешки."
 
-#: views.py:61
+#: views.py:60
 msgid ""
 "Download files are created as a results of a an external process like an "
 "export. Download files are retained over a span of time and then removed "
@@ -195,10 +195,10 @@ msgstr ""
 "експортиране. Изтеглените файлове се запазват за определен период от време и"
 " след това се премахват автоматично."
 
-#: views.py:65
+#: views.py:64
 msgid "There are no files to download."
 msgstr "Няма файлове за изтегляне."
 
-#: views.py:66
+#: views.py:65
 msgid "Downloads"
 msgstr "Изтегляния"

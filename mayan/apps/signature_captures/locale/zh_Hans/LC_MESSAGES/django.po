@@ -8,14 +8,15 @@
 # Roberto Rosario, 2022
 # yan songwei <yansw@vip.163.com>, 2022
 # bo feng <87289884@qq.com>, 2022
+# dave cheng, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
-"Last-Translator: bo feng <87289884@qq.com>, 2022\n"
+"Last-Translator: dave cheng, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -86,7 +87,7 @@ msgstr ""
 
 #: models.py:53
 msgid "Text"
-msgstr ""
+msgstr "文字"
 
 #: models.py:57
 msgid "User"

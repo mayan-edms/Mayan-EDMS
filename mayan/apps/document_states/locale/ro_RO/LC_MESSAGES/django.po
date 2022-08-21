@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:34+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -144,11 +144,11 @@ msgstr "%(field_name)s eroare de șablon: %(exception)s"
 
 #: events.py:10
 msgid "Workflow instance created"
-msgstr ""
+msgstr "Instanță de flux de lucru creată"
 
 #: events.py:13
 msgid "Workflow instance transitioned"
-msgstr ""
+msgstr "Instanța fluxului de lucru efectuat tranziția"
 
 #: events.py:18
 msgid "Workflow created"
@@ -203,7 +203,7 @@ msgstr "Tranziție"
 
 #: forms.py:219
 msgid "Workflow template preview image"
-msgstr ""
+msgstr "Imagine de previzualizare a șablonului de flux de lucru"
 
 #: handlers.py:81
 #, python-format
@@ -246,11 +246,11 @@ msgstr "Creați o acțiune"
 
 #: links.py:140
 msgid "Create escalation"
-msgstr ""
+msgstr "Creați escaladare"
 
 #: links.py:161
 msgid "Escalations"
-msgstr ""
+msgstr "Escaladări"
 
 #: links.py:170
 msgid "Create state"
@@ -341,7 +341,7 @@ msgstr "Flux de lucru"
 
 #: models/workflow_instance_models.py:40
 msgid "Workflow instance creation date time."
-msgstr ""
+msgstr "Data creării instanței fluxului de lucru."
 
 #: models/workflow_instance_models.py:41
 #: models/workflow_instance_models.py:228
@@ -434,24 +434,29 @@ msgid ""
 "with a lower priority number are executed before escalations with a higher "
 "priority number."
 msgstr ""
+"Stabiliți ordinea în care vor fi evaluate escaladele. Escaladările cu un "
+"număr de prioritate mai mic sunt executate înainte de escaladările cu un "
+"număr de prioritate mai mare."
 
 #: models/workflow_state_escalation_models.py:40
 msgid "Priority"
-msgstr ""
+msgstr "Prioritate"
 
 #: models/workflow_state_escalation_models.py:44
 msgid ""
 "Enable automatic transition the workflow after a specified amount of time "
 "has elapsed in the state without change."
 msgstr ""
+"Activați tranziția automată a fluxului de lucru după ce a trecut o anumită "
+"perioadă de timp în starea fără modificare."
 
 #: models/workflow_state_escalation_models.py:51
 msgid "Time unit"
-msgstr ""
+msgstr "Unitatea de timp"
 
 #: models/workflow_state_escalation_models.py:56
 msgid "Amount of the selected escalation units of time."
-msgstr ""
+msgstr "Cantitatea de unități de timp de escaladare selectate."
 
 #: models/workflow_state_escalation_models.py:57
 msgid "Amount"
@@ -461,18 +466,20 @@ msgstr "Cantitate"
 msgid ""
 "Comment to save to the workflow instance when the escalation is executed."
 msgstr ""
+"Comentariu pentru a salva în instanța fluxului de lucru atunci când "
+"escaladarea este executată."
 
 #: models/workflow_state_escalation_models.py:69
 msgid "Workflow state escalation"
-msgstr ""
+msgstr "Escalaredrea stării fluxului de lucru"
 
 #: models/workflow_state_escalation_models.py:70
 msgid "Workflow state escalations"
-msgstr ""
+msgstr "Escaladarea stării fluxului de lucru"
 
 #: models/workflow_state_escalation_models.py:103
 msgid "Workflow escalation."
-msgstr ""
+msgstr "Escalardarea fluxului de lucru."
 
 #: models/workflow_state_models.py:54
 msgid "A short text to describe the workflow state."
@@ -730,11 +737,12 @@ msgstr "Lansați toate fluxurile de lucru pentru un document"
 
 #: queues.py:25
 msgid "Check a workflow instance for state escalation."
-msgstr ""
+msgstr "Verificați o instanță de flux de lucru pentru escaladarea stării."
 
 #: queues.py:29
 msgid "Check all workflow instances for state escalation."
 msgstr ""
+"Verificați toate instanțele fluxului de lucru pentru escaladarea stării."
 
 #: queues.py:37
 msgid "Launch all workflows for all documents"
@@ -780,10 +788,12 @@ msgstr "Cheia primară a tipului de document de eliminat din fluxul de lucru."
 #: serializers/workflow_template_state_escalation_serializers.py:50
 msgid "Primary key of the workflow template transition to be added."
 msgstr ""
+"Cheia primară a tranziției șablonului fluxului de lucru care urmează să fie "
+"adăugată."
 
 #: serializers/workflow_template_state_escalation_serializers.py:51
 msgid "Workflow template transition ID"
-msgstr ""
+msgstr "ID de tranziție al șablonului de flux de lucru"
 
 #: serializers/workflow_template_transition_serializers.py:86
 msgid "Primary key of the destination state to be added."
@@ -835,6 +845,8 @@ msgid ""
 "Interval in seconds on which the task to check for expired workflow states "
 "will be launched."
 msgstr ""
+"Intervalul în secunde în care va fi lansată sarcina de verificare a stărilor"
+" de flux de lucru expirate."
 
 #: storages.py:14
 msgid ""
@@ -965,32 +977,34 @@ msgstr "Stările fluxului de lucru: %s"
 #: views/workflow_template_state_escalation_views.py:41
 #, python-format
 msgid "Create escalation for workflow state: %s"
-msgstr ""
+msgstr "Creați escaladare pentru starea fluxului de lucru: %s"
 
 #: views/workflow_template_state_escalation_views.py:84
 #, python-format
 msgid "Delete workflow state escalation: %s"
-msgstr ""
+msgstr "Ștergeți escaladarea stării fluxului de lucru: %s"
 
 #: views/workflow_template_state_escalation_views.py:116
 #, python-format
 msgid "Edit workflow state escalation: %s"
-msgstr ""
+msgstr "Editați escaladarea stării fluxului de lucru: %s"
 
 #: views/workflow_template_state_escalation_views.py:155
 msgid ""
 "Workflow state escalation allow workflows to execute a a transition "
 "automatically after a specific amount of time."
 msgstr ""
+"Escaladarea stării fluxului de lucru permite fluxurilor de lucru să execute "
+"o tranziție automată după o anumită perioadă de timp."
 
 #: views/workflow_template_state_escalation_views.py:159
 msgid "There are no escalations for this workflow state"
-msgstr ""
+msgstr "Nu există escaladări pentru această stare de flux de lucru"
 
 #: views/workflow_template_state_escalation_views.py:162
 #, python-format
 msgid "Escalations for workflow template state: %s"
-msgstr ""
+msgstr "Escaladări pentru starea șablonului de flux de lucru: %s"
 
 #: views/workflow_template_state_views.py:60
 #, python-format

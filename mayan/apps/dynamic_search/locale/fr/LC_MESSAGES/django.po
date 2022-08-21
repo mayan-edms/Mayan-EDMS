@@ -5,20 +5,20 @@
 # Translators:
 # Translators:
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
-# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Olivier W, 2022
 # Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 08:19+0000\n"
+"POT-Creation-Date: 2022-08-21 06:40+0000\n"
 "PO-Revision-Date: 2022-07-27 05:35+0000\n"
-"Last-Translator: Yves Dubois <ydubois@gmail.com>, 2022\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -136,7 +136,7 @@ msgstr "Nombre maximum de résultats de recherche à récupérer et afficher."
 
 #: templates/dynamic_search/app/list_toolbar.html:13
 msgid "List filter"
-msgstr ""
+msgstr "Filtre de liste"
 
 #: templates/dynamic_search/search_box.html:47
 msgid "Advanced"
