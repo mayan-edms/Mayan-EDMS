@@ -61,10 +61,12 @@ class TransifexHelper:
         return missing_list
 
     def generate_configuration_file(self):
-        version_string = '{}-0'.format(
-            version.Version(
-                version_string=self.message_processor.mayan.__version__
-            ).as_major()
+        mayan_version = version.Version(
+            version_string=self.message_processor.mayan.__version__
+        )
+
+        version_string = '{}-{}'.format(
+            mayan_version.major, mayan_version.minor
         )
 
         output = []
