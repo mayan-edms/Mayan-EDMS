@@ -21,8 +21,8 @@ multiple frontend processes or load balancers are used.
 Settings
 ^^^^^^^^
 
-The settings app templates caching was disabled. Just like the as with the
-impersonation app, this ensures correct functionality of the settings change
+The settings app templates caching was disabled. Just like the impersonation
+app, this ensures correct functionality of the settings change
 banner in all edge cases.
 
 
