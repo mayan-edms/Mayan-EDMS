@@ -1,6 +1,9 @@
 4.3.1 (2022-08-21)
 ==================
 - Fixes and improvements merged from version 4.2.9 and 4.2.10.
+- Fix the function interfaces when calling ``get_mayan_object_permissions``
+  to ``get_mayan_view_permissions`` to override an API view permission
+  layout.
 
 4.3 (2022-07-27)
 ================
