@@ -1,3 +1,7 @@
+4.2.11 (2022-XX-XX)
+===================
+- Update Django from version 3.2.14 to 3.2.15.
+
 4.2.10 (2022-08-20)
 ===================
 - Make file improvements. Don't require a local ``psql`` client to
