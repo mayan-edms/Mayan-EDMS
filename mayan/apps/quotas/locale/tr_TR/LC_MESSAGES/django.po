@@ -7,14 +7,15 @@
 # abc Def <hdogan1974@gmail.com>, 2022
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,39 +26,39 @@ msgstr ""
 #: apps.py:33 events.py:6 links.py:34 models.py:37 permissions.py:5
 #: views.py:136
 msgid "Quotas"
-msgstr ""
+msgstr "Kotalar"
 
 #: classes.py:59
 msgid "none"
-msgstr ""
+msgstr "yok"
 
 #: classes.py:151
 msgid "Does not apply"
-msgstr ""
+msgstr "Geçerli değil"
 
 #: classes.py:155 classes.py:159
 msgid "Null backend"
-msgstr ""
+msgstr "Boş backend"
 
 #: events.py:10
 msgid "Quota created"
-msgstr ""
+msgstr "Kota oluşturuldu"
 
 #: events.py:13
 msgid "Quota edited"
-msgstr ""
+msgstr "Kota düzenlendi"
 
 #: forms.py:15 models.py:62
 msgid "Backend"
-msgstr ""
+msgstr "Backend"
 
 #: forms.py:16
 msgid "The quota driver for this entry."
-msgstr ""
+msgstr "Bu girdi için kota sürücüsü."
 
 #: links.py:16
 msgid "Create quota"
-msgstr ""
+msgstr "Kota oluştur"
 
 #: links.py:21
 msgid "Delete"
@@ -69,17 +70,19 @@ msgstr "Düzenle"
 
 #: links.py:30
 msgid "Quotas list"
-msgstr ""
+msgstr "Kota listesi"
 
 #: mixins.py:17
 msgid "All document types"
-msgstr ""
+msgstr "Tüm belge türleri"
 
 #: mixins.py:20
 msgid ""
 "Apply to all document types. Enabling this, the quota will ignore the "
 "indiviual document type selection."
 msgstr ""
+"Tüm belge türlerine uygula. Bu etkinleştirildiğinde, kota, bireysel belge "
+"türü seçimini yok sayar."
 
 #: mixins.py:26
 msgid "Document types"
@@ -87,16 +90,16 @@ msgstr "Belge türleri"
 
 #: mixins.py:33
 msgid "Document types to which the quota will be applied."
-msgstr ""
+msgstr "Kotanın uygulanacağı belge türleri."
 
 #: mixins.py:67
 msgid "all document types"
-msgstr ""
+msgstr "tüm belge türleri"
 
 #: mixins.py:70
 #, python-format
 msgid "document types: %(document_types)s"
-msgstr ""
+msgstr "belge türleri: %(document_types)s"
 
 #: mixins.py:94
 msgid "Groups"
@@ -104,11 +107,11 @@ msgstr "Gruplar"
 
 #: mixins.py:101
 msgid "Groups to which the quota will be applied."
-msgstr ""
+msgstr "Kotanın uygulanacağı gruplar."
 
 #: mixins.py:105
 msgid "All users"
-msgstr ""
+msgstr "Tüm kullanıcılar"
 
 #: mixins.py:108
 msgid ""
@@ -116,6 +119,9 @@ msgid ""
 "Enabling this option, the quota will ignore the indiviual user and group "
 "selection."
 msgstr ""
+"Kotayı yöneticiler ve personel hariç sistemdeki tüm kullanıcılara uygulayın."
+" Bu seçenek etkinleştirildiğinde, kota, bireysel kullanıcı ve grup seçimini "
+"yok sayar."
 
 #: mixins.py:115
 msgid "Users"
@@ -123,32 +129,34 @@ msgstr "Kullanıcılar"
 
 #: mixins.py:122
 msgid "Users to which the quota will be applied."
-msgstr ""
+msgstr "Kotanın uygulanacağı kullanıcılar."
 
 #: mixins.py:160
 msgid "all users"
-msgstr ""
+msgstr "tüm kullanıcılar"
 
 #: mixins.py:162
 #, python-format
 msgid "groups: %(groups)s, users: %(users)s"
-msgstr ""
+msgstr "gruplar: %(groups)s, kullanıcılar: %(users)s"
 
 #: models.py:23
 msgid "The dotted Python path to the backend class."
-msgstr ""
+msgstr "Backend sınıfına giden noktalı Python yolu."
 
 #: models.py:24
 msgid "Backend path"
-msgstr ""
+msgstr "Backend yolu"
 
 #: models.py:27
 msgid "Backend data"
-msgstr ""
+msgstr "Backend verisi"
 
 #: models.py:31
 msgid "Allow quick disable or enable of the quota."
 msgstr ""
+"Kotanın hızlı bir şekilde devre dışı bırakılmasına veya etkinleştirilmesine "
+"izin verin."
 
 #: models.py:32
 msgid "Enabled"
@@ -156,11 +164,11 @@ msgstr "Etkin"
 
 #: models.py:36
 msgid "Quota"
-msgstr ""
+msgstr "Kota"
 
 #: models.py:61
 msgid "Driver used for this quota entry."
-msgstr ""
+msgstr "Bu kota girişi için kullanılan sürücü."
 
 #: models.py:66
 msgid "Arguments"
@@ -168,85 +176,85 @@ msgstr "Argümanlar"
 
 #: models.py:70
 msgid "Usage"
-msgstr ""
+msgstr "Kullanım"
 
 #: permissions.py:8
 msgid "Create a quota"
-msgstr ""
+msgstr "Kota oluştur"
 
 #: permissions.py:11
 msgid "Delete a quota"
-msgstr ""
+msgstr "Kotayı sil"
 
 #: permissions.py:14
 msgid "Edit a quota"
-msgstr ""
+msgstr "Kotayı düzenle"
 
 #: permissions.py:17
 msgid "View a quota"
-msgstr ""
+msgstr "Kotayı görüntüle"
 
 #: quota_backends.py:71 quota_backends.py:171
 msgid "Document count quota exceeded."
-msgstr ""
+msgstr "Belge sayısı kotası aşıldı."
 
 #: quota_backends.py:75
 msgid "Documents limit"
-msgstr ""
+msgstr "Belge sınırı"
 
 #: quota_backends.py:78
 msgid "Maximum number of documents."
-msgstr ""
+msgstr "Maksimum belge sayısı."
 
 #: quota_backends.py:82
 msgid "Document count limit"
-msgstr ""
+msgstr "Belge sayısı sınırı"
 
 #: quota_backends.py:107
 #, python-format
 msgid "document count: %(document_count)s"
-msgstr ""
+msgstr "belge sayısı: %(document_count)s"
 
 #: quota_backends.py:181 quota_backends.py:186
 msgid "Document size limit"
-msgstr ""
+msgstr "Belge boyutu sınırı"
 
 #: quota_backends.py:183
 msgid "Maximum document size in megabytes (MB)."
-msgstr ""
+msgstr "Megabayt (MB) cinsinden maksimum belge boyutu."
 
 #: quota_backends.py:211
 #, python-format
 msgid "document size: %(formatted_file_size)s"
-msgstr ""
+msgstr "belge boyutu: %(formatted_file_size)s"
 
 #: quota_backends.py:231
 msgid "Document size quota exceeded."
-msgstr ""
+msgstr "Belge boyutu kotası aşıldı."
 
 #: views.py:24
 msgid "New quota backend selection"
-msgstr ""
+msgstr "Yeni kota backend seçimi"
 
 #: views.py:54
 #, python-format
 msgid "Create a \"%s\" quota"
-msgstr ""
+msgstr "Bir \"%s\" kotası oluşturun"
 
 #: views.py:86
 #, python-format
 msgid "Delete quota: %s"
-msgstr ""
+msgstr "Kotayı sil: %s"
 
 #: views.py:101
 #, python-format
 msgid "Edit quota: %s"
-msgstr ""
+msgstr "Kotayı düzenle: %s"
 
 #: views.py:133
 msgid "Quotas restrict usage of system resources. "
-msgstr ""
+msgstr "Kotalar, sistem kaynaklarının kullanımını kısıtlar."
 
 #: views.py:135
 msgid "No quotas available"
-msgstr ""
+msgstr "Mevcut kota yok"

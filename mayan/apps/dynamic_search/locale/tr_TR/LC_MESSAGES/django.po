@@ -7,14 +7,15 @@
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2022
 # emreunal <bywant@gmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,12 +25,12 @@ msgstr ""
 
 #: apps.py:25
 msgid "Dynamic search"
-msgstr ""
+msgstr "Dinamik arama"
 
 #: classes.py:568
 #, python-format
 msgid "Unknown search model `%s`."
-msgstr ""
+msgstr "Bilinmeyen arama modeli `%s`."
 
 #: classes.py:625
 msgid "ID"
@@ -37,7 +38,7 @@ msgstr "İD"
 
 #: forms.py:9
 msgid "Match all"
-msgstr ""
+msgstr "Tümü eşleşsin"
 
 #: forms.py:10
 msgid ""
@@ -143,6 +144,8 @@ msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
 msgstr ""
+"Bu araç yalnızca bazı arama backendleri için gereklidir. Backend yeniden "
+"dizine eklenirken arama sonuçları etkilenecektir."
 
 #: views.py:106
 msgid "This tool erases and populates the search backend's internal index."
@@ -155,4 +158,4 @@ msgstr ""
 #: views.py:141
 #, python-format
 msgid "Search for: %s"
-msgstr ""
+msgstr "Şunun için ara: %s"

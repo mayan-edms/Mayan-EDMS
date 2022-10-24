@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,71 +23,71 @@ msgstr ""
 
 #: apps.py:26 events.py:6 permissions.py:5 queues.py:8 settings.py:10
 msgid "File caching"
-msgstr ""
+msgstr "Predpomnjenje datotek"
 
 #: events.py:10
 msgid "Cache created"
-msgstr ""
+msgstr "Predpomnilnik ustvarjen"
 
 #: events.py:13
 msgid "Cache edited"
-msgstr ""
+msgstr "Predpomnilnik urejen"
 
 #: events.py:16
 msgid "Cache purged"
-msgstr ""
+msgstr "Predpomnilnik očiščen"
 
 #: events.py:19
 msgid "Cache partition purged"
-msgstr ""
+msgstr "Particija predpomnilnika je očiščena"
 
 #: links.py:24
 msgid "File caches"
-msgstr ""
+msgstr "Predpomnilniki datotek"
 
 #: links.py:29 links.py:35 links.py:39
 msgid "Purge cache"
-msgstr ""
+msgstr "Počisti predpomnilnik"
 
 #: models.py:41
 msgid "Internal name of the defined storage for this cache."
-msgstr ""
+msgstr "Notranje ime definiranega pomnilnika za ta predpomnilnik."
 
 #: models.py:42
 msgid "Defined storage name"
-msgstr ""
+msgstr "Določeno ime shrambe"
 
 #: models.py:45
 msgid "Maximum size of the cache in bytes."
-msgstr ""
+msgstr "Največja velikost predpomnilnika v bajtih."
 
 #: models.py:47 models.py:73
 msgid "Maximum size"
-msgstr ""
+msgstr "Največja velikost"
 
 #: models.py:51 models.py:206
 msgid "Cache"
-msgstr ""
+msgstr "predpomnilnik"
 
 #: models.py:52
 msgid "Caches"
-msgstr ""
+msgstr "Zapomnilniki"
 
 #: models.py:71
 msgid "Size at which the cache will start deleting old entries."
-msgstr ""
+msgstr "Velikost, pri kateri bo predpomnilnik začel brisati stare vnose."
 
 #: models.py:80
 msgid "Unknown"
-msgstr ""
+msgstr "Neznano"
 
 #: models.py:97 models.py:311
 msgid "Current size"
-msgstr ""
+msgstr "Trenutna velikost"
 
 #: models.py:98
 msgid "Current size of the cache."
-msgstr ""
+msgstr "Trenutna velikost predpomnilnika."
 
 #: models.py:209
 msgid "Name"
@@ -94,19 +95,19 @@ msgstr "Ime"
 
 #: models.py:214 models.py:331
 msgid "Cache partition"
-msgstr ""
+msgstr "Predpomnilniška particija"
 
 #: models.py:215
 msgid "Cache partitions"
-msgstr ""
+msgstr "Predpomnilniške particije"
 
 #: models.py:313
 msgid "Current size of the cache partition."
-msgstr ""
+msgstr "Trenutna velikost particije predpomnilnika."
 
 #: models.py:334
 msgid "Date time"
-msgstr ""
+msgstr "Datum čas"
 
 #: models.py:336
 msgid "Filename"
@@ -118,81 +119,85 @@ msgstr "Velikost datoteke"
 
 #: models.py:342
 msgid "Times this cache partition file has been accessed."
-msgstr ""
+msgstr "Število dostopov do te datoteke particije predpomnilnika."
 
 #: models.py:349
 msgid "Cache partition file"
-msgstr ""
+msgstr "Datoteka particije predpomnilnika"
 
 #: models.py:350
 msgid "Cache partition files"
-msgstr ""
+msgstr "Predpomnilniške particijske datoteke"
 
 #: permissions.py:8
 msgid "Purge an object cache"
-msgstr ""
+msgstr "Počistite predpomnilnik predmeta"
 
 #: permissions.py:11 queues.py:18
 msgid "Purge a file cache"
-msgstr ""
+msgstr "Počistite predpomnilnik datotek"
 
 #: permissions.py:14
 msgid "View a file cache"
-msgstr ""
+msgstr "Oglejte si predpomnilnik datotek"
 
 #: queues.py:13
 msgid "Purge a file cache partition"
-msgstr ""
+msgstr "Očistite particijo predpomnilnika datotek"
 
 #: settings.py:15
 msgid ""
 "Number of times a cache will retry failed attempts to prune files to free up"
 " space for new a file being requested, before giving up."
 msgstr ""
+"Kolikokrat bo predpomnilnik ponovil neuspešne poskuse obrezovanja datotek, "
+"da sprosti prostor za novo zahtevano datoteko, preden se odpove."
 
 #: settings.py:23
 msgid ""
 "Number of times a cache will attempt to prune files to free up space for new"
 " a file being requested, before giving up."
 msgstr ""
+"Kolikokrat bo predpomnilnik poskusil odstraniti datoteke, da bi sprostil "
+"prostor za novo zahtevano datoteko, preden odneha."
 
 #: views.py:45
 #, python-format
 msgid "Details of cache: %s"
-msgstr ""
+msgstr "Podrobnosti o predpomnilniku: %s"
 
 #: views.py:56
 msgid "File caches list"
-msgstr ""
+msgstr "Seznam predpomnilnikov datotek"
 
 #: views.py:76
 #, python-format
 msgid "Details cache: %s"
-msgstr ""
+msgstr "Predpomnilnik podrobnosti: %s"
 
 #: views.py:92
 #, python-format
 msgid "Purge cache partitions of \"%s\"?"
-msgstr ""
+msgstr "Počistiti particije predpomnilnika &quot;%s&quot;?"
 
 #: views.py:108
 msgid "Object cache partitions submitted for purging."
-msgstr ""
+msgstr "Particije predpomnilnika predmetov so bile poslane v čiščenje."
 
 #: views.py:117
 #, python-format
 msgid "%(count)d cache submitted for purging."
-msgstr ""
+msgstr "%(count)d predpomnilnik je bil poslan v čiščenje."
 
 #: views.py:118
 #, python-format
 msgid "%(count)d caches submitted for purging."
-msgstr ""
+msgstr "%(count)d predpomnilniki, predloženi v čiščenje."
 
 #: views.py:125
 msgid "Submit the selected cache for purging?"
 msgid_plural "Submit the selected caches for purging?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Želite izbrani predpomnilnik poslati v čiščenje?"
+msgstr[1] "Želite izbrane predpomnilnike poslati v čiščenje?"
+msgstr[2] "Želite izbrane predpomnilnike poslati v čiščenje?"
+msgstr[3] "Želite izbrane predpomnilnike poslati v čiščenje?"

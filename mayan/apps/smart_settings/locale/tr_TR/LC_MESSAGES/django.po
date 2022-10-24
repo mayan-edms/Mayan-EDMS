@@ -6,14 +6,15 @@
 # Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgstr ""
 
 #: apps.py:21 permissions.py:6
 msgid "Smart settings"
-msgstr ""
+msgstr "Akıllı ayarlar"
 
 #: apps.py:30
 msgid "Setting count"
@@ -39,20 +40,20 @@ msgstr "Değer"
 
 #: classes.py:348
 msgid "Overridden"
-msgstr ""
+msgstr "Geçersiz kılındı"
 
 #: classes.py:350
 msgid "Is this settings being overridden by an environment variable?"
-msgstr ""
+msgstr "Bu ayarlar bir ortam değişkeni tarafından geçersiz kılınıyor mu?"
 
 #: forms.py:12
 msgid "Enter the new setting value."
-msgstr ""
+msgstr "Yeni ayar değerini girin."
 
 #: forms.py:28
 #, python-format
 msgid "\"%s\" not a valid entry."
-msgstr ""
+msgstr "\"%s\" geçerli bir giriş değil."
 
 #: links.py:12 links.py:16
 msgid "Settings"
@@ -60,7 +61,7 @@ msgstr "Ayarlar"
 
 #: links.py:22
 msgid "Namespaces"
-msgstr ""
+msgstr "Ad alanları"
 
 #: links.py:26
 msgid "Edit"
@@ -68,15 +69,15 @@ msgstr "Düzenle"
 
 #: permissions.py:10
 msgid "Edit settings"
-msgstr ""
+msgstr "Ayarları düzenle"
 
 #: permissions.py:13
 msgid "View settings"
-msgstr ""
+msgstr "Ayarları görüntüle"
 
 #: settings.py:26
 msgid "Django"
-msgstr ""
+msgstr "Django"
 
 #: settings.py:30
 msgid ""
@@ -92,6 +93,18 @@ msgid ""
 "validation of the Host header (perhaps in a middleware; if so this "
 "middleware must be listed first in MIDDLEWARE)."
 msgstr ""
+"Bu sitenin sunabileceği ana bilgisayar/etki alanı adlarını temsil eden "
+"dizelerin listesi. Bu, görünüşte güvenli birçok web sunucusu "
+"yapılandırmasında bile mümkün olan HTTP Host başlık saldırılarını önlemek "
+"için bir güvenlik önlemidir. Bu listedeki değerler tam olarak nitelenmiş "
+"adlar olabilir (örneğin 'www.example.com'), bu durumda bunlar isteğin Ana "
+"Bilgisayar başlığıyla tam olarak eşleştirilir (büyük/küçük harfe duyarlı "
+"değildir, bağlantı noktası dahil değildir). Alt alan joker karakteri olarak "
+"nokta ile başlayan bir değer kullanılabilir: '.example.com' example.com, "
+"www.example.com ve example.com'un diğer herhangi bir alt alanıyla eşleşir. "
+"'*' değeri her şeyle eşleşir; bu durumda, Host başlığı için kendi "
+"doğrulamanızı sağlamaktan sorumlusunuz (belki bir ara yazılımda; öyleyse bu "
+"ara yazılım ilk olarak MIDDLEWARE'de listelenmelidir)."
 
 #: settings.py:47
 msgid ""
@@ -102,18 +115,28 @@ msgid ""
 "used if CommonMiddleware is installed (see Middleware). See also "
 "PREPEND_WWW."
 msgstr ""
+"True olarak ayarlandığında, istek URL'si URLconf'taki kalıplardan herhangi "
+"biriyle eşleşmiyorsa ve \"/\" ile bitmiyorsa, aynı URL'ye \"/\"i eklenmiş "
+"bir HTTP yönlendirmesi verilir. Yönlendirmenin, bir POST isteğinde "
+"gönderilen verilerin kaybolmasına neden olabileceğini unutmayın. "
+"APPEND_SLASH ayarı yalnızca CommonMiddleware kuruluysa kullanılır (bkz. "
+"Middleware). Ayrıca bkz. PREPEND_WWW."
 
 #: settings.py:59
 msgid ""
 "The list of validators that are used to check the strength of user's "
 "passwords."
 msgstr ""
+"Kullanıcı parolalarının gücünü kontrol etmek için kullanılan "
+"doğrulayıcıların listesi."
 
 #: settings.py:66
 msgid ""
 "A list of authentication backend classes (as strings) to use when attempting"
 " to authenticate a user."
 msgstr ""
+"Bir kullanıcının kimliğini doğrulamaya çalışırken kullanılacak kimlik "
+"doğrulama backend sınıflarının (dizeler olarak) listesi."
 
 #: settings.py:72
 msgid ""
@@ -123,6 +146,11 @@ msgid ""
 "setting must configure a default database; any number of additional "
 "databases may also be specified."
 msgstr ""
+"Django ile kullanılacak tüm veritabanlarının ayarlarını içeren bir sözlük. "
+"İçeriği, bir veritabanı takma adını tek bir veritabanı için seçenekleri "
+"içeren bir sözlüğe eşleyen iç içe bir sözlüktür. VERİTABANLARI ayarı "
+"varsayılan bir veritabanını yapılandırmalıdır; herhangi bir sayıda ek veri "
+"tabanı da belirtilebilir."
 
 #: settings.py:83
 msgid ""
@@ -145,6 +173,10 @@ msgid ""
 "automated correspondence from the site manager(s). This doesn't include "
 "error messages sent to ADMINS and MANAGERS; for that, see SERVER_EMAIL."
 msgstr ""
+"Varsayılan: 'webmaster@localhost' Site yöneticisinden/yöneticilerinden "
+"çeşitli otomatik yazışmalar için kullanılacak varsayılan e-posta adresi. Bu,"
+" ADMIN ve YÖNETİCİLER'e gönderilen hata mesajlarını içermez; bunun için bkz."
+" SERVER_EMAIL."
 
 #: settings.py:111
 msgid ""
@@ -153,16 +185,25 @@ msgid ""
 "systemwide. Use this for bad robots/crawlers. This is only used if "
 "CommonMiddleware is installed (see Middleware)."
 msgstr ""
+"Varsayılan: [] (Boş liste). Sistem genelinde herhangi bir sayfayı ziyaret "
+"etmesine izin verilmeyen Kullanıcı Aracısı dizelerini temsil eden derlenmiş "
+"düzenli ifade nesnelerinin listesi. Bunu kötü robotlar/tarayıcılar için "
+"kullanın. Bu, yalnızca CommonMiddleware kuruluysa kullanılır (bkz. "
+"Middleware)."
 
 #: settings.py:120
 msgid ""
 "Default: 'django.core.mail.backends.smtp.EmailBackend'. The backend to use "
 "for sending emails."
 msgstr ""
+"Varsayılan: 'django.core.mail.backends.smtp.EmailBackend'. E-posta göndermek"
+" için kullanılacak backend."
 
 #: settings.py:126
 msgid "Default: 'localhost'. The host to use for sending email."
 msgstr ""
+"Varsayılan: 'localhost';. E-posta göndermek için kullanılacak ana "
+"bilgisayar."
 
 #: settings.py:132
 msgid ""
@@ -276,12 +317,17 @@ msgid ""
 " whatever you want (as long as it's different from the other cookie names in"
 " your application)."
 msgstr ""
+"Varsayılan: 'sessionid'. Oturumlar için kullanılacak tanımlama bilgisinin "
+"adı. Bu, istediğiniz her şey olabilir (uygulamanızdaki diğer tanımlama "
+"bilgisi adlarından farklı olduğu sürece)."
 
 #: settings.py:262
 msgid ""
 "Default: 'django.contrib.sessions.backends.db'. Controls where Django stores"
 " session data."
 msgstr ""
+"Varsayılan: 'django.contrib.sessions.backends.db'. Django'nun oturum "
+"verilerini nerede sakladığını kontrol eder."
 
 #: settings.py:269
 msgid ""
@@ -339,32 +385,36 @@ msgstr ""
 
 #: templates/smart_settings/app/viewport.html:11
 msgid "Warning"
-msgstr ""
+msgstr "Uyarı"
 
 #: templates/smart_settings/app/viewport.html:11
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr ""
+"Ayarlar güncellendi, kurulumunuzu yeniden başlatın ve değişikliklerin etkili"
+" olması için tarayıcınızı yenileyin."
 
 #: tests/test_classes.py:162
 msgid "English"
-msgstr ""
+msgstr "İngilizce"
 
 #: views.py:21
 msgid "Setting updated successfully."
-msgstr ""
+msgstr "Ayar başarıyla güncellendi."
 
 #: views.py:30
 #, python-format
 msgid "Edit setting: %s"
-msgstr ""
+msgstr "Ayarı düzenle: %s"
 
 #: views.py:55
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
 msgstr ""
+"Bir ortam değişkeninden devralınan ayarlar önceliklidir ve bu görünümde "
+"değiştirilemez."
 
 #: views.py:58
 #, python-format
@@ -374,7 +424,7 @@ msgstr "%sİsim alanındaki ayarlar: "
 #: views.py:66
 #, python-format
 msgid "Namespace: %s, not found"
-msgstr ""
+msgstr "Ad alanı: %s, bulunamadı"
 
 #: views.py:76
 msgid "Setting namespaces"

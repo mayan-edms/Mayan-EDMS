@@ -3,12 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,130 +22,139 @@ msgstr ""
 
 #: apps.py:25
 msgid "Dynamic search"
-msgstr ""
+msgstr "Dinamično iskanje"
 
 #: classes.py:568
 #, python-format
 msgid "Unknown search model `%s`."
-msgstr ""
+msgstr "Neznan iskalni model `%s`."
 
 #: classes.py:625
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: forms.py:9
 msgid "Match all"
-msgstr ""
+msgstr "Ujemaj vse"
 
 #: forms.py:10
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
 msgstr ""
+"Ko je označeno, bodo vrnjeni le rezultati, ki se ujemajo z vsemi polji. Če "
+"ni označeno, bodo vrnjeni rezultati, ki se ujemajo z vsaj enim poljem."
 
 #: forms.py:30 templates/dynamic_search/search_box.html:41
 msgid "Search terms"
-msgstr ""
+msgstr "Iskalni izrazi"
 
 #: links.py:13 permissions.py:5 queues.py:7 settings.py:11
 #: templates/dynamic_search/search_box.html:45 views.py:126 views.py:139
 msgid "Search"
-msgstr ""
+msgstr "Iskanje"
 
 #: links.py:17 templates/dynamic_search/search_box.html:47 views.py:163
 msgid "Advanced search"
-msgstr ""
+msgstr "Napredno iskanje"
 
 #: links.py:21
 msgid "Search again"
-msgstr ""
+msgstr "Išči znova"
 
 #: links.py:25 views.py:104
 msgid "Reindex search backend"
-msgstr ""
+msgstr "Ponovno indeksiranje zaledja iskanja"
 
 #: permissions.py:8
 msgid "Execute search tools"
-msgstr ""
+msgstr "Izvedite iskalna orodja"
 
 #: queues.py:10
 msgid "Search slow"
-msgstr ""
+msgstr "Išči počasi"
 
 #: queues.py:15
 msgid "Remove a model instance from the search engine."
-msgstr ""
+msgstr "Odstranite primerek modela iz iskalnika."
 
 #: queues.py:20
 msgid "Index a model instance to the search engine."
-msgstr ""
+msgstr "Indeksirajte primerek modela v iskalnik."
 
 #: queues.py:25
 msgid "Index all instances of a search model to the search engine."
-msgstr ""
+msgstr "Indeksirajte vse primerke iskalnega modela v iskalniku."
 
 #: queues.py:31
 msgid ""
 "Index all related instances of a search model after a many to many event."
 msgstr ""
+"Indeksirajte vse povezane primerke iskalnega modela po dogodku mnogo proti "
+"mnogo."
 
 #: queues.py:39
 msgid "Reset the search backend indices and index all instances again."
 msgstr ""
+"Ponastavite zaledne indekse iskanja in znova indeksirajte vse primerke."
 
 #: settings.py:16
 msgid "Full path to the backend to be used to handle the search."
-msgstr ""
+msgstr "Celotna pot do zaledja, ki bo uporabljena za upravljanje iskanja."
 
 #: settings.py:26
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr ""
+"Onemogoči iskanje v vrstici z enim izrazom, ostane samo gumb za napredno "
+"iskanje."
 
 #: settings.py:34
 msgid "Amount of objects to process when performing bulk indexing."
-msgstr ""
+msgstr "Količina predmetov za obdelavo pri izvajanju množičnega indeksiranja."
 
 #: settings.py:40
 msgid "Sets the default state of the \"Match all\" checkbox."
-msgstr ""
+msgstr "Nastavi privzeto stanje potrditvenega polja »Ujemaj vse«."
 
 #: settings.py:44
 msgid "Maximum number search results to fetch and display."
-msgstr ""
+msgstr "Največje število rezultatov iskanja za pridobitev in prikaz."
 
 #: templates/dynamic_search/search_box.html:47
 msgid "Advanced"
-msgstr ""
+msgstr "Napredno"
 
 #: views.py:42
 msgid "Try again using different terms. "
-msgstr ""
+msgstr "Poskusite znova z drugimi izrazi."
 
 #: views.py:44
 msgid "No search results"
-msgstr ""
+msgstr "Ni rezultatov iskanja"
 
 #: views.py:46
 #, python-format
 msgid "Search results for: %s"
-msgstr ""
+msgstr "Rezultati iskanja za: %s"
 
 #: views.py:100
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
 msgstr ""
+"To orodje je potrebno samo za nekatera iskalna zaledja. Med ponovnim "
+"indeksiranjem zaledja bo to vplivalo na rezultate iskanja."
 
 #: views.py:106
 msgid "This tool erases and populates the search backend's internal index."
-msgstr ""
+msgstr "To orodje izbriše in zapolni notranji indeks zaledja iskanja."
 
 #: views.py:119
 msgid "Search backend reindexing queued."
-msgstr ""
+msgstr "Ponovno indeksiranje zaledja iskanja je v čakalni vrsti."
 
 #: views.py:141
 #, python-format
 msgid "Search for: %s"
-msgstr ""
+msgstr "Iskanje: %s"

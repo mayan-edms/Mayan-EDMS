@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:52+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,35 +23,37 @@ msgstr ""
 
 #: apps.py:36 events.py:5 permissions.py:5 queues.py:7 settings.py:21
 msgid "Converter"
-msgstr ""
+msgstr "Pretvornik"
 
 #: apps.py:82 forms.py:37
 msgid "Transformation"
-msgstr ""
+msgstr "Preoblikovanje"
 
 #: backends/python.py:120 backends/python.py:133
 #, python-format
 msgid "Exception determining PDF page count; %s"
-msgstr ""
+msgstr "Izjema, ki določa število strani PDF; %s"
 
 #: backends/python.py:147
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
-msgstr ""
+msgstr "Izjema pri določanju števila strani z uporabo Pillow; %s"
 
 #: classes.py:158
 msgid "LibreOffice not installed or not found."
-msgstr ""
+msgstr "LibreOffice ni nameščen ali ni najden."
 
 #: classes.py:258
 msgid "Not an office file format."
-msgstr ""
+msgstr "Ni pisarniška oblika datoteke."
 
 #: classes.py:392
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
 msgstr ""
+"Transformacije omogočajo spreminjanje vizualnega videza dokumentov brez "
+"trajnih sprememb same datoteke dokumenta."
 
 #: classes.py:443
 msgid "transformation"
@@ -60,50 +62,55 @@ msgstr "transformacija"
 #: dependencies.py:14
 msgid "Utility from the poppler-utils package used to inspect PDF files."
 msgstr ""
+"Pripomoček iz paketa poppler-utils, ki se uporablja za pregledovanje datotek"
+" PDF."
 
 #: dependencies.py:19
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
 msgstr ""
+"Pripomoček iz paketa popper-utils, ki se uporablja za ekstrahiranje strani "
+"iz datotek PDF v slike formata PPM."
 
 #: events.py:8
 msgid "Asset created"
-msgstr ""
+msgstr "Sredstvo ustvarjeno"
 
 #: events.py:11
 msgid "Asset edited"
-msgstr ""
+msgstr "Sredstvo urejeno"
 
 #: forms.py:16
 msgid "Preview"
-msgstr ""
+msgstr "Predogled"
 
 #: forms.py:36
 msgid "Available transformations for this layer."
-msgstr ""
+msgstr "Razpoložljive transformacije za ta sloj."
 
 #: forms.py:73 workflow_actions.py:74
 #, python-format
 msgid "\"%s\" not a valid entry."
-msgstr ""
+msgstr "&quot;%s&quot; ni veljaven vnos."
 
 #: layers.py:11
 msgid ""
 "Decorations are visual elements that add contextual information to images."
 msgstr ""
+"Okraski so vizualni elementi, ki slikam dodajo kontekstualne informacije."
 
 #: layers.py:13
 msgid "Decorations"
-msgstr ""
+msgstr "Okraski"
 
 #: layers.py:24
 msgid "Saved transformations"
-msgstr ""
+msgstr "Shranjene transformacije"
 
 #: links.py:35 views.py:39
 msgid "Create asset"
-msgstr ""
+msgstr "Ustvari sredstvo"
 
 #: links.py:38 links.py:44 links.py:64
 msgid "Delete"
@@ -111,19 +118,19 @@ msgstr "Izbriši"
 
 #: links.py:48 links.py:72
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #: links.py:56 models.py:63 storages.py:21 views.py:143
 msgid "Assets"
-msgstr ""
+msgstr "Sredstva"
 
 #: links.py:77
 msgid "Transformations"
-msgstr ""
+msgstr "Preobrazbe"
 
 #: links.py:82
 msgid "Select new transformation"
-msgstr ""
+msgstr "Izberite novo transformacijo"
 
 #: models.py:46
 msgid "Label"
@@ -134,18 +141,20 @@ msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
 msgstr ""
+"Ta vrednost bo uporabljena pri sklicevanju na to sredstvo. Vsebuje lahko "
+"samo črke, številke in podčrtaje."
 
 #: models.py:53
 msgid "Internal name"
-msgstr ""
+msgstr "Interno ime"
 
 #: models.py:57
 msgid "File"
-msgstr ""
+msgstr "mapa"
 
 #: models.py:62
 msgid "Asset"
-msgstr ""
+msgstr "Sredstvo"
 
 #: models.py:172 models.py:243
 msgid "Name"
@@ -153,166 +162,182 @@ msgstr "Ime"
 
 #: models.py:175 models.py:241
 msgid "Order"
-msgstr ""
+msgstr "naročilo"
 
 #: models.py:180 models.py:199
 msgid "Stored layer"
-msgstr ""
+msgstr "Shranjena plast"
 
 #: models.py:181
 msgid "Stored layers"
-msgstr ""
+msgstr "Shranjeni sloji"
 
 #: models.py:196 models.py:250
 msgid "Enabled"
-msgstr ""
+msgstr "Omogočeno"
 
 #: models.py:207 models.py:235
 msgid "Object layer"
-msgstr ""
+msgstr "Objektna plast"
 
 #: models.py:208
 msgid "Object layers"
-msgstr ""
+msgstr "Objektni sloji"
 
 #: models.py:239
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
 msgstr ""
+"Vrstni red, v katerem bodo izvedene transformacije. Če ostane nespremenjena,"
+" bo dodeljena samodejna vrednost naročila."
 
 #: models.py:246 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
 msgstr ""
+"Vnesite argumente za transformacijo kot slovar YAML. tj.: "
+"{&quot;stopinj&quot;: 180}"
 
 #: models.py:248
 msgid "Arguments"
-msgstr ""
+msgstr "Argumenti"
 
 #: models.py:257
 msgid "Layer transformation"
-msgstr ""
+msgstr "Transformacija plasti"
 
 #: models.py:258
 msgid "Layer transformations"
-msgstr ""
+msgstr "Transformacije plasti"
 
 #: models.py:264
 msgid "Unknown transformation class"
-msgstr ""
+msgstr "Neznan razred transformacije"
 
 #: permissions.py:8
 msgid "Create new assets"
-msgstr ""
+msgstr "Ustvarite nova sredstva"
 
 #: permissions.py:11
 msgid "Delete assets"
-msgstr ""
+msgstr "Izbriši sredstva"
 
 #: permissions.py:14
 msgid "Edit assets"
-msgstr ""
+msgstr "Uredite sredstva"
 
 #: permissions.py:17
 msgid "View existing assets"
-msgstr ""
+msgstr "Oglejte si obstoječa sredstva"
 
 #: permissions.py:21
 msgid "Create new transformations"
-msgstr ""
+msgstr "Ustvarite nove transformacije"
 
 #: permissions.py:24
 msgid "Delete transformations"
-msgstr ""
+msgstr "Izbriši transformacije"
 
 #: permissions.py:27
 msgid "Edit transformations"
-msgstr ""
+msgstr "Uredi transformacije"
 
 #: permissions.py:30
 msgid "View existing transformations"
-msgstr ""
+msgstr "Oglejte si obstoječe transformacije"
 
 #: queues.py:12
 msgid "Generate a image of an object."
-msgstr ""
+msgstr "Ustvarite sliko predmeta."
 
 #: settings.py:30
 msgid ""
 "The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest asset cache files. Specify the size in bytes."
 msgstr ""
+"Prag, pri katerem bo CONVERTER_ASSET_CACHE_STORAGE_BACKEND začel brisati "
+"najstarejše datoteke predpomnilnika sredstev. Določite velikost v bajtih."
 
 #: settings.py:38
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
+"Pot do podrazreda Storage za uporabo pri shranjevanju predpomnjenih datotek "
+"sredstev."
 
 #: settings.py:46
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumenti za posredovanje v CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
 
 #: settings.py:52
 msgid "Path to the Storage subclass to use when storing assets."
-msgstr ""
+msgstr "Pot do podrazreda Storage za uporabo pri shranjevanju sredstev."
 
 #: settings.py:58
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumenti za posredovanje v CONVERTER_ASSET_STORAGE_BACKEND."
 
 #: settings.py:64
 msgid "Graphics conversion backend to use."
-msgstr ""
+msgstr "Zaledje za pretvorbo grafike za uporabo."
 
 #: settings.py:70
 msgid "Configuration options for the graphics conversion backend."
-msgstr ""
+msgstr "Konfiguracijske možnosti za zaledje za pretvorbo grafike."
 
 #: settings.py:77
 msgid "Time in seconds that the browser should cache the supplied image. "
-msgstr ""
+msgstr "Čas v sekundah, ki naj bi brskalnik predpomnil posredovano sliko."
 
 #: settings.py:84
 msgid ""
 "Maximum number of retries before giving up. A value of None means the task "
 "will retry forever."
 msgstr ""
+"Največje število ponovnih poskusov, preden obupate. Vrednost None pomeni, da"
+" se bo opravilo nenehno ponavljalo."
 
 #: settings.py:92
 msgid ""
 "Time in seconds after which the image generation task will stop running and "
 "raise an error."
 msgstr ""
+"Čas v sekundah, po katerem se naloga generiranja slike preneha izvajati in "
+"sproži napako."
 
 #: storages.py:15
 msgid ""
 "Unable to initialize the converter asset storage. Check the settings {} and "
 "{} for formatting errors."
 msgstr ""
+"Ni mogoče inicializirati shrambe sredstev pretvornika. Preverite nastavitve "
+"{} in {} za napake pri oblikovanju."
 
 #: storages.py:28
 msgid ""
 "Unable to initialize the converter asset cachestorage. Check the settings {}"
 " and {} for formatting errors."
 msgstr ""
+"Ni mogoče inicializirati predpomnilnika sredstev pretvornika. Preverite "
+"nastavitve {} in {} za napake pri oblikovanju."
 
 #: storages.py:34
 msgid "Assets cache"
-msgstr ""
+msgstr "Predpomnilnik sredstev"
 
 #: transformations.py:234
 msgid "Paste an asset"
-msgstr ""
+msgstr "Prilepite sredstvo"
 
 #: transformations.py:285
 msgid "Paste an asset (percents coordinates)"
-msgstr ""
+msgstr "Prilepite sredstvo (odstotne koordinate)"
 
 #: transformations.py:332
 msgid "Paste an asset as watermark"
-msgstr ""
+msgstr "Prilepite sredstvo kot vodni žig"
 
 #: transformations.py:392
 msgid "Crop"
@@ -320,113 +345,115 @@ msgstr "Obreži"
 
 #: transformations.py:470
 msgid "Draw rectangle"
-msgstr ""
+msgstr "Nariši pravokotnik"
 
 #: transformations.py:572
 msgid "Draw rectangle (percents coordinates)"
-msgstr ""
+msgstr "Nariši pravokotnik (odstotki koordinat)"
 
 #: transformations.py:669
 msgid "Flip"
-msgstr ""
+msgstr "Flip"
 
 #: transformations.py:680
 msgid "Gaussian blur"
-msgstr ""
+msgstr "Gaussova zameglitev"
 
 #: transformations.py:692
 msgid "Line art"
-msgstr ""
+msgstr "Črtna umetnost"
 
 #: transformations.py:706
 msgid "Mirror"
-msgstr ""
+msgstr "Ogledalo"
 
 #: transformations.py:717
 msgid "Resize"
-msgstr ""
+msgstr "Spremeni velikost"
 
 #: transformations.py:744
 msgid "Rotate"
-msgstr ""
+msgstr "Zasukaj"
 
 #: transformations.py:774
 msgid "Rotate 90 degrees"
-msgstr ""
+msgstr "Zasukaj za 90 stopinj"
 
 #: transformations.py:785
 msgid "Rotate 180 degrees"
-msgstr ""
+msgstr "Zavrtite za 180 stopinj"
 
 #: transformations.py:796
 msgid "Rotate 270 degrees"
-msgstr ""
+msgstr "Zavrtite za 270 stopinj"
 
 #: transformations.py:806
 msgid "Unsharp masking"
-msgstr ""
+msgstr "Neostro maskiranje"
 
 #: transformations.py:822
 msgid "Zoom"
-msgstr ""
+msgstr "Zoom"
 
 #: views.py:53
 #, python-format
 msgid "Delete request performed on %(count)d asset"
-msgstr ""
+msgstr "Zahteva za brisanje, izvedena na sredstvu %(count)d"
 
 #: views.py:55
 #, python-format
 msgid "Delete request performed on %(count)d assets"
-msgstr ""
+msgstr "Zahteva za brisanje, izvedena na sredstvih %(count)d"
 
 #: views.py:62
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Želite izbrisati izbrano sredstvo?"
+msgstr[1] "Želite izbrisati izbrana sredstva?"
+msgstr[2] "Želite izbrisati izbrana sredstva?"
+msgstr[3] "Želite izbrisati izbrana sredstva?"
 
 #: views.py:72
 #, python-format
 msgid "Delete asset: %s?"
-msgstr ""
+msgstr "Izbriši sredstvo: %s?"
 
 #: views.py:83
 #, python-format
 msgid "Asset \"%s\" deleted successfully."
-msgstr ""
+msgstr "Sredstvo &quot;%s&quot; je bilo uspešno izbrisano."
 
 #: views.py:88
 #, python-format
 msgid "Error deleting asset \"%(asset)s\": %(error)s"
-msgstr ""
+msgstr "Napaka pri brisanju sredstva &quot;%(asset)s&quot;: %(error)s"
 
 #: views.py:103
 #, python-format
 msgid "Details asset: %s"
-msgstr ""
+msgstr "Podrobnosti o sredstvu: %s"
 
 #: views.py:117
 #, python-format
 msgid "Edit asset: %s"
-msgstr ""
+msgstr "Uredi sredstvo: %s"
 
 #: views.py:139
 msgid ""
 "Assets are files that can be used in conjuction with certain "
 "transformations."
 msgstr ""
+"Sredstva so datoteke, ki jih je mogoče uporabiti v povezavi z določenimi "
+"transformacijami."
 
 #: views.py:142
 msgid "No assets available"
-msgstr ""
+msgstr "Ni sredstev na voljo"
 
 #: views.py:168
 #, python-format
 msgid "Error creating transformation: %s."
-msgstr ""
+msgstr "Napaka pri ustvarjanju transformacije: %s."
 
 #: views.py:185
 #, python-format
@@ -434,30 +461,35 @@ msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
 msgstr ""
+"Ustvari plast &quot;%(layer)s&quot; transformacija "
+"&quot;%(transformation)s&quot; za: %(object)s"
 
 #: views.py:241
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr ""
+"Izbrisati transformacijo &quot;%(transformation)s&quot; za: "
+"%(content_object)s?"
 
 #: views.py:290
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr ""
+"Uredi transformacijo &quot;%(transformation)s&quot; za: %(content_object)s"
 
 #: views.py:344
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
-msgstr ""
+msgstr "Ni vnosov za sloj &quot;%(layer_name)s&quot;"
 
 #: views.py:347
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
-msgstr ""
+msgstr "Transformacije plasti &quot;%(layer)s&quot; za: %(object)s"
 
 #: views.py:392
 msgid "Transformation created successfully."
-msgstr ""
+msgstr "Transformacija je bila uspešno ustvarjena."
 
 #: views.py:416
 msgid "Select"
@@ -467,6 +499,7 @@ msgstr "Izberi"
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
 msgstr ""
+"Izberite novo transformacijo plasti &quot;%(layer)s&quot; za: %(object)s"
 
 #: workflow_actions.py:22
 msgid "Pages"
@@ -477,19 +510,21 @@ msgid ""
 "Pages to which the new transformations will be added. Separate by commas "
 "and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
+"Strani, na katere bodo dodane nove transformacije. Ločite z vejicami in/ali "
+"uporabite pomišljaje za obsege. Pustite prazno, da izberete vse strani."
 
 #: workflow_actions.py:32
 msgid "Transformation class"
-msgstr ""
+msgstr "Razred preobrazbe"
 
 #: workflow_actions.py:37
 msgid "Type of transformation to add."
-msgstr ""
+msgstr "Vrsta transformacije za dodajanje."
 
 #: workflow_actions.py:42
 msgid "Transformation arguments"
-msgstr ""
+msgstr "Argumenti transformacije"
 
 #: workflow_actions.py:51
 msgid "Add transformation"
-msgstr ""
+msgstr "Dodajte transformacijo"

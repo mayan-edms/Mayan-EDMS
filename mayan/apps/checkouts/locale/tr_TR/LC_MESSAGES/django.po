@@ -6,14 +6,15 @@
 # Translators:
 # Caner Başaran <basaran.caner@gmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:52+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +28,7 @@ msgstr "Teslim alınmışlar"
 
 #: dashboard_widgets.py:14 views.py:178
 msgid "Checked out documents"
-msgstr ""
+msgstr "Teslim alınan belgeler"
 
 #: events.py:8
 msgid "Document automatically checked in"
@@ -47,7 +48,7 @@ msgstr "Belge zorla teslim edildi"
 
 #: exceptions.py:15
 msgid "Document not checked out."
-msgstr ""
+msgstr "Belge teslim edilmedi."
 
 #: exceptions.py:23
 msgid "Document already checked out."
@@ -71,7 +72,7 @@ msgstr "Teslim alma son kullanma tarihi"
 
 #: forms.py:51
 msgid "New files allowed?"
-msgstr ""
+msgstr "Yeni dosyalara izin verilsin mi?"
 
 #: forms.py:52
 msgid "Yes"
@@ -87,7 +88,7 @@ msgstr "Belgeyi teslim al"
 
 #: links.py:43
 msgid "Check out"
-msgstr ""
+msgstr "Teslim et"
 
 #: links.py:50
 msgid "Check in document"
@@ -95,7 +96,7 @@ msgstr "Belgeyi teslim et"
 
 #: links.py:54
 msgid "Check in"
-msgstr ""
+msgstr "Teslim al"
 
 #: links.py:60
 msgid "Check in/out"
@@ -127,11 +128,11 @@ msgstr "Teslim alma son kullanma tarihi ve saati"
 
 #: models.py:51
 msgid "Do not allow new file of this document to be uploaded."
-msgstr ""
+msgstr "Bu belgenin yeni dosya yüklenmesine izin verme."
 
 #: models.py:53
 msgid "Block new file upload"
-msgstr ""
+msgstr "Yeni dosya yüklemesini engelle"
 
 #: models.py:61 permissions.py:5
 msgid "Document checkout"
@@ -179,77 +180,77 @@ msgstr "Süresi geçen teslim alma kayıt kontrolü"
 
 #: serializers.py:39
 msgid "Primary key of the document to be checked out."
-msgstr ""
+msgstr "Teslim alınacak belgenin birincil anahtarı."
 
 #: views.py:25
 #, python-format
 msgid "Unable to check in document \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "\"%(instance)s\" belgesi teslim edilemiyor; %(exception)s"
 
 #: views.py:29
 #, python-format
 msgid "Document \"%(object)s\" checked in successfully."
-msgstr ""
+msgstr "\"%(object)s\" belgesi başarıyla teslim edildi."
 
 #: views.py:32
 #, python-format
 msgid "%(count)d document checked in successfully."
-msgstr ""
+msgstr "%(count)d belgesi başarıyla teslim edildi."
 
 #: views.py:35
 #, python-format
 msgid "%(count)d documents checked in successfully."
-msgstr ""
+msgstr "%(count)d belgeleri başarıyla teslim edildi."
 
 #: views.py:37
 #, python-format
 msgid "Check in document \"%(object)s\"."
-msgstr ""
+msgstr "\"%(object)s\" belgesini teslim et."
 
 #: views.py:38
 #, python-format
 msgid "Check in %(count)d document."
-msgstr ""
+msgstr "%(count)d belgesini teslim et."
 
 #: views.py:39
 #, python-format
 msgid "Check in %(count)d documents."
-msgstr ""
+msgstr "%(count)d belgelerini teslim et."
 
 #: views.py:91
 #, python-format
 msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "\"%(instance)s\" belgesi teslim alınamıyor; %(exception)s"
 
 #: views.py:98
 #, python-format
 msgid "Document \"%(object)s\" checked out successfully."
-msgstr ""
+msgstr "\"%(object)s\" belgesi başarıyla teslim alındı."
 
 #: views.py:101
 #, python-format
 msgid "%(count)d document checked out successfully."
-msgstr ""
+msgstr "%(count)d belgesi başarıyla teslim alındı."
 
 #: views.py:104
 #, python-format
 msgid "%(count)d documents checked out successfully."
-msgstr ""
+msgstr "%(count)d belgeleri başarıyla teslim alındı."
 
 #: views.py:106
 #, python-format
 msgid "Checkout document \"%(object)s\"."
-msgstr ""
+msgstr "\"%(object)s\" belgesini teslim al."
 
 #: views.py:107
 #, python-format
 msgid "Checkout %(count)d document."
-msgstr ""
+msgstr "%(count)d belgesini teslim al."
 
 #: views.py:108
 #, python-format
 msgid "Checkout %(count)d documents."
-msgstr ""
+msgstr "%(count)d belgelerini teslim al."
 
 #: views.py:154
 #, python-format
@@ -261,11 +262,13 @@ msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr ""
+"Bir belgeyi teslim almak, önceden belirlenmiş bir süre boyunca belirli "
+"işlemleri engeller."
 
 #: views.py:177
 msgid "No documents have been checked out"
-msgstr ""
+msgstr "Hiçbir belge teslim alınmamış"
 
 #: widgets.py:23
 msgid "Amount"
-msgstr ""
+msgstr "Tutar"

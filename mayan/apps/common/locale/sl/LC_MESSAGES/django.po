@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:52+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
@@ -23,108 +23,109 @@ msgstr ""
 
 #: apps.py:132 permissions.py:5 settings.py:15
 msgid "Common"
-msgstr ""
+msgstr "Običajni"
 
 #: classes.py:409
 msgid "Model properties"
-msgstr ""
+msgstr "Lastnosti modela"
 
 #: classes.py:414
 msgid "Model fields"
-msgstr ""
+msgstr "Modelna polja"
 
 #: classes.py:457
 msgid "Model related fields"
-msgstr ""
+msgstr "Polja, povezana z modelom"
 
 #: classes.py:462
 msgid "Model reverse fields"
-msgstr ""
+msgstr "Obratna polja modela"
 
 #: dependencies.py:169
 msgid "Used to allow offline translation of the code text strings."
 msgstr ""
+"Uporablja se za omogočanje prevajanja besedilnih nizov kode brez povezave."
 
 #: dependencies.py:178
 msgid "Provides style checking."
-msgstr ""
+msgstr "Omogoča preverjanje sloga."
 
 #: dependencies.py:183
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Okolje ukazne vrstice s samodokončanjem."
 
 #: dependencies.py:188
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Preveri pravilno oblikovanje datoteke README."
 
 #: links.py:30
 msgid "About this"
-msgstr ""
+msgstr "O tem"
 
 #: links.py:33
 msgid "Get the book"
-msgstr ""
+msgstr "Pridobite knjigo"
 
 #: links.py:38
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentacija"
 
 #: links.py:41
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
 
 #: links.py:45 views.py:48
 msgid "License"
-msgstr ""
+msgstr "Licenca"
 
 #: links.py:50
 msgid "Copy"
-msgstr ""
+msgstr "Kopirati"
 
 #: links.py:54
 msgid "Setup"
-msgstr ""
+msgstr "Nastaviti"
 
 #: links.py:57
 msgid "Source code"
-msgstr ""
+msgstr "Izvorna koda"
 
 #: links.py:61
 msgid "Online store"
-msgstr ""
+msgstr "Spletna trgovina"
 
 #: links.py:65
 msgid "Get support"
-msgstr ""
+msgstr "Pridobite podporo"
 
 #: links.py:69 queues.py:6 views.py:122
 msgid "Tools"
-msgstr ""
+msgstr "Orodja"
 
 #: literals.py:20
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
+msgstr "Ta funkcija je zastarela in bo odstranjena v prihodnji različici."
 
 #: literals.py:28
 msgid "Days"
-msgstr ""
+msgstr "Dnevi"
 
 #: literals.py:29
 msgid "Hours"
-msgstr ""
+msgstr "Ure"
 
 #: literals.py:30
 msgid "Minutes"
-msgstr ""
+msgstr "minute"
 
 #: menus.py:8
 msgid "System"
-msgstr ""
+msgstr "Sistem"
 
 #: menus.py:10 menus.py:11
 msgid "Facet"
-msgstr ""
+msgstr "Faseta"
 
 #: menus.py:14
 msgid "Actions"
@@ -132,35 +133,39 @@ msgstr "Dejanja"
 
 #: menus.py:15
 msgid "Related"
-msgstr ""
+msgstr "Povezano"
 
 #: menus.py:16
 msgid "Secondary"
-msgstr ""
+msgstr "Sekundarno"
 
 #: menus.py:18
 msgid "Return"
-msgstr ""
+msgstr "Vrnitev"
 
 #: menus.py:22
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
 
 #: permissions.py:8
 msgid "Copy object"
-msgstr ""
+msgstr "Kopiraj predmet"
 
 #: settings.py:22
 msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
 msgstr ""
+"V načinu seznama prikažite možnosti menija »faseta seznama« kot spustni meni"
+" namesto posameznih gumbov."
 
 #: settings.py:30
 msgid ""
 "In list mode, show the \"object\" menu options as a dropdown menu instead of"
 " individual buttons."
 msgstr ""
+"V načinu seznama prikažite možnosti menija &quot;predmet&quot; kot spustni "
+"meni namesto posameznih gumbov."
 
 #: settings.py:37
 msgid ""
@@ -169,6 +174,10 @@ msgid ""
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
+"Seznam nizov, ki označujejo vse aplikacije, ki jih je treba odstraniti s "
+"seznama, ki ga običajno namesti Mayan EDMS. Vsak niz mora biti pot Python s "
+"pikami do: konfiguracijskega razreda aplikacije (prednostno) ali paketa, ki "
+"vsebuje aplikacijo. Primer: [&#39;aplikacija_1&#39;, &#39;aplikacija_2&#39;]"
 
 #: settings.py:47
 msgid ""
@@ -177,6 +186,10 @@ msgid ""
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
+"Seznam nizov, ki označujejo vse aplikacije, ki so nameščene poleg tistih, ki"
+" jih običajno namesti Mayan EDMS. Vsak niz mora biti pot Python s pikami do:"
+" konfiguracijskega razreda aplikacije (prednostno) ali paketa, ki vsebuje "
+"aplikacijo. Primer: [&#39;aplikacija_1&#39;, &#39;aplikacija_2&#39;]"
 
 #: settings.py:58
 msgid ""
@@ -186,42 +199,51 @@ msgid ""
 " containing an application. These apps will be installed before the default "
 "apps. Example: ['app_1', 'app_2']"
 msgstr ""
+"Seznam nizov, ki označujejo vse aplikacije, ki so nameščene poleg tistih, ki"
+" jih običajno namesti Mayan EDMS. Vsak niz mora biti pot Python s pikami do:"
+" konfiguracijskega razreda aplikacije (prednostno) ali paketa, ki vsebuje "
+"aplikacijo. Te aplikacije bodo nameščene pred privzetimi aplikacijami. "
+"Primer: [&#39;aplikacija_1&#39;, &#39;aplikacija_2&#39;]"
 
 #: settings.py:69
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
 msgstr ""
+"Ime pogleda, pritrjenega sidru blagovne znamke v glavnem meniju. To je tudi "
+"pogled, na katerega bodo uporabniki preusmerjeni po prijavi."
 
 #: settings.py:78
 msgid "Name of the dashboard to display in the home view."
-msgstr ""
+msgstr "Ime nadzorne plošče za prikaz v domačem pogledu."
 
 #: settings.py:83
 msgid "Sets the project's name."
-msgstr ""
+msgstr "Nastavi ime projekta."
 
 #: settings.py:87
 msgid "URL of the project's homepage."
-msgstr ""
+msgstr "URL domače strani projekta."
 
 #: templates/common/app/viewport.html:15
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Kliknite tukaj, da to popravite."
 
 #: validators.py:40
 msgid "Enter a valid JSON value."
-msgstr ""
+msgstr "Vnesite veljavno vrednost JSON."
 
 #: validators.py:64
 msgid "Enter a valid YAML value."
-msgstr ""
+msgstr "Vnesite veljavno vrednost YAML."
 
 #: validators.py:80
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
 msgstr ""
+"Vnesite veljavno &#39;interno ime&#39;, sestavljeno iz črk, številk in "
+"podčrtajev."
 
 #: views.py:22
 msgid "About"
@@ -229,40 +251,42 @@ msgstr " O programu"
 
 #: views.py:39
 msgid "Home"
-msgstr ""
+msgstr "domov"
 
 #: views.py:62
 #, python-format
 msgid "Fields to be copied: %s"
-msgstr ""
+msgstr "Polja za kopiranje: %s"
 
 #: views.py:72
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
-msgstr ""
+msgstr "Narediti kopijo %(object_name)s &quot;%(object)s&quot;?"
 
 #: views.py:83
 msgid "Object copied successfully."
-msgstr ""
+msgstr "Objekt je uspešno kopiran."
 
 #: views.py:100
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr ""
+"Tukaj ni rezultatov, kar pomeni, da nima potrebnih dovoljenj za izvajanje "
+"skrbniške naloge."
 
 #: views.py:103
 msgid "No setup options available."
-msgstr ""
+msgstr "Možnosti nastavitve niso na voljo."
 
 #: views.py:107
 msgid "Setup items"
-msgstr ""
+msgstr "Nastavitveni elementi"
 
 #: views.py:109
 msgid "Here you can configure all aspects of the system."
-msgstr ""
+msgstr "Tukaj lahko konfigurirate vse vidike sistema."
 
 #: views.py:124
 msgid "These modules are used to do system maintenance."
-msgstr ""
+msgstr "Ti moduli se uporabljajo za vzdrževanje sistema."

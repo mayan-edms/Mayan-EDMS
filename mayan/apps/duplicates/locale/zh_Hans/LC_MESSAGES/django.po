@@ -6,14 +6,15 @@
 # Translators:
 # yan songwei <yansw@vip.163.com>, 2022
 # Roberto Rosario, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Leon Chu, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +28,7 @@ msgstr "重复"
 
 #: apps.py:60
 msgid "Duplicate backend"
-msgstr ""
+msgstr "重製後台"
 
 #: classes.py:90
 msgid "Null backend"
@@ -35,11 +36,11 @@ msgstr "空后端"
 
 #: duplicate_backends.py:9
 msgid "Exact document file checksum"
-msgstr ""
+msgstr "正確的文件檔案檢查碼"
 
 #: duplicate_backends.py:32
 msgid "Exact document label"
-msgstr ""
+msgstr "正確的檔案標籤"
 
 #: links.py:18 models.py:41 views.py:73
 msgid "Duplicated documents"
@@ -51,11 +52,11 @@ msgstr "重复的文件扫描"
 
 #: models.py:23 models.py:33
 msgid "Stored duplicate backend"
-msgstr ""
+msgstr "已存入之重製後台"
 
 #: models.py:24
 msgid "Stored duplicate backends"
-msgstr ""
+msgstr "已存入的重複後台"
 
 #: models.py:37
 msgid "Document"
@@ -63,11 +64,11 @@ msgstr "文档"
 
 #: models.py:49
 msgid "Duplicated backend entry"
-msgstr ""
+msgstr "重複的後台條目"
 
 #: models.py:50
 msgid "Duplicated backend entries"
-msgstr ""
+msgstr "重複的後台條目"
 
 #: queues.py:14
 msgid "Clean empty duplicate lists"
@@ -75,7 +76,7 @@ msgstr "清理空的重复列表"
 
 #: queues.py:18
 msgid "Scan document duplicates"
-msgstr ""
+msgstr "掃描是否有重複文件"
 
 #: views.py:32
 msgid "Only exact copies of this document will be shown in the this list."

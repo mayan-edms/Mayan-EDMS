@@ -6,14 +6,15 @@
 # Translators:
 # Caner Başaran <basaran.caner@gmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:52+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,17 +24,19 @@ msgstr ""
 
 #: apps.py:13 settings.py:7
 msgid "Auto administrator"
-msgstr ""
+msgstr "Otomatik yönetici"
 
 #: auth/allauth.py:51
 msgid ""
 "Welcome Admin! You have been given superuser privileges. Use them with "
 "caution."
 msgstr ""
+"Hoş Geldiniz Admin! Size süper kullanıcı ayrıcalıkları verildi. Onları "
+"dikkatli kullanın."
 
 #: models.py:13
 msgid "Account"
-msgstr ""
+msgstr "Hesap"
 
 #: models.py:16
 msgid "Password"
@@ -41,36 +44,39 @@ msgstr "Parola"
 
 #: models.py:19
 msgid "Password hash"
-msgstr ""
+msgstr "Şifre hash"
 
 #: models.py:25
 msgid "Autoadmin properties"
-msgstr ""
+msgstr "Otomatik yönetici özellikleri"
 
 #: settings.py:11
 msgid "Sets the email of the automatically created super user account."
 msgstr ""
+"Otomatik olarak oluşturulan süper kullanıcı hesabının e-postasını ayarla."
 
 #: settings.py:16
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
 msgstr ""
+"Otomatik olarak oluşturulan süper kullanıcı hesabının şifresi. Eğer bu alan "
+"boşsa şifre rastgele oluşturulur."
 
 #: settings.py:22
 msgid "The username of the automatically created super user account."
-msgstr ""
+msgstr "Otomatik olarak oluşturulan süper kullanıcı hesabının kullanıcı adı."
 
 #: templates/autoadmin/credentials.html:11
 msgid "Automatic credentials"
-msgstr ""
+msgstr "Otomatik kimlik bilgileri"
 
 #: templates/autoadmin/credentials.html:16
 #, python-format
 msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
-msgstr ""
+msgstr "<strong>%(project_title)s</strong> kurulumunu bitirdiniz, tebrikler!"
 
 #: templates/autoadmin/credentials.html:17
 msgid "Login using the following credentials:"

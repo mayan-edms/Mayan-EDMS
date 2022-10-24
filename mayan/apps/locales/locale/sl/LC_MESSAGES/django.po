@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
@@ -22,39 +22,39 @@ msgstr ""
 
 #: apps.py:28 events.py:5
 msgid "Locales"
-msgstr ""
+msgstr "Locales"
 
 #: events.py:8
 msgid "User locale profile edited"
-msgstr ""
+msgstr "Uporabniški področni profil je urejen"
 
 #: links.py:18
 msgid "Locale profile"
-msgstr ""
+msgstr "Lokalni profil"
 
 #: links.py:25
 msgid "Edit locale profile"
-msgstr ""
+msgstr "Uredi področni profil"
 
 #: models.py:21
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
 
 #: models.py:25
 msgid "Timezone"
-msgstr ""
+msgstr "Časovni pas"
 
 #: models.py:28
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 #: models.py:34
 msgid "User locale profile"
-msgstr ""
+msgstr "Področni profil uporabnika"
 
 #: models.py:35
 msgid "User locale profiles"
-msgstr ""
+msgstr "Področni profili uporabnikov"
 
 #: models.py:39
 msgid "None"
@@ -63,9 +63,9 @@ msgstr "Nobenega"
 #: views.py:36
 #, python-format
 msgid "Locale profile for user: %s"
-msgstr ""
+msgstr "Lokalni profil za uporabnika: %s"
 
 #: views.py:82
 #, python-format
 msgid "Edit locale profile for user: %s"
-msgstr ""
+msgstr "Urejanje področnega profila za uporabnika: %s"

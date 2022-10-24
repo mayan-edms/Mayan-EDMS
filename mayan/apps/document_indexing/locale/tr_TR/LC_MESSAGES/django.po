@@ -6,14 +6,15 @@
 # Translators:
 # abc Def <hdogan1974@gmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,7 +80,7 @@ msgstr ""
 
 #: forms.py:32
 msgid "Template"
-msgstr ""
+msgstr "Şablon"
 
 #: handlers.py:19
 msgid "Creation date"
@@ -249,7 +250,7 @@ msgstr ""
 
 #: models.py:493
 msgid "Full path"
-msgstr ""
+msgstr "Tam yol"
 
 #: models.py:517
 msgid "Document index node instance"
@@ -309,7 +310,7 @@ msgstr "Belge Türü"
 
 #: search.py:33
 msgid "Document MIME type"
-msgstr ""
+msgstr "Belge MIME tipi"
 
 #: search.py:36
 msgid "Document label"
@@ -317,15 +318,15 @@ msgstr "Belge etiketi"
 
 #: search.py:39
 msgid "Document description"
-msgstr ""
+msgstr "Belge Açıklaması"
 
 #: search.py:42
 msgid "Document UUID"
-msgstr ""
+msgstr "Belge UUID"
 
 #: search.py:46
 msgid "Document checksum"
-msgstr ""
+msgstr "Belge sağlama toplamı"
 
 #: serializers.py:205
 msgid ""

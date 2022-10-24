@@ -3,12 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,40 +22,44 @@ msgstr ""
 
 #: apps.py:14 settings.py:11
 msgid "Platform"
-msgstr ""
+msgstr "Platforma"
 
 #: classes.py:183
 msgid "Template for entrypoint.sh file inside a Docker image."
-msgstr ""
+msgstr "Predloga za datoteko entrypoint.sh znotraj slike Docker."
 
 #: classes.py:194
 msgid "Template that generates a Dockerfile file."
-msgstr ""
+msgstr "Predloga, ki ustvari datoteko Dockerfile."
 
 #: classes.py:209
 msgid "Template for Supervisord inside a Docker image."
-msgstr ""
+msgstr "Predloga za Supervisor znotraj slike Docker."
 
 #: classes.py:227
 msgid "Template that generates a GitLab CI config file."
-msgstr ""
+msgstr "Predloga, ki ustvari konfiguracijsko datoteko GitLab CI."
 
 #: classes.py:271
 msgid "Template for Supervisord."
-msgstr ""
+msgstr "Predloga za nadzornika."
 
 #: classes.py:344
 msgid "Template showing the queues of a worker."
-msgstr ""
+msgstr "Predloga, ki prikazuje čakalne vrste delavca."
 
 #: settings.py:16
 msgid ""
 "List of client backends to launch after startup. Use full dotted path to the"
 " client backend classes."
 msgstr ""
+"Seznam ozadja odjemalca za zagon po zagonu. Uporabite polno pikčasto pot do "
+"zalednih razredov odjemalca."
 
 #: settings.py:23
 msgid ""
 "Arguments for the client backends. Use the client backend dotted path as the"
 " dictionary key for the arguments in dictionary format."
 msgstr ""
+"Argumenti za odjemalska zaledja. Uporabite črtkano pot zaledja odjemalca kot"
+" ključ slovarja za argumente v formatu slovarja."

@@ -8,14 +8,15 @@
 # Ford Guo <agile.guo@gmail.com>, 2022
 # Roberto Rosario, 2022
 # yan songwei <yansw@vip.163.com>, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: yan songwei <yansw@vip.163.com>, 2022\n"
+"Last-Translator: Leon Chu, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,12 +83,12 @@ msgstr "需要至少指定一个：app_label或模块。"
 #: classes.py:313
 #, python-format
 msgid "Dependency \"%s\" already registered."
-msgstr ""
+msgstr "相依性 \"%s\"已被註冊"
 
 #: classes.py:339
 #, python-format
 msgid "Installing package: %s... "
-msgstr ""
+msgstr "正在安裝封裝包 : %s..."
 
 #: classes.py:344
 msgid "Already installed."
@@ -270,7 +271,7 @@ msgstr "用户组"
 
 #: links.py:23
 msgid "Entries"
-msgstr ""
+msgstr "條目"
 
 #: links.py:29
 msgid "Details"
@@ -301,21 +302,21 @@ msgstr "处理特定的应用程序。"
 
 #: management/commands/installdependencies.py:17
 msgid "Force installation even if already installed."
-msgstr ""
+msgstr "強迫安裝即便已經安裝過"
 
 #: permissions.py:8
 msgid "View dependencies"
-msgstr ""
+msgstr "瀏覽相依性"
 
 #: views.py:32
 #, python-format
 msgid "Entries for dependency group: %s"
-msgstr ""
+msgstr "相依性群組的條目:%s"
 
 #: views.py:45 views.py:90
 #, python-format
 msgid "Group %s not found."
-msgstr ""
+msgstr "群組%s未發現"
 
 #: views.py:58
 msgid "Dependency groups"
@@ -324,12 +325,12 @@ msgstr "依赖组"
 #: views.py:78
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
-msgstr ""
+msgstr "相依性群組與條目: %(group)s,%(entry)s"
 
 #: views.py:102
 #, python-format
 msgid "Entry %s not found."
-msgstr ""
+msgstr "條目%s未發現"
 
 #: views.py:120
 msgid "Other packages licenses"

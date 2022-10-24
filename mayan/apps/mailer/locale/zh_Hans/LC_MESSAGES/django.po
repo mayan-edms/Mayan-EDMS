@@ -8,14 +8,15 @@
 # yan songwei <yansw@vip.163.com>, 2022
 # bo feng <87289884@qq.com>, 2022
 # Roberto Rosario, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Leon Chu, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -345,7 +346,7 @@ msgstr "%(email)s不是有效的电子邮件地址。"
 
 #: views/base.py:65
 msgid "Document file"
-msgstr ""
+msgstr "文件檔案"
 
 #: views/document_file_views.py:17
 #, python-format

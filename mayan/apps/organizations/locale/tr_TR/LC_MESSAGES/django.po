@@ -3,12 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Bedreddin Şahbaz, 2022
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,11 +22,11 @@ msgstr ""
 
 #: apps.py:16 settings.py:11
 msgid "Organizations"
-msgstr ""
+msgstr "Organizasyonlar"
 
 #: setting_validators.py:13
 msgid "The path value must not include a leading or trailing slash."
-msgstr ""
+msgstr "Yol değeri, başında veya sonunda \"/\" içermemelidir."
 
 #: settings.py:17
 msgid ""
@@ -30,9 +34,16 @@ msgid ""
 "one. Do not include the path. Use the ORGANIZATIONS_URL_BASE_PATH setting to"
 " specify the path. Example: https://www.example.com:8080"
 msgstr ""
+"Özel bir tane kullanılıyorsa, şema ve port numarası dahil olmak üzere tam "
+"etki alanı. Yolu dahil etmeyin. Yolu belirtmek için "
+"ORGANIZATIONS_URL_BASE_PATH ayarını kullanın. Örnek: "
+"https://www.example.com:8080"
 
 #: settings.py:27
 msgid ""
 "Base URL path to use for all views. Used when hosting using a path that is "
 "not the root path of the web server. Example: /mayan-installations/home/"
 msgstr ""
+"Tüm görünümler için kullanılacak temel URL yolu. Web sunucusunun kök yolu "
+"olmayan bir yol kullanılarak barındırma yapılırken kullanılır. Örnek: "
+"/mayan-kurulumları/ev/"

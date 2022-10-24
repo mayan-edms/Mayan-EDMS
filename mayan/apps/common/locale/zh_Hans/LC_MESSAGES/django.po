@@ -7,14 +7,15 @@
 # yan songwei <yansw@vip.163.com>, 2022
 # Ford Guo <agile.guo@gmail.com>, 2022
 # Roberto Rosario, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:52+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Leon Chu, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,35 +29,35 @@ msgstr "常用"
 
 #: classes.py:409
 msgid "Model properties"
-msgstr ""
+msgstr "模型特性"
 
 #: classes.py:414
 msgid "Model fields"
-msgstr ""
+msgstr "Model fields"
 
 #: classes.py:457
 msgid "Model related fields"
-msgstr ""
+msgstr "Model related fields"
 
 #: classes.py:462
 msgid "Model reverse fields"
-msgstr ""
+msgstr "Model reverse fields"
 
 #: dependencies.py:169
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "用來允許離現翻譯程式碼的文字字串"
 
 #: dependencies.py:178
 msgid "Provides style checking."
-msgstr ""
+msgstr "提供格式檢查"
 
 #: dependencies.py:183
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "含有自動完成之命令列環境"
 
 #: dependencies.py:188
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "檢查適當的README檔案格式"
 
 #: links.py:30
 msgid "About this"
@@ -64,7 +65,7 @@ msgstr "关于这个"
 
 #: links.py:33
 msgid "Get the book"
-msgstr ""
+msgstr "獲得說明"
 
 #: links.py:38
 msgid "Documentation"
@@ -80,7 +81,7 @@ msgstr "许可"
 
 #: links.py:50
 msgid "Copy"
-msgstr ""
+msgstr "副本"
 
 #: links.py:54
 msgid "Setup"
@@ -92,11 +93,11 @@ msgstr "源代码"
 
 #: links.py:61
 msgid "Online store"
-msgstr ""
+msgstr "線上商店"
 
 #: links.py:65
 msgid "Get support"
-msgstr ""
+msgstr "取得協助"
 
 #: links.py:69 queues.py:6 views.py:122
 msgid "Tools"
@@ -105,7 +106,7 @@ msgstr "工具"
 #: literals.py:20
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
+msgstr "此功能已經被反對將於未來新版本上移除"
 
 #: literals.py:28
 msgid "Days"
@@ -125,7 +126,7 @@ msgstr "系统"
 
 #: menus.py:10 menus.py:11
 msgid "Facet"
-msgstr ""
+msgstr "方面"
 
 #: menus.py:14
 msgid "Actions"
@@ -133,11 +134,11 @@ msgstr "操作"
 
 #: menus.py:15
 msgid "Related"
-msgstr ""
+msgstr "相關的"
 
 #: menus.py:16
 msgid "Secondary"
-msgstr ""
+msgstr "第二的"
 
 #: menus.py:18
 msgid "Return"
@@ -149,19 +150,19 @@ msgstr "用户"
 
 #: permissions.py:8
 msgid "Copy object"
-msgstr ""
+msgstr "複製物件"
 
 #: settings.py:22
 msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
-msgstr ""
+msgstr "此模式下, 顯示\"列出項目\"選單選項如拖拉選單來取代個別的按鈕"
 
 #: settings.py:30
 msgid ""
 "In list mode, show the \"object\" menu options as a dropdown menu instead of"
 " individual buttons."
-msgstr ""
+msgstr "此模式下, 顯示\"列出物件\"選單選項如拖拉選單來取代個別的按鈕"
 
 #: settings.py:37
 msgid ""
@@ -170,6 +171,8 @@ msgid ""
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
+"透過Mayan EDMS安裝的, 設計用來給所有應用程式的字串列表將將被移除.\n"
+"各個字串必須是虛擬的Python路徑. 各應用程式設定類別或含有其應用程式的封裝.例如['app_1', 'app_2']"
 
 #: settings.py:47
 msgid ""
@@ -178,6 +181,8 @@ msgid ""
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
+"透過Mayan EDMS安裝的, 設計用來給所有應用程式的字串列表將被安裝.各個字串必須是虛擬的Python路徑(偏好的). "
+"各應用程式設定類別或含有其應用程式的封裝.例如['app_1', 'app_2']"
 
 #: settings.py:58
 msgid ""
@@ -187,24 +192,26 @@ msgid ""
 " containing an application. These apps will be installed before the default "
 "apps. Example: ['app_1', 'app_2']"
 msgstr ""
+"設計用來給所有應用程式的字串列表將被安裝在透過Mayan EDMS安裝的字串之後, 各個字串必須是虛擬的Python路徑(偏好的). "
+"各應用程式設定類別或含有其應用程式的封裝.例如['app_1', 'app_2']"
 
 #: settings.py:69
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
-msgstr ""
+msgstr "主選單商標錨點的名稱, 這也是使用者登入後會被轉指向的畫面"
 
 #: settings.py:78
 msgid "Name of the dashboard to display in the home view."
-msgstr ""
+msgstr "顯示於首頁的告示牌名稱"
 
 #: settings.py:83
 msgid "Sets the project's name."
-msgstr ""
+msgstr "設定專案名稱"
 
 #: settings.py:87
 msgid "URL of the project's homepage."
-msgstr ""
+msgstr "專案首頁的URL"
 
 #: templates/common/app/viewport.html:15
 msgid "Click here to fix this."
@@ -212,7 +219,7 @@ msgstr "单击此处修复此问题。"
 
 #: validators.py:40
 msgid "Enter a valid JSON value."
-msgstr ""
+msgstr "輸入有效的 JSON 值"
 
 #: validators.py:64
 msgid "Enter a valid YAML value."
@@ -230,21 +237,21 @@ msgstr "关于"
 
 #: views.py:39
 msgid "Home"
-msgstr ""
+msgstr "首頁"
 
 #: views.py:62
 #, python-format
 msgid "Fields to be copied: %s"
-msgstr ""
+msgstr "將要被複製的區段: %s"
 
 #: views.py:72
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
-msgstr ""
+msgstr "製作 %(object_name)s的副本 \"%(object)s\"?"
 
 #: views.py:83
 msgid "Object copied successfully."
-msgstr ""
+msgstr "物件複製成功"
 
 #: views.py:100
 msgid ""
@@ -262,8 +269,8 @@ msgstr "设置项目"
 
 #: views.py:109
 msgid "Here you can configure all aspects of the system."
-msgstr ""
+msgstr "你可以對此系統各項的設定"
 
 #: views.py:124
 msgid "These modules are used to do system maintenance."
-msgstr ""
+msgstr "這些模組通常用來做系統維護使用"

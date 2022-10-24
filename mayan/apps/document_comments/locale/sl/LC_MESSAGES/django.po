@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
@@ -23,23 +23,23 @@ msgstr ""
 
 #: apps.py:32 events.py:6 search.py:18 search.py:25 search.py:32 search.py:39
 msgid "Document comments"
-msgstr ""
+msgstr "Komentarji dokumenta"
 
 #: events.py:10
 msgid "Document comment created"
-msgstr ""
+msgstr "Komentar dokumenta ustvarjen"
 
 #: events.py:13
 msgid "Document comment deleted"
-msgstr ""
+msgstr "Komentar dokumenta izbrisan"
 
 #: events.py:16
 msgid "Document comment edited"
-msgstr ""
+msgstr "Komentar dokumenta urejen"
 
 #: links.py:16
 msgid "Add comment"
-msgstr ""
+msgstr "Dodaj komentar"
 
 #: links.py:22
 msgid "Delete"
@@ -47,7 +47,7 @@ msgstr "Izbriši"
 
 #: links.py:27
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #: links.py:31 models.py:46 permissions.py:5 search.py:11
 msgid "Comments"
@@ -59,15 +59,15 @@ msgstr "Dokument"
 
 #: models.py:34 models.py:71
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
 
 #: models.py:36
 msgid "Text"
-msgstr ""
+msgstr "Besedilo"
 
 #: models.py:39
 msgid "Date time submitted"
-msgstr ""
+msgstr "Datum in čas oddaje"
 
 #: models.py:45
 msgid "Comment"
@@ -83,7 +83,7 @@ msgstr "Izbriši komentarje"
 
 #: permissions.py:14
 msgid "Edit comments"
-msgstr ""
+msgstr "Uredi komentarje"
 
 #: permissions.py:17
 msgid "View comments"
@@ -97,29 +97,31 @@ msgstr "Dodaj komentar dokumentu: %s"
 #: views.py:59
 #, python-format
 msgid "Delete comment: %s?"
-msgstr ""
+msgstr "Izbriši komentar: %s?"
 
 #: views.py:90
 #, python-format
 msgid "Details for comment: %s?"
-msgstr ""
+msgstr "Podrobnosti za komentar: %s?"
 
 #: views.py:109
 #, python-format
 msgid "Edit comment: %s?"
-msgstr ""
+msgstr "Uredi komentar: %s?"
 
 #: views.py:144
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
 msgstr ""
+"Komentarji dokumenta so besedilni vnosi uporabnikov s časovnim žigom. "
+"Odlični so za sodelovanje."
 
 #: views.py:147
 msgid "There are no comments"
-msgstr ""
+msgstr "Ni pripomb"
 
 #: views.py:149
 #, python-format
 msgid "Comments for document: %s"
-msgstr ""
+msgstr "Komentarji za dokument: %s"

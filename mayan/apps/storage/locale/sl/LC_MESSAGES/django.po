@@ -5,14 +5,15 @@
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,11 +23,11 @@ msgstr ""
 
 #: apps.py:23 settings.py:14
 msgid "Storage"
-msgstr ""
+msgstr "Shranjevanje"
 
 #: apps.py:56
 msgid "Source object"
-msgstr ""
+msgstr "Izvorni objekt"
 
 #: classes.py:86 classes.py:107
 #, python-format
@@ -34,22 +35,24 @@ msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
 "path and arguments."
 msgstr ""
+"Ni mogoče inicializirati pomnilnika: %(name)s. Preverite črtkano pot in "
+"argumente ozadja shranjevanja."
 
 #: events.py:6 links.py:19 models.py:64 storages.py:22
 msgid "Download files"
-msgstr ""
+msgstr "Prenesite datoteke"
 
 #: events.py:10
 msgid "Download file created"
-msgstr ""
+msgstr "Prenos datoteke ustvarjen"
 
 #: events.py:13
 msgid "Download file deleted"
-msgstr ""
+msgstr "Prenos datoteke izbrisan"
 
 #: events.py:16
 msgid "Download file downloaded"
-msgstr ""
+msgstr "Prenos datoteke prenesen"
 
 #: links.py:12
 msgid "Delete"
@@ -61,26 +64,30 @@ msgstr "Prenos"
 
 #: management/commands/storage_process.py:13
 msgid "Name of the app to process."
-msgstr ""
+msgstr "Ime aplikacije za obdelavo."
 
 #: management/commands/storage_process.py:19
 msgid ""
 "Path of the database (.dbm) file that will be created/read to keep track of "
 "items processed."
 msgstr ""
+"Pot do datoteke baze podatkov (.dbm), ki bo ustvarjena/prebrana za sledenje "
+"obdelanim elementom."
 
 #: management/commands/storage_process.py:26
 msgid "Process a specific model."
-msgstr ""
+msgstr "Obdelajte določen model."
 
 #: management/commands/storage_process.py:32
 msgid ""
 "Process the files in reverse to undo the storage pipeline transformations."
 msgstr ""
+"Obdelajte datoteke v obratnem vrstnem redu, da razveljavite transformacije "
+"cevovoda za shranjevanje."
 
 #: management/commands/storage_process.py:38
 msgid "Name of the storage to process."
-msgstr ""
+msgstr "Ime pomnilnika za obdelavo."
 
 #: model_mixins.py:13 models.py:119
 msgid "Filename"
@@ -88,15 +95,15 @@ msgstr "Ime datoteke"
 
 #: model_mixins.py:16
 msgid "Date time"
-msgstr ""
+msgstr "Datum čas"
 
 #: model_mixins.py:70
 msgid "Unnamed file"
-msgstr ""
+msgstr "Neimenovana datoteka"
 
 #: models.py:42 models.py:116
 msgid "File"
-msgstr ""
+msgstr "mapa"
 
 #: models.py:52
 msgid "Label"
@@ -104,79 +111,92 @@ msgstr "Oznaka"
 
 #: models.py:56
 msgid "Permission"
-msgstr ""
+msgstr "Dovoljenje"
 
 #: models.py:63
 msgid "Download file"
-msgstr ""
+msgstr "Prenesi datoteko"
 
 #: models.py:125
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "Naložena datoteka v skupni rabi"
 
 #: models.py:126 storages.py:36
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "Naložene datoteke v skupni rabi"
 
 #: queues.py:13
 msgid "Storage periodic"
-msgstr ""
+msgstr "Periodično skladiščenje"
 
 #: queues.py:19
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Izbriši zastarela nalaganja"
 
 #: queues.py:26
 msgid "Delete stale download files"
-msgstr ""
+msgstr "Izbrišite zastarele datoteke za prenos"
 
 #: settings.py:19
 msgid "Time in seconds, after which download files will be deleted."
-msgstr ""
+msgstr "Čas v sekundah, po katerem bodo prenesene datoteke izbrisane."
 
 #: settings.py:25
 msgid ""
 "A storage backend that all workers can use to generate and hold files for "
 "download."
 msgstr ""
+"Zaledje za shranjevanje, ki ga lahko uporabljajo vsi delavci za ustvarjanje "
+"in shranjevanje datotek za prenos."
 
 #: settings.py:36
 msgid "A storage backend that all workers can use to share files."
 msgstr ""
+"Zaledje za shranjevanje, ki ga lahko vsi delavci uporabljajo za skupno rabo "
+"datotek."
 
 #: settings.py:46
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr ""
+"Začasni imenik uporablja celotno spletno mesto za shranjevanje sličic, "
+"predogledov in začasnih datotek."
 
 #: settings.py:53
 msgid "Time in seconds, after which temporary uploaded files will be deleted."
-msgstr ""
+msgstr "Čas v sekundah, po katerem bodo začasno naložene datoteke izbrisane."
 
 #: storages.py:15
 msgid ""
 "Unable to initialize the download file storage. Check the settings {} and {}"
 " for formatting errors."
 msgstr ""
+"Ni mogoče inicializirati shrambe datotek za prenos. Preverite nastavitve {} "
+"in {} za napake pri oblikovanju."
 
 #: storages.py:29
 msgid ""
 "Unable to initialize the shared uploaded file storage. Check the settings {}"
 " and {} for formatting errors."
 msgstr ""
+"Ni mogoče inicializirati skupnega pomnilnika naloženih datotek. Preverite "
+"nastavitve {} in {} za napake pri oblikovanju."
 
-#: views.py:55
+#: views.py:54
 msgid ""
 "Download files are created as a results of a an external process like an "
 "export. Download files are retained over a span of time and then removed "
 "automatically."
 msgstr ""
+"Prenesene datoteke so ustvarjene kot rezultat zunanjega postopka, kot je "
+"izvoz. Prenesene datoteke se nekaj časa hranijo in nato samodejno "
+"odstranijo."
+
+#: views.py:58
+msgid "There are no files to download."
+msgstr "Ni datotek za prenos."
 
 #: views.py:59
-msgid "There are no files to download."
-msgstr ""
-
-#: views.py:60
 msgid "Downloads"
-msgstr ""
+msgstr "Prenosi"

@@ -5,14 +5,15 @@
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,23 +27,23 @@ msgstr "Pravice"
 
 #: apps.py:106 models.py:75
 msgid "Group count"
-msgstr ""
+msgstr "Število skupin"
 
 #: classes.py:86
 msgid "Insufficient permissions."
-msgstr ""
+msgstr "Nezadostna dovoljenja."
 
 #: dashboard_widgets.py:13
 msgid "Total roles"
-msgstr ""
+msgstr "Skupaj vlog"
 
 #: events.py:10
 msgid "Role created"
-msgstr ""
+msgstr "Vloga ustvarjena"
 
 #: events.py:13
 msgid "Role edited"
-msgstr ""
+msgstr "Vloga urejena"
 
 #: links.py:20 links.py:46 models.py:48 views.py:103
 msgid "Roles"
@@ -50,7 +51,7 @@ msgstr "Vloge"
 
 #: links.py:28 views.py:52
 msgid "Create new role"
-msgstr ""
+msgstr "Ustvari novo vlogo"
 
 #: links.py:33 links.py:36
 msgid "Delete"
@@ -58,7 +59,7 @@ msgstr "Izbriši"
 
 #: links.py:41
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #: links.py:50 models.py:40
 msgid "Groups"
@@ -66,11 +67,11 @@ msgstr "Skupine"
 
 #: links.py:56
 msgid "Role permissions"
-msgstr ""
+msgstr "Dovoljenja za vlogo"
 
 #: models.py:32
 msgid "A short text describing the role."
-msgstr ""
+msgstr "Kratko besedilo z opisom vloge."
 
 #: models.py:33 search.py:14
 msgid "Label"
@@ -82,7 +83,7 @@ msgstr "Vloga"
 
 #: models.py:83
 msgid "Permission count"
-msgstr ""
+msgstr "Število dovoljenj"
 
 #: models.py:148
 msgid "Namespace"
@@ -94,91 +95,91 @@ msgstr "Ime"
 
 #: models.py:156
 msgid "Permission"
-msgstr ""
+msgstr "Dovoljenje"
 
 #: permissions.py:8
 msgid "Create roles"
-msgstr ""
+msgstr "Ustvarite vloge"
 
 #: permissions.py:11
 msgid "Delete roles"
-msgstr ""
+msgstr "Izbriši vloge"
 
 #: permissions.py:14
 msgid "Edit roles"
-msgstr ""
+msgstr "Uredi vloge"
 
 #: permissions.py:17
 msgid "View roles"
-msgstr ""
+msgstr "Ogled vlog"
 
 #: search.py:18
 msgid "Group name"
-msgstr ""
+msgstr "Ime skupine"
 
 #: serializers.py:30
 msgid "Primary key of the group to add to the role."
-msgstr ""
+msgstr "Primarni ključ skupine za dodajanje vlogi."
 
 #: serializers.py:38
 msgid "Primary key of the group to remove from the role."
-msgstr ""
+msgstr "Primarni ključ skupine za odstranitev iz vloge."
 
 #: serializers.py:46
 msgid "Primary key of the permission to add to the role."
-msgstr ""
+msgstr "Primarni ključ dovoljenja za dodajanje vlogi."
 
 #: serializers.py:53
 msgid "Primary key of the permission to remove from the role."
-msgstr ""
+msgstr "Primarni ključ dovoljenja za odstranitev iz vloge."
 
 #: views.py:31
 msgid "Available roles"
-msgstr ""
+msgstr "Razpoložljive vloge"
 
 #: views.py:32
 msgid "Group roles"
-msgstr ""
+msgstr "Skupinske vloge"
 
 #: views.py:41
 #, python-format
 msgid "Roles of group: %s"
-msgstr ""
+msgstr "Vloge skupine: %s"
 
 #: views.py:59
 #, python-format
 msgid "Error deleting role \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Napaka pri brisanju vloge &quot;%(instance)s&quot;; %(exception)s"
 
 #: views.py:64
 #, python-format
 msgid "Role \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Vloga &quot;%(object)s&quot; je bila uspešno izbrisana."
 
 #: views.py:65
 #, python-format
 msgid "%(count)d role deleted successfully."
-msgstr ""
+msgstr "%(count)d vloga je bila uspešno izbrisana."
 
 #: views.py:66
 #, python-format
 msgid "%(count)d roles deleted successfully."
-msgstr ""
+msgstr "%(count)d vloge so bile uspešno izbrisane."
 
 #: views.py:67
 #, python-format
 msgid "Delete role: %(object)s."
-msgstr ""
+msgstr "Izbriši vlogo: %(object)s."
 
 #: views.py:68
 #, python-format
 msgid "Delete the %(count)d selected role."
-msgstr ""
+msgstr "Izbrišite %(count)d izbrano vlogo."
 
 #: views.py:69
 #, python-format
 msgid "Delete the %(count)d selected roles."
-msgstr ""
+msgstr "Izbrišite %(count)d izbrane vloge."
 
 #: views.py:95
 msgid ""
@@ -187,29 +188,35 @@ msgid ""
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
 msgstr ""
+"Vloge so avtorizacijske enote. Vsebujejo skupine uporabnikov, ki podedujejo "
+"dovoljenja vlog za celoten sistem. Vloge so lahko tudi del seznamov za "
+"nadzor dostopa. Seznam nadzorov dostopa so dovoljenja, dodeljena vlogi za "
+"določene predmete, ki jih člani skupine podedujejo."
 
 #: views.py:102
 msgid "There are no roles"
-msgstr ""
+msgstr "Ni vlog"
 
 #: views.py:115
 msgid "Available groups"
-msgstr ""
+msgstr "Razpoložljive skupine"
 
 #: views.py:116
 msgid "Role groups"
-msgstr ""
+msgstr "Skupine vlog"
 
 #: views.py:125
 #, python-format
 msgid "Groups of role: %s"
-msgstr ""
+msgstr "Skupine vlog: %s"
 
 #: views.py:127
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
 msgstr ""
+"Dodajte skupine, ki bodo del vloge. Podedovali bodo dovoljenja vloge in "
+"nadzor dostopa."
 
 #: views.py:140
 msgid "Available permissions"
@@ -223,13 +230,14 @@ msgstr "Dodeljena dovoljenja"
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr ""
+"Tukaj podeljena dovoljenja bodo veljala za celoten sistem in vse predmete."
 
 #: views.py:179
 #, python-format
 msgid "Permissions for role: %s"
-msgstr ""
+msgstr "Dovoljenja za vlogo: %s"
 
 #: views.py:198
 #, python-format
 msgid "Details of permission: %s"
-msgstr ""
+msgstr "Podrobnosti o dovoljenju: %s"

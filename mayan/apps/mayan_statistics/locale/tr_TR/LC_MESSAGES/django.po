@@ -8,14 +8,15 @@
 # emreunal <bywant@gmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Nurgül Özkan <nurgulozkan@hotmail.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -47,11 +48,11 @@ msgstr "Kuyruk"
 
 #: links.py:19
 msgid "View"
-msgstr ""
+msgstr "Görünüm"
 
 #: links.py:24
 msgid "Namespace details"
-msgstr ""
+msgstr "Namespace ayrıntıları"
 
 #: links.py:29
 msgid "Namespace list"
@@ -69,23 +70,23 @@ msgstr "Tarih saat"
 
 #: models.py:14
 msgid "Data"
-msgstr ""
+msgstr "Veri"
 
 #: models.py:17
 msgid "Statistics result"
-msgstr ""
+msgstr "İstatistik sonucu"
 
 #: models.py:18
 msgid "Statistics results"
-msgstr ""
+msgstr "İstatistik sonuçları"
 
 #: permissions.py:8
 msgid "View statistics"
-msgstr ""
+msgstr "İstatistikleri görüntüle"
 
 #: queues.py:12
 msgid "Execute statistic"
-msgstr ""
+msgstr "İstatistik yürüt"
 
 #: templates/statistics/renderers/chartjs/line.html:14
 msgid "No data available."
@@ -113,12 +114,12 @@ msgstr "%s için Sonuçlar"
 #: views.py:62 views.py:88
 #, python-format
 msgid "Statistic \"%s\" not found."
-msgstr ""
+msgstr "\"%s\" istatistiği bulunamadı."
 
 #: views.py:80
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
-msgstr ""
+msgstr "Kuyruktaki istatistik \"%s\" güncellenecek mi?"
 
 #: views.py:94
 #, python-format

@@ -5,14 +5,15 @@
 # 
 # Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +23,7 @@ msgstr ""
 
 #: apps.py:19 permissions.py:5
 msgid "Templating"
-msgstr ""
+msgstr "Şablonlama"
 
 #: fields.py:19
 #, python-format
@@ -31,6 +32,8 @@ msgid ""
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 " "
 msgstr ""
+"Django'nun varsayılan şablonlama dilini kullanın "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 
 #: fields.py:37
 #, python-format
@@ -39,10 +42,13 @@ msgid ""
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 " The {{ %(variable)s }} variable is available to the template."
 msgstr ""
+"Django'nun varsayılan şablonlama dilini kullanın "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" {{ %(variable)s }} değişkeni şablon için kullanılabilir."
 
 #: forms.py:9
 msgid "Resulting text from the evaluated template."
-msgstr ""
+msgstr "Değerlendirilen şablondan elde edilen metin."
 
 #: forms.py:10
 msgid "Result"
@@ -50,33 +56,33 @@ msgstr "Sonuç"
 
 #: forms.py:20
 msgid "The template string to be evaluated."
-msgstr ""
+msgstr "Değerlendirilecek şablon dizesi."
 
 #: forms.py:21
 msgid "Template"
-msgstr ""
+msgstr "Şablon"
 
 #: links.py:11
 msgid "Sandbox"
-msgstr ""
+msgstr "Sandbox"
 
 #: permissions.py:8
 msgid "Use the template sandbox"
-msgstr ""
+msgstr "Sandbox şablonunu kullan"
 
 #: views.py:38
 #, python-format
 msgid "Template sandbox for: %s"
-msgstr ""
+msgstr "Şunun içim sandbox şablonu: %s"
 
 #: views.py:59
 #, python-format
 msgid "Template error; %(exception)s"
-msgstr ""
+msgstr "Şablon hatası; %(exception)s"
 
 #: widgets.py:64
 msgid "Filters"
-msgstr ""
+msgstr "Filtreler"
 
 #: widgets.py:71
 msgid "Tags"
@@ -84,8 +90,8 @@ msgstr "Etiketler"
 
 #: widgets.py:77
 msgid "<Filters and tags>"
-msgstr ""
+msgstr "<Filters and tags>"
 
 #: widgets.py:118
 msgid "<Model attributes>"
-msgstr ""
+msgstr "<Model attributes>"

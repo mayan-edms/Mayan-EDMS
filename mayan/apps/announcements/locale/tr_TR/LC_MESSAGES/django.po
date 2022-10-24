@@ -5,14 +5,15 @@
 # Translators:
 # Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:52+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgstr ""
 #: apps.py:36 events.py:5 links.py:40 models.py:42 permissions.py:6
 #: templates/announcements/announcements.html:8 views.py:119
 msgid "Announcements"
-msgstr ""
+msgstr "Duyurular"
 
 #: apps.py:78 apps.py:82
 msgid "None"
@@ -31,15 +32,15 @@ msgstr "Yok"
 
 #: events.py:8
 msgid "Announcement created"
-msgstr ""
+msgstr "Duyuru oluşturuldu"
 
 #: events.py:11
 msgid "Announcement edited"
-msgstr ""
+msgstr "Duyuru düzenlendi"
 
 #: links.py:17 views.py:30
 msgid "Create announcement"
-msgstr ""
+msgstr "Duyuru oluştur"
 
 #: links.py:20 links.py:26
 msgid "Delete"
@@ -51,7 +52,7 @@ msgstr "Düzenle"
 
 #: models.py:19
 msgid "Short description of this announcement."
-msgstr ""
+msgstr "Duyurunun kısa açıklaması."
 
 #: models.py:20
 msgid "Label"
@@ -59,11 +60,11 @@ msgstr "Etiket"
 
 #: models.py:23
 msgid "The actual text to be displayed."
-msgstr ""
+msgstr "Görüntülenecek halihazırdaki metin."
 
 #: models.py:24
 msgid "Text"
-msgstr ""
+msgstr "Metin"
 
 #: models.py:26
 msgid "Enabled"
@@ -71,79 +72,79 @@ msgstr "Etkin"
 
 #: models.py:29
 msgid "Date and time after which this announcement will be displayed."
-msgstr ""
+msgstr "Bu duyurunun gösterileceği tarih ve saat."
 
 #: models.py:30
 msgid "Start date time"
-msgstr ""
+msgstr "Başlangıç tarihi saat"
 
 #: models.py:34
 msgid "Date and time until when this announcement is to be displayed."
-msgstr ""
+msgstr "Bu duyurunun gösterilemesinin bitirileceği tarih ve saat."
 
 #: models.py:35
 msgid "End date time"
-msgstr ""
+msgstr "Bitiş tarihi saat"
 
 #: models.py:41
 msgid "Announcement"
-msgstr ""
+msgstr "Duyuru"
 
 #: permissions.py:10
 msgid "Create announcements"
-msgstr ""
+msgstr "Duyuru oluştur"
 
 #: permissions.py:13
 msgid "Delete announcements"
-msgstr ""
+msgstr "Duyuruları sil"
 
 #: permissions.py:16
 msgid "Edit announcements"
-msgstr ""
+msgstr "Duyuruları düzenle"
 
 #: permissions.py:19
 msgid "View announcements"
-msgstr ""
+msgstr "Duyuruları görüntüle"
 
 #: views.py:41
 #, python-format
 msgid "Error deleting announcement \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "\"%(instance)s\" duyurusu silinirken hata oluştu; %(exception)s"
 
 #: views.py:50
 #, python-format
 msgid "Announcement \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "\"%(object)s\" duyurusu başarıyla silindi."
 
 #: views.py:53
 #, python-format
 msgid "%(count)d announcement deleted successfully."
-msgstr ""
+msgstr "%(count)d duyurusu başarıyla silindi."
 
 #: views.py:56
 #, python-format
 msgid "%(count)d announcements deleted successfully."
-msgstr ""
+msgstr "%(count)d duyuruları başarıyla silindi."
 
 #: views.py:58
 #, python-format
 msgid "Delete announcement: %(object)s."
-msgstr ""
+msgstr "Duyuruyu sil: %(object)s."
 
 #: views.py:59
 #, python-format
 msgid "Delete the %(count)d selected announcement."
-msgstr ""
+msgstr "%(count)d seçilen duyuruyu sil."
 
 #: views.py:60
 #, python-format
 msgid "Delete the %(count)d selected announcements."
-msgstr ""
+msgstr "%(count)d seçili duyuruları sil."
 
 #: views.py:92
 #, python-format
 msgid "Edit announcement: %s"
-msgstr ""
+msgstr "Duyuruyu düzenle: %s"
 
 #: views.py:114
 msgid ""
@@ -151,7 +152,10 @@ msgid ""
 "convery information about your organzation, announcements or usage "
 "guidelines for your users."
 msgstr ""
+"Duyurular, oturum açma sayfasında görüntülenir. Kullanıcılarınıza "
+"kuruluşunuz veya kullanım yönergeleri hakkında bilgi vermek için duyuruları "
+"kullanabilirsiniz."
 
 #: views.py:118
 msgid "No announcements available"
-msgstr ""
+msgstr "Duyuru yok"

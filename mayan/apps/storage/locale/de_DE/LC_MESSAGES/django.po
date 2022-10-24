@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -185,17 +185,17 @@ msgstr ""
 "initialisiert werden. Überprüfen Sie die Einstellungen {} und {} auf "
 "Formatierungsfehler."
 
-#: views.py:55
+#: views.py:54
 msgid ""
 "Download files are created as a results of a an external process like an "
 "export. Download files are retained over a span of time and then removed "
 "automatically."
 msgstr ""
 
-#: views.py:59
+#: views.py:58
 msgid "There are no files to download."
 msgstr "Keine Dateien für Download vorhanden."
 
-#: views.py:60
+#: views.py:59
 msgid "Downloads"
 msgstr "Downloads"

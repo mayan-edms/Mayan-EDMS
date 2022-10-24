@@ -8,14 +8,15 @@
 # Ford Guo <agile.guo@gmail.com>, 2022
 # yan songwei <yansw@vip.163.com>, 2022
 # Roberto Rosario, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:52+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Leon Chu, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,11 +30,11 @@ msgstr "认证"
 
 #: events.py:10
 msgid "User impersonation ended"
-msgstr ""
+msgstr "用戶模擬開始"
 
 #: events.py:13
 msgid "User impersonation started"
-msgstr ""
+msgstr "用戶模擬開始"
 
 #: events.py:16
 msgid "User logged in"
@@ -49,11 +50,11 @@ msgstr "记住账号"
 
 #: forms.py:77
 msgid "Permanent"
-msgstr ""
+msgstr "永久的"
 
 #: forms.py:78
 msgid "If selected, disables ending impersonation."
-msgstr ""
+msgstr "如果選擇了, 將禁用中止使用者模擬"
 
 #: forms.py:89
 msgid "User"
@@ -69,11 +70,11 @@ msgstr "更改密码"
 
 #: links.py:45 views/impersonation_views.py:50
 msgid "Impersonate user"
-msgstr ""
+msgstr "模擬用戶"
 
 #: links.py:50
 msgid "Impersonate"
-msgstr ""
+msgstr "模擬"
 
 #: links.py:55 links.py:60
 msgid "Set password"
@@ -81,13 +82,13 @@ msgstr "设置密码"
 
 #: permissions.py:10
 msgid "Impersonate users"
-msgstr ""
+msgstr "模擬複數用戶"
 
 #: settings.py:15
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
-msgstr ""
+msgstr "移除在登入畫面上\"Forget your Password-忘記密碼\", 這原本用來啟動重置密碼的連結."
 
 #: settings.py:23
 msgid "Dotted path to the backend used to process user authentication."
@@ -104,6 +105,8 @@ msgid ""
 "                Impersonating user \"%(user)s\".\n"
 "            "
 msgstr ""
+"\n"
+"              模擬使用者\"%(user)s\"."
 
 #: templates/authentication/app/viewport.html:16
 msgid "Click here when finished"
@@ -206,4 +209,4 @@ msgstr "重置用户“%(user)s”的密码时出错：%(error)s"
 #: views/impersonation_views.py:78
 #, python-format
 msgid "Impersonate user: %s"
-msgstr ""
+msgstr "模擬使用者 : 1%s"

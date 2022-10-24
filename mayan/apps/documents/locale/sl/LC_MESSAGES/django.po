@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,56 +29,58 @@ msgstr "Dokumenti"
 
 #: apps.py:279
 msgid "Decorations"
-msgstr ""
+msgstr "Okraski"
 
 #: apps.py:298
 msgid "Create a document type"
-msgstr ""
+msgstr "Ustvarite vrsto dokumenta"
 
 #: apps.py:300
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr ""
+"Vsakemu naloženemu dokumentu mora biti dodeljena vrsta dokumenta, to je "
+"osnovni način, kako Mayan EDMS kategorizira dokumente."
 
 #: apps.py:401
 msgid "File comments"
-msgstr ""
+msgstr "Datoteka komentarjev"
 
 #: apps.py:405
 msgid "File encodings"
-msgstr ""
+msgstr "Kodiranja datotek"
 
 #: apps.py:409
 msgid "File MIME types"
-msgstr ""
+msgstr "Vrste datotek MIME"
 
 #: apps.py:413
 msgid "File timestamps"
-msgstr ""
+msgstr "Časovni žigi datotek"
 
 #: apps.py:418 links/document_file_page_links.py:79
 #: models/document_file_models.py:120 models/document_file_page_models.py:36
 #: search.py:52
 msgid "Document file"
-msgstr ""
+msgstr "Datoteka dokumenta"
 
 #: apps.py:422 models/document_file_page_models.py:40
 #: models/document_version_page_models.py:52
 msgid "Page number"
-msgstr ""
+msgstr "Številka strani"
 
 #: apps.py:427
 msgid "Return the latest file of the document."
-msgstr ""
+msgstr "Vrni najnovejšo datoteko dokumenta."
 
 #: apps.py:428
 msgid "Latest file"
-msgstr ""
+msgstr "Najnovejša datoteka"
 
 #: apps.py:431
 msgid "Return the document instance."
-msgstr ""
+msgstr "Vrnite primerek dokumenta."
 
 #: apps.py:432 links/document_file_links.py:63
 #: links/document_file_page_links.py:73 links/document_version_links.py:75
@@ -91,11 +93,11 @@ msgstr "Dokument"
 
 #: apps.py:562 apps.py:614 apps.py:643 apps.py:677 apps.py:702
 msgid "Thumbnail"
-msgstr ""
+msgstr "Sličica"
 
 #: apps.py:568
 msgid "Type"
-msgstr ""
+msgstr "Vrsta"
 
 #: apps.py:572 apps.py:619 apps.py:682 forms/document_file_forms.py:71
 #: links/document_file_page_links.py:122
@@ -105,19 +107,19 @@ msgstr "Strani"
 
 #: apps.py:581 models/favorite_document_models.py:34
 msgid "Date and time added"
-msgstr ""
+msgstr "Dodan datum in ura"
 
 #: apps.py:592
 msgid "Access date and time"
-msgstr ""
+msgstr "Datum in čas dostopa"
 
 #: classes.py:57
 msgid "Original"
-msgstr ""
+msgstr "Original"
 
 #: classes.py:59
 msgid "Keeps the original filename of the uploaded file."
-msgstr ""
+msgstr "Ohrani izvirno ime naložene datoteke."
 
 #: classes.py:69 forms/document_forms.py:108 models/document_models.py:59
 msgid "UUID"
@@ -125,21 +127,23 @@ msgstr "UUID"
 
 #: classes.py:71
 msgid "Generates an immutable, random UUID (RFC 4122) for each file."
-msgstr ""
+msgstr "Ustvari nespremenljiv, naključen UUID (RFC 4122) za vsako datoteko."
 
 #: classes.py:80
 msgid "UUID plus original"
-msgstr ""
+msgstr "UUID plus original"
 
 #: classes.py:82
 msgid ""
 "Generates an immutable, random UUID (RFC 4122) for each file and appends the"
 " original filename of the uploaded file."
 msgstr ""
+"Ustvari nespremenljiv, naključen UUID (RFC 4122) za vsako datoteko in doda "
+"izvirno ime datoteke naložene datoteke."
 
 #: dashboard_widgets.py:32
 msgid "Total pages"
-msgstr ""
+msgstr "Skupno število strani"
 
 #: dashboard_widgets.py:55
 msgid "Total documents"
@@ -147,129 +151,129 @@ msgstr "Skupaj dokumentov"
 
 #: dashboard_widgets.py:73 views/trashed_document_views.py:151
 msgid "Documents in trash"
-msgstr ""
+msgstr "Dokumenti v smeti"
 
 #: dashboard_widgets.py:91 links/document_type_links.py:77
 #: links/document_type_links.py:85 permissions.py:80
 #: views/document_type_views.py:79
 msgid "Document types"
-msgstr ""
+msgstr "Vrste dokumentov"
 
 #: dashboard_widgets.py:109
 msgid "New documents this month"
-msgstr ""
+msgstr "Novi dokumenti ta mesec"
 
 #: dashboard_widgets.py:123
 msgid "New pages this month"
-msgstr ""
+msgstr "Nove strani ta mesec"
 
 #: events.py:10
 msgid "Document created"
-msgstr ""
+msgstr "Dokument ustvarjen"
 
 #: events.py:13
 msgid "Document edited"
-msgstr ""
+msgstr "Dokument urejen"
 
 #: events.py:16
 msgid "Document viewed"
-msgstr ""
+msgstr "Ogledan dokument"
 
 #: events.py:22
 msgid "Document file created"
-msgstr ""
+msgstr "Datoteka dokumenta ustvarjena"
 
 #: events.py:25
 msgid "Document file deleted"
-msgstr ""
+msgstr "Datoteka dokumenta izbrisana"
 
 #: events.py:28
 msgid "Document file downloaded"
-msgstr ""
+msgstr "Datoteka dokumenta je prenesena"
 
 #: events.py:31
 msgid "Document file edited"
-msgstr ""
+msgstr "Datoteka dokumenta urejena"
 
 #: events.py:37
 msgid "Document type created"
-msgstr ""
+msgstr "Vrsta dokumenta ustvarjena"
 
 #: events.py:40
 msgid "Document type edited"
-msgstr ""
+msgstr "Vrsta dokumenta urejena"
 
 #: events.py:43
 msgid "Document type quick label created"
-msgstr ""
+msgstr "Ustvarjena hitra oznaka vrste dokumenta"
 
 #: events.py:47
 msgid "Document type quick label deleted"
-msgstr ""
+msgstr "Hitra oznaka vrste dokumenta je izbrisana"
 
 #: events.py:51
 msgid "Document type quick label edited"
-msgstr ""
+msgstr "Urejena hitra oznaka vrste dokumenta"
 
 #: events.py:56
 msgid "Document type changed"
-msgstr ""
+msgstr "Vrsta dokumenta spremenjena"
 
 #: events.py:62
 msgid "Document version created"
-msgstr ""
+msgstr "Različica dokumenta ustvarjena"
 
 #: events.py:65
 msgid "Document version deleted"
-msgstr ""
+msgstr "Različica dokumenta izbrisana"
 
 #: events.py:68
 msgid "Document version edited"
-msgstr ""
+msgstr "Različica dokumenta urejena"
 
 #: events.py:71
 msgid "Document version exported"
-msgstr ""
+msgstr "Izvožena različica dokumenta"
 
 #: events.py:77
 msgid "Document version page created"
-msgstr ""
+msgstr "Ustvarjena stran z različico dokumenta"
 
 #: events.py:81
 msgid "Document version page deleted"
-msgstr ""
+msgstr "Stran z različico dokumenta je izbrisana"
 
 #: events.py:85
 msgid "Document version page edited"
-msgstr ""
+msgstr "Stran z različico dokumenta je urejena"
 
 #: events.py:92
 msgid "Document trashed"
-msgstr ""
+msgstr "Dokument vržen v smetnjak"
 
 #: events.py:95
 msgid "Trashed document deleted"
-msgstr ""
+msgstr "Dokument v smeti je izbrisan"
 
 #: events.py:98
 msgid "Trashed document restored"
-msgstr ""
+msgstr "Dokument v smeti je obnovljen"
 
 #: events.py:104
 msgid "Document downloaded (historic)"
-msgstr ""
+msgstr "Dokument prenesen (zgodovinsko)"
 
 #: events.py:107
 msgid "Document file created (historic)"
-msgstr ""
+msgstr "Datoteka dokumenta ustvarjena (zgodovinsko)"
 
 #: events.py:111
 msgid "Document version reverted (historic)"
-msgstr ""
+msgstr "Različica dokumenta je povrnjena (zgodovinsko)"
 
 #: events.py:115
 msgid "Document version uploaded (historic)"
-msgstr ""
+msgstr "Različica dokumenta je naložena (zgodovinsko)"
 
 #: forms/document_file_forms.py:46
 msgid "Date added"
@@ -281,11 +285,11 @@ msgstr "MIME tip"
 
 #: forms/document_file_forms.py:55 models/document_file_models.py:108
 msgid "Encoding"
-msgstr ""
+msgstr "Kodiranje"
 
 #: forms/document_file_forms.py:59
 msgid "Size"
-msgstr ""
+msgstr "Velikost"
 
 #: forms/document_file_forms.py:64
 msgid "Exists in storage"
@@ -293,7 +297,7 @@ msgstr "Obstaja v shrambi"
 
 #: forms/document_file_forms.py:66
 msgid "Path in storage"
-msgstr ""
+msgstr "Pot v skladišču"
 
 #: forms/document_file_forms.py:69 models/document_file_models.py:115
 msgid "Checksum"
@@ -305,21 +309,24 @@ msgstr "Hitro preimenovanje dokumenta"
 
 #: forms/document_forms.py:53
 msgid "Preserve extension"
-msgstr ""
+msgstr "Ohranite podaljšek"
 
 #: forms/document_forms.py:55
 msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open document correctly."
 msgstr ""
+"Vzame pripono datoteke in jo premakne na konec imena datoteke, kar "
+"operacijskim sistemom, ki se zanašajo na datotečne pripone, omogoči pravilno"
+" odpiranje dokumenta."
 
 #: forms/document_forms.py:104
 msgid "Date created"
-msgstr ""
+msgstr "Datum ustvarjenega"
 
 #: forms/document_forms.py:110 models/document_models.py:87
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 #: forms/document_type_forms.py:47 models/document_models.py:64
 #: models/document_type_models.py:83 models/document_type_models.py:200
@@ -329,7 +336,7 @@ msgstr "Vrsta dokumenta"
 
 #: forms/document_version_page_forms.py:29
 msgid "Content type"
-msgstr ""
+msgstr "Vrsta vsebine"
 
 #: forms/document_version_page_forms.py:32
 msgid "Object ID"
@@ -337,15 +344,15 @@ msgstr "ID objekta"
 
 #: forms/document_version_page_forms.py:35
 msgid "Source"
-msgstr ""
+msgstr "Vir"
 
 #: forms/document_version_page_forms.py:40
 msgid "Destination page number"
-msgstr ""
+msgstr "Številka ciljne strani"
 
 #: forms/document_version_page_forms.py:84
 msgid "Target page number can't be repeated."
-msgstr ""
+msgstr "Številke ciljne strani ni mogoče ponoviti."
 
 #: forms/misc_forms.py:12 literals.py:108
 msgid "Page range"
@@ -356,6 +363,8 @@ msgid ""
 "Page number from which all the transformations will be cloned. Existing "
 "transformations will be lost."
 msgstr ""
+"Številka strani, s katere bodo klonirane vse transformacije. Obstoječe "
+"transformacije bodo izgubljene."
 
 #: links/document_file_links.py:26 links/document_file_links.py:31
 #: links/document_type_links.py:28 links/document_type_links.py:52
@@ -368,72 +377,72 @@ msgstr "Izbriši"
 #: links/document_file_links.py:36 links/document_type_links.py:38
 #: links/document_type_links.py:59 links/document_version_links.py:50
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #: links/document_file_links.py:41
 msgid "Quick download"
-msgstr ""
+msgstr "Hiter prenos"
 
 #: links/document_file_links.py:47 links/document_file_links.py:69
 msgid "Files"
-msgstr ""
+msgstr "Datoteke"
 
 #: links/document_file_links.py:51 links/document_version_links.py:69
 msgid "Print"
-msgstr ""
+msgstr "Tiskanje"
 
 #: links/document_file_links.py:58 links/document_links.py:43
 msgid "Properties"
-msgstr ""
+msgstr "Lastnosti"
 
 #: links/document_file_links.py:76 links/document_links.py:38
 #: links/document_version_links.py:65
 msgid "Preview"
-msgstr ""
+msgstr "Predogled"
 
 #: links/document_file_links.py:82 links/document_file_links.py:88
 #: links/document_version_links.py:88 links/document_version_links.py:94
 msgid "Clear transformations"
-msgstr ""
+msgstr "Jasne transformacije"
 
 #: links/document_file_links.py:95 links/document_version_links.py:101
 msgid "Clone transformations"
-msgstr ""
+msgstr "Preobrazbe klonov"
 
 #: links/document_file_page_links.py:46
 #: links/document_version_page_links.py:74
 msgid "First page"
-msgstr ""
+msgstr "Prva stran"
 
 #: links/document_file_page_links.py:52
 #: links/document_version_page_links.py:80
 msgid "Last page"
-msgstr ""
+msgstr "Zadnja stran"
 
 #: links/document_file_page_links.py:60
 #: links/document_version_page_links.py:88
 msgid "Previous page"
-msgstr ""
+msgstr "Prejšnja stran"
 
 #: links/document_file_page_links.py:66
 #: links/document_version_page_links.py:94
 msgid "Next page"
-msgstr ""
+msgstr "Naslednja stran"
 
 #: links/document_file_page_links.py:86 models/document_file_page_models.py:49
 #: models/document_file_page_models.py:313
 msgid "Document file pages"
-msgstr ""
+msgstr "Strani dokumentov"
 
 #: links/document_file_page_links.py:91
 #: links/document_version_page_links.py:120
 msgid "Rotate left"
-msgstr ""
+msgstr "Zasukaj levo"
 
 #: links/document_file_page_links.py:96
 #: links/document_version_page_links.py:125
 msgid "Rotate right"
-msgstr ""
+msgstr "Zavrtite desno"
 
 #: links/document_file_page_links.py:100
 #: links/document_version_page_links.py:130
@@ -443,145 +452,147 @@ msgstr "Slika strani"
 #: links/document_file_page_links.py:105
 #: links/document_version_page_links.py:135
 msgid "Reset view"
-msgstr ""
+msgstr "Ponastavi pogled"
 
 #: links/document_file_page_links.py:111
 #: links/document_version_page_links.py:141
 msgid "Zoom in"
-msgstr ""
+msgstr "Približaj"
 
 #: links/document_file_page_links.py:117
 #: links/document_version_page_links.py:147
 msgid "Zoom out"
-msgstr ""
+msgstr "Pomanjšanje"
 
 #: links/document_file_page_links.py:127 links/document_file_page_links.py:134
 msgid "Recalculate page count"
-msgstr ""
+msgstr "Ponovno izračunaj število strani"
 
 #: links/document_links.py:17 links/document_links.py:33
 msgid "Change type"
-msgstr ""
+msgstr "Spremeni vrsto"
 
 #: links/document_links.py:22 views/document_views.py:68
 msgid "All documents"
-msgstr ""
+msgstr "Vsi dokumenti"
 
 #: links/document_links.py:25 views/recently_accessed_document_views.py:29
 msgid "Recently accessed"
-msgstr ""
+msgstr "Nedavno dostopano"
 
 #: links/document_links.py:29 views/recently_created_document_views.py:27
 msgid "Recently created"
-msgstr ""
+msgstr "Nedavno ustvarjeno"
 
 #: links/document_links.py:50
 msgid "Edit properties"
-msgstr ""
+msgstr "Uredi lastnosti"
 
 #: links/document_type_links.py:23 views/document_type_views.py:93
 msgid "Create document type"
-msgstr ""
+msgstr "Ustvari vrsto dokumenta"
 
 #: links/document_type_links.py:34
 msgid "Deletion policies"
-msgstr ""
+msgstr "Politike brisanja"
 
 #: links/document_type_links.py:45
 msgid "Add quick label to document type"
-msgstr ""
+msgstr "Dodajte hitro oznako vrsti dokumenta"
 
 #: links/document_type_links.py:65 models/document_type_models.py:211
 msgid "Quick labels"
-msgstr ""
+msgstr "Hitre oznake"
 
 #: links/document_type_links.py:70
 msgid "Filename generation"
-msgstr ""
+msgstr "Generiranje imena datoteke"
 
 #: links/document_version_links.py:29
 msgid "Make active"
-msgstr ""
+msgstr "Postanite aktivni"
 
 #: links/document_version_links.py:34
 msgid "Create document version"
-msgstr ""
+msgstr "Ustvari različico dokumenta"
 
 #: links/document_version_links.py:55
 msgid "Export"
-msgstr ""
+msgstr "Izvozi"
 
 #: links/document_version_links.py:59 links/document_version_links.py:81
 msgid "Versions"
-msgstr ""
+msgstr "Različice"
 
 #: links/document_version_page_links.py:57
 msgid "Append all pages"
-msgstr ""
+msgstr "Pripni vse strani"
 
 #: links/document_version_page_links.py:62
 msgid "Remap pages"
-msgstr ""
+msgstr "Preslikaj strani"
 
 #: links/document_version_page_links.py:67
 msgid "Reset pages"
-msgstr ""
+msgstr "Ponastavi strani"
 
 #: links/document_version_page_links.py:108
 #: models/document_version_models.py:66
 #: models/document_version_page_models.py:46 search.py:128
 msgid "Document version"
-msgstr ""
+msgstr "Različica dokumenta"
 
 #: links/document_version_page_links.py:114
 #: models/document_version_page_models.py:69
 #: models/document_version_page_models.py:406
 msgid "Document version pages"
-msgstr ""
+msgstr "Strani z različico dokumenta"
 
 #: links/favorite_links.py:28 views/favorite_document_views.py:36
 msgid "Favorites"
-msgstr ""
+msgstr "Priljubljene"
 
 #: links/favorite_links.py:34 links/favorite_links.py:44
 msgid "Add to favorites"
-msgstr ""
+msgstr "Dodaj med priljubljene"
 
 #: links/favorite_links.py:40 links/favorite_links.py:48
 msgid "Remove from favorites"
-msgstr ""
+msgstr "Odstrani iz priljubljenih"
 
 #: links/trashed_document_links.py:24 links/trashed_document_links.py:37
 msgid "Move to trash"
-msgstr ""
+msgstr "Premakni v koš"
 
 #: links/trashed_document_links.py:27
 msgid "Trash can"
-msgstr ""
+msgstr "Koš za smeti"
 
 #: links/trashed_document_links.py:32 links/trashed_document_links.py:44
 msgid "Restore"
-msgstr ""
+msgstr "Obnovi"
 
 #: links/trashed_document_links.py:49 permissions.py:107
 msgid "Empty trash"
-msgstr ""
+msgstr "Izprazni smeti"
 
 #: literals.py:13
 msgid "Default"
-msgstr ""
+msgstr "Privzeto"
 
 #: literals.py:80
 msgid "Replace. Create a new version and use the new file pages."
-msgstr ""
+msgstr "Zamenjati. Ustvarite novo različico in uporabite nove strani datotek."
 
 #: literals.py:81
 msgid "Append. Create a new version and append the new file pages."
-msgstr ""
+msgstr "Pripni. Ustvarite novo različico in dodajte nove strani datoteke."
 
 #: literals.py:82
 msgid "Keep. Do not create a new version and keep the current version pages."
 msgstr ""
+"obdrži. Ne ustvarjajte nove različice in obdržite strani s trenutno "
+"različico."
 
 #: literals.py:86
 #, python-format
@@ -590,74 +601,77 @@ msgid ""
 " for download using the link: %(download_url)s or from the downloads area "
 "(%(download_list_url)s)."
 msgstr ""
+"Različica dokumenta &quot;%(document_version)s&quot; je bila izvožena in je "
+"na voljo za prenos prek povezave: %(download_url)s ali iz območja za prenose"
+" (%(download_list_url)s)."
 
 #: literals.py:91
 msgid "Document version exported."
-msgstr ""
+msgstr "Izvožena različica dokumenta."
 
 #: literals.py:100
 msgid "January"
-msgstr ""
+msgstr "januar"
 
 #: literals.py:100
 msgid "February"
-msgstr ""
+msgstr "februar"
 
 #: literals.py:100
 msgid "March"
-msgstr ""
+msgstr "marec"
 
 #: literals.py:100
 msgid "April"
-msgstr ""
+msgstr "aprila"
 
 #: literals.py:100
 msgid "May"
-msgstr ""
+msgstr "maja"
 
 #: literals.py:101
 msgid "June"
-msgstr ""
+msgstr "junija"
 
 #: literals.py:101
 msgid "July"
-msgstr ""
+msgstr "julija"
 
 #: literals.py:101
 msgid "August"
-msgstr ""
+msgstr "avgusta"
 
 #: literals.py:101
 msgid "September"
-msgstr ""
+msgstr "septembra"
 
 #: literals.py:101
 msgid "October"
-msgstr ""
+msgstr "oktobra"
 
 #: literals.py:102
 msgid "November"
-msgstr ""
+msgstr "novembra"
 
 #: literals.py:102
 msgid "December"
-msgstr ""
+msgstr "decembra"
 
 #: literals.py:108
 msgid "All pages"
-msgstr ""
+msgstr "Vse strani"
 
 #: models/document_file_models.py:80
 msgid "The server date and time when the document file was processed."
-msgstr ""
+msgstr "Datum in čas strežnika, ko je bila datoteka dokumenta obdelana."
 
 #: models/document_file_models.py:81 models/document_version_models.py:51
 msgid "Timestamp"
-msgstr ""
+msgstr "Časovni žig"
 
 #: models/document_file_models.py:85
 msgid "An optional short text describing the document file."
-msgstr ""
+msgstr "Neobvezno kratko besedilo, ki opisuje datoteko dokumenta."
 
 #: models/document_file_models.py:86 models/document_version_models.py:56
 msgid "Comment"
@@ -665,7 +679,7 @@ msgstr "Komentiraj"
 
 #: models/document_file_models.py:91
 msgid "File"
-msgstr ""
+msgstr "mapa"
 
 #: models/document_file_models.py:94
 msgid "Filename"
@@ -677,16 +691,21 @@ msgid ""
 " the format of a file, in this case the file format of the document. Some "
 "examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
+"Mimetype datoteke dokumenta. Vrste MIME so standardni način za opis formata "
+"datoteke, v tem primeru formata datoteke dokumenta. Nekaj primerov: "
+"&quot;text/plain&quot; ali &quot;image/jpeg&quot;."
 
 #: models/document_file_models.py:106
 msgid ""
 "The document file file encoding. binary 7-bit, binary 8-bit, text, base64, "
 "etc."
 msgstr ""
+"Kodiranje datoteke dokumenta. binarni 7-bitni, binarni 8-bitni, besedilni, "
+"base64 itd."
 
 #: models/document_file_models.py:121 storages.py:27
 msgid "Document files"
-msgstr ""
+msgstr "Dokumentne datoteke"
 
 #: models/document_file_models.py:333 models/document_file_page_models.py:272
 #: models/document_models.py:72 models/document_models.py:318
@@ -699,32 +718,36 @@ msgstr "Oznaka"
 #: models/document_file_page_models.py:48
 #: models/document_file_page_models.py:312 search.py:84
 msgid "Document file page"
-msgstr ""
+msgstr "Stran datoteke dokumenta"
 
 #: models/document_file_page_models.py:266
 #, python-format
 msgid "%(document_file)s - page %(page_num)d of %(total_pages)d"
-msgstr ""
+msgstr "%(document_file)s - stran %(page_num)d od %(total_pages)d"
 
 #: models/document_models.py:57
 msgid ""
 "UUID of a document, universally Unique ID. An unique identifier generated "
 "for each document."
 msgstr ""
+"UUID dokumenta, univerzalno enolični ID. Enolični identifikator, ustvarjen "
+"za vsak dokument."
 
 #: models/document_models.py:62
 msgid "The document type of the document."
-msgstr ""
+msgstr "Vrsta dokumenta dokumenta."
 
 #: models/document_models.py:69
 msgid ""
 "A short text identifying the document. By default, will be set to the "
 "filename of the first file uploaded to the document."
 msgstr ""
+"Kratko besedilo, ki identificira dokument. Privzeto bo nastavljeno na ime "
+"datoteke prve datoteke, naložene v dokument."
 
 #: models/document_models.py:76
 msgid "An optional short text describing a document."
-msgstr ""
+msgstr "Neobvezno kratko besedilo, ki opisuje dokument."
 
 #: models/document_models.py:77
 msgid "Description"
@@ -732,31 +755,31 @@ msgstr "Opis"
 
 #: models/document_models.py:81
 msgid "The date and time of the document creation."
-msgstr ""
+msgstr "Datum in čas nastanka dokumenta."
 
 #: models/document_models.py:82
 msgid "Created"
-msgstr ""
+msgstr "Ustvarjeno"
 
 #: models/document_models.py:86
 msgid "The primary language in the document."
-msgstr ""
+msgstr "Primarni jezik v dokumentu."
 
 #: models/document_models.py:91
 msgid "Whether or not this document is in the trash."
-msgstr ""
+msgstr "Ne glede na to, ali je ta dokument v košu ali ne."
 
 #: models/document_models.py:92
 msgid "In trash?"
-msgstr ""
+msgstr "V smeti?"
 
 #: models/document_models.py:96
 msgid "The server date and time when the document was moved to the trash."
-msgstr ""
+msgstr "Datum in čas strežnika, ko je bil dokument premaknjen v koš."
 
 #: models/document_models.py:98
 msgid "Date and time trashed"
-msgstr ""
+msgstr "Datum in ura sta bila v smeti"
 
 #: models/document_models.py:102
 msgid ""
@@ -764,156 +787,162 @@ msgid ""
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
 msgstr ""
+"Škrob dokumenta je dokument z vnosom v zbirko podatkov, vendar brez naložene"
+" datoteke. To je lahko prekinjeno nalaganje ali odloženo nalaganje prek API-"
+"ja."
 
 #: models/document_models.py:105
 msgid "Is stub?"
-msgstr ""
+msgstr "Je škrbina?"
 
 #: models/document_models.py:316
 #, python-format
 msgid "Document stub, id: %d"
-msgstr ""
+msgstr "Kop dokumenta, ID: %d"
 
 #: models/document_type_models.py:40
 msgid "The name of the document type."
-msgstr ""
+msgstr "Ime vrste dokumenta."
 
 #: models/document_type_models.py:45
 msgid ""
 "Amount of time after which documents of this type will be moved to the "
 "trash."
-msgstr ""
+msgstr "Količina časa, po katerem bodo dokumenti te vrste premaknjeni v koš."
 
 #: models/document_type_models.py:47
 msgid "Trash time period"
-msgstr ""
+msgstr "Časovno obdobje smeti"
 
 #: models/document_type_models.py:51
 msgid "Trash time unit"
-msgstr ""
+msgstr "Časovna enota smeti"
 
 #: models/document_type_models.py:55
 msgid ""
 "Amount of time after which documents of this type in the trash will be "
 "deleted."
-msgstr ""
+msgstr "Količina časa, po katerem bodo dokumenti te vrste v košu izbrisani."
 
 #: models/document_type_models.py:57
 msgid "Delete time period"
-msgstr ""
+msgstr "Izbriši časovno obdobje"
 
 #: models/document_type_models.py:62
 msgid "Delete time unit"
-msgstr ""
+msgstr "Izbriši časovno enoto"
 
 #: models/document_type_models.py:66
 msgid ""
 "The class responsible for producing the actual filename used to store the "
 "uploaded documents."
 msgstr ""
+"Razred, odgovoren za ustvarjanje dejanskega imena datoteke, ki se uporablja "
+"za shranjevanje naloženih dokumentov."
 
 #: models/document_type_models.py:68
 msgid "Filename generator backend"
-msgstr ""
+msgstr "Zaledje generatorja imen datotek"
 
 #: models/document_type_models.py:72
 msgid "The arguments for the filename generator backend as a YAML dictionary."
-msgstr ""
+msgstr "Argumenti za zaledje generatorja imen datotek kot slovar YAML."
 
 #: models/document_type_models.py:75
 msgid "Filename generator backend arguments"
-msgstr ""
+msgstr "Zaledni argumenti generatorja imen datotek"
 
 #: models/document_type_models.py:84
 msgid "Documents types"
-msgstr ""
+msgstr "Vrste dokumentov"
 
 #: models/document_type_models.py:205
 msgid "Enabled"
-msgstr ""
+msgstr "Omogočeno"
 
 #: models/document_type_models.py:210
 msgid "Quick label"
-msgstr ""
+msgstr "Hitra oznaka"
 
 #: models/document_version_models.py:50
 msgid "The server date and time when the document version was created."
-msgstr ""
+msgstr "Datum in čas strežnika, ko je bila ustvarjena različica dokumenta."
 
 #: models/document_version_models.py:55
 msgid "An optional short text describing the document version."
-msgstr ""
+msgstr "Neobvezno kratko besedilo, ki opisuje različico dokumenta."
 
 #: models/document_version_models.py:60
 msgid "Determines the active version of the document."
-msgstr ""
+msgstr "Določa aktivno različico dokumenta."
 
 #: models/document_version_models.py:61
 msgid "Active"
-msgstr ""
+msgstr "Aktiven"
 
 #: models/document_version_models.py:67
 msgid "Document versions"
-msgstr ""
+msgstr "Različice dokumentov"
 
 #: models/document_version_models.py:138
 msgid "Document version export to PDF"
-msgstr ""
+msgstr "Izvoz različice dokumenta v PDF"
 
 #: models/document_version_page_models.py:50
 msgid "Unique integer number for the page. Pages are ordered by this number."
 msgstr ""
+"Edinstveno celo število za stran. Strani so razvrščene po tej številki."
 
 #: models/document_version_page_models.py:55
 msgid "Content type for the source object of the page."
-msgstr ""
+msgstr "Vrsta vsebine za izvorni predmet strani."
 
 #: models/document_version_page_models.py:59
 msgid "ID for the source object of the page."
-msgstr ""
+msgstr "ID za izvorni predmet strani."
 
 #: models/document_version_page_models.py:68
 #: models/document_version_page_models.py:405 search.py:157
 msgid "Document version page"
-msgstr ""
+msgstr "Stran z različico dokumenta"
 
 #: models/document_version_page_models.py:348
 #, python-format
 msgid "%(document_version)s page %(page_number)d of %(total_pages)d"
-msgstr ""
+msgstr "%(document_version)s stran %(page_number)d od %(total_pages)d"
 
 #: models/favorite_document_models.py:27
 #: models/recently_accessed_document_models.py:25
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
 
 #: models/favorite_document_models.py:42
 msgid "Favorite document"
-msgstr ""
+msgstr "Najljubši dokument"
 
 #: models/favorite_document_models.py:43
 msgid "Favorite documents"
-msgstr ""
+msgstr "Priljubljeni dokumenti"
 
 #: models/recently_accessed_document_models.py:32
 msgid "Accessed"
-msgstr ""
+msgstr "Dostopano"
 
 #: models/recently_accessed_document_models.py:40
 msgid "Recent document"
-msgstr ""
+msgstr "Nedavni dokument"
 
 #: models/recently_accessed_document_models.py:41
 msgid "Recent documents"
-msgstr ""
+msgstr "Najnovejši dokumenti"
 
 #: models/recently_accessed_document_models.py:54
 msgid "Recently accessed document"
-msgstr ""
+msgstr "Dokument, do katerega ste nedavno dostopali"
 
 #: models/recently_accessed_document_models.py:55
 msgid "Recently accessed documents"
-msgstr ""
+msgstr "Nedavno dostopani dokumenti"
 
 #: permissions.py:10
 msgid "Create documents"
@@ -937,55 +966,55 @@ msgstr "Poglej dokumente"
 
 #: permissions.py:28
 msgid "Delete document files"
-msgstr ""
+msgstr "Izbrišite datoteke dokumentov"
 
 #: permissions.py:31
 msgid "Edit document files"
-msgstr ""
+msgstr "Urejanje datotek dokumentov"
 
 #: permissions.py:34
 msgid "Download document files"
-msgstr ""
+msgstr "Prenesite datoteke dokumentov"
 
 #: permissions.py:37
 msgid "Create new document files"
-msgstr ""
+msgstr "Ustvarite nove dokumentne datoteke"
 
 #: permissions.py:40
 msgid "Print document files"
-msgstr ""
+msgstr "Natisnite datoteke dokumentov"
 
 #: permissions.py:43
 msgid "Execute document file modifying tools"
-msgstr ""
+msgstr "Izvedite orodja za spreminjanje datotek dokumentov"
 
 #: permissions.py:47
 msgid "View document files"
-msgstr ""
+msgstr "Ogled datotek dokumentov"
 
 #: permissions.py:54
 msgid "Create document versions"
-msgstr ""
+msgstr "Ustvarite različice dokumentov"
 
 #: permissions.py:58
 msgid "Delete document versions"
-msgstr ""
+msgstr "Izbriši različice dokumenta"
 
 #: permissions.py:62
 msgid "Edit document versions"
-msgstr ""
+msgstr "Uredi različice dokumenta"
 
 #: permissions.py:66
 msgid "Export document versions"
-msgstr ""
+msgstr "Izvoz različic dokumentov"
 
 #: permissions.py:70
 msgid "Print document versions"
-msgstr ""
+msgstr "Natisnite različice dokumenta"
 
 #: permissions.py:73
 msgid "View document versions"
-msgstr ""
+msgstr "Ogled različic dokumentov"
 
 #: permissions.py:83
 msgid "Create document types"
@@ -1005,115 +1034,115 @@ msgstr "Poglej tip dokumenta"
 
 #: permissions.py:98
 msgid "Restore trashed document"
-msgstr ""
+msgstr "Obnovi dokument v smeti"
 
 #: permissions.py:101
 msgid "Delete trashed documents"
-msgstr ""
+msgstr "Izbrišite dokumente v smeti"
 
 #: permissions.py:104
 msgid "Trash documents"
-msgstr ""
+msgstr "Vrzi dokumente v smeti"
 
 #: queues.py:14
 msgid "Documents periodic"
-msgstr ""
+msgstr "Dokumenti periodični"
 
 #: queues.py:18
 msgid "Uploads"
-msgstr ""
+msgstr "Nalaganja"
 
 #: queues.py:26
 msgid "Empty the trash can"
-msgstr ""
+msgstr "Izprazni koš za smeti"
 
 #: queues.py:30
 msgid "Delete a document"
-msgstr ""
+msgstr "Izbriši dokument"
 
 #: queues.py:34
 msgid "Append all document file pages to a document version"
-msgstr ""
+msgstr "Pripni vse strani datoteke dokumenta v različico dokumenta"
 
 #: queues.py:38
 msgid "Reset the page list of a document version"
-msgstr ""
+msgstr "Ponastavite seznam strani različice dokumenta"
 
 #: queues.py:42
 msgid "Delete a document version"
-msgstr ""
+msgstr "Izbrišite različico dokumenta"
 
 #: queues.py:46
 msgid "Export a document version"
-msgstr ""
+msgstr "Izvozite različico dokumenta"
 
 #: queues.py:51
 msgid "Check document type trash periods"
-msgstr ""
+msgstr "Preverite obdobja smeti vrste dokumenta"
 
 #: queues.py:57
 msgid "Delete document stubs"
-msgstr ""
+msgstr "Izbrišite škrbine dokumentov"
 
 #: queues.py:63
 msgid "Check document type delete periods"
-msgstr ""
+msgstr "Preverite obdobja brisanja vrste dokumenta"
 
 #: queues.py:72
 msgid "Update document page count"
-msgstr ""
+msgstr "Posodobi število strani dokumenta"
 
 #: queues.py:76
 msgid "Upload new document file"
-msgstr ""
+msgstr "Naloži novo datoteko dokumenta"
 
 #: queues.py:80
 msgid "Upload new document"
-msgstr ""
+msgstr "Naloži nov dokument"
 
 #: search.py:31 search.py:64 search.py:96 search.py:141 search.py:169
 msgid "Document type label"
-msgstr ""
+msgstr "Oznaka vrste dokumenta"
 
 #: search.py:67 search.py:99 search.py:144 search.py:175
 msgid "Document label"
-msgstr ""
+msgstr "Oznaka dokumenta"
 
 #: search.py:70 search.py:103 search.py:147 search.py:179
 msgid "Document description"
-msgstr ""
+msgstr "Opis dokumenta"
 
 #: search.py:73 search.py:109 search.py:150 search.py:182
 msgid "Document UUID"
-msgstr ""
+msgstr "UUID dokumenta"
 
 #: search.py:106
 msgid "Document file checksum"
-msgstr ""
+msgstr "Kontrolna vsota datoteke dokumenta"
 
 #: search.py:113
 msgid "Document file MIME type"
-msgstr ""
+msgstr "Vrsta datoteke dokumenta MIME"
 
 #: search.py:172
 msgid "Document version comment"
-msgstr ""
+msgstr "Komentar različice dokumenta"
 
 #: serializers/document_file_serializers.py:94
 msgid "Binary content for the new file."
-msgstr ""
+msgstr "Binarna vsebina za novo datoteko."
 
 #: serializers/document_serializers.py:19
 msgid "Document type ID for the new document."
-msgstr ""
+msgstr "ID vrste dokumenta za nov dokument."
 
 #: serializers/document_version_serializers.py:14
 msgid "Content type ID of the source object for the page."
-msgstr ""
+msgstr "ID vrste vsebine izvornega objekta za stran."
 
 #: serializers/favorite_document_serializers.py:14
 msgid "Document ID for the new favorite document."
-msgstr ""
+msgstr "ID dokumenta za novi priljubljeni dokument."
 
 #: settings.py:49
 msgid ""
@@ -1121,29 +1150,38 @@ msgid ""
 "will start deleting the oldest document file page image cache files. Specify"
 " the size in bytes."
 msgstr ""
+"Prag, pri katerem bo DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND začel "
+"brisati najstarejše datoteke dokumentov, datotek predpomnilnika slik strani."
+" Določite velikost v bajtih."
 
 #: settings.py:57
 msgid "Path to the Storage subclass to use when storing document files."
 msgstr ""
+"Pot do podrazreda Storage za uporabo pri shranjevanju datotek dokumentov."
 
 #: settings.py:64
 msgid "Arguments to pass to the DOCUMENT_FILE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumenti za posredovanje v DOCUMENT_FILE_STORAGE_BACKEND."
 
 #: settings.py:70
 msgid ""
 "Path to the Storage subclass to use when storing the cached document file "
 "page image files."
 msgstr ""
+"Pot do podrazreda Storage, ki se uporablja pri shranjevanju predpomnjene "
+"datoteke dokumenta, slikovnih datotek strani."
 
 #: settings.py:78
 msgid ""
 "Arguments to pass to the DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND."
 msgstr ""
+"Argumenti za posredovanje v DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: settings.py:84
 msgid "Maximum number of favorite documents to remember per user."
 msgstr ""
+"Največje število priljubljenih dokumentov, ki si jih je treba zapomniti na "
+"uporabnika."
 
 #: settings.py:90
 msgid ""
@@ -1151,14 +1189,17 @@ msgid ""
 " of 0 disables the block calculation and the entire file will be loaded into"
 " memory."
 msgstr ""
+"Velikost blokov za uporabo pri izračunu kontrolne vsote datoteke dokumenta. "
+"Vrednost 0 onemogoči izračun bloka in celotna datoteka bo naložena v "
+"pomnilnik."
 
 #: settings.py:97
 msgid "Default documents language (in ISO639-3 format)."
-msgstr ""
+msgstr "Privzeti jezik dokumentov (v formatu ISO639-3)."
 
 #: settings.py:101
 msgid "List of supported document languages. In ISO639-3 format."
-msgstr ""
+msgstr "Seznam podprtih jezikov dokumentov. V formatu ISO639-3."
 
 #: settings.py:107
 msgid ""
@@ -1166,27 +1207,36 @@ msgid ""
 " will start deleting the oldest document version page image cache versions. "
 "Specify the size in bytes."
 msgstr ""
+"Prag, pri katerem bo DOCUMENT_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND začel"
+" brisati najstarejše različice dokumenta, različice predpomnilnika slik "
+"strani. Določite velikost v bajtih."
 
 #: settings.py:116
 msgid ""
 "Path to the Storage subclass to use when storing the cached document version"
 " page image versions."
 msgstr ""
+"Pot do podrazreda Storage, ki se uporablja pri shranjevanju predpomnjenih "
+"različic dokumentov in slik strani."
 
 #: settings.py:124
 msgid ""
 "Arguments to pass to the DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND."
 msgstr ""
+"Argumenti za posredovanje v "
+"DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: settings.py:146
 msgid ""
 "Maximum number of recently accessed documents (created, edited, viewed) to "
 "remember per user."
 msgstr ""
+"Največje število nedavno dostopanih dokumentov (ustvarjenih, urejenih, "
+"ogledanih), ki si jih je treba zapomniti na uporabnika."
 
 #: settings.py:153
 msgid "Maximum number of recently created documents to show."
-msgstr ""
+msgstr "Največje število nedavno ustvarjenih dokumentov za prikaz."
 
 #: settings.py:159
 msgid "Amount in degrees to rotate a document page per user interaction."
@@ -1198,10 +1248,11 @@ msgstr ""
 msgid ""
 "Time after which a document stub will be considered invalid and deleted."
 msgstr ""
+"Čas, po katerem bo škrbina dokumenta veljala za neveljavno in izbrisana."
 
 #: settings.py:172
 msgid "Height in pixels of the document thumbnail image."
-msgstr ""
+msgstr "Višina sličice dokumenta v slikovnih pikah."
 
 #: settings.py:191
 msgid ""
@@ -1227,73 +1278,79 @@ msgstr ""
 
 #: statistics.py:234
 msgid "New documents per month"
-msgstr ""
+msgstr "Novi dokumenti na mesec"
 
 #: statistics.py:241
 msgid "New document files per month"
-msgstr ""
+msgstr "Nove dokumentne datoteke na mesec"
 
 #: statistics.py:248
 msgid "New document pages per month"
-msgstr ""
+msgstr "Nove strani dokumenta na mesec"
 
 #: statistics.py:255
 msgid "Total documents at each month"
-msgstr ""
+msgstr "Skupni dokumenti za vsak mesec"
 
 #: statistics.py:262
 msgid "Total document files at each month"
-msgstr ""
+msgstr "Skupno število dokumentov za vsak mesec"
 
 #: statistics.py:269
 msgid "Total document pages at each month"
-msgstr ""
+msgstr "Skupno število strani dokumenta za vsak mesec"
 
 #: storages.py:21
 msgid ""
 "Unable to initialize the document file storage. Check the settings {} and {}"
 " for formatting errors."
 msgstr ""
+"Ni mogoče inicializirati shrambe dokumentov. Preverite nastavitve {} in {} "
+"za napake pri oblikovanju."
 
 #: storages.py:35
 msgid ""
 "Unable to initialize the document file image storage. Check the settings {} "
 "and {} for formatting errors."
 msgstr ""
+"Ni mogoče inicializirati shranjevanja slik datoteke dokumenta. Preverite "
+"nastavitve {} in {} za napake pri oblikovanju."
 
 #: storages.py:41
 msgid "Document file page images"
-msgstr ""
+msgstr "Slike strani datoteke dokumentov"
 
 #: storages.py:49
 msgid ""
 "Unable to initialize the document version image storage. Check the settings "
 "{} and {} for formatting errors."
 msgstr ""
+"Ni mogoče inicializirati shrambe slik različice dokumenta. Preverite "
+"nastavitve {} in {} za napake pri oblikovanju."
 
 #: storages.py:55
 msgid "Document version page images"
-msgstr ""
+msgstr "Slike strani različice dokumenta"
 
 #: templates/documents/document_print.html:13
 msgid "Document page image preview"
-msgstr ""
+msgstr "Predogled slike strani dokumenta"
 
 #: templates/documents/errors/document_file_page_transformation_error.html:5
 msgid "Document file page transformation error"
-msgstr ""
+msgstr "Napaka pri preoblikovanju strani datoteke dokumenta"
 
 #: templates/documents/errors/document_version_page_transformation_error.html:5
 msgid "Document version page transformation error"
-msgstr ""
+msgstr "Napaka pri preoblikovanju strani različice dokumenta"
 
 #: templates/documents/errors/no_valid_version.html:5
 msgid "No valid or active version"
-msgstr ""
+msgstr "Ni veljavne ali aktivne različice"
 
 #: templates/documents/errors/no_version_pages.html:5
 msgid "No version pages"
-msgstr ""
+msgstr "Ni različic strani"
 
 #: templates/documents/forms/widgets/page_carousel.html:16
 #, python-format
@@ -1308,35 +1365,42 @@ msgstr ""
 
 #: templates/documents/forms/widgets/page_carousel.html:22
 msgid "No pages to display"
-msgstr ""
+msgstr "Ni strani za prikaz"
 
 #: utils.py:20
 #, python-format
 msgid "Unknown language \"%s\""
-msgstr ""
+msgstr "Neznan jezik &quot;%s&quot;"
 
 #: views/document_file_page_views.py:55
 #, python-format
 msgid "%(count)d document file queued for page count recalculation."
 msgstr ""
+"%(count)d datoteka dokumenta v čakalni vrsti za ponovni izračun števila "
+"strani."
 
 #: views/document_file_page_views.py:58
 #, python-format
 msgid "%(count)d document files queued for page count recalculation."
 msgstr ""
+"%(count)d datoteke dokumentov v čakalni vrsti za ponovni izračun števila "
+"strani."
 
 #: views/document_file_page_views.py:66
 msgid "Recalculate the page count of the selected document file?"
 msgid_plural "Recalculate the page count of the selected document files?"
-msgstr[0] ""
+msgstr[0] "Ponovno izračunati število strani izbrane datoteke dokumenta?"
 msgstr[1] ""
+"Želite znova izračunati število strani izbranih datotek dokumentov?"
 msgstr[2] ""
+"Želite znova izračunati število strani izbranih datotek dokumentov?"
 msgstr[3] ""
+"Želite znova izračunati število strani izbranih datotek dokumentov?"
 
 #: views/document_file_page_views.py:77
 #, python-format
 msgid "Recalculate the page count of the document file: %s?"
-msgstr ""
+msgstr "Ponovno izračunajte število strani datoteke dokumenta: %s?"
 
 #: views/document_file_page_views.py:107
 msgid ""
@@ -1345,15 +1409,19 @@ msgid ""
 "document file page recalculation action to attempt to introspect the page "
 "count again."
 msgstr ""
+"To lahko pomeni, da je datoteka dokumenta v obliki, ki ni podprta, da je "
+"poškodovana ali da je bil postopek nalaganja prekinjen. Uporabite dejanje "
+"ponovnega izračuna strani datoteke dokumenta, da poskusite znova preveriti "
+"število strani."
 
 #: views/document_file_page_views.py:113
 msgid "No document file pages available"
-msgstr ""
+msgstr "Na voljo ni nobena stran datoteke dokumenta"
 
 #: views/document_file_page_views.py:115
 #, python-format
 msgid "Pages of document file: %s"
-msgstr ""
+msgstr "Strani datoteke dokumenta: %s"
 
 #: views/document_file_page_views.py:189
 #: views/document_version_page_views.py:394
@@ -1369,102 +1437,110 @@ msgstr "Ste že na prvi strani dokumenta"
 #: views/document_version_page_views.py:444
 #, python-format
 msgid "Image of: %s"
-msgstr ""
+msgstr "Slika: %s"
 
 #: views/document_file_views.py:48
 #, python-format
 msgid "Error deleting document file \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Napaka pri brisanju datoteke dokumenta &quot;%(instance)s&quot;; "
+"%(exception)s"
 
 #: views/document_file_views.py:54
 #, python-format
 msgid "Document file \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Datoteka dokumenta &quot;%(object)s&quot; je bila uspešno izbrisana."
 
 #: views/document_file_views.py:57
 #, python-format
 msgid "%(count)d document file deleted successfully."
-msgstr ""
+msgstr "%(count)d datoteka dokumenta je bila uspešno izbrisana."
 
 #: views/document_file_views.py:60
 #, python-format
 msgid "%(count)d document files deleted successfully."
-msgstr ""
+msgstr "%(count)d datoteke dokumentov so bile uspešno izbrisane."
 
 #: views/document_file_views.py:62
 #, python-format
 msgid "Delete document file: %(object)s."
-msgstr ""
+msgstr "Izbriši datoteko dokumenta: %(object)s."
 
 #: views/document_file_views.py:63
 #, python-format
 msgid "Delete the %(count)d selected document file."
-msgstr ""
+msgstr "Izbrišite %(count)d izbrano datoteko dokumenta."
 
 #: views/document_file_views.py:64
 #, python-format
 msgid "Delete the %(count)d selected document files."
-msgstr ""
+msgstr "Izbrišite %(count)d izbrane datoteke dokumentov."
 
 #: views/document_file_views.py:69
 msgid ""
 "All document files pages from this document file and the document version "
 "pages linked to them will be deleted too."
 msgstr ""
+"Izbrisane bodo tudi vse strani datotek dokumentov iz te datoteke dokumenta "
+"in strani z različico dokumenta, povezane z njimi."
 
 #: views/document_file_views.py:119
 #, python-format
 msgid "Edit document file: %s"
-msgstr ""
+msgstr "Uredi datoteko dokumenta: %s"
 
 #: views/document_file_views.py:158
 msgid ""
 "File are the actual files that were uploaded for each document. Their "
 "contents needs to be mapped to a version before it can be used."
 msgstr ""
+"Datoteke so dejanske datoteke, ki so bile naložene za vsak dokument. Njihovo"
+" vsebino je treba preslikati v različico, preden jo lahko uporabite."
 
 #: views/document_file_views.py:162
 msgid "No files available"
-msgstr ""
+msgstr "Ni datotek na voljo"
 
 #: views/document_file_views.py:165
 #, python-format
 msgid "Files of document: %s"
-msgstr ""
+msgstr "Datoteke dokumenta: %s"
 
 #: views/document_file_views.py:194
 #, python-format
 msgid "Preview of document file: %s"
-msgstr ""
+msgstr "Predogled datoteke dokumenta: %s"
 
 #: views/document_file_views.py:251
 #, python-format
 msgid "Properties of document file: %s"
-msgstr ""
+msgstr "Lastnosti datoteke dokumenta: %s"
 
 #: views/document_file_views.py:260
 #, python-format
 msgid "Transformation clear request processed for %(count)d document file."
 msgstr ""
+"Zahteva za brisanje pretvorbe je obdelana za datoteko dokumenta %(count)d."
 
 #: views/document_file_views.py:263
 #, python-format
 msgid "Transformation clear request processed for %(count)d document files."
 msgstr ""
+"Zahteva za brisanje pretvorbe je obdelana za dokumentne datoteke %(count)d."
 
 #: views/document_file_views.py:269
 msgid "Clear all the page transformations for the selected document file?"
 msgid_plural ""
 "Clear all the page transformations for the selected document files?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Počistiti vse preobrazbe strani za izbrano datoteko dokumenta?"
+msgstr[1] "Počistiti vse preobrazbe strani za izbrane datoteke dokumentov?"
+msgstr[2] "Počistiti vse preobrazbe strani za izbrane datoteke dokumentov?"
+msgstr[3] "Počistiti vse preobrazbe strani za izbrane datoteke dokumentov?"
 
 #: views/document_file_views.py:280
 #, python-format
 msgid "Clear all the page transformations for the document file: %s?"
-msgstr ""
+msgstr "Počisti vse transformacije strani za datoteko dokumenta: %s?"
 
 #: views/document_file_views.py:297
 #, python-format
@@ -1472,6 +1548,8 @@ msgid ""
 "Error deleting the page transformations for document file: "
 "%(document_file)s; %(error)s."
 msgstr ""
+"Napaka pri brisanju transformacij strani za datoteko dokumenta: "
+"%(document_file)s; %(error)s."
 
 #: views/document_file_views.py:333
 #, python-format
@@ -1479,20 +1557,22 @@ msgid ""
 "Error cloning the page transformations for document file: %(document_file)s;"
 " %(error)s."
 msgstr ""
+"Napaka pri kloniranju transformacij strani za datoteko dokumenta: "
+"%(document_file)s; %(error)s."
 
 #: views/document_file_views.py:342 views/document_version_views.py:396
 msgid "Transformations cloned successfully."
-msgstr ""
+msgstr "Transformacije so bile uspešno klonirane."
 
 #: views/document_file_views.py:357
 #, python-format
 msgid "Clone page transformations of document file: %s"
-msgstr ""
+msgstr "Preoblikovanje strani klona datoteke dokumenta: %s"
 
 #: views/document_type_views.py:53
 #, python-format
 msgid "Documents of type: %s"
-msgstr ""
+msgstr "Dokumenti vrste: %s"
 
 #: views/document_type_views.py:72
 msgid ""
@@ -1501,45 +1581,53 @@ msgid ""
 " document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
+"Tipi dokumentov so najosnovnejše enote konfiguracije. Vse v sistemu bo "
+"odvisno od njih. Določite vrsto dokumenta za vsako vrsto fizičnega "
+"dokumenta, ki ga nameravate naložiti. Primeri vrst dokumentov: račun, "
+"potrdilo, priročnik, recept, bilanca stanja."
 
 #: views/document_type_views.py:78
 msgid "No document types available"
-msgstr ""
+msgstr "Na voljo ni nobena vrsta dokumentov"
 
 #: views/document_type_views.py:112
 msgid "All documents of this type will be deleted too."
-msgstr ""
+msgstr "Izbrisani bodo tudi vsi dokumenti te vrste."
 
 #: views/document_type_views.py:114
 #, python-format
 msgid "Delete the document type: %s?"
-msgstr ""
+msgstr "Izbriši vrsto dokumenta: %s?"
 
 #: views/document_type_views.py:130
 #, python-format
 msgid "Edit document type: %s"
-msgstr ""
+msgstr "Uredi vrsto dokumenta: %s"
 
 #: views/document_type_views.py:153
 #, python-format
 msgid "Deletion policies for document type: %s"
-msgstr ""
+msgstr "Politike brisanja za vrsto dokumenta: %s"
 
 #: views/document_type_views.py:176
 #, python-format
 msgid "Create quick label for document type: %s"
-msgstr ""
+msgstr "Ustvari hitro oznako za vrsto dokumenta: %s"
 
 #: views/document_type_views.py:195
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
 msgstr ""
+"Izbrisati hitro oznako: %(label)s, iz vrste dokumenta "
+"&quot;%(document_type)s&quot;?"
 
 #: views/document_type_views.py:223
 #, python-format
 msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
+"Urejanje hitre oznake &quot;%(filename)s&quot; iz vrste dokumenta "
+"&quot;%(document_type)s&quot;"
 
 #: views/document_type_views.py:261
 msgid ""
@@ -1547,76 +1635,91 @@ msgid ""
 "documents as they are uploaded by selecting them from a list. Quick labels "
 "can also be used after the documents have been uploaded."
 msgstr ""
+"Hitre oznake so vnaprej določena imena datotek, ki omogočajo hitro "
+"preimenovanje dokumentov, ko so naloženi, tako da jih izberete s seznama. "
+"Hitre oznake lahko uporabite tudi po nalaganju dokumentov."
 
 #: views/document_type_views.py:267
 msgid "There are no quick labels for this document type"
-msgstr ""
+msgstr "Za to vrsto dokumenta ni hitrih oznak"
 
 #: views/document_type_views.py:270
 #, python-format
 msgid "Quick labels for document type: %s"
-msgstr ""
+msgstr "Hitre oznake za vrsto dokumenta: %s"
 
 #: views/document_type_views.py:291
 #, python-format
 msgid "Filename generation setup for document type: %s"
-msgstr ""
+msgstr "Nastavitev generiranja imena datoteke za vrsto dokumenta: %s"
 
 #: views/document_version_page_views.py:70
 msgid ""
 "The page number of this page will be skipped. If you want to achieve "
 "sequential page numbering, use the page remap action instead."
 msgstr ""
+"Številka strani te strani bo preskočena. Če želite doseči zaporedno "
+"oštevilčenje strani, namesto tega uporabite dejanje preslikave strani."
 
 #: views/document_version_page_views.py:75
 #, python-format
 msgid "Delete document version page %s ?"
-msgstr ""
+msgstr "Izbrisati stran z različico dokumenta %s?"
 
 #: views/document_version_page_views.py:110
 msgid ""
 "Document version pages are links to actual content pages. Create them using "
 "the page remap actions or the page reset action."
 msgstr ""
+"Strani z različico dokumenta so povezave do strani z dejansko vsebino. "
+"Ustvarite jih z dejanji preslikave strani ali dejanjem ponastavitve strani."
 
 #: views/document_version_page_views.py:114
 msgid "No document version pages available"
-msgstr ""
+msgstr "Na voljo ni nobena stran z različico dokumenta"
 
 #: views/document_version_page_views.py:116
 #, python-format
 msgid "Pages of document version: %s"
-msgstr ""
+msgstr "Strani različice dokumenta: %s"
 
 #: views/document_version_page_views.py:129
 #, python-format
 msgid "%(count)d document version queued for page list append."
 msgstr ""
+"%(count)d različica dokumenta v čakalni vrsti za dodajanje seznama strani."
 
 #: views/document_version_page_views.py:132
 #, python-format
 msgid "%(count)d document versions queued for page list append."
 msgstr ""
+"%(count)d različice dokumentov v čakalni vrsti za dodajanje seznama strani."
 
 #: views/document_version_page_views.py:140
 msgid ""
 "The current pages will be deleted and then all the document file pages will "
 "be appended as pages of this document version."
 msgstr ""
+"Trenutne strani bodo izbrisane in nato bodo vse strani datoteke dokumenta "
+"dodane kot strani te različice dokumenta."
 
 #: views/document_version_page_views.py:145
 msgid "Append all the document file pages to the selected document version?"
 msgid_plural ""
 "Append all the document file pages to the selected document versions?"
 msgstr[0] ""
+"Želite izbrani različici dokumenta dodati vse strani datoteke dokumenta?"
 msgstr[1] ""
+"Želite izbranim različicam dokumenta dodati vse strani datoteke dokumenta?"
 msgstr[2] ""
+"Želite izbranim različicam dokumenta dodati vse strani datoteke dokumenta?"
 msgstr[3] ""
+"Želite izbranim različicam dokumenta dodati vse strani datoteke dokumenta?"
 
 #: views/document_version_page_views.py:156
 #, python-format
 msgid "Append all the document file pages to document version: %s?"
-msgstr ""
+msgstr "Dodati vse strani datoteke dokumenta različici dokumenta: %s?"
 
 #: views/document_version_page_views.py:205
 msgid "None"
@@ -1624,177 +1727,198 @@ msgstr "Nobenega"
 
 #: views/document_version_page_views.py:230
 msgid "There are no sources available to remap for this document version."
-msgstr ""
+msgstr "Za to različico dokumenta ni na voljo nobenega vira za preslikavo."
 
 #: views/document_version_page_views.py:233
 msgid "No page sources available"
-msgstr ""
+msgstr "Viri strani niso na voljo"
 
 #: views/document_version_page_views.py:236
 #, python-format
 msgid "Remap pages of document version: %s"
-msgstr ""
+msgstr "Ponovno preslikaj strani različice dokumenta: %s"
 
 #: views/document_version_page_views.py:287
 #, python-format
 msgid "%(count)d document version queued for page list reset."
 msgstr ""
+"%(count)d različica dokumenta v čakalni vrsti za ponastavitev seznama "
+"strani."
 
 #: views/document_version_page_views.py:290
 #, python-format
 msgid "%(count)d document versions queued for page list reset."
 msgstr ""
+"%(count)d različice dokumenta v čakalni vrsti za ponastavitev seznama "
+"strani."
 
 #: views/document_version_page_views.py:298
 msgid "The page list will match that of the latest document file."
-msgstr ""
+msgstr "Seznam strani se bo ujemal s seznamom najnovejše datoteke dokumenta."
 
 #: views/document_version_page_views.py:301
 msgid "Reset the page list of the selected document version?"
 msgid_plural "Reset the page list of the selected document versions?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Ponastaviti seznam strani izbrane različice dokumenta?"
+msgstr[1] "Ponastaviti seznam strani izbranih različic dokumenta?"
+msgstr[2] "Ponastaviti seznam strani izbranih različic dokumenta?"
+msgstr[3] "Ponastaviti seznam strani izbranih različic dokumenta?"
 
 #: views/document_version_page_views.py:312
 #, python-format
 msgid "Reset the page list of document version: %s?"
-msgstr ""
+msgstr "Ponastavi seznam strani različice dokumenta: %s?"
 
 #: views/document_version_views.py:60
 #, python-format
 msgid "Make the document version \"%s\" the active version?"
-msgstr ""
+msgstr "Naj bo različica dokumenta &quot;%s&quot; aktivna različica?"
 
 #: views/document_version_views.py:69
 msgid "Successfully changed the active document version."
-msgstr ""
+msgstr "Aktivna različica dokumenta je bila uspešno spremenjena."
 
 #: views/document_version_views.py:84
 #, python-format
 msgid "Create a document version for document: %s"
-msgstr ""
+msgstr "Ustvarite različico dokumenta za dokument: %s"
 
 #: views/document_version_views.py:103
 #, python-format
 msgid "Document version \"%(object)s\" deletion queued successfully."
 msgstr ""
+"Brisanje različice dokumenta &quot;%(object)s&quot; je uspešno v čakalni "
+"vrsti."
 
 #: views/document_version_views.py:106
 #, python-format
 msgid "%(count)d document version deletion queued successfully."
-msgstr ""
+msgstr "%(count)d brisanje različice dokumenta je uspešno v čakalni vrsti."
 
 #: views/document_version_views.py:109
 #, python-format
 msgid "%(count)d document version deletions queued successfully."
 msgstr ""
+"%(count)d brisanja različic dokumenta so uspešno postavljena v čakalno "
+"vrsto."
 
 #: views/document_version_views.py:111
 #, python-format
 msgid "Delete document version \"%(object)s\"."
-msgstr ""
+msgstr "Izbriši različico dokumenta &quot;%(object)s&quot;."
 
 #: views/document_version_views.py:112
 #, python-format
 msgid "Delete %(count)d document version."
-msgstr ""
+msgstr "Izbriši različico dokumenta %(count)d."
 
 #: views/document_version_views.py:113
 #, python-format
 msgid "Delete %(count)d document versions."
-msgstr ""
+msgstr "Izbrišite različice dokumenta %(count)d."
 
 #: views/document_version_views.py:118
 msgid "The process will be performed in the background. "
-msgstr ""
+msgstr "Postopek bo izveden v ozadju."
 
 #: views/document_version_views.py:156
 #, python-format
 msgid "Edit document version: %s"
-msgstr ""
+msgstr "Uredi različico dokumenta: %s"
 
 #: views/document_version_views.py:177
 #, python-format
 msgid "Document version \"%(object)s\" export successfully queued."
 msgstr ""
+"Izvoz različice dokumenta &quot;%(object)s&quot; je bil uspešno v čakalni "
+"vrsti."
 
 #: views/document_version_views.py:180
 #, python-format
 msgid "%(count)d document version export successfully queued."
-msgstr ""
+msgstr "%(count)d izvoz različice dokumenta je bil uspešno v čakalni vrsti."
 
 #: views/document_version_views.py:183
 #, python-format
 msgid "%(count)d document versions exports successfully queued."
 msgstr ""
+"%(count)d izvozi različic dokumentov so uspešno postavljeni v čakalno vrsto."
 
 #: views/document_version_views.py:185
 #, python-format
 msgid "Export document version \"%(object)s\"."
-msgstr ""
+msgstr "Izvoz različice dokumenta &quot;%(object)s&quot;."
 
 #: views/document_version_views.py:186
 #, python-format
 msgid "Export %(count)d document version."
-msgstr ""
+msgstr "Izvoz različice dokumenta %(count)d."
 
 #: views/document_version_views.py:187
 #, python-format
 msgid "Export %(count)d document versions."
-msgstr ""
+msgstr "Izvozi različice dokumenta %(count)d."
 
 #: views/document_version_views.py:192
 msgid ""
 "The process will be performed in the background. The exported file will be "
 "available in the downloads area."
 msgstr ""
+"Postopek bo izveden v ozadju. Izvožena datoteka bo na voljo v območju za "
+"prenose."
 
 #: views/document_version_views.py:234
 msgid ""
 "Versions are views that can display document file pages as they are, remap "
 "or merge them into different layouts."
 msgstr ""
+"Različice so pogledi, ki lahko prikažejo strani datoteke dokumentov takšne, "
+"kot so, jih preslikajo ali združijo v različne postavitve."
 
 #: views/document_version_views.py:237
 msgid "No versions available"
-msgstr ""
+msgstr "Na voljo ni nobena različica"
 
 #: views/document_version_views.py:240
 #, python-format
 msgid "Versions of document: %s"
-msgstr ""
+msgstr "Različice dokumenta: %s"
 
 #: views/document_version_views.py:269
 #, python-format
 msgid "Preview of document version: %s"
-msgstr ""
+msgstr "Predogled različice dokumenta: %s"
 
 #: views/document_version_views.py:314
 #, python-format
 msgid "Transformation clear request processed for %(count)d document version."
 msgstr ""
+"Zahteva za jasno preoblikovanje obdelana za različico dokumenta %(count)d."
 
 #: views/document_version_views.py:317
 #, python-format
 msgid ""
 "Transformation clear request processed for %(count)d document versions."
 msgstr ""
+"Zahteva za jasno preoblikovanje obdelana za različice dokumenta %(count)d."
 
 #: views/document_version_views.py:323
 msgid "Clear all the page transformations for the selected document version?"
 msgid_plural ""
 "Clear all the page transformations for the selected document version?"
 msgstr[0] ""
+"Počistiti vse transformacije strani za izbrano različico dokumenta?"
 msgstr[1] ""
+"Počistiti vse transformacije strani za izbrano različico dokumenta?"
 msgstr[2] ""
+"Počistiti vse transformacije strani za izbrano različico dokumenta?"
 msgstr[3] ""
+"Počistiti vse transformacije strani za izbrano različico dokumenta?"
 
 #: views/document_version_views.py:334
 #, python-format
 msgid "Clear all the page transformations for the document version: %s?"
-msgstr ""
+msgstr "Počisti vse transformacije strani za različico dokumenta: %s?"
 
 #: views/document_version_views.py:351
 #, python-format
@@ -1802,6 +1926,8 @@ msgid ""
 "Error deleting the page transformations for document version: "
 "%(document_version)s; %(error)s."
 msgstr ""
+"Napaka pri brisanju transformacij strani za različico dokumenta: "
+"%(document_version)s; %(error)s."
 
 #: views/document_version_views.py:387
 #, python-format
@@ -1809,16 +1935,18 @@ msgid ""
 "Error cloning the page transformations for document version: "
 "%(document_version)s; %(error)s."
 msgstr ""
+"Napaka pri kloniranju transformacij strani za različico dokumenta: "
+"%(document_version)s; %(error)s."
 
 #: views/document_version_views.py:411
 #, python-format
 msgid "Clone page transformations of document version: %s"
-msgstr ""
+msgstr "Preoblikovanje strani klona različice dokumenta: %s"
 
 #: views/document_views.py:41
 #, python-format
 msgid "Error retrieving document list: %(exception)s."
-msgstr ""
+msgstr "Napaka pri pridobivanju seznama dokumentov: %(exception)s."
 
 #: views/document_views.py:63
 msgid ""
@@ -1826,53 +1954,57 @@ msgid ""
 "account has not been granted the view permission for any document or "
 "document type."
 msgstr ""
+"To lahko pomeni, da ni bil naložen noben dokument ali da vaš uporabniški "
+"račun ni dobil dovoljenja za ogled katerega koli dokumenta ali vrste "
+"dokumenta."
 
 #: views/document_views.py:67
 msgid "No documents available"
-msgstr ""
+msgstr "Dokumenti niso na voljo"
 
 #: views/document_views.py:82
 #, python-format
 msgid "Document type change request performed on %(count)d document"
-msgstr ""
+msgstr "Zahteva za spremembo vrste dokumenta, izvedena na dokumentu %(count)d"
 
 #: views/document_views.py:85
 #, python-format
 msgid "Document type change request performed on %(count)d documents"
 msgstr ""
+"Zahteva za spremembo vrste dokumenta, izvedena na dokumentih %(count)d"
 
 #: views/document_views.py:93
 msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Spremenite vrsto izbranega dokumenta"
+msgstr[1] "Spremenite vrsto izbranih dokumentov"
+msgstr[2] "Spremenite vrsto izbranih dokumentov"
+msgstr[3] "Spremenite vrsto izbranih dokumentov"
 
 #: views/document_views.py:104
 #, python-format
 msgid "Change the type of the document: %s"
-msgstr ""
+msgstr "Spremenite vrsto dokumenta: %s"
 
 #: views/document_views.py:126
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
-msgstr ""
+msgstr "Vrsta dokumenta za &quot;%s&quot; je bila uspešno spremenjena."
 
 #: views/document_views.py:151
 #, python-format
 msgid "Preview of document: %s"
-msgstr ""
+msgstr "Predogled dokumenta: %s"
 
 #: views/document_views.py:169
 #, python-format
 msgid "Edit properties of document: %s"
-msgstr ""
+msgstr "Uredi lastnosti dokumenta: %s"
 
 #: views/document_views.py:200
 #, python-format
 msgid "Properties of document: %s"
-msgstr ""
+msgstr "Lastnosti dokumenta: %s"
 
 #: views/favorite_document_views.py:32
 #, python-format
@@ -1880,140 +2012,145 @@ msgid ""
 "Favorited documents will be listed in this view. Up to %(count)d documents "
 "can be favorited per user. "
 msgstr ""
+"Priljubljeni dokumenti bodo navedeni v tem pogledu. Na uporabnika je mogoče "
+"med priljubljene dodati do %(count)d dokumentov."
 
 #: views/favorite_document_views.py:35
 msgid "There are no favorited documents."
-msgstr ""
+msgstr "Ni dokumentov med priljubljenimi."
 
 #: views/favorite_document_views.py:47
 #, python-format
 msgid "%(count)d document added to favorites."
-msgstr ""
+msgstr "%(count)d dokument dodan med priljubljene."
 
 #: views/favorite_document_views.py:50
 #, python-format
 msgid "%(count)d documents added to favorites."
-msgstr ""
+msgstr "%(count)d dokumenti dodani med priljubljene."
 
 #: views/favorite_document_views.py:56
 msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Dodaj izbrani dokument med priljubljene?"
+msgstr[1] "Dodaj izbrane dokumente med priljubljene?"
+msgstr[2] "Dodaj izbrane dokumente med priljubljene?"
+msgstr[3] "Dodaj izbrane dokumente med priljubljene?"
 
 #: views/favorite_document_views.py:74
 #, python-format
 msgid "Document \"%(instance)s\" is not in favorites."
-msgstr ""
+msgstr "Dokumenta &quot;%(instance)s&quot; ni med priljubljenimi."
 
 #: views/favorite_document_views.py:79
 #, python-format
 msgid "%(count)d document removed from favorites."
-msgstr ""
+msgstr "%(count)d dokument odstranjen iz priljubljenih."
 
 #: views/favorite_document_views.py:82
 #, python-format
 msgid "%(count)d documents removed from favorites."
-msgstr ""
+msgstr "%(count)d dokumenti odstranjeni iz priljubljenih."
 
 #: views/favorite_document_views.py:88
 msgid "Remove the selected document from favorites?"
 msgid_plural "Remove the selected documents from favorites?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Odstraniti izbrani dokument iz priljubljenih?"
+msgstr[1] "Odstraniti izbrane dokumente iz priljubljenih?"
+msgstr[2] "Odstraniti izbrane dokumente iz priljubljenih?"
+msgstr[3] "Odstraniti izbrane dokumente iz priljubljenih?"
 
 #: views/misc_views.py:44
 #, python-format
 msgid "Print: %s"
-msgstr ""
+msgstr "Tisk: %s"
 
 #: views/recently_accessed_document_views.py:23
 msgid ""
 "This view will list the latest documents viewed or manipulated in any way by"
 " this user account."
 msgstr ""
+"Ta pogled bo navedel najnovejše dokumente, ki si jih je ta uporabniški račun"
+" ogledal ali kakor koli manipuliral."
 
 #: views/recently_accessed_document_views.py:27
 msgid "There are no recently accessed documents"
-msgstr ""
+msgstr "Ni nedavno dostopanih dokumentov"
 
 #: views/recently_created_document_views.py:21
 msgid "This view will list the latest documents created in the system."
 msgstr ""
+"V tem pogledu bodo navedeni najnovejši dokumenti, ustvarjeni v sistemu."
 
 #: views/recently_created_document_views.py:25
 msgid "There are no recently created documents"
-msgstr ""
+msgstr "Ni nedavno ustvarjenih dokumentov"
 
 #: views/trashed_document_views.py:37
 #, python-format
 msgid "Document \"%(object)s\" moved to trash."
-msgstr ""
+msgstr "Dokument &quot;%(object)s&quot; premaknjen v koš."
 
 #: views/trashed_document_views.py:40
 #, python-format
 msgid "%(count)d document moved to the trash."
-msgstr ""
+msgstr "%(count)d dokument premaknjen v koš."
 
 #: views/trashed_document_views.py:43
 #, python-format
 msgid "%(count)d documents moved to the trash."
-msgstr ""
+msgstr "%(count)d dokumenti premaknjeni v koš."
 
 #: views/trashed_document_views.py:45
 #, python-format
 msgid "Move the document \"%(object)s\" to trash?"
-msgstr ""
+msgstr "Želite premakniti dokument &quot;%(object)s&quot; v koš?"
 
 #: views/trashed_document_views.py:46
 msgid "Move the selected document to the trash?"
-msgstr ""
+msgstr "Želite premakniti izbrani dokument v koš?"
 
 #: views/trashed_document_views.py:47
 #, python-format
 msgid "Move the %(count)d selected documents to trash?"
-msgstr ""
+msgstr "Želite premakniti %(count)d izbrane dokumente v koš?"
 
 #: views/trashed_document_views.py:76
 msgid "Empty trash?"
-msgstr ""
+msgstr "Izprazniti smeti?"
 
 #: views/trashed_document_views.py:88
 msgid "The trash emptying task has been queued."
-msgstr ""
+msgstr "Opravilo praznjenja smeti je v čakalni vrsti."
 
 #: views/trashed_document_views.py:98
 #, python-format
 msgid "Trash document \"%(object)s\" submitted for deletion."
-msgstr ""
+msgstr "Dokument v smeti &quot;%(object)s&quot; je bil poslan v izbris."
 
 #: views/trashed_document_views.py:101
 #, python-format
 msgid "%(count)d trashed document submitted for deletion."
-msgstr ""
+msgstr "%(count)d dokument v smeti, poslan v izbris."
 
 #: views/trashed_document_views.py:104
 #, python-format
 msgid "%(count)d trashed documents submitted for deletion."
-msgstr ""
+msgstr "%(count)d dokumenti v smeti, poslani v izbris."
 
 #: views/trashed_document_views.py:106
 #, python-format
 msgid "Delete the trashed document \"%(object)s\"?"
-msgstr ""
+msgstr "Želite izbrisati dokument &quot;%(object)s&quot; v smeti?"
 
 #: views/trashed_document_views.py:107
 msgid "Delete the selected trashed document?"
-msgstr ""
+msgstr "Želite izbrisati izbrani dokument v smeti?"
 
 #: views/trashed_document_views.py:108
 #, python-format
 msgid "Delete the %(count)d selected trashed documents?"
-msgstr ""
+msgstr "Želite izbrisati %(count)d izbrane dokumente v smeti?"
 
 #: views/trashed_document_views.py:144
 msgid ""
@@ -2021,48 +2158,51 @@ msgid ""
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
 msgstr ""
+"Da bi preprečili izgubo podatkov, se dokumenti ne izbrišejo takoj. Najprej "
+"jih odložimo v koš za smeti. Od tu jih je mogoče dokončno izbrisati ali "
+"obnoviti."
 
 #: views/trashed_document_views.py:149
 msgid "There are no documents in the trash can"
-msgstr ""
+msgstr "V smetnjaku ni dokumentov"
 
 #: views/trashed_document_views.py:162
 #, python-format
 msgid "Trashed document \"%(object)s\" restored."
-msgstr ""
+msgstr "Dokument v smeti &quot;%(object)s&quot; je obnovljen."
 
 #: views/trashed_document_views.py:165
 #, python-format
 msgid "%(count)d trashed document restored."
-msgstr ""
+msgstr "%(count)d vrnjen v smeti dokument obnovljen."
 
 #: views/trashed_document_views.py:168
 #, python-format
 msgid "%(count)d trashed documents restored."
-msgstr ""
+msgstr "%(count)d izgubljeni dokumenti obnovljeni."
 
 #: views/trashed_document_views.py:170
 #, python-format
 msgid "Restore the trashed document: %(object)s"
-msgstr ""
+msgstr "Obnovite dokument v smeti: %(object)s"
 
 #: views/trashed_document_views.py:171
 msgid "Restore the selected trashed document?"
-msgstr ""
+msgstr "Obnoviti izbrani dokument v smeti?"
 
 #: views/trashed_document_views.py:172
 #, python-format
 msgid "Restore the %(count)d selected trashed documents?"
-msgstr ""
+msgstr "Obnoviti %(count)d izbrane dokumente v smeti?"
 
 #: workflow_actions.py:13
 msgid "New document type for the workflow document."
-msgstr ""
+msgstr "Nova vrsta dokumenta za dokument poteka dela."
 
 #: workflow_actions.py:18
 msgid "Change document type"
-msgstr ""
+msgstr "Spremenite vrsto dokumenta"
 
 #: workflow_actions.py:37
 msgid "Send document to trash"
-msgstr ""
+msgstr "Pošlji dokument v koš"

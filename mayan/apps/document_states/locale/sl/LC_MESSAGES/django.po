@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,48 +26,52 @@ msgstr ""
 #: views/workflow_proxy_views.py:64 views/workflow_template_views.py:260
 #: workflow_actions.py:88
 msgid "Workflows"
-msgstr ""
+msgstr "Delovni tokovi"
 
 #: apps.py:185 apps.py:192
 msgid "Current state of a workflow"
-msgstr ""
+msgstr "Trenutno stanje poteka dela"
 
 #: apps.py:186
 msgid "Return the current state of the selected workflow."
-msgstr ""
+msgstr "Vrne trenutno stanje izbranega poteka dela."
 
 #: apps.py:193
 msgid ""
 "Return the completion value of the current state of the selected workflow."
-msgstr ""
+msgstr "Vrne vrednost dokončanja trenutnega stanja izbranega poteka dela."
 
 #: apps.py:248
 msgid ""
 "Return the last workflow instance log entry. The log entry itself has the "
 "following fields: datetime, transition, user, and comment."
 msgstr ""
+"Vrne zadnji vnos v dnevnik instance delovnega toka. Sam vnos v dnevnik ima "
+"naslednja polja: datum in čas, prehod, uporabnik in komentar."
 
 #: apps.py:251
 msgid "Get last log entry"
-msgstr ""
+msgstr "Pridobite zadnji vnos v dnevnik"
 
 #: apps.py:256
 msgid ""
 "Return the current context dictionary which includes runtime data from the "
 "workflow transition fields."
 msgstr ""
+"Vrne trenutni kontekstni slovar, ki vključuje podatke o času izvajanja iz "
+"prehodnih polj poteka dela."
 
 #: apps.py:258
 msgid "Get the context"
-msgstr ""
+msgstr "Pridobite kontekst"
 
 #: apps.py:263
 msgid "Return the transition of the workflow instance."
-msgstr ""
+msgstr "Vrni prehod primerka poteka dela."
 
 #: apps.py:264
 msgid "Get last transition"
-msgstr ""
+msgstr "Pridobite zadnji prehod"
 
 #: apps.py:278 apps.py:290 apps.py:299 apps.py:305
 msgid "None"
@@ -75,52 +79,52 @@ msgstr "Nobenega"
 
 #: apps.py:286
 msgid "Current state"
-msgstr ""
+msgstr "Trenutno stanje"
 
 #: apps.py:291 apps.py:315 models/workflow_instance_models.py:182
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
 
 #: apps.py:295
 msgid "Last transition"
-msgstr ""
+msgstr "Zadnji prehod"
 
 #: apps.py:300 apps.py:311
 msgid "Date and time"
-msgstr ""
+msgstr "Datum in čas"
 
 #: apps.py:306 models/workflow_state_models.py:68
 msgid "Completion"
-msgstr ""
+msgstr "Dokončanje"
 
 #: apps.py:336
 msgid "Additional details"
-msgstr ""
+msgstr "Dodatne podrobnosti"
 
 #: apps.py:367
 msgid "When?"
-msgstr ""
+msgstr "Kdaj?"
 
 #: apps.py:371
 msgid "Action type"
-msgstr ""
+msgstr "Vrsta dejanja"
 
 #: apps.py:402
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
-msgstr ""
+msgstr "Sprožilci so sistemski dogodki, ki bodo povzročili uporabo prehoda."
 
 #: apps.py:404
 msgid "Triggers"
-msgstr ""
+msgstr "Sprožilci"
 
 #: apps.py:418 models/workflow_transition_models.py:140
 msgid "Type"
-msgstr ""
+msgstr "Vrsta"
 
 #: apps.py:426
 msgid "Widget"
-msgstr ""
+msgstr "Widget"
 
 #: apps.py:437 apps.py:443
 msgid "Documents"
@@ -129,23 +133,23 @@ msgstr "Dokumenti"
 #: classes.py:153
 #, python-format
 msgid "%(field_name)s template error: %(exception)s"
-msgstr ""
+msgstr "Napaka predloge %(field_name)s: %(exception)s"
 
 #: events.py:10
 msgid "Workflow created"
-msgstr ""
+msgstr "Potek dela ustvarjen"
 
 #: events.py:13
 msgid "Workflow edited"
-msgstr ""
+msgstr "Potek dela urejen"
 
 #: forms.py:23
 msgid "The action type for this action entry."
-msgstr ""
+msgstr "Vrsta dejanja za ta vnos dejanja."
 
 #: forms.py:24
 msgid "Action"
-msgstr ""
+msgstr "Akcija"
 
 #: forms.py:131
 msgid "Namespace"
@@ -160,7 +164,7 @@ msgstr "Oznaka"
 
 #: forms.py:139 models/workflow_state_models.py:182
 msgid "Enabled"
-msgstr ""
+msgstr "Omogočeno"
 
 #: forms.py:141
 msgid "No"
@@ -172,22 +176,22 @@ msgstr "Da"
 
 #: forms.py:190
 msgid "Select a transition to execute in the next step."
-msgstr ""
+msgstr "Izberite prehod, ki ga želite izvesti v naslednjem koraku."
 
 #: forms.py:191 links.py:246 models/workflow_instance_models.py:178
 #: models/workflow_transition_models.py:137
 #: models/workflow_transition_models.py:221
 msgid "Transition"
-msgstr ""
+msgstr "Prehod"
 
 #: handlers.py:97
 #, python-format
 msgid "Event trigger: %s"
-msgstr ""
+msgstr "Sprožilec dogodka: %s"
 
 #: links.py:52 views/workflow_template_views.py:126
 msgid "Create workflow"
-msgstr ""
+msgstr "Ustvari potek dela"
 
 #: links.py:56 links.py:63 links.py:103 links.py:138 links.py:166 links.py:212
 msgid "Delete"
@@ -195,19 +199,19 @@ msgstr "Izbriši"
 
 #: links.py:69 models/workflow_models.py:58
 msgid "Document types"
-msgstr ""
+msgstr "Vrste dokumentov"
 
 #: links.py:76 links.py:110 links.py:145 links.py:173 links.py:219
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #: links.py:82
 msgid "Launch workflow"
-msgstr ""
+msgstr "Zagon delovnega toka"
 
 #: links.py:94
 msgid "Preview"
-msgstr ""
+msgstr "Predogled"
 
 #: links.py:116 models/workflow_state_models.py:103
 msgid "Actions"
@@ -215,55 +219,55 @@ msgstr "Dejanja"
 
 #: links.py:122
 msgid "Create action"
-msgstr ""
+msgstr "Ustvari akcijo"
 
 #: links.py:131
 msgid "Create state"
-msgstr ""
+msgstr "Ustvari stanje"
 
 #: links.py:150 links.py:277
 msgid "States"
-msgstr ""
+msgstr "države"
 
 #: links.py:159
 msgid "Create transition"
-msgstr ""
+msgstr "Ustvari prehod"
 
 #: links.py:179
 msgid "Transition triggers"
-msgstr ""
+msgstr "Sprožilci prehoda"
 
 #: links.py:185
 msgid "Transitions"
-msgstr ""
+msgstr "Prehodi"
 
 #: links.py:193 links.py:199 workflow_actions.py:97
 msgid "Launch workflows"
-msgstr ""
+msgstr "Zagon delovnih tokov"
 
 #: links.py:205
 msgid "Create field"
-msgstr ""
+msgstr "Ustvari polje"
 
 #: links.py:225 models/workflow_transition_models.py:95
 msgid "Fields"
-msgstr ""
+msgstr "Polja"
 
 #: links.py:235
 msgid "Detail"
-msgstr ""
+msgstr "Podrobnost"
 
 #: links.py:256
 msgid "Workflow documents"
-msgstr ""
+msgstr "Dokumenti poteka dela"
 
 #: links.py:270
 msgid "State documents"
-msgstr ""
+msgstr "Državni dokumenti"
 
 #: links.py:285
 msgid "Launch all workflows"
-msgstr ""
+msgstr "Zaženite vse poteke dela"
 
 #: literals.py:7
 msgid ""
@@ -273,31 +277,36 @@ msgid ""
 "\"transition\", \"user\", \"comment\") and any values from workflow template"
 " fields."
 msgstr ""
+"Lahko je statična vrednost ali predloga. Poleg primerka delovnega toka "
+"predloga prejme kontekst primerka delovnega toka, ki sam vključuje "
+"&quot;entry_log&quot; (ki vsebuje &quot;workflow_instance&quot;, "
+"&quot;datetime&quot;, &quot;transition&quot;, &quot;user&quot;, "
+"&quot;comment&quot;) in vse vrednosti iz polj predloge delovnega toka ."
 
 #: literals.py:27
 msgid "Character"
-msgstr ""
+msgstr "Znak"
 
 #: literals.py:28
 msgid "Number (Integer)"
-msgstr ""
+msgstr "Število (celo število)"
 
 #: literals.py:41
 msgid "Text area"
-msgstr ""
+msgstr "Območje besedila"
 
 #: literals.py:50
 msgid "On entry"
-msgstr ""
+msgstr "Ob vstopu"
 
 #: literals.py:51
 msgid "On exit"
-msgstr ""
+msgstr "Na izhodu"
 
 #: models/workflow_instance_models.py:28 models/workflow_models.py:66
 #: models/workflow_state_models.py:51 models/workflow_transition_models.py:36
 msgid "Workflow"
-msgstr ""
+msgstr "Potek dela"
 
 #: models/workflow_instance_models.py:32
 msgid "Document"
@@ -305,20 +314,20 @@ msgstr "Dokument"
 
 #: models/workflow_instance_models.py:35
 msgid "Context"
-msgstr ""
+msgstr "Kontekst"
 
 #: models/workflow_instance_models.py:44
 #: models/workflow_instance_models.py:171
 msgid "Workflow instance"
-msgstr ""
+msgstr "Primer delovnega toka"
 
 #: models/workflow_instance_models.py:45
 msgid "Workflow instances"
-msgstr ""
+msgstr "Primeri poteka dela"
 
 #: models/workflow_instance_models.py:174
 msgid "Datetime"
-msgstr ""
+msgstr "Datum čas"
 
 #: models/workflow_instance_models.py:184 views/workflow_instance_views.py:135
 msgid "Comment"
@@ -326,105 +335,111 @@ msgstr "Komentiraj"
 
 #: models/workflow_instance_models.py:185
 msgid "Extra data"
-msgstr ""
+msgstr "Dodatni podatki"
 
 #: models/workflow_instance_models.py:189
 msgid "Workflow instance log entry"
-msgstr ""
+msgstr "Vnos v dnevnik primerka poteka dela"
 
 #: models/workflow_instance_models.py:190
 msgid "Workflow instance log entries"
-msgstr ""
+msgstr "Vnosi v dnevnik instance delovnega toka"
 
 #: models/workflow_instance_models.py:197
 msgid "Not a valid transition choice."
-msgstr ""
+msgstr "Ni veljavna izbira prehoda."
 
 #: models/workflow_models.py:42
 msgid "Launch workflow when document is created."
-msgstr ""
+msgstr "Zaženi potek dela, ko je dokument ustvarjen."
 
 #: models/workflow_models.py:43
 msgid "Auto launch"
-msgstr ""
+msgstr "Samodejni zagon"
 
 #: models/workflow_models.py:47
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
 msgstr ""
+"To vrednost bodo uporabile druge aplikacije za sklicevanje na ta potek dela."
+" Vsebuje lahko samo črke, številke in podčrtaje."
 
 #: models/workflow_models.py:50 models/workflow_transition_models.py:146
 msgid "Internal name"
-msgstr ""
+msgstr "Interno ime"
 
 #: models/workflow_models.py:53
 msgid "A short text to describe the workflow."
-msgstr ""
+msgstr "Kratko besedilo za opis poteka dela."
 
 #: models/workflow_models.py:169
 msgid "Initial state"
-msgstr ""
+msgstr "Začetno stanje"
 
 #: models/workflow_models.py:310
 msgid "Workflow runtime proxy"
-msgstr ""
+msgstr "Proxy izvajalnega toka dela"
 
 #: models/workflow_models.py:311
 msgid "Workflow runtime proxies"
-msgstr ""
+msgstr "Posredniki izvajalnega toka dela"
 
 #: models/workflow_state_models.py:54
 msgid "A short text to describe the workflow state."
-msgstr ""
+msgstr "Kratko besedilo za opis stanja poteka dela."
 
 #: models/workflow_state_models.py:60
 msgid ""
 "The state at which the workflow will start in. Only one state can be the "
 "initial state."
 msgstr ""
+"Stanje, v katerem se bo začel potek dela. Samo eno stanje je lahko začetno "
+"stanje."
 
 #: models/workflow_state_models.py:62
 msgid "Initial"
-msgstr ""
+msgstr "Začetna"
 
 #: models/workflow_state_models.py:66
 msgid ""
 "The percent of completion that this state represents in relation to the "
 "workflow. Use numbers without the percent sign."
 msgstr ""
+"Odstotek dokončanja, ki ga to stanje predstavlja glede na potek dela. "
+"Uporabite številke brez znaka za odstotek."
 
 #: models/workflow_state_models.py:74 models/workflow_state_models.py:176
 msgid "Workflow state"
-msgstr ""
+msgstr "Stanje poteka dela"
 
 #: models/workflow_state_models.py:75
 msgid "Workflow states"
-msgstr ""
+msgstr "Stanja poteka dela"
 
 #: models/workflow_state_models.py:179
 msgid "A short text describing the action."
-msgstr ""
+msgstr "Kratko besedilo, ki opisuje akcijo."
 
 #: models/workflow_state_models.py:186
 msgid "At which moment of the state this action will execute."
-msgstr ""
+msgstr "V katerem trenutku stanja se bo to dejanje izvršilo."
 
 #: models/workflow_state_models.py:187
 msgid "When"
-msgstr ""
+msgstr "Kdaj"
 
 #: models/workflow_state_models.py:191
 msgid "The dotted Python path to the workflow action class to execute."
-msgstr ""
+msgstr "Pikčasta pot Python do razreda dejanj delovnega toka za izvedbo."
 
 #: models/workflow_state_models.py:192
 msgid "Entry action path"
-msgstr ""
+msgstr "Vstopna akcijska pot"
 
 #: models/workflow_state_models.py:195
 msgid "Entry action data"
-msgstr ""
+msgstr "Podatki o akciji vnosa"
 
 #: models/workflow_state_models.py:199
 msgid ""
@@ -434,52 +449,57 @@ msgid ""
 "string ('') are considered to be logical false, any other value is "
 "considered to be the logical true."
 msgstr ""
+"Pogoj, ki bo določil, ali se to dejanje stanja izvede ali ne. Pogoj se "
+"ovrednoti glede na primerek poteka dela. Pogoji, ki ne vrnejo nobene "
+"vrednosti, ki vrnejo Python logično None ali prazen niz (&#39;&#39;), se "
+"štejejo za logično napačne, katera koli druga vrednost se šteje za logično "
+"resnično."
 
 #: models/workflow_state_models.py:205 models/workflow_transition_models.py:58
 msgid "Condition"
-msgstr ""
+msgstr "Pogoj"
 
 #: models/workflow_state_models.py:211
 msgid "Workflow state action"
-msgstr ""
+msgstr "Dejanje stanja poteka dela"
 
 #: models/workflow_state_models.py:212
 msgid "Workflow state actions"
-msgstr ""
+msgstr "Dejanja stanja poteka dela"
 
 #: models/workflow_state_models.py:269
 msgid "Unknown action type"
-msgstr ""
+msgstr "Neznana vrsta dejanja"
 
 #: models/workflow_state_models.py:274
 msgid ""
 "The state action will be executed, depending on the condition return value."
-msgstr ""
+msgstr "Dejanje stanja bo izvedeno, odvisno od vrnjene vrednosti pogoja."
 
 #: models/workflow_state_models.py:277
 #: models/workflow_transition_models.py:115
 msgid "Has a condition?"
-msgstr ""
+msgstr "Ima pogoj?"
 
 #: models/workflow_state_models.py:302
 msgid "Workflow state runtime proxy"
-msgstr ""
+msgstr "Proxy za izvajanje stanja poteka dela"
 
 #: models/workflow_state_models.py:303
 msgid "Workflow state runtime proxies"
-msgstr ""
+msgstr "Posredniki izvajalnega okolja stanja poteka dela"
 
 #: models/workflow_transition_models.py:39
 msgid "A short text to describe the transition."
-msgstr ""
+msgstr "Kratko besedilo za opis prehoda."
 
 #: models/workflow_transition_models.py:44
 msgid "Origin state"
-msgstr ""
+msgstr "Država izvora"
 
 #: models/workflow_transition_models.py:48
 msgid "Destination state"
-msgstr ""
+msgstr "Ciljno stanje"
 
 #: models/workflow_transition_models.py:52
 msgid ""
@@ -489,257 +509,283 @@ msgid ""
 "('') are considered to be logical false, any other value is considered to be"
 " the logical true."
 msgstr ""
+"Pogoj, ki bo določil, ali je ta prehod omogočen ali ne. Pogoj se ovrednoti "
+"glede na primerek poteka dela. Pogoji, ki ne vrnejo nobene vrednosti, ki "
+"vrnejo Python logično None ali prazen niz (&#39;&#39;), se štejejo za "
+"logično napačne, katera koli druga vrednost se šteje za logično resnično."
 
 #: models/workflow_transition_models.py:66
 msgid "Workflow transition"
-msgstr ""
+msgstr "Prehod delovnega toka"
 
 #: models/workflow_transition_models.py:67
 msgid "Workflow transitions"
-msgstr ""
+msgstr "Prehodi delovnega toka"
 
 #: models/workflow_transition_models.py:112
 msgid ""
 "The transition will be available, depending on the condition return value."
-msgstr ""
+msgstr "Prehod bo na voljo glede na vrnjeno vrednost pogoja."
 
 #: models/workflow_transition_models.py:144
 msgid ""
 "The name that will be used to identify this field in other parts of the "
 "workflow system."
 msgstr ""
+"Ime, ki bo uporabljeno za identifikacijo tega polja v drugih delih sistema "
+"poteka dela."
 
 #: models/workflow_transition_models.py:150
 msgid "The field name that will be shown on the user interface."
-msgstr ""
+msgstr "Ime polja, ki bo prikazano na uporabniškem vmesniku."
 
 #: models/workflow_transition_models.py:154
 msgid ""
 "An optional message that will help users better understand the purpose of "
 "the field and data to provide."
 msgstr ""
+"Izbirno sporočilo, ki bo uporabnikom pomagalo bolje razumeti namen polja in "
+"podatke, ki jih je treba zagotoviti."
 
 #: models/workflow_transition_models.py:156
 msgid "Help text"
-msgstr ""
+msgstr "Besedilo pomoči"
 
 #: models/workflow_transition_models.py:160
 msgid "Whether this fields needs to be filled out or not to proceed."
-msgstr ""
+msgstr "Ali je treba ta polja izpolniti ali ne za nadaljevanje."
 
 #: models/workflow_transition_models.py:161
 msgid "Required"
-msgstr ""
+msgstr "Obvezno"
 
 #: models/workflow_transition_models.py:165
 msgid "An optional class to change the default presentation of the field."
-msgstr ""
+msgstr "Izbirni razred za spremembo privzete predstavitve polja."
 
 #: models/workflow_transition_models.py:166
 msgid "Widget class"
-msgstr ""
+msgstr "Razred pripomočkov"
 
 #: models/workflow_transition_models.py:170
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
 msgstr ""
+"Skupina argumentov ključnih besed za prilagajanje gradnika. Uporabite format"
+" YAML."
 
 #: models/workflow_transition_models.py:173
 msgid "Widget keyword arguments"
-msgstr ""
+msgstr "Argumenti ključnih besed pripomočka"
 
 #: models/workflow_transition_models.py:178
 msgid "Workflow transition field"
-msgstr ""
+msgstr "Prehodno polje poteka dela"
 
 #: models/workflow_transition_models.py:179
 msgid "Workflow transition fields"
-msgstr ""
+msgstr "Prehodna polja poteka dela"
 
 #: models/workflow_transition_models.py:225
 msgid "Event type"
-msgstr ""
+msgstr "Vrsta dogodka"
 
 #: models/workflow_transition_models.py:230
 msgid "Workflow transition trigger event"
-msgstr ""
+msgstr "Dogodek sprožilca prehoda delovnega toka"
 
 #: models/workflow_transition_models.py:231
 msgid "Workflow transitions trigger events"
-msgstr ""
+msgstr "Prehodi poteka dela sprožijo dogodke"
 
 #: permissions.py:6
 msgid "Document workflows"
-msgstr ""
+msgstr "Potek dela dokumentov"
 
 #: permissions.py:10
 msgid "Create workflow templates"
-msgstr ""
+msgstr "Ustvarite predloge poteka dela"
 
 #: permissions.py:13
 msgid "Delete workflow templates"
-msgstr ""
+msgstr "Izbrišite predloge poteka dela"
 
 #: permissions.py:16
 msgid "Edit workflow templates"
-msgstr ""
+msgstr "Uredite predloge poteka dela"
 
 #: permissions.py:19
 msgid "View workflow templates"
-msgstr ""
+msgstr "Oglejte si predloge poteka dela"
 
 #: permissions.py:25
 msgid "Transition workflow instances"
-msgstr ""
+msgstr "Primerki poteka dela prehoda"
 
 #: permissions.py:28
 msgid "Execute workflow tools"
-msgstr ""
+msgstr "Izvedite orodja za potek dela"
 
 #: queues.py:8
 msgid "Document states medium"
-msgstr ""
+msgstr "Dokument navaja medij"
 
 #: queues.py:13
 msgid "Launch a workflow for a document"
-msgstr ""
+msgstr "Zaženi potek dela za dokument"
 
 #: queues.py:17
 msgid "Launch all workflows for a document"
-msgstr ""
+msgstr "Zagon vseh delovnih tokov za dokument"
 
 #: queues.py:22
 msgid "Launch all workflows for all documents"
-msgstr ""
+msgstr "Zaženite vse poteke dela za vse dokumente"
 
 #: queues.py:26
 msgid "Launch a workflow"
-msgstr ""
+msgstr "Zaženi potek dela"
 
 #: search.py:12 search.py:19 search.py:26 search.py:33 search.py:40
 msgid "Document workflow transition comment"
-msgstr ""
+msgstr "Komentar prehoda poteka dela dokumenta"
 
 #: serializers.py:29
 msgid "Primary key of the workflow template to launch."
-msgstr ""
+msgstr "Primarni ključ predloge poteka dela za zagon."
 
 #: serializers.py:89
 msgid "Primary key of the document type to add to the workflow."
-msgstr ""
+msgstr "Primarni ključ vrste dokumenta, ki ga želite dodati v potek dela."
 
 #: serializers.py:98
 msgid "Primary key of the document type to remove from the workflow."
 msgstr ""
+"Primarni ključ vrste dokumenta, ki ga želite odstraniti iz poteka dela."
 
 #: serializers.py:263
 msgid "Primary key of the destination state to be added."
-msgstr ""
+msgstr "Primarni ključ ciljnega stanja, ki bo dodan."
 
 #: serializers.py:271
 msgid "Primary key of the origin state to be added."
-msgstr ""
+msgstr "Primarni ključ izvornega stanja, ki ga je treba dodati."
 
 #: serializers.py:361
 msgid "Event Type ID"
-msgstr ""
+msgstr "ID vrste dogodka"
 
 #: serializers.py:451
 #, python-format
 msgid "Unknown or invalid event type ID `%s`"
-msgstr ""
+msgstr "Neznan ali neveljaven ID vrste dogodka `%s`"
 
 #: serializers.py:470
 msgid "Primary key of the transition to be added."
-msgstr ""
+msgstr "Primarni ključ prehoda, ki bo dodan."
 
 #: serializers.py:554
 msgid "A link to the entire history of this workflow."
-msgstr ""
+msgstr "Povezava do celotne zgodovine tega poteka dela."
 
 #: serializers.py:563
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
 msgstr ""
+"URL API-ja, ki kaže na potek dela v zvezi z dokumentom, ki mu je priložen. "
+"Ta URL se razlikuje od kanoničnega URL-ja poteka dela."
 
 #: settings.py:18
 msgid ""
 "File path to the graphviz dot program used to generate workflow previews."
 msgstr ""
+"Pot datoteke do programa graphviz dot, ki se uporablja za ustvarjanje "
+"predogledov poteka dela."
 
 #: settings.py:26
 msgid ""
 "The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest workflow image cache files. Specify the size in bytes."
 msgstr ""
+"Prag, pri katerem bo WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND začel brisati "
+"najstarejše datoteke predpomnilnika slik poteka dela. Določite velikost v "
+"bajtih."
 
 #: settings.py:35
 msgid ""
 "Path to the Storage subclass to use when storing the cached workflow image "
 "files."
 msgstr ""
+"Pot do podrazreda Storage za uporabo pri shranjevanju predpomnjenih "
+"slikovnih datotek poteka dela."
 
 #: settings.py:43
 msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumenti za posredovanje v WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: storages.py:14
 msgid ""
 "Unable to initialize the workflow preview storage. Check the settings {} and"
 " {} for formatting errors."
 msgstr ""
+"Ni mogoče inicializirati shrambe za predogled poteka dela. Preverite "
+"nastavitve {} in {} za napake pri oblikovanju."
 
 #: storages.py:21
 msgid "Workflow preview images"
-msgstr ""
+msgstr "Slike predogleda poteka dela"
 
 #: templates/document_states/forms/widgets/workflow_image.html:2
 msgid "Workflow preview"
-msgstr ""
+msgstr "Predogled poteka dela"
 
 #: views/workflow_instance_views.py:35
 msgid ""
 "Assign workflows to the document type of this document to have this document"
 " execute those workflows. "
 msgstr ""
+"Dodelite poteke dela vrsti dokumenta tega dokumenta, da bo ta dokument "
+"izvajal te poteke dela."
 
 #: views/workflow_instance_views.py:39
 msgid "There are no workflows for this document"
-msgstr ""
+msgstr "Za ta dokument ni delovnih tokov"
 
 #: views/workflow_instance_views.py:43
 #, python-format
 msgid "Workflows for document: %s"
-msgstr ""
+msgstr "Poteki dela za dokument: %s"
 
 #: views/workflow_instance_views.py:68
 msgid ""
 "This view will show the state changes as a workflow instance is "
 "transitioned."
 msgstr ""
+"Ta pogled bo prikazal spremembe stanja med prehodom primerka delovnega toka."
 
 #: views/workflow_instance_views.py:72
 msgid "There are no details for this workflow instance"
-msgstr ""
+msgstr "Za ta primer delovnega toka ni podrobnosti"
 
 #: views/workflow_instance_views.py:75
 #, python-format
 msgid "Detail of workflow: %(workflow)s"
-msgstr ""
+msgstr "Podrobnosti poteka dela: %(workflow)s"
 
 #: views/workflow_instance_views.py:113
 #, python-format
 msgid "Document \"%s\" transitioned successfully"
-msgstr ""
+msgstr "Dokument &quot;%s&quot; je bil uspešno prenesen"
 
 #: views/workflow_instance_views.py:123
 #, python-format
 msgid "Execute transition \"%(transition)s\" for workflow: %(workflow)s"
 msgstr ""
+"Izvedite prehod &quot;%(transition)s&quot; za potek dela: %(workflow)s"
 
 #: views/workflow_instance_views.py:138
 msgid "Optional comment to attach to the transition."
-msgstr ""
+msgstr "Neobvezen komentar, ki ga priložite prehodu."
 
 #: views/workflow_instance_views.py:216
 msgid "Select"
@@ -749,154 +795,166 @@ msgstr "Izberi"
 #, python-format
 msgid "Select transition for workflow \"%(workflow)s\" of document \"%(document)s\""
 msgstr ""
+"Izberite prehod za potek dela &quot;%(workflow)s&quot; dokumenta "
+"&quot;%(document)s&quot;"
 
 #: views/workflow_proxy_views.py:32
 msgid ""
 "Associate a workflow with some document types and documents of those types "
 "will be listed in this view."
 msgstr ""
+"Povežite potek dela z nekaterimi vrstami dokumentov in dokumenti teh vrst "
+"bodo navedeni v tem pogledu."
 
 #: views/workflow_proxy_views.py:36
 msgid "There are no documents executing this workflow"
-msgstr ""
+msgstr "Ni dokumentov, ki bi izvajali ta potek dela"
 
 #: views/workflow_proxy_views.py:40
 #, python-format
 msgid "Documents with the workflow: %s"
-msgstr ""
+msgstr "Dokumenti s potekom dela: %s"
 
 #: views/workflow_proxy_views.py:59
 msgid ""
 "Create some workflows and associated them with a document type. Active "
 "workflows will be shown here and the documents for which they are executing."
 msgstr ""
+"Ustvarite nekaj delovnih tokov in jih povežite z vrsto dokumenta. Tukaj bodo"
+" prikazani aktivni delovni tokovi in dokumenti, za katere se izvajajo."
 
 #: views/workflow_proxy_views.py:63
 msgid "There are no workflows"
-msgstr ""
+msgstr "Ni delovnih tokov"
 
 #: views/workflow_proxy_views.py:85
 msgid "There are no documents in this workflow state"
-msgstr ""
+msgstr "V tem stanju poteka dela ni nobenih dokumentov"
 
 #: views/workflow_proxy_views.py:88
 #, python-format
 msgid "Documents in the workflow \"%s\", state \"%s\""
-msgstr ""
+msgstr "Dokumenti v delovnem toku &quot;%s&quot;, stanje &quot;%s&quot;"
 
 #: views/workflow_proxy_views.py:117
 #: views/workflow_template_state_views.py:332
 msgid "Create states and link them using transitions."
-msgstr ""
+msgstr "Ustvarite stanja in jih povežite s prehodi."
 
 #: views/workflow_proxy_views.py:120
 msgid "This workflow doesn't have any state"
-msgstr ""
+msgstr "Ta potek dela nima nobenega stanja"
 
 #: views/workflow_proxy_views.py:123
 #: views/workflow_template_state_views.py:338
 #, python-format
 msgid "States of workflow: %s"
-msgstr ""
+msgstr "Stanja poteka dela: %s"
 
 #: views/workflow_template_state_views.py:48
 #, python-format
 msgid "Create a \"%(action_class)s\" workflow action for: %(workflow_state)s"
 msgstr ""
+"Ustvarite dejanje poteka dela &quot;%(action_class)s&quot; za: "
+"%(workflow_state)s"
 
 #: views/workflow_template_state_views.py:93
 #, python-format
 msgid "Delete workflow state action: %s"
-msgstr ""
+msgstr "Izbriši dejanje stanja poteka dela: %s"
 
 #: views/workflow_template_state_views.py:124
 #, python-format
 msgid "Edit workflow state action: %s"
-msgstr ""
+msgstr "Urejanje dejanja stanja poteka dela: %s"
 
 #: views/workflow_template_state_views.py:174
 msgid ""
 "Workflow state actions are macros that get executed when documents enters or"
 " leaves the state in which they reside."
 msgstr ""
+"Dejanja stanja delovnega toka so makri, ki se izvedejo, ko dokumenti "
+"vstopijo ali zapustijo stanje, v katerem so."
 
 #: views/workflow_template_state_views.py:178
 msgid "There are no actions for this workflow state"
-msgstr ""
+msgstr "Za to stanje poteka dela ni dejanj"
 
 #: views/workflow_template_state_views.py:182
 #, python-format
 msgid "Actions for workflow state: %s"
-msgstr ""
+msgstr "Dejanja za stanje poteka dela: %s"
 
 #: views/workflow_template_state_views.py:205
 #, python-format
 msgid "New workflow state action selection for: %s"
-msgstr ""
+msgstr "Nov izbor dejanj stanja poteka dela za: %s"
 
 #: views/workflow_template_state_views.py:234
 #, python-format
 msgid "Create states for workflow: %s"
-msgstr ""
+msgstr "Ustvari stanja za potek dela: %s"
 
 #: views/workflow_template_state_views.py:267
 #, python-format
 msgid "Delete workflow state: %s?"
-msgstr ""
+msgstr "Izbriši stanje poteka dela: %s?"
 
 #: views/workflow_template_state_views.py:297
 #, python-format
 msgid "Edit workflow state: %s"
-msgstr ""
+msgstr "Uredite stanje poteka dela: %s"
 
 #: views/workflow_template_state_views.py:335
 msgid "This workflow doesn't have any states"
-msgstr ""
+msgstr "Ta potek dela nima nobenih stanj"
 
 #: views/workflow_template_transition_views.py:43
 #, python-format
 msgid "Create transitions for workflow: %s"
-msgstr ""
+msgstr "Ustvarite prehode za potek dela: %s"
 
 #: views/workflow_template_transition_views.py:83
 #, python-format
 msgid "Delete workflow transition: %s?"
-msgstr ""
+msgstr "Izbriši prehod poteka dela: %s?"
 
 #: views/workflow_template_transition_views.py:111
 #, python-format
 msgid "Edit workflow transition: %s"
-msgstr ""
+msgstr "Urejanje prehoda poteka dela: %s"
 
 #: views/workflow_template_transition_views.py:151
 msgid ""
 "Create a transition and use it to move a workflow from  one state to "
 "another."
 msgstr ""
+"Ustvarite prehod in ga uporabite za premikanje poteka dela iz enega stanja v"
+" drugo."
 
 #: views/workflow_template_transition_views.py:155
 msgid "This workflow doesn't have any transitions"
-msgstr ""
+msgstr "Ta potek dela nima nobenih prehodov"
 
 #: views/workflow_template_transition_views.py:159
 #, python-format
 msgid "Transitions of workflow: %s"
-msgstr ""
+msgstr "Prehodi poteka dela: %s"
 
 #: views/workflow_template_transition_views.py:184
 #, python-format
 msgid "Create a field for workflow transition: %s"
-msgstr ""
+msgstr "Ustvarite polje za prehod delovnega toka: %s"
 
 #: views/workflow_template_transition_views.py:218
 #, python-format
 msgid "Delete workflow transition field: %s"
-msgstr ""
+msgstr "Izbrišite prehodno polje poteka dela: %s"
 
 #: views/workflow_template_transition_views.py:252
 #, python-format
 msgid "Edit workflow transition field: %s"
-msgstr ""
+msgstr "Uredite prehodno polje poteka dela: %s"
 
 #: views/workflow_template_transition_views.py:291
 msgid ""
@@ -904,287 +962,311 @@ msgid ""
 " additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr ""
+"Prehodna polja poteka dela omogočajo dodajanje podatkov v kontekst poteka "
+"dela. Te dodatne kontekstne podatke lahko nato uporabijo drugi elementi "
+"sistema poteka dela, kot so dejanja stanja poteka dela."
 
 #: views/workflow_template_transition_views.py:297
 msgid "There are no fields for this workflow transition"
-msgstr ""
+msgstr "Za ta prehod poteka dela ni polj"
 
 #: views/workflow_template_transition_views.py:301
 #, python-format
 msgid "Fields for workflow transition: %s"
-msgstr ""
+msgstr "Polja za prehod poteka dela: %s"
 
 #: views/workflow_template_transition_views.py:329
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
 msgstr ""
+"Napaka pri posodabljanju dogodkov sprožilcev prehoda delovnega toka; %s"
 
 #: views/workflow_template_transition_views.py:336
 msgid "Workflow transition trigger events updated successfully"
 msgstr ""
+"Dogodki sprožilcev prehoda delovnega toka so bili uspešno posodobljeni"
 
 #: views/workflow_template_transition_views.py:348
 msgid ""
 "Triggers are events that cause this transition to execute automatically."
-msgstr ""
+msgstr "Sprožilci so dogodki, ki povzročijo samodejno izvedbo tega prehoda."
 
 #: views/workflow_template_transition_views.py:352
 #, python-format
 msgid "Workflow transition trigger events for: %s"
-msgstr ""
+msgstr "Sprožilni dogodki prehoda delovnega toka za: %s"
 
 #: views/workflow_template_views.py:39
 msgid "Available workflows"
-msgstr ""
+msgstr "Razpoložljivi delovni tokovi"
 
 #: views/workflow_template_views.py:40
 msgid "Workflows assigned this document type"
-msgstr ""
+msgstr "Poteki dela so dodelili to vrsto dokumenta"
 
 #: views/workflow_template_views.py:64
 msgid ""
 "Removing a workflow from a document type will also remove all running "
 "instances of that workflow."
 msgstr ""
+"Če odstranite potek dela iz vrste dokumenta, boste odstranili tudi vse "
+"primerke tega poteka dela."
 
 #: views/workflow_template_views.py:68
 #, python-format
 msgid "Workflows assigned the document type: %s"
-msgstr ""
+msgstr "Potekom dela je bila dodeljena vrsta dokumenta: %s"
 
 #: views/workflow_template_views.py:75
 #, python-format
 msgid "Error launching workflows for document \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Napaka pri zagonu delovnih tokov za dokument &quot;%(instance)s&quot;; "
+"%(exception)s"
 
 #: views/workflow_template_views.py:81
 #, python-format
 msgid "Workflows launched successfully for document \"%(object)s\"."
 msgstr ""
+"Delovni tokovi so bili uspešno zagnani za dokument &quot;%(object)s&quot;."
 
 #: views/workflow_template_views.py:82
 #, python-format
 msgid "Workflows launched successfully for %(count)d document."
-msgstr ""
+msgstr "Delovni tokovi so bili uspešno zagnani za dokument %(count)d."
 
 #: views/workflow_template_views.py:83
 #, python-format
 msgid "Workflows launched successfully for %(count)d documents."
-msgstr ""
+msgstr "Delovni tokovi so bili uspešno zagnani za dokumente %(count)d."
 
 #: views/workflow_template_views.py:84
 #, python-format
 msgid "Launch workflow: %(object)s."
-msgstr ""
+msgstr "Zaženi potek dela: %(object)s."
 
 #: views/workflow_template_views.py:85
 #, python-format
 msgid "Launch workflows for the selected %(count)d document."
-msgstr ""
+msgstr "Zaženi poteke dela za izbrani dokument %(count)d."
 
 #: views/workflow_template_views.py:86
 #, python-format
 msgid "Launch workflows for the selected %(count)d documents."
-msgstr ""
+msgstr "Zaženi poteke dela za izbrane dokumente %(count)d."
 
 #: views/workflow_template_views.py:91
 msgid ""
 "Workflows already launched or workflows not applicable to some documents "
 "when multiple documents are selected, will be silently ignored."
 msgstr ""
+"Poteki dela, ki so že zagnani, ali poteki dela, ki niso uporabni za nekatere"
+" dokumente, ko je izbranih več dokumentov, bodo tiho prezrti."
 
 #: views/workflow_template_views.py:103
 msgid "Workflows to be launched."
-msgstr ""
+msgstr "Delovni tokovi, ki bodo zagnani."
 
 #: views/workflow_template_views.py:141
 #, python-format
 msgid "Error deleting workflow \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Napaka pri brisanju poteka dela &quot;%(instance)s&quot;; %(exception)s"
 
 #: views/workflow_template_views.py:148
 #, python-format
 msgid "Workflow \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Potek dela &quot;%(object)s&quot; je bil uspešno izbrisan."
 
 #: views/workflow_template_views.py:149
 #, python-format
 msgid "%(count)d workflow deleted successfully."
-msgstr ""
+msgstr "%(count)d potek dela je bil uspešno izbrisan."
 
 #: views/workflow_template_views.py:150
 #, python-format
 msgid "%(count)d workflows deleted successfully."
-msgstr ""
+msgstr "%(count)d poteki dela so bili uspešno izbrisani."
 
 #: views/workflow_template_views.py:151
 #, python-format
 msgid "Delete workflow: %(object)s."
-msgstr ""
+msgstr "Izbriši potek dela: %(object)s."
 
 #: views/workflow_template_views.py:152
 #, python-format
 msgid "Delete the %(count)d selected workflow."
-msgstr ""
+msgstr "Izbrišite %(count)d izbrani potek dela."
 
 #: views/workflow_template_views.py:153
 #, python-format
 msgid "Delete the %(count)d selected workflows."
-msgstr ""
+msgstr "Izbrišite %(count)d izbrane poteke dela."
 
 #: views/workflow_template_views.py:157
 msgid "All workflow instances will also be deleted."
-msgstr ""
+msgstr "Izbrisani bodo tudi vsi primerki poteka dela."
 
 #: views/workflow_template_views.py:176
 #, python-format
 msgid "Edit workflow: %s"
-msgstr ""
+msgstr "Urejanje poteka dela: %s"
 
 #: views/workflow_template_views.py:194
 msgid "Available document types"
-msgstr ""
+msgstr "Razpoložljive vrste dokumentov"
 
 #: views/workflow_template_views.py:195
 msgid "Document types assigned this workflow"
-msgstr ""
+msgstr "Vrste dokumentov, dodeljene temu delovnemu toku"
 
 #: views/workflow_template_views.py:205
 msgid ""
 "Removing a document type from a workflow will also remove all running "
 "instances of that workflow for documents of the document type just removed."
 msgstr ""
+"Če vrsto dokumenta odstranite iz delovnega toka, boste odstranili tudi vse "
+"tekoče primerke tega delovnega toka za dokumente pravkar odstranjene vrste "
+"dokumenta."
 
 #: views/workflow_template_views.py:210
 #, python-format
 msgid "Document types assigned the workflow: %s"
-msgstr ""
+msgstr "Vrste dokumentov, dodeljene delovnemu toku: %s"
 
 #: views/workflow_template_views.py:222
 msgid "Launch workflow?"
-msgstr ""
+msgstr "Želite zagnati potek dela?"
 
 #: views/workflow_template_views.py:224
 msgid ""
 "This will launch the workflow for documents that have already been uploaded."
-msgstr ""
+msgstr "To bo zagnalo potek dela za dokumente, ki so že bili naloženi."
 
 #: views/workflow_template_views.py:236 views/workflow_template_views.py:291
 msgid "Workflow launch queued successfully."
-msgstr ""
+msgstr "Zagon poteka dela je uspešno postavljen v čakalno vrsto."
 
 #: views/workflow_template_views.py:253
 msgid ""
 "Workflows store a series of states and keep track of the current state of a "
 "document. Transitions are used to change the current state to a new one."
 msgstr ""
+"Delovni tokovi shranjujejo vrsto stanj in spremljajo trenutno stanje "
+"dokumenta. Prehodi se uporabljajo za spremembo trenutnega stanja v novo."
 
 #: views/workflow_template_views.py:258
 msgid "No workflows have been defined"
-msgstr ""
+msgstr "Določen ni noben potek dela"
 
 #: views/workflow_template_views.py:274
 #, python-format
 msgid "Preview of: %s"
-msgstr ""
+msgstr "Predogled: %s"
 
 #: views/workflow_template_views.py:280
 msgid "Launch all workflows?"
-msgstr ""
+msgstr "Želite zagnati vse poteke dela?"
 
 #: views/workflow_template_views.py:282
 msgid ""
 "This will launch all workflows created after documents have already been "
 "uploaded."
 msgstr ""
+"To bo zagnalo vse poteke dela, ustvarjene po tem, ko so bili dokumenti že "
+"naloženi."
 
 #: workflow_actions.py:25
 msgid "Document label"
-msgstr ""
+msgstr "Oznaka dokumenta"
 
 #: workflow_actions.py:31
 msgid "The new label to be assigned to the document."
-msgstr ""
+msgstr "Nova oznaka, ki bo dodeljena dokumentu."
 
 #: workflow_actions.py:40
 msgid "Document description"
-msgstr ""
+msgstr "Opis dokumenta"
 
 #: workflow_actions.py:47
 msgid "The new description to be assigned to the document."
-msgstr ""
+msgstr "Nov opis, ki bo dodeljen dokumentu."
 
 #: workflow_actions.py:59
 msgid "Modify document properties"
-msgstr ""
+msgstr "Spremenite lastnosti dokumenta"
 
 #: workflow_actions.py:91
 msgid "Additional workflows to launch for the document."
-msgstr ""
+msgstr "Dodatni poteki dela za zagon za dokument."
 
 #: workflow_actions.py:134
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: workflow_actions.py:140
 msgid "The URL to access."
-msgstr ""
+msgstr "URL za dostop."
 
 #: workflow_actions.py:149
 msgid "Timeout"
-msgstr ""
+msgstr "Odmor"
 
 #: workflow_actions.py:156
 msgid "Time in seconds to wait for a response."
-msgstr ""
+msgstr "Čas v sekundah za čakanje na odgovor."
 
 #: workflow_actions.py:165
 msgid "Payload"
-msgstr ""
+msgstr "Tovor"
 
 #: workflow_actions.py:171
 msgid "A JSON document to include in the request."
-msgstr ""
+msgstr "Dokument JSON, ki ga vključite v zahtevo."
 
 #: workflow_actions.py:180
 msgid "Username"
-msgstr ""
+msgstr "Uporabniško ime"
 
 #: workflow_actions.py:187
 msgid "Username to use for making the request with HTTP Basic Auth."
 msgstr ""
+"Uporabniško ime, ki se uporablja za izdelavo zahteve z osnovnim preverjanjem"
+" HTTP."
 
 #: workflow_actions.py:198
 msgid "Password"
-msgstr ""
+msgstr "Geslo"
 
 #: workflow_actions.py:205
 msgid "Password to use for making the request with HTTP Basic Auth."
-msgstr ""
+msgstr "Geslo za uporabo pri zahtevi z osnovnim preverjanjem HTTP."
 
 #: workflow_actions.py:216
 msgid "Method"
-msgstr ""
+msgstr "Metoda"
 
 #: workflow_actions.py:223
 msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE."
 msgstr ""
+"Metoda HTTP, ki se uporablja za zahtevo. Tipične izbire so OPTIONS, HEAD, "
+"POST, GET, PUT, PATCH, DELETE."
 
 #: workflow_actions.py:234
 msgid "Headers"
-msgstr ""
+msgstr "Glave"
 
 #: workflow_actions.py:241
 msgid "Headers to send with the HTTP request. Must be in JSON format."
-msgstr ""
+msgstr "Glave za pošiljanje z zahtevo HTTP. Biti mora v formatu JSON."
 
 #: workflow_actions.py:256
 msgid "Perform an HTTP request"
-msgstr ""
+msgstr "Izvedite zahtevo HTTP"
 
 #: workflow_actions.py:273
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
-msgstr ""
+msgstr "%(field_name)s Napaka JSON: %(exception)s"

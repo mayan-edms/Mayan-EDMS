@@ -3,12 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,7 +22,7 @@ msgstr ""
 
 #: apps.py:19 permissions.py:5
 msgid "Templating"
-msgstr ""
+msgstr "Šabloniranje"
 
 #: fields.py:19
 #, python-format
@@ -27,6 +31,8 @@ msgid ""
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 " "
 msgstr ""
+"Uporabite Djangov privzeti jezik za predloge "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 
 #: fields.py:37
 #, python-format
@@ -35,53 +41,56 @@ msgid ""
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 " The {{ %(variable)s }} variable is available to the template."
 msgstr ""
+"Uporabite Djangov privzeti jezik za predloge "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" Predlogi je na voljo spremenljivka {{ %(variable)s }}."
 
 #: forms.py:9
 msgid "Resulting text from the evaluated template."
-msgstr ""
+msgstr "Nastalo besedilo iz ovrednotene predloge."
 
 #: forms.py:10
 msgid "Result"
-msgstr ""
+msgstr "Rezultat"
 
 #: forms.py:20
 msgid "The template string to be evaluated."
-msgstr ""
+msgstr "Niz predloge, ki ga je treba oceniti."
 
 #: forms.py:21
 msgid "Template"
-msgstr ""
+msgstr "Predloga"
 
 #: links.py:11
 msgid "Sandbox"
-msgstr ""
+msgstr "Peskovnik"
 
 #: permissions.py:8
 msgid "Use the template sandbox"
-msgstr ""
+msgstr "Uporabite peskovnik predloge"
 
 #: views.py:38
 #, python-format
 msgid "Template sandbox for: %s"
-msgstr ""
+msgstr "Peskovnik predloge za: %s"
 
 #: views.py:59
 #, python-format
 msgid "Template error; %(exception)s"
-msgstr ""
+msgstr "Napaka predloge; %(exception)s"
 
 #: widgets.py:64
 msgid "Filters"
-msgstr ""
+msgstr "Filtri"
 
 #: widgets.py:71
 msgid "Tags"
-msgstr ""
+msgstr "Oznake"
 
 #: widgets.py:77
 msgid "<Filters and tags>"
-msgstr ""
+msgstr "<Filters and tags>"
 
 #: widgets.py:118
 msgid "<Model attributes>"
-msgstr ""
+msgstr "<Model attributes>"

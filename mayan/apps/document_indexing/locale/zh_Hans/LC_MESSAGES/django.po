@@ -9,14 +9,15 @@
 # yan songwei <yansw@vip.163.com>, 2022
 # xisafe <root@xisafe.com>, 2022
 # Roberto Rosario, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Leon Chu, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,15 +67,15 @@ msgstr "文档"
 
 #: events.py:10
 msgid "Index template created"
-msgstr ""
+msgstr "索引範例已建立"
 
 #: events.py:13
 msgid "Index template edited"
-msgstr ""
+msgstr "索引範例已編輯"
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
-msgstr ""
+msgstr "索引範例將被加入重建隊列"
 
 #: forms.py:17 links.py:36 models.py:62 views/index_template_views.py:96
 msgid "Index templates"
@@ -131,7 +132,7 @@ msgstr "新的子节点"
 
 #: models.py:36
 msgid "Short description of this index."
-msgstr ""
+msgstr "索引的簡易敘述"
 
 #: models.py:37
 msgid "Label"
@@ -233,15 +234,15 @@ msgstr "值"
 
 #: models.py:443 models.py:524
 msgid "Index instance node"
-msgstr ""
+msgstr "索引實例節點"
 
 #: models.py:444
 msgid "Indexes instances node"
-msgstr ""
+msgstr "索引實例節點"
 
 #: models.py:491
 msgid "The path to the index including all ancestors."
-msgstr ""
+msgstr "包含所有歷史紀錄的索引路徑"
 
 #: models.py:493
 msgid "Full path"
@@ -257,7 +258,7 @@ msgstr "文档索引节点实例"
 
 #: models.py:525
 msgid "Index instance nodes"
-msgstr ""
+msgstr "索引實例節點"
 
 #: permissions.py:5 queues.py:8
 msgid "Indexing"
@@ -265,27 +266,27 @@ msgstr "索引"
 
 #: permissions.py:8
 msgid "View index instances"
-msgstr ""
+msgstr "瀏覽索引實例"
 
 #: permissions.py:11
 msgid "Create new index templates"
-msgstr ""
+msgstr "建立新的索引範例"
 
 #: permissions.py:14
 msgid "Edit index templates"
-msgstr ""
+msgstr "編輯索引範例"
 
 #: permissions.py:17
 msgid "Delete index templates"
-msgstr ""
+msgstr "刪除索引範例"
 
 #: permissions.py:20
 msgid "View index templates"
-msgstr ""
+msgstr "瀏覽索引範例"
 
 #: permissions.py:23 views/index_template_views.py:310
 msgid "Rebuild index templates"
-msgstr ""
+msgstr "重建索引範例"
 
 #: queues.py:12
 msgid "Delete empty index nodes"
@@ -327,7 +328,7 @@ msgstr "文件校验和"
 msgid ""
 "URL of the API endpoint showing the list document types associated with this"
 " index template."
-msgstr ""
+msgstr "顯示於文件種類於索引範例的API節點的URL"
 
 #: serializers.py:212
 msgid "URL of the API endpoint to add document types to this index template."
@@ -383,11 +384,11 @@ msgstr "包含文档的索引节点：%s"
 
 #: views/index_template_views.py:45
 msgid "Available indexes"
-msgstr ""
+msgstr "可用的索引項目"
 
 #: views/index_template_views.py:46
 msgid "Indexes linked"
-msgstr ""
+msgstr "已連結之索引"
 
 #: views/index_template_views.py:70
 msgid ""
@@ -399,7 +400,7 @@ msgstr ""
 #: views/index_template_views.py:74
 #, python-format
 msgid "Indexes linked to document type: %s"
-msgstr ""
+msgstr "連結到文件類型的索引 : %s"
 
 #: views/index_template_views.py:90
 msgid ""
@@ -410,7 +411,7 @@ msgstr ""
 
 #: views/index_template_views.py:95
 msgid "There are no index templates."
-msgstr ""
+msgstr "沒有索引範例"
 
 #: views/index_template_views.py:124
 #, python-format
@@ -465,11 +466,11 @@ msgstr ""
 #: views/index_template_views.py:281
 #, python-format
 msgid "Rebuild index template: %s"
-msgstr ""
+msgstr "重建索引範例: %s"
 
 #: views/index_template_views.py:303
 msgid "Index template queued for rebuild."
-msgstr ""
+msgstr "排程待重建之索引項目"
 
 #: views/index_template_views.py:326
 #, python-format

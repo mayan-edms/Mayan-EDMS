@@ -9,14 +9,15 @@
 # Ford Guo <agile.guo@gmail.com>, 2022
 # yan songwei <yansw@vip.163.com>, 2022
 # Roberto Rosario, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:52+0000\n"
+"POT-Creation-Date: 2022-10-24 05:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Leon Chu, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -104,7 +105,7 @@ msgstr "文档柜"
 
 #: models.py:115
 msgid "The path to the cabinet including all ancestors."
-msgstr ""
+msgstr "文件櫃的路徑, 包含舊版本之文件"
 
 #: models.py:117
 msgid "Full path"
@@ -235,32 +236,32 @@ msgstr "没有可用的文档柜"
 #: views.py:180
 #, python-format
 msgid "Document \"%(object)s\" added to cabinets successfully."
-msgstr ""
+msgstr "文件\"%(object)s\" 新增置文件櫃成功."
 
 #: views.py:183
 #, python-format
 msgid "%(count)d document added to cabinets successfully."
-msgstr ""
+msgstr "%(count)d 文件成功被加入文件櫃."
 
 #: views.py:186
 #, python-format
 msgid "%(count)d documents added to cabinets successfully."
-msgstr ""
+msgstr "%(count)d文件已被成功加入各文件櫃"
 
 #: views.py:188
 #, python-format
 msgid "Add document \"%(object)s\" to cabinets."
-msgstr ""
+msgstr "新增文件 \"%(object)s\" 到文件櫃."
 
 #: views.py:189
 #, python-format
 msgid "Add %(count)d document to cabinets."
-msgstr ""
+msgstr "新增%(count)d 分文件至文件櫃."
 
 #: views.py:190
 #, python-format
 msgid "Add %(count)d documents to cabinets."
-msgstr ""
+msgstr "新增%(count)d複數文件至文件櫃"
 
 #: views.py:207
 msgid "Cabinets to which the selected documents will be added."
@@ -282,32 +283,32 @@ msgstr "文档柜包含文档：%s"
 #: views.py:276
 #, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
-msgstr ""
+msgstr "文件\"%(object)s\" 已從文˙件櫃中成功移除"
 
 #: views.py:279
 #, python-format
 msgid "%(count)d document removed from cabinets successfully."
-msgstr ""
+msgstr "%(count)d 文件已從文件櫃中成功移除."
 
 #: views.py:282
 #, python-format
 msgid "%(count)d documents removed from cabinets successfully."
-msgstr ""
+msgstr "%(count)d複數文件已從文件櫃中成功移除"
 
 #: views.py:284
 #, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
-msgstr ""
+msgstr "將文件 \"%(object)s\" 從文件櫃中移除."
 
 #: views.py:285
 #, python-format
 msgid "Remove %(count)d document from cabinets."
-msgstr ""
+msgstr "將%(count)d文件從文件櫃中移除"
 
 #: views.py:286
 #, python-format
 msgid "Remove %(count)d documents from cabinets."
-msgstr ""
+msgstr "將%(count)d複數文件從文件櫃中移除"
 
 #: views.py:303
 msgid "Cabinets from which the selected documents will be removed."

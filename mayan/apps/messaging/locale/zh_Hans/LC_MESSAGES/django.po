@@ -7,14 +7,15 @@
 # Ford Guo <agile.guo@gmail.com>, 2022
 # Roberto Rosario, 2022
 # bo feng <87289884@qq.com>, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-20 10:53+0000\n"
+"POT-Creation-Date: 2022-10-24 05:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: bo feng <87289884@qq.com>, 2022\n"
+"Last-Translator: Leon Chu, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -133,37 +134,37 @@ msgstr ""
 #: views.py:44
 #, python-format
 msgid "Error deleting message \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "刪除訊息\"%(instance)s\"錯誤;%(exception)s"
 
 #: views.py:48
 #, python-format
 msgid "Message \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "訊息 \"%(object)s\"刪除成功"
 
 #: views.py:49
 #, python-format
 msgid "%(count)d message deleted successfully."
-msgstr ""
+msgstr "%(count)d訊息刪除成功"
 
 #: views.py:50
 #, python-format
 msgid "%(count)d messages deleted successfully."
-msgstr ""
+msgstr "%(count)d標示訊息刪除成功"
 
 #: views.py:51
 #, python-format
 msgid "Delete message: %(object)s."
-msgstr ""
+msgstr "刪除訊息 : %(object)s."
 
 #: views.py:52
 #, python-format
 msgid "Delete the %(count)d selected message."
-msgstr ""
+msgstr "刪除%(count)d已選擇訊息"
 
 #: views.py:53
 #, python-format
 msgid "Delete the %(count)d selected messages."
-msgstr ""
+msgstr "刪除%(count)d已選擇之訊息"
 
 #: views.py:92
 #, python-format
@@ -181,7 +182,7 @@ msgstr "没有任何消息"
 #: views.py:128
 #, python-format
 msgid "Error marking message \"%(instance)s\" as read; %(exception)s"
-msgstr ""
+msgstr "標示訊息\"%(instance)s\"為已讀失敗%(exception)s"
 
 #: views.py:134
 #, python-format
@@ -191,27 +192,27 @@ msgstr ""
 #: views.py:137
 #, python-format
 msgid "%(count)d message marked as read successfully."
-msgstr ""
+msgstr "%(count)d標示訊息為已讀成功"
 
 #: views.py:140
 #, python-format
 msgid "%(count)d messages marked as read successfully."
-msgstr ""
+msgstr "%(count)d訊息標示為已讀成功"
 
 #: views.py:142
 #, python-format
 msgid "Mark the message \"%(object)s\" as read."
-msgstr ""
+msgstr "標示訊息\"%(object)s\"為已讀"
 
 #: views.py:143
 #, python-format
 msgid "Mark the %(count)d selected message as read."
-msgstr ""
+msgstr "標示%(count)d已選擇訊息為已讀"
 
 #: views.py:144
 #, python-format
 msgid "Mark the %(count)d selected messages as read."
-msgstr ""
+msgstr "標示%(count)d所選擇之訊息為已讀"
 
 #: views.py:171
 msgid "Mark all message as read?"
