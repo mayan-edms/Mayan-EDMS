@@ -5,6 +5,7 @@ from mayan.apps.navigation.classes import Link
 from .icons import (
     icon_document_file_metadata_multiple_submit,
     icon_document_file_metadata_single_submit,
+    icon_document_type_file_metadata_settings,
     icon_document_type_file_metadata_submit, icon_file_metadata
 )
 from .permissions import (
@@ -42,7 +43,7 @@ link_document_file_metadata_submit_multiple = Link(
 # Document type
 
 link_document_type_file_metadata_settings = Link(
-    icon=icon_document_file_metadata_single_submit,
+    icon=icon_document_type_file_metadata_settings,
     kwargs={'document_type_id': 'resolved_object.id'},
     permissions=(permission_document_type_file_metadata_setup,),
     text=_('Setup file metadata'),
