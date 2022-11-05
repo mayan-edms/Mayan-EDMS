@@ -125,8 +125,6 @@ class IndexInstanceViewTestCase(
         self._populate_test_index_instance_node()
 
     def test_index_instance_root_node_view_no_permission(self):
-        # ~ self._populate_test_index_instance_objects()
-
         self._clear_events()
 
         response = self._request_test_index_instance_node_view(
@@ -143,8 +141,6 @@ class IndexInstanceViewTestCase(
             permission=permission_index_instance_view
         )
 
-        # ~ self._populate_test_index_instance_objects()
-
         self._clear_events()
 
         response = self._request_test_index_instance_node_view(
@@ -159,8 +155,6 @@ class IndexInstanceViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_instance_document_node_view_no_permission(self):
-        # ~ self._populate_test_index_instance_objects()
-
         self._clear_events()
 
         response = self._request_test_index_instance_node_view(
@@ -176,8 +170,6 @@ class IndexInstanceViewTestCase(
             obj=self._test_index_template,
             permission=permission_index_instance_view
         )
-
-        # ~ self._populate_test_index_instance_objects()
 
         self._clear_events()
 
@@ -201,8 +193,6 @@ class IndexInstanceViewTestCase(
             obj=self._test_document, permission=permission_document_view
         )
 
-        # ~ self._populate_test_index_instance_objects()
-
         self._clear_events()
 
         response = self._request_test_index_instance_node_view(
@@ -221,8 +211,6 @@ class IndexInstanceViewTestCase(
         self.grant_access(
             obj=self._test_document, permission=permission_document_view
         )
-
-        # ~ self._populate_test_index_instance_objects()
 
         self._clear_events()
 
@@ -251,8 +239,6 @@ class IndexInstanceViewTestCase(
         )
 
         self._test_document.delete()
-
-        # ~ self._populate_test_index_instance_objects()
 
         self._clear_events()
 
