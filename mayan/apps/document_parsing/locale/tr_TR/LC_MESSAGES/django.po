@@ -5,6 +5,7 @@
 # 
 # Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -105,11 +106,11 @@ msgstr ""
 
 #: models.py:57
 msgid "Document type settings"
-msgstr ""
+msgstr "Belge türü ayarları"
 
 #: models.py:58
 msgid "Document types settings"
-msgstr ""
+msgstr "Belge türleri ayarları"
 
 #: parsers.py:94
 #, python-format

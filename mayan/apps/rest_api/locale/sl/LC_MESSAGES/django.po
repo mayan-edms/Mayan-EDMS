@@ -3,6 +3,9 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
@@ -18,48 +21,48 @@ msgstr ""
 
 #: apps.py:23 links.py:17 settings.py:11
 msgid "REST API"
-msgstr ""
+msgstr "REST API"
 
 #: fields.py:30
 #, python-format
 msgid "Unable to find serializer class for: %s"
-msgstr ""
+msgstr "Ni mogoče najti razreda serializatorja za: %s"
 
 #: links.py:21
 msgid "API Documentation (Swagger)"
-msgstr ""
+msgstr "Dokumentacija API (Swagger)"
 
 #: links.py:27
 msgid "API Documentation (ReDoc)"
-msgstr ""
+msgstr "Dokumentacija API-ja (ReDoc)"
 
 #: relations.py:84
 msgid "This field is required."
-msgstr ""
+msgstr "To polje je obvezno."
 
 #: relations.py:85
 #, python-brace-format
 msgid "Invalid pk \"{pk_value}\" - object does not exist."
-msgstr ""
+msgstr "Neveljaven pk &quot;{pk_value}&quot; - objekt ne obstaja."
 
 #: relations.py:86
 #, python-brace-format
 msgid "Incorrect type. Expected pk value, received {data_type}."
-msgstr ""
+msgstr "Nepravilna vrsta. Pričakovana vrednost pk, prejeta {data_type}."
 
 #: schemas.py:11
 #, python-format
 msgid "%s API"
-msgstr ""
+msgstr "%s API"
 
 #: settings.py:17
 msgid "Disable the REST API links in the tools menu."
-msgstr ""
+msgstr "Onemogočite povezave REST API v meniju orodij."
 
 #: settings.py:23
 msgid "The maximum page size that can be requested."
-msgstr ""
+msgstr "Največja velikost strani, ki jo je mogoče zahtevati."
 
 #: settings.py:29
 msgid "The default page size if none is specified."
-msgstr ""
+msgstr "Privzeta velikost strani, če nobena ni navedena."

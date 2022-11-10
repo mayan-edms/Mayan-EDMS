@@ -31,7 +31,7 @@ msgstr ""
 
 #: links.py:15 views.py:36
 msgid "Global error log"
-msgstr ""
+msgstr "Globalni dnevnik napak"
 
 #: links.py:26
 msgid "Delete"
@@ -39,51 +39,51 @@ msgstr "Izbriši"
 
 #: links.py:31
 msgid "Errors"
-msgstr ""
+msgstr "Napake"
 
 #: links.py:37
 msgid "Clear errors"
-msgstr ""
+msgstr "Počisti napake"
 
 #: models.py:16 models.py:44
 msgid "Internal name"
-msgstr ""
+msgstr "Interno ime"
 
 #: models.py:21 models.py:41
 msgid "Error log"
-msgstr ""
+msgstr "Dnevnik napak"
 
 #: models.py:22
 msgid "Error logs"
-msgstr ""
+msgstr "Dnevniki napak"
 
 #: models.py:31
 msgid "App label"
-msgstr ""
+msgstr "Oznaka aplikacije"
 
 #: models.py:58 models.py:68
 msgid "Error log partition"
-msgstr ""
+msgstr "Particija dnevnika napak"
 
 #: models.py:59
 msgid "Error log partitions"
-msgstr ""
+msgstr "Particije dnevnika napak"
 
 #: models.py:71
 msgid "Date and time"
-msgstr ""
+msgstr "Datum in čas"
 
 #: models.py:73
 msgid "Text"
-msgstr ""
+msgstr "Besedilo"
 
 #: models.py:80
 msgid "Error log partition entry"
-msgstr ""
+msgstr "Vnos v particijo dnevnika napak"
 
 #: models.py:81
 msgid "Error log partition entries"
-msgstr ""
+msgstr "Vnosi v particijo dnevnika napak"
 
 #: models.py:97
 msgid "Object"
@@ -95,43 +95,47 @@ msgstr ""
 
 #: permissions.py:11
 msgid "View error log"
-msgstr ""
+msgstr "Oglejte si dnevnik napak"
 
 #: settings.py:14
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Samodejno omogoči beleženje v vse aplikacije."
 
 #: settings.py:19
 msgid ""
 "List of handlers to which logging messages will be sent. Options are: {}"
 msgstr ""
+"Seznam upravljavcev, katerim bodo poslana sporočila beleženja. Možnosti so: "
+"{}"
 
 #: settings.py:25
 msgid "Level for the logging system."
-msgstr ""
+msgstr "Raven za sistem beleženja."
 
 #: settings.py:31
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "Pot do dnevniške datoteke, ki bo spremljala napake med proizvodnjo."
 
 #: views.py:30
 msgid ""
 "This view displays the error log of different objects. An empty list is a "
 "good thing."
 msgstr ""
+"Ta pogled prikazuje dnevnik napak različnih predmetov. Prazen seznam je "
+"dobra stvar."
 
 #: views.py:34 views.py:101
 msgid "There are no error log entries"
-msgstr ""
+msgstr "V dnevniku napak ni vnosov"
 
 #: views.py:50
 #, python-format
 msgid "Clear error log entries for: %s"
-msgstr ""
+msgstr "Počisti vnose v dnevniku napak za: %s"
 
 #: views.py:57
 msgid "Object error log cleared successfully"
-msgstr ""
+msgstr "Dnevnik napak objekta je bil uspešno izbrisan"
 
 #: views.py:74
 #, python-format
@@ -143,8 +147,9 @@ msgid ""
 "This view displays the error log of an object. An empty list is a good "
 "thing."
 msgstr ""
+"Ta pogled prikazuje dnevnik napak predmeta. Prazen seznam je dobra stvar."
 
 #: views.py:104
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "Vnosi v dnevnik napak za: %s"

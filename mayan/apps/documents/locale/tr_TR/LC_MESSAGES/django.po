@@ -8,6 +8,7 @@
 # emreunal <bywant@gmail.com>, 2022
 # abc Def <hdogan1974@gmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -65,7 +66,7 @@ msgstr ""
 #: models/document_file_models.py:125 models/document_file_page_models.py:36
 #: search.py:60
 msgid "Document file"
-msgstr ""
+msgstr "Belge dosyası"
 
 #: apps.py:424 models/document_file_page_models.py:40
 #: models/document_version_page_models.py:52
@@ -388,7 +389,7 @@ msgstr ""
 
 #: forms/document_version_page_forms.py:32
 msgid "Object ID"
-msgstr ""
+msgstr "Nesne ID"
 
 #: forms/document_version_page_forms.py:35
 msgid "Source"
@@ -919,7 +920,7 @@ msgstr ""
 #: models/document_version_page_models.py:68
 #: models/document_version_page_models.py:405 search.py:165
 msgid "Document version page"
-msgstr ""
+msgstr "Belge sürümü sayfası"
 
 #: models/document_version_page_models.py:348
 #, python-format
@@ -1117,7 +1118,7 @@ msgstr ""
 
 #: search.py:39 search.py:72 search.py:104 search.py:149 search.py:177
 msgid "Document type label"
-msgstr ""
+msgstr "Belge türü etiketi"
 
 #: search.py:75 search.py:107 search.py:152 search.py:183
 msgid "Document label"
@@ -1125,19 +1126,19 @@ msgstr "Belge etiketi"
 
 #: search.py:78 search.py:111 search.py:155 search.py:187
 msgid "Document description"
-msgstr ""
+msgstr "Belge Açıklaması"
 
 #: search.py:81 search.py:117 search.py:158 search.py:190
 msgid "Document UUID"
-msgstr ""
+msgstr "Belge UUID"
 
 #: search.py:114
 msgid "Document file checksum"
-msgstr ""
+msgstr "Belge dosyası checksum'ı"
 
 #: search.py:121
 msgid "Document file MIME type"
-msgstr ""
+msgstr "Belge dosyası MIME türü"
 
 #: search.py:180
 msgid "Document version comment"
@@ -1145,7 +1146,7 @@ msgstr ""
 
 #: serializers/document_file_serializers.py:94
 msgid "Binary content for the new file."
-msgstr ""
+msgstr "Yeni dosya için binary içerik."
 
 #: serializers/document_serializers.py:18
 #: serializers/document_version_serializers.py:14

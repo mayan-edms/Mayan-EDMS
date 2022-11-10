@@ -26,7 +26,7 @@ msgstr ""
 
 #: apps.py:31
 msgid "Django GPG"
-msgstr "Django GPG"
+msgstr "تشفير من نوع GPG على Django"
 
 #: apps.py:53 apps.py:59 forms.py:15
 msgid "Key ID"
@@ -66,11 +66,11 @@ msgstr "إدارة المفتايح"
 
 #: events.py:8
 msgid "Key created"
-msgstr ""
+msgstr "تم إنشاء المفتاح"
 
 #: events.py:12
 msgid "Key downloaded"
-msgstr ""
+msgstr "تم تنزيل المفتاح"
 
 #: forms.py:26
 msgid "None"

@@ -7,6 +7,7 @@
 # malijie <tonymlj2008@126.com>, 2022
 # Ford Guo <agile.guo@gmail.com>, 2022
 # Roberto Rosario, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
@@ -46,11 +47,11 @@ msgstr ""
 
 #: events.py:14
 msgid "Document file submitted for parsing"
-msgstr ""
+msgstr "已提交解析之文件檔案"
 
 #: events.py:17
 msgid "Document file parsing finished"
-msgstr ""
+msgstr "文˙件檔案解析完˙成"
 
 #: forms.py:37
 #, python-format
@@ -63,7 +64,7 @@ msgstr "内容"
 
 #: links.py:32 links.py:37
 msgid "Delete parsed content"
-msgstr ""
+msgstr "刪除已解析內容"
 
 #: links.py:43
 msgid "Download content"
@@ -83,7 +84,7 @@ msgstr "解析每种类型的文档"
 
 #: models.py:17
 msgid "Document file page"
-msgstr ""
+msgstr "文件檔案頁面"
 
 #: models.py:21
 msgid "The actual text content as extracted by the document parsing backend."
@@ -91,11 +92,11 @@ msgstr "由文档解析后端提取的实际文本内容。"
 
 #: models.py:29
 msgid "Document file page content"
-msgstr ""
+msgstr "文件檔案頁面內容"
 
 #: models.py:30
 msgid "Document file page contents"
-msgstr ""
+msgstr "文件檔案頁面內容"
 
 #: models.py:42
 msgid "Document type"
@@ -125,11 +126,11 @@ msgstr "找不到pdftotext可执行文件：%s"
 
 #: permissions.py:10
 msgid "View the content of a document file"
-msgstr ""
+msgstr "瀏覽文件檔案內容"
 
 #: permissions.py:13
 msgid "Parse the content of a document file"
-msgstr ""
+msgstr "解析文件檔案的內容"
 
 #: permissions.py:16
 msgid "Change document type parsing settings"
@@ -141,11 +142,11 @@ msgstr "解析"
 
 #: queues.py:12
 msgid "Document file parsing"
-msgstr ""
+msgstr "文件檔案解析中"
 
 #: search.py:17 search.py:24
 msgid "Document file content"
-msgstr ""
+msgstr "文件檔案內容"
 
 #: settings.py:15
 msgid "Set new document types to perform parsing automatically by default."
@@ -195,22 +196,22 @@ msgstr ""
 #: views.py:97
 #, python-format
 msgid "Content for document file: %s"
-msgstr ""
+msgstr "文件檔案中的內容 : %s"
 
 #: views.py:119
 #, python-format
 msgid "Content for document file page: %s"
-msgstr ""
+msgstr "文件檔案頁面內容 : %s"
 
 #: views.py:134
 #, python-format
 msgid "%(count)d document file added to the parsing queue"
-msgstr ""
+msgstr "%(count)d文件檔案被加入解析隊列"
 
 #: views.py:137
 #, python-format
 msgid "%(count)d documents files added to the parsing queue"
-msgstr ""
+msgstr "%(count)d文件檔案加入解析隊列"
 
 #: views.py:146
 #, python-format
@@ -221,12 +222,12 @@ msgstr[0] ""
 #: views.py:159
 #, python-format
 msgid "Submit document file \"%s\" to the parsing queue"
-msgstr ""
+msgstr "提交文件檔案\"%s\"至解析隊列"
 
 #: views.py:187
 #, python-format
 msgid "Edit parsing settings for document type: %s."
-msgstr ""
+msgstr "編輯文件類型的解析設定%s."
 
 #: views.py:197
 msgid "Submit all documents of a type for parsing"
@@ -235,4 +236,4 @@ msgstr "提交某类型的所有文档进行解析"
 #: views.py:219
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
-msgstr ""
+msgstr "%(count)d文件已被加入解析隊列中"

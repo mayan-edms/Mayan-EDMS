@@ -5,6 +5,7 @@
 # 
 # Translators:
 # emreunal <bywant@gmail.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -26,26 +27,30 @@ msgstr "MIME türleri"
 
 #: backends/file_command.py:26
 msgid "file command not installed or not found."
-msgstr ""
+msgstr "dosya komutu yüklenmedi veya bulunamadı."
 
 #: backends/perl_file_mimeinfo.py:26
 msgid "mimetype not installed or not found."
-msgstr ""
+msgstr "mimetype kurulu değil veya bulunamadı."
 
 #: dependencies.py:10
 msgid ""
 "This module can be used to determine the MIME type of a file. It tries to "
 "implement the freedesktop specification for a shared MIME database."
 msgstr ""
+"Bu modül, bir dosyanın MIME türünü belirlemek için kullanılabilir. "
+"Paylaşılan bir MIME veritabanı için freedesktop belirtimini uygulamaya "
+"çalışır."
 
 #: dependencies.py:17
 msgid "determine file type using content tests"
-msgstr ""
+msgstr "içerik testleri kullanarak dosya türünü belirleyin"
 
 #: settings.py:14
 msgid "Path to the class to use when to detect file MIME types."
 msgstr ""
+"Dosya MIME türlerinin ne zaman algılanacağını kullanmak için sınıfın yolu."
 
 #: settings.py:20
 msgid "Arguments to pass to the MIME_TYPE_BACKEND."
-msgstr ""
+msgstr "MIME_TYPE_BACKEND'e aktarılacak bağımsız değişkenler."

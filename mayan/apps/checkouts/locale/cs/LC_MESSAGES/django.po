@@ -95,7 +95,7 @@ msgstr "Přihlásit dokument"
 
 #: links.py:55
 msgid "Check in"
-msgstr ""
+msgstr "Přihlaste se"
 
 #: links.py:61
 msgid "Check in/out"

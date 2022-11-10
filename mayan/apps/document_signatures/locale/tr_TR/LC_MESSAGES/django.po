@@ -6,6 +6,7 @@
 # Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -165,7 +166,7 @@ msgstr ""
 
 #: models.py:46
 msgid "Document file"
-msgstr ""
+msgstr "Belge dosyası"
 
 #: models.py:51
 msgid "Date and time signed"

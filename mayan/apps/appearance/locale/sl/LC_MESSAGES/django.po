@@ -27,75 +27,75 @@ msgstr "Videz"
 
 #: dependencies.py:8
 msgid "Lato font"
-msgstr ""
+msgstr "Lato pisava"
 
 #: dependencies.py:12
 msgid "Bootstrap"
-msgstr ""
+msgstr "Bootstrap"
 
 #: dependencies.py:16
 msgid "Bootswatch"
-msgstr ""
+msgstr "Bootswatch"
 
 #: dependencies.py:30
 msgid "Fancybox"
-msgstr ""
+msgstr "Fancybox"
 
 #: dependencies.py:34
 msgid "FontAwesome"
-msgstr ""
+msgstr "FontAwesome"
 
 #: dependencies.py:38
 msgid "jQuery"
-msgstr ""
+msgstr "jQuery"
 
 #: dependencies.py:42
 msgid "JQuery Form"
-msgstr ""
+msgstr "Obrazec JQuery"
 
 #: dependencies.py:46
 msgid "jQuery Lazy Load"
-msgstr ""
+msgstr "Leno nalaganje jQuery"
 
 #: dependencies.py:50
 msgid "JQuery Match Height"
-msgstr ""
+msgstr "Višina ujemanja JQuery"
 
 #: dependencies.py:54
 msgid "Select 2"
-msgstr ""
+msgstr "Izberite 2"
 
 #: dependencies.py:58
 msgid "Toastr"
-msgstr ""
+msgstr "Toastr"
 
 #: dependencies.py:62
 msgid "URI.js"
-msgstr ""
+msgstr "URI.js"
 
 #: events.py:8
 msgid "Theme created"
-msgstr ""
+msgstr "Tema ustvarjena"
 
 #: events.py:11
 msgid "Theme edited"
-msgstr ""
+msgstr "Tema urejena"
 
 #: events.py:14
 msgid "User theme edited"
-msgstr ""
+msgstr "Uporabniška tema urejena"
 
 #: links.py:18
 msgid "Theme settings"
-msgstr ""
+msgstr "Nastavitve teme"
 
 #: links.py:25
 msgid "Edit theme settings"
-msgstr ""
+msgstr "Uredite nastavitve teme"
 
 #: links.py:31 views.py:31
 msgid "Create new theme"
-msgstr ""
+msgstr "Ustvari novo temo"
 
 #: links.py:36
 msgid "Delete"
@@ -103,15 +103,15 @@ msgstr "Izbriši"
 
 #: links.py:40
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #: links.py:44 links.py:49 models.py:32 views.py:99
 msgid "Themes"
-msgstr ""
+msgstr "Teme"
 
 #: models.py:19
 msgid "A short text describing the theme."
-msgstr ""
+msgstr "Kratko besedilo, ki opisuje temo."
 
 #: models.py:20
 msgid "Label"
@@ -122,65 +122,71 @@ msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
 msgstr ""
+"Slogovna tabela CSS za spreminjanje videza različnih elementov uporabniškega"
+" vmesnika."
 
 #: models.py:26
 msgid "Stylesheet"
-msgstr ""
+msgstr "Slogovna tabela"
 
 #: models.py:31 models.py:69
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: models.py:65
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
 
 #: models.py:73
 msgid "User theme setting"
-msgstr ""
+msgstr "Nastavitev uporabniške teme"
 
 #: models.py:74
 msgid "User theme settings"
-msgstr ""
+msgstr "Nastavitve uporabniške teme"
 
 #: permissions.py:8
 msgid "Create new themes"
-msgstr ""
+msgstr "Ustvarite nove teme"
 
 #: permissions.py:11
 msgid "Delete themes"
-msgstr ""
+msgstr "Izbriši teme"
 
 #: permissions.py:14
 msgid "Edit themes"
-msgstr ""
+msgstr "Urejanje tem"
 
 #: permissions.py:17
 msgid "View existing themes"
-msgstr ""
+msgstr "Oglejte si obstoječe teme"
 
 #: settings.py:15
 msgid "Custom HTTP response code for AJAX redirections."
-msgstr ""
+msgstr "Odzivna koda HTTP po meri za preusmeritve AJAX."
 
 #: settings.py:21
 msgid "Maximum number of characters that will be displayed as the view title."
-msgstr ""
+msgstr "Največje število znakov, ki bodo prikazani kot naslov pogleda."
 
 #: settings.py:28
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr ""
+"Mesto, kjer bo prikazano sistemsko sporočilo. Možnosti so: zgoraj-levo, "
+"zgoraj-na sredini, zgoraj-desno, spodaj-levo, spodaj-na sredini, spodaj-"
+"desno."
 
 #: settings.py:36
 msgid ""
 "Delay in milliseconds after which the menus will be checked for updates."
 msgstr ""
+"Zakasnitev v milisekundah, po kateri bodo meniji preverjeni za posodobitve."
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
-msgstr ""
+msgstr "Nezadostno dovoljenje"
 
 #: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
@@ -192,25 +198,27 @@ msgstr "Stran ni najdena"
 
 #: templates/404.html:32
 msgid "The requested page could not be found."
-msgstr ""
+msgstr "Zahtevane strani ni bilo mogoče najti."
 
 #: templates/404.html:40
 msgid "Possible reasons"
-msgstr ""
+msgstr "Možni razlogi"
 
 #: templates/404.html:44
 msgid "The location of the item is incorrect."
-msgstr ""
+msgstr "Lokacija predmeta ni pravilna."
 
 #: templates/404.html:45
 msgid "The location is correct, but the item no longer exists."
-msgstr ""
+msgstr "Lokacija je pravilna, vendar predmet ne obstaja več."
 
 #: templates/404.html:46
 msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
 msgstr ""
+"Lokacija je pravilna, vendar vaš račun nima potrebnega dovoljenja za dostop "
+"do nje."
 
 #: templates/500.html:5 templates/500.html:30
 #: templates/appearance/root.html:47
@@ -219,32 +227,35 @@ msgstr "Napaka strežnika"
 
 #: templates/500.html:32
 msgid "There's been an unexpected error."
-msgstr ""
+msgstr "Prišlo je do nepričakovane napake."
 
 #: templates/500.html:40
 msgid "What to do next?"
-msgstr ""
+msgstr "Kaj storiti naprej?"
 
 #: templates/500.html:44
 msgid "Refresh the page."
-msgstr ""
+msgstr "Osvežite stran."
 
 #: templates/500.html:45
 msgid "Wait a bit. The system might be overloaded."
-msgstr ""
+msgstr "Počakaj malo. Sistem je morda preobremenjen."
 
 #: templates/500.html:46
 msgid "Contact your system administrator."
-msgstr ""
+msgstr "Obrnite se na skrbnika sistema."
 
 #: templates/500.html:47
 msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
 msgstr ""
+"Preverite dnevnike za sporočila z oznakami &quot;NAPAKA&quot;, "
+"&quot;KRITIČNO&quot; ali &quot;USODNO&quot;."
 
 #: templates/500.html:48
 #, python-format
 msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
 msgstr ""
+"Odprite vstopnico z uporabo <a href=\"%(issue_url)s\">sledilnika težav</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -272,7 +283,7 @@ msgstr "Številka izgradnje: %(build_number)s"
 
 #: templates/appearance/about.html:92
 msgid "Released under the license:"
-msgstr ""
+msgstr "Izdano pod licenco:"
 
 #: templates/appearance/about.html:98
 #, python-format
@@ -366,15 +377,15 @@ msgstr "Identifikator"
 
 #: templates/appearance/generic_list_subtemplate.html:134
 msgid "Facets"
-msgstr ""
+msgstr "Fasete"
 
 #: templates/appearance/home.html:27
 msgid "Getting started"
-msgstr ""
+msgstr "Začetek"
 
 #: templates/appearance/home.html:30
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr ""
+msgstr "Preden lahko v celoti uporabljate Mayan EDMS, potrebujete naslednje:"
 
 #: templates/appearance/menus/menu_topbar.html:11
 msgid "Toggle navigation"
@@ -382,7 +393,7 @@ msgstr "Preklopi navigacijo"
 
 #: templates/appearance/partials/form_title.html:10
 msgid "Open main menu"
-msgstr ""
+msgstr "Odpri glavni meni"
 
 #: templates/appearance/partials/list_header.html:11
 #, python-format
@@ -401,20 +412,22 @@ msgstr "Skupaj: %(total)s"
 
 #: templates/appearance/partials/list_toolbar.html:14
 msgid "Select/Deselect all"
-msgstr ""
+msgstr "Izberi/Prekliči izbor vseh"
 
 #: templates/appearance/partials/list_toolbar.html:18
 msgid "Toggle list display mode"
-msgstr ""
+msgstr "Preklop načina prikaza seznama"
 
 #: templates/appearance/partials/list_toolbar.html:63
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
+"Izberite elemente za aktiviranje množičnih dejanj. Uporabite Shift + "
+"kliknite, da izberete veliko."
 
 #: templates/appearance/partials/list_toolbar.html:68
 msgid "Bulk actions"
-msgstr ""
+msgstr "Množična dejanja"
 
 #: templates/appearance/partials/list_toolbar.html:70
 msgid "Toggle Dropdown"
@@ -426,15 +439,15 @@ msgstr "Ni rezultatov"
 
 #: templates/appearance/root.html:52
 msgid "Close"
-msgstr ""
+msgstr "Zapri"
 
 #: templates/appearance/root.html:60
 msgid "Server communication error"
-msgstr ""
+msgstr "Napaka v komunikaciji s strežnikom"
 
 #: templates/appearance/root.html:62
 msgid "Check you network connection and try again in a few moments."
-msgstr ""
+msgstr "Preverite omrežno povezavo in poskusite znova čez nekaj trenutkov."
 
 #: templatetags/appearance_tags.py:61
 msgid "None"
@@ -443,28 +456,30 @@ msgstr "Nobenega"
 #: views.py:55
 #, python-format
 msgid "Delete theme: %s"
-msgstr ""
+msgstr "Izbriši temo: %s"
 
 #: views.py:72
 #, python-format
 msgid "Edit theme: %s"
-msgstr ""
+msgstr "Uredi temo: %s"
 
 #: views.py:93
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
 msgstr ""
+"Teme omogočajo spreminjanje vizualnega videza brez potrebe po spremembi "
+"kode."
 
 #: views.py:97
 msgid "There are no themes"
-msgstr ""
+msgstr "Ni tem"
 
 #: views.py:122
 #, python-format
 msgid "Theme settings for user: %s"
-msgstr ""
+msgstr "Nastavitve teme za uporabnika: %s"
 
 #: views.py:144
 #, python-format
 msgid "Edit theme settings for user: %s"
-msgstr ""
+msgstr "Uredi nastavitve teme za uporabnika: %s"

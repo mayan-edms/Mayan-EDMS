@@ -32,39 +32,39 @@ msgstr "%sIçin serileştirme sınıfı bulunamadı: "
 
 #: links.py:21
 msgid "API Documentation (Swagger)"
-msgstr ""
+msgstr "API Belgeleri (Swagger)"
 
 #: links.py:27
 msgid "API Documentation (ReDoc)"
-msgstr ""
+msgstr "API Belgeleri (ReDoc)"
 
 #: relations.py:84
 msgid "This field is required."
-msgstr ""
+msgstr "Bu alan gereklidir."
 
 #: relations.py:85
 #, python-brace-format
 msgid "Invalid pk \"{pk_value}\" - object does not exist."
-msgstr ""
+msgstr "Geçersiz pk \"{pk_value}\" - nesne mevcut değil."
 
 #: relations.py:86
 #, python-brace-format
 msgid "Incorrect type. Expected pk value, received {data_type}."
-msgstr ""
+msgstr "Yanlış tip. Beklenen pk değeri, alınan {data_type}."
 
 #: schemas.py:11
 #, python-format
 msgid "%s API"
-msgstr ""
+msgstr "%s API'si"
 
 #: settings.py:17
 msgid "Disable the REST API links in the tools menu."
-msgstr ""
+msgstr "Araçlar menüsündeki REST API bağlantılarını devre dışı bırakın."
 
 #: settings.py:23
 msgid "The maximum page size that can be requested."
-msgstr ""
+msgstr "Talep edilebilecek maksimum sayfa boyutu."
 
 #: settings.py:29
 msgid "The default page size if none is specified."
-msgstr ""
+msgstr "Hiçbiri belirtilmemişse varsayılan sayfa boyutu."

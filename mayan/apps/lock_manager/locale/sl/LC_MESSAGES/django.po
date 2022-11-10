@@ -5,6 +5,7 @@
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
@@ -22,15 +23,15 @@ msgstr ""
 
 #: apps.py:18 settings.py:10
 msgid "Lock manager"
-msgstr ""
+msgstr "Upravitelj zaklepanja"
 
 #: models.py:14
 msgid "Creation datetime"
-msgstr ""
+msgstr "Datum in čas ustvarjanja"
 
 #: models.py:18
 msgid "Timeout"
-msgstr ""
+msgstr "Odmor"
 
 #: models.py:21
 msgid "Name"
@@ -38,22 +39,24 @@ msgstr "Ime"
 
 #: models.py:27
 msgid "Lock"
-msgstr ""
+msgstr "Zaklepanje"
 
 #: models.py:28
 msgid "Locks"
-msgstr ""
+msgstr "Ključavnice"
 
 #: settings.py:15
 msgid "Path to the class to use when to request and release resource locks."
 msgstr ""
+"Pot do razreda, ki jo uporabite, ko zahtevate in sprostite zapore virov."
 
 #: settings.py:22
 msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
-msgstr ""
+msgstr "Argumenti za posredovanje LOCK_MANAGER_BACKEND."
 
 #: settings.py:28
 msgid ""
 "Default amount of time in seconds after which a resource lock will be "
 "automatically released."
 msgstr ""
+"Privzeti čas v sekundah, po katerem bo zaklepanje vira samodejno sproščeno."

@@ -7,6 +7,7 @@
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2022
 # emreunal <bywant@gmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -24,7 +25,7 @@ msgstr ""
 
 #: apps.py:26
 msgid "Dynamic search"
-msgstr ""
+msgstr "Dinamik arama"
 
 #: classes.py:432
 #, python-format
@@ -36,7 +37,7 @@ msgstr ""
 #: classes.py:584
 #, python-format
 msgid "Unknown search model `%s`."
-msgstr ""
+msgstr "Bilinmeyen arama modeli `%s`."
 
 #: classes.py:640
 msgid "ID"
@@ -44,7 +45,7 @@ msgstr "İD"
 
 #: forms.py:9
 msgid "Match all"
-msgstr ""
+msgstr "Tümü eşleşsin"
 
 #: forms.py:10
 msgid ""
@@ -154,6 +155,8 @@ msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
 msgstr ""
+"Bu araç yalnızca bazı arama backendleri için gereklidir. Backend yeniden "
+"dizine eklenirken arama sonuçları etkilenecektir."
 
 #: views.py:112
 msgid "This tool erases and populates the search backend's internal index."
@@ -166,4 +169,4 @@ msgstr ""
 #: views.py:149
 #, python-format
 msgid "Search for: %s"
-msgstr ""
+msgstr "Şunun için ara: %s"

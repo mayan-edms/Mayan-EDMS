@@ -6,6 +6,7 @@
 # Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -23,7 +24,7 @@ msgstr ""
 
 #: apps.py:31
 msgid "Django GPG"
-msgstr ""
+msgstr "Django GPG"
 
 #: apps.py:53 apps.py:59 forms.py:15
 msgid "Key ID"
@@ -51,11 +52,11 @@ msgstr "Uzunluk"
 
 #: apps.py:80 forms.py:17 models.py:56
 msgid "User ID"
-msgstr ""
+msgstr "Kullanıcı ID"
 
 #: dependencies.py:10
 msgid "GNU privacy guard - a PGP implementation."
-msgstr ""
+msgstr "GNU gizlilik koruması - bir PGP uygulaması."
 
 #: events.py:5 links.py:42 permissions.py:5
 msgid "Key management"
@@ -63,11 +64,11 @@ msgstr "Anahtar yönetimi"
 
 #: events.py:8
 msgid "Key created"
-msgstr ""
+msgstr "Anahtar oluşturuldu"
 
 #: events.py:12
 msgid "Key downloaded"
-msgstr ""
+msgstr "Anahtar indirildi"
 
 #: forms.py:26
 msgid "None"
@@ -75,11 +76,11 @@ msgstr "Yok"
 
 #: forms.py:29 models.py:48
 msgid "Fingerprint"
-msgstr ""
+msgstr "Parmakizi"
 
 #: forms.py:31 models.py:54
 msgid "Algorithm"
-msgstr ""
+msgstr "Algoritma"
 
 #: forms.py:48
 msgid "Term"
@@ -111,7 +112,7 @@ msgstr "İçeri Al"
 
 #: links.py:46
 msgid "Upload key"
-msgstr ""
+msgstr "Anahtar yükle"
 
 #: links.py:50 views.py:201
 msgid "Private keys"
@@ -179,15 +180,15 @@ msgstr "Anahtar"
 
 #: models.py:66
 msgid "Keys"
-msgstr ""
+msgstr "Anahtarlar"
 
 #: models.py:78
 msgid "Invalid key data"
-msgstr ""
+msgstr "Geçersiz anahtar verisi"
 
 #: models.py:81
 msgid "Key already exists."
-msgstr ""
+msgstr "Anahtar zaten var."
 
 #: permissions.py:8
 msgid "Delete keys"
@@ -220,10 +221,11 @@ msgstr "İmzalar"
 #: settings.py:16
 msgid "Full path to the backend to be used to handle keys and signatures."
 msgstr ""
+"Anahtarları ve imzaları işlemek için kullanılacak backende giden tam yol."
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
-msgstr ""
+msgstr "Anahtarları sorgulamak için kullanılan anahtar sunucusu."
 
 #: views.py:41
 #, python-format
@@ -238,7 +240,7 @@ msgstr "%s Anahtarın ayrıntıları: "
 #: views.py:89
 #, python-format
 msgid "Import key ID: %s?"
-msgstr ""
+msgstr "İçe aktarılacak Anahtar ID: %s?"
 
 #: views.py:90
 msgid "Import key"
@@ -247,7 +249,7 @@ msgstr "Anahtarı içe aktar"
 #: views.py:99
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
-msgstr ""
+msgstr "Anahtar içe aktarılamıyor: %(key_id)s; %(error)s"
 
 #: views.py:107
 #, python-format
@@ -259,14 +261,16 @@ msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
 msgstr ""
+"Anahtar sunucusundan içe aktarılacak ortak anahtarları aramak için ad, "
+"soyad, anahtar kimlikleri veya e-postaları kullanın."
 
 #: views.py:129
 msgid "No results returned"
-msgstr ""
+msgstr "Sonuç döndürülmedi"
 
 #: views.py:131
 msgid "Key query results"
-msgstr ""
+msgstr "Anahtar sorgu sonuçları"
 
 #: views.py:152
 msgid "Query key server"
@@ -274,17 +278,20 @@ msgstr "Anahtar sorgulama sunucusu"
 
 #: views.py:172
 msgid "Upload new key"
-msgstr ""
+msgstr "Yeni anahtar yükle"
 
 #: views.py:194
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user. The view to upload private and public keys is the same."
 msgstr ""
+"Özel anahtarlar, imzalanmış belgeler için kullanılır. Özel anahtarlar "
+"yalnızca kullanıcı tarafından yüklenebilir. Özel ve genel anahtarları "
+"yükleme görünümü aynıdır."
 
 #: views.py:199
 msgid "There no private keys"
-msgstr ""
+msgstr "Özel anahtar yok"
 
 #: views.py:218
 msgid ""
@@ -292,7 +299,10 @@ msgid ""
 " by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr ""
+"Genel anahtarlar, imzalanmış belgeleri doğrulamak için kullanılır. Genel "
+"anahtarlar, kullanıcı tarafından yüklenebilir veya anahtar sunucularından "
+"indirilebilir. Özel ve genel anahtarları yükleme görünümü aynıdır."
 
 #: views.py:224
 msgid "There no public keys"
-msgstr ""
+msgstr "Genel anahtar yok"

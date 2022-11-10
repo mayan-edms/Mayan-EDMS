@@ -3,6 +3,9 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -18,38 +21,40 @@ msgstr ""
 
 #: apps.py:34 apps.py:74 layers.py:15 permissions.py:5
 msgid "Redactions"
-msgstr ""
+msgstr "Redakcije"
 
 #: dependencies.py:6
 msgid "JavaScript image cropper"
-msgstr ""
+msgstr "JavaScript obrezovalnik slik"
 
 #: layers.py:13
 msgid ""
 "Redactions allow removing access to confidential and sensitive information "
 "without having to modify the document."
 msgstr ""
+"Redakcije omogočajo odstranitev dostopa do zaupnih in občutljivih "
+"informacij, ne da bi morali spremeniti dokument."
 
 #: permissions.py:8
 msgid "Create new redactions"
-msgstr ""
+msgstr "Ustvari nove redakcije"
 
 #: permissions.py:11
 msgid "Delete redactions"
-msgstr ""
+msgstr "Izbriši redakcije"
 
 #: permissions.py:14
 msgid "Edit redactions"
-msgstr ""
+msgstr "Uredi redakcije"
 
 #: permissions.py:17
 msgid "Exclude redactions"
-msgstr ""
+msgstr "Izključi redakcije"
 
 #: permissions.py:20
 msgid "View existing redactions"
-msgstr ""
+msgstr "Oglejte si obstoječe redakcije"
 
 #: transformations.py:12
 msgid "Redaction"
-msgstr ""
+msgstr "Redakcija"

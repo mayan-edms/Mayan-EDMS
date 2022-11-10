@@ -6,6 +6,7 @@
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2022
 # xisafe <root@xisafe.com>, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
@@ -27,11 +28,11 @@ msgstr "平台"
 
 #: classes.py:183
 msgid "Template for entrypoint.sh file inside a Docker image."
-msgstr ""
+msgstr "Docker 影像檔中entrypoint.sh檔的範本"
 
 #: classes.py:194
 msgid "Template that generates a Dockerfile file."
-msgstr ""
+msgstr "用來產生Dockerfile檔案的範本"
 
 #: classes.py:209
 msgid "Template for Supervisord inside a Docker image."
@@ -39,7 +40,7 @@ msgstr "Docker镜像中的Supervisord模板。"
 
 #: classes.py:227
 msgid "Template that generates a GitLab CI config file."
-msgstr ""
+msgstr "用來產生GitLab CI config檔的範本"
 
 #: classes.py:271
 msgid "Template for Supervisord."
@@ -53,10 +54,10 @@ msgstr "显示工作队列模板。"
 msgid ""
 "List of client backends to launch after startup. Use full dotted path to the"
 " client backend classes."
-msgstr ""
+msgstr "系統開啟後用戶端後端所需執行的項目列表. 針對用戶端後端類別使用完整的虛線路徑."
 
 #: settings.py:23
 msgid ""
 "Arguments for the client backends. Use the client backend dotted path as the"
 " dictionary key for the arguments in dictionary format."
-msgstr ""
+msgstr "用戶端後端的參數. 將用戶端後端虛擬路徑作為字典格式中的字典索引鍵."

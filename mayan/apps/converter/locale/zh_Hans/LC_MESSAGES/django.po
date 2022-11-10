@@ -70,11 +70,11 @@ msgstr "popper-utils软件包中的实用程序，用于将PDF文件中的页面
 
 #: events.py:8
 msgid "Asset created"
-msgstr ""
+msgstr "資源項目已建立"
 
 #: events.py:11
 msgid "Asset edited"
-msgstr ""
+msgstr "已編輯項目"
 
 #: forms.py:17
 msgid "Asset preview image"
@@ -86,7 +86,7 @@ msgstr "预览"
 
 #: forms.py:38
 msgid "Available transformations for this layer."
-msgstr ""
+msgstr "此層級可使用之轉變格式"
 
 #: forms.py:84 workflow_actions.py:74
 #, python-format
@@ -96,11 +96,11 @@ msgstr "“%s”不是有效的许可。"
 #: layers.py:11
 msgid ""
 "Decorations are visual elements that add contextual information to images."
-msgstr ""
+msgstr "裝飾 為可視之內容訊息元素至圖案"
 
 #: layers.py:13
 msgid "Decorations"
-msgstr ""
+msgstr "裝飾"
 
 #: layers.py:24
 msgid "Saved transformations"
@@ -108,7 +108,7 @@ msgstr "转换已保存"
 
 #: links.py:35 views/asset_views.py:36
 msgid "Create asset"
-msgstr ""
+msgstr "建立資源項目"
 
 #: links.py:38 links.py:44 links.py:64
 msgid "Delete"
@@ -120,7 +120,7 @@ msgstr "编辑"
 
 #: links.py:56 models.py:64 storages.py:21 views/asset_views.py:144
 msgid "Assets"
-msgstr ""
+msgstr "資源項目"
 
 #: links.py:77
 msgid "Transformations"
@@ -150,7 +150,7 @@ msgstr "文件"
 
 #: models.py:63 transformation_mixins.py:299
 msgid "Asset"
-msgstr ""
+msgstr "資源項目"
 
 #: models.py:173 models.py:244
 msgid "Name"
@@ -206,23 +206,23 @@ msgstr "图层转换"
 
 #: models.py:265
 msgid "Unknown transformation class"
-msgstr ""
+msgstr "未知的轉變格式型別"
 
 #: permissions.py:8
 msgid "Create new assets"
-msgstr ""
+msgstr "建立新的資源項目"
 
 #: permissions.py:11
 msgid "Delete assets"
-msgstr ""
+msgstr "刪除資源項目"
 
 #: permissions.py:14
 msgid "Edit assets"
-msgstr ""
+msgstr "編輯資源項目"
 
 #: permissions.py:17
 msgid "View existing assets"
-msgstr ""
+msgstr "瀏覽已存在資源項目"
 
 #: permissions.py:21
 msgid "Create new transformations"
@@ -265,7 +265,7 @@ msgstr ""
 
 #: settings.py:58
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
-msgstr ""
+msgstr "輸入至以下的變數 CONVERTER_ASSET_STORAGE_BACKEND"
 
 #: settings.py:64
 msgid "Graphics conversion backend to use."
@@ -305,7 +305,7 @@ msgstr ""
 
 #: storages.py:34
 msgid "Assets cache"
-msgstr ""
+msgstr "項目快取"
 
 #: transformation_mixins.py:20 transformations.py:583
 msgid ""
@@ -609,12 +609,12 @@ msgstr ""
 #: views/asset_views.py:50
 #, python-format
 msgid "Delete request performed on %(count)d asset"
-msgstr ""
+msgstr "刪除執行要求於%(count)d項目"
 
 #: views/asset_views.py:52
 #, python-format
 msgid "Delete request performed on %(count)d assets"
-msgstr ""
+msgstr "刪除執行中要求的%(count)d資源項目"
 
 #: views/asset_views.py:60
 msgid "Delete the selected asset?"
@@ -624,49 +624,49 @@ msgstr[0] ""
 #: views/asset_views.py:70
 #, python-format
 msgid "Delete asset: %s?"
-msgstr ""
+msgstr "刪除資源項目 : %s?"
 
 #: views/asset_views.py:81
 #, python-format
 msgid "Asset \"%s\" deleted successfully."
-msgstr ""
+msgstr "資源項目%s成功刪除"
 
 #: views/asset_views.py:86
 #, python-format
 msgid "Error deleting asset \"%(asset)s\": %(error)s"
-msgstr ""
+msgstr "刪除資源項目\"%(asset)s\"失敗 : %(error)s"
 
 #: views/asset_views.py:102
 #, python-format
 msgid "Details asset: %s"
-msgstr ""
+msgstr "顯示資源項目詳細資訊:%s"
 
 #: views/asset_views.py:117
 #, python-format
 msgid "Edit asset: %s"
-msgstr ""
+msgstr "編輯資源項目 : %s"
 
 #: views/asset_views.py:140
 msgid ""
 "Assets are files that can be used in conjuction with certain "
 "transformations."
-msgstr ""
+msgstr "資源項目是依些可以用來連接特定轉變"
 
 #: views/asset_views.py:143
 msgid "No assets available"
-msgstr ""
+msgstr "沒有資源項目可用"
 
 #: views/transformation_views.py:52
 #, python-format
 msgid "Error creating transformation: %s."
-msgstr ""
+msgstr "建立轉變格式錯誤 : %s"
 
 #: views/transformation_views.py:69
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
-msgstr ""
+msgstr "建立層級\"%(layer)s\"轉變格式 %(transformation)s\"給 : %(object)s"
 
 #: views/transformation_views.py:126
 #, python-format
@@ -681,12 +681,12 @@ msgstr "对%(content_object)s编辑转换“%(transformation)s”"
 #: views/transformation_views.py:236
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
-msgstr ""
+msgstr "沒有任何條目於˙此層級\"%(layer_name)s\""
 
 #: views/transformation_views.py:239
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
-msgstr ""
+msgstr "層級\"%(layer)s\"轉變格式於:%(object)s"
 
 #: views/transformation_views.py:285
 msgid "Transformation created successfully."
@@ -713,16 +713,16 @@ msgstr ""
 
 #: workflow_actions.py:32
 msgid "Transformation class"
-msgstr ""
+msgstr "轉變格式型別"
 
 #: workflow_actions.py:37
 msgid "Type of transformation to add."
-msgstr ""
+msgstr "新增轉變格式的種類"
 
 #: workflow_actions.py:42
 msgid "Transformation arguments"
-msgstr ""
+msgstr "轉變參數"
 
 #: workflow_actions.py:51
 msgid "Add transformation"
-msgstr ""
+msgstr "新增轉變格式"

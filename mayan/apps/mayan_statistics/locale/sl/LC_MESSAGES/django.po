@@ -3,6 +3,9 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
@@ -18,102 +21,102 @@ msgstr ""
 
 #: apps.py:30 links.py:35 permissions.py:5 queues.py:7
 msgid "Statistics"
-msgstr ""
+msgstr "Statistika"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
 #: apps.py:39
 msgid "Schedule"
-msgstr ""
+msgstr "Urnik"
 
 #: apps.py:45
 msgid "Last update"
-msgstr ""
+msgstr "Zadnja posodobitev"
 
 #: classes.py:146
 msgid "Never"
-msgstr ""
+msgstr "Nikoli"
 
 #: links.py:15
 msgid "Queue"
-msgstr ""
+msgstr "Čakalna vrsta"
 
 #: links.py:20
 msgid "View"
-msgstr ""
+msgstr "Pogled"
 
 #: links.py:25
 msgid "Namespace details"
-msgstr ""
+msgstr "Podrobnosti imenskega prostora"
 
 #: links.py:30
 msgid "Namespace list"
-msgstr ""
+msgstr "Seznam imenskih prostorov"
 
 #. Translators: 'Slug' refers to the URL valid ID of the statistic
 #. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
 #: models.py:10
 msgid "Slug"
-msgstr ""
+msgstr "Polž"
 
 #: models.py:12
 msgid "Date time"
-msgstr ""
+msgstr "Datum čas"
 
 #: models.py:14
 msgid "Data"
-msgstr ""
+msgstr "podatki"
 
 #: models.py:17
 msgid "Statistics result"
-msgstr ""
+msgstr "Rezultat statistike"
 
 #: models.py:18
 msgid "Statistics results"
-msgstr ""
+msgstr "Rezultati statistike"
 
 #: permissions.py:8
 msgid "View statistics"
-msgstr ""
+msgstr "Ogled statistike"
 
 #: queues.py:12
 msgid "Execute statistic"
-msgstr ""
+msgstr "Izvedite statistiko"
 
 #: templates/statistics/renderers/chartjs/line.html:14
 msgid "No data available."
-msgstr ""
+msgstr "Ni podatkov."
 
 #: templates/statistics/renderers/chartjs/line.html:16
 #, python-format
 msgid "Last update: %(datetime)s"
-msgstr ""
+msgstr "Zadnja posodobitev: %(datetime)s"
 
 #: views.py:22
 msgid "Statistics namespaces"
-msgstr ""
+msgstr "Imenski prostori statistike"
 
 #: views.py:40
 #, python-format
 msgid "Namespace details for: %s"
-msgstr ""
+msgstr "Podrobnosti imenskega prostora za: %s"
 
 #: views.py:63
 #, python-format
 msgid "Results for: %s"
-msgstr ""
+msgstr "Rezultati za: %s"
 
 #: views.py:70 views.py:97
 #, python-format
 msgid "Statistic \"%s\" not found."
-msgstr ""
+msgstr "Statistike &quot;%s&quot; ni mogoče najti."
 
 #: views.py:89
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
-msgstr ""
+msgstr "Je treba statistiko čakalne vrste &quot;%s&quot; posodobiti?"
 
 #: views.py:103
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
-msgstr ""
+msgstr "Statistika &quot;%s&quot; je uspešno v čakalni vrsti za posodobitev."

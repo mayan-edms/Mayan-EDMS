@@ -7,6 +7,7 @@
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2022
 # abc Def <hdogan1974@gmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -34,23 +35,23 @@ msgstr "Belgeler"
 
 #: events.py:8
 msgid "Tag attached to document"
-msgstr ""
+msgstr "Belgeye eklenen etiket"
 
 #: events.py:11
 msgid "Tag created"
-msgstr ""
+msgstr "Etiket oluşturuldu"
 
 #: events.py:14
 msgid "Tag edited"
-msgstr ""
+msgstr "Etiket düzenlendi"
 
 #: events.py:17
 msgid "Tag removed from document"
-msgstr ""
+msgstr "Etiket belgeden kaldırıldı"
 
 #: links.py:19 links.py:38
 msgid "Attach tags"
-msgstr ""
+msgstr "Etiketleri ekle"
 
 #: links.py:23 workflow_actions.py:68
 msgid "Remove tag"
@@ -78,15 +79,15 @@ msgstr "Herşey"
 
 #: methods.py:18
 msgid "Return the tags attached to the document."
-msgstr ""
+msgstr "Belgeye eklenen etiketleri getir."
 
 #: methods.py:20
 msgid "get_tags()"
-msgstr ""
+msgstr "get_tags()"
 
 #: models.py:25
 msgid "A short text used as the tag name."
-msgstr ""
+msgstr "Etiket adı olarak kullanılacak kısa bir metin."
 
 #: models.py:26
 msgid "Label"
@@ -94,7 +95,7 @@ msgstr "Etiket"
 
 #: models.py:29
 msgid "The RGB color values for the tag."
-msgstr ""
+msgstr "Etiket için RGB renk değerleri."
 
 #: models.py:30
 msgid "Color"
@@ -110,11 +111,11 @@ msgstr "Önizleme"
 
 #: models.py:112
 msgid "Document tag"
-msgstr ""
+msgstr "Belge etiketi"
 
 #: models.py:113 search.py:33 search.py:39 search.py:45 search.py:51
 msgid "Document tags"
-msgstr ""
+msgstr "Belge etiketleri"
 
 #: permissions.py:8
 msgid "Create new tags"
@@ -142,11 +143,11 @@ msgstr "Dokümanlardan etiketleri kaldır"
 
 #: search.py:24
 msgid "Tag label"
-msgstr ""
+msgstr "Etiket etiketi"
 
 #: search.py:27
 msgid "Tag color"
-msgstr ""
+msgstr "Etiket rengi"
 
 #: search.py:65
 msgid "Document type"
@@ -158,57 +159,57 @@ msgstr "Belge etiketi"
 
 #: search.py:71
 msgid "Document description"
-msgstr ""
+msgstr "Belge Açıklaması"
 
 #: search.py:74
 msgid "Document UUID"
-msgstr ""
+msgstr "Belge UUID"
 
 #: search.py:79
 msgid "Document file checksum"
-msgstr ""
+msgstr "Belge dosyası checksum'ı"
 
 #: search.py:82
 msgid "Document file MIME type"
-msgstr ""
+msgstr "Belge dosyası MIME türü"
 
 #: serializers.py:32
 msgid "Primary key of the tag to add to the document."
-msgstr ""
+msgstr "Belgeye eklenecek etiketin birincil anahtarı."
 
 #: serializers.py:40
 msgid "Primary key of the tag to remove from the document."
-msgstr ""
+msgstr "Belgeden kaldırılacak etiketin birincil anahtarı."
 
 #: views.py:42
 #, python-format
 msgid "Tags attached to document \"%(object)s\" successfully."
-msgstr ""
+msgstr "Etiketler \"%(object)s\" belgesine başarıyla eklendi."
 
 #: views.py:45
 #, python-format
 msgid "Tags attached to %(count)d document successfully."
-msgstr ""
+msgstr "Etiketler %(count)d belgesine başarıyla eklendi."
 
 #: views.py:48
 #, python-format
 msgid "Tags attached to %(count)d documents successfully."
-msgstr ""
+msgstr "Etiketler %(count)d belgelerine başarıyla eklendi."
 
 #: views.py:50
 #, python-format
 msgid "Attach tags to document: %(object)s"
-msgstr ""
+msgstr "Belgeye etiket ekleyin: %(object)s"
 
 #: views.py:51
 #, python-format
 msgid "Attach tags to %(count)d document."
-msgstr ""
+msgstr "%(count)d belgesine etiketler ekleyin."
 
 #: views.py:52
 #, python-format
 msgid "Attach tags to %(count)d documents."
-msgstr ""
+msgstr "%(count)d belgelerine etiketler ekleyin."
 
 #: views.py:69 wizard_steps.py:27
 msgid "Tags to be attached."
@@ -221,22 +222,22 @@ msgstr "Etiket oluştur"
 #: views.py:121
 #, python-format
 msgid "Error deleting tag \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "\"%(instance)s\" etiketi silinirken hata oluştu; %(exception)s"
 
 #: views.py:126
 #, python-format
 msgid "Tag \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "\"%(object)s\" etiketi başarıyla silindi."
 
 #: views.py:127
 #, python-format
 msgid "%(count)d tag deleted successfully."
-msgstr ""
+msgstr "%(count)d etiketi başarıyla silindi."
 
 #: views.py:128
 #, python-format
 msgid "%(count)d tags deleted successfully."
-msgstr ""
+msgstr "%(count)d etiketleri başarıyla silindi."
 
 #: views.py:129
 #, python-format
@@ -267,10 +268,12 @@ msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
 msgstr ""
+"Etiketler, belgelere eklenebilen veya belgelerden çıkarılabilen "
+"renklendirilmiş belirteçlerdir."
 
 #: views.py:179
 msgid "No tags available"
-msgstr ""
+msgstr "Kullanılabilir etiket yok"
 
 #: views.py:209
 #, python-format
@@ -279,7 +282,7 @@ msgstr "Etiketli dokümanlar: %s"
 
 #: views.py:235
 msgid "Document has no tags attached"
-msgstr ""
+msgstr "Belgeye eklenmiş etiket yok"
 
 #: views.py:238
 #, python-format
@@ -289,44 +292,44 @@ msgstr "Doküman için Etiketler: %s"
 #: views.py:256
 #, python-format
 msgid "Tags removed from document \"%(object)s\" successfully."
-msgstr ""
+msgstr "\"%(object)s\" belgesinden etiketler başarıyla kaldırıldı."
 
 #: views.py:259
 #, python-format
 msgid "Tags removed from %(count)d document successfully."
-msgstr ""
+msgstr "%(count)d belgesinden etiketler başarıyla kaldırıldı."
 
 #: views.py:262
 #, python-format
 msgid "Tags removed from %(count)d documents successfully."
-msgstr ""
+msgstr "%(count)d belgelerinden etiketler başarıyla kaldırıldı."
 
 #: views.py:264
 #, python-format
 msgid "Remove tags from document: %(object)s"
-msgstr ""
+msgstr "Etiketleri belgeden kaldır: %(object)s"
 
 #: views.py:265
 #, python-format
 msgid "Remove tags from %(count)d document."
-msgstr ""
+msgstr "%(count)d belgesinden etiketleri kaldır."
 
 #: views.py:266
 #, python-format
 msgid "Remove tags from %(count)d documents."
-msgstr ""
+msgstr "%(count)d belgelerindeki etiketleri kaldırın."
 
 #: views.py:283
 msgid "Tags to be removed."
-msgstr ""
+msgstr "Kaldırılacak etiketler."
 
 #: wizard_steps.py:15
 msgid "Select tags"
-msgstr ""
+msgstr "Etiketleri seçin"
 
 #: workflow_actions.py:20
 msgid "Tags to attach to the document"
-msgstr ""
+msgstr "Belgeye eklenecek etiketler"
 
 #: workflow_actions.py:25
 msgid "Attach tag"
@@ -334,4 +337,4 @@ msgstr "Etiket ekle"
 
 #: workflow_actions.py:63
 msgid "Tags to remove from the document"
-msgstr ""
+msgstr "Belgeden kaldırılacak etiketler"

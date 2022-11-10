@@ -27,7 +27,7 @@ msgstr "Nadzorne plošče"
 
 #: apps.py:25
 msgid "Widgets"
-msgstr ""
+msgstr "Pripomočki"
 
 #: apps.py:29
 msgid "Label"

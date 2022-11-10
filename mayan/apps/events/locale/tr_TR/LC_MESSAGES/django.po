@@ -6,6 +6,7 @@
 # Translators:
 # abc Def <hdogan1974@gmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -164,7 +165,7 @@ msgstr "Eylem"
 
 #: models.py:92
 msgid "Read"
-msgstr ""
+msgstr "Oku"
 
 #: models.py:98
 msgid "Notification"

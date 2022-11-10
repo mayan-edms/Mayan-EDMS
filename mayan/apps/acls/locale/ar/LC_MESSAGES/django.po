@@ -32,6 +32,8 @@ msgid ""
 "Object for which the access is granted. When sorting objects, only the type "
 "is used and not the actual label of the object."
 msgstr ""
+"المادة التي تم منح حق الوصول إليها. عند ترتيب المواد، يستخدم النوع فقط و ليس"
+" الاسم الفعلي للمادة."
 
 #: apps.py:65
 msgid "Object"
@@ -47,7 +49,7 @@ msgstr "إنشاء الصلاحيات"
 
 #: events.py:13
 msgid "ACL deleted"
-msgstr ""
+msgstr "قائمة حق الوصول ACL تم إلغاؤها"
 
 #: events.py:16
 msgid "ACL edited"
@@ -71,7 +73,7 @@ msgstr "الصلاحيات"
 
 #: links.py:35
 msgid "Global ACLs"
-msgstr ""
+msgstr "قوائم حق الوصول ACL شاملة"
 
 #: managers.py:243
 #, python-format
@@ -85,7 +87,7 @@ msgstr "صلاحيات الوصول غير كافية لـ:%s"
 
 #: models.py:49
 msgid "Role to which the access is granted for the specified object."
-msgstr ""
+msgstr "الدور الذي مُنح حق الوصول للمادة"
 
 #: models.py:59
 msgid "Access entry"
@@ -110,11 +112,11 @@ msgstr "إستعراض قوائم الصلاحيات"
 
 #: serializers.py:116
 msgid "Primary key of the permission to add to the ACL."
-msgstr ""
+msgstr "المفتاح الأساسي للإذن بالإضافة إلى قائمة حق الوصول ACL"
 
 #: serializers.py:123
 msgid "Primary key of the permission to remove from the ACL."
-msgstr ""
+msgstr "المفتاح الأساسي للإذن بالإلغاء من قائمة حق الوصول ACL"
 
 #: views.py:44
 #, python-format
@@ -178,11 +180,11 @@ msgstr ""
 
 #: views.py:266
 msgid "There are no ACLs"
-msgstr ""
+msgstr "لا توجد قائمة بحقوق الوصول ACL"
 
 #: views.py:275
 msgid "Global access control lists"
-msgstr ""
+msgstr "القوائم الشاملة لحق الوصول"
 
 #: workflow_actions.py:23
 msgid "Object type"

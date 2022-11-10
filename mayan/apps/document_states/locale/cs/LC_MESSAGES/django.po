@@ -5,8 +5,8 @@
 # Translators:
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2022
-# trendspotter <jirka.p@volny.cz>, 2022
 # Michal Švábík <snadno@lehce.cz>, 2022
+# trendspotter <jirka.p@volny.cz>, 2022
 # 
 msgid ""
 msgstr ""
@@ -1318,7 +1318,7 @@ msgstr "URL"
 
 #: workflow_actions.py:140
 msgid "The URL to access."
-msgstr ""
+msgstr "Adresa URL pro přístup."
 
 #: workflow_actions.py:149
 msgid "Timeout"
@@ -1334,7 +1334,7 @@ msgstr "Payload"
 
 #: workflow_actions.py:171
 msgid "A JSON document to include in the request."
-msgstr ""
+msgstr "Dokument JSON, který se má zahrnout do požadavku."
 
 #: workflow_actions.py:180
 msgid "Username"
@@ -1350,7 +1350,7 @@ msgstr "Heslo"
 
 #: workflow_actions.py:205
 msgid "Password to use for making the request with HTTP Basic Auth."
-msgstr ""
+msgstr "Heslo, které se použije pro zadání požadavku s HTTP Basic Auth."
 
 #: workflow_actions.py:216
 msgid "Method"

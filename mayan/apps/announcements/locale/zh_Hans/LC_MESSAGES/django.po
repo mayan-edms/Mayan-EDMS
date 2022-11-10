@@ -7,6 +7,7 @@
 # Roberto Rosario, 2022
 # Ford Guo <agile.guo@gmail.com>, 2022
 # dave cheng, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
@@ -25,7 +26,7 @@ msgstr ""
 #: apps.py:36 events.py:5 links.py:40 models.py:43 permissions.py:6
 #: templates/announcements/announcements.html:8 views.py:126
 msgid "Announcements"
-msgstr ""
+msgstr "公告"
 
 #: apps.py:78 apps.py:82
 msgid "None"
@@ -33,15 +34,15 @@ msgstr "没有"
 
 #: events.py:8
 msgid "Announcement created"
-msgstr ""
+msgstr "公告已建立"
 
 #: events.py:11
 msgid "Announcement edited"
-msgstr ""
+msgstr "公告已修改"
 
 #: links.py:17 views.py:34
 msgid "Create announcement"
-msgstr ""
+msgstr "建立公告"
 
 #: links.py:20 links.py:26
 msgid "Delete"
@@ -53,7 +54,7 @@ msgstr "编辑"
 
 #: models.py:19
 msgid "Short description of this announcement."
-msgstr ""
+msgstr "簡述此公告內容"
 
 #: models.py:20
 msgid "Label"
@@ -61,7 +62,7 @@ msgstr "标签"
 
 #: models.py:23
 msgid "The actual text to be displayed."
-msgstr ""
+msgstr "實際呈現的文字"
 
 #: models.py:24
 msgid "Text"
@@ -73,7 +74,7 @@ msgstr "启用"
 
 #: models.py:29
 msgid "Date and time after which this announcement will be displayed."
-msgstr ""
+msgstr "此公告將被公布的日期˙與時間"
 
 #: models.py:30
 msgid "Start date time"
@@ -81,7 +82,7 @@ msgstr "开始日期时间"
 
 #: models.py:34
 msgid "Date and time until when this announcement is to be displayed."
-msgstr ""
+msgstr "此公告將被終止公布的日期與時間"
 
 #: models.py:35
 msgid "End date time"
@@ -89,71 +90,71 @@ msgstr "结束日期时间"
 
 #: models.py:42
 msgid "Announcement"
-msgstr ""
+msgstr "公告"
 
 #: permissions.py:10
 msgid "Create announcements"
-msgstr ""
+msgstr "建立複數公告"
 
 #: permissions.py:13
 msgid "Delete announcements"
-msgstr ""
+msgstr "刪除複數公告"
 
 #: permissions.py:16
 msgid "Edit announcements"
-msgstr ""
+msgstr "編輯複數公告"
 
 #: permissions.py:19
 msgid "View announcements"
-msgstr ""
+msgstr "預覽公告"
 
 #: views.py:45
 #, python-format
 msgid "Error deleting announcement \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "公告刪除錯誤\"%(instance)s\";%(exception)s"
 
 #: views.py:54
 #, python-format
 msgid "Announcement \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "公告 \"%(object)s\" 刪除成功"
 
 #: views.py:57
 #, python-format
 msgid "%(count)d announcement deleted successfully."
-msgstr ""
+msgstr "%(count)d項公告刪除成功"
 
 #: views.py:60
 #, python-format
 msgid "%(count)d announcements deleted successfully."
-msgstr ""
+msgstr "%(count)d公告刪除成功"
 
 #: views.py:62
 #, python-format
 msgid "Delete announcement: %(object)s."
-msgstr ""
+msgstr "刪除公告: %(object)s"
 
 #: views.py:63
 #, python-format
 msgid "Delete the %(count)d selected announcement."
-msgstr ""
+msgstr "刪除 %(count)d 已選取之公告"
 
 #: views.py:64
 #, python-format
 msgid "Delete the %(count)d selected announcements."
-msgstr ""
+msgstr "刪除 %(count)d已選取之公告"
 
 #: views.py:98
 #, python-format
 msgid "Edit announcement: %s"
-msgstr ""
+msgstr "編輯公告: %s"
 
 #: views.py:121
 msgid ""
 "Announcements are displayed in the login view. You can use announcements to "
 "convery information about your organzation, announcements or usage "
 "guidelines for your users."
-msgstr ""
+msgstr "公告欄將顯示於登入畫面, 你可以將你的組織與使用條款寫ˋ入公告欄的公告中, 提供給使用者."
 
 #: views.py:125
 msgid "No announcements available"
-msgstr ""
+msgstr "無可用之公告"

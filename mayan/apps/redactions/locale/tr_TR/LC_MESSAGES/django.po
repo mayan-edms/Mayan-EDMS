@@ -3,6 +3,9 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Bedreddin Şahbaz, 2022
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -18,38 +21,40 @@ msgstr ""
 
 #: apps.py:34 apps.py:74 layers.py:15 permissions.py:5
 msgid "Redactions"
-msgstr ""
+msgstr "Redaksiyonlar"
 
 #: dependencies.py:6
 msgid "JavaScript image cropper"
-msgstr ""
+msgstr "JavaScript resim kırpıcı"
 
 #: layers.py:13
 msgid ""
 "Redactions allow removing access to confidential and sensitive information "
 "without having to modify the document."
 msgstr ""
+"Redaksiyonlar, belgeyi değiştirmek zorunda kalmadan gizli ve hassas "
+"bilgilere erişimin kaldırılmasına izin verir."
 
 #: permissions.py:8
 msgid "Create new redactions"
-msgstr ""
+msgstr "Yeni redaksiyonlar oluştur"
 
 #: permissions.py:11
 msgid "Delete redactions"
-msgstr ""
+msgstr "Redaksiyonları sil"
 
 #: permissions.py:14
 msgid "Edit redactions"
-msgstr ""
+msgstr "Redaksiyonları düzenle"
 
 #: permissions.py:17
 msgid "Exclude redactions"
-msgstr ""
+msgstr "Redaksiyonları hariç tut"
 
 #: permissions.py:20
 msgid "View existing redactions"
-msgstr ""
+msgstr "Mevcut redaksiyonları görüntüle"
 
 #: transformations.py:12
 msgid "Redaction"
-msgstr ""
+msgstr "Redaksiyon"

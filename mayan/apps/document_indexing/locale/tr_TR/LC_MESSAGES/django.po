@@ -7,6 +7,7 @@
 # abc Def <hdogan1974@gmail.com>, 2022
 # Caner Başaran <basaran.caner@gmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -94,7 +95,7 @@ msgstr ""
 
 #: forms.py:61
 msgid "Template"
-msgstr ""
+msgstr "Şablon"
 
 #: handlers.py:19
 msgid "Creation date"
@@ -340,7 +341,7 @@ msgstr "Belge Türü"
 
 #: search.py:33
 msgid "Document MIME type"
-msgstr ""
+msgstr "Belge MIME tipi"
 
 #: search.py:36
 msgid "Document label"
@@ -348,15 +349,15 @@ msgstr "Belge etiketi"
 
 #: search.py:39
 msgid "Document description"
-msgstr ""
+msgstr "Belge Açıklaması"
 
 #: search.py:42
 msgid "Document UUID"
-msgstr ""
+msgstr "Belge UUID"
 
 #: search.py:46
 msgid "Document checksum"
-msgstr ""
+msgstr "Belge sağlama toplamı"
 
 #: serializers.py:205
 msgid ""

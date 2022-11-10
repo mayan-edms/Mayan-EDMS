@@ -5,6 +5,7 @@
 # 
 # Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -64,7 +65,7 @@ msgstr ""
 
 #: links.py:26
 msgid "Attributes"
-msgstr ""
+msgstr "Öznitellikler"
 
 #: links.py:33 links.py:38
 msgid "Submit for file metadata"
@@ -116,15 +117,15 @@ msgstr ""
 
 #: models.py:59
 msgid "Document type settings"
-msgstr ""
+msgstr "Belge türü ayarları"
 
 #: models.py:60
 msgid "Document types settings"
-msgstr ""
+msgstr "Belge türleri ayarları"
 
 #: models.py:74
 msgid "Document file"
-msgstr ""
+msgstr "Belge dosyası"
 
 #: models.py:80 models.py:95
 msgid "Document file driver entry"

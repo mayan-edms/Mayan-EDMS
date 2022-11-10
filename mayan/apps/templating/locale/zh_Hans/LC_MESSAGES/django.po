@@ -89,8 +89,8 @@ msgstr "标签"
 
 #: widgets.py:78
 msgid "<Filters and tags>"
-msgstr ""
+msgstr "<Filters and tags>"
 
 #: widgets.py:119
 msgid "<Model attributes>"
-msgstr ""
+msgstr "<Model attributes>"

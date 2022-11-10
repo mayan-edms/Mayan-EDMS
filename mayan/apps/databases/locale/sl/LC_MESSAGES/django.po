@@ -3,6 +3,9 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -18,7 +21,7 @@ msgstr ""
 
 #: apps.py:16
 msgid "Databases"
-msgstr ""
+msgstr "Baze podatkov"
 
 #: classes.py:199
 msgid "Model fields"
@@ -41,30 +44,32 @@ msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr ""
+"Zaledje vaše baze podatkov je nastavljeno za uporabo SQLite. SQLite se sme "
+"uporabljati samo za razvoj in testiranje, ne pa za proizvodnjo."
 
 #: model_mixins.py:24
 msgid "The dotted Python path to the backend class."
-msgstr ""
+msgstr "Pikčasta pot Python do zalednega razreda."
 
 #: model_mixins.py:25
 msgid "Backend path"
-msgstr ""
+msgstr "Zaledna pot"
 
 #: model_mixins.py:29
 msgid "JSON encoded data for the backend class."
-msgstr ""
+msgstr "JSON kodirani podatki za zaledni razred."
 
 #: model_mixins.py:30
 msgid "Backend data"
-msgstr ""
+msgstr "Zaledni podatki"
 
 #: model_mixins.py:78
 msgid "Backend"
-msgstr ""
+msgstr "Zaledje"
 
 #: model_mixins.py:79
 msgid "The backend class for this entry."
-msgstr ""
+msgstr "Zaledni razred za ta vnos."
 
 #: model_mixins.py:101
 msgid ""
@@ -88,4 +93,4 @@ msgstr ""
 
 #: templates/databases/app/viewport.html:11
 msgid "Warning"
-msgstr ""
+msgstr "Opozorilo"

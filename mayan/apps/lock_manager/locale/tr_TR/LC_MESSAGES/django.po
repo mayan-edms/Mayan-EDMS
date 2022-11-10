@@ -6,6 +6,7 @@
 # Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -48,13 +49,17 @@ msgstr "Kilitler"
 #: settings.py:15
 msgid "Path to the class to use when to request and release resource locks."
 msgstr ""
+"Kaynak kilitlerinin ne zaman isteneceği ve serbest bırakılacağı sınıfının "
+"yolu."
 
 #: settings.py:22
 msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
-msgstr ""
+msgstr "LOCK_MANAGER_BACKEND'e aktarılacak argümanlar."
 
 #: settings.py:28
 msgid ""
 "Default amount of time in seconds after which a resource lock will be "
 "automatically released."
 msgstr ""
+"Bir kaynak kilidinin otomatik olarak serbest bırakılacağı saniye cinsinden "
+"varsayılan süre."

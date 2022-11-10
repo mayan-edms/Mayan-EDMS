@@ -48,27 +48,27 @@ msgstr ""
 
 #: model_mixins.py:24
 msgid "The dotted Python path to the backend class."
-msgstr ""
+msgstr "Backend sınıfına giden noktalı Python yolu."
 
 #: model_mixins.py:25
 msgid "Backend path"
-msgstr ""
+msgstr "Backend yolu"
 
 #: model_mixins.py:29
 msgid "JSON encoded data for the backend class."
-msgstr ""
+msgstr "Backend sınıfı için JSON kodlu verisi."
 
 #: model_mixins.py:30
 msgid "Backend data"
-msgstr ""
+msgstr "Backend verisi"
 
 #: model_mixins.py:78
 msgid "Backend"
-msgstr ""
+msgstr "Backend"
 
 #: model_mixins.py:79
 msgid "The backend class for this entry."
-msgstr ""
+msgstr "Bu girdi için backend sınıfı."
 
 #: model_mixins.py:101
 msgid ""
@@ -92,4 +92,4 @@ msgstr ""
 
 #: templates/databases/app/viewport.html:11
 msgid "Warning"
-msgstr ""
+msgstr "Uyarı"

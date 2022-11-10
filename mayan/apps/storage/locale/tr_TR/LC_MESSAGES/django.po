@@ -28,7 +28,7 @@ msgstr "Depolama"
 
 #: apps.py:56
 msgid "Source object"
-msgstr ""
+msgstr "Kaynak nesne"
 
 #: classes.py:86 classes.py:107
 #, python-format
@@ -36,22 +36,24 @@ msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
 "path and arguments."
 msgstr ""
+"Depolama başlatılamıyor: %(name)s. Depolama yolunu ve bağımsız değişkenleri "
+"kontrol edin."
 
 #: events.py:6 links.py:19 models.py:64 storages.py:22
 msgid "Download files"
-msgstr ""
+msgstr "Dosyaları indir"
 
 #: events.py:10
 msgid "Download file created"
-msgstr ""
+msgstr "Oluşturulan dosyayı indir"
 
 #: events.py:13
 msgid "Download file deleted"
-msgstr ""
+msgstr "İndirilen dosya silindi"
 
 #: events.py:16
 msgid "Download file downloaded"
-msgstr ""
+msgstr "İndirilen dosyayı indir"
 
 #: links.py:12
 msgid "Delete"
@@ -63,26 +65,30 @@ msgstr "İndir"
 
 #: management/commands/storage_process.py:13
 msgid "Name of the app to process."
-msgstr ""
+msgstr "İşlenecek uygulamanın adı."
 
 #: management/commands/storage_process.py:19
 msgid ""
 "Path of the database (.dbm) file that will be created/read to keep track of "
 "items processed."
 msgstr ""
+"İşlenen öğelerin kaydını tutmak için oluşturulacak/okunacak veritabanı "
+"(.dbm) dosyasının yolu."
 
 #: management/commands/storage_process.py:26
 msgid "Process a specific model."
-msgstr ""
+msgstr "Belirli bir modeli işleyin."
 
 #: management/commands/storage_process.py:32
 msgid ""
 "Process the files in reverse to undo the storage pipeline transformations."
 msgstr ""
+"Depolama işlem hattı dönüşümlerini geri almak için dosyaları tersten "
+"işleyin."
 
 #: management/commands/storage_process.py:38
 msgid "Name of the storage to process."
-msgstr ""
+msgstr "İşlenecek depolamanın adı."
 
 #: model_mixins.py:13 models.py:119
 msgid "Filename"
@@ -94,7 +100,7 @@ msgstr "Tarih saat"
 
 #: model_mixins.py:70
 msgid "Unnamed file"
-msgstr ""
+msgstr "Adsız dosya"
 
 #: models.py:42 models.py:116
 msgid "File"
@@ -110,7 +116,7 @@ msgstr "İzinler"
 
 #: models.py:63
 msgid "Download file"
-msgstr ""
+msgstr "Dosyayı indir"
 
 #: models.py:125
 msgid "Shared uploaded file"
@@ -122,7 +128,7 @@ msgstr "Paylaşılan yüklenen dosyalar"
 
 #: queues.py:13
 msgid "Storage periodic"
-msgstr ""
+msgstr "Periyodik depolama"
 
 #: queues.py:19
 msgid "Delete stale uploads"
@@ -130,17 +136,19 @@ msgstr "Eski yüklemeleri sil"
 
 #: queues.py:26
 msgid "Delete stale download files"
-msgstr ""
+msgstr "Geçersiz indirilmiş dosyaları sil"
 
 #: settings.py:19
 msgid "Time in seconds, after which download files will be deleted."
-msgstr ""
+msgstr "İndirme sonrası silinecek dosyaların, kaç saniye sonra silineceği."
 
 #: settings.py:25
 msgid ""
 "A storage backend that all workers can use to generate and hold files for "
 "download."
 msgstr ""
+"Tüm çalışanların indirilmek üzere dosya oluşturmak ve tutmak için "
+"kullanabileceği bir depolama alanı."
 
 #: settings.py:36
 msgid "A storage backend that all workers can use to share files."
@@ -158,19 +166,23 @@ msgstr ""
 
 #: settings.py:53
 msgid "Time in seconds, after which temporary uploaded files will be deleted."
-msgstr ""
+msgstr "Geçici olarak yüklenen dosyaların, kaç saniye sonra silineceği."
 
 #: storages.py:15
 msgid ""
 "Unable to initialize the download file storage. Check the settings {} and {}"
 " for formatting errors."
 msgstr ""
+"İndirilen dosya deposu başlatılamıyor. Biçimlendirme hataları için {} ve {} "
+"ayarlarını kontrol edin."
 
 #: storages.py:29
 msgid ""
 "Unable to initialize the shared uploaded file storage. Check the settings {}"
 " and {} for formatting errors."
 msgstr ""
+"Paylaşılan yüklenen dosya deposu başlatılamıyor. Biçimlendirme hataları için"
+" {} ve {} ayarlarını kontrol edin."
 
 #: views.py:60
 msgid ""
@@ -178,6 +190,13 @@ msgid ""
 "export. Download files are retained over a span of time and then removed "
 "automatically."
 msgstr ""
+"İndirme dosyaları, dışa aktarma gibi harici bir işlemin sonucu olarak "
+"oluşturulur. İndirilen dosyalar belirli bir süre boyunca tutulur ve ardından"
+" otomatik olarak kaldırılır."
+
+#: views.py:58
+msgid "There are no files to download."
+msgstr "İndirilecek dosya yok."
 
 #: views.py:64
 msgid "There are no files to download."
@@ -185,4 +204,4 @@ msgstr ""
 
 #: views.py:65
 msgid "Downloads"
-msgstr ""
+msgstr "İndirilenler"

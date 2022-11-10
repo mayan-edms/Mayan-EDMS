@@ -3,6 +3,9 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Bedreddin Şahbaz, 2022
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -18,4 +21,4 @@ msgstr ""
 
 #: apps.py:8
 msgid "Testing"
-msgstr ""
+msgstr "Test ediliyor"

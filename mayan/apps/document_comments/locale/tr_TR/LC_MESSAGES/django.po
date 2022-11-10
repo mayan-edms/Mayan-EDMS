@@ -6,6 +6,7 @@
 # Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -23,19 +24,19 @@ msgstr ""
 
 #: apps.py:32 events.py:6 search.py:19 search.py:26 search.py:33 search.py:40
 msgid "Document comments"
-msgstr ""
+msgstr "Belge yorumları"
 
 #: events.py:10
 msgid "Document comment created"
-msgstr ""
+msgstr "Belge yorumu oluşturuldu"
 
 #: events.py:13
 msgid "Document comment deleted"
-msgstr ""
+msgstr "Belge yorumu silindi"
 
 #: events.py:16
 msgid "Document comment edited"
-msgstr ""
+msgstr "Belge yorumu düzenlendi"
 
 #: links.py:16
 msgid "Add comment"
@@ -63,7 +64,7 @@ msgstr "Kullanıcı"
 
 #: models.py:36
 msgid "Text"
-msgstr ""
+msgstr "Metin"
 
 #: models.py:39
 msgid "Date time submitted"
@@ -83,7 +84,7 @@ msgstr "Yorumları sil"
 
 #: permissions.py:14
 msgid "Edit comments"
-msgstr ""
+msgstr "Yorumları düzenle"
 
 #: permissions.py:17
 msgid "View comments"
@@ -97,27 +98,29 @@ msgstr "Dokümana yorum ekle: %s"
 #: views.py:64
 #, python-format
 msgid "Delete comment: %s?"
-msgstr ""
+msgstr "Şu yorumu sil: %s?"
 
 #: views.py:96
 #, python-format
 msgid "Details for comment: %s?"
-msgstr ""
+msgstr "Şu yorum için ayrıntılar: %s?"
 
 #: views.py:116
 #, python-format
 msgid "Edit comment: %s?"
-msgstr ""
+msgstr "Şu yorumu düzenle: %s?"
 
 #: views.py:152
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
 msgstr ""
+"Belge yorumları, kullanıcılardan gelen zaman damgalı metin girişleridir. "
+"İşbirliği için harikadırlar."
 
 #: views.py:155
 msgid "There are no comments"
-msgstr ""
+msgstr "Yorum yok"
 
 #: views.py:157
 #, python-format

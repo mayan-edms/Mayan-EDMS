@@ -8,6 +8,7 @@
 # Ford Guo <agile.guo@gmail.com>, 2022
 # xisafe <root@xisafe.com>, 2022
 # Roberto Rosario, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
@@ -57,7 +58,7 @@ msgstr "用户ID"
 
 #: dependencies.py:10
 msgid "GNU privacy guard - a PGP implementation."
-msgstr ""
+msgstr "GNU隱私保護 - PGP建置"
 
 #: events.py:5 links.py:42 permissions.py:5
 msgid "Key management"
@@ -65,11 +66,11 @@ msgstr "密钥管理"
 
 #: events.py:8
 msgid "Key created"
-msgstr ""
+msgstr "金鑰已建立"
 
 #: events.py:12
 msgid "Key downloaded"
-msgstr ""
+msgstr "金鑰已下載"
 
 #: forms.py:26
 msgid "None"

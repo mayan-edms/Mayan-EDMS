@@ -6,6 +6,7 @@
 # Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2022
 # emreunal <bywant@gmail.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -27,19 +28,19 @@ msgstr "Yinele"
 
 #: apps.py:60
 msgid "Duplicate backend"
-msgstr ""
+msgstr "Yinelenen backend"
 
 #: classes.py:90
 msgid "Null backend"
-msgstr ""
+msgstr "Boş backend"
 
 #: duplicate_backends.py:9
 msgid "Exact document file checksum"
-msgstr ""
+msgstr "Tam belge dosyası checksumı"
 
 #: duplicate_backends.py:32
 msgid "Exact document label"
-msgstr ""
+msgstr "Tam belge etiketi"
 
 #: links.py:18 models.py:41 views.py:79
 msgid "Duplicated documents"
@@ -47,11 +48,11 @@ msgstr "Yinelenen belgeler"
 
 #: links.py:24 queues.py:23
 msgid "Duplicated document scan"
-msgstr ""
+msgstr "Yinelenen belge taraması"
 
 #: models.py:23 models.py:33
 msgid "Stored duplicate backend"
-msgstr ""
+msgstr "Saklanan yinelenen backend"
 
 #: models.py:24
 msgid "Stored duplicate backends"

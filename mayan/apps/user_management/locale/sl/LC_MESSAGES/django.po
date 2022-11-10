@@ -6,6 +6,7 @@
 # Translators:
 # Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
@@ -23,11 +24,11 @@ msgstr ""
 
 #: apps.py:74 events.py:6 permissions.py:6
 msgid "User management"
-msgstr ""
+msgstr "Upravljanje uporabnikov"
 
 #: apps.py:89 search.py:10
 msgid "Group"
-msgstr ""
+msgstr "skupina"
 
 #: apps.py:90 apps.py:117 links.py:56 links.py:70 links.py:99 search.py:34
 #: views/group_views.py:109
@@ -40,96 +41,96 @@ msgstr "Ime"
 
 #: apps.py:111 models.py:20 search.py:22
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
 
 #: apps.py:112 apps.py:216 links.py:61 links.py:102 links.py:120
 #: views/user_views.py:166
 msgid "Users"
-msgstr ""
+msgstr "Uporabniki"
 
 #: apps.py:115 search.py:31
 msgid "Email"
-msgstr ""
+msgstr "E-naslov"
 
 #: apps.py:116 search.py:28
 msgid "First name"
-msgstr ""
+msgstr "Ime"
 
 #: apps.py:118
 msgid "Is active?"
-msgstr ""
+msgstr "Je aktiven?"
 
 #: apps.py:119 search.py:37
 msgid "Last name"
-msgstr ""
+msgstr "Priimek"
 
 #: apps.py:120
 msgid "Password"
-msgstr ""
+msgstr "Geslo"
 
 #: apps.py:121
 msgid "Username"
-msgstr ""
+msgstr "Uporabniško ime"
 
 #: apps.py:122
 msgid "Last login"
-msgstr ""
+msgstr "Zadnja prijava"
 
 #: apps.py:146
 msgid "Has usable password?"
-msgstr ""
+msgstr "Ima uporabno geslo?"
 
 #: apps.py:153
 msgid "All the groups."
-msgstr ""
+msgstr "Vse skupine."
 
 #: apps.py:157
 msgid "All the users."
-msgstr ""
+msgstr "Vsi uporabniki."
 
 #: dashboard_widgets.py:14
 msgid "Total users"
-msgstr ""
+msgstr "Skupno število uporabnikov"
 
 #: dashboard_widgets.py:29
 msgid "Total groups"
-msgstr ""
+msgstr "Skupaj skupin"
 
 #: dashboards.py:5
 msgid "User dashboard"
-msgstr ""
+msgstr "Uporabniška nadzorna plošča"
 
 #: events.py:10
 msgid "Group created"
-msgstr ""
+msgstr "Skupina ustvarjena"
 
 #: events.py:13
 msgid "Group edited"
-msgstr ""
+msgstr "Skupina urejena"
 
 #: events.py:17
 msgid "User created"
-msgstr ""
+msgstr "Uporabnik ustvarjen"
 
 #: events.py:20
 msgid "User edited"
-msgstr ""
+msgstr "Uporabnik uredil"
 
 #: events.py:25
 msgid "User logged in"
-msgstr ""
+msgstr "Uporabnik prijavljen"
 
 #: events.py:28
 msgid "User logged out"
-msgstr ""
+msgstr "Uporabnik je odjavljen"
 
 #: links.py:28
 msgid "User details"
-msgstr ""
+msgstr "Podrobnosti o uporabniku"
 
 #: links.py:36 views/group_views.py:24
 msgid "Create new group"
-msgstr ""
+msgstr "Ustvari novo skupino"
 
 #: links.py:41 links.py:44 links.py:84 links.py:88
 msgid "Delete"
@@ -137,15 +138,15 @@ msgstr "Izbriši"
 
 #: links.py:49 links.py:93
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #: links.py:78 views/user_views.py:32
 msgid "Create new user"
-msgstr ""
+msgstr "Ustvari novega uporabnika"
 
 #: links.py:113
 msgid "User options"
-msgstr ""
+msgstr "Uporabniške možnosti"
 
 #: literals.py:8
 msgid "Account"
@@ -161,116 +162,118 @@ msgstr ""
 
 #: models.py:24
 msgid "Forbid this user from changing their password."
-msgstr ""
+msgstr "Temu uporabniku prepovejte spreminjanje gesla."
 
 #: models.py:30
 msgid "User settings"
-msgstr ""
+msgstr "Uporabniške nastavitve"
 
 #: models.py:31
 msgid "Users settings"
-msgstr ""
+msgstr "Uporabniške nastavitve"
 
 #: permissions.py:10
 msgid "Create new groups"
-msgstr ""
+msgstr "Ustvari nove skupine"
 
 #: permissions.py:13
 msgid "Delete existing groups"
-msgstr ""
+msgstr "Izbrišite obstoječe skupine"
 
 #: permissions.py:16
 msgid "Edit existing groups"
-msgstr ""
+msgstr "Uredite obstoječe skupine"
 
 #: permissions.py:19
 msgid "View existing groups"
-msgstr ""
+msgstr "Oglejte si obstoječe skupine"
 
 #: permissions.py:22
 msgid "Create new users"
-msgstr ""
+msgstr "Ustvari nove uporabnike"
 
 #: permissions.py:25
 msgid "Delete existing users"
-msgstr ""
+msgstr "Izbrišite obstoječe uporabnike"
 
 #: permissions.py:28
 msgid "Edit existing users"
-msgstr ""
+msgstr "Uredite obstoječe uporabnike"
 
 #: permissions.py:31
 msgid "View existing users"
-msgstr ""
+msgstr "Ogled obstoječih uporabnikov"
 
 #: search.py:40
 msgid "username"
-msgstr ""
+msgstr "uporabniško ime"
 
 #: serializers.py:16
 msgid "URL of the API endpoint showing the list users of this group."
-msgstr ""
+msgstr "URL končne točke API-ja, ki prikazuje seznam uporabnikov te skupine."
 
 #: serializers.py:47
 msgid "Primary key of the user to add to the group."
-msgstr ""
+msgstr "Primarni ključ uporabnika za dodajanje v skupino."
 
 #: serializers.py:56
 msgid "Primary key of the user to remove from the group."
-msgstr ""
+msgstr "Primarni ključ uporabnika, ki ga želite odstraniti iz skupine."
 
 #: serializers.py:65
 msgid "URL of the API endpoint showing the list groups this user belongs to."
 msgstr ""
+"URL končne točke API-ja, ki prikazuje seznam skupin, ki jim ta uporabnik "
+"pripada."
 
 #: utils.py:6
 msgid "Anonymous"
-msgstr ""
+msgstr "Anonimno"
 
 #: views/group_views.py:38
 #, python-format
 msgid "Error deleting group \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Napaka pri brisanju skupine &quot;%(instance)s&quot;; %(exception)s"
 
 #: views/group_views.py:45
 #, python-format
 msgid "Group \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Skupina &quot;%(object)s&quot; je bila uspešno izbrisana."
 
 #: views/group_views.py:46
 #, python-format
 msgid "%(count)d group deleted successfully."
-msgstr ""
+msgstr "%(count)d skupina je bila uspešno izbrisana."
 
 #: views/group_views.py:47
 #, python-format
 msgid "%(count)d groups deleted successfully."
-msgstr ""
+msgstr "%(count)d skupine so bile uspešno izbrisane."
 
 #: views/group_views.py:48
 #, python-format
 msgid "Delete group: %(object)s."
-msgstr ""
+msgstr "Izbriši skupino: %(object)s."
 
 #: views/group_views.py:49
 #, python-format
 msgid "Delete the %(count)d selected group."
-msgstr ""
+msgstr "Izbrišite %(count)d izbrano skupino."
 
 #: views/group_views.py:50
 #, python-format
 msgid "Delete the %(count)d selected groups."
-msgstr ""
+msgstr "Izbrišite %(count)d izbrane skupine."
 
 #: views/group_views.py:64
 #, python-format
 msgid "Details of group: %s"
-msgstr ""
+msgstr "Podrobnosti o skupini: %s"
 
 #: views/group_views.py:81
 #, python-format
 msgid "Edit group: %s"
-msgstr ""
+msgstr "Uredi skupino: %s"
 
 #: views/group_views.py:102
 msgid ""
@@ -278,101 +281,109 @@ msgid ""
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
 msgstr ""
+"Uporabniške skupine so organizacijske enote. Odražati morajo organizacijske "
+"enote vaše organizacije. Skupin ni mogoče uporabiti za nadzor dostopa. "
+"Uporabite vloge za dovoljenja in nadzor dostopa, dodajte jim skupine."
 
 #: views/group_views.py:108
 msgid "There are no user groups"
-msgstr ""
+msgstr "Ni uporabniških skupin"
 
 #: views/group_views.py:120
 msgid "Available users"
-msgstr ""
+msgstr "Razpoložljivi uporabniki"
 
 #: views/group_views.py:121
 msgid "Group users"
-msgstr ""
+msgstr "Uporabniki skupine"
 
 #: views/group_views.py:130
 #, python-format
 msgid "Users of group: %s"
-msgstr ""
+msgstr "Uporabniki skupine: %s"
 
 #: views/user_views.py:55
 #, python-format
 msgid "Error deleting user \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Napaka pri brisanju uporabnika &quot;%(instance)s&quot;; %(exception)s"
 
 #: views/user_views.py:59
 #, python-format
 msgid "User \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Uporabnik &quot;%(object)s&quot; je bil uspešno izbrisan."
 
 #: views/user_views.py:60
 #, python-format
 msgid "%(count)d user deleted successfully."
-msgstr ""
+msgstr "%(count)d uporabnik uspešno izbrisan."
 
 #: views/user_views.py:61
 #, python-format
 msgid "%(count)d users deleted successfully."
-msgstr ""
+msgstr "%(count)d uporabniki uspešno izbrisani."
 
 #: views/user_views.py:62
 #, python-format
 msgid "Delete user: %(object)s."
-msgstr ""
+msgstr "Izbriši uporabnika: %(object)s."
 
 #: views/user_views.py:63
 #, python-format
 msgid "Delete the %(count)d selected user."
-msgstr ""
+msgstr "Izbrišite %(count)d izbranega uporabnika."
 
 #: views/user_views.py:64
 #, python-format
 msgid "Delete the %(count)d selected users."
-msgstr ""
+msgstr "Izbrišite %(count)d izbrane uporabnike."
 
 #: views/user_views.py:71
 msgid ""
 "Warning! You are about to delete your own user account. You will lose access"
 " to the system. This process is not reversible."
 msgstr ""
+"Opozorilo! Izbrisali boste svoj uporabniški račun. Izgubili boste dostop do "
+"sistema. Ta proces ni reverzibilen."
 
 #: views/user_views.py:89
 #, python-format
 msgid "Details of user: %s"
-msgstr ""
+msgstr "Podrobnosti o uporabniku: %s"
 
 #: views/user_views.py:108
 #, python-format
 msgid "Edit user: %s"
-msgstr ""
+msgstr "Uredi uporabnika: %s"
 
 #: views/user_views.py:125
 msgid "Available groups"
-msgstr ""
+msgstr "Razpoložljive skupine"
 
 #. Translators: "User groups" here refer to the list of groups of a
 #. specific user. The user's group membership.
 #: views/user_views.py:128
 msgid "User groups"
-msgstr ""
+msgstr "Skupine uporabnikov"
 
 #: views/user_views.py:137
 #, python-format
 msgid "Groups of user: %s"
-msgstr ""
+msgstr "Skupine uporabnikov: %s"
 
 #: views/user_views.py:162
 msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
 msgstr ""
+"V tem pogledu lahko ustvarite uporabniške račune. Ko ustvarite uporabniški "
+"račun, boste pozvani, da zanj nastavite geslo."
 
 #: views/user_views.py:165
 msgid "There are no user accounts"
-msgstr ""
+msgstr "Ni uporabniških računov"
 
 #: views/user_views.py:182
 #, python-format
 msgid "Edit options for user: %s"
-msgstr ""
+msgstr "Možnosti urejanja za uporabnika: %s"

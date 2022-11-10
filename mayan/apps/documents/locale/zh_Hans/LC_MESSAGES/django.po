@@ -9,6 +9,7 @@
 # malijie <tonymlj2008@126.com>, 2022
 # Ford Guo <agile.guo@gmail.com>, 2022
 # Roberto Rosario, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
@@ -32,7 +33,7 @@ msgstr "文档"
 
 #: apps.py:278
 msgid "Decorations"
-msgstr ""
+msgstr "裝飾"
 
 #: apps.py:300
 msgid "Create a document type"
@@ -46,11 +47,11 @@ msgstr "必须为每个上传的文档分配文档类型，这是Mayan EDMS对�
 
 #: apps.py:403
 msgid "File comments"
-msgstr ""
+msgstr "檔案附註"
 
 #: apps.py:407
 msgid "File encodings"
-msgstr ""
+msgstr "檔案編碼"
 
 #: apps.py:411
 msgid "File MIME types"
@@ -58,13 +59,13 @@ msgstr ""
 
 #: apps.py:415
 msgid "File timestamps"
-msgstr ""
+msgstr "檔案時戳"
 
 #: apps.py:420 links/document_file_page_links.py:79
 #: models/document_file_models.py:125 models/document_file_page_models.py:36
 #: search.py:60
 msgid "Document file"
-msgstr ""
+msgstr "文件檔案"
 
 #: apps.py:424 models/document_file_page_models.py:40
 #: models/document_version_page_models.py:52
@@ -73,7 +74,7 @@ msgstr "页码"
 
 #: apps.py:429
 msgid "Return the latest file of the document."
-msgstr ""
+msgstr "回到文件最新的檔案"
 
 #: apps.py:430
 msgid "Latest file"
@@ -631,7 +632,7 @@ msgstr ""
 
 #: literals.py:83
 msgid "Document version exported."
-msgstr ""
+msgstr "已匯出之文件版本"
 
 #: literals.py:92
 msgid "January"
@@ -739,7 +740,7 @@ msgstr "标签"
 #: models/document_file_page_models.py:48
 #: models/document_file_page_models.py:312 search.py:92
 msgid "Document file page"
-msgstr ""
+msgstr "文件檔案頁面"
 
 #: models/document_file_page_models.py:266
 #, python-format

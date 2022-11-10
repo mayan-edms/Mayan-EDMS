@@ -30,7 +30,7 @@ msgstr "访问控制列表"
 msgid ""
 "Object for which the access is granted. When sorting objects, only the type "
 "is used and not the actual label of the object."
-msgstr ""
+msgstr "已被授予存取權限的物件. 當歸類物件時只有型別被使用並非物件本身的標籤."
 
 #: apps.py:65
 msgid "Object"
@@ -46,7 +46,7 @@ msgstr "ACL已创建"
 
 #: events.py:13
 msgid "ACL deleted"
-msgstr ""
+msgstr "已刪除的ACL存取控制"
 
 #: events.py:16
 msgid "ACL edited"
@@ -70,7 +70,7 @@ msgstr "权限"
 
 #: links.py:35
 msgid "Global ACLs"
-msgstr ""
+msgstr "全域ACLs(存取控制清單)"
 
 #: managers.py:243
 #, python-format
@@ -84,7 +84,7 @@ msgstr "访问权限不足：%s"
 
 #: models.py:49
 msgid "Role to which the access is granted for the specified object."
-msgstr ""
+msgstr "對於特定物件被允許存取的角色."
 
 #: models.py:59
 msgid "Access entry"
@@ -109,11 +109,11 @@ msgstr "查看访问控制列表"
 
 #: serializers.py:116
 msgid "Primary key of the permission to add to the ACL."
-msgstr ""
+msgstr "允許新增ACL存取權限的主要金鑰"
 
 #: serializers.py:123
 msgid "Primary key of the permission to remove from the ACL."
-msgstr ""
+msgstr "允許刪除ACL存取權限的主要金鑰"
 
 #: views.py:44
 #, python-format
@@ -171,11 +171,11 @@ msgstr "禁用的权限是从父对象继承或直接授予角色的，不能从
 
 #: views.py:266
 msgid "There are no ACLs"
-msgstr ""
+msgstr "沒有ACLs存取控制"
 
 #: views.py:275
 msgid "Global access control lists"
-msgstr ""
+msgstr "全域存取控制列表"
 
 #: workflow_actions.py:23
 msgid "Object type"

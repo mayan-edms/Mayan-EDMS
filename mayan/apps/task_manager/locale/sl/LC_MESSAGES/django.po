@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
@@ -23,7 +23,7 @@ msgstr ""
 
 #: apps.py:28 links.py:10 permissions.py:5
 msgid "Task manager"
-msgstr ""
+msgstr "Upravitelj opravil"
 
 #: apps.py:97
 msgid "Label"
@@ -35,19 +35,19 @@ msgstr "Ime"
 
 #: apps.py:106
 msgid "Default queue?"
-msgstr ""
+msgstr "Privzeta čakalna vrsta?"
 
 #: apps.py:111
 msgid "Is transient?"
-msgstr ""
+msgstr "Je prehodno?"
 
 #: apps.py:115
 msgid "Type"
-msgstr ""
+msgstr "Vrsta"
 
 #: apps.py:120
 msgid "Start time"
-msgstr ""
+msgstr "Začetni čas"
 
 #: apps.py:124
 msgid "Host"
@@ -55,27 +55,27 @@ msgstr "Voditelj"
 
 #: apps.py:128
 msgid "Arguments"
-msgstr ""
+msgstr "Argumenti"
 
 #: apps.py:132
 msgid "Keyword arguments"
-msgstr ""
+msgstr "Argumenti ključnih besed"
 
 #: apps.py:136
 msgid "Worker process ID"
-msgstr ""
+msgstr "ID delavskega procesa"
 
 #: permissions.py:8
 msgid "View tasks"
-msgstr ""
+msgstr "Oglejte si naloge"
 
 #: settings.py:10
 msgid "Celery"
-msgstr ""
+msgstr "Zelena"
 
 #: settings.py:15
 msgid "Default: \"AMQPLAIN\". Set custom amqp login method."
-msgstr ""
+msgstr "Privzeto: &quot;AMQPLAIN&quot;. Nastavite način prijave amqp po meri."
 
 #: settings.py:21
 msgid ""
@@ -84,12 +84,19 @@ msgid ""
 " (transport://) is required, the rest is optional, and defaults to the "
 "specific transports default values."
 msgstr ""
+"Privzeto: &quot;amqp://&quot;. URL privzetega posrednika. To mora biti URL v"
+" obliki: transport://userid:password@hostname:port/virtual_host Potreben je "
+"samo del sheme (transport://), ostalo je izbirno in privzeto nastavljen na "
+"privzete vrednosti specifičnih transportov."
 
 #: settings.py:30
 msgid ""
 "Default: \"Disabled\". Toggles SSL usage on broker connection and SSL "
 "settings. The valid values for this option vary by transport."
 msgstr ""
+"Privzeto: &quot;Onemogočeno&quot;. Preklopi uporabo SSL na povezavo "
+"posrednika in nastavitve SSL. Veljavne vrednosti za to možnost se "
+"razlikujejo glede na transport."
 
 #: settings.py:38
 msgid ""
@@ -98,11 +105,15 @@ msgid ""
 "http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
 "backend"
 msgstr ""
+"Privzeto: privzeto ni omogočeno nobeno zaledje rezultatov. Zaledje, ki se "
+"uporablja za shranjevanje rezultatov nalog (nagrobniki). Glejte "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
 
 #: tests/literals.py:11
 msgid "Test queue"
-msgstr ""
+msgstr "Testna čakalna vrsta"
 
 #: views.py:13
 msgid "Background task queues"
-msgstr ""
+msgstr "Čakalne vrste opravil v ozadju"

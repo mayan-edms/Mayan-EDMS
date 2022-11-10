@@ -27,7 +27,7 @@ msgstr "Paneller"
 
 #: apps.py:25
 msgid "Widgets"
-msgstr ""
+msgstr "Widgetlar"
 
 #: apps.py:29
 msgid "Label"
@@ -35,7 +35,7 @@ msgstr "Etiket"
 
 #: dashboards.py:6
 msgid "Administrator dashboard"
-msgstr ""
+msgstr "Yönetici panosu"
 
 #: links.py:14
 msgid "Details"
@@ -48,4 +48,4 @@ msgstr "Detayları görüntüle"
 
 #: views.py:30
 msgid "Dashboard detail"
-msgstr ""
+msgstr "Pano ayrıntısı"

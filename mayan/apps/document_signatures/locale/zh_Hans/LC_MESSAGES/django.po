@@ -7,6 +7,7 @@
 # Ford Guo <agile.guo@gmail.com>, 2022
 # Genlin Jiao <jiaogl@pkusz.edu.cn>, 2022
 # Roberto Rosario, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
@@ -48,7 +49,7 @@ msgstr "类型"
 
 #: events.py:10
 msgid "Detached signature created"
-msgstr ""
+msgstr "分離的簽名已建立"
 
 #: events.py:13
 msgid "Detached signature deleted"
@@ -60,7 +61,7 @@ msgstr ""
 
 #: events.py:20
 msgid "Embedded signature created"
-msgstr ""
+msgstr "嵌入式簽章已建立"
 
 #: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
@@ -166,11 +167,11 @@ msgstr ""
 
 #: models.py:46
 msgid "Document file"
-msgstr ""
+msgstr "文件檔案"
 
 #: models.py:51
 msgid "Date and time signed"
-msgstr ""
+msgstr "日期與時間簽入"
 
 #: models.py:55
 msgid "ID of the key that will be used to sign the document."
@@ -182,11 +183,11 @@ msgstr "公钥指纹"
 
 #: models.py:72
 msgid "Document file signature"
-msgstr ""
+msgstr "文件檔案簽名"
 
 #: models.py:73
 msgid "Document file signatures"
-msgstr ""
+msgstr "文件檔案的簽章"
 
 #: models.py:92
 msgid "Detached"
@@ -198,7 +199,7 @@ msgstr "嵌入的"
 
 #: models.py:159
 msgid "Signature file previously generated."
-msgstr ""
+msgstr "簽章檔已事先產生"
 
 #: models.py:162
 msgid "Signature file"
@@ -206,11 +207,11 @@ msgstr "签名文件"
 
 #: models.py:168
 msgid "Document file detached signature"
-msgstr ""
+msgstr "文件檔案不含簽章"
 
 #: models.py:169
 msgid "Document file detached signatures"
-msgstr ""
+msgstr "文件檔案已分離解除簽章"
 
 #: models.py:172
 msgid "signature"
@@ -218,11 +219,11 @@ msgstr "签名"
 
 #: models.py:222
 msgid "Document file embedded signature"
-msgstr ""
+msgstr "文件檔案含嵌入簽章"
 
 #: models.py:223
 msgid "Document file embedded signatures"
-msgstr ""
+msgstr "文件檔案嵌入簽章"
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
@@ -262,7 +263,7 @@ msgstr "取消验证密钥签名"
 
 #: queues.py:21
 msgid "Verify document file"
-msgstr ""
+msgstr "核對文件檔案"
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
@@ -270,7 +271,7 @@ msgstr "验证缺少的嵌入签名"
 
 #: queues.py:30
 msgid "Refresh existing signature information"
-msgstr ""
+msgstr "刷新已存在之簽章資訊"
 
 #: serializers.py:60
 msgid "Primary key of the secret key used to sign the document file."
@@ -292,7 +293,7 @@ msgstr ""
 
 #: storages.py:20
 msgid "Detached signatures"
-msgstr ""
+msgstr "移除分離簽章"
 
 #: views.py:75 views.py:145
 msgid "Passphrase is needed to unlock this key."
@@ -304,7 +305,7 @@ msgstr "密码不正确。"
 
 #: views.py:101 views.py:171
 msgid "Document file signed successfully."
-msgstr ""
+msgstr "文件檔案簽章成功"
 
 #: views.py:111
 #, python-format
@@ -340,12 +341,12 @@ msgstr "签名有助于提供作者证据和篡改检测。它们非常安全且
 
 #: views.py:341
 msgid "There are no signatures for this document file."
-msgstr ""
+msgstr "這份文件檔案沒有簽章"
 
 #: views.py:345
 #, python-format
 msgid "Signatures for document file: %s"
-msgstr ""
+msgstr "文件檔案的簽章 :%s"
 
 #: views.py:356 views.py:377
 msgid "On large databases this operation may take some time to execute."
@@ -353,11 +354,11 @@ msgstr "在大型数据库上，此操作可能需要一些时间才能执行。
 
 #: views.py:358
 msgid "Refresh all signatures information?"
-msgstr ""
+msgstr "刷新所有簽章資訊?"
 
 #: views.py:369
 msgid "Signature information refresh queued successfully."
-msgstr ""
+msgstr "簽章資訊刷新隊列成功"
 
 #: views.py:379
 msgid "Verify all document for signatures?"
@@ -369,11 +370,11 @@ msgstr "签名验证成功排队。"
 
 #: workflow_actions.py:22
 msgid "Private key that will be used to sign the document file."
-msgstr ""
+msgstr "私鑰將用於簽入文件檔案"
 
 #: workflow_actions.py:37
 msgid "Sign document (detached)"
-msgstr ""
+msgstr "簽入文件簽章(已分離刪除簽章之文件)"
 
 #: workflow_actions.py:49
 msgid ""

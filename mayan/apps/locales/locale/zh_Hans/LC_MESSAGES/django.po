@@ -23,7 +23,7 @@ msgstr ""
 
 #: apps.py:28 events.py:5
 msgid "Locales"
-msgstr ""
+msgstr "地區語系"
 
 #: events.py:8
 msgid "User locale profile edited"

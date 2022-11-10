@@ -60,7 +60,7 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-django==3.2.14
+django==3.2.16
 CairoSVG==2.5.2
 Pillow==9.2.0
 PyPDF2==1.28.4

@@ -7,6 +7,7 @@
 # Ford Guo <agile.guo@gmail.com>, 2022
 # yan songwei <yansw@vip.163.com>, 2022
 # Roberto Rosario, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
@@ -36,15 +37,15 @@ msgstr "引导程序"
 
 #: dependencies.py:16
 msgid "Bootswatch"
-msgstr ""
+msgstr "啟動監控"
 
 #: dependencies.py:30
 msgid "Fancybox"
-msgstr ""
+msgstr "Fancybox套件"
 
 #: dependencies.py:34
 msgid "FontAwesome"
-msgstr ""
+msgstr "FontAwesome 套件"
 
 #: dependencies.py:38
 msgid "jQuery"
@@ -56,7 +57,7 @@ msgstr "jQuery表单"
 
 #: dependencies.py:46
 msgid "jQuery Lazy Load"
-msgstr ""
+msgstr "jQuery Lazy Load 延遲讀取"
 
 #: dependencies.py:50
 msgid "JQuery Match Height"
@@ -68,7 +69,7 @@ msgstr "选择2"
 
 #: dependencies.py:58
 msgid "Toastr"
-msgstr ""
+msgstr "Toastr 套件"
 
 #: dependencies.py:62
 msgid "URI.js"
@@ -76,11 +77,11 @@ msgstr "URI.js"
 
 #: events.py:8
 msgid "Theme created"
-msgstr ""
+msgstr "已製作之佈景"
 
 #: events.py:11
 msgid "Theme edited"
-msgstr ""
+msgstr "已編輯之佈景"
 
 #: events.py:14
 msgid "User theme edited"
@@ -88,15 +89,15 @@ msgstr ""
 
 #: links.py:18
 msgid "Theme settings"
-msgstr ""
+msgstr "佈景設定"
 
 #: links.py:25
 msgid "Edit theme settings"
-msgstr ""
+msgstr "編輯佈景設定"
 
 #: links.py:31 views.py:31
 msgid "Create new theme"
-msgstr ""
+msgstr "建立新的佈景"
 
 #: links.py:36
 msgid "Delete"
@@ -108,11 +109,11 @@ msgstr "编辑"
 
 #: links.py:44 links.py:49 models.py:32 views.py:99
 msgid "Themes"
-msgstr ""
+msgstr "佈景"
 
 #: models.py:19
 msgid "A short text describing the theme."
-msgstr ""
+msgstr "有關此佈景之簡述"
 
 #: models.py:20
 msgid "Label"
@@ -122,15 +123,15 @@ msgstr "标签"
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
-msgstr ""
+msgstr "用來更改不同使用者介面顯示項目的 CSS 樣式表"
 
 #: models.py:26
 msgid "Stylesheet"
-msgstr ""
+msgstr "文件樣式表"
 
 #: models.py:31 models.py:69
 msgid "Theme"
-msgstr ""
+msgstr "佈景"
 
 #: models.py:65
 msgid "User"
@@ -138,27 +139,27 @@ msgstr "用户"
 
 #: models.py:73
 msgid "User theme setting"
-msgstr ""
+msgstr "使用者佈景設定"
 
 #: models.py:74
 msgid "User theme settings"
-msgstr ""
+msgstr "使用者佈景設定"
 
 #: permissions.py:8
 msgid "Create new themes"
-msgstr ""
+msgstr "建立複數佈景"
 
 #: permissions.py:11
 msgid "Delete themes"
-msgstr ""
+msgstr "刪除複數佈景"
 
 #: permissions.py:14
 msgid "Edit themes"
-msgstr ""
+msgstr "編輯複數佈景"
 
 #: permissions.py:17
 msgid "View existing themes"
-msgstr ""
+msgstr "瀏覽所有已存佈景"
 
 #: settings.py:15
 msgid "Custom HTTP response code for AJAX redirections."
@@ -177,7 +178,7 @@ msgstr "显示系统消息的位置。选项包括：左上，顶部居中，右
 #: settings.py:36
 msgid ""
 "Delay in milliseconds after which the menus will be checked for updates."
-msgstr ""
+msgstr "在選單被選擇更新後延遲幾微秒"
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -245,7 +246,7 @@ msgstr "检查日志中是否带有标签“ ERROR”-错误，“ CRITICAL”-�
 #: templates/500.html:48
 #, python-format
 msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
-msgstr ""
+msgstr "開啟一個<a href=\"%(issue_url)s\">問題追蹤</a>的項目"
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -293,6 +294,9 @@ msgid ""
 "                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
+"\n"
+"                可以查找問題解說於此 <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
+"            "
 
 #: templates/appearance/about.html:110
 #, python-format
@@ -312,6 +316,9 @@ msgid ""
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
 msgstr ""
+"\n"
+"                傳遞到世界各地. 說明給您的朋友與同事知道  %(project_title)s 有多麼棒的功能!\n"
+"            "
 
 #: templates/appearance/base.html:73
 msgid "Object"
@@ -361,7 +368,7 @@ msgstr "识别码"
 
 #: templates/appearance/generic_list_subtemplate.html:134
 msgid "Facets"
-msgstr ""
+msgstr "多面性"
 
 #: templates/appearance/home.html:27
 msgid "Getting started"
@@ -437,21 +444,21 @@ msgstr "没有"
 #: views.py:55
 #, python-format
 msgid "Delete theme: %s"
-msgstr ""
+msgstr "刪除佈景 : %s"
 
 #: views.py:72
 #, python-format
 msgid "Edit theme: %s"
-msgstr ""
+msgstr "編輯佈景 : %s"
 
 #: views.py:93
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
-msgstr ""
+msgstr "佈景可以讓你修改畫面的顯示但不需要改變原始碼."
 
 #: views.py:97
 msgid "There are no themes"
-msgstr ""
+msgstr "沒有佈景可以使用"
 
 #: views.py:122
 #, python-format

@@ -5,6 +5,7 @@
 # 
 # Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -22,11 +23,11 @@ msgstr ""
 
 #: apps.py:28 events.py:5
 msgid "Locales"
-msgstr ""
+msgstr "Yerel Ayarlar"
 
 #: events.py:8
 msgid "User locale profile edited"
-msgstr ""
+msgstr "Kullanıcı yerel ayar profili düzenlendi"
 
 #: links.py:18
 msgid "Locale profile"
@@ -63,9 +64,9 @@ msgstr "Yok"
 #: views.py:40
 #, python-format
 msgid "Locale profile for user: %s"
-msgstr ""
+msgstr "Kullanıcı için yerel ayar profili: %s"
 
 #: views.py:87
 #, python-format
 msgid "Edit locale profile for user: %s"
-msgstr ""
+msgstr "Kullanıcı için yerel ayar profilini düzenle: %s"

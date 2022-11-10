@@ -7,6 +7,7 @@
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2022
 # Caner Başaran <basaran.caner@gmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -32,11 +33,11 @@ msgstr ""
 
 #: dependencies.py:12
 msgid "Bootstrap"
-msgstr ""
+msgstr "Bootstrap"
 
 #: dependencies.py:16
 msgid "Bootswatch"
-msgstr ""
+msgstr "Bootswatch"
 
 #: dependencies.py:30
 msgid "Fancybox"
@@ -48,11 +49,11 @@ msgstr ""
 
 #: dependencies.py:38
 msgid "jQuery"
-msgstr ""
+msgstr "jQuery"
 
 #: dependencies.py:42
 msgid "JQuery Form"
-msgstr ""
+msgstr "JQuery Formu"
 
 #: dependencies.py:46
 msgid "jQuery Lazy Load"
@@ -72,15 +73,15 @@ msgstr ""
 
 #: dependencies.py:62
 msgid "URI.js"
-msgstr ""
+msgstr "URI.js"
 
 #: events.py:8
 msgid "Theme created"
-msgstr ""
+msgstr "Tema oluşturuldu"
 
 #: events.py:11
 msgid "Theme edited"
-msgstr ""
+msgstr "Tema düzenlendi"
 
 #: events.py:14
 msgid "User theme edited"
@@ -88,15 +89,15 @@ msgstr ""
 
 #: links.py:18
 msgid "Theme settings"
-msgstr ""
+msgstr "Tema ayarları"
 
 #: links.py:25
 msgid "Edit theme settings"
-msgstr ""
+msgstr "Tema ayarlarını düzenle"
 
 #: links.py:31 views.py:31
 msgid "Create new theme"
-msgstr ""
+msgstr "Yeni tema oluştur"
 
 #: links.py:36
 msgid "Delete"
@@ -108,11 +109,11 @@ msgstr "Düzenle"
 
 #: links.py:44 links.py:49 models.py:32 views.py:99
 msgid "Themes"
-msgstr ""
+msgstr "Temalar"
 
 #: models.py:19
 msgid "A short text describing the theme."
-msgstr ""
+msgstr "Temayı anlatan kısa bir metin."
 
 #: models.py:20
 msgid "Label"
@@ -126,11 +127,11 @@ msgstr ""
 
 #: models.py:26
 msgid "Stylesheet"
-msgstr ""
+msgstr "Stil sayfası"
 
 #: models.py:31 models.py:69
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: models.py:65
 msgid "User"
@@ -138,27 +139,27 @@ msgstr "Kullanıcı"
 
 #: models.py:73
 msgid "User theme setting"
-msgstr ""
+msgstr "Kullanıcı teması ayarı"
 
 #: models.py:74
 msgid "User theme settings"
-msgstr ""
+msgstr "Kullanıcı teması ayarları"
 
 #: permissions.py:8
 msgid "Create new themes"
-msgstr ""
+msgstr "Yeni temalar oluşturun"
 
 #: permissions.py:11
 msgid "Delete themes"
-msgstr ""
+msgstr "Temaları sil"
 
 #: permissions.py:14
 msgid "Edit themes"
-msgstr ""
+msgstr "Temaları düzenle"
 
 #: permissions.py:17
 msgid "View existing themes"
-msgstr ""
+msgstr "Mevcut temaları görüntüle"
 
 #: settings.py:15
 msgid "Custom HTTP response code for AJAX redirections."
@@ -166,7 +167,7 @@ msgstr ""
 
 #: settings.py:21
 msgid "Maximum number of characters that will be displayed as the view title."
-msgstr ""
+msgstr "Görünüm başlığı olarak görüntülenecek maksimum karakter sayısı."
 
 #: settings.py:28
 msgid ""
@@ -178,10 +179,11 @@ msgstr ""
 msgid ""
 "Delay in milliseconds after which the menus will be checked for updates."
 msgstr ""
+"Menülerin güncellemeler için kontrol edileceği milisaniye cinsinden gecikme."
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
-msgstr ""
+msgstr "Yetersiz izin"
 
 #: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
@@ -193,19 +195,19 @@ msgstr "sayfa bulunamadı"
 
 #: templates/404.html:32
 msgid "The requested page could not be found."
-msgstr ""
+msgstr "İstenilen sayfa bulunamadı."
 
 #: templates/404.html:40
 msgid "Possible reasons"
-msgstr ""
+msgstr "Olası nedenler"
 
 #: templates/404.html:44
 msgid "The location of the item is incorrect."
-msgstr ""
+msgstr "Öğenin konumu yanlış."
 
 #: templates/404.html:45
 msgid "The location is correct, but the item no longer exists."
-msgstr ""
+msgstr "Konum doğru, ancak öğe artık mevcut değil."
 
 #: templates/404.html:46
 msgid ""
@@ -220,27 +222,29 @@ msgstr "Server hatası"
 
 #: templates/500.html:32
 msgid "There's been an unexpected error."
-msgstr ""
+msgstr "Beklenmeyen bir hata oluştu."
 
 #: templates/500.html:40
 msgid "What to do next?"
-msgstr ""
+msgstr "Sonra ne yapacağız?"
 
 #: templates/500.html:44
 msgid "Refresh the page."
-msgstr ""
+msgstr "Sayfayı yenile."
 
 #: templates/500.html:45
 msgid "Wait a bit. The system might be overloaded."
-msgstr ""
+msgstr "Biraz bekleyin. Sistem aşırı yüklenmiş olabilir."
 
 #: templates/500.html:46
 msgid "Contact your system administrator."
-msgstr ""
+msgstr "Sistem yöneticinize başvurun."
 
 #: templates/500.html:47
 msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
 msgstr ""
+"\"ERROR\", \"CRITICAL\" veya \"FATAL\" etiketli mesajlar için logları "
+"kontrol edin."
 
 #: templates/500.html:48
 #, python-format
@@ -270,7 +274,7 @@ msgstr ""
 
 #: templates/appearance/about.html:92
 msgid "Released under the license:"
-msgstr ""
+msgstr "Şu lisans altında yayınlandı:"
 
 #: templates/appearance/about.html:98
 #, python-format
@@ -306,11 +310,11 @@ msgstr ""
 
 #: templates/appearance/base.html:73
 msgid "Object"
-msgstr ""
+msgstr "Nesne"
 
 #: templates/appearance/generic_confirm.html:13
 msgid "Are you sure?"
-msgstr ""
+msgstr "Emin misin?"
 
 #: templates/appearance/generic_confirm.html:37
 msgid "Yes"
@@ -352,7 +356,7 @@ msgstr "Tanımlayıcı"
 
 #: templates/appearance/generic_list_subtemplate.html:134
 msgid "Facets"
-msgstr ""
+msgstr "Yönler"
 
 #: templates/appearance/home.html:27
 msgid "Getting started"
@@ -361,14 +365,16 @@ msgstr "Başlarken"
 #: templates/appearance/home.html:30
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr ""
+"Maya EDMS'yi tam olarak kullanabilmeniz için aşağıdakilere ihtiyacınız "
+"vardır:"
 
 #: templates/appearance/menus/menu_topbar.html:11
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Gezinmeyi aç/kapat"
 
 #: templates/appearance/partials/form_title.html:10
 msgid "Open main menu"
-msgstr ""
+msgstr "Ana menüyü aç"
 
 #: templates/appearance/partials/list_header.html:11
 #, python-format
@@ -381,28 +387,30 @@ msgstr ""
 #: templates/appearance/partials/list_header.html:16
 #, python-format
 msgid "Total: %(total)s"
-msgstr ""
+msgstr "Toplam: %(total)s"
 
 #: templates/appearance/partials/list_toolbar.html:14
 msgid "Select/Deselect all"
-msgstr ""
+msgstr "Tümünü Seç/Seçme"
 
 #: templates/appearance/partials/list_toolbar.html:18
 msgid "Toggle list display mode"
-msgstr ""
+msgstr "Liste görüntüleme modunu değiştir"
 
 #: templates/appearance/partials/list_toolbar.html:63
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
+"Toplu işlemler için işlem yapmak istediğiniz öğeleri seçin. Çoklu seçim "
+"yapmak için Shift + fare sol tuşunu kullanın."
 
 #: templates/appearance/partials/list_toolbar.html:68
 msgid "Bulk actions"
-msgstr ""
+msgstr "Toplu eylemler"
 
 #: templates/appearance/partials/list_toolbar.html:70
 msgid "Toggle Dropdown"
-msgstr ""
+msgstr "Açılır Menüyü Aç/Kapat"
 
 #: templates/appearance/partials/no_results.html:18
 msgid "No results"
@@ -410,15 +418,15 @@ msgstr "Sonuç yok"
 
 #: templates/appearance/root.html:52
 msgid "Close"
-msgstr ""
+msgstr "Kapat"
 
 #: templates/appearance/root.html:60
 msgid "Server communication error"
-msgstr ""
+msgstr "Sunucu iletişim hatası"
 
 #: templates/appearance/root.html:62
 msgid "Check you network connection and try again in a few moments."
-msgstr ""
+msgstr "Ağ bağlantınızı kontrol edin ve birkaç dakika sonra tekrar deneyin."
 
 #: templatetags/appearance_tags.py:61
 msgid "None"
@@ -427,21 +435,23 @@ msgstr "Yok"
 #: views.py:55
 #, python-format
 msgid "Delete theme: %s"
-msgstr ""
+msgstr "Şu temayı sil: %s"
 
 #: views.py:72
 #, python-format
 msgid "Edit theme: %s"
-msgstr ""
+msgstr "Şu temayı düzenle: %s"
 
 #: views.py:93
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
 msgstr ""
+"Temalar, kod değişikliği gerektirmeden görsel görünümü değiştirmeye izin "
+"verir."
 
 #: views.py:97
 msgid "There are no themes"
-msgstr ""
+msgstr "Tema yok"
 
 #: views.py:122
 #, python-format

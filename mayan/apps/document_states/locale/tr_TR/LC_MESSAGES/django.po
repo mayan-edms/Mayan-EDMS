@@ -8,6 +8,7 @@
 # abc Def <hdogan1974@gmail.com>, 2022
 # Caner Başaran <basaran.caner@gmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -1238,7 +1239,7 @@ msgstr ""
 
 #: workflow_actions.py:40
 msgid "Document description"
-msgstr ""
+msgstr "Belge Açıklaması"
 
 #: workflow_actions.py:47
 msgid "The new description to be assigned to the document."

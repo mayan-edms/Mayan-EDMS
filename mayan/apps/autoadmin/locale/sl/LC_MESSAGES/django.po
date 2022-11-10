@@ -22,13 +22,15 @@ msgstr ""
 
 #: apps.py:13 settings.py:7
 msgid "Auto administrator"
-msgstr ""
+msgstr "Samodejni skrbnik"
 
 #: auth/allauth.py:51
 msgid ""
 "Welcome Admin! You have been given superuser privileges. Use them with "
 "caution."
 msgstr ""
+"Dobrodošel Admin! Dobili ste privilegije superuporabnika. Uporabljajte jih "
+"previdno."
 
 #: models.py:13
 msgid "Account"
@@ -36,7 +38,7 @@ msgstr "Uporabniški račun"
 
 #: models.py:16
 msgid "Password"
-msgstr ""
+msgstr "Geslo"
 
 #: models.py:19
 msgid "Password hash"
@@ -44,25 +46,27 @@ msgstr "Geslo koda"
 
 #: models.py:25
 msgid "Autoadmin properties"
-msgstr ""
+msgstr "Lastnosti samodejnega skrbnika"
 
 #: settings.py:11
 msgid "Sets the email of the automatically created super user account."
-msgstr ""
+msgstr "Nastavi e-pošto samodejno ustvarjenega računa super uporabnika."
 
 #: settings.py:16
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
 msgstr ""
+"Geslo samodejno ustvarjenega računa super uporabnika. Če je enako None, se "
+"geslo ustvari naključno."
 
 #: settings.py:22
 msgid "The username of the automatically created super user account."
-msgstr ""
+msgstr "Uporabniško ime samodejno ustvarjenega računa super uporabnika."
 
 #: templates/autoadmin/credentials.html:11
 msgid "Automatic credentials"
-msgstr ""
+msgstr "Samodejne poverilnice"
 
 #: templates/autoadmin/credentials.html:16
 #, python-format
@@ -97,3 +101,5 @@ msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
 msgstr ""
+"Ne pozabite spremeniti gesla, da povečate varnost in onemogočite to "
+"sporočilo."

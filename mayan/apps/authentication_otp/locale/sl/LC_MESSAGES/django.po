@@ -5,6 +5,7 @@
 # 
 # Translators:
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
@@ -22,27 +23,27 @@ msgstr ""
 
 #: apps.py:23 events.py:6
 msgid "Authentication OTP"
-msgstr ""
+msgstr "OTP za preverjanje pristnosti"
 
 #: events.py:10
 msgid "OTP disabled"
-msgstr ""
+msgstr "OTP onemogočen"
 
 #: events.py:13
 msgid "OTP enabled"
-msgstr ""
+msgstr "OTP omogočen"
 
 #: forms.py:20
 msgid "Token is either invalid or expired."
-msgstr ""
+msgstr "Žeton je neveljaven ali potekel."
 
 #: forms.py:25
 msgid "TOTP token"
-msgstr ""
+msgstr "TOTP žeton"
 
 #: forms.py:84
 msgid "OTP enabled?"
-msgstr ""
+msgstr "OTP omogočen?"
 
 #: forms.py:85
 msgid "Yes"
@@ -57,79 +58,83 @@ msgid ""
 "Scan the QR code or enter the secret in your authentication device. Do not "
 "share this secret, treat it like a password."
 msgstr ""
+"Skenirajte kodo QR ali vnesite skrivnost v napravo za preverjanje "
+"pristnosti. Ne delite te skrivnosti, obravnavajte jo kot geslo."
 
 #: forms.py:104 forms.py:109
 msgid "Secret"
-msgstr ""
+msgstr "Skrivnost"
 
 #: forms.py:115
 msgid ""
 "Enter the corresponding token to validate that the secret was saved correct."
 msgstr ""
+"Vnesite ustrezen žeton, da potrdite, da je bila skrivnost pravilno "
+"shranjena."
 
 #: forms.py:118
 msgid "Token"
-msgstr ""
+msgstr "Žeton"
 
 #: forms.py:152
 msgid "Token is incorrect for the specified secret."
-msgstr ""
+msgstr "Žeton ni pravilen za navedeno skrivnost."
 
 #: links.py:29
 msgid "OTP details"
-msgstr ""
+msgstr "podrobnosti OTP"
 
 #: links.py:33
 msgid "Disable OTP"
-msgstr ""
+msgstr "Onemogoči OTP"
 
 #: links.py:37
 msgid "Enable OTP"
-msgstr ""
+msgstr "Omogoči OTP"
 
 #: models.py:17
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
 
 #: models.py:21
 msgid "16 character, base32 encoded random string."
-msgstr ""
+msgstr "16 znakov, base32 kodiran naključni niz."
 
 #: models.py:26
 msgid "User OTP data"
-msgstr ""
+msgstr "Uporabniški podatki OTP"
 
 #: models.py:27
 msgid "Users OTP data"
-msgstr ""
+msgstr "Uporabniški podatki OTP"
 
 #: views.py:28
 #, python-format
 msgid "One time pad details for user: %s"
-msgstr ""
+msgstr "Podrobnosti o enkratni tablici za uporabnika: %s"
 
 #: views.py:45
 #, python-format
 msgid "Disable one time pad for user: %s"
-msgstr ""
+msgstr "Onemogoči eno časovno ploščico za uporabnika: %s"
 
 #: views.py:56
 msgid "OTP disable successfully."
-msgstr ""
+msgstr "OTP je uspešno onemogočen."
 
 #: views.py:78
 msgid "OTP is already enabled."
-msgstr ""
+msgstr "OTP je že omogočen."
 
 #: views.py:94
 msgid "OTP enabled successfully."
-msgstr ""
+msgstr "OTP je uspešno omogočen."
 
 #: views.py:103
 #, python-format
 msgid "Enable one time pad for user: %s"
-msgstr ""
+msgstr "Omogoči eno časovnico za uporabnika: %s"
 
 #: views.py:115
 msgid "OTP secret validation error."
-msgstr ""
+msgstr "Napaka pri preverjanju skrivnosti OTP."

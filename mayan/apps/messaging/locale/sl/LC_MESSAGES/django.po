@@ -23,7 +23,7 @@ msgstr ""
 
 #: apps.py:39 events.py:5 permissions.py:5
 msgid "Messaging"
-msgstr ""
+msgstr "Sporočila"
 
 #: apps.py:61
 msgid "None"
@@ -31,23 +31,23 @@ msgstr "Nobenega"
 
 #: apps.py:67
 msgid "Sender"
-msgstr ""
+msgstr "Pošiljatelj"
 
 #: events.py:8
 msgid "Message created"
-msgstr ""
+msgstr "Sporočilo ustvarjeno"
 
 #: events.py:11
 msgid "Message edited"
-msgstr ""
+msgstr "Sporočilo urejeno"
 
 #: forms.py:26 models.py:38 workflow_actions.py:55
 msgid "Body"
-msgstr ""
+msgstr "Telo"
 
 #: links.py:49 views.py:38
 msgid "Create message"
-msgstr ""
+msgstr "Ustvari sporočilo"
 
 #: links.py:52 links.py:58
 msgid "Delete"
@@ -55,55 +55,55 @@ msgstr "Izbriši"
 
 #: links.py:67 links.py:78
 msgid "Mark as read"
-msgstr ""
+msgstr "Označi kot prebrano"
 
 #: links.py:73 links.py:82
 msgid "Mark as unread"
-msgstr ""
+msgstr "označi kot neprebrano"
 
 #: links.py:86
 msgid "Mark all as read"
-msgstr ""
+msgstr "označi vse kot prebrano"
 
 #: models.py:30
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
 
 #: models.py:33
 msgid "Short description of this message."
-msgstr ""
+msgstr "Kratek opis tega sporočila."
 
 #: models.py:34 workflow_actions.py:38
 msgid "Subject"
-msgstr ""
+msgstr "Predmet"
 
 #: models.py:37
 msgid "The actual content of the message."
-msgstr ""
+msgstr "Dejanska vsebina sporočila."
 
 #: models.py:42
 msgid "This field determines if the message has been read or not."
-msgstr ""
+msgstr "To polje določa, ali je bilo sporočilo prebrano ali ne."
 
 #: models.py:43
 msgid "Read"
-msgstr ""
+msgstr "Preberi"
 
 #: models.py:47
 msgid "Date and time of the message creation."
-msgstr ""
+msgstr "Datum in čas nastanka sporočila."
 
 #: models.py:48
 msgid "Creation date and time"
-msgstr ""
+msgstr "Datum in čas ustvarjanja"
 
 #: models.py:53
 msgid "Message"
-msgstr ""
+msgstr "Sporočilo"
 
 #: models.py:54 views.py:127
 msgid "Messages"
-msgstr ""
+msgstr "Sporočila"
 
 #: models.py:70
 msgid "Label"
@@ -111,144 +111,149 @@ msgstr "Oznaka"
 
 #: permissions.py:8
 msgid "Create messages"
-msgstr ""
+msgstr "Ustvarite sporočila"
 
 #: permissions.py:11
 msgid "Delete messages"
-msgstr ""
+msgstr "Brisanje sporočil"
 
 #: permissions.py:14
 msgid "Edit messages"
-msgstr ""
+msgstr "Uredite sporočila"
 
 #: permissions.py:17
 msgid "View messages"
-msgstr ""
+msgstr "Oglejte si sporočila"
 
 #: serializers.py:19
 msgid "Primary key of the recipient user of this message."
-msgstr ""
+msgstr "Primarni ključ uporabnika prejemnika tega sporočila."
 
 #: views.py:49
 #, python-format
 msgid "Error deleting message \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Napaka pri brisanju sporočila &quot;%(instance)s&quot;; %(exception)s"
 
 #: views.py:53
 #, python-format
 msgid "Message \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Sporočilo &quot;%(object)s&quot; je bilo uspešno izbrisano."
 
 #: views.py:54
 #, python-format
 msgid "%(count)d message deleted successfully."
-msgstr ""
+msgstr "sporočilo %(count)d je bilo uspešno izbrisano."
 
 #: views.py:55
 #, python-format
 msgid "%(count)d messages deleted successfully."
-msgstr ""
+msgstr "%(count)d sporočila uspešno izbrisana."
 
 #: views.py:56
 #, python-format
 msgid "Delete message: %(object)s."
-msgstr ""
+msgstr "Izbriši sporočilo: %(object)s."
 
 #: views.py:57
 #, python-format
 msgid "Delete the %(count)d selected message."
-msgstr ""
+msgstr "Izbrišite %(count)d izbrano sporočilo."
 
 #: views.py:58
 #, python-format
 msgid "Delete the %(count)d selected messages."
-msgstr ""
+msgstr "Izbrišite %(count)d izbrana sporočila."
 
 #: views.py:99
 #, python-format
 msgid "Details of message: %s"
-msgstr ""
+msgstr "Podrobnosti sporočila: %s"
 
 #: views.py:123
 msgid "Here you will find text messages from other users or from the system."
 msgstr ""
+"Tukaj boste našli besedilna sporočila drugih uporabnikov ali iz sistema."
 
 #: views.py:126
 msgid "There are no messages"
-msgstr ""
+msgstr "Ni sporočil"
 
 #: views.py:136
 #, python-format
 msgid "Error marking message \"%(instance)s\" as read; %(exception)s"
 msgstr ""
+"Napaka pri označevanju sporočila &quot;%(instance)s&quot; kot prebranega; "
+"%(exception)s"
 
 #: views.py:142
 #, python-format
 msgid "Message \"%(object)s\" marked as read successfully."
-msgstr ""
+msgstr "Sporočilo &quot;%(object)s&quot; označeno kot uspešno prebrano."
 
 #: views.py:145
 #, python-format
 msgid "%(count)d message marked as read successfully."
-msgstr ""
+msgstr "%(count)d sporočilo označeno kot uspešno prebrano."
 
 #: views.py:148
 #, python-format
 msgid "%(count)d messages marked as read successfully."
-msgstr ""
+msgstr "%(count)d sporočila označena kot uspešno prebrana."
 
 #: views.py:150
 #, python-format
 msgid "Mark the message \"%(object)s\" as read."
-msgstr ""
+msgstr "Označite sporočilo &quot;%(object)s&quot; kot prebrano."
 
 #: views.py:151
 #, python-format
 msgid "Mark the %(count)d selected message as read."
-msgstr ""
+msgstr "Označite %(count)d izbrano sporočilo kot prebrano."
 
 #: views.py:152
 #, python-format
 msgid "Mark the %(count)d selected messages as read."
-msgstr ""
+msgstr "Označi %(count)d izbrana sporočila kot prebrana."
 
 #: views.py:181
 msgid "Mark all message as read?"
-msgstr ""
+msgstr "Označiti vse sporočilo kot prebrano?"
 
 #: views.py:198
 msgid "All messages marked as read."
-msgstr ""
+msgstr "Vsa sporočila označena kot prebrana."
 
 #: views.py:205
 #, python-format
 msgid "Error marking message \"%(instance)s\" as unread; %(exception)s"
 msgstr ""
+"Napaka pri označevanju sporočila &quot;%(instance)s&quot; kot neprebranega; "
+"%(exception)s"
 
 #: views.py:211
 #, python-format
 msgid "Message \"%(object)s\" marked as unread successfully."
-msgstr ""
+msgstr "Sporočilo &quot;%(object)s&quot; je uspešno označeno kot neprebrano."
 
 #: views.py:214
 #, python-format
 msgid "%(count)d message marked as unread successfully."
-msgstr ""
+msgstr "sporočilo %(count)d je bilo uspešno označeno kot neprebrano."
 
 #: views.py:217
 #, python-format
 msgid "%(count)d messages marked as unread successfully."
-msgstr ""
+msgstr "%(count)d sporočila so bila uspešno označena kot neprebrana."
 
 #: views.py:219
 #, python-format
 msgid "Mark the message \"%(object)s\" as unread."
-msgstr ""
+msgstr "Označi sporočilo &quot;%(object)s&quot; kot neprebrano."
 
 #: views.py:220
 #, python-format
 msgid "Mark the %(count)d selected message as unread."
-msgstr ""
+msgstr "Označi %(count)d izbrano sporočilo kot neprebrano."
 
 #: views.py:221
 #, python-format

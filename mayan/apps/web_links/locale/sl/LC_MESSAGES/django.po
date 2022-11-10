@@ -5,6 +5,7 @@
 # 
 # Translators:
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
@@ -22,28 +23,28 @@ msgstr ""
 
 #: apps.py:40
 msgid "Links"
-msgstr ""
+msgstr "Povezave"
 
 #: events.py:6 links.py:19 links.py:24 links.py:54 links.py:59 models.py:42
 #: permissions.py:5 views.py:182
 msgid "Web links"
-msgstr ""
+msgstr "Spletne povezave"
 
 #: events.py:10
 msgid "Web link created"
-msgstr ""
+msgstr "Spletna povezava ustvarjena"
 
 #: events.py:13
 msgid "Web link edited"
-msgstr ""
+msgstr "Spletna povezava urejena"
 
 #: events.py:16
 msgid "Web link navigated"
-msgstr ""
+msgstr "Spletna povezava navigirana"
 
 #: links.py:29 views.py:94
 msgid "Create new web link"
-msgstr ""
+msgstr "Ustvari novo spletno povezavo"
 
 #: links.py:35
 msgid "Delete"
@@ -51,19 +52,19 @@ msgstr "Izbriši"
 
 #: links.py:39 models.py:36
 msgid "Document types"
-msgstr ""
+msgstr "Vrste dokumentov"
 
 #: links.py:44
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #: links.py:51
 msgid "Navigate"
-msgstr ""
+msgstr "Navigacija"
 
 #: models.py:24
 msgid "A short text describing the web link."
-msgstr ""
+msgstr "Kratko besedilo, ki opisuje spletno povezavo."
 
 #: models.py:25
 msgid "Label"
@@ -72,98 +73,102 @@ msgstr "Oznaka"
 #: models.py:29
 msgid "Template that will be used to craft the final URL of the web link."
 msgstr ""
+"Predloga, ki bo uporabljena za izdelavo končnega URL-ja spletne povezave."
 
 #: models.py:31
 msgid "Template"
-msgstr ""
+msgstr "Predloga"
 
 #: models.py:33
 msgid "Enabled"
-msgstr ""
+msgstr "Omogočeno"
 
 #: models.py:41
 msgid "Web link"
-msgstr ""
+msgstr "Spletna povezava"
 
 #: permissions.py:8
 msgid "Create new web links"
-msgstr ""
+msgstr "Ustvarite nove spletne povezave"
 
 #: permissions.py:11
 msgid "Delete web links"
-msgstr ""
+msgstr "Izbrišite spletne povezave"
 
 #: permissions.py:14
 msgid "Edit web links"
-msgstr ""
+msgstr "Uredite spletne povezave"
 
 #: permissions.py:17
 msgid "View existing web links"
-msgstr ""
+msgstr "Oglejte si obstoječe spletne povezave"
 
 #: permissions.py:20
 msgid "View web link instances"
-msgstr ""
+msgstr "Oglejte si primerke spletnih povezav"
 
 #: serializers.py:16
 msgid "Primary key of the document type to add to the web link."
-msgstr ""
+msgstr "Primarni ključ vrste dokumenta, ki ga želite dodati spletni povezavi."
 
 #: serializers.py:25
 msgid "Primary key of the document type to remove from the web link."
 msgstr ""
+"Primarni ključ vrste dokumenta, ki ga želite odstraniti iz spletne povezave."
 
 #: views.py:38
 msgid "Available web links"
-msgstr ""
+msgstr "Dostopne spletne povezave"
 
 #: views.py:39
 msgid "Web links enabled"
-msgstr ""
+msgstr "Spletne povezave omogočene"
 
 #: views.py:63
 #, python-format
 msgid "Web links to enable for document type: %s"
-msgstr ""
+msgstr "Spletne povezave za omogočanje za vrsto dokumenta: %s"
 
 #: views.py:116
 #, python-format
 msgid "Delete web link: %s"
-msgstr ""
+msgstr "Izbriši spletno povezavo: %s"
 
 #: views.py:128
 msgid "Available document types"
-msgstr ""
+msgstr "Razpoložljive vrste dokumentov"
 
 #: views.py:129
 msgid "Document types enabled"
-msgstr ""
+msgstr "Omogočene vrste dokumentov"
 
 #: views.py:139
 #, python-format
 msgid "Document type for which to enable web link: %s"
-msgstr ""
+msgstr "Vrsta dokumenta, za katerega želite omogočiti spletno povezavo: %s"
 
 #: views.py:156
 #, python-format
 msgid "Edit web link: %s"
-msgstr ""
+msgstr "Uredi spletno povezavo: %s"
 
 #: views.py:175 views.py:205
 msgid ""
 "Web links allow generating HTTP links from documents to external resources. "
 "The link URL's can contain document properties values."
 msgstr ""
+"Spletne povezave omogočajo generiranje HTTP povezav iz dokumentov do "
+"zunanjih virov. URL povezave lahko vsebuje vrednosti lastnosti dokumenta."
 
 #: views.py:180
 msgid "There are no web links"
-msgstr ""
+msgstr "Ni spletnih povezav"
 
 #: views.py:210
 msgid "There are no web links for this document"
-msgstr ""
+msgstr "Za ta dokument ni spletnih povezav"
 
 #: views.py:213
 #, python-format
 msgid "Web links for document: %s"
-msgstr ""
+msgstr "Spletne povezave za dokument: %s"

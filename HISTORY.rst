@@ -447,6 +447,10 @@
 - Display a warning message in the setting edit view when local storage is
   disabled.
 
+4.2.11 (2022-11-05)
+===================
+- Update Django from version 3.2.14 to 3.2.16.
+
 4.2.10 (2022-08-20)
 ===================
 - Make file improvements. Don't require a local ``psql`` client to

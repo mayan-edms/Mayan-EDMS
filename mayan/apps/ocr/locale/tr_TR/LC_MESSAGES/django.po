@@ -5,6 +5,7 @@
 # Translators:
 # Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -27,39 +28,39 @@ msgstr "OCR"
 
 #: apps.py:116
 msgid "The OCR content."
-msgstr ""
+msgstr "OCR içeriği."
 
 #: apps.py:121
 msgid "A generator returning the document's pages OCR content."
-msgstr ""
+msgstr "Belgenin sayfalarının OCR içeriğini döndüren bir oluşturucu."
 
 #: apps.py:122
 msgid "OCR content"
-msgstr ""
+msgstr "OCR içeriği"
 
 #: backends/tesseract.py:86
 msgid "Tesseract OCR not found."
-msgstr ""
+msgstr "Tesseract OCR bulunamadı."
 
 #: dependencies.py:23
 msgid "Free Open Source OCR Engine"
-msgstr ""
+msgstr "Özgür Açık Kaynak OCR Motoru"
 
 #: events.py:8
 msgid "Document version OCR content deleted"
-msgstr ""
+msgstr "Belge sürümü OCR içeriği silindi"
 
 #: events.py:12
 msgid "Document version page OCR content edited"
-msgstr ""
+msgstr "Belge sürümü sayfası OCR içeriği düzenlendi"
 
 #: events.py:16
 msgid "Document version submitted for OCR"
-msgstr ""
+msgstr "OCR için gönderilen belge sürümü"
 
 #: events.py:20
 msgid "Document version OCR finished"
-msgstr ""
+msgstr "Belge sürümü OCR'ı tamamlandı"
 
 #: forms.py:14 forms.py:43 forms.py:63
 msgid "Contents"
@@ -72,19 +73,19 @@ msgstr "Sayfa %(page_number)d"
 
 #: links.py:27
 msgid "Setup OCR"
-msgstr ""
+msgstr "OCR'ı kur"
 
 #: links.py:33
 msgid "OCR documents per type"
-msgstr ""
+msgstr "Türe göre OCR belgeleri"
 
 #: links.py:40 links.py:47
 msgid "Delete OCR content"
-msgstr ""
+msgstr "OCR içeriğini sil"
 
 #: links.py:60
 msgid "Download OCR text"
-msgstr ""
+msgstr "OCR metnini indir"
 
 #: links.py:65 links.py:70
 msgid "Submit for OCR"
@@ -92,7 +93,7 @@ msgstr "OCR için gönderin"
 
 #: links.py:86
 msgid "Edit OCR"
-msgstr ""
+msgstr "OCR'ı düzenle"
 
 #: models.py:23
 msgid "Document type"
@@ -104,19 +105,19 @@ msgstr "Yeni oluşturulan belgeleri OCR için otomatik olarak kuyruğa alın."
 
 #: models.py:33
 msgid "Document type settings"
-msgstr ""
+msgstr "Belge türü ayarları"
 
 #: models.py:34
 msgid "Document types settings"
-msgstr ""
+msgstr "Belge türleri ayarları"
 
 #: models.py:47
 msgid "Document version page"
-msgstr ""
+msgstr "Belge sürümü sayfası"
 
 #: models.py:51
 msgid "The actual text content extracted by the OCR backend."
-msgstr ""
+msgstr "OCR tarafından ayıklanan gerçek metin içeriği."
 
 #: models.py:52
 msgid "Content"
@@ -124,11 +125,11 @@ msgstr "İçerik"
 
 #: models.py:58
 msgid "Document version page OCR content"
-msgstr ""
+msgstr "Belge sürümü sayfası OCR içeriği"
 
 #: models.py:59
 msgid "Document version pages OCR contents"
-msgstr ""
+msgstr "Belge sürüm sayfaları OCR içerikleri"
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
@@ -136,35 +137,37 @@ msgstr "OCR için dokümanlar gönderin"
 
 #: permissions.py:11
 msgid "Edit the transcribed text from document"
-msgstr ""
+msgstr "Belgeden kopyalanan metni düzenleyin"
 
 #: permissions.py:15
 msgid "View the transcribed text from document"
-msgstr ""
+msgstr "Belgeden kopyalanan metni görüntüleyin"
 
 #: permissions.py:19
 msgid "Change document type OCR settings"
-msgstr ""
+msgstr "OCR belge türü ayarlarını değiştir"
 
 #: queues.py:10
 msgid "Finish document file OCR"
-msgstr ""
+msgstr "Belge dosyası OCR işlemini bitir"
 
 #: queues.py:14
 msgid "Document file page OCR"
-msgstr ""
+msgstr "Belge dosyası sayfası OCR"
 
 #: queues.py:18
 msgid "Document file OCR"
-msgstr ""
+msgstr "Belge dosyası OCR'ı"
 
 #: search.py:12 search.py:24
 msgid "Document version OCR"
-msgstr ""
+msgstr "Belge sürümü OCR"
 
 #: settings.py:17
 msgid "Set new document types to perform OCR automatically by default."
 msgstr ""
+"Varsayılan olarak, OCR işlemini otomatik olarak gerçekleştirmek için yeni "
+"belge türlerini ayarlayın."
 
 #: settings.py:22
 msgid "Full path to the backend to be used to do OCR."
@@ -227,12 +230,12 @@ msgstr ""
 #: views.py:178
 #, python-format
 msgid "%(count)d document version submitted to the OCR queue."
-msgstr ""
+msgstr "%(count)d OCR kuyruğuna gönderilen belge sürümü."
 
 #: views.py:181
 #, python-format
 msgid "%(count)d document versions submitted to the OCR queue."
-msgstr ""
+msgstr "OCR kuyruğuna gönderilen %(count)d belge sürümleri."
 
 #: views.py:190
 msgid "Submit the selected document version to the OCR queue?"
@@ -243,16 +246,16 @@ msgstr[1] ""
 #: views.py:226
 #, python-format
 msgid "OCR result for document version page: %s"
-msgstr ""
+msgstr "Belge sürümü sayfası için OCR sonucu: %s"
 
 #: views.py:254
 #, python-format
 msgid "Edit OCR for document version page: %s"
-msgstr ""
+msgstr "Belge sürümü sayfası için OCR'yi düzenleyin: %s"
 
 #: workflow_actions.py:15
 msgid "Page condition"
-msgstr ""
+msgstr "Sayfa durumu"
 
 #: workflow_actions.py:19
 msgid ""
@@ -262,15 +265,20 @@ msgid ""
 "logical None, or an empty string ('') are considered to be logical false, "
 "any other value is considered to be the logical true."
 msgstr ""
+"Bir belge sayfasının OCR içeriğinin değiştirilip değiştirilmeyeceğini "
+"belirleyen koşul. Koşul, yinelenen belge sayfasına göre değerlendirilir. "
+"Herhangi bir değer döndürmeyen, Python mantıksal None veya boş bir dize ('')"
+" döndüren koşullar mantıksal yanlış olarak kabul edilir, diğer tüm değerler "
+"mantıksal doğru olarak kabul edilir."
 
 #: workflow_actions.py:31
 msgid "Page content"
-msgstr ""
+msgstr "Sayfa içeriği"
 
 #: workflow_actions.py:35
 msgid "A template that will generate the OCR content to be saved."
-msgstr ""
+msgstr "Kaydedilecek OCR içeriğini oluşturacak bir şablon."
 
 #: workflow_actions.py:43
 msgid "Update document page OCR content"
-msgstr ""
+msgstr "Belge sayfası OCR içeriğini güncelle"

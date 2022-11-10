@@ -5,6 +5,7 @@
 # Translators:
 # Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -22,7 +23,7 @@ msgstr ""
 
 #: apps.py:13 settings.py:10
 msgid "Mirroring"
-msgstr ""
+msgstr "Yansıtma"
 
 #: settings.py:15
 msgid "Time in seconds to cache the path lookup to a document."

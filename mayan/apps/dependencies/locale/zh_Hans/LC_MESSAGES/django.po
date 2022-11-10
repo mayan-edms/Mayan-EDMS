@@ -82,12 +82,12 @@ msgstr "需要至少指定一个：app_label或模块。"
 #: classes.py:313
 #, python-format
 msgid "Dependency \"%s\" already registered."
-msgstr ""
+msgstr "相依性 \"%s\"已被註冊"
 
 #: classes.py:339
 #, python-format
 msgid "Installing package: %s... "
-msgstr ""
+msgstr "正在安裝封裝包 : %s..."
 
 #: classes.py:344
 msgid "Already installed."
@@ -270,7 +270,7 @@ msgstr "用户组"
 
 #: links.py:23
 msgid "Entries"
-msgstr ""
+msgstr "條目"
 
 #: links.py:29
 msgid "Details"
@@ -301,21 +301,21 @@ msgstr "处理特定的应用程序。"
 
 #: management/commands/dependencies_install.py:17
 msgid "Force installation even if already installed."
-msgstr ""
+msgstr "強迫安裝即便已經安裝過"
 
 #: permissions.py:8
 msgid "View dependencies"
-msgstr ""
+msgstr "瀏覽相依性"
 
 #: views.py:39
 #, python-format
 msgid "Entries for dependency group: %s"
-msgstr ""
+msgstr "相依性群組的條目:%s"
 
 #: views.py:52 views.py:99
 #, python-format
 msgid "Group %s not found."
-msgstr ""
+msgstr "群組%s未發現"
 
 #: views.py:66
 msgid "Dependency groups"
@@ -324,12 +324,12 @@ msgstr "依赖组"
 #: views.py:87
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
-msgstr ""
+msgstr "相依性群組與條目: %(group)s,%(entry)s"
 
 #: views.py:111
 #, python-format
 msgid "Entry %s not found."
-msgstr ""
+msgstr "條目%s未發現"
 
 #: views.py:130
 msgid "Other packages licenses"

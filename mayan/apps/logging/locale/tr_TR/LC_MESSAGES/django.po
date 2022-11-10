@@ -5,6 +5,7 @@
 # 
 # Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -22,7 +23,7 @@ msgstr ""
 
 #: apps.py:23 events.py:5 permissions.py:5 settings.py:10
 msgid "Logging"
-msgstr ""
+msgstr "Giriş"
 
 #: events.py:8
 msgid "Error log deleted"
@@ -30,7 +31,7 @@ msgstr ""
 
 #: links.py:15 views.py:36
 msgid "Global error log"
-msgstr ""
+msgstr "Global hata logu"
 
 #: links.py:26
 msgid "Delete"
@@ -38,11 +39,11 @@ msgstr "Sil"
 
 #: links.py:31
 msgid "Errors"
-msgstr ""
+msgstr "Hatalar"
 
 #: links.py:37
 msgid "Clear errors"
-msgstr ""
+msgstr "Hataları temizle"
 
 #: models.py:16 models.py:44
 msgid "Internal name"
@@ -50,23 +51,23 @@ msgstr "Dahili adı"
 
 #: models.py:21 models.py:41
 msgid "Error log"
-msgstr ""
+msgstr "Hata logu"
 
 #: models.py:22
 msgid "Error logs"
-msgstr ""
+msgstr "Hata logları"
 
 #: models.py:31
 msgid "App label"
-msgstr ""
+msgstr "Uygulama etiketi"
 
 #: models.py:58 models.py:68
 msgid "Error log partition"
-msgstr ""
+msgstr "Hata logu bölümü"
 
 #: models.py:59
 msgid "Error log partitions"
-msgstr ""
+msgstr "Hata logu bölümleri"
 
 #: models.py:71
 msgid "Date and time"
@@ -74,19 +75,19 @@ msgstr "Tarih ve saat"
 
 #: models.py:73
 msgid "Text"
-msgstr ""
+msgstr "Metin"
 
 #: models.py:80
 msgid "Error log partition entry"
-msgstr ""
+msgstr "Hata logu bölümü girişi"
 
 #: models.py:81
 msgid "Error log partition entries"
-msgstr ""
+msgstr "Hata logu bölümü girişleri"
 
 #: models.py:97
 msgid "Object"
-msgstr ""
+msgstr "Nesne"
 
 #: permissions.py:8
 msgid "Delete error log"
@@ -94,43 +95,45 @@ msgstr ""
 
 #: permissions.py:11
 msgid "View error log"
-msgstr ""
+msgstr "Hata loglarını görüntüle"
 
 #: settings.py:14
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Tüm uygulamalarda loglamayı otomatik olarak etkinleştir."
 
 #: settings.py:19
 msgid ""
 "List of handlers to which logging messages will be sent. Options are: {}"
-msgstr ""
+msgstr "Log mesajlarının gönderileceği işleyicilerin listesi. Seçenekler: {}"
 
 #: settings.py:25
 msgid "Level for the logging system."
-msgstr ""
+msgstr "Loglama sistemi için seviye."
 
 #: settings.py:31
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "Production ortamında hataları izleyecek log dosyasının yolu."
 
 #: views.py:30
 msgid ""
 "This view displays the error log of different objects. An empty list is a "
 "good thing."
 msgstr ""
+"Bu sayfa, farklı nesnelere ait hata günlüklerini görüntüler. Boş bir liste "
+"iyidir."
 
 #: views.py:34 views.py:101
 msgid "There are no error log entries"
-msgstr ""
+msgstr "Hata log girişi yok"
 
 #: views.py:50
 #, python-format
 msgid "Clear error log entries for: %s"
-msgstr ""
+msgstr "Şunlar için hata log girişlerini temizle: %s"
 
 #: views.py:57
 msgid "Object error log cleared successfully"
-msgstr ""
+msgstr "Nesne hata logu başarıyla temizlendi"
 
 #: views.py:74
 #, python-format
@@ -142,8 +145,10 @@ msgid ""
 "This view displays the error log of an object. An empty list is a good "
 "thing."
 msgstr ""
+"Bu görünüm, bir nesnenin hata logunu görüntüler. Listenin boş olması tercih "
+"sebebidir."
 
 #: views.py:104
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "Şunlar için hata log girişleri: %s"

@@ -5,8 +5,8 @@
 # Translators:
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2022
-# trendspotter <jirka.p@volny.cz>, 2022
 # Michal Švábík <snadno@lehce.cz>, 2022
+# trendspotter <jirka.p@volny.cz>, 2022
 # 
 msgid ""
 msgstr ""
@@ -347,7 +347,7 @@ msgstr ""
 
 #: views.py:341
 msgid "There are no signatures for this document file."
-msgstr ""
+msgstr "Pro tento soubor dokumentu nejsou žádné podpisy."
 
 #: views.py:345
 #, python-format

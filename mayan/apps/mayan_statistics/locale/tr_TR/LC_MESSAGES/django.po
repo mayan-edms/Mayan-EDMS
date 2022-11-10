@@ -47,11 +47,11 @@ msgstr "Kuyruk"
 
 #: links.py:20
 msgid "View"
-msgstr ""
+msgstr "Görünüm"
 
 #: links.py:25
 msgid "Namespace details"
-msgstr ""
+msgstr "Namespace ayrıntıları"
 
 #: links.py:30
 msgid "Namespace list"
@@ -69,23 +69,23 @@ msgstr "Tarih saat"
 
 #: models.py:14
 msgid "Data"
-msgstr ""
+msgstr "Veri"
 
 #: models.py:17
 msgid "Statistics result"
-msgstr ""
+msgstr "İstatistik sonucu"
 
 #: models.py:18
 msgid "Statistics results"
-msgstr ""
+msgstr "İstatistik sonuçları"
 
 #: permissions.py:8
 msgid "View statistics"
-msgstr ""
+msgstr "İstatistikleri görüntüle"
 
 #: queues.py:12
 msgid "Execute statistic"
-msgstr ""
+msgstr "İstatistik yürüt"
 
 #: templates/statistics/renderers/chartjs/line.html:14
 msgid "No data available."
@@ -113,12 +113,12 @@ msgstr "%s için Sonuçlar"
 #: views.py:70 views.py:97
 #, python-format
 msgid "Statistic \"%s\" not found."
-msgstr ""
+msgstr "\"%s\" istatistiği bulunamadı."
 
 #: views.py:89
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
-msgstr ""
+msgstr "Kuyruktaki istatistik \"%s\" güncellenecek mi?"
 
 #: views.py:103
 #, python-format

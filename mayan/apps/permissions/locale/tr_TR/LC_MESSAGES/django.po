@@ -27,7 +27,7 @@ msgstr "İzinler"
 
 #: apps.py:106 models.py:75
 msgid "Group count"
-msgstr ""
+msgstr "Grup sayısı"
 
 #: classes.py:73
 msgid "Insufficient permissions."
@@ -35,15 +35,15 @@ msgstr "Yetersiz yetkiler."
 
 #: dashboard_widgets.py:13
 msgid "Total roles"
-msgstr ""
+msgstr "Toplam roller"
 
 #: events.py:10
 msgid "Role created"
-msgstr ""
+msgstr "Rol oluşturuldu"
 
 #: events.py:13
 msgid "Role edited"
-msgstr ""
+msgstr "Rol düzenlendi"
 
 #: links.py:20 links.py:46 models.py:48 views.py:112
 msgid "Roles"
@@ -71,7 +71,7 @@ msgstr "Rol izinleri"
 
 #: models.py:32
 msgid "A short text describing the role."
-msgstr ""
+msgstr "Rolü açıklayan kısa bir metin."
 
 #: models.py:33 search.py:14
 msgid "Label"
@@ -83,7 +83,7 @@ msgstr "Rol"
 
 #: models.py:83
 msgid "Permission count"
-msgstr ""
+msgstr "Yetki sayısı"
 
 #: models.py:148
 msgid "Namespace"
@@ -115,71 +115,71 @@ msgstr "Rolleri göster"
 
 #: search.py:18
 msgid "Group name"
-msgstr ""
+msgstr "Grup ismi"
 
 #: serializers.py:30
 msgid "Primary key of the group to add to the role."
-msgstr ""
+msgstr "Role eklenecek grubun birincil anahtarı."
 
 #: serializers.py:38
 msgid "Primary key of the group to remove from the role."
-msgstr ""
+msgstr "Rolden kaldırılacak grubun birincil anahtarı."
 
 #: serializers.py:46
 msgid "Primary key of the permission to add to the role."
-msgstr ""
+msgstr "Role eklenecek yetkinin birincil anahtarı."
 
 #: serializers.py:53
 msgid "Primary key of the permission to remove from the role."
-msgstr ""
+msgstr "Rolden kaldırılacak yetkinin birincil anahtarı."
 
 #: views.py:35
 msgid "Available roles"
-msgstr ""
+msgstr "Kullanılabilir roller"
 
 #: views.py:36
 msgid "Group roles"
-msgstr ""
+msgstr "Grup rolleri"
 
 #: views.py:46
 #, python-format
 msgid "Roles of group: %s"
-msgstr ""
+msgstr "Grubun rolleri: %s"
 
 #: views.py:65
 #, python-format
 msgid "Error deleting role \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "\"%(instance)s\" rolü silinirken hata oluştu; %(exception)s"
 
 #: views.py:70
 #, python-format
 msgid "Role \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "\"%(object)s\" rolü başarıyla silindi."
 
 #: views.py:71
 #, python-format
 msgid "%(count)d role deleted successfully."
-msgstr ""
+msgstr "%(count)d rolü başarıyla silindi."
 
 #: views.py:72
 #, python-format
 msgid "%(count)d roles deleted successfully."
-msgstr ""
+msgstr "%(count)d rolleri başarıyla silindi."
 
 #: views.py:73
 #, python-format
 msgid "Delete role: %(object)s."
-msgstr ""
+msgstr "Rolü sil: %(object)s."
 
 #: views.py:74
 #, python-format
 msgid "Delete the %(count)d selected role."
-msgstr ""
+msgstr "%(count)d seçilen rolü sil."
 
 #: views.py:75
 #, python-format
 msgid "Delete the %(count)d selected roles."
-msgstr ""
+msgstr "%(count)d seçilen rolleri sil."
 
 #: views.py:104
 msgid ""
@@ -188,10 +188,14 @@ msgid ""
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
 msgstr ""
+"Roller yetkilendirme birimleridir. Tüm sistem için rol izinlerini devralan "
+"kullanıcı grupları içerirler. Roller ayrıca erişim kontrol listelerinin bir "
+"parçası olabilir. Erişim kontrolleri listesi, grup üyelerinin devraldığı "
+"belirli nesneler için bir role verilen izinlerdir."
 
 #: views.py:111
 msgid "There are no roles"
-msgstr ""
+msgstr "Rol yok"
 
 #: views.py:124
 msgid "Available groups"
@@ -199,18 +203,20 @@ msgstr "Kullanılabilir gruplar"
 
 #: views.py:125
 msgid "Role groups"
-msgstr ""
+msgstr "Rol grupları"
 
 #: views.py:135
 #, python-format
 msgid "Groups of role: %s"
-msgstr ""
+msgstr "Rol grupları: %s"
 
 #: views.py:137
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
 msgstr ""
+"Bir rolün parçası olmak için gruplar ekleyin. Gruplar rolün izinlerini ve "
+"erişim denetimlerini devralırlar."
 
 #: views.py:150
 msgid "Available permissions"
@@ -224,13 +230,14 @@ msgstr "İzinler izin verildi"
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr ""
+"Burada verilen yetkiler tüm sistem ve tüm nesneler için geçerli olacaktır."
 
 #: views.py:189
 #, python-format
 msgid "Permissions for role: %s"
-msgstr ""
+msgstr "Rol için yetkiler: %s"
 
 #: views.py:209
 #, python-format
 msgid "Details of permission: %s"
-msgstr ""
+msgstr "Yetki ayrıntıları: %s"

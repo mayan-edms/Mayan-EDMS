@@ -7,6 +7,7 @@
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2022
 # Çağlar Yeşilyurt <grch@mm.st>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -31,10 +32,12 @@ msgid ""
 "Object for which the access is granted. When sorting objects, only the type "
 "is used and not the actual label of the object."
 msgstr ""
+"Erişimin verildiği nesne. Nesneleri sıralarken, nesnenin gerçek etiketi "
+"değil, yalnızca türü kullanılır."
 
 #: apps.py:65
 msgid "Object"
-msgstr ""
+msgstr "Nesne"
 
 #: events.py:6 permissions.py:5
 msgid "Access control lists"
@@ -42,15 +45,15 @@ msgstr "Erişim Kontrol Listeleri"
 
 #: events.py:10
 msgid "ACL created"
-msgstr ""
+msgstr "Erişim Kontrol Listesi oluşturuldu"
 
 #: events.py:13
 msgid "ACL deleted"
-msgstr ""
+msgstr "Erişim Kontrol Listesi silindi"
 
 #: events.py:16
 msgid "ACL edited"
-msgstr ""
+msgstr "Erişim Kontrol Listesi düzenlendi"
 
 #: forms.py:13 models.py:51 views.py:71
 msgid "Role"
@@ -70,12 +73,12 @@ msgstr "İzinler"
 
 #: links.py:35
 msgid "Global ACLs"
-msgstr ""
+msgstr "Global Erişim Kontrol Listeleri"
 
 #: managers.py:243
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
-msgstr ""
+msgstr "\"%s\" nesnesi bir model değil ve erişim için kontrol edilemez."
 
 #: managers.py:263
 #, python-format
@@ -84,7 +87,7 @@ msgstr "%siçin yetersiz izin"
 
 #: models.py:49
 msgid "Role to which the access is granted for the specified object."
-msgstr ""
+msgstr "Belirtilen nesne için erişim yetkisinin verildiği rol."
 
 #: models.py:59
 msgid "Access entry"
@@ -97,7 +100,7 @@ msgstr "Erişim Girişleri"
 #: models.py:64
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
-msgstr ""
+msgstr "Rol \"%(role)s\" izni \"%(object)s\" için"
 
 #: permissions.py:8
 msgid "Edit ACLs"
@@ -109,11 +112,11 @@ msgstr "Erişim Kontrolünü Görüntüle"
 
 #: serializers.py:116
 msgid "Primary key of the permission to add to the ACL."
-msgstr ""
+msgstr "Erişim Kontrol Listesine ekleme yetkisinin birincil anahtarı."
 
 #: serializers.py:123
 msgid "Primary key of the permission to remove from the ACL."
-msgstr ""
+msgstr "Erişim Kontrol Listesinden kaldırma yetkisinin birincil anahtarı."
 
 #: views.py:44
 #, python-format
@@ -121,11 +124,13 @@ msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
 msgstr ""
+"\"%(role)s\" rolünü kullanan \"%(object)s\" için bir Erişim Kontrol Listesi "
+"zaten var. Bunun yerine bu Erişim Kontrol Listesi özelliklerini düzenleyin."
 
 #: views.py:57
 #, python-format
 msgid "New access control lists for: %s"
-msgstr ""
+msgstr "Şunlar için yeni erişim kontrol listeleri: %s"
 
 #: views.py:101
 #, python-format
@@ -134,7 +139,7 @@ msgstr "Erişim Kontrol Listesi sil: %s"
 
 #: views.py:147
 msgid "There are no ACLs for this object"
-msgstr ""
+msgstr "Bu nesne için Erişim Kontrol Listesi yok"
 
 #: views.py:150 views.py:269
 msgid ""
@@ -142,6 +147,9 @@ msgid ""
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
 msgstr ""
+"ACL, Erişim Kontrol Listesi anlamına gelir ve sistemdeki nesnelere kullanıcı"
+" erişimini kontrol etmek için kesin bir yöntemdir. ACL'ler, yalnızca belirli"
+" bir nesne veya nesne kümesi için bir role izin verilmesini sağlar."
 
 #: views.py:157
 #, python-format
@@ -159,7 +167,7 @@ msgstr "Kullanılabilir izinler"
 #: views.py:217
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
-msgstr ""
+msgstr " \"%(object)s\" için \"%(role)s\" rol yetkisi"
 
 #: views.py:226
 msgid ""
@@ -168,31 +176,35 @@ msgid ""
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
 msgstr ""
+"Devre dışı bırakılan yetkiler, bir üst nesneden devralınır veya doğrudan "
+"role verilir ve bu görünümden kaldırılamaz. Devralınan izinlerin, üst "
+"nesnenin ACL'sinden veya Kurulum menüsü aracılığıyla üst nesnenin rolünden "
+"kaldırılması gerekir."
 
 #: views.py:266
 msgid "There are no ACLs"
-msgstr ""
+msgstr "Erişim Kontrol Listesi yok"
 
 #: views.py:275
 msgid "Global access control lists"
-msgstr ""
+msgstr "Global erişim kontrol listeleri"
 
 #: workflow_actions.py:23
 msgid "Object type"
-msgstr ""
+msgstr "Nesne tipi"
 
 #: workflow_actions.py:26
 msgid "Type of the object for which the access will be modified."
-msgstr ""
+msgstr "Erişimin değiştirileceği nesnenin türü."
 
 #: workflow_actions.py:32
 msgid "Object ID"
-msgstr ""
+msgstr "Nesne ID"
 
 #: workflow_actions.py:35
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
-msgstr ""
+msgstr "Erişiminin değiştirileceği nesnenin sayısal tanımlayıcısı."
 
 #: workflow_actions.py:40 workflow_actions.py:153
 msgid "Roles"
@@ -200,25 +212,25 @@ msgstr "Roller"
 
 #: workflow_actions.py:42 workflow_actions.py:155
 msgid "Roles whose access will be modified."
-msgstr ""
+msgstr "Erişimi değiştirilecek roller."
 
 #: workflow_actions.py:49 workflow_actions.py:162
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
-msgstr ""
+msgstr "Yukarıda seçilen nesne için role/rolden izin verme/izini iptal etme."
 
 #: workflow_actions.py:57
 msgid "Grant object access"
-msgstr ""
+msgstr "Nesne erişimi ver"
 
 #: workflow_actions.py:138
 msgid "Revoke object access"
-msgstr ""
+msgstr "Nesne erişimini iptal et"
 
 #: workflow_actions.py:170
 msgid "Grant document access"
-msgstr ""
+msgstr "Belge erişimi ver"
 
 #: workflow_actions.py:209
 msgid "Revoke document access"
-msgstr ""
+msgstr "Belge erişimini iptal et"

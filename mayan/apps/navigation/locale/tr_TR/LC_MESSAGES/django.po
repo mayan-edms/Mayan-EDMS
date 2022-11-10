@@ -5,6 +5,7 @@
 # 
 # Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
@@ -26,7 +27,7 @@ msgstr "Navigasyon"
 
 #: classes.py:867
 msgid "Unnamed function"
-msgstr ""
+msgstr "Adlandırılmamış fonksiyon"
 
 #: templates/navigation/actions_dropdown.html:9
 msgid "Actions"
@@ -34,4 +35,4 @@ msgstr "Eylemler"
 
 #: templates/navigation/actions_dropdown.html:12
 msgid "Toggle Dropdown"
-msgstr ""
+msgstr "Açılır Menüyü Aç/Kapat"
