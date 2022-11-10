@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:34+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -169,33 +169,37 @@ msgstr "Nove strani ta mesec"
 
 #: document_file_actions.py:9
 msgid "Append. Create a new version and append the new file pages."
-msgstr ""
+msgstr "Pripni. Ustvarite novo različico in dodajte nove strani datoteke."
 
 #: document_file_actions.py:46
 msgid "Keep. Do not create a new version and keep the current version pages."
 msgstr ""
+"obdrži. Ne ustvarjajte nove različice in obdržite strani s trenutno "
+"različico."
 
 #: document_file_actions.py:57
 msgid "Replace. Create a new version and use the new file pages."
-msgstr ""
+msgstr "Zamenjati. Ustvarite novo različico in uporabite nove strani datotek."
 
 #: document_version_modifications.py:11
 msgid "Append all file pages"
-msgstr ""
+msgstr "Pripni vse strani datoteke"
 
 #: document_version_modifications.py:13
 msgid ""
 "The current pages will be deleted and then all the document file pages will "
 "be appended as pages of this document version."
 msgstr ""
+"Trenutne strani bodo izbrisane in nato bodo vse strani datoteke dokumenta "
+"dodane kot strani te različice dokumenta."
 
 #: document_version_modifications.py:29
 msgid "Reset pages to latest file"
-msgstr ""
+msgstr "Ponastavi strani na najnovejšo datoteko"
 
 #: document_version_modifications.py:30
 msgid "Match all pages to that of the latest document file."
-msgstr ""
+msgstr "Ujemite vse strani z najnovejšo datoteko dokumenta."
 
 #: events.py:10
 msgid "Document created"
@@ -307,15 +311,15 @@ msgstr "Različica dokumenta je naložena (zgodovinsko)"
 
 #: forms/document_file_forms.py:49
 msgid "Detected"
-msgstr ""
+msgstr "Zaznano"
 
 #: forms/document_file_forms.py:53
 msgid "Storage"
-msgstr ""
+msgstr "Shranjevanje"
 
 #: forms/document_file_forms.py:57
 msgid "Other"
-msgstr ""
+msgstr "drugo"
 
 #: forms/document_file_forms.py:66
 msgid "Date added"
@@ -379,11 +383,11 @@ msgstr "Vrsta dokumenta"
 #: forms/document_version_forms.py:20
 msgid ""
 "The backend that will be executed against the selected document version."
-msgstr ""
+msgstr "Zaledje, ki bo izvedeno za izbrano različico dokumenta."
 
 #: forms/document_version_forms.py:22
 msgid "Backend"
-msgstr ""
+msgstr "Zaledje"
 
 #: forms/document_version_page_forms.py:29
 msgid "Content type"
@@ -517,7 +521,7 @@ msgstr "Pomanjšanje"
 
 #: links/document_file_page_links.py:127 links/document_file_page_links.py:134
 msgid "Recalculate page count"
-msgstr "Ponovno izračunaj število strani"
+msgstr "Ponovno izračunajte število strani"
 
 #: links/document_links.py:17 links/document_links.py:33
 msgid "Change type"
@@ -577,7 +581,7 @@ msgstr "Različice"
 
 #: links/document_version_links.py:65
 msgid "Modify"
-msgstr ""
+msgstr "Spremeni"
 
 #: links/document_version_page_links.py:55
 msgid "Remap pages"
@@ -822,8 +826,8 @@ msgid ""
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
 msgstr ""
-"Škrob dokumenta je dokument z vnosom v zbirko podatkov, vendar brez naložene"
-" datoteke. To je lahko prekinjeno nalaganje ali odloženo nalaganje prek API-"
+"Škrob dokumenta je dokument z vnosom v zbirko podatkov, vendar ni naložene "
+"datoteke. To je lahko prekinjeno nalaganje ali odloženo nalaganje prek API-"
 "ja."
 
 #: models/document_models.py:103
@@ -837,7 +841,7 @@ msgstr "Kop dokumenta, ID: %d"
 
 #: models/document_type_models.py:40
 msgid "A short text identifying the document type."
-msgstr ""
+msgstr "Kratko besedilo, ki identificira vrsto dokumenta."
 
 #: models/document_type_models.py:45
 msgid ""
@@ -1170,7 +1174,7 @@ msgstr "Binarna vsebina za novo datoteko."
 #: serializers/document_serializers.py:18
 #: serializers/document_version_serializers.py:14
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: serializers/document_serializers.py:26
 msgid "Document type ID for the new document."
@@ -1178,11 +1182,11 @@ msgstr "ID vrste dokumenta za nov dokument."
 
 #: serializers/document_version_serializers.py:24
 msgid "Backend ID"
-msgstr ""
+msgstr "ID zaledja"
 
 #: serializers/document_version_serializers.py:25
 msgid "Primary key of the modification backend to execute."
-msgstr ""
+msgstr "Primarni ključ ozadja spreminjanja za izvedbo."
 
 #: serializers/document_version_serializers.py:37
 msgid "Content type ID of the source object for the page."
@@ -1439,11 +1443,11 @@ msgid "Recalculate the page count of the selected document file?"
 msgid_plural "Recalculate the page count of the selected document files?"
 msgstr[0] "Ponovno izračunati število strani izbrane datoteke dokumenta?"
 msgstr[1] ""
-"Želite znova izračunati število strani izbranih datotek dokumentov?"
+"Želite ponovno izračunati število strani izbranih datotek dokumentov?"
 msgstr[2] ""
-"Želite znova izračunati število strani izbranih datotek dokumentov?"
+"Želite ponovno izračunati število strani izbranih datotek dokumentov?"
 msgstr[3] ""
-"Želite znova izračunati število strani izbranih datotek dokumentov?"
+"Želite ponovno izračunati število strani izbranih datotek dokumentov?"
 
 #: views/document_file_page_views.py:81
 #, python-format
@@ -1654,12 +1658,12 @@ msgstr "Uredi vrsto dokumenta: %s"
 
 #: views/document_type_views.py:157
 msgid "Trash"
-msgstr ""
+msgstr "smeti"
 
 #: views/document_type_views.py:176
 #, python-format
 msgid "Deletion policies for document type: %s"
-msgstr ""
+msgstr "Politike brisanja za vrsto dokumenta: %s"
 
 #: views/document_type_views.py:200
 #, python-format
@@ -1671,7 +1675,7 @@ msgstr "Ustvari hitro oznako za vrsto dokumenta: %s"
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
 msgstr ""
-"Izbrisati hitro oznako: %(label)s, iz vrste dokumenta "
+"Izbrisati hitro oznako: %(label)s iz vrste dokumenta "
 "&quot;%(document_type)s&quot;?"
 
 #: views/document_type_views.py:249
@@ -1716,7 +1720,7 @@ msgstr ""
 #: views/document_version_page_views.py:70
 #, python-format
 msgid "Delete document version page %s ?"
-msgstr "Izbrisati stran z različico dokumenta %s?"
+msgstr "Izbrisati stran različice dokumenta %s?"
 
 #: views/document_version_page_views.py:106
 msgid ""
@@ -1724,7 +1728,8 @@ msgid ""
 "the page remap actions or the version modification action."
 msgstr ""
 "Strani z različico dokumenta so povezave do strani z dejansko vsebino. "
-"Ustvarite jih z dejanji preslikave strani ali dejanjem ponastavitve strani."
+"Ustvarite jih z dejanji preslikave strani ali dejanjem spreminjanja "
+"različice."
 
 #: views/document_version_page_views.py:110
 msgid "No document version pages available"
@@ -1830,12 +1835,12 @@ msgstr ""
 #: views/document_version_views.py:199
 #, python-format
 msgid "Export document version \"%(object)s\"."
-msgstr "Izvoz različice dokumenta &quot;%(object)s&quot;."
+msgstr "Izvozi različico dokumenta &quot;%(object)s&quot;."
 
 #: views/document_version_views.py:200
 #, python-format
 msgid "Export %(count)d document version."
-msgstr "Izvoz različice dokumenta %(count)d."
+msgstr "Izvozi različico dokumenta %(count)d."
 
 #: views/document_version_views.py:201
 #, python-format
@@ -1870,11 +1875,13 @@ msgstr "Različice dokumenta: %s"
 #: views/document_version_views.py:288
 msgid "Document version modification backend queued successfully."
 msgstr ""
+"Zaledje spreminjanja različice dokumenta je uspešno postavljeno v čakalno "
+"vrsto."
 
 #: views/document_version_views.py:298
 #, python-format
 msgid "Execute version modification action for document version: %s"
-msgstr ""
+msgstr "Izvedite dejanje spreminjanja različice za različico dokumenta: %s"
 
 #: views/document_version_views.py:328
 #, python-format
@@ -2113,17 +2120,17 @@ msgstr "Izprazniti smeti?"
 
 #: views/trashed_document_views.py:94
 msgid "The trash emptying task has been queued."
-msgstr "Opravilo praznjenja smeti je v čakalni vrsti."
+msgstr "Naloga praznjenja smeti je postavljena v čakalno vrsto."
 
 #: views/trashed_document_views.py:104
 #, python-format
 msgid "Trash document \"%(object)s\" submitted for deletion."
-msgstr ""
+msgstr "Dokument v smeti &quot;%(object)s&quot; je bil poslan v izbris."
 
 #: views/trashed_document_views.py:107
 #, python-format
 msgid "%(count)d trashed document submitted for deletion."
-msgstr ""
+msgstr "%(count)d dokument v smeti, poslan v izbris."
 
 #: views/trashed_document_views.py:110
 #, python-format
@@ -2161,17 +2168,17 @@ msgstr "V smetnjaku ni dokumentov"
 #: views/trashed_document_views.py:170
 #, python-format
 msgid "Trashed document \"%(object)s\" restored."
-msgstr ""
+msgstr "Dokument v smeti &quot;%(object)s&quot; je obnovljen."
 
 #: views/trashed_document_views.py:173
 #, python-format
 msgid "%(count)d trashed document restored."
-msgstr ""
+msgstr "%(count)d vrnjen v smeti dokument obnovljen."
 
 #: views/trashed_document_views.py:176
 #, python-format
 msgid "%(count)d trashed documents restored."
-msgstr ""
+msgstr "%(count)d izgubljeni dokumenti obnovljeni."
 
 #: views/trashed_document_views.py:178
 #, python-format

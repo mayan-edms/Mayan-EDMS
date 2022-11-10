@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:36+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +27,7 @@ msgstr "Giriş"
 
 #: events.py:8
 msgid "Error log deleted"
-msgstr ""
+msgstr "Hata logu silindi"
 
 #: links.py:15 views.py:36
 msgid "Global error log"
@@ -91,7 +91,7 @@ msgstr "Nesne"
 
 #: permissions.py:8
 msgid "Delete error log"
-msgstr ""
+msgstr "Hata logunu sil"
 
 #: permissions.py:11
 msgid "View error log"
@@ -138,7 +138,7 @@ msgstr "Nesne hata logu başarıyla temizlendi"
 #: views.py:74
 #, python-format
 msgid "Delete error log entry: %s"
-msgstr ""
+msgstr "Hata logu girişini sil: %s"
 
 #: views.py:97
 msgid ""

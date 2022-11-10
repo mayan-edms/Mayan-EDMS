@@ -7,14 +7,15 @@
 # yan songwei <yansw@vip.163.com>, 2022
 # Roberto Rosario, 2022
 # Ford Guo <agile.guo@gmail.com>, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:33+0000\n"
-"Last-Translator: Ford Guo <agile.guo@gmail.com>, 2022\n"
+"Last-Translator: Leon Chu, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -370,7 +371,7 @@ msgstr ""
 
 #: transformation_mixins.py:214 transformations.py:185
 msgid "Paste an asset as watermark"
-msgstr ""
+msgstr "將資源項目作為浮水印貼入"
 
 #: transformation_mixins.py:219
 msgid "Horizontal start position in pixels from the left."
@@ -456,7 +457,7 @@ msgstr ""
 
 #: transformations.py:177
 msgid "Paste an asset (percents coordinates)"
-msgstr ""
+msgstr "貼上一個項目(百分比對應)"
 
 #: transformations.py:191
 msgid "Crop"
@@ -480,7 +481,7 @@ msgstr ""
 
 #: transformations.py:289
 msgid "Draw rectangle"
-msgstr ""
+msgstr "繪製長方形"
 
 #: transformations.py:294
 msgid "Left side location in pixels."
@@ -500,7 +501,7 @@ msgstr ""
 
 #: transformations.py:387
 msgid "Draw rectangle (percents coordinates)"
-msgstr ""
+msgstr "繪製長方形(百分比對應)"
 
 #: transformations.py:392
 msgid "Left side location in percent."

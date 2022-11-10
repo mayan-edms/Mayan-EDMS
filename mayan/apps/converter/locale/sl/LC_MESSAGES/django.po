@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:33+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,7 +83,7 @@ msgstr "Sredstvo urejeno"
 
 #: forms.py:17
 msgid "Asset preview image"
-msgstr ""
+msgstr "Slika predogleda sredstva"
 
 #: forms.py:17
 msgid "Preview"
@@ -150,7 +150,7 @@ msgstr ""
 
 #: models.py:54
 msgid "Internal name"
-msgstr "Interno ime"
+msgstr "Notranje ime"
 
 #: models.py:58
 msgid "File"
@@ -293,7 +293,7 @@ msgstr "Konfiguracijske možnosti za zaledje za pretvorbo grafike."
 
 #: settings.py:77
 msgid "Time in seconds that the browser should cache the supplied image. "
-msgstr "Čas v sekundah, ki naj bi brskalnik predpomnil posredovano sliko."
+msgstr "Čas v sekundah, ko naj brskalnik predpomni priloženo sliko."
 
 #: settings.py:84
 msgid ""
@@ -335,22 +335,24 @@ msgstr "Predpomnilnik sredstev"
 msgid ""
 "Number of degrees to rotate the image counter clockwise around its center."
 msgstr ""
+"Število stopinj za vrtenje slike v nasprotni smeri urinega kazalca okoli "
+"središča."
 
 #: transformation_mixins.py:22
 msgid "Rotation"
-msgstr ""
+msgstr "Rotacija"
 
 #: transformation_mixins.py:25
 msgid "Opacity level of the image in percent"
-msgstr ""
+msgstr "Stopnja motnosti slike v odstotkih"
 
 #: transformation_mixins.py:26
 msgid "Transparency"
-msgstr ""
+msgstr "Preglednost"
 
 #: transformation_mixins.py:29 transformations.py:688
 msgid "Zoom level in percent."
-msgstr ""
+msgstr "Raven povečave v odstotkih."
 
 #: transformation_mixins.py:29 transformations.py:683
 msgid "Zoom"
@@ -358,129 +360,129 @@ msgstr "Zoom"
 
 #: transformation_mixins.py:111
 msgid "Paste an image"
-msgstr ""
+msgstr "Prilepite sliko"
 
 #: transformation_mixins.py:116
 msgid "Horizontal position in pixels from the left."
-msgstr ""
+msgstr "Vodoravni položaj v slikovnih pikah od leve."
 
 #: transformation_mixins.py:117 transformation_mixins.py:159
 #: transformation_mixins.py:220 transformations.py:197 transformations.py:294
 #: transformations.py:393
 msgid "Left"
-msgstr ""
+msgstr "levo"
 
 #: transformation_mixins.py:120
 msgid "Vertical position in pixels from the top."
-msgstr ""
+msgstr "Navpični položaj v slikovnih pikah od vrha."
 
 #: transformation_mixins.py:121 transformation_mixins.py:163
 #: transformation_mixins.py:228 transformations.py:201 transformations.py:298
 #: transformations.py:397
 msgid "Top"
-msgstr ""
+msgstr "Vrh"
 
 #: transformation_mixins.py:153
 msgid "Paste an image (percents coordinates)"
-msgstr ""
+msgstr "Prilepi sliko (odstotne koordinate)"
 
 #: transformation_mixins.py:158
 msgid "Horizontal position in percent from the left."
-msgstr ""
+msgstr "Vodoravni položaj v odstotkih od leve."
 
 #: transformation_mixins.py:162
 msgid "Vertical position in percent from the top."
-msgstr ""
+msgstr "Navpični položaj v odstotkih od vrha."
 
 #: transformation_mixins.py:214 transformations.py:185
 msgid "Paste an asset as watermark"
-msgstr ""
+msgstr "Prilepite sredstvo kot vodni žig"
 
 #: transformation_mixins.py:219
 msgid "Horizontal start position in pixels from the left."
-msgstr ""
+msgstr "Vodoravni začetni položaj v slikovnih pikah od leve."
 
 #: transformation_mixins.py:223
 msgid "Horizontal end position in pixels from the right."
-msgstr ""
+msgstr "Vodoravni končni položaj v slikovnih pikah z desne."
 
 #: transformation_mixins.py:224 transformations.py:205 transformations.py:302
 #: transformations.py:401
 msgid "Right"
-msgstr ""
+msgstr "Prav"
 
 #: transformation_mixins.py:227
 msgid "Vertical start position in pixels from the top."
-msgstr ""
+msgstr "Navpični začetni položaj v slikovnih pikah od vrha."
 
 #: transformation_mixins.py:231
 msgid "Vertical end position in pixels from the top."
-msgstr ""
+msgstr "Navpični končni položaj v slikovnih pikah od vrha."
 
 #: transformation_mixins.py:232 transformations.py:209 transformations.py:307
 #: transformations.py:405
 msgid "Bottom"
-msgstr ""
+msgstr "Spodaj"
 
 #: transformation_mixins.py:235
 msgid "Horizontal position increments in pixels."
-msgstr ""
+msgstr "Prirast vodoravnega položaja v slikovnih pikah."
 
 #: transformation_mixins.py:236
 msgid "Horizontal increment"
-msgstr ""
+msgstr "Horizontalni prirastek"
 
 #: transformation_mixins.py:239
 msgid "Vertical position increments in pixels."
-msgstr ""
+msgstr "Prirastki navpičnega položaja v slikovnih pikah."
 
 #: transformation_mixins.py:240
 msgid "Vertical increment"
-msgstr ""
+msgstr "Navpični prirastek"
 
 #: transformation_mixins.py:299
 msgid "Asset name"
-msgstr ""
+msgstr "Ime sredstva"
 
 #: transformation_mixins.py:342
 msgid "Color used to fill the rectangle."
-msgstr ""
+msgstr "Barva, uporabljena za zapolnitev pravokotnika."
 
 #: transformation_mixins.py:343 transformations.py:590
 msgid "Fill color"
-msgstr ""
+msgstr "Barva polnila"
 
 #: transformation_mixins.py:346
 msgid "Opacity level of the fill color in percent"
-msgstr ""
+msgstr "Raven motnosti barve polnila v odstotkih"
 
 #: transformation_mixins.py:347
 msgid "Fill transparency"
-msgstr ""
+msgstr "Izpolnite prosojnost"
 
 #: transformation_mixins.py:350
 msgid "Color used for the outline of the rectangle."
-msgstr ""
+msgstr "Barva, uporabljena za obris pravokotnika."
 
 #: transformation_mixins.py:351
 msgid "Outline color"
-msgstr ""
+msgstr "Barva obrisa"
 
 #: transformation_mixins.py:354
 msgid "Width in pixels of the rectangle outline."
-msgstr ""
+msgstr "Širina obrisa pravokotnika v slikovnih pikah."
 
 #: transformation_mixins.py:355
 msgid "Outline width"
-msgstr ""
+msgstr "Širina obrisa"
 
 #: transformations.py:169
 msgid "Paste an asset (absolute coordinates)"
-msgstr ""
+msgstr "Prilepite sredstvo (absolutne koordinate)"
 
 #: transformations.py:177
 msgid "Paste an asset (percents coordinates)"
-msgstr ""
+msgstr "Prilepite sredstvo (odstotne koordinate)"
 
 #: transformations.py:191
 msgid "Crop"
@@ -488,147 +490,147 @@ msgstr "Obreži"
 
 #: transformations.py:196
 msgid "Number of pixels to remove from the left."
-msgstr ""
+msgstr "Število slikovnih pik, ki jih želite odstraniti z leve."
 
 #: transformations.py:200
 msgid "Number of pixels to remove from the top."
-msgstr ""
+msgstr "Število slikovnih pik, ki jih želite odstraniti z vrha."
 
 #: transformations.py:204
 msgid "Number of pixels to remove from the right."
-msgstr ""
+msgstr "Število slikovnih pik, ki jih želite odstraniti z desne."
 
 #: transformations.py:208
 msgid "Number of pixels to remove from the bottom."
-msgstr ""
+msgstr "Število slikovnih pik, ki jih želite odstraniti z dna."
 
 #: transformations.py:289
 msgid "Draw rectangle"
-msgstr ""
+msgstr "Nariši pravokotnik"
 
 #: transformations.py:294
 msgid "Left side location in pixels."
-msgstr ""
+msgstr "Lokacija na levi strani v slikovnih pikah."
 
 #: transformations.py:298
 msgid "Top side location in pixels."
-msgstr ""
+msgstr "Lokacija na zgornji strani v slikovnih pikah."
 
 #: transformations.py:302
 msgid "Right side location in pixels."
-msgstr ""
+msgstr "Lokacija na desni strani v slikovnih pikah."
 
 #: transformations.py:306
 msgid "Bottom side location in pixels."
-msgstr ""
+msgstr "Lokacija na spodnji strani v slikovnih pikah."
 
 #: transformations.py:387
 msgid "Draw rectangle (percents coordinates)"
-msgstr ""
+msgstr "Nariši pravokotnik (odstotki koordinat)"
 
 #: transformations.py:392
 msgid "Left side location in percent."
-msgstr ""
+msgstr "Lokacija na levi strani v odstotkih."
 
 #: transformations.py:396
 msgid "Top side location in percent."
-msgstr ""
+msgstr "Lokacija na zgornji strani v odstotkih."
 
 #: transformations.py:400
 msgid "Right side location in percent."
-msgstr ""
+msgstr "Lokacija na desni strani v odstotkih."
 
 #: transformations.py:404
 msgid "Bottom side location in percent."
-msgstr ""
+msgstr "Lokacija na spodnji strani v odstotkih."
 
 #: transformations.py:483
 msgid "Flip"
-msgstr ""
+msgstr "Flip"
 
 #: transformations.py:494
 msgid "Gaussian blur"
-msgstr ""
+msgstr "Gaussova zameglitev"
 
 #: transformations.py:499 transformations.py:658
 msgid "Radius"
-msgstr ""
+msgstr "Radij"
 
 #: transformations.py:511
 msgid "Line art"
-msgstr ""
+msgstr "Črtna umetnost"
 
 #: transformations.py:525
 msgid "Mirror"
-msgstr ""
+msgstr "Ogledalo"
 
 #: transformations.py:536
 msgid "Resize"
-msgstr ""
+msgstr "Spremeni velikost"
 
 #: transformations.py:542
 msgid "New width in pixels."
-msgstr ""
+msgstr "Nova širina v slikovnih pikah."
 
 #: transformations.py:543
 msgid "Width"
-msgstr ""
+msgstr "Premer"
 
 #: transformations.py:547
 msgid "New height in pixels."
-msgstr ""
+msgstr "Nova višina v slikovnih pikah."
 
 #: transformations.py:548
 msgid "Height"
-msgstr ""
+msgstr "Višina"
 
 #: transformations.py:577
 msgid "Rotate"
-msgstr ""
+msgstr "Zasukaj"
 
 #: transformations.py:585
 msgid "Degrees"
-msgstr ""
+msgstr "Stopnje"
 
 #: transformations.py:589
 msgid "Color to be used for area outside of the rotated image."
-msgstr ""
+msgstr "Barva, ki se uporablja za območje zunaj obrnjene slike."
 
 #: transformations.py:620
 msgid "Rotate 90 degrees"
-msgstr ""
+msgstr "Zasukaj za 90 stopinj"
 
 #: transformations.py:631
 msgid "Rotate 180 degrees"
-msgstr ""
+msgstr "Zavrtite za 180 stopinj"
 
 #: transformations.py:642
 msgid "Rotate 270 degrees"
-msgstr ""
+msgstr "Zavrtite za 270 stopinj"
 
 #: transformations.py:652
 msgid "Unsharp masking"
-msgstr ""
+msgstr "Neostro maskiranje"
 
 #: transformations.py:657
 msgid "The blur radius in pixels."
-msgstr ""
+msgstr "Polmer zameglitve v slikovnih pikah."
 
 #: transformations.py:661
 msgid "Unsharp strength in percent."
-msgstr ""
+msgstr "Trdnost neostrine v odstotkih."
 
 #: transformations.py:662 transformations.py:689
 msgid "Percent"
-msgstr ""
+msgstr "Odstotek"
 
 #: transformations.py:666
 msgid "Minimum brightness change that will be sharpened."
-msgstr ""
+msgstr "Najmanjša sprememba svetlosti, ki bo izostrena."
 
 #: transformations.py:667
 msgid "Tthreshold"
-msgstr ""
+msgstr "Tprag"
 
 #: views/asset_views.py:50
 #, python-format

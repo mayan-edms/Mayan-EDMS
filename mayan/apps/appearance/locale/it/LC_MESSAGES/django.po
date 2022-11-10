@@ -5,19 +5,19 @@
 # Translators:
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2022
-# Daniele Bortoluzzi <daniele@elkos.it>, 2022
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2022
 # Andrea Evangelisti <Andrea.Evangelisti@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2022
+# Daniele Bortoluzzi <daniele@elkos.it>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:32+0000\n"
-"Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2022\n"
+"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -87,7 +87,7 @@ msgstr "Tema modificato"
 
 #: events.py:14
 msgid "User theme edited"
-msgstr ""
+msgstr "Tema modificato"
 
 #: links.py:18
 msgid "Theme settings"
@@ -167,7 +167,7 @@ msgstr "Visualizza i temi esistenti"
 
 #: settings.py:15
 msgid "Custom HTTP response code for AJAX redirections."
-msgstr ""
+msgstr "Codice HTTP personalizzato per i reindirizzamenti AJAX."
 
 #: settings.py:21
 msgid "Maximum number of characters that will be displayed as the view title."
@@ -187,6 +187,7 @@ msgstr ""
 msgid ""
 "Delay in milliseconds after which the menus will be checked for updates."
 msgstr ""
+"Ritardo in millisecondi dopo il quale controllare gli aggiornamenti dei menù"
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -243,7 +244,7 @@ msgstr "Ricarica la pagina."
 
 #: templates/500.html:45
 msgid "Wait a bit. The system might be overloaded."
-msgstr "Attendere un po. Il sistema potrebbe essere sovraccarico."
+msgstr "Attendere un po'. Il sistema potrebbe essere sovraccarico."
 
 #: templates/500.html:46
 msgid "Contact your system administrator."
@@ -327,7 +328,7 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"Diffondere la parola. Parla con i tuoi amici e colleghi di quanto%(project_title)s è fantastico!"
+"Diffondi il verbo. Parla con i tuoi amici e colleghi di quanto è fantastico%(project_title)s!"
 
 #: templates/appearance/base.html:73
 msgid "Object"
@@ -477,9 +478,9 @@ msgstr "Non ci sono temi"
 #: views.py:122
 #, python-format
 msgid "Theme settings for user: %s"
-msgstr ""
+msgstr "Impostazioni del tema per l'utente: %s"
 
 #: views.py:144
 #, python-format
 msgid "Edit theme settings for user: %s"
-msgstr ""
+msgstr "Modifica impostazioni del tema per l'utente: %s"

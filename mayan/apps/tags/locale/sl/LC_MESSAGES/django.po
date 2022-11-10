@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -220,17 +220,17 @@ msgstr "Ustvari oznako"
 #: views.py:121
 #, python-format
 msgid "Error deleting tag \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Napaka pri brisanju oznake &quot;%(instance)s&quot;; %(exception)s"
 
 #: views.py:126
 #, python-format
 msgid "Tag \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Oznaka &quot;%(object)s&quot; je bila uspešno izbrisana."
 
 #: views.py:127
 #, python-format
 msgid "%(count)d tag deleted successfully."
-msgstr ""
+msgstr "%(count)d oznaka uspešno izbrisana."
 
 #: views.py:128
 #, python-format
@@ -240,17 +240,17 @@ msgstr "%(count)d oznake uspešno izbrisane."
 #: views.py:129
 #, python-format
 msgid "Delete tag: %(object)s"
-msgstr ""
+msgstr "Izbriši oznako: %(object)s"
 
 #: views.py:130
 #, python-format
 msgid "Delete the %(count)d selected tag"
-msgstr ""
+msgstr "Izbrišite izbrano oznako %(count)d"
 
 #: views.py:131
 #, python-format
 msgid "Delete the %(count)d selected tags"
-msgstr ""
+msgstr "Izbrišite izbrane oznake %(count)d"
 
 #: views.py:137
 msgid "Will be removed from all documents."

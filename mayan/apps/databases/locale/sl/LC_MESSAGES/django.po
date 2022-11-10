@@ -10,8 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:33+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,19 +26,19 @@ msgstr "Baze podatkov"
 
 #: classes.py:199
 msgid "Model fields"
-msgstr ""
+msgstr "Modelna polja"
 
 #: classes.py:242
 msgid "Model related fields"
-msgstr ""
+msgstr "Polja, povezana z modelom"
 
 #: classes.py:247
 msgid "Model properties"
-msgstr ""
+msgstr "Lastnosti modela"
 
 #: classes.py:252
 msgid "Model reverse fields"
-msgstr ""
+msgstr "Obratna polja modela"
 
 #: literals.py:12
 msgid ""
@@ -78,18 +79,22 @@ msgid ""
 "None, or an empty string ('') are considered to be logical false, any other "
 "value is considered to be the logical true."
 msgstr ""
+"Pogoj, ki bo določil, ali se ta objekt izvede ali ne. Pogoji, ki ne vrnejo "
+"nobene vrednosti, ki vrnejo Python logično None ali prazen niz (&#39;&#39;),"
+" se štejejo za logično napačne, katera koli druga vrednost se šteje za "
+"logično resnično."
 
 #: model_mixins.py:106
 msgid "Condition"
-msgstr ""
+msgstr "Pogoj"
 
 #: model_mixins.py:127
 msgid "The object will be executed, depending on the condition return value."
-msgstr ""
+msgstr "Objekt bo izveden, odvisno od vrnjene vrednosti pogoja."
 
 #: model_mixins.py:130
 msgid "Has a condition?"
-msgstr ""
+msgstr "Ima pogoj?"
 
 #: templates/databases/app/viewport.html:11
 msgid "Warning"

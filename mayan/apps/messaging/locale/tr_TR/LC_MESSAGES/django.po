@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:36+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -183,7 +183,8 @@ msgstr "Mesaj yok"
 #: views.py:136
 #, python-format
 msgid "Error marking message \"%(instance)s\" as read; %(exception)s"
-msgstr "\"%(instance)s\" mesajını, okundu olarak işaretleme hatası; %(exception)s"
+msgstr ""
+"\"%(instance)s\" mesajı için, okundu olarak işaretleme hatası; %(exception)s"
 
 #: views.py:142
 #, python-format
@@ -258,24 +259,24 @@ msgstr "%(count)d seçilen mesajı okunmadı olarak işaretle."
 #: views.py:221
 #, python-format
 msgid "Mark the %(count)d selected messages as unread."
-msgstr ""
+msgstr "%(count)d seçilen mesajları okunmamış olarak işaretle."
 
 #: workflow_actions.py:19
 msgid "Username list"
-msgstr ""
+msgstr "Kullanıcı adı listesi"
 
 #: workflow_actions.py:26
 msgid "Comma separated list of username that will receive the message."
-msgstr ""
+msgstr "Mesajı alacak olan kullanıcı adlarının virgülle ayrılmış listesi."
 
 #: workflow_actions.py:45
 msgid "Topic of the message to be sent."
-msgstr ""
+msgstr "Gönderilecek mesajın konusu."
 
 #: workflow_actions.py:62
 msgid "The actual text to send."
-msgstr ""
+msgstr "Gönderilecek metin."
 
 #: workflow_actions.py:73
 msgid "Send user message"
-msgstr ""
+msgstr "Kullanıcı mesajı gönder"

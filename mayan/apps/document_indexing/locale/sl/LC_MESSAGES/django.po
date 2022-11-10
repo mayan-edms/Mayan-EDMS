@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:34+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,7 +80,7 @@ msgstr "Oznaka"
 #: forms.py:31 models/index_template_models.py:48
 #: models/index_template_models.py:251
 msgid "Enabled"
-msgstr ""
+msgstr "Omogočeno"
 
 #: forms.py:45
 msgid "Index templates to be queued for rebuilding."
@@ -134,7 +134,7 @@ msgstr "Uredi"
 
 #: links.py:98
 msgid "Triggers"
-msgstr ""
+msgstr "Sprožilci"
 
 #: links.py:118
 msgid "Tree template"
@@ -229,7 +229,7 @@ msgstr ""
 
 #: models/index_template_models.py:40
 msgid "Slug"
-msgstr ""
+msgstr "Polž"
 
 #: models/index_template_models.py:45
 msgid ""
@@ -240,57 +240,63 @@ msgstr ""
 
 #: models/index_template_models.py:59 models/index_template_models.py:185
 msgid "Index template"
-msgstr ""
+msgstr "Predloga kazala"
 
 #: models/index_template_models.py:189
 msgid "Event type"
-msgstr ""
+msgstr "Vrsta dogodka"
 
 #: models/index_template_models.py:194
 msgid "Index template event trigger"
-msgstr ""
+msgstr "Sprožilec dogodka predloge indeksa"
 
 #: models/index_template_models.py:195
 msgid "Index template event triggers"
-msgstr ""
+msgstr "Sprožilci dogodkov predloge indeksa"
 
 #: models/index_template_models.py:230
 msgid "Parent index template node of this node."
-msgstr ""
+msgstr "Nadrejeno vozlišče predloge indeksa tega vozlišča."
 
 #: models/index_template_models.py:236
 msgid "Index"
-msgstr ""
+msgstr "Kazalo"
 
 #: models/index_template_models.py:240
 msgid "Enter a template to render. Use Django's default templating language."
 msgstr ""
+"Vnesite predlogo za upodabljanje. Uporabite Djangov privzeti jezik za "
+"predloge."
 
 #: models/index_template_models.py:243
 msgid "Indexing expression"
-msgstr ""
+msgstr "Izraz indeksiranja"
 
 #: models/index_template_models.py:248
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr ""
+"Povzroči, da je to vozlišče vidno in posodobljeno, ko se spremenijo podatki "
+"dokumenta."
 
 #: models/index_template_models.py:256
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
 msgstr ""
+"Označite to možnost, da bo to vozlišče delovalo kot vsebnik za dokumente in "
+"ne kot nadrejeno za nadaljnja vozlišča."
 
 #: models/index_template_models.py:259
 msgid "Link documents"
-msgstr ""
+msgstr "Povezava dokumentov"
 
 #: models/index_template_models.py:264
 msgid "Index template nodes"
-msgstr ""
+msgstr "Vozlišča predloge indeksa"
 
 #: models/index_template_models.py:268
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
 #: permissions.py:5 queues.py:8
 msgid "Indexing"
@@ -496,22 +502,24 @@ msgstr "Uredi kazalo: %s"
 #: views/index_template_views.py:234
 #, python-format
 msgid "Error updating index template event trigger; %s"
-msgstr ""
+msgstr "Napaka pri posodabljanju sprožilca dogodka predloge indeksa; %s"
 
 #: views/index_template_views.py:243
 msgid "Index template event triggers updated successfully."
-msgstr ""
+msgstr "Sprožilci dogodkov predloge indeksa so bili uspešno posodobljeni."
 
 #: views/index_template_views.py:253
 msgid ""
 "Triggers are document events that cause instances of this index template to "
 "be updated."
 msgstr ""
+"Sprožilci so dogodki dokumenta, ki povzročijo posodobitev primerkov te "
+"predloge indeksa."
 
 #: views/index_template_views.py:258
 #, python-format
 msgid "Index template event triggers for: %s"
-msgstr ""
+msgstr "Sprožilci dogodkov predloge indeksa za: %s"
 
 #: views/index_template_views.py:303
 #, python-format

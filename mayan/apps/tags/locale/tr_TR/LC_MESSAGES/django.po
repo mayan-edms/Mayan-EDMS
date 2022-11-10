@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -75,7 +75,7 @@ msgstr "Düzenle"
 
 #: links.py:65
 msgid "All"
-msgstr "Herşey"
+msgstr "Hepsi"
 
 #: methods.py:18
 msgid "Return the tags attached to the document."
@@ -242,17 +242,17 @@ msgstr "%(count)d etiketleri başarıyla silindi."
 #: views.py:129
 #, python-format
 msgid "Delete tag: %(object)s"
-msgstr ""
+msgstr "Etiketi sil: %(object)s"
 
 #: views.py:130
 #, python-format
 msgid "Delete the %(count)d selected tag"
-msgstr ""
+msgstr "%(count)d seçili etiketi sil"
 
 #: views.py:131
 #, python-format
 msgid "Delete the %(count)d selected tags"
-msgstr ""
+msgstr "%(count)d seçili etiketleri sil"
 
 #: views.py:137
 msgid "Will be removed from all documents."

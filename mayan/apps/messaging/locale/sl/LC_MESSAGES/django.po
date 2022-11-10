@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:36+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -258,24 +258,25 @@ msgstr "Označi %(count)d izbrano sporočilo kot neprebrano."
 #: views.py:221
 #, python-format
 msgid "Mark the %(count)d selected messages as unread."
-msgstr ""
+msgstr "Označi %(count)d izbrana sporočila kot neprebrana."
 
 #: workflow_actions.py:19
 msgid "Username list"
-msgstr ""
+msgstr "Seznam uporabniških imen"
 
 #: workflow_actions.py:26
 msgid "Comma separated list of username that will receive the message."
 msgstr ""
+"Seznam uporabniških imen, ločenih z vejicami, ki bodo prejeli sporočilo."
 
 #: workflow_actions.py:45
 msgid "Topic of the message to be sent."
-msgstr ""
+msgstr "Tema sporočila, ki ga želite poslati."
 
 #: workflow_actions.py:62
 msgid "The actual text to send."
-msgstr ""
+msgstr "Dejansko besedilo za pošiljanje."
 
 #: workflow_actions.py:73
 msgid "Send user message"
-msgstr ""
+msgstr "Pošlji uporabniško sporočilo"

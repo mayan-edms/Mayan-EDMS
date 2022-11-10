@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:34+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -137,15 +137,15 @@ msgstr "Napaka predloge %(field_name)s: %(exception)s"
 
 #: events.py:10
 msgid "Workflow instance created"
-msgstr ""
+msgstr "Ustvarjen primerek delovnega toka"
 
 #: events.py:13
 msgid "Workflow instance transitioned"
-msgstr ""
+msgstr "Primerek poteka dela je bil preseljen"
 
 #: events.py:18
 msgid "Workflow created"
-msgstr ""
+msgstr "Potek dela ustvarjen"
 
 #: events.py:21
 msgid "Workflow edited"
@@ -181,7 +181,7 @@ msgstr "Da"
 #: forms.py:165 models/workflow_state_escalation_models.py:46
 #: models/workflow_state_models.py:182
 msgid "Enabled"
-msgstr ""
+msgstr "Omogočeno"
 
 #: forms.py:212
 msgid "Select a transition to execute in the next step."
@@ -196,7 +196,7 @@ msgstr "Prehod"
 
 #: forms.py:219
 msgid "Workflow template preview image"
-msgstr ""
+msgstr "Slika predogleda predloge poteka dela"
 
 #: handlers.py:81
 #, python-format
@@ -239,11 +239,11 @@ msgstr "Ustvari akcijo"
 
 #: links.py:140
 msgid "Create escalation"
-msgstr ""
+msgstr "Ustvari stopnjevanje"
 
 #: links.py:161
 msgid "Escalations"
-msgstr ""
+msgstr "Stopnjevanja"
 
 #: links.py:170
 msgid "Create state"
@@ -334,7 +334,7 @@ msgstr "Potek dela"
 
 #: models/workflow_instance_models.py:40
 msgid "Workflow instance creation date time."
-msgstr ""
+msgstr "Datum in ura izdelave primerka poteka dela."
 
 #: models/workflow_instance_models.py:41
 #: models/workflow_instance_models.py:228
@@ -347,16 +347,16 @@ msgstr "Dokument"
 
 #: models/workflow_instance_models.py:48
 msgid "Context"
-msgstr ""
+msgstr "Kontekst"
 
 #: models/workflow_instance_models.py:57
 #: models/workflow_instance_models.py:225
 msgid "Workflow instance"
-msgstr ""
+msgstr "Primer delovnega toka"
 
 #: models/workflow_instance_models.py:58
 msgid "Workflow instances"
-msgstr ""
+msgstr "Primeri poteka dela"
 
 #: models/workflow_instance_models.py:238
 #: models/workflow_state_escalation_models.py:63
@@ -370,7 +370,7 @@ msgstr "Dodatni podatki"
 
 #: models/workflow_instance_models.py:243
 msgid "Workflow instance log entry"
-msgstr "Vnos v dnevnik primerka poteka dela"
+msgstr "Vnos v dnevnik instance delovnega toka"
 
 #: models/workflow_instance_models.py:244
 msgid "Workflow instance log entries"
@@ -419,7 +419,7 @@ msgstr "Posredniki izvajalnega toka dela"
 #: models/workflow_state_escalation_models.py:29
 #: models/workflow_state_models.py:74 models/workflow_state_models.py:176
 msgid "Workflow state"
-msgstr ""
+msgstr "Stanje poteka dela"
 
 #: models/workflow_state_escalation_models.py:37
 msgid ""
@@ -427,24 +427,29 @@ msgid ""
 "with a lower priority number are executed before escalations with a higher "
 "priority number."
 msgstr ""
+"Določite vrstni red, v katerem bodo stopnjevanja ocenjena. Eskalacije z "
+"nižjo prednostno številko se izvedejo pred eskalacijami z višjo prednostno "
+"številko."
 
 #: models/workflow_state_escalation_models.py:40
 msgid "Priority"
-msgstr ""
+msgstr "Prioriteta"
 
 #: models/workflow_state_escalation_models.py:44
 msgid ""
 "Enable automatic transition the workflow after a specified amount of time "
 "has elapsed in the state without change."
 msgstr ""
+"Omogoči samodejni prehod delovnega toka po preteku določenega časa v stanju "
+"brez sprememb."
 
 #: models/workflow_state_escalation_models.py:51
 msgid "Time unit"
-msgstr ""
+msgstr "Časovna enota"
 
 #: models/workflow_state_escalation_models.py:56
 msgid "Amount of the selected escalation units of time."
-msgstr ""
+msgstr "Količina izbranih stopenjskih enot časa."
 
 #: models/workflow_state_escalation_models.py:57
 msgid "Amount"
@@ -454,18 +459,19 @@ msgstr "Količina"
 msgid ""
 "Comment to save to the workflow instance when the escalation is executed."
 msgstr ""
+"Komentar, ki se shrani v primerek delovnega toka, ko se izvede stopnjevanje."
 
 #: models/workflow_state_escalation_models.py:69
 msgid "Workflow state escalation"
-msgstr ""
+msgstr "Stopnjevanje stanja poteka dela"
 
 #: models/workflow_state_escalation_models.py:70
 msgid "Workflow state escalations"
-msgstr ""
+msgstr "Stopnjevanje stanja poteka dela"
 
 #: models/workflow_state_escalation_models.py:103
 msgid "Workflow escalation."
-msgstr ""
+msgstr "Stopnjevanje poteka dela."
 
 #: models/workflow_state_models.py:54
 msgid "A short text to describe the workflow state."
@@ -552,7 +558,7 @@ msgstr "Neznana vrsta dejanja"
 #: models/workflow_state_models.py:274
 msgid ""
 "The state action will be executed, depending on the condition return value."
-msgstr "Dejanje stanja bo izvedeno, odvisno od vrnjene vrednosti pogoja."
+msgstr "Dejanje stanja bo izvedeno glede na vrnjeno vrednost pogoja."
 
 #: models/workflow_state_models.py:277
 #: models/workflow_transition_models.py:114
@@ -717,11 +723,11 @@ msgstr "Zagon vseh delovnih tokov za dokument"
 
 #: queues.py:25
 msgid "Check a workflow instance for state escalation."
-msgstr ""
+msgstr "Preverite primerek poteka dela za stopnjevanje stanja."
 
 #: queues.py:29
 msgid "Check all workflow instances for state escalation."
-msgstr ""
+msgstr "Preverite vse primerke poteka dela za stopnjevanje stanja."
 
 #: queues.py:37
 msgid "Launch all workflows for all documents"
@@ -757,36 +763,37 @@ msgstr ""
 
 #: serializers/workflow_template_serializers.py:61
 msgid "Primary key of the document type to add to the workflow."
-msgstr ""
+msgstr "Primarni ključ vrste dokumenta, ki ga želite dodati v potek dela."
 
 #: serializers/workflow_template_serializers.py:70
 msgid "Primary key of the document type to remove from the workflow."
 msgstr ""
+"Primarni ključ vrste dokumenta, ki ga želite odstraniti iz poteka dela."
 
 #: serializers/workflow_template_state_escalation_serializers.py:50
 msgid "Primary key of the workflow template transition to be added."
-msgstr ""
+msgstr "Primarni ključ prehoda predloge poteka dela, ki bo dodan."
 
 #: serializers/workflow_template_state_escalation_serializers.py:51
 msgid "Workflow template transition ID"
-msgstr ""
+msgstr "ID prehoda predloge poteka dela"
 
 #: serializers/workflow_template_transition_serializers.py:86
 msgid "Primary key of the destination state to be added."
-msgstr ""
+msgstr "Primarni ključ ciljnega stanja, ki bo dodan."
 
 #: serializers/workflow_template_transition_serializers.py:94
 msgid "Primary key of the origin state to be added."
-msgstr ""
+msgstr "Primarni ključ izvornega stanja, ki ga je treba dodati."
 
 #: serializers/workflow_template_transition_serializers.py:184
 msgid "Event Type ID"
-msgstr ""
+msgstr "ID vrste dogodka"
 
 #: serializers/workflow_template_transition_serializers.py:274
 #, python-format
 msgid "Unknown or invalid event type ID `%s`"
-msgstr ""
+msgstr "Neznan ali neveljaven ID vrste dogodka »%s«."
 
 #: settings.py:18
 msgid ""
@@ -821,6 +828,8 @@ msgid ""
 "Interval in seconds on which the task to check for expired workflow states "
 "will be launched."
 msgstr ""
+"Interval v sekundah, ko se bo zagnalo opravilo za preverjanje potečenih "
+"stanj poteka dela."
 
 #: storages.py:14
 msgid ""
@@ -949,32 +958,34 @@ msgstr "Stanja poteka dela: %s"
 #: views/workflow_template_state_escalation_views.py:41
 #, python-format
 msgid "Create escalation for workflow state: %s"
-msgstr ""
+msgstr "Ustvari eskalacijo za stanje poteka dela: %s"
 
 #: views/workflow_template_state_escalation_views.py:84
 #, python-format
 msgid "Delete workflow state escalation: %s"
-msgstr ""
+msgstr "Izbriši stopnjevanje stanja poteka dela: %s"
 
 #: views/workflow_template_state_escalation_views.py:116
 #, python-format
 msgid "Edit workflow state escalation: %s"
-msgstr ""
+msgstr "Urejanje stopnjevanja stanja poteka dela: %s"
 
 #: views/workflow_template_state_escalation_views.py:155
 msgid ""
 "Workflow state escalation allow workflows to execute a a transition "
 "automatically after a specific amount of time."
 msgstr ""
+"Stopnjevanje stanja delovnega toka omogoča, da delovni tokovi po določenem "
+"času samodejno izvedejo prehod."
 
 #: views/workflow_template_state_escalation_views.py:159
 msgid "There are no escalations for this workflow state"
-msgstr ""
+msgstr "Za to stanje poteka dela ni stopnjevanja"
 
 #: views/workflow_template_state_escalation_views.py:162
 #, python-format
 msgid "Escalations for workflow template state: %s"
-msgstr ""
+msgstr "Eskalacije za stanje predloge poteka dela: %s"
 
 #: views/workflow_template_state_views.py:60
 #, python-format
@@ -1108,8 +1119,7 @@ msgstr ""
 
 #: views/workflow_template_transition_views.py:354
 msgid "Workflow transition trigger events updated successfully"
-msgstr ""
-"Dogodki sprožilcev prehoda delovnega toka so bili uspešno posodobljeni"
+msgstr "Sprožilni dogodki prehoda delovnega toka so bili uspešno posodobljeni"
 
 #: views/workflow_template_transition_views.py:366
 msgid ""
@@ -1134,8 +1144,8 @@ msgid ""
 "Removing a workflow from a document type will also remove all running "
 "instances of that workflow."
 msgstr ""
-"Če odstranite potek dela iz vrste dokumenta, boste odstranili tudi vse "
-"primerke tega poteka dela."
+"Če odstranite delovni tok iz vrste dokumenta, boste odstranili tudi vse "
+"delujoče primerke tega delovnega toka."
 
 #: views/workflow_template_views.py:76
 #, python-format
@@ -1168,7 +1178,7 @@ msgstr "Delovni tokovi so bili uspešno zagnani za dokumente %(count)d."
 #: views/workflow_template_views.py:99
 #, python-format
 msgid "Launch workflow: %(object)s."
-msgstr "Zaženi potek dela: %(object)s."
+msgstr "Potek dela zagona: %(object)s."
 
 #: views/workflow_template_views.py:101
 #, python-format

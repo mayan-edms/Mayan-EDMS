@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,31 +24,31 @@ msgstr ""
 #: apps.py:41 events.py:6 links.py:34 models.py:83 permissions.py:6
 #: settings.py:13
 msgid "Signature captures"
-msgstr ""
+msgstr "Zajem podpisa"
 
 #: events.py:11
 msgid "Signature capture created"
-msgstr ""
+msgstr "Zajem podpisa ustvarjen"
 
 #: events.py:15
 msgid "Signature capture deleted"
-msgstr ""
+msgstr "Zajem podpisa izbrisan"
 
 #: events.py:19
 msgid "Signature capture edited"
-msgstr ""
+msgstr "Zajem podpisa urejen"
 
 #: forms.py:27
 msgid "Asset preview image"
-msgstr ""
+msgstr "Slika predogleda sredstva"
 
 #: forms.py:27
 msgid "Preview"
-msgstr ""
+msgstr "Predogled"
 
 #: links.py:17
 msgid "Create new signature capture"
-msgstr ""
+msgstr "Ustvari nov zajem podpisa"
 
 #: links.py:23
 msgid "Delete"
@@ -55,7 +56,7 @@ msgstr "Izbriši"
 
 #: links.py:28
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #: models.py:39
 msgid "Document"
@@ -63,39 +64,39 @@ msgstr "Dokument"
 
 #: models.py:43
 msgid "Data representing the handwritten signature."
-msgstr ""
+msgstr "Podatek, ki predstavlja lastnoročni podpis."
 
 #: models.py:44
 msgid "Signature capture data"
-msgstr ""
+msgstr "Podatki za zajem podpisa"
 
 #: models.py:48
 msgid "Vector representation of the handwritten signature."
-msgstr ""
+msgstr "Vektorski prikaz lastnoročnega podpisa."
 
 #: models.py:49
 msgid "SVG signature capture data"
-msgstr ""
+msgstr "Podatki za zajem podpisa SVG"
 
 #: models.py:52
 msgid "Print version of the captured signature."
-msgstr ""
+msgstr "Tiskana različica zajetega podpisa."
 
 #: models.py:53
 msgid "Text"
-msgstr ""
+msgstr "Besedilo"
 
 #: models.py:57
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
 
 #: models.py:61
 msgid "Date and time created"
-msgstr ""
+msgstr "Datum in ura ustvarjenega"
 
 #: models.py:65
 msgid "Date and time edited"
-msgstr ""
+msgstr "Datum in ura urejena"
 
 #: models.py:69
 msgid ""
@@ -103,70 +104,72 @@ msgid ""
 "relationship to the document. Can only contain letters, numbers, and "
 "underscores."
 msgstr ""
+"Ta vrednost bo uporabljena pri sklicevanju na ta zajem podpisa v zvezi z "
+"dokumentom. Vsebuje lahko samo črke, številke in podčrtaje."
 
 #: models.py:73 transformations.py:40
 msgid "Internal name"
-msgstr ""
+msgstr "Interno ime"
 
 #: models.py:82
 msgid "Signature capture"
-msgstr ""
+msgstr "Zajem podpisa"
 
 #: models.py:167
 msgid "Creation date and time"
-msgstr ""
+msgstr "Datum in čas ustvarjanja"
 
 #: permissions.py:10
 msgid "Create signature captures"
-msgstr ""
+msgstr "Ustvarite zajeme podpisov"
 
 #: permissions.py:14
 msgid "Delete signature captures"
-msgstr ""
+msgstr "Izbriši zajeme podpisov"
 
 #: permissions.py:18
 msgid "Edit signature captures"
-msgstr ""
+msgstr "Uredite zajeme podpisov"
 
 #: permissions.py:22
 msgid "View signature captures"
-msgstr ""
+msgstr "Oglejte si posnetke podpisov"
 
 #: search.py:12
 msgid "Signature capture text"
-msgstr ""
+msgstr "Besedilo za zajem podpisa"
 
 #: search.py:16
 msgid "Signature capture user first name"
-msgstr ""
+msgstr "Ime uporabnika za zajem podpisa"
 
 #: search.py:20
 msgid "Signature capture user last name"
-msgstr ""
+msgstr "Podpis zajema priimek uporabnika"
 
 #: search.py:24
 msgid "Signature capture user username"
-msgstr ""
+msgstr "Uporabniško ime za zajem podpisa"
 
 #: search.py:35
 msgid "Document type label"
-msgstr ""
+msgstr "Oznaka vrste dokumenta"
 
 #: search.py:38
 msgid "Document label"
-msgstr ""
+msgstr "Oznaka dokumenta"
 
 #: search.py:42
 msgid "User first name"
-msgstr ""
+msgstr "Ime uporabnika"
 
 #: search.py:45
 msgid "User last name"
-msgstr ""
+msgstr "Priimek uporabnika"
 
 #: search.py:48
 msgid "User username"
-msgstr ""
+msgstr "Uporabniško uporabniško ime"
 
 #: settings.py:21
 msgid ""
@@ -175,72 +178,82 @@ msgid ""
 "deleting the oldest signature capture cache files. Specify the size in "
 "bytes."
 msgstr ""
+"Prag, pri katerem bo "
+"SIGNATURE_CAPTURES_SIGNATURE_CAPTURE_CACHE_STORAGE_BACKEND začel brisati "
+"najstarejše datoteke predpomnilnika za zajemanje podpisov. Določite velikost"
+" v bajtih."
 
 #: settings.py:29
 msgid ""
 "Path to the Storage subclass to use when storing the cached signature "
 "capture files."
 msgstr ""
+"Pot do podrazreda Storage za uporabo pri shranjevanju predpomnjenih datotek "
+"za zajemanje podpisov."
 
 #: settings.py:37
 msgid ""
 "Arguments to pass to the "
 "SIGNATURE_CAPTURES_SIGNATURE_CAPTURE_CACHE_STORAGE_BACKEND."
 msgstr ""
+"Argumenti za posredovanje v "
+"SIGNATURE_CAPTURES_SIGNATURE_CAPTURE_CACHE_STORAGE_BACKEND."
 
 #: storages.py:15
 msgid ""
 "Unable to initialize the converter signature capture cachestorage. Check the"
 " settings {} and {} for formatting errors."
 msgstr ""
+"Ni mogoče inicializirati predpomnilnika za zajemanje podpisov pretvornika. "
+"Preverite nastavitve {} in {} za napake pri oblikovanju."
 
 #: storages.py:21
 msgid "Signature captures cache"
-msgstr ""
+msgstr "Podpis zajame predpomnilnik"
 
 #: templates/signature_captures/widget_signature_capture.html:64
 msgid "Sign above"
-msgstr ""
+msgstr "Podpišite se zgoraj"
 
 #: transformations.py:18
 msgid "Paste a signature capture (percent coordinates)"
-msgstr ""
+msgstr "Prilepite zajem podpisa (odstotne koordinate)"
 
 #: transformations.py:39
 msgid "Signature capture internal name"
-msgstr ""
+msgstr "Notranje ime za zajem podpisa"
 
 #: views.py:44
 #, python-format
 msgid "Create signature capture for document: %s"
-msgstr ""
+msgstr "Ustvari zajem podpisa za dokument: %s"
 
 #: views.py:78
 #, python-format
 msgid "Delete signature capture: %s"
-msgstr ""
+msgstr "Izbriši zajem podpisa: %s"
 
 #: views.py:100
 #, python-format
 msgid "Details of: %s"
-msgstr ""
+msgstr "Podrobnosti o: %s"
 
 #: views.py:116
 #, python-format
 msgid "Edit document signature capture: %s"
-msgstr ""
+msgstr "Uredite zajem podpisa dokumenta: %s"
 
 #: views.py:144
 msgid ""
 "Signature captures are electronic versions of a persons's handwritten "
 "signature."
-msgstr ""
+msgstr "Zajem podpisov je elektronska različica lastnoročnega podpisa osebe."
 
 #: views.py:147
 msgid "Document has no signature captures"
-msgstr ""
+msgstr "Dokument nima zajetja podpisa"
 
 #: views.py:150
 #, python-format
 msgid "Signature captures for document: %s"
-msgstr ""
+msgstr "Zajem podpisa za dokument: %s"

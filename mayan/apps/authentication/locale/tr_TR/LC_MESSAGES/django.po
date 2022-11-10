@@ -7,14 +7,15 @@
 # emreunal <bywant@gmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
 # Caner Başaran <basaran.caner@gmail.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:32+0000\n"
-"Last-Translator: Caner Başaran <basaran.caner@gmail.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -179,7 +180,7 @@ msgstr "Bu hesap için şifrenin değiştirilmesine izin verilmiyor."
 #: views/authentication_views.py:311
 #, python-format
 msgid "Password change request performed on %(count)d user"
-msgstr ""
+msgstr "%(count)d kullanıcısının parola değiştirme isteği gerçekleştirildi"
 
 #: views/authentication_views.py:314
 #, python-format

@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:36+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -51,8 +51,8 @@ msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon."
 msgstr ""
-"Alıcının e-posta adresi. Birden çok alıcıya posta göndermek için alı e-posta"
-" adreslerini vigül veya noktalı virgülle ayrırabilirsiniz."
+"Alıcının e-posta adresi. Birden çok alıcıya posta göndermek için alıcı "
+"e-posta adreslerini vigül veya noktalı virgülle ayrırabilirsiniz."
 
 #: forms.py:60 forms.py:95
 msgid "Email address"
@@ -139,7 +139,7 @@ msgid ""
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr ""
-"Bu e-postaya {{ object_name }} eklidir: {{ object }}\n"
+"Bu e-postaya eklenmiş ekler {{ object_name }}: {{ object }}\n"
 "\n"
 "--------\n"
 "Bu e-posta %(project_title)s (%(project_website)s) tarafından gönderilmiştir."
@@ -156,7 +156,7 @@ msgid ""
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr ""
-"Bu {{ object_name }} öğeye erişmek için linke tıklayın: {{ link }}\n"
+"{{ object_name }} bu öğeye erişmek için linke tıklayın: {{ link }}\n"
 "\n"
 "--------\n"
 "Bu e-posta %(project_title)s (%(project_website)s) tarafından gönderildi."
@@ -306,11 +306,11 @@ msgstr "e-postayı test edin"
 
 #: permissions.py:10
 msgid "Create a mailing profile"
-msgstr "Bir e-posta profili oluştur"
+msgstr "E-posta profili oluştur"
 
 #: permissions.py:13
 msgid "Delete a mailing profile"
-msgstr "Bir e-posta profilini sil"
+msgstr "E-posta profilini sil"
 
 #: permissions.py:16
 msgid "Edit a mailing profile"
@@ -435,7 +435,7 @@ msgstr "Yeni posta profili backend seçimi"
 #: views/mailing_profile_views.py:67
 #, python-format
 msgid "Create a \"%s\" mailing profile"
-msgstr "Bir \"%s\" posta profili oluştur"
+msgstr "\"%s\" posta profili oluştur"
 
 #: views/mailing_profile_views.py:92
 #, python-format

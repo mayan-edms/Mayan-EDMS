@@ -5,16 +5,16 @@
 # Translators:
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2022
-# trendspotter <jirka.p@volny.cz>, 2022
 # Michal Švábík <snadno@lehce.cz>, 2022
+# trendspotter <jirka.p@volny.cz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:34+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2022\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -192,7 +192,7 @@ msgstr ""
 
 #: document_version_modifications.py:29
 msgid "Reset pages to latest file"
-msgstr ""
+msgstr "Obnovte stránky na nejnovější soubor"
 
 #: document_version_modifications.py:30
 msgid "Match all pages to that of the latest document file."
@@ -308,7 +308,7 @@ msgstr "Nahraných verzí dokumentu (historicky)"
 
 #: forms/document_file_forms.py:49
 msgid "Detected"
-msgstr ""
+msgstr "Zjištěno"
 
 #: forms/document_file_forms.py:53
 msgid "Storage"
@@ -316,7 +316,7 @@ msgstr "Úložiště"
 
 #: forms/document_file_forms.py:57
 msgid "Other"
-msgstr ""
+msgstr "jiný"
 
 #: forms/document_file_forms.py:66
 msgid "Date added"
@@ -380,7 +380,7 @@ msgstr "Typ dokumentu"
 #: forms/document_version_forms.py:20
 msgid ""
 "The backend that will be executed against the selected document version."
-msgstr ""
+msgstr "Backend, který bude spuštěn proti vybrané verzi dokumentu."
 
 #: forms/document_version_forms.py:22
 msgid "Backend"
@@ -578,7 +578,7 @@ msgstr "Verze"
 
 #: links/document_version_links.py:65
 msgid "Modify"
-msgstr ""
+msgstr "Upravit"
 
 #: links/document_version_page_links.py:55
 msgid "Remap pages"

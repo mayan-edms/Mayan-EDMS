@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Roberto Rosario, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:33+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Leon Chu, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,19 +27,19 @@ msgstr ""
 
 #: classes.py:199
 msgid "Model fields"
-msgstr ""
+msgstr "Model fields"
 
 #: classes.py:242
 msgid "Model related fields"
-msgstr ""
+msgstr "Model related fields"
 
 #: classes.py:247
 msgid "Model properties"
-msgstr ""
+msgstr "模型特性"
 
 #: classes.py:252
 msgid "Model reverse fields"
-msgstr ""
+msgstr "Model reverse fields"
 
 #: literals.py:12
 msgid ""

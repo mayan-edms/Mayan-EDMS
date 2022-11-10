@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:36+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -115,19 +115,19 @@ msgstr "Odstrani"
 
 #: forms.py:178
 msgid "Basic"
-msgstr ""
+msgstr "Osnovno"
 
 #: forms.py:182
 msgid "Values"
-msgstr ""
+msgstr "Vrednote"
 
 #: forms.py:186
 msgid "Validation"
-msgstr ""
+msgstr "Validacija"
 
 #: forms.py:190
 msgid "Parsing"
-msgstr ""
+msgstr "Razčlenjevanje"
 
 #: forms.py:205
 msgid " Available template context variables: "
@@ -339,7 +339,7 @@ msgstr "Možnosti vrste metapodatkov vrste dokumenta"
 
 #: permissions.py:8
 msgid "Add metadata to a document"
-msgstr "Dodajanje metapodatkov v dokument"
+msgstr "Dodajte metapodatke v dokument"
 
 #: permissions.py:11
 msgid "Edit a document's metadata"
@@ -395,7 +395,7 @@ msgstr "ID vrste metapodatkov"
 
 #: serializers.py:93
 msgid "Primary key of the metadata type to be added to the document."
-msgstr "Primarni ključ vrste metapodatkov, ki bo dodan v dokument."
+msgstr "Primarni ključ tipa metapodatkov, ki bo dodan v dokument."
 
 #: views/document_views.py:45
 #, python-format
@@ -607,7 +607,7 @@ msgid ""
 "will block the upload of documents of that type until a metadata value is "
 "provided."
 msgstr ""
-"Vrste metapodatkov so uporabniško določene lastnosti, ki jim je mogoče "
+"Tipi metapodatkov so uporabniško določene lastnosti, ki jim je mogoče "
 "dodeliti vrednosti. Ko so enkrat ustvarjeni, morajo biti povezani z vrstami "
 "dokumentov, bodisi neobvezno ali obvezno, za vsako. Če nastavite vrsto "
 "metapodatkov, kot je zahtevana za vrsto dokumenta, boste blokirali nalaganje"

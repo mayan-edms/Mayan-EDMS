@@ -4,7 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# emreunal <bywant@gmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
 # Bedreddin Şahbaz, 2022
 # 
@@ -12,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:39+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +47,7 @@ msgid ""
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
-"Kaldırılacak girişleri seçin. Birden çok giriş seçmek için Kontrolü basılı "
+"Kaldırılacakları seçin. Birden çok giriş seçmek için Ctrl tuşunu basılı "
 "tutun. Seçim tamamlandığında, eylemi etkinleştirmek için aşağıdaki düğmeye "
 "tıklayın veya listeye çift tıklayın."
 
@@ -58,9 +57,9 @@ msgid ""
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
-"Eklenecek girişleri seçin. Birden çok giriş seçmek için Ctrl tuşunu basılı "
-"tutun. Seçim tamamlandığında, eylemi etkinleştirmek için aşağıdaki düğmeye "
-"tıklayın veya listeye çift tıklayın."
+"Eklenecekleri seçin. Birden çok giriş seçmek için Ctrl tuşunu basılı tutun. "
+"Seçim tamamlandığında, eylemi etkinleştirmek için aşağıdaki düğmeye tıklayın"
+" veya listeye çift tıklayın."
 
 #: generics.py:288
 msgid "Add all"
@@ -76,7 +75,7 @@ msgstr "Hepsini kaldır"
 
 #: generics.py:314
 msgid "Remove"
-msgstr "Sil"
+msgstr "Kaldır"
 
 #: generics.py:533
 #, python-format
@@ -208,7 +207,7 @@ msgstr "Sayfa başına görüntülenecek nesnelerin sayısı."
 
 #: settings.py:21
 msgid "A string specifying the name to use for the paging parameter."
-msgstr ""
+msgstr "Sayfalama parametresi için kullanılacak adı belirten bir dize."
 
 #: templatetags/views_tags.py:29
 msgid "Confirm delete"

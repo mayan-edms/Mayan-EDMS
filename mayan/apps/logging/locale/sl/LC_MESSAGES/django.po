@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:36+0000\n"
 "Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
@@ -27,7 +27,7 @@ msgstr "Logiranje"
 
 #: events.py:8
 msgid "Error log deleted"
-msgstr ""
+msgstr "Dnevnik napak izbrisan"
 
 #: links.py:15 views.py:36
 msgid "Global error log"
@@ -91,7 +91,7 @@ msgstr "Predmet"
 
 #: permissions.py:8
 msgid "Delete error log"
-msgstr ""
+msgstr "Izbriši dnevnik napak"
 
 #: permissions.py:11
 msgid "View error log"
@@ -114,15 +114,15 @@ msgstr "Raven za sistem beleženja."
 
 #: settings.py:31
 msgid "Path to the logfile that will track errors during production."
-msgstr "Pot do dnevniške datoteke, ki bo spremljala napake med proizvodnjo."
+msgstr "Pot do datoteke dnevnika, ki bo spremljala napake med proizvodnjo."
 
 #: views.py:30
 msgid ""
 "This view displays the error log of different objects. An empty list is a "
 "good thing."
 msgstr ""
-"Ta pogled prikazuje dnevnik napak različnih predmetov. Prazen seznam je "
-"dobra stvar."
+"Ta pogled prikazuje dnevnik napak različnih objektov. Prazen seznam je dobra"
+" stvar."
 
 #: views.py:34 views.py:101
 msgid "There are no error log entries"
@@ -140,7 +140,7 @@ msgstr "Dnevnik napak objekta je bil uspešno izbrisan"
 #: views.py:74
 #, python-format
 msgid "Delete error log entry: %s"
-msgstr ""
+msgstr "Izbrišite vnos v dnevnik napak: %s"
 
 #: views.py:97
 msgid ""

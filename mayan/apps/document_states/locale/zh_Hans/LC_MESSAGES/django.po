@@ -7,14 +7,15 @@
 # yan songwei <yansw@vip.163.com>, 2022
 # Ford Guo <agile.guo@gmail.com>, 2022
 # Roberto Rosario, 2022
+# Leon Chu, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:34+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Leon Chu, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -438,7 +439,7 @@ msgstr ""
 
 #: models/workflow_state_escalation_models.py:57
 msgid "Amount"
-msgstr ""
+msgstr "數量"
 
 #: models/workflow_state_escalation_models.py:61
 msgid ""

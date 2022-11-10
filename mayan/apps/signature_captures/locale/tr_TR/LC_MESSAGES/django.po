@@ -7,14 +7,15 @@
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2022
 # serhatcan77 <serhat_can@yahoo.com>, 2022
 # abc Def <hdogan1974@gmail.com>, 2022
+# Bedreddin Şahbaz, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
-"Last-Translator: abc Def <hdogan1974@gmail.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,19 +26,19 @@ msgstr ""
 #: apps.py:41 events.py:6 links.py:34 models.py:83 permissions.py:6
 #: settings.py:13
 msgid "Signature captures"
-msgstr ""
+msgstr "İmza yakalama"
 
 #: events.py:11
 msgid "Signature capture created"
-msgstr ""
+msgstr "İmza yakalama oluşturuldu"
 
 #: events.py:15
 msgid "Signature capture deleted"
-msgstr ""
+msgstr "İmza yakalama silindi"
 
 #: events.py:19
 msgid "Signature capture edited"
-msgstr ""
+msgstr "İmza yakalama düzenlendi"
 
 #: forms.py:27
 msgid "Asset preview image"
@@ -49,7 +50,7 @@ msgstr "Önizleme"
 
 #: links.py:17
 msgid "Create new signature capture"
-msgstr ""
+msgstr "Yeni imza yakalama oluştur"
 
 #: links.py:23
 msgid "Delete"
@@ -65,27 +66,27 @@ msgstr "Belge"
 
 #: models.py:43
 msgid "Data representing the handwritten signature."
-msgstr ""
+msgstr "El yazısı imzayı temsil eden veriler."
 
 #: models.py:44
 msgid "Signature capture data"
-msgstr ""
+msgstr "İmza yakalama verileri"
 
 #: models.py:48
 msgid "Vector representation of the handwritten signature."
-msgstr ""
+msgstr "El yazısı imzanın vektör temsili."
 
 #: models.py:49
 msgid "SVG signature capture data"
-msgstr ""
+msgstr "SVG imza yakalama verileri"
 
 #: models.py:52
 msgid "Print version of the captured signature."
-msgstr ""
+msgstr "Yakalanan imzanın yazdırılabilir sürümü."
 
 #: models.py:53
 msgid "Text"
-msgstr ""
+msgstr "Metin"
 
 #: models.py:57
 msgid "User"
@@ -93,11 +94,11 @@ msgstr "Kullanıcı"
 
 #: models.py:61
 msgid "Date and time created"
-msgstr ""
+msgstr "Tarih ve saat oluşturuldu"
 
 #: models.py:65
 msgid "Date and time edited"
-msgstr ""
+msgstr "Tarih ve saat düzenlendi"
 
 #: models.py:69
 msgid ""
@@ -105,6 +106,8 @@ msgid ""
 "relationship to the document. Can only contain letters, numbers, and "
 "underscores."
 msgstr ""
+"Bu değer, belgeyle ilişkili olarak bu imza yakalamaya başvururken "
+"kullanılacaktır. Yalnızca harf, sayı ve alt çizgi içerebilir."
 
 #: models.py:73 transformations.py:40
 msgid "Internal name"
@@ -112,47 +115,47 @@ msgstr "Dahili adı"
 
 #: models.py:82
 msgid "Signature capture"
-msgstr ""
+msgstr "İmza yakalama"
 
 #: models.py:167
 msgid "Creation date and time"
-msgstr ""
+msgstr "Oluşturma tarihi ve saati"
 
 #: permissions.py:10
 msgid "Create signature captures"
-msgstr ""
+msgstr "İmza yakalamaları oluştur"
 
 #: permissions.py:14
 msgid "Delete signature captures"
-msgstr ""
+msgstr "İmza yakalamalarını sil"
 
 #: permissions.py:18
 msgid "Edit signature captures"
-msgstr ""
+msgstr "İmza yakalamalarını düzenle"
 
 #: permissions.py:22
 msgid "View signature captures"
-msgstr ""
+msgstr "İmza yakalamalarını görüntüle"
 
 #: search.py:12
 msgid "Signature capture text"
-msgstr ""
+msgstr "İmza yakalama metni"
 
 #: search.py:16
 msgid "Signature capture user first name"
-msgstr ""
+msgstr "İmza yakalama, kullanıcının adı"
 
 #: search.py:20
 msgid "Signature capture user last name"
-msgstr ""
+msgstr "İmza yakalama, kullanıcının soyadı"
 
 #: search.py:24
 msgid "Signature capture user username"
-msgstr ""
+msgstr "İmza yakalama, kullanıcının kullanıcı adı"
 
 #: search.py:35
 msgid "Document type label"
-msgstr ""
+msgstr "Belge türü etiketi"
 
 #: search.py:38
 msgid "Document label"
@@ -160,15 +163,15 @@ msgstr "Belge etiketi"
 
 #: search.py:42
 msgid "User first name"
-msgstr ""
+msgstr "Kullanıcının adı"
 
 #: search.py:45
 msgid "User last name"
-msgstr ""
+msgstr "Kullanıcının soyadı"
 
 #: search.py:48
 msgid "User username"
-msgstr ""
+msgstr "Kullanıcı adı"
 
 #: settings.py:21
 msgid ""
@@ -177,72 +180,82 @@ msgid ""
 "deleting the oldest signature capture cache files. Specify the size in "
 "bytes."
 msgstr ""
+"SIGNATURE_CAPTURES_SIGNATURE_CAPTURE_CACHE_STORAGE_BACKEND'in en eski imza "
+"yakalama önbellek dosyalarını silmeye başlayacağı eşik. Boyutu bayt olarak "
+"belirtin."
 
 #: settings.py:29
 msgid ""
 "Path to the Storage subclass to use when storing the cached signature "
 "capture files."
 msgstr ""
+"Önbelleğe alınmış imza yakalama dosyalarını depolarken kullanılacak Depolama"
+" alt sınıfının yolu."
 
 #: settings.py:37
 msgid ""
 "Arguments to pass to the "
 "SIGNATURE_CAPTURES_SIGNATURE_CAPTURE_CACHE_STORAGE_BACKEND."
 msgstr ""
+"SIGNATURE_CAPTURES_SIGNATURE_CAPTURE_CACHE_STORAGE_BACKEND'e geçilecek "
+"argümanlar."
 
 #: storages.py:15
 msgid ""
 "Unable to initialize the converter signature capture cachestorage. Check the"
 " settings {} and {} for formatting errors."
 msgstr ""
+"Dönüştürücü imza yakalama önbellek deposu başlatılamıyor. Biçimlendirme "
+"hataları için {} ve {} ayarlarını kontrol edin."
 
 #: storages.py:21
 msgid "Signature captures cache"
-msgstr ""
+msgstr "İmza yakalama önbelleği"
 
 #: templates/signature_captures/widget_signature_capture.html:64
 msgid "Sign above"
-msgstr ""
+msgstr "Yukarıdakini imzala"
 
 #: transformations.py:18
 msgid "Paste a signature capture (percent coordinates)"
-msgstr ""
+msgstr "Bir imza yakalaması yapıştırın (yüzde koordinatları)"
 
 #: transformations.py:39
 msgid "Signature capture internal name"
-msgstr ""
+msgstr "İmza yakalama dahili adı"
 
 #: views.py:44
 #, python-format
 msgid "Create signature capture for document: %s"
-msgstr ""
+msgstr "Belge için imza yakalama oluştur: %s"
 
 #: views.py:78
 #, python-format
 msgid "Delete signature capture: %s"
-msgstr ""
+msgstr "İmza yakalamayı sil: %s"
 
 #: views.py:100
 #, python-format
 msgid "Details of: %s"
-msgstr ""
+msgstr "Ayrıntılar: %s"
 
 #: views.py:116
 #, python-format
 msgid "Edit document signature capture: %s"
-msgstr ""
+msgstr "Belge imza yakalamayı düzenle: %s"
 
 #: views.py:144
 msgid ""
 "Signature captures are electronic versions of a persons's handwritten "
 "signature."
 msgstr ""
+"İmza yakalama, bir kişinin el yazısı imzasının elektronik versiyonlarıdır."
 
 #: views.py:147
 msgid "Document has no signature captures"
-msgstr ""
+msgstr "Belgede imza yakalama yok"
 
 #: views.py:150
 #, python-format
 msgid "Signature captures for document: %s"
-msgstr ""
+msgstr "Belge için imza yakalamaları: %s"

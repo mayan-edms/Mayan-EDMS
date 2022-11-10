@@ -8,16 +8,16 @@
 # Roberto Rosario, 2022
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2022
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2022
-# Daniele Bortoluzzi <daniele@elkos.it>, 2022
 # Paul Audhep <audhep@gmail.com>, 2022
+# Daniele Bortoluzzi <daniele@elkos.it>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:32+0000\n"
-"Last-Translator: Paul Audhep <audhep@gmail.com>, 2022\n"
+"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,6 +34,8 @@ msgid ""
 "Object for which the access is granted. When sorting objects, only the type "
 "is used and not the actual label of the object."
 msgstr ""
+"Oggetto per il quale si concede l'accesso. Quando si ordinano gli oggetti, "
+"viene usata solo la tipologia e non l'etichetta dell'oggetto."
 
 #: apps.py:65
 msgid "Object"
@@ -49,7 +51,7 @@ msgstr "ACL creata"
 
 #: events.py:13
 msgid "ACL deleted"
-msgstr ""
+msgstr "ACL cancellata"
 
 #: events.py:16
 msgid "ACL edited"
@@ -73,7 +75,7 @@ msgstr "Permessi"
 
 #: links.py:35
 msgid "Global ACLs"
-msgstr ""
+msgstr "ACL globali"
 
 #: managers.py:243
 #, python-format
@@ -89,7 +91,7 @@ msgstr "Permessi insufficienti per: %s"
 
 #: models.py:49
 msgid "Role to which the access is granted for the specified object."
-msgstr ""
+msgstr "Ruolo al quale si concede l'accesso per l'oggetto specificato."
 
 #: models.py:59
 msgid "Access entry"
@@ -114,11 +116,11 @@ msgstr "Visualizza ACL"
 
 #: serializers.py:116
 msgid "Primary key of the permission to add to the ACL."
-msgstr ""
+msgstr "Chiave primaria del permesso da aggiungere all'ACL."
 
 #: serializers.py:123
 msgid "Primary key of the permission to remove from the ACL."
-msgstr ""
+msgstr "Chiave primaria del permesso da rimuovere dall'ACL."
 
 #: views.py:44
 #, python-format
@@ -186,11 +188,11 @@ msgstr ""
 
 #: views.py:266
 msgid "There are no ACLs"
-msgstr ""
+msgstr "Non ci sono ACL."
 
 #: views.py:275
 msgid "Global access control lists"
-msgstr ""
+msgstr "Liste di controllo accessi"
 
 #: workflow_actions.py:23
 msgid "Object type"

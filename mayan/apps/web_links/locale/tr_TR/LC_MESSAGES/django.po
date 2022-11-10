@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:39+0000\n"
-"Last-Translator: abc Def <hdogan1974@gmail.com>, 2022\n"
+"Last-Translator: Bedreddin Şahbaz, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -101,7 +101,7 @@ msgstr "Web bağlantılarını düzenle"
 
 #: permissions.py:17
 msgid "View existing web links"
-msgstr "Mevcut web bağlantılarını görüntüleyin"
+msgstr "Mevcut web bağlantılarını görüntüle"
 
 #: permissions.py:20
 msgid "View web link instances"

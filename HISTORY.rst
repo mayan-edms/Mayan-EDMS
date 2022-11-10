@@ -2,6 +2,8 @@
 ==================
 - Use the correct icon for the document type file metadata
   setup link.
+- Merge bugfix version 4.2.11.
+- Update translation files.
 
 4.3.1 (2022-08-21)
 ==================

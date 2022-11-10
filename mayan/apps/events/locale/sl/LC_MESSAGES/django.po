@@ -4,7 +4,6 @@
 # 
 # Translators:
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # Roberto Rosario, 2022
 # Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
@@ -12,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:35+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,7 +64,7 @@ msgstr "Predmet"
 
 #: apps.py:148 models.py:64 models.py:127
 msgid "Event type"
-msgstr ""
+msgstr "Vrsta dogodka"
 
 #: classes.py:87
 msgid "Event list export to CSV"
@@ -82,7 +81,7 @@ msgid ""
 "link: %(download_url)s or from the downloads area (%(download_list_url)s)."
 msgstr ""
 "Seznam dogodkov je bil izvožen in je na voljo za prenos prek povezave: "
-"%(download_url)s ali iz območja za prenose (%(download_list_url)s)."
+"%(download_url)s ali iz področja za prenose (%(download_list_url)s)."
 
 #: events.py:15
 msgid "Events cleared"
@@ -122,7 +121,7 @@ msgstr "Naročnine na dogodke"
 
 #: links.py:71 models.py:135 views/subscription_views.py:169
 msgid "Object event subscriptions"
-msgstr ""
+msgstr "Naročnine na dogodke objektov"
 
 #: links.py:83
 msgid "Mark as seen"
@@ -225,7 +224,7 @@ msgstr "Počisti dogodke tipa: %s"
 #: views/event_views.py:25
 msgid "Events track actions that have been performed on, to, or with objects."
 msgstr ""
-"Dogodki spremljajo dejanja, ki so bila izvedena na predmetih, na njih ali s "
+"Dogodki sledijo dejanjem, ki so bila izvedena na predmetih, na njih ali s "
 "predmeti."
 
 #: views/event_views.py:28
@@ -319,14 +318,16 @@ msgstr "Naročnine na dogodke objektov so bile uspešno posodobljene"
 #: views/subscription_views.py:134
 #, python-format
 msgid "Event subscriptions for: %s"
-msgstr ""
+msgstr "Naročnine na dogodke za: %s"
 
 #: views/subscription_views.py:164
 msgid ""
 "Subscribe to the events of an object to received notifications when those "
 "events occur."
 msgstr ""
+"Naročite se na dogodke predmeta na prejeta obvestila, ko se ti dogodki "
+"zgodijo."
 
 #: views/subscription_views.py:167
 msgid "There are no object event subscriptions"
-msgstr ""
+msgstr "Ni naročnin na dogodke objektov"

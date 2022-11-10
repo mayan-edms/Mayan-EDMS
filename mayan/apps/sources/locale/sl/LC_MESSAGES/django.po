@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:38+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,7 +66,7 @@ msgstr "Vir urejen"
 
 #: forms.py:26
 msgid "An optional comment to explain the upload."
-msgstr "Neobvezen komentar za razlago nalaganja."
+msgstr "Izbirni komentar za razlago nalaganja."
 
 #: forms.py:27
 msgid "Comment"
@@ -184,7 +184,7 @@ msgstr "Argumenti"
 
 #: serializers.py:61
 msgid "Binary content for the new file."
-msgstr ""
+msgstr "Binarna vsebina za novo datoteko."
 
 #: settings.py:20
 msgid "Arguments to use when creating source backends."
@@ -363,7 +363,7 @@ msgstr "Nabiralnik IMAP, v katerega bodo kopirana obdelana sporočila."
 
 #: source_backends/email_backends.py:426
 msgid "Destination mailbox"
-msgstr "Ciljni nabiralnik"
+msgstr "Ciljni poštni predal"
 
 #: source_backends/email_backends.py:432
 msgid "IMAP email"
@@ -528,7 +528,7 @@ msgstr "Izključi regularni izraz"
 
 #: source_backends/staging_folder_backends.py:341
 msgid "Staging folder"
-msgstr ""
+msgstr "Uprizoritvena mapa"
 
 #: source_backends/staging_folder_backends.py:361
 msgid "Select"
@@ -536,26 +536,26 @@ msgstr "Izberi"
 
 #: source_backends/staging_folder_backends.py:373
 msgid "Created"
-msgstr ""
+msgstr "Ustvarjeno"
 
 #: source_backends/staging_folder_backends.py:377
 msgid "Thumbnail"
-msgstr ""
+msgstr "Sličica"
 
 #: source_backends/staging_folder_backends.py:526
 #, python-format
 msgid "Error deleting staging file; %s"
-msgstr ""
+msgstr "Napaka pri brisanju uprizoritvene datoteke; %s"
 
 #: source_backends/staging_folder_backends.py:547
 #, python-format
 msgid "Delete staging file \"%s\"?"
-msgstr ""
+msgstr "Želite izbrisati uprizoritveno datoteko &quot;%s&quot;?"
 
 #: source_backends/staging_folder_backends.py:612
 #, python-format
 msgid "Unable get list of staging files; %s"
-msgstr ""
+msgstr "Ni mogoče dobiti seznama uprizoritvenih datotek; %s"
 
 #: source_backends/staging_folder_backends.py:630
 msgid ""
@@ -563,10 +563,13 @@ msgid ""
 "the operating system user account being used for Mayan EDMS doesn't have the"
 " necessary file system permissions for the folder."
 msgstr ""
+"To lahko pomeni, da je uprizoritvena mapa prazna. Lahko tudi pomeni, da "
+"uporabniški račun operacijskega sistema, ki se uporablja za Mayan EDMS, nima"
+" potrebnih dovoljenj datotečnega sistema za mapo."
 
 #: source_backends/staging_folder_backends.py:637
 msgid "No staging files available"
-msgstr ""
+msgstr "Na voljo ni uprizoritvenih datotek"
 
 #: source_backends/watch_folder_backends.py:75
 msgid "Watch folder"

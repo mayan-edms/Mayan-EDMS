@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:35+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Label"
 msgstr "Ετικέτα"
 
-#: apps.py:49 events.py:6 links.py:20 permissions.py:5 queues.py:7
+#: apps.py:49 events.py:6 links.py:21 permissions.py:5 queues.py:7
 #: settings.py:12
 msgid "File metadata"
 msgstr ""
@@ -63,19 +63,19 @@ msgstr ""
 msgid "Document file file metadata processing finished"
 msgstr ""
 
-#: links.py:26
+#: links.py:27
 msgid "Attributes"
 msgstr ""
 
-#: links.py:33 links.py:38
+#: links.py:34 links.py:39
 msgid "Submit for file metadata"
 msgstr ""
 
-#: links.py:48
+#: links.py:49
 msgid "Setup file metadata"
 msgstr ""
 
-#: links.py:54
+#: links.py:55
 msgid "File metadata processing per type"
 msgstr ""
 

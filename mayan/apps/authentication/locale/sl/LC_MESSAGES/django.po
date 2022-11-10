@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-21 06:40+0000\n"
+"POT-Creation-Date: 2022-11-10 05:46+0000\n"
 "PO-Revision-Date: 2022-07-27 05:32+0000\n"
 "Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
@@ -86,7 +86,7 @@ msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
 msgstr ""
-"Odstranite &quot;Ste pozabili geslo?&quot; povezavo na obrazcu za prijavo, "
+"Odstranite &quot;Ste pozabili geslo?&quot; povezava na obrazcu za prijavo, "
 "ki se uporablja za sprožitev ponastavitve gesla."
 
 #: settings.py:23
@@ -178,7 +178,7 @@ msgstr "Spreminjanje gesla za ta račun ni dovoljeno."
 #: views/authentication_views.py:311
 #, python-format
 msgid "Password change request performed on %(count)d user"
-msgstr ""
+msgstr "Zahteva za spremembo gesla izvedena na uporabniku %(count)d"
 
 #: views/authentication_views.py:314
 #, python-format
