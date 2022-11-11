@@ -32,7 +32,7 @@ for documents on a Mayan EDMS instance
        Anything that is currently configured with
        the ``django.core.files.storage.FileSystemStorage`` backend
        can have its backend changed, but this is not advisable
-       for caches and tempoary files locations due to performance
+       for caches and temporary files locations due to performance
        reasons.
 
 
