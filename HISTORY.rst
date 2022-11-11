@@ -1,4 +1,4 @@
-4.1.10 (2022-XX-XX)
+4.1.10 (unreleased)
 ===================
 - Fixes from version 4.0.23.
 
@@ -709,7 +709,7 @@
   Thanks to Ludovic Anterieur (@lanterieur) for the request.
 - Pin jsonschema to version 3.2.0 to avoid errors with
 
-4.0.23 (2022-XX-XX)
+4.0.23 (unreleased)
 ===================
 - Add help text to the `SEARCH_BACKEND_ARGUMENTS` setting.
 - Backport an object storage documentation chapter fix
