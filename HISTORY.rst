@@ -1,3 +1,7 @@
+4.0.23 (2022-XX-XX)
+===================
+- Add help text to the `SEARCH_BACKEND_ARGUMENTS` setting.
+
 4.0.22 (2022-04-22)
 ===================
 - Filter unread message count badge by message read permission.
