@@ -1,3 +1,7 @@
+4.1.10 (2022-XX-XX)
+===================
+- Fixes from version 4.0.23.
+
 4.1.9 (2022-04-24)
 ==================
 - Remove hardcoded search model variable name from ``search_box.html``
@@ -704,6 +708,12 @@
 - Add document template state action API endpoints. Closes GitLab issue #1043
   Thanks to Ludovic Anterieur (@lanterieur) for the request.
 - Pin jsonschema to version 3.2.0 to avoid errors with
+
+4.0.23 (2022-XX-XX)
+===================
+- Add help text to the `SEARCH_BACKEND_ARGUMENTS` setting.
+- Backport an object storage documentation chapter fix
+  from version 4.4dev0.
 
 4.0.22 (2022-04-22)
 ===================
