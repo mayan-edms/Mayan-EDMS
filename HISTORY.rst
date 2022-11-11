@@ -1,6 +1,8 @@
 4.0.23 (2022-XX-XX)
 ===================
 - Add help text to the `SEARCH_BACKEND_ARGUMENTS` setting.
+- Backport an object storage documentation chapter fix
+  from version 4.4dev0.
 
 4.0.22 (2022-04-22)
 ===================
