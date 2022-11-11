@@ -1,3 +1,7 @@
+4.2.12 (unreleased)
+===================
+- Fixes from version 4.1.10.
+
 4.2.11 (2022-11-05)
 ===================
 - Update Django from version 3.2.14 to 3.2.16.
@@ -432,6 +436,10 @@
   to be optional.
 - Redirect to current user to user detail view after password change.
 - Support two different ``psycopg2`` versions for upgrade testing.
+
+4.1.10 (unreleased)
+===================
+- Fixes from version 4.0.23.
 
 4.1.9 (2022-04-24)
 ==================
@@ -1137,6 +1145,12 @@
 - Add document template state action API endpoints. Closes GitLab issue #1043
   Thanks to Ludovic Anterieur (@lanterieur) for the request.
 - Pin jsonschema to version 3.2.0 to avoid errors with
+
+4.0.23 (unreleased)
+===================
+- Add help text to the `SEARCH_BACKEND_ARGUMENTS` setting.
+- Backport an object storage documentation chapter fix
+  from version 4.4dev0.
 
 4.0.22 (2022-04-22)
 ===================

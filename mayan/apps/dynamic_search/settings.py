@@ -18,7 +18,11 @@ setting_backend = namespace.add_setting(
 )
 setting_backend_arguments = namespace.add_setting(
     default=DEFAULT_SEARCH_BACKEND_ARGUMENTS,
-    global_name='SEARCH_BACKEND_ARGUMENTS'
+    global_name='SEARCH_BACKEND_ARGUMENTS',
+    help_text=_(
+        'Arguments to pass to the search backend. For example values to '
+        'change the behavior, host names, or authentication arguments.'
+    )
 )
 setting_disable_simple_search = namespace.add_setting(
     default=DEFAULT_SEARCH_DISABLE_SIMPLE_SEARCH,
