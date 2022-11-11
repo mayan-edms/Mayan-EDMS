@@ -2,6 +2,7 @@
 ===================
 - Update Django from version 2.2.24 to 2.2.28
 - Fix statistic queue view navigation context.
+- Add help text to the `SEARCH_BACKEND_ARGUMENTS` setting.
 
 3.5.11 (2021-08-19)
 ===================
