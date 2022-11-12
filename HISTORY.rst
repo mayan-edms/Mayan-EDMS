@@ -1,4 +1,4 @@
-3.5.12 (unreleased)
+3.5.12 (2022-11-12)
 ===================
 - Update Django from version 2.2.24 to 2.2.28
 - Fix statistic queue view navigation context.
