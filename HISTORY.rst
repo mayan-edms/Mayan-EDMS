@@ -10,6 +10,7 @@
   commonly (and mistakenly) have come to expect the ``latest`` tag to
   represent the latest version of the project. The GitLab CI file is
   updated to fulfill this expectation.
+- Fixes from version 3.5.12.
 
 4.0.22 (2022-04-22)
 ===================
