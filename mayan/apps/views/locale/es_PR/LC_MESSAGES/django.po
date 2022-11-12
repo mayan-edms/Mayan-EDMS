@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-10 05:46+0000\n"
+"POT-Creation-Date: 2022-11-12 03:39+0000\n"
 "PO-Revision-Date: 2022-07-27 05:39+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -210,29 +210,29 @@ msgstr ""
 "Un text que especifica el nombre que se usará para el parámetro de "
 "paginación."
 
-#: templatetags/views_tags.py:29
+#: templatetags/views_tags.py:30
 msgid "Confirm delete"
 msgstr "Confirmar eliminación"
 
-#: templatetags/views_tags.py:34
+#: templatetags/views_tags.py:35
 #, python-format
 msgid "Edit %s"
 msgstr "Editar %s"
 
-#: templatetags/views_tags.py:37
+#: templatetags/views_tags.py:38
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: templatetags/views_tags.py:41
+#: templatetags/views_tags.py:42
 #, python-format
 msgid "Details for: %s"
 msgstr "Detalles para: %s"
 
-#: templatetags/views_tags.py:45
+#: templatetags/views_tags.py:46
 #, python-format
 msgid "Edit: %s"
 msgstr "Editar: %s"
 
-#: templatetags/views_tags.py:49
+#: templatetags/views_tags.py:50
 msgid "Create"
 msgstr "Crear"

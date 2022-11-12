@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-10 05:46+0000\n"
+"POT-Creation-Date: 2022-11-12 03:39+0000\n"
 "PO-Revision-Date: 2022-07-27 05:39+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -212,29 +212,29 @@ msgstr "Количество объектов для отображения на
 msgid "A string specifying the name to use for the paging parameter."
 msgstr ""
 
-#: templatetags/views_tags.py:29
+#: templatetags/views_tags.py:30
 msgid "Confirm delete"
 msgstr "Подтвердить удаление"
 
-#: templatetags/views_tags.py:34
+#: templatetags/views_tags.py:35
 #, python-format
 msgid "Edit %s"
 msgstr "Редактировать %s"
 
-#: templatetags/views_tags.py:37
+#: templatetags/views_tags.py:38
 msgid "Confirm"
 msgstr "Подтвердить"
 
-#: templatetags/views_tags.py:41
+#: templatetags/views_tags.py:42
 #, python-format
 msgid "Details for: %s"
 msgstr "Подробности: %s"
 
-#: templatetags/views_tags.py:45
+#: templatetags/views_tags.py:46
 #, python-format
 msgid "Edit: %s"
 msgstr "Редактировать: %s"
 
-#: templatetags/views_tags.py:49
+#: templatetags/views_tags.py:50
 msgid "Create"
 msgstr "Создать"

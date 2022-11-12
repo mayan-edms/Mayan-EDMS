@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-10 05:46+0000\n"
+"POT-Creation-Date: 2022-11-12 03:39+0000\n"
 "PO-Revision-Date: 2022-07-27 05:35+0000\n"
 "Last-Translator: Jesaja Everling <jeverling@gmail.com>, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -113,22 +113,28 @@ msgstr ""
 msgid "Full path to the backend to be used to handle the search."
 msgstr "Vollständiger Pfad zum Backend, der für die Suche verantwortlich ist."
 
-#: settings.py:26
+#: settings.py:23
+msgid ""
+"Arguments to pass to the search backend. For example values to change the "
+"behavior, host names, or authentication arguments."
+msgstr ""
+
+#: settings.py:30
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr ""
 "Deaktiviert die Suche in der Einzelbegriffsleiste, nur die Schaltfläche für "
 "die erweiterte Suche wird angezeigt."
 
-#: settings.py:34
+#: settings.py:38
 msgid "Amount of objects to process when performing bulk indexing."
 msgstr ""
 
-#: settings.py:40
+#: settings.py:44
 msgid "Sets the default state of the \"Match all\" checkbox."
 msgstr ""
 
-#: settings.py:44
+#: settings.py:48
 msgid "Maximum number search results to fetch and display."
 msgstr "Maximale Anzahl von Treffern, die geholt und angezeigt werden."
 

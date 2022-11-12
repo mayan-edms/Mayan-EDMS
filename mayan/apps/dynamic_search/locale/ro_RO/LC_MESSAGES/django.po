@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-10 05:46+0000\n"
+"POT-Creation-Date: 2022-11-12 03:39+0000\n"
 "PO-Revision-Date: 2022-07-27 05:35+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -117,24 +117,30 @@ msgstr ""
 "Calea completă către backend pentru a fi utilizată pentru a gestiona "
 "căutarea."
 
-#: settings.py:26
+#: settings.py:23
+msgid ""
+"Arguments to pass to the search backend. For example values to change the "
+"behavior, host names, or authentication arguments."
+msgstr ""
+
+#: settings.py:30
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr ""
 "Dezactivează căutarea în bară cu un singur termen lăsând doar butonul de "
 "căutare avansată."
 
-#: settings.py:34
+#: settings.py:38
 msgid "Amount of objects to process when performing bulk indexing."
 msgstr ""
 "Cantitatea de obiecte de procesat atunci când se efectuează indexarea în "
 "bloc."
 
-#: settings.py:40
+#: settings.py:44
 msgid "Sets the default state of the \"Match all\" checkbox."
 msgstr "Setează starea implicită a casetei de selectare „Potriviți toate”."
 
-#: settings.py:44
+#: settings.py:48
 msgid "Maximum number search results to fetch and display."
 msgstr "Numărul maxim de rezultate de căutare de preluat și afișat."
 
