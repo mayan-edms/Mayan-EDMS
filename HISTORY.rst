@@ -1,4 +1,4 @@
-4.3.2 (unreleased)
+4.3.2 (2022-11-12)
 ==================
 - Use the correct icon for the document type file metadata
   setup link.
