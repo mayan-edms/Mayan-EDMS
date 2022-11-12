@@ -1,3 +1,7 @@
+3.5.12 (unreleased)
+===================
+- Update Django from version 2.2.24 to 2.2.28
+
 3.5.11 (2021-08-19)
 ===================
 - Update Django from version 2.2.23 to 2.2.24.
