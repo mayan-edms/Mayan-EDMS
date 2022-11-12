@@ -6,6 +6,7 @@
 - Update translation files.
 - Fix response structure of the search model API view.
   Ensure the search fields are displayed.
+- Fix hardcoded list mode argument.
 
 4.3.1 (2022-08-21)
 ==================
