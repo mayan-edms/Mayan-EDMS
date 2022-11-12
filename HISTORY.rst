@@ -3,6 +3,13 @@
 - Add help text to the `SEARCH_BACKEND_ARGUMENTS` setting.
 - Backport an object storage documentation chapter fix
   from version 4.4dev0.
+- Don't tag Docker images as ``latest`` for minor releases. As per Docker's
+  specifications, the ``latest`` tag is applied to the latest image built
+  if no tag is specified. It is not meant to represent the latest version
+  of an project, just the last image that has been built. However users
+  commonly (and mistakenly) have come to expect the ``latest`` tag to
+  represent the latest version of the project. The GitLab CI file is
+  updated to fulfill this expectation.
 
 4.0.22 (2022-04-22)
 ===================
