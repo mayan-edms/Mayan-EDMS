@@ -4,6 +4,8 @@
   setup link.
 - Merge bugfix version 4.2.11 and 4.2.12.
 - Update translation files.
+- Fix response structure of the search model API view.
+  Ensure the search fields are displayed.
 
 4.3.1 (2022-08-21)
 ==================

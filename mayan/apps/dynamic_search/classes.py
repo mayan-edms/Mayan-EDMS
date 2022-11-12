@@ -859,3 +859,7 @@ class SearchModel(AppsModuleLoaderMixin):
 
     def remove_search_field(self, search_field):
         self.search_fields_dict.pop(search_field.field)
+
+    @cached_property
+    def search_fields(self):
+        return self.search_fields_dict.values()
