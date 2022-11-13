@@ -117,6 +117,9 @@ PythonDependency(
     ''', module=__name__, name='django-mptt', version_string='==0.11.0'
 )
 PythonDependency(
+    module=__name__, name='importlib-metadata', version_string='==4.13.0'
+)
+PythonDependency(
     copyright_text='''
         Author: Christian Theune
         License: LGPL 2.1
