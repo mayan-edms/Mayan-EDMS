@@ -117,7 +117,7 @@ PythonDependency(
     ''', module=__name__, name='django-mptt', version_string='==0.12.0'
 )
 PythonDependency(
-    module=__name__, name='importlib-metadata', version_string='==5.0.0'
+    module=__name__, name='importlib-metadata', version_string='==4.13.0'
 )
 PythonDependency(
     copyright_text='''
