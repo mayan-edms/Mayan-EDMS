@@ -1,3 +1,24 @@
+3.5.12 (2022-11-12)
+===================
+- Update Django from version 2.2.24 to 2.2.28
+- Fix statistic queue view navigation context.
+- Add help text to the `SEARCH_BACKEND_ARGUMENTS` setting.
+- Improve metadata workflow actions tests.
+- Ensure cabinet document is added using the correct method when using the
+  upload wizard. Closes GitLab issue #1118. Thanks to
+  haithoum (@haithembenammar) for the report.
+- Display exception errors to console when Celery fails to initialize.
+- Backport workaround for swagger-spec-validator dependency
+  bug. Pin jsonschema to version 3.2.0 to avoid errors with
+  swagger-spec-validator 2.7.3. swagger-spec-validator does not specify a
+  version for jsonschema
+  (https://github.com/Yelp/swagger_spec_validator/blob/master/setup.py#L17),
+  which installs the latest version 4.0.1. This version removes
+  ``jsonschema.compat`` still used by swagger-spec-validator.
+- Pin ``importlib-metadata`` to version 4.13.0 to workaround a dependency
+  bug in Kombu.
+- Update tox from version 3.14.6 to 3.27.0.
+
 3.5.11 (2021-08-19)
 ===================
 - Update Django from version 2.2.23 to 2.2.24.

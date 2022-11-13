@@ -72,6 +72,7 @@ class StatisticQueueView(ConfirmView):
         obj = self.get_object()
         return {
             'namespace': obj.namespace,
+            'navigation_object_list': ('namespace', 'object'),
             'object': obj,
             # Translators: This text is asking users if they want to queue
             # (to send to the queue) a statistic for it to be update ahead

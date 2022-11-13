@@ -437,9 +437,10 @@
 - Redirect to current user to user detail view after password change.
 - Support two different ``psycopg2`` versions for upgrade testing.
 
-4.1.10 (unreleased)
+4.1.10 (2022-11-13)
 ===================
 - Fixes from version 4.0.23.
+- Update importlib-metadata from version 4.13.0 to 5.0.0.
 
 4.1.9 (2022-04-24)
 ==================
@@ -1146,11 +1147,23 @@
   Thanks to Ludovic Anterieur (@lanterieur) for the request.
 - Pin jsonschema to version 3.2.0 to avoid errors with
 
-4.0.23 (unreleased)
+4.0.23 (2022-11-13)
 ===================
 - Add help text to the `SEARCH_BACKEND_ARGUMENTS` setting.
 - Backport an object storage documentation chapter fix
   from version 4.4dev0.
+- Don't tag Docker images as ``latest`` for minor releases. As per Docker's
+  specifications, the ``latest`` tag is applied to the latest image built
+  if no tag is specified. It is not meant to represent the latest version
+  of an project, just the last image that has been built. However users
+  commonly (and mistakenly) have come to expect the ``latest`` tag to
+  represent the latest version of the project. The GitLab CI file is
+  updated to fulfill this expectation.
+- Fixes from version 3.5.12.
+- Pin ``importlib-metadata`` to version 4.13.0 to workaround a dependency
+  bug in Kombu.
+- Update tox from version 3.14.6 to 3.27.0.
+- Update Debian container from tag 10.10-slim to 10.13-slim
 
 4.0.22 (2022-04-22)
 ===================
