@@ -240,6 +240,7 @@ job_python_push_pypi:
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - pip install "mayan-edms<$DOCKER_VERSION"
     - pip install --requirement requirements/build.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
+    - pip install importlib-metadata==4.13.0
     - make python-wheel
   cache:
     paths:
