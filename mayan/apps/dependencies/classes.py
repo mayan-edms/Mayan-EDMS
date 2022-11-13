@@ -2,11 +2,9 @@ import json
 from io import BytesIO
 import logging
 from packaging import version
-from pathlib import Path
 import pkg_resources
 import shutil
 import sys
-import tarfile
 
 from furl import furl
 import requests
@@ -22,6 +20,8 @@ from django.utils.translation import ugettext_lazy as _, ugettext
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.exceptions import ResolverPipelineError
 from mayan.apps.common.utils import ResolverPipelineObjectAttribute
+from mayan.apps.storage.compat import Path
+from mayan.apps.storage.compressed_files import TarArchive
 from mayan.apps.storage.utils import (
     TemporaryDirectory, mkdtemp, patch_files as storage_patch_files
 )
@@ -528,16 +528,38 @@ class JavaScriptDependency(Dependency):
     def extract(self, replace_list=None):
         with TemporaryDirectory() as temporary_directory:
             path_compressed_file = self.get_tar_file_path()
+            path_temporary = Path(temporary_directory)
 
-            with tarfile.open(name=force_text(s=path_compressed_file), mode='r') as file_object:
-                file_object.extractall(path=temporary_directory)
+            with path_compressed_file.open(mode='rb') as file_object:
+                archive = TarArchive.open(file_object=file_object)
 
-            self.patch_files(path=temporary_directory, replace_list=replace_list)
+                for member in archive.members():
+                    member_path = (path_temporary / member).resolve()
+
+                    if member_path.parent.is_relative_to(path_temporary):
+                        with archive.open_member(filename=str(member)) as member_archive_file_object:
+                            member_path.parent.mkdir(exist_ok=True, parents=True)
+                            with member_path.open(mode='wb+') as member_storage_file_object:
+                                shutil.copyfileobj(
+                                    fsrc=member_archive_file_object,
+                                    fdst=member_storage_file_object
+                                )
+                    else:
+                        raise DependenciesException(
+                            'Suspicious path traversal: {}. Dependency '
+                            'might be compromised'.format(member)
+                        )
+
+            self.patch_files(
+                path=temporary_directory, replace_list=replace_list
+            )
 
             path_install = self.get_install_path()
 
             # Clear the installation path of previous content
-            shutil.rmtree(path=force_text(s=path_install), ignore_errors=True)
+            shutil.rmtree(
+                path=force_text(s=path_install), ignore_errors=True
+            )
 
             # Scoped packages are nested under a parent directory
             # create it to avoid rename errors.

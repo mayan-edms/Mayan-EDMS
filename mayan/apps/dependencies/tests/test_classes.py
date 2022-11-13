@@ -1,12 +1,15 @@
 from pathlib import Path
-
 import shutil
 
-from mayan.apps.storage.utils import mkdtemp
+from mayan.apps.storage.utils import TemporaryDirectory, mkdtemp
 from mayan.apps.testing.tests.base import BaseTestCase
 from mayan.apps.testing.tests.utils import mute_stdout
 
+from ..classes import JavaScriptDependency
+from ..exceptions import DependenciesException
+
 from .mocks import TestDependency
+from .literals import TEST_TAR_CVE_2007_4559_FILENAME, TEST_TAR_CVE_2007_4559_PATH
 
 
 class DependencyClassTestCase(BaseTestCase):
@@ -58,3 +61,24 @@ class DependencyClassTestCase(BaseTestCase):
         self.assertEqual(
             self.final_text, '@import url({});'.format(self.test_replace_text)
         )
+
+
+class DependencyClassCVE_2007_4559TestCase(BaseTestCase):
+    def test_path_travesal_detection(self):
+        with TemporaryDirectory() as temporary_directory:
+            (Path(temporary_directory) / 'package').mkdir()
+            with Path(TEST_TAR_CVE_2007_4559_PATH).open(mode='rb') as test_source_file_object:
+                with (Path(temporary_directory) / TEST_TAR_CVE_2007_4559_FILENAME).open(mode='wb') as test_destination_file_object:
+                    shutil.copyfileobj(fsrc=test_source_file_object, fdst=test_destination_file_object)
+
+            test_dependency = JavaScriptDependency(
+                label='Label', module=__name__,
+                name='test_repository', version_string='=1.0'
+            )
+            test_dependency.path_cache = temporary_directory
+            test_dependency.version_metadata = {
+                'dist': {'tarball': TEST_TAR_CVE_2007_4559_FILENAME}
+            }
+
+            with self.assertRaises(expected_exception=DependenciesException):
+                test_dependency.extract()
