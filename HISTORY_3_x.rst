@@ -15,6 +15,9 @@
   (https://github.com/Yelp/swagger_spec_validator/blob/master/setup.py#L17),
   which installs the latest version 4.0.1. This version removes
   ``jsonschema.compat`` still used by swagger-spec-validator.
+- Pin ``importlib-metadata`` to version 4.13.0 to workaround a dependency
+  bug in Kombu.
+- Update tox from version 3.14.6 to 3.27.0.
 
 3.5.11 (2021-08-19)
 ===================

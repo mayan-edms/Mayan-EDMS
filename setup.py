@@ -91,6 +91,7 @@ fusepy==3.0.1
 gevent==21.8.0
 graphviz==0.14
 gunicorn==20.1.0
+importlib-metadata==4.13.0
 jsonschema==3.2.0
 mock==4.0.2
 node-semver==0.8.0

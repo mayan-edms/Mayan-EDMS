@@ -11,6 +11,9 @@
   represent the latest version of the project. The GitLab CI file is
   updated to fulfill this expectation.
 - Fixes from version 3.5.12.
+- Pin ``importlib-metadata`` to version 4.13.0 to workaround a dependency
+  bug in Kombu.
+- Update tox from version 3.14.6 to 3.27.0.
 
 4.0.22 (2022-04-22)
 ===================
