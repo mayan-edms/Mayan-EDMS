@@ -1,0 +1,102 @@
+Version 4.0.23
+==============
+
+Released: November 13, 2022
+
+Status: End of life
+
+Changes
+--------
+
+
+Cabinets
+^^^^^^^^
+
+Ensure cabinet document is added using the correct method when using the
+upload wizard.
+
+
+
+Docker
+^^^^^^
+
+The Debian container was updated from tag 10.10-slim to 10.13-slim.
+
+Docker images are no longer tagged ``latest`` for minor releases. As per
+Docker's specification, the ``latest`` tag is applied to the latest image
+built if no tag is specified. It is not meant to represent the latest version
+of an project, just the last image that has been built.
+
+However users commonly (and mistakenly) have come to expect the ``latest``
+tag to represent the latest version of the project. The GitLab CI file was
+updated to match this expectation.
+
+
+Search
+^^^^^^
+
+Add help text to the ``SEARCH_BACKEND_ARGUMENTS`` setting.
+
+
+Statistics
+^^^^^^^^^^
+
+Fix statistic queue view navigation context.
+
+
+Task manager
+^^^^^^^^^^^^
+
+Display exception errors to console when Celery fails to initialize.
+
+
+
+Other
+^^^^^
+
+- Backport an object storage documentation chapter fix
+  from version 4.4dev0.
+- Fixes from version 3.5.12.
+- Pin ``importlib-metadata`` to version 4.13.0 to workaround a dependency
+  bug in Kombu.
+- Update tox from version 3.14.6 to 3.27.0.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1118` [4.2.5] Event create and delete document in cabinet
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

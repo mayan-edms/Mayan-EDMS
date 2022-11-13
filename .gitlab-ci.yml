@@ -84,14 +84,12 @@ job_docker_push_minor:
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - docker pull "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
-    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
     - VERSION_SCRIPT_BIN=contrib/scripts/version.py
     - MINOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION minor);
     - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
     - docker logout $CI_REGISTRY
     - docker login --username "$DOCKER_HUB_USERNAME" --password "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
     - docker push registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
-    - docker push registry-1.docker.io/mayanedms/mayanedms:latest
     - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
   services:
     - docker:20-dind
@@ -147,7 +145,7 @@ job_documentation_build:
     - apt-get install --yes enchant gcc make libjpeg-dev libpng-dev python3-venv python3-dev zlib1g-dev
     - python3 -m venv venv
     - . venv/bin/activate
-  image: debian:10.10-slim
+  image: debian:10.13-slim
   only:
     - releases/all_major
     - releases/documentation
@@ -168,7 +166,7 @@ job_documentation_push:
     - 'which ssh-agent || ( apt-get update --yes && apt-get install --yes openssh-client rsync )'
     - eval $(ssh-agent -s)
     - echo "$DOCUMENTATION_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-  image: debian:10.10-slim
+  image: debian:10.13-slim
   only:
     - releases/all_major
     - releases/documentation
@@ -192,7 +190,7 @@ job_python_build:
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
-  image: debian:10.10-slim
+  image: debian:10.13-slim
   only:
     - releases/all_major
     - releases/all_minor
@@ -213,7 +211,7 @@ job_python_push_pypi:
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
-  image: debian:10.10-slim
+  image: debian:10.13-slim
   only:
     - releases/all_major
     - releases/all_minor
@@ -245,7 +243,7 @@ job_python_push_pypi:
     paths:
       - ~/.cache/pip/
       - /var/cache/apt/archives/
-  image: debian:10.10-slim
+  image: debian:10.13-slim
   only:
     - releases/all_major
     - releases/all_minor
@@ -309,7 +307,7 @@ job_sqlite_upgrade_test:
     paths:
       - ~/.cache/pip/
       - /var/cache/apt/archives/
-  image: debian:10.10-slim
+  image: debian:10.13-slim
   only:
     - releases/all_major
     - releases/all_minor

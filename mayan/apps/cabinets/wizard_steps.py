@@ -49,7 +49,7 @@ class DocumentCreateWizardStepCabinets(DocumentCreateWizardStep):
         cabinet_id_list = URL(query_string=query_string).args.getlist('cabinets')
 
         for cabinet in Cabinet.objects.filter(pk__in=cabinet_id_list):
-            cabinet.documents.add(document)
+            cabinet.document_add(document=document)
 
 
 DocumentCreateWizardStep.register(DocumentCreateWizardStepCabinets)
