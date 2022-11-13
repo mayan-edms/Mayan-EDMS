@@ -239,9 +239,6 @@ job_python_push_pypi:
     - pip install pip==$PYTHON_PIP_VERSION
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - pip install "mayan-edms<$DOCKER_VERSION"
-    - pip install --requirement requirements/build.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
-    - pip install importlib-metadata==4.13.0
-    - make python-wheel
   cache:
     paths:
       - ~/.cache/pip/
@@ -270,6 +267,8 @@ job_mysql_upgrade_test:
     - export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'{{ DEFAULT_DATABASE_NAME }}','PASSWORD':'{{ DEFAULT_DATABASE_PASSWORD }}','USER':'{{ DEFAULT_DATABASE_USER }}','HOST':'$MYSQL_PORT_3306_TCP_ADDR','OPTIONS':{'ssl':True}}}"
     - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
     - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell
+    - pip install --requirement requirements/build.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
+    - make python-wheel
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
   services:
@@ -291,6 +290,8 @@ job_postgres_upgrade_test:
     - export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'{{ DEFAULT_DATABASE_NAME }}','PASSWORD':'{{ DEFAULT_DATABASE_PASSWORD }}','USER':'{{ DEFAULT_DATABASE_USER }}','HOST':'postgres'}}"
     - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
     - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell
+    - pip install --requirement requirements/build.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
+    - make python-wheel
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
   services:
@@ -308,6 +309,8 @@ job_sqlite_upgrade_test:
     - . venv/bin/activate
     - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
     - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell
+    - pip install --requirement requirements/build.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
+    - make python-wheel
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
 
