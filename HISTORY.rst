@@ -14,6 +14,7 @@
 - Pin ``importlib-metadata`` to version 4.13.0 to workaround a dependency
   bug in Kombu.
 - Update tox from version 3.14.6 to 3.27.0.
+- Update Debian container from tag 10.10-slim to 10.13-slim
 
 4.0.22 (2022-04-22)
 ===================
