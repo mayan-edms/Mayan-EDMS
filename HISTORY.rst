@@ -1,6 +1,8 @@
 4.2.12 (unreleased)
 ===================
 - Fixes from version 4.1.10.
+- Add a subclass of ``Path`` that adds the method ``is_relative_to`` for
+  Python versions lower than 3.9.
 
 4.2.11 (2022-11-05)
 ===================
