@@ -1,6 +1,7 @@
 4.1.10 (unreleased)
 ===================
 - Fixes from version 4.0.23.
+- Update importlib-metadata from version 4.13.0 to 5.0.0.
 
 4.1.9 (2022-04-24)
 ==================
