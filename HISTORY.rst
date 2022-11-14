@@ -452,9 +452,33 @@
 - Display a warning message in the setting edit view when local storage is
   disabled.
 
-4.2.12 (unreleased)
+4.2.12 (2022-11-13)
 ===================
 - Fixes from version 4.1.10.
+- Add a subclass of ``Path`` that adds the method ``is_relative_to`` for
+  Python versions lower than 3.9.
+- Add a patch for Python's CVE-2007-4559
+  (https://nvd.nist.gov/vuln/detail/CVE-2007-4559).
+
+  This is a language level vulnerability which exposed older versions
+  of Mayan EDMS only when downloading JavaScript dependencies from the NPM
+  registry.
+
+  Exploiting this vulnerability requires compromising an existing package
+  hosted on the NPM registry and adding Python code specifically targeting
+  Mayan EDMS. As part of the project's design philosophies, dependencies
+  are only downloaded from authoritative locations and each dependency is
+  pinned to a specific version to guarantee immutable releases.
+
+  Due to all these factors surface of attack of this vulnerability is
+  very limited for older versions of Mayan EDMS, it is also very improbable,
+  very difficulty to accomplish and very difficult to remain undetected.
+
+  There are no known actual or theoretical attacks for Mayan EDMS
+  exploiting this vulnerability.
+
+  Thanks to the TrellixVulnTeam for the pull request which lead to this
+  Mayan EDMS specific patch.
 
 4.2.11 (2022-11-05)
 ===================
@@ -891,7 +915,7 @@
 - Redirect to current user to user detail view after password change.
 - Support two different ``psycopg2`` versions for upgrade testing.
 
-4.1.10 (unreleased)
+4.1.10 (2022-11-13)
 ===================
 - Fixes from version 4.0.23.
 
@@ -1600,11 +1624,23 @@
   Thanks to Ludovic Anterieur (@lanterieur) for the request.
 - Pin jsonschema to version 3.2.0 to avoid errors with
 
-4.0.23 (unreleased)
+4.0.23 (2022-11-13)
 ===================
 - Add help text to the `SEARCH_BACKEND_ARGUMENTS` setting.
 - Backport an object storage documentation chapter fix
   from version 4.4dev0.
+- Don't tag Docker images as ``latest`` for minor releases. As per Docker's
+  specifications, the ``latest`` tag is applied to the latest image built
+  if no tag is specified. It is not meant to represent the latest version
+  of an project, just the last image that has been built. However users
+  commonly (and mistakenly) have come to expect the ``latest`` tag to
+  represent the latest version of the project. The GitLab CI file is
+  updated to fulfill this expectation.
+- Fixes from version 3.5.12.
+- Pin ``importlib-metadata`` to version 4.13.0 to workaround a dependency
+  bug in Kombu.
+- Update tox from version 3.14.6 to 3.27.0.
+- Update Debian container from tag 10.10-slim to 10.13-slim
 
 4.0.22 (2022-04-22)
 ===================

@@ -101,14 +101,12 @@ job_docker_push_minor:
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - docker pull "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
-    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
     - VERSION_SCRIPT_BIN=contrib/scripts/version.py
     - MINOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION minor);
     - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
     - docker logout $CI_REGISTRY
     - docker login --username "$DOCKER_HUB_USERNAME" --password "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
     - docker push registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
-    - docker push registry-1.docker.io/mayanedms/mayanedms:latest
     - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
   services:
     - docker:20-dind
@@ -292,6 +290,7 @@ job_python_push_pypi:
     - pip install pip==$PYTHON_PIP_VERSION
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - pip install "mayan-edms<${DOCKER_VERSION}"
+    - pip install importlib-metadata==4.13.0
   cache:
     paths:
       - ~/.cache/pip/

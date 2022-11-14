@@ -93,8 +93,11 @@ fusepy==3.0.1
 gevent==21.12.0
 graphviz==0.17
 gunicorn==20.1.0
+importlib-metadata==4.13.0
 jsonschema==4.4.0
+mock==4.0.3
 node-semver==0.8.1
+packaging==21.0
 pycountry==22.3.5
 pycryptodome==3.10.4
 pyotp==2.6.0

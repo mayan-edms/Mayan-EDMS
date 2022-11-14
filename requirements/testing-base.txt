@@ -3,4 +3,4 @@ coveralls==3.2.0
 django-test-migrations==1.1.0
 psutil==5.8.0
 selenium==3.141.0
-tox==3.24.3
+tox==3.27.0

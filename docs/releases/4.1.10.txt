@@ -1,0 +1,50 @@
+Version 4.1.10
+==============
+
+Released: November 13, 2022
+
+Status: End of life
+
+Changes
+-------
+
+This version includes all fixes from version 4.0.23.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

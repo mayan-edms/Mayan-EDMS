@@ -62,11 +62,6 @@ Zealand. '''.replace('\n', '\r\n')
             )
 
 
-class TarArchiveClassTestCase(ArchiveClassTestCaseMixin, BaseTestCase):
-    archive_path = TEST_TAR_FILE_PATH
-    cls = TarArchive
-
-
 class ZipArchiveClassTestCase(ArchiveClassTestCaseMixin, BaseTestCase):
     archive_path = TEST_ZIP_FILE_PATH
     cls = ZipArchive
@@ -80,6 +75,11 @@ class ZipArchiveClassTestCase(ArchiveClassTestCaseMixin, BaseTestCase):
         with open(file=TEST_ARCHIVE_ZIP_CP437_MEMBER_PATH, mode='rb') as file_object:
             archive = Archive.open(file_object=file_object)
             list(archive.get_members())
+
+
+class TarArchiveClassTestCase(ArchiveClassTestCaseMixin, BaseTestCase):
+    archive_path = TEST_TAR_FILE_PATH
+    cls = TarArchive
 
 
 class TarGzArchiveClassTestCase(ArchiveClassTestCaseMixin, BaseTestCase):
