@@ -11,11 +11,6 @@ Changes
 This version includes all fixes from version 4.0.23.
 
 
-Dependencies
-^^^^^^^^^^^^
-
-Update importlib-metadata from version 4.13.0 to 5.0.0.
-
 Removals
 --------
 
