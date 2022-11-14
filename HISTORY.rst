@@ -1,4 +1,4 @@
-4.2.12 (unreleased)
+4.2.12 (2022-11-13)
 ===================
 - Fixes from version 4.1.10.
 - Add a subclass of ``Path`` that adds the method ``is_relative_to`` for
