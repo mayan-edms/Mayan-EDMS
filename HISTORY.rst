@@ -1,3 +1,29 @@
+4.3.3 (2022-11-15)
+==================
+- Fixes from version 4.2.12.
+- Add a patch for Python's CVE-2007-4559
+  (https://nvd.nist.gov/vuln/detail/CVE-2007-4559).
+
+  This is a language level vulnerability which exposed older versions
+  of Mayan EDMS only when downloading JavaScript dependencies from the NPM
+  registry.
+
+  Exploiting this vulnerability requires compromising an existing package
+  hosted on the NPM registry and adding Python code specifically targeting
+  Mayan EDMS. As part of the project's design philosophies, dependencies
+  are only downloaded from authoritative locations and each dependency is
+  pinned to a specific version to guarantee immutable releases.
+
+  Due to all these factors surface of attack of this vulnerability is
+  very limited for older versions of Mayan EDMS, it is also very improbable,
+  very difficulty to accomplish and very difficult to remain undetected.
+
+  There are no known actual or theoretical attacks for Mayan EDMS
+  exploiting this vulnerability.
+
+  Thanks to the TrellixVulnTeam for the pull request which lead to this
+  Mayan EDMS specific patch.
+
 4.3.2 (2022-11-12)
 ==================
 - Use the correct icon for the document type file metadata
