@@ -44,11 +44,6 @@ Other
   Python versions lower than 3.9.
 
 
-4.2.12 (2022-11-13)
-===================
-- Fixes from version 4.1.10.
-
-
 Removals
 --------
 
