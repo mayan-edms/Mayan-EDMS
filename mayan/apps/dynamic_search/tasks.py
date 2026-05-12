@@ -28,7 +28,15 @@ def task_deindex_instance(self, app_label, model_name, object_id):
     logger.info('Executing')
 
     Model = apps.get_model(app_label=app_label, model_name=model_name)
-    instance = Model._meta.default_manager.get(pk=object_id)
+
+    try:
+        instance = Model._meta.default_manager.get(pk=object_id)
+    except Model.DoesNotExist:
+        logger.warning(
+            'Object %s with pk=%s no longer exists; '
+            'skipping de-indexing.', Model, object_id
+        )
+        return
 
     try:
         SearchBackend.get_instance().deindex_instance(instance=instance)

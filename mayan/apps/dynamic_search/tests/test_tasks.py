@@ -3,6 +3,7 @@ from django.db import models
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..classes import SearchBackend, SearchModel
+from ..tasks import task_deindex_instance
 
 from .mixins import SearchTaskTestMixin, SearchTestMixin
 
@@ -60,3 +61,29 @@ class SearchTaskTestCase(SearchTaskTestMixin, SearchTestMixin, BaseTestCase):
             search_terms=self._test_objects[0].test_field
         )
         self.assertTrue(self._test_objects[0] in queryset)
+
+    def test_task_deindex_instance_object_already_deleted(self):
+        """
+        task_deindex_instance must not crash when the object no longer exists.
+
+        This is a race condition that occurs when a document is deleted (e.g.
+        from the trash) and the de-index task executes after the DELETE has
+        already committed.  Before this fix the task raised DoesNotExist and
+        logged a CRITICAL traceback; now it logs a warning and returns cleanly.
+        Regression test for GitLab issue #1185.
+        """
+        obj = self._test_objects[0]
+        app_label = obj._meta.app_label
+        model_name = obj._meta.model_name
+        pk = obj.pk
+
+        obj.delete()
+
+        # Must complete without raising any exception.
+        task_deindex_instance.apply_async(
+            kwargs={
+                'app_label': app_label,
+                'model_name': model_name,
+                'object_id': pk,
+            }
+        ).get()
