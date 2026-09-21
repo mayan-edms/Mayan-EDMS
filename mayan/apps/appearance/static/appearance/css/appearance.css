@@ -1058,6 +1058,26 @@ body {
     color: var(--info) !important;
 }
 
+.form-card {
+    background-color: var(--surface-card) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--shadow-card) !important;
+}
+
+.has-error label {
+    color: var(--danger) !important;
+}
+
+.has-error .help-block {
+    color: var(--danger) !important;
+}
+
+.checkbox input[type="checkbox"],
+.radio input[type="radio"] {
+    accent-color: var(--brand-navy);
+}
+
 .breadcrumb {
     background-color: transparent !important;
     padding: 0 !important;
