@@ -43,6 +43,70 @@
     --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+/* Fibex design tokens — bloque aprobado (ver vault: Architecture - Visual
+   Identity Design System (Fibex-EDMS), seccion 7). PR1 (fundacion, que
+   reemplazaria por completo el bloque :root de arriba) aun no esta
+   mergeado; este bloque se agrega adelantado, solo para no bloquear el
+   Issue B1 (sistema de botones). Coexiste sin conflicto con el bloque de
+   arriba (nombres de variable distintos) hasta que PR1 aterrice y
+   reconcilie/depure ambos. Ver: Architecture - Developer B Implementation
+   Plan (Fibex-EDMS) en el vault. */
+:root {
+  /* Fibex brand */
+  --brand-navy:        #000C56;
+  --brand-navy-hover:  #04126B;
+  --brand-navy-press:  #000940;
+  --brand-mint:        #26FEBF;
+  --brand-mint-tint:   #E6FFF7;
+  --on-brand:          #FFFFFF;
+
+  /* Surfaces and lines */
+  --surface-page:      #F1F5F9;
+  --surface-card:      #FFFFFF;
+  --surface-muted:     #F8FAFC;
+  --line:              #E2E8F0;
+  --line-strong:       #CBD5E1;
+
+  /* Text */
+  --text-title:        #000C56;
+  --text-body:         #334155;
+  --text-quiet:        #475569;
+  --text-muted:        #64748B;
+  /* #1C2434 — page/section titles, brand, labels and "control" text (14/500)
+     per the Typography and Components boards. NOT named in the Tokens
+     board itself (which only defines --text-title as #000C56 for this
+     role) — flagged for the design team to reconcile later; added here as
+     --text-strong so form labels/.form-control text use a real token
+     instead of a hardcoded hex. */
+  --text-strong:       #1C2434;
+
+  /* Status — fill, then its tint for badges */
+  --ok:      #046C52;   --ok-tint:      #D6FFF2;
+  --warn:    #92400E;   --warn-tint:    #FEF3C7;
+  --danger:  #C81E1E;   --danger-tint:  #FEE2E2;
+  --info:    #000C56;   --info-tint:    #DDE3F5;
+
+  /* Hover/press shades for --ok/--danger — NOT in the original design
+     boards (only --brand-navy's hover/press progression was specified
+     there); computed here as ~12%/~22% darkened variants so
+     .btn-success/.btn-danger get the same hover/press feedback
+     .btn-primary already has. Replace with official values if the design
+     system documents them later. */
+  --ok-hover:      #045F48;
+  --ok-press:      #035440;
+  --danger-hover:  #B01A1A;
+  --danger-press:  #9C1717;
+
+  /* Shape, motion, reach */
+  --radius-sm:   6px;
+  --radius:      8px;
+  --radius-lg:   12px;
+  --shadow-card: 0 1px 3px 0 rgba(0, 12, 86, .08);
+  --focus-ring:  0 0 0 3px rgba(0, 12, 86, .25);
+  --tap-min:     44px;
+  --ease:        .2s ease;
+}
+
 @font-face {
     font-family: 'IM Fell English SC';
     font-style: normal;
@@ -808,48 +872,81 @@ body {
 }
 
 .btn {
-    border-radius: 8px !important;
+    border-radius: var(--radius) !important;
     font-weight: 500 !important;
     font-size: 14px !important;
-    padding: 8px 16px !important;
-    transition: all 0.2s ease !important;
+    padding: 11px 18px !important;
+    min-height: var(--tap-min) !important;
+    transition: all var(--ease) !important;
     border: 1px solid transparent !important;
+    box-shadow: none !important;
+}
+
+.btn-xs {
+    padding: 11px 18px !important;
+    min-height: var(--tap-min) !important;
+    font-size: 14px !important;
 }
 
 .btn-primary {
-    background-color: var(--brand-primary) !important;
-    border-color: var(--brand-primary) !important;
-    color: #FFFFFF !important;
-    box-shadow: 0 2px 4px rgba(60, 80, 224, 0.2) !important;
+    background-color: var(--brand-navy) !important;
+    border-color: var(--brand-navy) !important;
+    color: var(--on-brand) !important;
+    box-shadow: none !important;
 }
 
 .btn-primary:hover, .btn-primary:focus {
-    background-color: var(--brand-primary-hover) !important;
-    border-color: var(--brand-primary-hover) !important;
+    background-color: var(--brand-navy-hover) !important;
+    border-color: var(--brand-navy-hover) !important;
+}
+
+.btn-primary:active {
+    background-color: var(--brand-navy-press) !important;
+    border-color: var(--brand-navy-press) !important;
 }
 
 .btn-default, .btn-secondary {
     background-color: #FFFFFF !important;
-    border-color: var(--gray-200) !important;
-    color: var(--gray-600) !important;
+    border-color: var(--line) !important;
+    color: var(--text-quiet) !important;
 }
 
 .btn-default:hover, .btn-secondary:hover {
-    background-color: var(--gray-50) !important;
-    color: var(--sidebar-bg) !important;
-    border-color: var(--gray-300) !important;
+    background-color: var(--surface-muted) !important;
+    color: var(--text-title) !important;
+    border-color: var(--line-strong) !important;
 }
 
 .btn-success {
-    background-color: var(--color-success) !important;
-    border-color: var(--color-success) !important;
-    color: #FFFFFF !important;
+    background-color: var(--ok) !important;
+    border-color: var(--ok) !important;
+    color: var(--on-brand) !important;
+}
+
+.btn-success:hover, .btn-success:focus {
+    background-color: var(--ok-hover) !important;
+    border-color: var(--ok-hover) !important;
+}
+
+.btn-success:active {
+    background-color: var(--ok-press) !important;
+    border-color: var(--ok-press) !important;
 }
 
 .btn-danger {
-    background-color: var(--color-danger) !important;
-    border-color: var(--color-danger) !important;
-    color: #FFFFFF !important;
+    background-color: var(--danger) !important;
+    border-color: var(--danger) !important;
+    color: var(--on-brand) !important;
+}
+
+.btn-danger:hover, .btn-danger:focus {
+    background-color: var(--danger-hover) !important;
+    border-color: var(--danger-hover) !important;
+}
+
+.btn-danger:active {
+    background-color: var(--danger-press) !important;
+    border-color: var(--danger-press) !important;
 }
 
 .btn-block {
@@ -901,19 +998,64 @@ body {
 }
 
 .form-control {
-    border-radius: 8px !important;
-    border: 1px solid var(--gray-200) !important;
+    border-radius: var(--radius) !important;
+    border: 1px solid var(--line) !important;
     background-color: #FFFFFF !important;
-    color: var(--sidebar-bg) !important;
+    color: var(--text-strong) !important;
     padding: 10px 14px !important;
     height: auto !important;
     box-shadow: none !important;
-    transition: all 0.2s ease !important;
+    transition: all var(--ease) !important;
 }
 
 .form-control:focus {
-    border-color: var(--brand-primary) !important;
-    box-shadow: 0 0 0 3px rgba(60, 80, 224, 0.15) !important;
+    border-color: var(--brand-navy) !important;
+    box-shadow: var(--focus-ring) !important;
+    outline: none !important;
+}
+
+.form-group > label {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: var(--text-strong) !important;
+}
+
+.has-error .form-control {
+    border-color: var(--danger) !important;
+}
+
+.help-block {
+    color: var(--text-muted) !important;
+    font-size: 13px !important;
+}
+
+.form-group input[type="file"] {
+    display: block !important;
+    margin-top: 4px !important;
+}
+
+.alert-success {
+    background-color: var(--ok-tint) !important;
+    border-color: var(--ok) !important;
+    color: var(--ok) !important;
+}
+
+.alert-danger {
+    background-color: var(--danger-tint) !important;
+    border-color: var(--danger) !important;
+    color: var(--danger) !important;
+}
+
+.alert-warning {
+    background-color: var(--warn-tint) !important;
+    border-color: var(--warn) !important;
+    color: var(--warn) !important;
+}
+
+.alert-info {
+    background-color: var(--info-tint) !important;
+    border-color: var(--info) !important;
+    color: var(--info) !important;
 }
 
 .breadcrumb {
