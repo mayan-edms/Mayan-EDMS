@@ -403,12 +403,6 @@ a i {
 .zero-margin {
     margin-right: 0;
     margin-left: 0;
-
-    > .col,
-    > [class*="col-"] {
-        padding-right: 0;
-        padding-left: 0;
-    }
 }
 
 @media (min-width: 768px) {
@@ -767,32 +761,9 @@ body, html, button, input, select, textarea {
 body {
     background-color: var(--gray-100) !important;
     color: var(--sidebar-bg) !important;
+    padding-top: 70px !important;
 }
 
-.navbar-fixed-top {
-    background-color: #FFFFFF !important;
-    border-bottom: 1px solid var(--gray-200) !important;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
-}
-
-.navbar-brand {
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 700 !important;
-    font-size: 18px !important;
-    color: var(--sidebar-bg) !important;
-    letter-spacing: -0.02em !important;
-}
-
-.navbar-default .navbar-nav > li > a {
-    color: var(--gray-500) !important;
-    font-weight: 500 !important;
-    font-size: 14px !important;
-}
-
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-    color: var(--brand-primary) !important;
-}
 
 #menu-main {
     background-color: var(--sidebar-bg) !important;
@@ -807,6 +778,10 @@ body {
 #accordion-sidebar .panel-heading {
     background-color: transparent !important;
     padding: 2px 10px !important;
+}
+
+#appearance-main-viewport {
+    padding: 0 15px !important;
 }
 
 #accordion-sidebar .panel-title {
@@ -1143,11 +1118,6 @@ body {
     margin-left: 4px !important;
 }
 
-.navbar-brand-icon {
-    color: var(--brand-primary) !important;
-    margin-right: 8px !important;
-    font-size: 18px !important;
-}
 
 .topbar-search-trigger {
     background-color: var(--gray-100) !important;

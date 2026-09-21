@@ -3,3 +3,247 @@
  * Owner: Developer A
  * Purpose: Topbar, sidebar, menus, buttons, and links.
  */
+
+/* =========================================
+   Topbar Navigation (Bootstrap 3.4 Overrides)
+   ========================================= */
+
+.navbar.navbar-default.navbar-fixed-top {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid var(--gray-200) !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+    min-height: 64px;
+}
+
+.navbar-default .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-family-base, 'Inter', sans-serif);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--brand-navy, #000C56);
+    letter-spacing: -0.02em;
+    height: 64px;
+    padding: 15px 20px;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: var(--brand-primary, #3C50E0);
+}
+
+.navbar-brand-icon {
+    color: var(--brand-mint, #26FEBF);
+    font-size: 20px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+    padding-right: 20px;
+    height: 64px;
+}
+
+.navbar-right .dropdown.menu-user {
+    order: 99;
+}
+
+.navbar-default .navbar-nav > li > a,
+.navbar-right .btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px;
+    height: 40px !important;
+    min-height: 40px !important;
+    padding: 0 12px !important;
+    margin: 0 2px !important;
+    color: var(--brand-navy, #000C56) !important;
+    font-weight: 500;
+    font-size: 14px;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    border-radius: var(--radius, 8px) !important;
+    transition: all 0.2s ease;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:active,
+.navbar-default .navbar-nav > li.open > a,
+.navbar-right .btn:hover,
+.navbar-right .btn:focus,
+.navbar-right .btn:active {
+    color: var(--brand-primary, #3C50E0) !important;
+    background-color: var(--gray-80, #F8FAFC) !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: var(--gray-200);
+    margin-top: 15px;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: var(--gray-100);
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: var(--gray-500);
+}
+
+@media (min-width: 992px) {
+    .navbar-right .dropdown-menu {
+        right: 0;
+        left: auto;
+        border: 1px solid var(--gray-200);
+        box-shadow: var(--shadow-card, 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06));
+        border-radius: var(--radius, 8px);
+        padding: 8px 0;
+        margin-top: 12px;
+    }
+    
+    .navbar-right .dropdown-menu > li > a {
+        padding: 8px 20px;
+        color: var(--text-body, #334155);
+        font-weight: 500;
+        height: auto !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+    }
+
+    .navbar-right .dropdown-menu > li > a:hover {
+        background-color: var(--gray-50);
+        color: var(--brand-primary);
+    }
+}
+
+.topbar-hamburger {
+    background: transparent;
+    border: none;
+    color: var(--gray-500, #64748B);
+    font-size: 20px;
+    padding: 0 12px;
+    height: 44px;
+    width: 44px;
+    border-radius: var(--radius, 8px);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.topbar-hamburger:hover {
+    background-color: var(--gray-100, #F1F5F9);
+    color: var(--brand-navy, #000C56);
+}
+
+button#main-menu-button-open:not(.topbar-hamburger) {
+    display: none !important;
+}
+
+@media (min-width: 768px) {
+    .topbar-hamburger {
+        display: none !important;
+    }
+}
+@media (max-width: 767px) {
+    #main-menu-button-open.topbar-hamburger {
+        margin-left: 15px !important;
+        margin-right: 0 !important;
+        margin-bottom: 0 !important;
+        width: 44px;
+        height: 44px;
+        background: transparent !important;
+        border: none !important;
+        color: var(--gray-500) !important;
+        font-size: 20px;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        padding: 0 !important;
+    }
+
+    .navbar-collapse .navbar-nav > li:not(.dropdown) {
+        display: none !important;
+    }
+
+    .navbar-right {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        padding: 0;
+        gap: 0;
+    }
+
+    .navbar-default .navbar-nav > li > a, 
+    .navbar-right .btn {
+        justify-content: flex-start !important;
+        height: 50px !important;
+        width: 100%;
+        border-radius: 0 !important;
+        border-bottom: 1px solid var(--gray-100);
+        padding: 0 20px !important;
+        gap: 8px;
+    }
+
+    .navbar-default .navbar-nav > li > a .caret {
+        margin-left: auto !important;
+    }
+
+    .navbar-default .navbar-nav > li > a > i,
+    .navbar-default .navbar-nav > li > a > span.user-avatar {
+        min-width: 32px;
+        max-width: 32px;
+        text-align: center;
+        margin: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-nav .open .dropdown-menu {
+        display: block !important;
+        position: static !important;
+        float: none !important;
+        width: auto !important;
+        margin-top: 0 !important;
+        background-color: var(--gray-50, #F8FAFC) !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        padding-bottom: 8px;
+    }
+    .navbar-nav .open .dropdown-menu > li > a {
+        padding: 12px 20px 12px 48px !important;
+        color: var(--gray-600, #475569) !important;
+        background-color: transparent !important;
+    }
+    .navbar-nav .open .dropdown-menu > li > a:hover {
+        background-color: var(--gray-100, #F1F5F9) !important;
+        color: var(--brand-navy, #000C56) !important;
+    }
+}
+
+.user-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: #DDE3F5;
+    color: var(--brand-navy, #000C56);
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    margin-right: 8px;
+}
+
+.link-label {
+    margin-right: 4px;
+}

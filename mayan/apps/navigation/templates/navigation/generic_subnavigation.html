@@ -2,10 +2,25 @@
 {% load navigation_tags %}
 
 {% if link|common_get_type == "<class 'mayan.apps.navigation.classes.Menu'>" %}
-    <li class="dropdown">
+    <li class="dropdown {% if link.name == 'user' %}menu-user{% endif %}">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-            {% if link.icon %}{{ link.icon.render }}{% endif %}
-            {{ link.label }}
+            {% if link.name == 'user' %}
+                <span class="user-avatar">
+                    {% if request.user.first_name and request.user.last_name %}
+                        {{ request.user.first_name|make_list|first|upper }}{{ request.user.last_name|make_list|first|upper }}
+                    {% elif request.user.first_name %}
+                        {{ request.user.first_name|make_list|first|upper }}
+                    {% else %}
+                        {{ request.user.username|make_list|first|upper }}
+                    {% endif %}
+                </span>
+                <span class="link-label">{{ request.user.get_full_name|default:request.user.username }}</span>
+            {% elif link.icon %}
+                {{ link.icon.render }}
+                <span class="link-label">{{ link.label }}</span>
+            {% else %}
+                <span class="link-label">{{ link.label }}</span>
+            {% endif %}
             <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">

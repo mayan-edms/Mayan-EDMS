@@ -2,32 +2,56 @@
 
 {% load navigation_tags %}
 {% load smart_settings_tags %}
+{% load common_tags %}
 
 {% spaceless %}
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <button aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" type="button">
-                    <span class="sr-only">{% trans 'Toggle navigation' %}</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{% url home_view %}">
-                    <span class="navbar-brand-icon"><i class="fas fa-layer-group"></i></span>
-                    <span class="navbar-brand-title">Fibex EDMS</span>
-                </a>
+            <div class="navbar-header" style="height: 64px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; height: 100%;">
+                    <button id="main-menu-button-open" class="topbar-hamburger">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <button aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" type="button" style="border: none; background: transparent; font-size: 20px; color: var(--gray-500); padding: 12px; margin: 0 15px 0 0;">
+                        <span class="sr-only">{% trans 'Toggle navigation' %}</span>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
             </div>
 
             <div id="navbar" class="navbar-collapse collapse">
-                <div class="navbar-left hidden-xs hidden-sm">
-                    <div class="topbar-search-trigger">
-                        <i class="fas fa-search"></i>
-                        <span>{% trans 'Buscar en el sistema...' %}</span>
-                        <kbd class="topbar-kbd">⌘K</kbd>
-                    </div>
-                </div>
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown hidden-md hidden-lg">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-h"></i> <span class="link-label">{% trans 'Options' %}</span> <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% navigation_resolve_menu name='topbar' as topbar_menus_results %}
+                            {% for tobpar_menu_result in topbar_menus_results %}
+                                {% for link_group in tobpar_menu_result.link_groups %}
+                                    {% for link in link_group.links %}
+                                        {% if link|common_get_type != "<class 'mayan.apps.navigation.classes.Menu'>" %}
+                                            <li>
+                                                <a href="{{ link.url }}">
+                                                    {% if link.icon %}{{ link.icon.render }}{% endif %}
+                                                    <span class="link-label">
+                                                        {% if link.link.view == 'events:user_notifications_list' %}
+                                                            {% trans 'Notifications' %}
+                                                        {% elif link.link.view == 'messaging:message_list' %}
+                                                            {% trans 'Messages' %}
+                                                        {% else %}
+                                                            {% trans 'More' %}
+                                                        {% endif %}
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+
                     {% navigation_resolve_menu name='topbar' as topbar_menus_results %}
                     {% for tobpar_menu_result in topbar_menus_results %}
                         {% for link_group in tobpar_menu_result.link_groups %}
