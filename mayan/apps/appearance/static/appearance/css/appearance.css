@@ -617,75 +617,20 @@ a i {
 }
 
 #accordion-sidebar a {
-    padding: 10px 15px;
-}
-
-#accordion-sidebar a[aria-expanded="true"] {
-    background: #1a242f;
-}
-
-#accordion-sidebar .panel {
-    border: 0px;
-}
-
-#accordion-sidebar a {
     outline: none;
-}
-
-#accordion-sidebar > .panel > div > div > ul > li > a,
-#accordion-sidebar > .panel > div > h4 > a {
     text-decoration: none;
-    outline: none;
-    position: relative;
-    display: block;
-}
-
-#accordion-sidebar .panel-heading {
-    background-color: #2c3e50;
-    color: white;
-    padding: 0px;
-}
-
-#accordion-sidebar .panel-heading:hover {
-    background-color: #517394;
-    transition: .1s ease;
-}
-
-#accordion-sidebar > .panel > div > .panel-body > ul > li.active {
-   background: #1a242f;
-}
-
-#accordion-sidebar > .panel > div > .panel-body > ul > li:hover {
-    background-color: #517394;
-    transition: .1s ease;
-}
-
-#accordion-sidebar .panel-title {
-    font-size: 15px;
-}
-
-#accordion-sidebar .panel-body {
-    font-size: 13px;
-    border: 0px;
-    background-color: #2c3e50;
-    padding-top: 3px;
-    padding-left: 20px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-}
-
-#accordion-sidebar .collapsed .accordion-indicator {
-   transform: rotate(90deg);
 }
 
 #accordion-sidebar ul.list-unstyled {
     margin-bottom: 0px;
 }
 
-#accordion-sidebar .panel-body a {
-    color: white;
-    text-decoration: none;
-    padding: 9px;
+#accordion-sidebar .accordion-indicator {
+    transition: transform 0.2s ease;
+}
+
+#accordion-sidebar .collapsed .accordion-indicator {
+    transform: rotate(90deg);
 }
 
 .navbar-fixed-top {
@@ -771,17 +716,25 @@ body {
     box-shadow: none !important;
 }
 
+#appearance-main-viewport {
+    padding: 0 15px !important;
+}
+
 #accordion-sidebar .panel {
     background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-bottom: 2px !important;
+}
+
+#accordion-sidebar .panel:hover {
+    box-shadow: none !important;
 }
 
 #accordion-sidebar .panel-heading {
     background-color: transparent !important;
-    padding: 2px 10px !important;
-}
-
-#appearance-main-viewport {
-    padding: 0 15px !important;
+    border: none !important;
+    padding: 2px 8px !important;
 }
 
 #accordion-sidebar .panel-title {
@@ -790,12 +743,26 @@ body {
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
     color: #8A99AD !important;
-    padding: 12px 10px 4px 10px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#accordion-sidebar .panel-title a {
+    color: #8A99AD !important;
+    display: block !important;
+    padding: 9px 12px !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
 }
 
 #accordion-sidebar .panel-body {
     background-color: transparent !important;
     padding: 0 !important;
+}
+
+#accordion-sidebar .panel-body li {
+    background: transparent !important;
 }
 
 #accordion-sidebar .panel-body a {
@@ -807,15 +774,19 @@ body {
     margin: 2px 8px !important;
     display: block !important;
     transition: all 0.2s ease !important;
+    text-decoration: none !important;
 }
 
+#accordion-sidebar .panel-title a:hover,
 #accordion-sidebar .panel-body a:hover {
-    background-color: var(--sidebar-bg-active) !important;
+    background-color: var(--sidebar-bg-hover) !important;
     color: #FFFFFF !important;
 }
 
-#accordion-sidebar > .panel > div > .panel-body > ul > li.active a,
-#accordion-sidebar a[aria-expanded="true"] {
+#accordion-sidebar .panel-title a[aria-expanded="true"],
+#accordion-sidebar .panel-title a.active,
+#accordion-sidebar .panel-body li.active > a,
+#accordion-sidebar > .panel > div > .panel-body > ul > li.active a {
     background-color: var(--sidebar-bg-active) !important;
     color: #FFFFFF !important;
     border-radius: 6px !important;
