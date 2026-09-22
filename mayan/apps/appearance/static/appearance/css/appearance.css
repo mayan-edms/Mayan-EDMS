@@ -863,6 +863,12 @@ body {
     border-color: var(--line-strong) !important;
 }
 
+.btn-default.active, .btn-secondary.active {
+    background-color: var(--brand-navy) !important;
+    border-color: var(--brand-navy) !important;
+    color: var(--on-brand) !important;
+}
+
 .btn-success {
     background-color: var(--ok) !important;
     border-color: var(--ok) !important;
@@ -1009,6 +1015,7 @@ body {
     border: 1px solid var(--line) !important;
     border-radius: var(--radius-lg) !important;
     box-shadow: var(--shadow-card) !important;
+    padding: 20px !important;
 }
 
 .has-error label {
