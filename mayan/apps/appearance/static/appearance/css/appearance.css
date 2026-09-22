@@ -901,6 +901,33 @@ body {
     border-color: var(--danger-press) !important;
 }
 
+.btn-group .btn + .btn,
+.btn-group .btn + .btn-group,
+.btn-group .btn-group + .btn {
+    margin-left: 4px !important;
+}
+
+.btn-group .btn-sm.disabled {
+    background-color: var(--surface-muted) !important;
+    border-color: var(--line) !important;
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+    cursor: default !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+}
+
+.btn-group .btn-sm.active,
+.btn-group .btn-sm.pagination-disabled {
+    background-color: var(--brand-navy) !important;
+    border-color: var(--brand-navy) !important;
+    color: var(--on-brand) !important;
+    font-weight: 600 !important;
+    cursor: default !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+}
+
 .btn-block {
     background-color: #FFFFFF !important;
     border: 1px solid var(--gray-200) !important;
@@ -923,30 +950,47 @@ body {
     border-collapse: separate !important;
     border-spacing: 0 !important;
     width: 100% !important;
-    border: 1px solid var(--gray-200) !important;
-    border-radius: 12px !important;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--radius-lg) !important;
     overflow: hidden !important;
 }
 
 .table > thead > tr > th {
-    background-color: var(--gray-50) !important;
-    color: var(--gray-500) !important;
+    background-color: var(--surface-muted) !important;
+    color: var(--text-muted) !important;
     font-weight: 600 !important;
     font-size: 12px !important;
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
-    border-bottom: 1px solid var(--gray-200) !important;
+    border-bottom: 1px solid var(--line) !important;
     padding: 12px 16px !important;
+}
+
+.table > thead > tr > th a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+.table > thead > tr > th a:hover {
+    color: var(--text-title) !important;
 }
 
 .table > tbody > tr > td {
     padding: 14px 16px !important;
-    border-bottom: 1px solid var(--gray-100) !important;
-    color: var(--gray-700) !important;
+    border-bottom: 1px solid var(--line) !important;
+    color: var(--text-body) !important;
 }
 
 .table > tbody > tr:hover {
-    background-color: var(--gray-50) !important;
+    background-color: var(--surface-muted) !important;
+}
+
+.table.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: var(--surface-card) !important;
+}
+
+.table.table-striped > tbody > tr:nth-of-type(odd):hover {
+    background-color: var(--surface-muted) !important;
 }
 
 .form-control {
