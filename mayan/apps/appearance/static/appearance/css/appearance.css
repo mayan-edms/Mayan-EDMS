@@ -1381,30 +1381,42 @@ input[type="checkbox"].checkbox {
     padding: 24px;
 }
 
-/* Collapse Bootstrap gutters for search box */
-.fibex-home-search-container .well > .row > div[class^="col-"] {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+.fibex-home-search-container .form-control,
+.fibex-home-search-container .btn {
+    height: 44px !important;
+    padding: 10px 16px !important;
+    line-height: 1.5 !important;
+    font-size: 14px !important;
+    font-family: var(--font-family-base) !important;
+    box-shadow: none !important;
 }
 
-/* Connect select and input visually */
+/* Select specific styling */
 .fibex-home-search-container select.form-control {
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-    border-right: 0 !important;
+    border-radius: var(--radius, 8px) !important;
+    border-color: var(--line-strong, #CBD5E1) !important;
+}
+
+/* Input group styling */
+.fibex-home-search-container .input-group .form-control {
     border-top-left-radius: var(--radius, 8px) !important;
     border-bottom-left-radius: var(--radius, 8px) !important;
+    border-color: var(--line-strong, #CBD5E1) !important;
 }
 
-.fibex-home-search-container .input-group .form-control {
-    border-top-left-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
+/* Buttons */
+.fibex-home-search-container .btn-default {
+    border-radius: 0 !important;
+    border-color: var(--line-strong, #CBD5E1) !important;
+    background-color: var(--surface-card, #FFFFFF) !important;
 }
 
 .fibex-home-search-container .btn-primary {
     background-color: var(--brand-navy, #000C56) !important;
     border-color: var(--brand-navy, #000C56) !important;
     color: var(--on-brand, #FFFFFF) !important;
+    border-top-right-radius: var(--radius, 8px) !important;
+    border-bottom-right-radius: var(--radius, 8px) !important;
     transition: var(--ease, .2s ease);
 }
 
@@ -1419,32 +1431,4 @@ input[type="checkbox"].checkbox {
     border-color: var(--brand-navy, #000C56) !important;
     box-shadow: var(--focus-ring, 0 0 0 3px rgba(0, 12, 86, .25)) !important;
     z-index: 3 !important;
-}
-
-.fibex-home-search-container .btn-default {
-    border-radius: 0 !important;
-    border-color: var(--line-strong, #CBD5E1) !important;
-    background-color: var(--surface-card, #FFFFFF) !important;
-}
-
-.fibex-home-search-container .form-control,
-.fibex-home-search-container .btn {
-    height: 44px !important;
-    padding: 10px 16px !important;
-    line-height: 1.5 !important;
-    font-size: 14px !important;
-    font-family: var(--font-family-base) !important;
-    box-shadow: none !important;
-    border: 1px solid var(--line-strong, #CBD5E1) !important;
-}
-
-.fibex-home-search-container .input-group-btn .btn-default {
-    border-left: none !important;
-}
-
-.fibex-home-search-container .input-group-btn .btn-primary {
-    border-top-right-radius: var(--radius, 8px) !important;
-    border-bottom-right-radius: var(--radius, 8px) !important;
-    border-top-left-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
 }
