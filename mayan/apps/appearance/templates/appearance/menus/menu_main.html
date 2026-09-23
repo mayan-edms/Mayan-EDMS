@@ -1,15 +1,13 @@
 {% load i18n %}
-
-{% load common_tags %}
+{% load static %}{% load common_tags %}
 {% load navigation_tags %}
 {% load smart_settings_tags %}
 
 {% spaceless %}
     <div aria-multiselectable="true" class="panel-group" id="accordion-sidebar" role="tablist">
         <div class="sidebar-brand-header hidden-xs hidden-sm">
-            <a href="{% url home_view %}" class="sidebar-brand-link">
-                <span class="sidebar-brand-logo-icon"><i class="fas fa-layer-group"></i></span>
-                <span class="sidebar-brand-title">Fibex <span class="sidebar-brand-badge">EDMS</span></span>
+            <a href="{% url home_view %}" class="sidebar-brand-link" style="display: flex; align-items: center; justify-content: center;">
+                <img src="{% static 'appearance/images/logo_fibex_blanco_horizontal.svg' %}" alt="Fibex EDMS" class="sidebar-logo" style="height: 40px; max-width: 100%; width: auto;" onerror="this.outerHTML='<span class=\'sidebar-brand-title\' style=\'margin: 0;\'>Fibex <span class=\'sidebar-brand-badge\'>EDMS</span></span>'">
             </a>
         </div>
         <div class="panel-heading" id="menu-main-button-close" role="tab">

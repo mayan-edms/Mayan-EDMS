@@ -1,0 +1,17 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: fibex-edms-app:latest
+    container_name: fibex-dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app:z
+    working_dir: /app
+    environment:
+      - DJANGO_SETTINGS_MODULE=mayan.settings.development
+      - MAYAN_MEDIA_ROOT=/app/mayan/media
+      - PYTHONUNBUFFERED=1
+    command: python manage.py runserver 0.0.0.0:8000 --settings=mayan.settings.development

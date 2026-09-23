@@ -124,6 +124,14 @@
         background-color: var(--gray-50);
         color: var(--brand-primary);
     }
+    
+    .navbar-default .navbar-nav > li > a .caret {
+        transition: transform var(--ease, 0.2s ease);
+    }
+    
+    .navbar-default .navbar-nav > li.open > a .caret {
+        transform: rotate(180deg);
+    }
 }
 
 .topbar-hamburger {
@@ -236,9 +244,9 @@ button#main-menu-button-open:not(.topbar-hamburger) {
     justify-content: center;
     width: 32px;
     height: 32px;
-    background-color: #DDE3F5;
+    background-color: var(--info-tint, #DDE3F5);
     color: var(--brand-navy, #000C56);
-    border-radius: 8px;
+    border-radius: var(--radius, 8px);
     font-weight: 700;
     font-size: 13px;
     margin-right: 8px;

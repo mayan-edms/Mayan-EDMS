@@ -1,0 +1,39 @@
+FROM python:3.10-slim
+
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV DJANGO_SETTINGS_MODULE=mayan.settings.development
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libcairo2-dev \
+    libpango1.0-dev \
+    libmagic1 \
+    poppler-utils \
+    tesseract-ocr \
+    libsasl2-dev \
+    libldap2-dev \
+    gcc \
+    g++ \
+    make \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Install Python dependencies
+COPY requirements /app/requirements
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel \
+    && pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir -r requirements/development.txt
+
+# First-run entrypoint: run migrations + create admin if DB doesn't exist
+COPY docker-entrypoint.dev.sh /usr/local/bin/
+RUN sed -i 's/\r$//' /usr/local/bin/docker-entrypoint.dev.sh \
+    && chmod +x /usr/local/bin/docker-entrypoint.dev.sh
+
+EXPOSE 8000
+
+ENTRYPOINT ["docker-entrypoint.dev.sh"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000", "--settings=mayan.settings.development"]
