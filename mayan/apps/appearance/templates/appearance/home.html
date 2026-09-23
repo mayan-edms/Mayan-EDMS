@@ -22,28 +22,47 @@
     <div class="row">
         <div class="col-xs-12">
             {% if missing_list %}
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">{% trans 'Getting started' %}</h3>
-                    </div>
-                    <div class="panel-body">
-                        {% trans 'Before you can fully use Fibex EDMS you need the following:' %}
-
-                        <div class="list-group">
-                            {% for missing in missing_list %}
-                                <a href="{% url missing.view %}" class="list-group-item">
-                                    <h4 class="list-group-item-heading">{{ missing.label }}</h4>
-                                    <p class="list-group-item-text">{{ missing.description }}</p>
-                                </a>
-                            {% endfor %}
+                <div class="fibex-getting-started-section">
+                    <div class="fibex-getting-started-header">
+                        <div class="fibex-getting-started-icon">
+                            <i class="fa fa-exclamation-triangle"></i>
                         </div>
+                        <div class="fibex-getting-started-text">
+                            <h3>{% trans 'Getting started' %}</h3>
+                            <p>{% trans 'Before you can fully use Fibex EDMS you need the following:' %}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="fibex-missing-cards-container">
+                        {% for missing in missing_list %}
+                            <div class="fibex-missing-card">
+                                <div class="fibex-missing-card-body">
+                                    <div class="fibex-missing-icon">
+                                        <i class="fa fa-exclamation-circle"></i>
+                                    </div>
+                                    <div class="fibex-missing-info">
+                                        <h4>{{ missing.label }}</h4>
+                                        <p>{{ missing.description }}</p>
+                                    </div>
+                                </div>
+                                <div class="fibex-missing-card-footer">
+                                    <a href="{% url missing.view %}" class="fibex-missing-btn">
+                                        <span class="btn-icon"><i class="fa fa-arrow-right"></i></span>
+                                        <span class="btn-text">{{ missing.label }}</span>
+                                        <span class="btn-arrow"><i class="fa fa-chevron-right"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             {% endif %}
         </div>
     </div>
 
-    {% include 'dynamic_search/search_box.html' %}
+    <div class="fibex-home-search-container">
+        {% include 'dynamic_search/search_box.html' %}
+    </div>
 
     {% smart_setting "COMMON_HOME_VIEW_DASHBOARD_NAME" as home_view_dashboard_name %}
 

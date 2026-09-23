@@ -1245,3 +1245,206 @@ input[type="checkbox"].checkbox {
     border-radius: 12px !important;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
 }
+
+/* Fibex Fase 4: Dashboard / Home Scoped Styles */
+
+/* Fibex Fase 4: Dashboard / Home Scoped Styles */
+
+/* Getting Started Header */
+.fibex-getting-started-section {
+    background-color: #F8FAFC; /* Slate 50 */
+    border: 1px solid #CBD5E1; /* Slate 300 */
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.fibex-getting-started-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.fibex-getting-started-icon {
+    font-size: 32px;
+    color: #0F766E; /* Teal 700 */
+}
+
+.fibex-getting-started-text h3 {
+    margin: 0 0 4px 0;
+    color: #000C56; /* Navy */
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.fibex-getting-started-text p {
+    margin: 0;
+    color: #475569; /* Slate 600 */
+    font-size: 15px;
+}
+
+/* Getting Started Cards */
+.fibex-missing-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.fibex-missing-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.fibex-missing-card-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.fibex-missing-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background-color: #EFFFFD; /* Soft cyan tint */
+    border: 1px solid #00D1B2; /* Cyan border */
+    color: #00D1B2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.fibex-missing-info h4 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000C56; /* Navy */
+}
+
+.fibex-missing-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #64748B;
+    line-height: 1.5;
+}
+
+.fibex-missing-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #F0FDFA; /* Soft teal tint */
+    border: 1px solid #14B8A6; /* Teal border */
+    border-radius: 8px;
+    color: #0F766E; /* Teal text */
+    text-decoration: none !important;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.fibex-missing-btn:hover {
+    background-color: #CCFBF1;
+    color: #0F766E;
+}
+
+.fibex-missing-btn .btn-icon {
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+.fibex-missing-btn .btn-text {
+    flex-grow: 1;
+}
+
+.fibex-missing-btn .btn-arrow {
+    color: #0F766E;
+}
+
+/* Home Search Container */
+.fibex-home-search-container {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.fibex-home-search-container .well {
+    background-color: var(--surface-card, #FFFFFF) !important;
+    border: 1px solid var(--line, #E2E8F0) !important;
+    border-radius: var(--radius-lg, 12px) !important;
+    box-shadow: var(--shadow-card, 0 1px 3px 0 rgba(0, 12, 86, .08)) !important;
+    padding: 24px;
+}
+
+/* Collapse Bootstrap gutters for search box */
+.fibex-home-search-container .well > .row > div[class^="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Connect select and input visually */
+.fibex-home-search-container select.form-control {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: 0 !important;
+    border-top-left-radius: var(--radius, 8px) !important;
+    border-bottom-left-radius: var(--radius, 8px) !important;
+}
+
+.fibex-home-search-container .input-group .form-control {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+.fibex-home-search-container .btn-primary {
+    background-color: var(--brand-navy, #000C56) !important;
+    border-color: var(--brand-navy, #000C56) !important;
+    color: var(--on-brand, #FFFFFF) !important;
+    transition: var(--ease, .2s ease);
+}
+
+.fibex-home-search-container .btn-primary:hover,
+.fibex-home-search-container .btn-primary:focus,
+.fibex-home-search-container .btn-primary:active {
+    background-color: var(--brand-navy-hover, #04126B) !important;
+    border-color: var(--brand-navy-hover, #04126B) !important;
+}
+
+.fibex-home-search-container .form-control:focus {
+    border-color: var(--brand-navy, #000C56) !important;
+    box-shadow: var(--focus-ring, 0 0 0 3px rgba(0, 12, 86, .25)) !important;
+    z-index: 3 !important;
+}
+
+.fibex-home-search-container .btn-default {
+    border-radius: 0 !important;
+    border-color: var(--line-strong, #CBD5E1) !important;
+    background-color: var(--surface-card, #FFFFFF) !important;
+}
+
+.fibex-home-search-container .form-control,
+.fibex-home-search-container .btn {
+    height: 44px !important;
+    padding: 10px 16px !important;
+    line-height: 1.5 !important;
+    font-size: 14px !important;
+    font-family: var(--font-family-base) !important;
+    box-shadow: none !important;
+    border: 1px solid var(--line-strong, #CBD5E1) !important;
+}
+
+.fibex-home-search-container .input-group-btn .btn-default {
+    border-left: none !important;
+}
+
+.fibex-home-search-container .input-group-btn .btn-primary {
+    border-top-right-radius: var(--radius, 8px) !important;
+    border-bottom-right-radius: var(--radius, 8px) !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
