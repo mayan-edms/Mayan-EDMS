@@ -1071,7 +1071,8 @@ body {
 }
 
 .checkbox input[type="checkbox"],
-.radio input[type="radio"] {
+.radio input[type="radio"],
+input[type="checkbox"].checkbox {
     accent-color: var(--brand-navy);
 }
 
